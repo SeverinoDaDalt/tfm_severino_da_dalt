@@ -1,1 +1,364 @@
-\section{Section 4}
+\section{Section 4} \label{sec:section_4}
+
+    \definition[Definition 4.2(a)]
+    Let $\epsilon \in (0,1)$.
+    We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
+    \[
+    |\left\{ a\in A \mid a R b \not\equiv t \right\}| < |A|^{\epsilon}
+    \]
+
+    \definition[Definition 4.2(b)]
+    Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a non-decreasing function.
+    We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
+    \[
+    |\left\{ a\in A \mid a R b \not\equiv t \right\}| < f(|A|)
+    \]
+
+    \remark
+    If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
+
+    \remark
+    $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
+
+    \lemma[Claim 4.3]\label{existance_of_indivisible_sets}
+    Let $G$ be a finite graph with the non-$k_*$-property.
+    Assume $m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$, $f(m_{l-1}) \geq m_l$.
+    If $A \subseteq G$, $|A| = m_0$, then for some $l < k_{**}$ there is a subset $B \subseteq A$ of size $m_l$ which is
+        $f$-indivisible.
+        \begin{proof}
+        Suppose not.
+        Then we can construct the sequences $\left< b_\eta \mid \eta \in [2]^{<k} \right>$ and $\left< A_\eta \mid \eta \in [2]^{\leq k} \right>$
+            on induction over $k < k_{**}$, where $k = |\eta|$, satisfying:
+        \begin{enumerate}
+            \item\label{itm:4.3.1} $A_{\eta^\frown \left< i \right>} \subseteq A_{\eta}$, $\forall i \in \left\{0,1\right\}$, $\forall k < k_{**}$
+            \item\label{itm:4.3.2} $A_{\eta^\frown \left< 0 \right>} \cap A_{\eta^\frown \left< 1 \right>} = \emptyset$, $\forall k < k_{**}$
+            \item\label{itm:4.3.3} $|A_\eta| = m_k$, $\forall k \leq k_{**}$
+            \item\label{itm:4.3.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k < k_{**}$
+            \item\label{itm:4.3.5} $A_{\eta^\frown \left< i \right>} \subseteq A_\eta^{(i)} = \left\{ a \in A_\eta \mid a R b_\eta \equiv (i=1) \right\}$,
+                $\forall \in \left\{ 0,1 \right\}$, $\forall k < k_{**}$
+        \end{enumerate}
+        Let's prove the induction:
+        \begin{itemize}
+            \item \underline{$k=0$}.
+                Consider $A_{\left< \cdot \right>} = A$, which satisfies $|A_{\left< \cdot \right>}| = m_0$ and
+                $|b_{\left< \cdot \right>}|$ witnessing the non-$f$-indivisibility of $A_{\left< \cdot \right>}$.
+            \item \underline{$k \Rightarrow k+1$}.
+                We can assume $|A_\eta| = m_k$ and by hypothesis $A_\eta$ is not $f$-indivisible.
+                So, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_k) \geq m_{k+1}$ (\ref{itm:4.3.4}), and we can choose
+                    $A_{\eta^\frown \left< i \right>} \subseteq A_\eta^{(i)}$ (\ref{itm:4.3.5}), such that
+                    $|A_{\eta^\frown \left< i \right>}| = m_{k+1} \forall i \in \left\{ 0,1 \right\}$ (\ref{itm:4.3.3}).
+                (\ref{itm:4.3.1}) and (\ref{itm:4.3.2}) are satisfied by the definition of $A_\eta^{(i)}$.
+        \end{itemize}
+        Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$.
+        Then, we have two sequences $\left< b_\eta \mid \eta \in [2]^{<k_{**}} \right>$ and $\left< A_\eta \mid \eta \in [2]^{k_{**}} \right>$
+            with the property:
+        \[
+            \forall \rho \in [2]^{<k_{**}} \forall \eta \in [2]^{k_{**}} \text{ such that } \rho^\frown \left< i \right> \trianglelefteq
+                \eta \text{, } (a_\eta R b_\rho)
+        \]
+            since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \left< i \right>}$.
+        This contradicts the $k_{**}$ tree bound.
+        \end{proof}
+
+    \lemma[Claim 4.4]\label{existance_of_f_indivisible_partitions}
+    Let $G$ be a finite graph wit the non-$k_{*}$-order property.
+    Assume $m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$, $f(m_{l-1}) \geq m_l$.
+    If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \left< A_j \mid j \in [j(*)] \right>$
+        and reminder $B = A \setminus \bigcup \overline{A}$ such that:
+    \begin{enumerate}
+        \item \label{itm:4.4.1} For each $j \in [j(*)]$, $A_j$ is $f$-indivisible
+        \item \label{itm:4.4.2} For each $j \in [j(*)]$, $|A_j| \in \left\{ m_0, \dots, m_{k_{**}-1} \right\}$
+        \item \label{itm:4.4.3} $A_j \subseteq A \setminus \bigcup\left\{ A_i \mid i < j \right\}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$
+        \item \label{itm:4.4.4} $|B| < m_0$
+    \end{enumerate}
+        \begin{proof}
+        Iteratively, apply Claim ~\ref{existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \left\{ A_i \mid i < j \right\}$
+            (\ref{itm:4.4.3}) to get an $f$-indivisible $A_j$ (\ref{itm:4.4.1}) of size $m_l$, $l \in \left\{ 0, \dots, k_{**}-1 \right\}$
+            (\ref{itm:4.4.2}) until less then $m_0$ vertices are available (\ref{itm:4.4.4}).
+        \end{proof}
+
+    \lemma[Claim 4.5]\label{existance_of_ordered_epsilon_indivisible_partitions}
+    Let $G$ be a graph with the non-$k_{*}$-order property.
+    Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers satisfying that for all $l \in [k_{**}]$
+        $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for $\epsilon \in (0, \frac{1}{2})$.
+    If $A \subseteq G$, $|A| = n$, then we can find $\overline{A} = \left< A_i \mid i \in [i(*)] \right>$ with remainder
+        $B = A \setminus \bigcup \overline{A}$ such that:
+    \begin{enumerate}  % If you do any changes here, update 4.10 too...
+        \item \label{itm:4.5.1} For each $j \in [j(*)]$, $A_j$ is $\epsilon$-indivisible
+        \item \label{itm:4.5.2} For each $j \in [j(*)]$, $|A_j| \in \left\{ m_0, \dots, m_{k_{**}-1} \right\}$
+        \item \label{itm:4.5.3} $A_i \cap A_j = \emptyset$ $\forall i \neq j$
+        \item \label{itm:4.5.4} $|B| < m_0$
+        \item \label{itm:4.5.5} $\overline{A}$ is $\leq$-increasing
+    \end{enumerate}
+        \begin{proof}
+            The first four clauses are direct consequence of applying Claim~\ref{existance_of_f_indivisible_partitions}
+                with $f(n) = n^\epsilon$.
+            By renaming the $A_i$'s in ascending-size order, we get (\ref{itm:4.5.5}).
+        \end{proof}
+
+    \remark
+    In this context, if $m_{k_{**}} > k_{**}$
+    \[
+        n^{\epsilon^{k_{**}}} \geq m_0^{\epsilon^{k_{**}}} \geq m_1^{\epsilon^{k_{**}-1}} \geq \dots \geq m_{k_{**}} > k_{**}
+    \]
+    So, $n^{\epsilon^{k_{**}}} > k_{**}$.
+
+    \lemma[Claim 4.6)]\label{average_condition_statement}
+    Let $G$ be a finite graph.
+    Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
+    Then, for some truth value $t = t(A,B)$ for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of the $b \in B$
+        we have that $a R b \equiv t$.
+        \begin{proof}
+            Since $B$ is $g$-indivisible, for each $a \in A$ there is a truth value $t_a = t(a,B)$ such that
+                $\left\{ b \in B \mid a R b \not\equiv t_a \right\} < g(|B|)$.
+            Let $U_i = \left\{ a \in A \mid t_a = i \right\}$ for $i \in \left\{ 0,1 \right\}$.
+            If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
+            Suppose not.
+            Then, there are $W_i \subseteq U_i$ with $|W_i| = f(|A|)$ for $i \in \left\{ 0,1 \right\}$.
+            Now, let $V = \left\{ b \in B \mid (\exists a \in W_0 \mid a R b) \vee (\exists a \in W_1 \mid \lnot a R b) \right\}$,
+                i.e. the $b$'s which are an exception for some $a \in W_0 \cup W_1$.
+            Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 f(|A|) g(|B|) < |B|$, where the first inequality follows the
+                $g$-indivisibility of $B$.
+            Finally, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
+                $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = f(|A|)$, which contradicts the $f$-indivisibility of $A$.
+        \end{proof}
+
+    \definition
+    We say that the pair $(A,B)$ with $A$ $f$-indivisible and $B$ $g$-indivisible satisfies the \emph{average condition} if
+        $f(|A|) g(|B|) < \frac{1}{2} |B|$ and thus the statement of Claim~\ref{average_condition_statement} is true for
+        the pair $(A,B)$.
+
+    \remark
+    The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter.
+    Thus,
+    \[
+        (A,B) \text{ has the average condition } \Rightarrow (B,A) \text{ has the average condition }
+    \]
+
+    \remark[Remark 4.7]\label{sufficient_requirement_for_average_condition}
+        When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |V|^\zeta < \frac{1}{2} |B|$.
+
+    \lemma[Claim 4.8]\label{exceptions_bound_of_epsilon_indivisible_sets}
+        Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
+        Then, for all $\epsilon_1 \in \left( 0, 1-\epsilon \right)$, $\zeta_1 \in \left( 0, 1-\zeta \right)$, $A' \subseteq A$
+            and $B' \subseteq B$ such that $|A'| \geq |A|^{\epsilon + \epsilon_1}$ and $|B'| \geq |B|^{\zeta + \zeta_1}$,
+            we have that:
+        \[
+            \frac{|\left\{ (a,b) \in (A',B') \mid a R b \equiv \neg t(A,B) \right\}|}{|A' \times B'|} \leq
+                \frac{1}{|A|}\epsilon_1 + \frac{1}{|B|}\zeta_1
+        \]
+        \begin{proof}
+            Notice:
+            \begin{itemize}
+                \item There are at most $|A|^\epsilon$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
+                    (in the sense of the average condition).
+                \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $|B|^\zeta$ elements
+                    $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+            \end{itemize}
+            Putting it all together:
+            \[
+                \begin{split}
+                    \frac{|\left\{ (a,b) \in (A',B') \mid a R b \equiv \neg t(A,B) \right\}|}{|A' \times B'|}
+                        &\leq \frac{|A|^\epsilon |B'| + (|A'| - |A|^\epsilon) |B|^\zeta}{|A'| |B'|} \\
+                        &= \frac{|A|^\epsilon}{|A'|} + \frac{|A'| - |A|^\epsilon}{|A'|} \frac{|B|^\zeta}{|B'|} \\
+                        &\leq \frac{|A|^\epsilon}{|A'|} + \frac{|B|^\zeta}{|B'|} \\
+                        &\leq \frac{|A|^\epsilon}{|A|^{\epsilon + \epsilon_1}} + \frac{|B|^\zeta}{|B|^{\zeta + \zeta_1}} \\
+                        &= \frac{1}{|A|^\epsilon_1} + \frac{1}{|B|^\zeta_1}
+                \end{split}
+            \]
+        \end{proof}
+
+    \lemma[$f$-indivisible version]\label{exceptions_bound_of_f_indivisible_sets}
+        Let $A$ be $f$-indivisible, $B$ $g$-indivisible and let the pair $(A,B)$ satisfy the average condition.
+        Then, for all $\epsilon_1 \in \left( 0, 1-\frac{f(|A|)}{|A|} \right)$, $\zeta_1 \in \left( 0, 1-\frac{g(|B|)}{|B|} \right)$, $A' \subseteq A$
+            and $B' \subseteq B$ such that $|A'| \geq f(|A|) |A|^{\epsilon_1}$ and $|B'| \geq g(|B|) |B|^{\zeta_1}$,
+            we have that:
+        \[
+            \frac{|\left\{ (a,b) \in (A',B') \mid a R b \equiv \neg t(A,B) \right\}|}{|A' \times B'|} \leq
+                \frac{1}{|A|}\epsilon_1 + \frac{1}{|B|}\zeta_1
+        \]
+        \begin{proof}
+            Notice:
+            \begin{itemize}
+                \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
+                    (in the sense of the average condition).
+                \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
+                    $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+            \end{itemize}
+            Putting it all together:
+            \[
+                \begin{split}
+                    \frac{|\left\{ (a,b) \in (A',B') \mid a R b \equiv \neg t(A,B) \right\}|}{|A' \times B'|}
+                        &\leq \frac{f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)}{|A'| |B'|} \\
+                        &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
+                        &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
+                        &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
+                        &= \frac{1}{|A|^\epsilon_1} + \frac{1}{|B|^\zeta_1}
+                \end{split}
+            \]
+        \end{proof}
+
+    \corollary[Corollary 4.9]
+        Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
+        Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
+            $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
+        \[
+            \frac{|\left\{ (a,b) \in (A',B') \mid a R b \equiv \neg t(A,B) \right\}|}{|A' \times B'|} \leq
+                \frac{1}{|A|}\epsilon_1 + \frac{1}{|B|}\zeta_1
+        \]
+        \begin{proof}
+            Use Claim~\ref{exceptions_bound_of_f_indivisible_sets} with $f(n) = c$.
+        \end{proof}
+
+    \lemma[Claim 4.10]
+        Let $G$ be a finite graph wit the non-$k_{*}$-order property.
+        Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$,
+            $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}})^{1-2\epsilon}$.
+        If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \left< A_i \mid i \in [i(*)] \right>$
+            and reminder $B = A \setminus \bigcup \overline{A}$ satisfying:
+        \begin{enumerate}
+            \item \label{itm:4.10.1} For each $i \in [i*)]$, $A_i$ is $\epsilon$-indivisible
+            \item \label{itm:4.10.2} For each $i \in [i(*)]$, $|A_i| \in \left\{ m_0, \dots, m_{k_{**}-1} \right\}$
+            \item \label{itm:4.10.3} $A_i \cap A_j = \emptyset$ $\forall i \neq j$
+            \item \label{itm:4.10.4} $|B| < m_0$
+            \item \label{itm:4.10.5} $\overline{A}$ is $\leq$-increasing
+            \item \label{itm:4.10.6} If $\zeta \in \left(0,\epsilon^{k_{**}}\right)$ then for every $i,j \in [i(*)]$ with $i < j$,
+                $A \subseteq A_i$ ad $B \subseteq A_j$ such that $|A| \geq |A_i|^{\epsilon + \zeta}$ and $|B| \geq |A_j|^{\epsilon + \zeta}$
+                we have that:
+                \[
+                    \begin{split}
+                        \frac{|\left\{ (a,b) \in (A,B) \mid a R b \equiv \neg t(A_i,A_j) \right\}|}{|A \times B|}
+                            &\leq \frac{1}{|A_i|}\zeta + \frac{1}{|A_j|}\zeta \\
+                            &\leq \frac{1}{|A|}\zeta + \frac{1}{|B|}\zeta
+                    \end{split}
+                \]
+        \end{enumerate}
+        \begin{proof}
+            The five points are direct consequence of Claim~\ref{existance_of_ordered_epsilon_indivisible_partitions}.
+            Now, for any $A_i, A_j \in \overline{A}$ with $i < j$.
+            By (\ref{itm:4.10.2}), there is some $l < k_{**}$ such that $|A_i| \leq |A_j| = m_l$ for some $l < k_{**}$.
+            Then, it follows the condition $2 < (m_{k_{**}})^{1-2\epsilon}$ that:
+            \[
+                \frac{|A|^\epsilon |B|^\epsilon}{|B|}
+                    \leq \frac{|B|^{2\epsilon}}{|B|}
+                    = \frac{1}{|B|^{1-2\epsilon}}
+                    = \frac{1}{m_l^{1-2\epsilon}}
+                    \leq \frac{1}{m_{k_{**}}}
+                    < \frac{1}{2}
+            \]
+            i.e. $|A|^\epsilon |B|^\epsilon < \frac{1}{2} |B|$ and by Claim~\ref{sufficient_requirement_for_average_condition}
+                the average condition is satisfied.
+            Finally, notice that $\epsilon^{k_{**}} < \epsilon < 1 - \epsilon$ since $\epsilon \in (0, \frac{1}{2})$,
+                so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
+                Claim~\ref{exceptions_bound_of_epsilon_indivisible_sets} is satisfied.
+            This gives us (\ref{itm:4.10.6}) and concludes the proof of the statement.
+        \end{proof}
+
+    \definition
+    Let $A, B$ be $f$-indivisible sets with $f(A) \times f(B) < \frac{1}{2} |B|$.
+    Let $\left< A_i \mid i < i_A \right>$ be a partition of $A$ with $|A_i| = m \forall i<i_A$ and
+        $\left< B_i \mid i < i_B \right>$ be a partition of $B$ with $|B_i| = m \forall i<i_B$.
+    $\epsilon^+_{A_i,A_j,m}$ is the event:
+    \[
+        \forall a \in A_i \forall b \in B_i a R b = t(A,B)
+    \]
+
+    % up to here it was compiling with no problem.
+
+    \lemma[Claim 4.13]
+        Let $G$ be a finite graph wit the non-$k_{*}$-order property.
+        Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$,
+            $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}})^{1-2\epsilon}$.
+        Let $A_1, A_2 \subseteq G$ two $\epsilon$-indivisible subsets such that $|A_1| = m_{l_1}$ and $|A_2| = m_{l_2}$
+            for some $l_1, l_2 < k_{**}$ and $|A_1| \leq |A_2|$.
+        We will assume some approximation error by supposing $m_l = (m_{l-1})^\epsilon$.
+        Suppose that, for some $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$,
+            $m = n^\zeta$ divides $|A_1|$ and $|A_2|$.
+        Then, let $\left< A_{1,s} \mid s \in \left[ \frac{|A_1|}{m} \right] \right>$ and
+            $\left< A_{2,t} \mid t \in \left[ \frac{|A_2|}{m} \right] \right>$ be random partitions of $A_1$ and $A_2$
+            respectively, with pieces of size $m$.
+        We have that
+        \[
+            P(\epsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+        \]
+        \begin{proof}
+            Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
+            % TODO: copy the necessary section in Claim 4.10 or make it a separate claim/remark and reference it here.
+            % (to prove average condition is satisfied)
+            \[
+                \text{UPS, something is missing here}
+            \]
+            \dots and thus the average condition is satisfied.
+            Let $U_1 = \left\{ a \in A_1 \mid |\left\{ b \in A_2 \mid a R b \equiv \neg t(A_1, A_2) \right\}| \geq |A_2|^\epsilon \right\}$
+                and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \left\{ b \in A_j \mid a R b \equiv \neg t(A_1, A_2) \right\}$
+            By Claim~\ref{average_condition_statement}, $|U_1| \leq |A_1|^\epsilon$ and $\forall a \in A_1 \setminus U_1$,
+                $|U_2| \leq |A_2|^\epsilon$.
+            Now, we can bound the probability $P_1$ that $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
+            \[
+                \begin{split}
+                    P_1
+                        & \leq \frac{|U_1|}{|A_1|} + \dots + \frac{|U_1|}{|A_1|-m+1}
+                            < \frac{m |U_1|}{|A_1| - m}
+                            \leq \frac{m |A_1|^\epsilon}{|A_1| - m} \\
+                        & \leq \frac{m^2 |A_1|^\epsilon}{|A_1|}
+                            = \frac{m^2}{|A_1|^{1-\epsilon}}
+                            = \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{l_1}}} \\ % the approximation error is here
+                        & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                            \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                            = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                \end{split}
+            \]
+            The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
+            Then, if $A_{1,s} \cap = \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}|$
+        \end{proof}
+
+    \remark
+
+    \lemma[Claim 4.14]
+        \begin{proof}
+
+        \end{proof}
+
+    \lemma[Claim 4.15]
+        \begin{proof}
+
+        \end{proof}
+
+    \theorem[Theorem 4.16]
+        \begin{proof}
+
+        \end{proof}
+
+    \lemma[Claim 4.8]
+        \begin{proof}
+
+        \end{proof}
+
+    \remark
+
+    \definition[Definition 4.18]
+        \begin{proof}
+
+        \end{proof}
+
+    \lemma[Lemma 4.19]
+        \begin{proof}
+
+        \end{proof}
+
+    \lemma[Claim 4.21]
+        \begin{proof}
+
+        \end{proof}
+
+    \lemma[Remark 4.22]
+        \begin{proof}
+
+        \end{proof}
+
+    \theorem[Theorem 4.23]
+        \begin{proof}
+
+        \end{proof}
+
+
