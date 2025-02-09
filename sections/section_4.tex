@@ -60,6 +60,7 @@
         This contradicts the $k_{**}$ tree bound.
         \end{proof}
 
+    % TODO: since you  changed l \in [k_**] to l < k_**, you should adapt consequently all that follows this point...
     \lemma[Claim 4.4]\label{existance_of_f_indivisible_partitions}
     Let $G$ be a finite graph wit the non-$k_{*}$-order property.
     Assume $m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$, $f(m_{l-1}) \geq m_l$.
@@ -258,14 +259,12 @@
     Let $A, B$ be $f$-indivisible sets with $f(A) \times f(B) < \frac{1}{2} |B|$.
     Let $\left< A_i \mid i < i_A \right>$ be a partition of $A$ with $|A_i| = m \forall i<i_A$ and
         $\left< B_i \mid i < i_B \right>$ be a partition of $B$ with $|B_i| = m \forall i<i_B$.
-    $\epsilon^+_{A_i,A_j,m}$ is the event:
+    $\varepsilon^+_{A_i,A_j,m}$ is the event:
     \[
-        \forall a \in A_i \forall b \in B_i a R b = t(A,B)
+        \forall a \in A_i \forall b \in B_i, a R b = t(A,B)
     \]
 
-    % up to here it was compiling with no problem.
-
-    \lemma[Claim 4.13]
+    \lemma[Claim 4.13]\label{bound_on_the_probability_of_a_subpair_having_no_exceptions}
         Let $G$ be a finite graph wit the non-$k_{*}$-order property.
         Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$,
             $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}})^{1-2\epsilon}$.
@@ -279,7 +278,7 @@
             respectively, with pieces of size $m$.
         We have that
         \[
-            P(\epsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+            P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
         \]
         \begin{proof}
             Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
@@ -309,30 +308,148 @@
                 \end{split}
             \]
             The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
-            Then, if $A_{1,s} \cap = \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}|$
+            Then, if $A_{1,s} \cap U_1= \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}| |A_2|^\epsilon$.
+            So we can bound $P_2$, the probability that $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} = \emptyset$, by:
+            \[
+                \begin{split}
+                    P_2
+                        & \leq \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|} + \dots + \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|-m+1}
+                            < \frac{m |\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2| - m}
+                            \leq \frac{m m |A_2|^\epsilon}{|A_2| - m} \\
+                        & \leq \frac{m^3 |A_2|^\epsilon}{|A_2|}
+                            = \frac{m^3}{|A_2|^{1-\epsilon}}
+                            = \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{l_2}}} \\ % the approximation error is here
+                        & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                            \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                            = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                \end{split}
+            \]
+            Putting it all together:
+            \[
+                P(\varepsilon^+_{A_{1,s},A_{2,t},m})
+                    \geq (1 - P_1) (1 - P_2)
+                    \geq \left(1 - \frac{1}{n^{c \epsilon^{k_{**}}}}\right)^2
+                    \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+            \]
         \end{proof}
 
-    \remark
+    \remark\label{subpair_bound_specification}
+    Since $\epsilon < \frac{1}{2}$, we can take $c = 1 - 2\epsilon$.
+    In this context, $\zeta \leq \frac{\epsilon^{k_{**}+1}}{3}$.
 
-    \lemma[Claim 4.14]
+    % up to here it was compiling with no problem.
+
+    \lemma[Claim 4.14]\label{existance_of_equitative_partition_with_bound_exceptional_pairs}
+        Let $G$ be a finite graph wit the non-$k_{*}$-order property.
+        Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$,
+            $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}})^{1-2\epsilon}$.
+        Also, let $m_0$ be small enough to satisfy $m_0 < \frac{n}{n^{(1 - 2\epsilon)\epsilon^{k_{**}}}}$ and
+            $m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
+        Finally, let $m_{**}$ be a divisor of $m_l$ for all $l < k_{**}$ and $m_{**} \leq n^{\frac{\epsilon^{k_{**}+1}}{3}}$.
+        % TODO: probably, this last condition can be removed.
+        If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \left< A_i \mid i \in [r] \right>$
+            with reminder $B = A \setminus \bigcup \overline{A}$ such that:
+        \begin{enumerate}
+            \item\label{itm:4.14.1} $|A_i| = m_{**} \forall i \in [r]$
+            \item\label{itm:4.14.2} For all but $\frac{2r^2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ of the pairs
+                $(A_i, A_j)$ with $i<j$ there are no exceptional edges, i.e.
+                \[
+                    \left\{ (a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j) \right\} = \emptyset
+                \]
+            \item\label{itm:4.14.3} $|B| < m_0$
+        \end{enumerate}
         \begin{proof}
-
+            We can use Claim~\ref{existance_of_ordered_epsilon_indivisible_partitions} to get a partition
+                $\overline{A'} = \left< A'_i \mid i \in [i(*)] \right>$ and remainder $B' = A \setminus \bigcup A'$.
+            We can refine the partition by randomly splitting each $A'_i$ into pieces of size $m_{**}$ (\ref{itm:4.14.1}).
+            Consider the resulting partition $\overline{A} = \left< A_i \mid i \in [r] \right>$ with remainder $B = B'$
+                (\ref{itm:4.14.3}).
+            First of all, notice that for each pair $(A_i, A_j)$ such that $A_i \subseteq A'_{i_1}$ and
+                $A_j \subseteq A'_{j_1}$ with $i_1 \neq j_1$, the probability of the pair having exceptional edges is
+                upper bounded by $\frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$.
+            This follows Claim~\ref{bound_on_the_probability_of_a_subpair_having_no_exceptions} in the context of
+                Remark~\ref{subpair_bound_specification}.
+            Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
+            \[
+                E(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} E(X_{A_i, A_j})
+                    = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
+                    \leq \frac{r^2}{2} \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}
+            \]
+                where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
+            Now, we have no control if $i_1 = j_1$, so let's bound how many of these we have:
+            \[
+                \begin{split}
+                    |\left\{ \text{Esceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in [i(*)] \right\}|
+                        & \leq {\frac{m_0}{m_{**}} \choose 2} \frac{n}{m_0} \\
+                        & \leq \frac{{\frac{m_0}{m_{**}} \choose 2}^2}{2} \frac{n}{m_0}
+                            = \frac{m_0 n}{2 m_{**}^2}
+                            = \frac{m_0}{n} \left( \frac{n}{\sqrt{2}m_{**}} \right)^2 \\
+                        & \leq \frac{m_0}{n} \left( \frac{n - m_0}{m_{**}} \right)^2
+                            \leq \frac{m_0}{n} r^2
+                            < \frac{r^2}{n^{(1-2\epsilon) \epsilon^{k_{**}}}}
+                \end{split}
+            \]
+            Putting it all together, we see that the number of exceptional pairs is upper bounded by
+                $\frac{2r^2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ satisfying (\ref{itm:4.14.2}).
         \end{proof}
 
-    \lemma[Claim 4.15]
-        \begin{proof}
-
-        \end{proof}
+    \remark[Remark 4.15]
+        Notice that, in the previous proof, the condition $m_0 < \frac{n}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ can be
+            weakened at the cost of increasing the number of exceptional pairs.
+        More specifically, since this condition is only used to bound the exceptional sub-pairs in the same pair
+            (the second part of the proof), the number of exceptional pairs can be generally bounded by
+            \[
+                |\left\{ \text{Exceptional pairs} \right\}|
+                    \leq \left( \frac{m_0}{n} + \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}} \right) r^2
+            \]
 
     \theorem[Theorem 4.16]
+        Let $\epsilon = \frac{1}{r} \in \left( 0, \frac{1}{2} \right)$ with $r \in \mathbb{N}$ (this avoids rounding error)
+            and $k_*$ be given.
+        Let $G$ be a finite graph with the non-$k_*$-order property.
+        Let $A \subseteq G$ with $|A| = n$.
+        Then, for any $m_{**} \leq n^{\frac{\epsilon^{k_{**}+1}}{3}}$, there is a partition
+            $\overline{A} = \left< A_i \mid i \in [m] \right>$ of $A$ with remainder $B = A \setminus \bigcup \overline{A}$
+            such that:
+        \begin{enumerate}
+            \item\label{itm:4.16.1} $|A_i| = m_{**} \forall i \in [m]$
+            \item\label{itm:4.16.2} $|B| < n^{\frac{\epsilon}{3}}$
+            \item\label{itm:4.16.3} $|\left\{ (i,j) \mid i,j \in [m], i < j \text{ and }
+                \left\{ (a,b) \in A_i \times A_j \mid a R b \right\} \notin
+                \left\{ A_i \times A_j, \emptyset \right\} \right\}|
+                \leq \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}} m^2$
+        \end{enumerate}
         \begin{proof}
-
+            Let $m_{k_{**}}$ be the smaller multiple of $m_{**}$ such that $2 < (m_{k_{**}})^{1-2\epsilon}$.
+            Then, consider the sequence
+                \[
+                    m_{**} \leq m_{k_{**}} < \dots < m_0
+                \]
+                such that for all $l \in [k_{**}]$ we have that $m_{l-1} = m_l^r$.
+            Notice that:
+            \begin{enumerate}
+                \item $m_{**}$ divides $m_l$ for all $l \in [0, k_{**}]$ since the $m_l$'s are powers of $m_{k_{**}}$
+                    and $m_{**}$ divides $m_{k_{**}}$ by construction.
+                \item $(m_{l-1})^\epsilon = m_l \forall l \in [k_{**}]$
+                \item \[
+                    \begin{split}
+                        \underline{m_0}
+                            & = m_{k_{**}}^{r^{k_{**}}}
+                                \leq m_{**}^{r^{k_{**}}}
+                                \leq n^{\frac{\epsilon}{3}\epsilon^{k_{**}}r^{k_{**}}}
+                                = \underline{n^{\frac{\epsilon}{3}}} \\
+                            & < n^{\frac{1}{6}}
+                                < n^{1-\frac{1}{2}\epsilon^{k_{**}}}
+                                = \underline{\frac{n}{n^{\frac{1}{2}\epsilon^{k_{**}}}}}
+                                < \underline{n}
+                    \end{split}
+                \]
+            \end{enumerate}
+            So, all the conditions are satisfied to apply Claim~\ref{existance_of_equitative_partition_with_bound_exceptional_pairs},
+                which gives us the partition $\overline{A}$ with remainder $B$ satisfying the statement.
+            Notice that (\ref{itm:4.16.2}) is satisfied by the fact that $|B| < m_0 \leq n^{\left(\frac{1}{6} - \frac{\epsilon}{3}\right)}$.
         \end{proof}
-
-    \lemma[Claim 4.8]
-        \begin{proof}
-
-        \end{proof}
+    % TODO: make a complementary of this theorem with another value of c, which removes the need of (1-2\epsilon) in (3).
 
     \remark
 
