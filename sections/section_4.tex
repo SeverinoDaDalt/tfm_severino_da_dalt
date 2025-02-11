@@ -337,8 +337,6 @@
     Since $\epsilon < \frac{1}{2}$, we can take $c = 1 - 2\epsilon$.
     In this context, $\zeta \leq \frac{\epsilon^{k_{**}+1}}{3}$.
 
-    % up to here it was compiling with no problem.
-
     \lemma[Claim 4.14]\label{existance_of_equitative_partition_with_bound_exceptional_pairs}
         Let $G$ be a finite graph wit the non-$k_{*}$-order property.
         Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$,
@@ -452,30 +450,185 @@
     % TODO: make a complementary of this theorem with another value of c, which removes the need of (1-2\epsilon) in (3).
 
     \remark
+    Let $n^{\frac{\epsilon^{k_{**}+1}}{3}}$ be an integer and let $m_{**}$ take this value.
+    Then, the number of pieces of the partition is at most $n^c$ with $c = 1 - \frac{\epsilon^{k_{**}+1}}{3}$.
 
-    \definition[Definition 4.18]
+    \definition[Definition 4.18]\label{n_large_enough_property}
+    For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
+        the statement:
+    For any set $A$ and $P \subseteq \mathcal{P}(A)$ such that $|A| = n$, $|P| \leq n^{\frac{1}{\zeta}}$ and for all
+        $B \in P$ $|B| \leq n^\epsilon$, there exists $U \subseteq A$ with $|U| = \lfloor n^\xi \rfloor$ such that
+        for all $B \in P$ $|U \cap B| \leq c$.
+
+    \lemma[Lemma 4.19]\label{n_large_enough_valid_values}
+        If the reals $\epsilon, \zeta, \xi$ and the natural numbers $n, c$ satisfy:
+        \begin{itemize}
+            \item $\epsilon \in (0,1)$
+            \item $\zeta > 0$
+            \item $0 < \xi < \min(1-\epsilon, \frac{1}{2})$
+            \item $n$ sufficiently large ($n > n(\epsilon, \zeta, \xi, c)$) to satisfy the equation:\[
+                \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
+            \]
+            \item $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$
+        \end{itemize}
+            then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
         \begin{proof}
-
+            Let $m = \lfloor n^\xi \rfloor$ the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$
+                the set of sequences of elements of $A$ with length $m$.
+            Let $\mu$ be a probability distribution on $\mathcal{F}_*$ such that for all $F \in \mathcal{F}_*$
+                $\mu(F) = \frac{|F|}{|\mathcal{F}_*|}$.
+            We want to prove that the probability that a random $U$ satisfies:
+            \begin{enumerate}
+                \item\label{itm:4.19.1} All elements of $U$ are distinct
+                \item\label{itm:4.19.2} For all $B \in P$ $|U \cap B| < K$
+            \end{enumerate}
+                is not trivial.
+            First of all let's bound the converse (\ref{itm:4.19.1}) i.e. the probability that there are two equal elements
+                in $U$:
+            \[
+                P_1 = P(\exists s < t \in [m] \mid U_s = U_t)
+                    \leq {m \choose 2} \frac{n}{n^2}
+                    \leq \frac{m^2}{2n}
+                    \leq \frac{n^{2\xi}}{2n}
+                    < \frac{1}{2n^{1-2\xi}}
+            \]
+            Now, in order to bound (\ref{itm:4.19.2}), let's first bound the probability that at least $c$ elements of
+                $U$ are in a given $B \in P$:
+            \[
+                P_B = P(\exists^{\geq c} t\in [m] \mid U_t \in B)
+                    \leq {m \choose c} \left( \frac{|B|}{n} \right)^c
+                    \leq \frac{m^c |B|^c}{n^c}
+                    \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
+                    = \frac{1}{n^{c (1 - \xi - \epsilon)}}
+            \]
+            Then, we can bound the converse of (\ref{itm:4.19.2}), i.e. the probability that this happens for some $B \in P$,
+                by:
+            \[
+                P_2 = P(\exists B \in P \mid \exists^{\geq c} t\in [m], U_t \in B)
+                    \leq \sum_{B \in P} P_B
+                    = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
+                    \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\xi}}}
+            \]
+            Putting it all together, we have that
+            \[
+                P((\ref{itm:4.19.1}) \cup (\ref{itm:4.19.2}))
+                    \leq P_1 + P_2
+                    < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\xi}}}
+            \]
+            Notice that
+            \begin{itemize}
+                \item Since $\xi < \frac{1}{2}$ we have that $1 - 2\xi > 0$
+                \item Since $\xi < 1 - \epsilon$, we have that $1 - \epsilon - \xi > 0$ and given that $c$ is natural
+                    $c (1 - \xi - \epsilon) > 0$
+            \end{itemize}
+                so, the $n$-large enough condition of the forth point of the statement is well defined and
+            \[
+                P((\ref{itm:4.19.1}) \cup (\ref{itm:4.19.2}))
+                    < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\xi}}}
+                    < 1
+            \]
+            Thus, the probability that there exists a $U \subseteq A$ satisfying the condition is non-trivial,
+                and $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
         \end{proof}
 
-    \lemma[Lemma 4.19]
+    \lemma[Claim 4.21]\label{many_values_to_equitative_partition_with_bound_exceptional_pairs}
+        Let $k_*, k, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
+        \begin{enumerate}
+            \item\label{itm:4.21.1} $G$ is a graph with the non-$k_*$-order property
+            \item\label{itm:4.21.2} $A \subseteq G$ implies $|\left\{ \left\{ a \in A \mid a R b \equiv t(a,b) \right\} \mid b \in G \right\}|
+                \leq |A|^k$
+            \item\label{itm:4.21.3} $\epsilon \in \left(0, \frac{1}{2}\right)$
+            \item\label{itm:4.21.4} $\xi \in \left(0, \frac{\epsilon^{k_{**}}}{2} \right)$
+            \item\label{itm:4.21.5} $c$ satisfies \[
+                c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
+            \]
+        \end{enumerate}
+        Then, for every sufficiently large $n \in \mathbb{N}$ ($n^{\epsilon^{k_{**}}} > n\left( \epsilon, \frac{1}{k},
+            \frac{\xi}{\epsilon^{k_{**}}}, c \right)$ in the sense of Lemma~\ref{n_large_enough_valid_values} (d)), if
+            $A \subseteq G$ with $|A| = n$, then there is $Z \subseteq A$ such that
+        \begin{enumerate}[(a)]
+            \item\label{itm:4.21.a} $|Z| = \lfloor n^\xi \rfloor$
+            \item\label{itm:4.21.b} $Z$ is $\epsilon$-indivisible in $G$
+        \end{enumerate}
         \begin{proof}
-
+            In order to simplify the calculation, we will assume that $n^{\epsilon^l} \in \mathbb{N} \forall l \leq k_{**}$.
+            Notice that can be easily achieved by setting $\epsilon$ as $\epsilon = \frac{1}{r}$ with $r \in \mathbb{N}$.
+            Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_l = n^{\epsilon^{l}}$.
+            So $m_{l+1} = m_l^\epsilon = \lfloor (m_l)^\epsilon \rfloor$ and we can use Claim~\ref{existance_of_indivisible_sets}
+                to get $A_1 \subseteq A$ with $|A_1| = m_l$ for some $l \leq k_{**}$ and $A_1$ $\epsilon$-indivisible.
+            By (\ref{itm:4.21.2}) we have that $|P_1| \leq |A_1|^k = m_l^k$.
+            Notice that:
+            \begin{itemize}
+                \item $\epsilon \in (0,1)$ by (\ref{itm:4.21.3})
+                \item $\zeta \coloneqq \frac{1}{k} > 0$
+                \item since $\epsilon \in \left( 0, \frac{1}{2} \right)$ by (\ref{itm:4.21.3}), then by (\ref{itm:4.21.4})
+                    $\frac{\xi}{\epsilon^l} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2} < 1 - \epsilon$ and
+                    thus $0 < \xi < \min(1-\epsilon, \frac{1}{2})$
+                \item $m_l$ sufficiently large: $m_l = n^{\epsilon^l} \geq n^{\epsilon^{k_**}} > n\left( \epsilon, \frac{1}{k},
+                    \frac{\xi}{\epsilon^{k_{**}}}, c \right) > n\left( \epsilon, \zeta, \frac{\xi}{\epsilon^{l}}, c \right)$
+                \item $c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
+                    \geq \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$
+            \end{itemize}
+            By Lemma~\ref{n_large_enough_valid_values} then, $\oplus\left[ m_l, \epsilon, \zeta, \frac{\xi}{\epsilon^l} \right]$
+                holds, and by taking $A_{(\ref{n_large_enough_property})} \coloneqq A_1$ and
+                $P_{(\ref{n_large_enough_property})} \coloneqq P_1$ we have that:
+            \begin{itemize}
+                \item $|A_1| = m_l$
+                \item $|P_1| \leq m_l^k = m_l^{\frac{1}{\zeta}}$
+                \item $\forall B \in P_1$, $|B| \leq |A_1|^\epsilon$ by $\epsilon$-indivisibility of $A_1$
+            \end{itemize}
+            Thus, by Definition~\ref{n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
+            \begin{itemize}
+                \item $|U| = \lfloor m_l^{\frac{\xi}{\epsilon^l}} \rfloor = \lfloor n^{\epsilon^l \frac{\xi}{\epsilon^l}} \rfloor
+                    \lfloor n^\xi \rfloor$ satisfying (\ref{itm:4.21.a})
+                \item $Z$ is $c$-indivisible since $|B \cap Z| \leq c \forall B \in P_1$, satisfying (\ref{itm:4.21.b})
+            \end{itemize}
+            This proves the statement.
         \end{proof}
 
-    \lemma[Claim 4.21]
-        \begin{proof}
-
-        \end{proof}
-
-    \lemma[Remark 4.22]
-        \begin{proof}
-
-        \end{proof}
+    \lemma[Remark 4.22]\label{k_asterisk_enough_for_k}
+    Notice that if $k = k_*$, the condition (\ref{itm:4.21.2}) will be satisfied by Claim ??? % TODO: add the claim
+        and the non-$k_*$-order of $G$.
 
     \theorem[Theorem 4.23]
+        Let $G$ be a graph with the non-$k_*$-property.
+        For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of Claim~\ref{many_values_to_equitative_partition_with_bound_exceptional_pairs}
+            (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ with
+            $A = n > n\left( c, \epsilon, \zeta, \xi, \theta \right)$ (i.e. $n$ large enough in the sense of Claim~\ref{n_large_enough_valid_values}),
+            there is a partition $\overline{A} = \left< A_i \mid i \in [i(*)] \right>$ of $A$ with remainder $B = A \setminus \bigcup \overline{A}$
+            satisfying:
+        \begin{itemize}
+            \item $|A_i| = \lfloor \lfloor n^\theta \rfloor ^\zeta \rfloor \forall i \in [i(*)]$
+            \item $A_i$ is $c$-indivisible $\forall i \in [i(*)]$ where $c$ is the constant function $f(x) = c$
+            \item $|B| < \lfloor n^{\frac{\theta}{\epsilon^{k_{**}}}} \rfloor$
+        \end{itemize}
         \begin{proof}
-
+            Let $n > \left( n\left( \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c \right)^{\frac{1}{\epsilon^{k_{**}}} + 1} \right)^{\frac{1}{\theta}}$
+                in the sense of Lemma~\ref{n_large_enough_valid_values}, so that $\lfloor n^\theta \rfloor$ satisfies the
+                large enough condition of Claim~\ref{many_values_to_equitative_partition_with_bound_exceptional_pairs}:
+                \[
+                    \left( \lfloor n^\theta \rfloor \right)^{\epsilon^{k_{**}}}
+                        > n\left( \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c \right)
+                \]
+            Notice that condition (\ref{itm:4.21.2}) in Claim~\ref{many_values_to_equitative_partition_with_bound_exceptional_pairs}
+                is satisfied by Remark~\ref{k_asterisk_enough_for_k}.
+            Now, we define a decreasing sequence $m_0 > m_1 > \dots > m_{k_{**}}$ with $m_{k_{**}} = \lfloor n^\theta \rfloor$
+                and $m_{k_{**}-j} = \lceil \left( m_{k_{**}-j+1} \right)^{\frac{1}{\epsilon}} \rceil \forall j \in [1, k_{**}]$.
+            This sequence satisfies the condition of Claim~\ref{existance_of_indivisible_sets} for $f(n) = n^\epsilon$.
+            We will build a sequence of disjoint $c$-indivisible subsets $A_i$ by induction on $i$ as follows.
+            Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
+            If $R_i < \lfloor n^{\frac{\theta}{\epsilon^{k_{**}}}} \rfloor$, then
+                $\overline{A} = \left< A_j \mid j < i = i(*) \right>$ and $B = R_i$, and we are done.
+            Otherwise, we can apply Claim~\ref{existance_of_indivisible_sets} to $R_i$ with the sequence
+                $\left< m_l \right>_{l \leq k_{**}}$, to obtain an $\epsilon$-indivisible subset $B_i \subseteq R_i$ of
+                size $m_{k_{**}-l}$.
+            Then, since $|B_i| = m_{k_{**}-l} \geq m_{k_{**}} = \lfloor n^\theta \rfloor$ by the $n$-large-enough assumption,
+                we can apply Claim~\ref{many_values_to_equitative_partition_with_bound_exceptional_pairs} and get a
+                $c$-indivisible subset $Z_i$ of size $|Z_i| = \lfloor m_{k_{**}-l}^\zeta \rfloor
+                \geq \lfloor \lfloor n^{\frac{\theta}{\epsilon^l}} \rfloor ^\zeta \rfloor
+                \geq \lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
+            Since $c$-indivisible is preserved when taking subsets, % TODO: make it a remark
+                we can choose $A_i \subseteq Z_i$ $c$-indivisible of size $\lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
         \end{proof}
 
-
+    % up to here it was compiling with no problem.
