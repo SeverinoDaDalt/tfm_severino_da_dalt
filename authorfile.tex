@@ -6,6 +6,7 @@
 \usepackage[all]{xy}
 \usepackage{booktabs}
 \usepackage{mathtools}
+\usepackage{enumitem}
 %\usepackage[usenames]{xcolor}
 %\usepackage{fancyhdr}
 
@@ -40,6 +41,16 @@
 
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 
+\newcommand{\parcurly}[1]{\left\{ #1 \right\}}
+\newcommand{\parround}[1]{\left( #1 \right)}
+\newcommand{\parsquared}[1]{\left[ #1 \right]}
+\newcommand{\parstraight}[1]{\left| #1 \right|}
+\newcommand{\partriangle}[1]{\left< #1 \right>}
+
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+
+\newcommand{\naturals}{\mathbb{N}}
 
 % Body of document
 
@@ -69,9 +80,11 @@ Thanks to...}
 % sections
 \input{sections/introduction}
 
+\input{sections/section_2}
+
 \input{sections/section_3}
 
-\input{sections/section_4}
+%\input{sections/section_4}
 
 \input{sections/section_5}
 

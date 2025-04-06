@@ -1,0 +1,95 @@
+\section{Section 2} \label{sec:section_2}
+
+    \definition[Truth value]
+        Let $G$ be a graph.
+        For any $A \subseteq G$ and $b \in G$, we say that
+        $$
+            t(A,b) =
+            \begin{cases}
+                0 & \text{if } \left| \left\{ a \in A \mid a R b \right\} \right| < \left| \left\{ a \in A \mid \neg a R b \right\} \right| \\
+                1 & \text{otherwise}
+            \end{cases}
+        $$
+        is the \emph{truth value} of $A$ with respect to $b$.
+    \newline
+
+    Extra notation:
+    \begin{itemize}
+        \item $B_{A,b} = \left\{ a \in A \mid a R b \equiv t(A,b) \right\}$.
+        \item $\overline{B}_{A,b} = \left\{ a \in A \mid a R b \not\equiv t(A,b) \right\}$.
+        \item $B^+_{A,b} = \left\{ a \in A \mid a R b \right\}$.
+        \item $B^-_{A,b} = \left\{ a \in A \mid \neg a R b \right\}$.
+    \end{itemize}
+    With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
+
+    \lemma[Claim 2.6]\label{claim_2.6}
+        Let $G$ be a graph with the non-$k$-order property.
+        Then, for any finite $A \subseteq G$,
+        $$
+            \left|\left\{ \left\{ a \in A \mid a R b \right\} \mid b \in G \right\} \right| \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+        $$
+
+    \corollary[Claim 2.6.1]\label{itm:2.6.1}
+        Let $G$ be a graph with the non-$k$-order property.
+        Then:
+        \begin{enumerate}
+            \item\label{itm:2.6.1.1} For any finite $A \subseteq G$
+                $$
+                    \left|\left\{ \left\{ a \in A \mid \neg a R b \right\} \mid b \in G \right\} \right|
+                        \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                $$
+            \item\label{itm:2.6.1.2} For any finite $A \subseteq G$
+                $$
+                    \left|\left\{ \left\{ a \in A \mid \neg a R b \equiv t(A,b) \right\} \mid b \in G \right\} \right|
+                        \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                $$
+        \end{enumerate}
+        \begin{proof}
+        \begin{enumerate}
+            \item First of all, notice that $B^+_{A,b} = B - B^-{A,b}$, since by definition they are complementary.
+                Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
+                It follows that
+                $$
+                    \left| \left\{ B^-_{A,b} \mid b \in G \right\} \right| =
+                    \left| \left\{ B^+_{A,b} \mid b \in G \right\} \right| \leq
+                    \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                $$
+                where the last inequalities come from Lemma~\ref{claim_2.6}.
+            \item Consider the following map:
+                \begin{align*}
+                    \pi: \left\{ B_{A,b} \mid b \in G \right\} & \longrightarrow \left\{ B^+_{A,b} \mid b \in G \right\} \\
+                                                       B_{A,b} & \longmapsto B^+_{A,b}
+                \end{align*}
+                We show that the map $\pi$ is injective.
+                Let $b,b' \in G$ such that $B_{A,b} = B_{A,b'}$.
+                Then, $t(A,b) = t(A,b')$, otherwise (suppose wlog that $t(A,b) = 1$ and $t(A,b') = 0$), we would have
+                $$
+                    \left| B^-_{A,b'} \right| > \left| B^+_{A,b'} \right| = \left| B^+_{A,b} \right| \geq
+                        \left| B^-_{A,b} \right| = \left| B^-_{A,b'} \right|
+                $$
+                which is a contradiction.
+                Then:
+                \begin{itemize}
+                    \item if $t(A,b) = t(A,b') = 1$, we have that $B_{A,b} = B^+_{A,b} = B^+_{A,b'} = B_{A,b'}$.
+                    \item if $t(A,b) = t(A,b') = 0$, we have that
+                    $B_{A,b} = B^-_{A,b} = A \setminus B^+_{A,b} = A \setminus B^+_{A,b'} = B^-_{A,b'} = B_{A,b'}$.
+                \end{itemize}
+                This proves that $\pi$ is injective.
+                To conclude,
+                $$
+                    \left| \left\{ B_{A,b} \mid b \in G \right\} \right| \leq
+                    \left| \left\{ B^+_{A,b} \mid b \in G \right\} \right| \leq
+                    \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                $$
+                This concludes the proof.
+                Notice that in particular $\pi$ is a bijection, but this is not needed for the proof.
+        \end{enumerate}
+        \end{proof}
+
+
+    \definition[Definition 2.11]\label{tree_bound}
+        Suppose $G$ is a finite graph with the non-$k_*$-property.
+        We denote the \emph{tree bound} $k_{**} = k_{**}(G) < \omega$ as the minimal value such that there
+        do not exist sequences $\overline{a} = \left< a_\eta \mid \eta \in \left[ 2 \right]^{k_{**}} \right>$ and
+        $\overline{b} = \left< b_\rho \mid \rho \in \left[ 2 \right]^{<k_{**}} \right>$ of elements of $G$ satisfying that
+        if $\rho \frown \left< \ell \right> \triangleleft \eta$, then $\left( a_\eta R b_\rho \right) \equiv \left( \ell = 1 \right)$.
