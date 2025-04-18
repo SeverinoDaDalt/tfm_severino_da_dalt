@@ -519,8 +519,6 @@
             which proves that (\ref{itm:5.14.2.c}) can be satisfied.
         \end{proof}
 
-    % up to here it was compiling with no problem.
-
     \remark[Remark 5.14.3]\label{epsilons_proportion_can_be_k}
         In the context of Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
@@ -661,12 +659,131 @@
             $$
             Notice that the bound on $m$ only depends on $\epsilon$ and $k_{**}$.
 
+            % TODO: fix what follows. Wait until all bounds from previous sections are clear.
             To conclude, let's put together all requirements on $N$:
             \begin{enumerate}[label=(H\arabic*), ref=H\arabic*]
                 \item \label{itm:5.18.H1} $N$ needs to be large enough to satisfy
                 \item \label{itm:5.18.H2} $N > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$.
             \end{enumerate}
         \end{proof}
+
+    % TODO: define uniformity.
+    \lemma[Lemma 5.17]\label{excellence_implies_regularity}
+        Suppose that $\epsilon_1, \epsilon_2, \epsilon_3 \in \parround{0, {1 \over 2}}$ with
+        ${{\epsilon_1 + \epsilon_2} \over \epsilon_3} < {1 \over 2}$ and the pair $\parround{A,B}$ is
+        $\parround{\epsilon_1, \epsilon_2}$uniform.
+        By uniformity, there is a truth value $t\parround{A,B} \in \parcurly{0,1}$.
+        Let $A' \subseteq A$ with $\parstraight{A'} \geq \epsilon_3 \parstraight{A}$,
+        $B' \subseteq B$ with $\parstraight{B'} \geq \epsilon_3 \parstraight{B}$ and
+        denote $Z = \parcurly{\parround{a,b} \in \parround{A \times B} \mid a R b \not\equiv t\parround{A,B}}$ and
+        $Z' = \parcurly{\parround{a,b} \in \parround{A' \times B'} \mid a R b \not\equiv t\parround{A,B}}$.
+        Then, we have:
+        \begin{enumerate}
+            \item \label{itm:5.17.1} ${\parstraight{Z} \over {\parstraight{A} \parstraight{B}}} < \epsilon_1 + \epsilon_2$.
+            \item \label{itm:5.17.2} ${\parstraight{Z'} \over {\parstraight{A} \parstraight{B}}} <
+                {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$.
+        \end{enumerate}
+        In particular, if for some $\epsilon_0, \epsilon \in \parround{0, {1 \over 2}}$, the pair
+        $\parround{A,B}$ is $\epsilon_0$-uniform, for $\epsilon_0 \leq {{\epsilon^2} \over 2}$, then:
+        \begin{enumerate}[label=\alph*., ref=\alph*]
+            \item \label{itm:5.17.a} $\parround{A,B}$ is $\epsilon$-regular.
+            \item \label{itm:5.17.b} If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
+                $B' \in \parsquared{B}^{\geq \epsilon \parstraight{B}}$, then $d \parround{A',B'} < \epsilon$ or
+                $d \parround{A',B'} \geq 1 - \epsilon$.
+        \end{enumerate}
+        \begin{proof}
+            Let $U = \parcurly{a \in A \mid \parstraight{\overline{B}_{a,B}} > \epsilon_1 \parstraight{A}}$, i.e. the set
+            of exceptional vertices $a \in A$.
+            Then,
+            \[
+                Z \subseteq U \times B \cup \bigcup_{a \in A \setminus U} \parcurly{a} \times W_a
+            \]
+            and
+            \[
+                Z' \subseteq U \times B' \cup \bigcup_{a \in A' \setminus U} \parcurly{a} \times W_a
+            \]
+            Notice that, if $a \in A \setminus U$, then $\parstraight{W_a} < \epsilon_2 \parstraight{B}$, so
+            \[
+                \parstraight{Z} \leq \epsilon_1 \parstraight{A} \parstraight{B} + \parstraight{A} \epsilon_2 \parstraight{B}
+            \]
+            which can be written as
+            \[
+                    {\parstraight{Z}} \over {\parstraight{A} \parstraight{B}} \leq \epsilon_1 + \epsilon_2
+            \]
+            which proves (\ref{itm:5.17.1}).
+            On the other hand,
+            \begin{align*}
+                \parstraight{Z'} & \leq \parstraight{U} \parstraight{B'} + \parstraight{A'} \max \parcurly{\parstraight{W_a} \mid a \notin U} \\
+                                 & < \epsilon_1 \parstraight{A} \parstraight{B'} + \parstraight{A'} \epsilon_2 \parstraight{B}
+            \end{align*}
+            By dividing both sides by $\parstraight{A'} \parstraight{B'}$ we conclude
+            \[
+                {\parstraight{Z'} \over \parstraight{A'} \parstraight{B'}} < \epsilon_1 \frac{\parstraight{A}}{\parstraight{A'}} + \epsilon_2 \frac{\parstraight{B}}{\parstraight{B'}}
+                \leq {{\epsilon_1 \parstraight{A}} \over {\epsilon_3 \parstraight{A}}} + {{\epsilon_2 \parstraight{B}} \over {\epsilon_3 \parstraight{B}}}
+                = {{\epsilon_1 + \epsilon_2} \over \epsilon_3}
+            \]
+            proving (\ref{itm:5.17.2}).
+            Let's now prove (\ref{itm:5.17.a}) and (\ref{itm:5.17.b}).
+            First of all, notice that:
+            \begin{itemize}
+                \item \underline{if $t\parround{A,B} = 1$},then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
+                    and $d \parround{A',B'} > 1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$ by (\ref{itm:5.17.1}) and
+                    (\ref{itm:5.17.2}).
+                    Thus,
+                    \begin{align*}
+                        \parstraight{d \parround{A,B} - d \parround{A',B'}}
+                            & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
+                            & < \max \parcurly{ 1 - \parround{1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}},
+                                1 - \parround{1 - \epsilon_1 - \epsilon_2}} \\
+                            & = {{\epsilon_1 + \epsilon_2} \over \epsilon_3}
+                    \end{align*}
+                \item \underline{if $t\parround{A,B} = 0$},then $d\parround{A,B} < \parround{\epsilon_1 + \epsilon_2}$
+                    and $d \parround{A',B'} < {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$, again by (\ref{itm:5.17.1}) and
+                    (\ref{itm:5.17.2}).
+                    Thus,
+                    \begin{align*}
+                        \parstraight{d \parround{A,B} - d \parround{A',B'}}
+                            & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
+                            & < \max \parcurly{\parround{\epsilon_1 + \epsilon_2}, {{\epsilon_1 + \epsilon_2} \over \epsilon_3}} \\
+                            & = {{\epsilon_1 + \epsilon_2} \over \epsilon_3}
+                    \end{align*}
+            \end{itemize}
+            In both cases, we have that $\parstraight{d \parround{A,B} - d \parround{A',B'}}$ is bounded by
+            ${{\epsilon_1 + \epsilon_2} \over \epsilon_3} < {1 \over 2}$.
+            Also, $d \parround{A', B'}$ may only differ by ${{\epsilon_1 + \epsilon_2} \over \epsilon_3}$ with either
+            $0$ or $1$.
+            In particular, we may choose $\epsilon_3 = \epsilon$ and $\epsilon_1 = \epsilon_2 = \epsilon_0 \leq {{\epsilon^2} \over 2}$.
+            This way, the condition ${{\epsilon_1 + \epsilon_2} \over \epsilon_3} \leq \epsilon < {1 \over 2}$ is satisfied.
+            We conclude that $\parround{A,B}$ is $\epsilon$-regular (\ref{itm:5.17.a}) and that $d \parround{A',B'}$ is either
+            $< \epsilon$ or $\geq 1 - \epsilon$ (\ref{itm:5.17.b}).
+        \end{proof}
+
+    \theorem[Theorem 5.19]\label{existance_of_regular_partitions}
+        For every $k_* \in \naturals$ and $\epsilon \in \parround{0, {1 \over 2}}$, there exist $N = N\parround{\epsilon, k_*}$
+        and $m = m\parround{\epsilon, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
+        and every $A \subseteq G$ with $|A| \geq N$, there is $\ell < m$ and a partition
+        $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, \ell}}$ of $A$ such that each $A_i$ is
+        ${{\epsilon^2} \over 2}$-excellent, and for every $i \neq j \in \parsquared{1, \ell}$,
+        \begin{enumerate}
+            \item \label{itm:5.19.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:5.19.2} $\parround{A_i, A_j}$ is $\epsilon$-uniform, and moreover if
+                $B_i \in \parsquared{A_i}^{\geq \epsilon \parstraight{A_i}}$ and $B_j \in \parsquared{A_j}^{\geq \epsilon \parstraight{A_j}}$,
+                then either $d \parround{B_i, B_j} < \epsilon$ or $d \parround{B_i, B_j} \geq 1 - \epsilon$.
+            \item \label{itm:5.19.3} If $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
+                $m \leq \parround{3 + {{\epsilon^2} \over 2}} \parround{24 \over \epsilon}^{k_{**}}$.
+        \end{enumerate}
+        \begin{proof}
+            If $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we can apply Theorem~\ref{minimal_conditions_for_excellent_partitions}
+            to $A$ with ${{\epsilon^2} \over 2}$, and then use Lemma~\ref{excellence_implies_regularity} to replace the
+            ${{\epsilon^2} \over 2}$-uniformity of pairs by $\epsilon$-regularity.
+            Otherwise, to get (\ref{itm:5.19.1}) and (\ref{itm:5.19.2}), just do the same process for some
+            $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
+            Then, since regularity is monotone, we get the wanted $\epsilon$-regularity from the resulting $\epsilon'$-regularity.
+            Notice that a bound for $m$ can be still obtained by replacing $\epsilon = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$
+            in $m \leq \parround{3 + {{\epsilon^2} \over 2}} \parround{24 \over \epsilon}^{k_{**}}$.
+        \end{proof}
+
+    % up to here it was compiling with no problem.
 
 
 
