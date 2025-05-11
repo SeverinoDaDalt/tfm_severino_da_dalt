@@ -1,13 +1,16 @@
 \section{Section 4} \label{sec:section_4}
 
-    \definition[Definition 4.2(a)]
+    \todo{Make an intrduction explaining what is the goal of this section, and how we will reach it. Explain what is the purpose of each Claim.}
+
+    \definition[Definition 4.2(a)]\label{def:epsilon_indivisible}
     Let $\epsilon \in (0,1)$.
     We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
     \[
     |\left\{ a\in A \mid a R b \not\equiv t \right\}| < |A|^{\epsilon}
     \]
+    \todo{Change the "if for some truth value we have" by "if the truth values satisfies"}
 
-    \definition[Definition 4.2(b)]
+    \definition[Definition 4.2(b)]\label{def:f_indivisible}
     Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a non-decreasing function.
     We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
     \[
@@ -15,10 +18,19 @@
     \]
 
     \remark
+    Notice that the previous two definitions become meaningful only if $|A|^{\epsilon} \leq \frac{\parstraight{A}}{2}$ and
+    $f(|A|) \leq \frac{\parstraight{A}}{2}$ respectively.
+    In this context, the definition of the truth value $t$ is compatible with that of Definition~\ref{def:truth_value}.
+    In particular, Definition~\ref{def:epsilon_indivisible} would require that $\parstraight{A} \geq \parround{2}^{\frac{1}{1-\epsilon}}$.
+
+    \remark
     If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
 
     \remark
     $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
+
+    \todo{From here on, change all $l$'s with $\ell$}
+    \todo{Change all sequences of $m$'s as in section 5}
 
     \lemma[Claim 4.3]\label{existance_of_indivisible_sets}
     Let $G$ be a finite graph with the non-$k_*$-property.
@@ -60,9 +72,9 @@
         This contradicts the $k_{**}$ tree bound.
         \end{proof}
 
-    % TODO: since you  changed l \in [k_**] to l < k_**, you should adapt consequently all that follows this point...
+    \todo{since we changed $l \in [k_**]$ to $l < k_**$, you should adapt consequently all that follows this point...}
     \lemma[Claim 4.4]\label{existance_of_f_indivisible_partitions}
-    Let $G$ be a finite graph wit the non-$k_{*}$-order property.
+    Let $G$ be a finite graph with the non-$k_{*}$-order property.
     Assume $m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$, $f(m_{l-1}) \geq m_l$.
     If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \left< A_j \mid j \in [j(*)] \right>$
         and reminder $B = A \setminus \bigcup \overline{A}$ such that:

@@ -1,18 +1,39 @@
 \section{Section 2} \label{sec:section_2}
 
-    \definition[Truth value]
+    All this work holds on the idea that a sufficient condition for a graph to be stable is the absence of
+    a certain kind of structure called \emph{half-graph}.
+    We now proceed to formalize this property using model theory notation: the \emph{order property}.
+
+    \definition\label{def:k_order_property}
         Let $G$ be a graph.
-        For any $A \subseteq G$ and $b \in G$, we say that
+        We say that $G$ has the \emph{$k$-order property} if there exist two sequences of vertices
+        $\partriangle{a_i \mid i \in \parsquared{1, k}}$ and $\partriangle{b_i \mid i \in \parsquared{1, k}}$ such that
+        for all $i,j \leq k$, $a_i R b_j$ if and only if $i \neq j$.
+        Otherwise, we say that $G$ has the \emph{non-$k$-order property}.
+    \todo{Add visual example of a half-graph}
+
+    \remark
+    Notice that $G$ having $k$-order property implies $G$ having $k'$-order property for all $k' \leq k$.
+    Conversely, $G$ having the non-$k$-order property implies $G$ having non-$k'$-order property for all $k' \geq k$.
+
+    \definition[Truth value]\label{def:truth_value}
+        Let $G$ be a graph.
+        For any $A, B \subseteq G$, we say that
         $$
-            t(A,b) =
+            t(A,B) =
             \begin{cases}
-                0 & \text{if } \left| \left\{ a \in A \mid a R b \right\} \right| < \left| \left\{ a \in A \mid \neg a R b \right\} \right| \\
+                0 & \text{if } \left| \left\{ \parround{a, b} \in A \times B \mid \neg a R b \right\} \right| <
+                    \left| \left\{ \parround{a, b} \in A \times B \mid a R b \right\} \right| \\
                 1 & \text{otherwise}
             \end{cases}
         $$
-        is the \emph{truth value} of $A$ with respect to $b$.
+        is the \emph{truth value} of the pair $\parround{A,B}$.
+
+        When $B = \parcurly{b}$, we write $t(A,b)$ instead of $t(A,\parcurly{b})$, and we say that it is the truth value of $A$
+        with respect to $b$.
     \newline
 
+    \todo{I don't like how this looks}
     Extra notation:
     \begin{itemize}
         \item $B_{A,b} = \left\{ a \in A \mid a R b \equiv t(A,b) \right\}$.
@@ -22,12 +43,110 @@
     \end{itemize}
     With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
 
+    Large sets $B_{A,b}$, as we will see in the next sections, are closely related with lack of regularity in the graph.
+    A useful tool to deal with them is Claim~\ref{claim_2.6}, which gives a bound on the number of such sets under the
+    non-$k$-order property.
+    In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
+    $k$-order property.
+    This, together with Lemma~\ref{lemma:sauer-shelah}, will give us the desired result.
+
+    \definition\label{def:shattered}
+        Let $S = \parcurly{S_i \mid i \in I}$ be a family of sets.
+        A set $A$ is said to be \emph{shattered} by $S$ (and $S$ is said to \emph{shatter} $A$) if
+        for every $B \subseteq A$, there exists $S_i \in S$ such that $S_i \cap A = B$.
+
+    \definition\label{def:VC_dimension}
+        Let $S = \parcurly{S_i \mid i \in I}$ be a family of sets.
+        The \emph{VC dimension} of $S$ is the size of the largest set $A$ that is shattered by $S$.
+
+    \lemma[Sauer-Shelah]\label{lemma:sauer-shelah}
+        Let $S = \parcurly{S_i \mid i \in I}$ be a family of sets.
+        If the VC dimension of $S$ is at most $k$, and the union of all sets in $S$ has $n$ elements, then
+        $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
+        \newline
+
+        In order to prove the previous lemma, we first prove a stronger version of this lemma from Pajor.
+
+        \lemma[Sauer-Shelah-Pajor]\label{lemma:pajor}
+            Let $S$ be a finite family of sets.
+            Then $S$ shatters at least $\parstraight{S}$ sets.
+            \begin{proof}
+                We will prove this by induction on the cardinality of $S$.
+                If $\parstraight{S} = 1$, then $S$ consists of a single set, which only can shutter the empty set.
+                If $\parstraight{S} > 1$, we may choose an element $x \in S$ such that some sets of $S$ contain $x$ and some do not.
+                Let $S^+ = \parcurly{s \in S \mid x \in S}$ and $S^- = \parcurly{s \in S \mid x \not\in S}$.
+                Then $S = S^+ \sqcup S^-$, and both $S^+$ and $S^-$ are non-empty.
+                By induction hypothesis, we know that $S^+ \subsetneq S$ shatters at least $\parstraight{S^+}$ sets,
+                and $S^- \subsetneq S$ shatters at least $\parstraight{S^-}$ sets.
+                Let $T, T^+, T^-$ be the families of sets shattered by $S$, $S^+$ and $S^-$ respectively.
+                To conclude the proof, we just need to show that for each element in $T^+$ and $T^-$, there is a corresponding
+                one in $T$.
+                If a set is shattered by only one of the two families $S^+$ and $S^-$, then it only contributes by one unit
+                to $\parstraight{T^+} + \parstraight{T^-}$ and one unit to $\parstraight{T}$.
+                Notice that no set shattered by $S^+$ or $S^-$ may contain $x$, otherwise all or none of the intersections
+                will contain this element.
+                Thus, if a set $s$ is shattered by both $T^+$ and $T^-$, it will contribute by two units to
+                $\parstraight{T^+} + \parstraight{T^-}$ and one unit to $\parstraight{T}$.
+                But then, for each such set, we can consider $s \cup \parcurly{x}$ which is not in $T^+$ or $T^-$, but it is in $T$.
+                This follows the fact that for each subset of $s$, if it does not contain $x$ it is the intersection with some
+                set in $S^- \subsetneq S$, and if does contain $x$ it is the intersection with some set in $S^+ \subsetneq S$.
+                All in all, we conclude that
+                \[
+                    \parstraight{T} \geq \parstraight{T^+} + \parstraight{T^-} \geq \parstraight{S^+} + \parstraight{S^-}
+                                    \geq \parstraight{S}
+                \]
+            \end{proof}
+
+        \begin{proof} (of Lemma~\ref{lemma:sauer-shelah})
+            Suppose that the union of $S$ has $n$ elements.
+            Since there are at most $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
+            $\parstraight{S} > \sum_{i=0}^k \binom{n}{i}$, by Lemma~\ref{lemma:pajor} $S$ shatters at least
+            $\parstraight{S}$ subsets, and thus at least one of them has cardinality larger than $k$.
+        \end{proof}
+
+    \lemma\label{lemma:vs_dimension_implies_k_order_property}
+        Let $G$ be a graph and $A \subseteq G$.
+        Let $S = \parcurly{B_{A,b} \mid b \in G \setminus A}$.
+        If $S$ has VC dimension (at least) $k$, then $G$ has the $k$-order property.
+        \begin{proof}
+            If $S$ has VC dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
+            Now, choose any order of the vertices of $A' = \partriangle{a_1, \dots, a_k}$.
+            Consider now the increasing sequence of subsets $A_1 \subseteq A_2 \subseteq \dots \subseteq A_k = A'$,
+            where $A_i = \parcurly{a_j \mid j \in [1,i]}$.
+            Since $A'$ is shattered by $S$, for each $i \in [1,k]$ there exists a $b_i \in G$ such that
+            $b_i R a$ if and only if $a \in A_i$.
+            In particular, the two sequences $\partriangle{a_i \mid i \in [1,k]}$ and $\partriangle{b_i \mid i \in [1,k]}$
+            satisfy
+            \[
+                a_i R b_j \Leftrightarrow i \leq j
+            \]
+            and thus $G$ has the $k$-order property.
+        \end{proof}
+
     \lemma[Claim 2.6]\label{claim_2.6}
         Let $G$ be a graph with the non-$k$-order property.
         Then, for any finite $A \subseteq G$,
         $$
-            \left|\left\{ \left\{ a \in A \mid a R b \right\} \mid b \in G \right\} \right| \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+            \left|\left\{ \left\{ a \in A \mid a R b \right\} \mid b \in G \right\} \right| \leq |A|^k
         $$
+        \begin{proof}
+            By Lemma~\ref{lemma:vs_dimension_implies_k_order_property}, if $G$ has the non-$k$-order property,
+            then the family $\parcurly{B_{A,b} \mid b \in G \setminus A}$ has VC dimension at most $k-1$,
+            so by the Sauer-Shelah lemma~\ref{lemma:sauer-shelah} we have
+            $\parcurly{B_{A,b} \mid b \in G \setminus A} \leq \sum_{i=0}^{k-1} \binom{|A|}{i}$.
+            Since $\parcurly{B_{A,b} \mid b \in A} \leq \parstraight{A}$, we conclude that
+            \[
+                \parstraight{S} = \parstraight{B_{A,b} \mid b \in G} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|
+            \]
+            Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
+            \begin{itemize}
+                \item if $n \leq k$, then $\parstraight{S} \leq 2^n \leq 2^k \leq n^k$.
+                \item if $n > k$, then $\parstraight{S} \leq \sum_{i=0}^{k-1} + n \leq n^{k-1} + n \leq 2n^{k-1} \leq n^k$.
+            \end{itemize}
+            We conclude that $\parstraight{S} \leq n^k$.
+        \end{proof}
+
+    We now prove the following equivalent versions of the lemma, which will be useful in the next sections.
 
     \corollary[Claim 2.6.1]\label{itm:2.6.1}
         Let $G$ be a graph with the non-$k$-order property.
@@ -86,10 +205,12 @@
         \end{enumerate}
         \end{proof}
 
-
+    \todo{Short introduction to the idea of the tree bound and how it is connected with order property.}
     \definition[Definition 2.11]\label{tree_bound}
         Suppose $G$ is a finite graph with the non-$k_*$-property.
         We denote the \emph{tree bound} $k_{**} = k_{**}(G) < \omega$ as the minimal value such that there
         do not exist sequences $\overline{a} = \left< a_\eta \mid \eta \in \left[ 2 \right]^{k_{**}} \right>$ and
         $\overline{b} = \left< b_\rho \mid \rho \in \left[ 2 \right]^{<k_{**}} \right>$ of elements of $G$ satisfying that
         if $\rho \frown \left< \ell \right> \triangleleft \eta$, then $\left( a_\eta R b_\rho \right) \equiv \left( \ell = 1 \right)$.
+    \todo{Make a visual example of the tree bound.}
+    \todo{Relate tree bound with order property as in Notes for Stable Graphs.}
