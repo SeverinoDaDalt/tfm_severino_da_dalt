@@ -4,27 +4,26 @@
 
     \definition[Definition 4.2(a)]\label{def:epsilon_indivisible}
     Let $\epsilon \in (0,1)$.
-    We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
+    We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $B \in G$, the truth value $t = t(A,b)$ satisfies
     \[
-    |\left\{ a\in A \mid a R b \not\equiv t \right\}| < |A|^{\epsilon}
+        |\left\{ a\in A \mid a R b \not\equiv t \right\}| < |A|^{\epsilon}
     \]
-    \todo{Change the "if for some truth value we have" by "if the truth values satisfies"}
 
     \definition[Definition 4.2(b)]\label{def:f_indivisible}
     Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a non-decreasing function.
-    We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $B \in G$, for some truth value $t = t(b,A)$ we have that
+    We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $B \in G$, the truth value $t = t(A,b)$ satisfies
     \[
-    |\left\{ a\in A \mid a R b \not\equiv t \right\}| < f(|A|)
+        |\left\{ a\in A \mid a R b \not\equiv t \right\}| < f(|A|)
     \]
 
-    \remark
-    Notice that the previous two definitions become meaningful only if $|A|^{\epsilon} \leq \frac{\parstraight{A}}{2}$ and
-    $f(|A|) \leq \frac{\parstraight{A}}{2}$ respectively.
-    In this context, the definition of the truth value $t$ is compatible with that of Definition~\ref{def:truth_value}.
-    In particular, Definition~\ref{def:epsilon_indivisible} would require that $\parstraight{A} \geq \parround{2}^{\frac{1}{1-\epsilon}}$.
+%    \remark
+%        Notice that the previous two definitions become meaningful only if $|A|^{\epsilon} \leq \frac{\parstraight{A}}{2}$ and
+%        $f(|A|) \leq \frac{\parstraight{A}}{2}$ respectively.
+%        In this context, the definition of the truth value $t$ is compatible with that of Definition~\ref{def:truth_value}.
+%        In particular, Definition~\ref{def:epsilon_indivisible} would require that $\parstraight{A} \geq \parround{2}^{\frac{1}{1-\epsilon}}$.
 
     \remark
-    If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
+        If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
 
     \remark
     $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
@@ -33,13 +32,14 @@
     \todo{Change all sequences of $m$'s as in section 5}
 
     \lemma[Claim 4.3]\label{existance_of_indivisible_sets}
-    Let $G$ be a finite graph with the non-$k_*$-property.
-    Assume $m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers and for all $l \in [k_{**}]$, $f(m_{l-1}) \geq m_l$.
-    If $A \subseteq G$, $|A| = m_0$, then for some $l < k_{**}$ there is a subset $B \subseteq A$ of size $m_l$ which is
+        Let $G$ be a finite graph with the non-$k_*$-property.
+        Let $\left< m\ell \mid \ell \in [0, k_{**}] \right>$ be a sequence of non-zero natural numbers such that
+        for all $\ell \in [k_{**}]$, $f(m_{\ell-1}) \geq m_\ell$.
+        If $A \subseteq G$, $|A| = m_0$, then for some $\ell < k_{**}$ there is a subset $B \subseteq A$ of size $m_\ell$ which is
         $f$-indivisible.
         \begin{proof}
-        Suppose not.
-        Then we can construct the sequences $\left< b_\eta \mid \eta \in [2]^{<k} \right>$ and $\left< A_\eta \mid \eta \in [2]^{\leq k} \right>$
+            Suppose not.
+            Then we can construct the sequences $\left< b_\eta \mid \eta \in [2]^{<k} \right>$ and $\left< A_\eta \mid \eta \in [2]^{\leq k} \right>$
             on induction over $k < k_{**}$, where $k = |\eta|$, satisfying:
         \begin{enumerate}
             \item\label{itm:4.3.1} $A_{\eta^\frown \left< i \right>} \subseteq A_{\eta}$, $\forall i \in \left\{0,1\right\}$, $\forall k < k_{**}$
@@ -57,18 +57,18 @@
             \item \underline{$k \Rightarrow k+1$}.
                 We can assume $|A_\eta| = m_k$ and by hypothesis $A_\eta$ is not $f$-indivisible.
                 So, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_k) \geq m_{k+1}$ (\ref{itm:4.3.4}), and we can choose
-                    $A_{\eta^\frown \left< i \right>} \subseteq A_\eta^{(i)}$ (\ref{itm:4.3.5}), such that
-                    $|A_{\eta^\frown \left< i \right>}| = m_{k+1} \forall i \in \left\{ 0,1 \right\}$ (\ref{itm:4.3.3}).
+                $A_{\eta^\frown \left< i \right>} \subseteq A_\eta^{(i)}$ (\ref{itm:4.3.5}), such that
+                $|A_{\eta^\frown \left< i \right>}| = m_{k+1} \forall i \in \left\{ 0,1 \right\}$ (\ref{itm:4.3.3}).
                 (\ref{itm:4.3.1}) and (\ref{itm:4.3.2}) are satisfied by the definition of $A_\eta^{(i)}$.
         \end{itemize}
         Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$.
         Then, we have two sequences $\left< b_\eta \mid \eta \in [2]^{<k_{**}} \right>$ and $\left< A_\eta \mid \eta \in [2]^{k_{**}} \right>$
-            with the property:
+        with the property:
         \[
             \forall \rho \in [2]^{<k_{**}} \forall \eta \in [2]^{k_{**}} \text{ such that } \rho^\frown \left< i \right> \trianglelefteq
                 \eta \text{, } (a_\eta R b_\rho)
         \]
-            since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \left< i \right>}$.
+        since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \left< i \right>}$.
         This contradicts the $k_{**}$ tree bound.
         \end{proof}
 
