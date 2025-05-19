@@ -72,7 +72,7 @@
             Then $S$ shatters at least $\parstraight{S}$ sets.
             \begin{proof}
                 We will prove this by induction on the cardinality of $S$.
-                If $\parstraight{S} = 1$, then $S$ consists of a single set, which only can shutter the empty set.
+                If $\parstraight{S} = 1$, then $S$ consists of a single set, which only shutters the empty set.
                 If $\parstraight{S} > 1$, we may choose an element $x \in S$ such that some sets of $S$ contain $x$ and some do not.
                 Let $S^+ = \parcurly{s \in S \mid x \in S}$ and $S^- = \parcurly{s \in S \mid x \not\in S}$.
                 Then $S = S^+ \sqcup S^-$, and both $S^+$ and $S^-$ are non-empty.
@@ -89,7 +89,7 @@
                 $\parstraight{T^+} + \parstraight{T^-}$ and one unit to $\parstraight{T}$.
                 But then, for each such set, we can consider $s \cup \parcurly{x}$ which is not in $T^+$ or $T^-$, but it is in $T$.
                 This follows the fact that for each subset of $s$, if it does not contain $x$ it is the intersection with some
-                set in $S^- \subsetneq S$, and if does contain $x$ it is the intersection with some set in $S^+ \subsetneq S$.
+                set in $S^- \subsetneq S$, and if it does contain $x$ it is the intersection with some set in $S^+ \subsetneq S$.
                 All in all, we conclude that
                 \[
                     \parstraight{T} \geq \parstraight{T^+} + \parstraight{T^-} \geq \parstraight{S^+} + \parstraight{S^-}
@@ -99,19 +99,19 @@
 
         \begin{proof} (of Lemma~\ref{lemma:sauer-shelah})
             Suppose that the union of $S$ has $n$ elements.
-            Since there are at most $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
-            $\parstraight{S} > \sum_{i=0}^k \binom{n}{i}$, by Lemma~\ref{lemma:pajor} $S$ shatters at least
-            $\parstraight{S}$ subsets, and thus at least one of them has cardinality larger than $k$.
+            By Lemma~\ref{lemma:pajor} $S$ shatters at least $\parstraight{S}$ subsets, and since there are at most
+            $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
+            $\parstraight{S} > \sum_{i=0}^k \binom{n}{i}$, at least one of the shattered sets has cardinality larger than $k$.
         \end{proof}
 
-    \lemma\label{lemma:vs_dimension_implies_k_order_property}
+    \lemma\label{lemma:vc_dimension_implies_k_order_property}
         Let $G$ be a graph and $A \subseteq G$.
         Let $S = \parcurly{B_{A,b} \mid b \in G \setminus A}$.
         If $S$ has VC dimension (at least) $k$, then $G$ has the $k$-order property.
         \begin{proof}
             If $S$ has VC dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
             Now, choose any order of the vertices of $A' = \partriangle{a_1, \dots, a_k}$.
-            Consider now the increasing sequence of subsets $A_1 \subseteq A_2 \subseteq \dots \subseteq A_k = A'$,
+            Then, consider the increasing sequence of subsets $A_1 \subseteq A_2 \subseteq \dots \subseteq A_k = A'$,
             where $A_i = \parcurly{a_j \mid j \in [1,i]}$.
             Since $A'$ is shattered by $S$, for each $i \in [1,k]$ there exists a $b_i \in G$ such that
             $b_i R a$ if and only if $a \in A_i$.
@@ -130,13 +130,13 @@
             \left|\left\{ \left\{ a \in A \mid a R b \right\} \mid b \in G \right\} \right| \leq |A|^k
         $$
         \begin{proof}
-            By Lemma~\ref{lemma:vs_dimension_implies_k_order_property}, if $G$ has the non-$k$-order property,
+            By Lemma~\ref{lemma:vc_dimension_implies_k_order_property}, if $G$ has the non-$k$-order property,
             then the family $\parcurly{B_{A,b} \mid b \in G \setminus A}$ has VC dimension at most $k-1$,
             so by the Sauer-Shelah lemma~\ref{lemma:sauer-shelah} we have
             $\parcurly{B_{A,b} \mid b \in G \setminus A} \leq \sum_{i=0}^{k-1} \binom{|A|}{i}$.
             Since $\parcurly{B_{A,b} \mid b \in A} \leq \parstraight{A}$, we conclude that
             \[
-                \parstraight{S} = \parstraight{B_{A,b} \mid b \in G} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|
+                \parstraight{S} = \parstraight{\parcurly{B_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|
             \]
             Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
             \begin{itemize}
@@ -155,17 +155,17 @@
             \item\label{itm:2.6.1.1} For any finite $A \subseteq G$
                 $$
                     \left|\left\{ \left\{ a \in A \mid \neg a R b \right\} \mid b \in G \right\} \right|
-                        \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                        \leq |A|^k
                 $$
             \item\label{itm:2.6.1.2} For any finite $A \subseteq G$
                 $$
                     \left|\left\{ \left\{ a \in A \mid \neg a R b \equiv t(A,b) \right\} \mid b \in G \right\} \right|
-                        \leq \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                        \leq |A|^k
                 $$
         \end{enumerate}
         \begin{proof}
         \begin{enumerate}
-            \item First of all, notice that $B^+_{A,b} = B - B^-{A,b}$, since by definition they are complementary.
+            \item First of all, notice that $B^+_{A,b} = B - B^-_{A,b}$, since by definition they are complementary.
                 Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
                 It follows that
                 $$
