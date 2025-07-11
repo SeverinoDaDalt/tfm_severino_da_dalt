@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.2.7)  24 MAY 2025 20:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  11 JUL 2025 12:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1114,12 +1114,12 @@ l.85     \newpage
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
 ine 13.
 
-Underfull \hbox (badness 10000) in paragraph at lines 29--35
+Underfull \hbox (badness 10000) in paragraph at lines 30--36
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--67
+Underfull \hbox (badness 10000) in paragraph at lines 64--68
 
  []
 
@@ -1128,24 +1128,27 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.94                 \[
+l.95                 \[
                         [3]
 pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.151     \corollary[Claim 2.6.1]
+l.152     \corollary[Claim 2.6.1]
                                  \label{itm:2.6.1} [4]
-Overfull \hbox (0.96513pt too wide) in paragraph at lines 216--216
+Overfull \hbox (0.96513pt too wide) in paragraph at lines 217--217
 \OT1/cmss/m/n/10.95 Graphs.[]  
  []
 
 
-Overfull \hbox (0.96513pt too wide) in paragraph at lines 216--216
+Overfull \hbox (0.96513pt too wide) in paragraph at lines 217--217
 \OT1/cmss/m/n/10.95 Graphs.[]  
  []
 
 )
+
+LaTeX Warning: Marginpar on page 5 moved.
+
 
 LaTeX Warning: Marginpar on page 5 moved.
 
@@ -1169,7 +1172,7 @@ LaTeX Warning: Marginpar on page 7 moved.
 LaTeX Warning: Marginpar on page 7 moved.
 
 [7]
-Overfull \hbox (8.17346pt too wide) in paragraph at lines 123--135
+Overfull \hbox (8.17346pt too wide) in paragraph at lines 125--137
 []\OT1/cmss/m/n/10.95 Since $\OT1/cmss/m/sl/10.95 B$ \OT1/cmss/m/n/10.95 is $\O
 T1/cmss/m/sl/10.95 g$\OT1/cmss/m/n/10.95 -indivisible, for each $\OT1/cmss/m/sl
 /10.95 a \OMS/cmsy/m/n/10.95 2 \OT1/cmss/m/sl/10.95 A$ \OT1/cmss/m/n/10.95 the 
@@ -1179,59 +1182,59 @@ truth value $\OT1/cmss/m/sl/10.95 t[] \OT1/cmss/m/n/10.95 = \OT1/cmss/m/sl/10.9
  []
 
 
-Overfull \hbox (18.66762pt too wide) in paragraph at lines 182--182
+Overfull \hbox (18.66762pt too wide) in paragraph at lines 187--187
 [][][]\OT1/cmss/m/n/10.95 Exceptional 
  []
 
 
-Overfull \hbox (18.66762pt too wide) in paragraph at lines 182--182
+Overfull \hbox (18.66762pt too wide) in paragraph at lines 187--187
 [][][]\OT1/cmss/m/n/10.95 Exceptional 
  []
 
 [8] [9]
-Overfull \hbox (3.55054pt too wide) in paragraph at lines 249--249
+Overfull \hbox (3.55054pt too wide) in paragraph at lines 254--254
 \OT1/cmss/m/n/10.95 changed 
  []
 
 
-Overfull \hbox (3.55054pt too wide) in paragraph at lines 249--249
+Overfull \hbox (3.55054pt too wide) in paragraph at lines 254--254
 \OT1/cmss/m/n/10.95 changed 
  []
 
 
-Overfull \hbox (0.85616pt too wide) in paragraph at lines 245--253
-[][]\OT1/cmss/m/sl/10.95 Lemma \OT1/cmss/m/n/10.95 4.15 (Claim 4.10)\OT1/cmss/m
-/sl/10.95 . []Let $G$ be a fi-nite graph with the non-$k[]$-order prop-erty. Le
-t $[]$
+Overfull \hbox (6.71062pt too wide) in paragraph at lines 250--258
+[][]\OT1/cmss/bx/n/10.95 Lemma 4.15 \OT1/cmss/m/n/10.95 (Claim 4.10)\OT1/cmss/b
+x/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]
+$-order prop-erty. Let $[]$
  []
 
 
-Overfull \hbox (8.32594pt too wide) in paragraph at lines 281--281
+Overfull \hbox (8.32594pt too wide) in paragraph at lines 286--286
 [][][]\OT1/cmss/m/n/10.95 comment 
  []
 
 
-Overfull \hbox (8.32594pt too wide) in paragraph at lines 281--281
+Overfull \hbox (8.32594pt too wide) in paragraph at lines 286--286
 [][][]\OT1/cmss/m/n/10.95 comment 
  []
 
 
-Overfull \hbox (0.85616pt too wide) in paragraph at lines 294--308
-[][]\OT1/cmss/m/sl/10.95 Lemma \OT1/cmss/m/n/10.95 4.17 (Claim 4.13)\OT1/cmss/m
-/sl/10.95 . []Let $G$ be a fi-nite graph with the non-$k[]$-order prop-erty. Le
-t $[]$
+Overfull \hbox (6.71062pt too wide) in paragraph at lines 299--313
+[][]\OT1/cmss/bx/n/10.95 Lemma 4.17 \OT1/cmss/m/n/10.95 (Claim 4.13)\OT1/cmss/b
+x/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]
+$-order prop-erty. Let $[]$
  []
 
 
 LaTeX Warning: Marginpar on page 10 moved.
 
 [10]
-Overfull \hbox (1.8776pt too wide) in paragraph at lines 362--362
+Overfull \hbox (1.8776pt too wide) in paragraph at lines 367--367
 \OT1/cmss/m/n/10.95 quences 
  []
 
 
-Overfull \hbox (1.8776pt too wide) in paragraph at lines 362--362
+Overfull \hbox (1.8776pt too wide) in paragraph at lines 367--367
 \OT1/cmss/m/n/10.95 quences 
  []
 
@@ -1239,13 +1242,13 @@ Overfull \hbox (1.8776pt too wide) in paragraph at lines 362--362
 LaTeX Warning: Marginpar on page 11 moved.
 
 
-Overfull \hbox (14.17088pt too wide) in paragraph at lines 363--363
+Overfull \hbox (14.17088pt too wide) in paragraph at lines 368--368
 \OT1/cmss/m/n/10.95 [1, [] , \OT1/cmss/m/sl/10.95 k[]\OMS/cmsy/m/n/10.95 ^^C\OT
 1/cmss/m/n/10.95 ]$[]  
  []
 
 
-Overfull \hbox (14.17088pt too wide) in paragraph at lines 363--363
+Overfull \hbox (14.17088pt too wide) in paragraph at lines 368--368
 \OT1/cmss/m/n/10.95 [1, [] , \OT1/cmss/m/sl/10.95 k[]\OMS/cmsy/m/n/10.95 ^^C\OT
 1/cmss/m/n/10.95 ]$[]  
  []
@@ -1257,20 +1260,20 @@ LaTeX Warning: Marginpar on page 11 moved.
 LaTeX Warning: Marginpar on page 11 moved.
 
 
-Overfull \hbox (6.56181pt too wide) in paragraph at lines 377--377
+Overfull \hbox (6.56181pt too wide) in paragraph at lines 383--383
 [][][]\OT1/cmss/m/n/10.95 Probably 
  []
 
 
-Overfull \hbox (6.56181pt too wide) in paragraph at lines 377--377
+Overfull \hbox (6.56181pt too wide) in paragraph at lines 383--383
 [][][]\OT1/cmss/m/n/10.95 Probably 
  []
 
 
-Overfull \hbox (0.85616pt too wide) in paragraph at lines 371--383
-[][]\OT1/cmss/m/sl/10.95 Lemma \OT1/cmss/m/n/10.95 4.19 (Claim 4.14)\OT1/cmss/m
-/sl/10.95 . []Let $G$ be a fi-nite graph with the non-$k[]$-order prop-erty. Le
-t $[]$
+Overfull \hbox (6.71062pt too wide) in paragraph at lines 377--389
+[][]\OT1/cmss/bx/n/10.95 Lemma 4.19 \OT1/cmss/m/n/10.95 (Claim 4.14)\OT1/cmss/b
+x/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]
+$-order prop-erty. Let $[]$
  []
 
 
@@ -1280,41 +1283,41 @@ LaTeX Warning: Marginpar on page 11 moved.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 422.
+(amsmath)                 on input line 428.
 
 
-Overfull \hbox (6.25761pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.25761pt too wide) in paragraph at lines 446--446
 [][][]\OT1/cmss/m/n/10.95 Notation 
  []
 
 
-Overfull \hbox (6.25761pt too wide) in paragraph at lines 439--439
+Overfull \hbox (6.25761pt too wide) in paragraph at lines 446--446
 [][][]\OT1/cmss/m/n/10.95 Notation 
  []
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 453.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 460.
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 453.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 460.
 
 [12]
-Overfull \hbox (6.56181pt too wide) in paragraph at lines 468--468
+Overfull \hbox (6.56181pt too wide) in paragraph at lines 475--475
 [][][]\OT1/cmss/m/n/10.95 Probably 
  []
 
 
-Overfull \hbox (6.56181pt too wide) in paragraph at lines 468--468
+Overfull \hbox (6.56181pt too wide) in paragraph at lines 475--475
 [][][]\OT1/cmss/m/n/10.95 Probably 
  []
 
 
-Overfull \hbox (8.69096pt too wide) in paragraph at lines 488--488
+Overfull \hbox (8.69096pt too wide) in paragraph at lines 495--495
 [][][]\OT1/cmss/m/n/10.95 Probably, 
  []
 
 
-Overfull \hbox (8.69096pt too wide) in paragraph at lines 488--488
+Overfull \hbox (8.69096pt too wide) in paragraph at lines 495--495
 [][][]\OT1/cmss/m/n/10.95 Probably, 
  []
 
@@ -1332,46 +1335,46 @@ LaTeX Warning: Marginpar on page 13 moved.
 LaTeX Warning: Marginpar on page 15 moved.
 
 [15]
-Overfull \hbox (14.59178pt too wide) in paragraph at lines 672--672
+Overfull \hbox (14.59178pt too wide) in paragraph at lines 680--680
 [][][]\OT1/cmss/m/n/10.95 Something 
  []
 
 
-Overfull \hbox (14.59178pt too wide) in paragraph at lines 672--672
+Overfull \hbox (14.59178pt too wide) in paragraph at lines 680--680
 [][][]\OT1/cmss/m/n/10.95 Something 
  []
 
 
 LaTeX Warning: Marginpar on page 16 moved.
 
-) [16] (./sections/section_5.tex
-Overfull \hbox (7.2631pt too wide) in paragraph at lines 71--78
+) [16] (./sections/section_5.tex [17]
+Overfull \hbox (7.2631pt too wide) in paragraph at lines 76--83
 \OT1/cmss/m/n/10.95 We may choose $\OT1/cmss/m/sl/10.95 b[] \OMS/cmsy/m/n/10.95
  2 \OT1/cmss/m/sl/10.95 B[] \OMS/cmsy/m/n/10.95 n [] []$\OT1/cmss/m/n/10.95 , f
 or all $\OML/cmm/m/it/10.95 ^^W \OMS/cmsy/m/n/10.95 2 \OT1/cmss/m/n/10.95 [2][]
 $. Fi-nally, the se-quences $[]$
  []
 
-[17]
-Overfull \hbox (7.2631pt too wide) in paragraph at lines 134--142
+
+Overfull \hbox (7.2631pt too wide) in paragraph at lines 138--146
 \OT1/cmss/m/n/10.95 We may choose $\OT1/cmss/m/sl/10.95 b[] \OMS/cmsy/m/n/10.95
  2 \OT1/cmss/m/sl/10.95 B[] \OMS/cmsy/m/n/10.95 n [] []$\OT1/cmss/m/n/10.95 , f
 or all $\OML/cmm/m/it/10.95 ^^W \OMS/cmsy/m/n/10.95 2 \OT1/cmss/m/n/10.95 [2][]
 $. Fi-nally, the se-quences $[]$
  []
 
-[18] [19] [20] [21] [22] [23] [24] [25] [26]
+[18] [19] [20] [21] [22] [23] [24] [25]
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 672.
+(amsmath)                 on input line 726.
 
-[27] [28]) [29] (./sections/bibliography.tex
+[26] [27]) [28] (./sections/bibliography.tex
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 (Font)              using `OT1/cmss/bx/n' instead on input line 18.
 
-) [30] [31] [32] 
+) [29] [30] [31] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/authorfile.aux)
  ***********
@@ -1382,19 +1385,16 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `authorfile.out' has not changed.
 (rerunfilecheck)             Checksum: 032EC763077F2BCCEC331A5BA96DD5A2;783.
  ) 
 Here is how much of TeX's memory you used:
- 26582 strings out of 476182
- 471947 string characters out of 5795596
- 1983975 words of memory out of 5000000
- 47847 multiletter control sequences out of 15000+600000
+ 26585 strings out of 476106
+ 472080 string characters out of 5793933
+ 1984975 words of memory out of 5000000
+ 47862 multiletter control sequences out of 15000+600000
  569338 words of font info for 80 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
+ 59 hyphenation exceptions out of 8191
  99i,18n,101p,3242b,1113s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
@@ -1414,10 +1414,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/t
 exmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-authorfile.pdf (36 pages, 339803 bytes).
+authorfile.pdf (35 pages, 337977 bytes).
 PDF statistics:
- 701 PDF objects out of 1000 (max. 8388607)
- 620 compressed objects within 7 object streams
- 241 named destinations out of 1000 (max. 500000)
+ 691 PDF objects out of 1000 (max. 8388607)
+ 611 compressed objects within 7 object streams
+ 238 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

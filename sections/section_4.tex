@@ -22,12 +22,14 @@
 %        In this context, the definition of the truth value $t$ is compatible with that of Definition~\ref{def:truth_value}.
 %        In particular, Definition~\ref{def:epsilon_indivisible} would require that $\parstraight{A} \geq \parround{2}^{\frac{1}{1-\epsilon}}$.
 
-    \remark
+    \begin{remark}
         If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
         \todo{Probably move this to section 5}
+    \end{remark}
 
-    \remark
-    $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
+    \begin{remark}
+        $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
+    \end{remark}
 
     \lemma[Claim 4.3]\label{existance_of_indivisible_sets}
         Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a non-decreasing function.
@@ -139,17 +141,19 @@
         $f(|A|) g(|B|) < \frac{1}{2} |B|$ and thus the statement of Claim~\ref{average_condition_statement} is true for
         the pair $(A,B)$.
 
-    \remark
+    \begin{remark}
         The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter.
         Thus,
         \[
             (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition }
         \]
+    \end{remark}
 
-    \remark[Remark 4.7]
+    \begin{remark}[Remark 4.7]
         When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
+    \end{remark}
 
-    \remark\label{sufficient_requirement_for_average_condition}
+    \begin{remark}\label{sufficient_requirement_for_average_condition}
         If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
         then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
         \[
@@ -164,6 +168,7 @@
         for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
         Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
         $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
+    \end{remark}
 
     \lemma[Claim 4.8]\label{exceptions_bound_of_epsilon_indivisible_sets}
         Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
@@ -363,9 +368,10 @@
     \todo{Change to $\ell \in [1, \dots, k_**]$}
     \todo{From here on, change all $l$'s with $\ell$}
 
-    \remark\label{subpair_bound_specification}
-    Since $\epsilon < \frac{1}{2}$, we can take $c = 1 - 2\epsilon$.
-    In this context, $\zeta \leq \frac{\epsilon^{k_{**}+1}}{3}$.
+    \begin{remark}\label{subpair_bound_specification}
+        Since $\epsilon < \frac{1}{2}$, we can take $c = 1 - 2\epsilon$.
+        In this context, $\zeta \leq \frac{\epsilon^{k_{**}+1}}{3}$.
+    \end{remark}
 
     \lemma[Claim 4.14]\label{existance_of_equitative_partition_with_bound_exceptional_pairs}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -426,7 +432,7 @@
                 $\frac{2r^2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ satisfying (\ref{itm:4.14.2}).
         \end{proof}
 
-    \remark[Remark 4.15]
+    \begin{remark}[Remark 4.15]
         Notice that, in the previous proof, the condition $m_0 < \frac{n}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ can be
         weakened at the cost of increasing the number of exceptional pairs.
         More specifically, since this condition is only used to bound the exceptional sub-pairs in the same pair
@@ -435,6 +441,7 @@
             |\left\{ \text{Exceptional pairs} \right\}|
                 \leq \left( \frac{m_0}{n} + \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}} \right) r^2
         \]
+    \end{remark}
 
     \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
     \theorem[Theorem 4.16]
@@ -487,10 +494,11 @@
         \end{proof}
     \todo{Probably, you can avoid setting $c$ before this theorem, thus generalizing the results.}
 
-    \remark
-    Let $n^{\frac{\epsilon^{k_{**}+1}}{3}}$ be an integer and let $m_{**}$ take this value.
-    Then, the number of pieces of the partition is at most $n^c$ with $c = 1 - \frac{\epsilon^{k_{**}+1}}{3}$.
-    \todo{Change this last remark by a qualitative analysis of the tradeoff on $c$ between larger parts and less remainder.}
+    \begin{remark}
+        Let $n^{\frac{\epsilon^{k_{**}+1}}{3}}$ be an integer and let $m_{**}$ take this value.
+        Then, the number of pieces of the partition is at most $n^c$ with $c = 1 - \frac{\epsilon^{k_{**}+1}}{3}$.
+        \todo{Change this last remark by a qualitative analysis of the tradeoff on $c$ between larger parts and less remainder.}
+    \end{remark}
 
     \todo{In what follows, $c$ should be another letter, it collides with previous definition.}
     \definition[Definition 4.18]\label{n_large_enough_property}

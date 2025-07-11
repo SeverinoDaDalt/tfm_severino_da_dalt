@@ -2,36 +2,41 @@
 
     \definition[Definition 5.2(a)]
         Let $G$ be a finite graph with the non-$k_*$-property.
-        We say that $A \subseteq G$ is a $\epsilon$-\emph{good} when for every $b \in G$ for some truth value
-        $t = t(b, A) \in \left\{ 0, 1 \right\}$ we have $|\left\{ a\in A \mid (aRb) \not\equiv t \right\}| < \epsilon |A|$.
+        We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
+        $t = t(b, A) \in \left\{ 0, 1 \right\}$ satisfies $|\left\{ a\in A \mid aRb \not\equiv t \right\}| < \epsilon |A|$.
 
     \definition[Definition 5.2(b)]
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
-        $\zeta$-good, then for some truth value $t = t(B,A)$, $|\left\{ a \in A \mid t(a,B) \neq t(A,B) \right\}| < \epsilon |A|$.
+        $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $|\left\{ a \in A \mid t(a,B) \neq t(A,B) \right\}| < \epsilon |A|$.
 
-    \remark\label{remark_excellence_imply_little_exceptions}
-        Notice that, if $A$ is $(\epsilon, \epsilon')$-excellent and $B \subseteq G$ an is $\epsilon'$-good set, then
+        In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
+
+    \begin{remark}\label{remark_excellence_imply_little_exceptions}
+        Notice that, if $A$ is $(\epsilon, \epsilon')$-excellent and $B \subseteq G$ is an $\epsilon'$-good set, then
         the number of exceptional edges between $A$ and $B$, i.e. these vertex pairs that do not follow $t(A,B)$, is
         relatively small:
         $$
             \parstraight{\parcurly{\text{Exceptional edges between } A \text{ and } B}} <
                 \epsilon |A| |B| + (1- \epsilon) |A| \epsilon' |B| = \parround{\epsilon + \parround{1-\epsilon} \epsilon'} |A| |B|
         $$
+        A relevant example is that of two $\epsilon$-excellent sets, in which case we have that the fraction
+        of exceptional edges between them is less than $2\epsilon$.
+    \end{remark}
 
     \lemma[Claim 5.4]\label{existance_of_excellent_subsets}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \left\{ 0, \frac{1}{2} \right\}$.
-        Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists $(\epsilon, \zeta)$-excellent
+        Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists an $(\epsilon, \zeta)$-excellent
         subset $A' \subseteq A$ such that $|A'| \geq \epsilon^{k_{**}-1} |A|$.
         \begin{proof}
             Suppose the converse.
-            We will use this fact to build sets $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
+            We use this fact to build sets $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
             $\left\{ A_\eta \mid \eta \in [2]^{\leq k_{**}} \right\}$ on induction over $k<k_{**}$, where $k = |\eta|$,
             satisfying:
             \begin{enumerate}
                 \item\label{itm:5.4.1} $A_{\left< \cdot \right>} = A$.
-                \item\label{itm:5.4.2} $B_\eta$ is an $\eta$-good set witnessing that $A_\eta$ is not
+                \item\label{itm:5.4.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
                     $(\epsilon, \zeta)$-excellent, for $k < k_{**}$.
                 \item\label{itm:5.4.3} $A_{\eta \frown \left< i \right>} = \left\{ a \in A_\eta \mid t(a, B_\eta) \equiv i \right\}$
                     for all $i \in \left\{ 0,1 \right\}$ and $k < k_{**}$.
@@ -44,12 +49,13 @@
                     for $k \leq k_{**}$.
             \end{enumerate}
             First of all, notice that at each step, the non-$(\epsilon, \zeta)$-excellence of $A_\eta$ comes by IH
-            from (\ref{itm:5.4.1}) or (\ref{itm:5.4.5}).
-            This allows the existence of $B_\eta$ in (\ref{itm:5.4.2}).
-            Notice that $t(a, B_\eta)$ in (\ref{itm:5.4.3}) is well-defined since $B_\eta$ is $\zeta$-good.
-            Also, the non-$(\epsilon, \zeta)$-excellence of $A_\eta$ allows (\ref{itm:5.4.4}).
-            Finally, by definition (\ref{itm:5.4.3}), we have the disjoint union (\ref{itm:5.4.6}) which by itself ensures
+            from (\ref{itm:5.4.1}) or (\ref{itm:5.4.5}), and thus allows the existence of $B_\eta$ in (\ref{itm:5.4.2}).
+            (\ref{itm:5.4.4}) follows the definition of $A_{\eta \frown \left< i \right>}$ in (\ref{itm:5.4.3}) and
+            the fact $B_\eta$ is witnessing that $A_\eta$ is not $(\epsilon, \zeta)$-excellent.
+            Applying recursively this last point we obtain (\ref{itm:5.4.5}).
+            Finally, by definition (\ref{itm:5.4.3}), we have the disjoint union (\ref{itm:5.4.6}) which ensures
             the partition (\ref{itm:5.4.7}).
+
             Now, our goal is to build two sequences $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
             $\left\{ a_\eta \mid \eta \in [2]^{k_{**}} \right\}$ to contradict the tree bound $k_{**}$.
             First of all, notice that, for $\eta \in [2]^{k_{**}}$
@@ -57,14 +63,13 @@
                 |A_\eta| \geq \epsilon^{k_{**}} |A| \geq
                 \epsilon^{k_{**}} \frac{1}{\epsilon^{k_{**}}} = 1
             \]
-            So $A_\eta \neq \emptyset$.
-            For each $\eta \in [2]^{k_{**}}$ we may choose an $a_\eta \in A_\eta$.
+            So, for each $\eta \in [2]^{k_{**}}$, $A_\eta \neq \emptyset$ and we may choose an $a_\eta \in A_\eta$.
             Now, for $\nu \in [2]^{<k_{**}}$ and $\eta \in [2]^{k_{**}}$ such that $\nu \triangleleft \eta$, let
             \[
-                U_{\nu,\eta} = \left\{ b \in B_\nu \mid (a_\eta R b) \not\equiv t(a_\eta, B_\nu) \right\}
+                U_{\nu,\eta} = \left\{ b \in B_\nu \mid a_\eta R b \not\equiv t(a_\eta, B_\nu) \right\}
             \]
             be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
-            By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\eta \in [2]^{k_{**}}$,
+            By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in [2]^{<k_{**}}$,
             \[
                 \left|\bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}\right| <
                 2^{k_{**}} \zeta |B_\nu| < |B_\nu|
@@ -80,22 +85,21 @@
     \lemma[Claim 5.4.1]\label{existance_of_excellent_subsets_fixed_size_choices}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \left\{ 0, \frac{1}{2} \right\}$.
-        Let $\left< m\ell \mid \ell \in [0, k_{**}] \right>$ be a decreasing sequence of natural numbers such that
-        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in [0, k_{**}-1]$, $m_{k_{**}} \geq 1$,
-        and $m_{k_{**}-1} > k_{**}$. %TODO: necessary?
-        % Notice that we needed to add m_{k_{**}} to the sequeence, since it is needed in (c)' in the paper
+        Let $\left< m\ell \mid \ell \in \parcurly{0, \dots, k_{**}} \right>$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
+        % Notice that we needed to add m_{k_{**}} to the sequence, since it is needed in (c)' in the paper
         % (m_{l+1} may take that value!!).
         Then, for every $A \subseteq G$ with $|A| \geq m_0$ there exists
         $\left(\frac{m_{\ell+1}}{m_{\ell}}, \zeta\right)$-excellent subset $A' \subseteq A$ such that $|A'| = m_\ell$ for
-        some $\ell \in [0, k_{**}-1]$.
+        some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
         \begin{proof}
             Suppose the converse.
-            We will use this fact to build sets $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
+            We use this fact to build sets $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
             $\left\{ A_\eta \mid \eta \in [2]^{\leq k_{**}} \right\}$ on induction over $k<k_{**}$, where $k = |\eta|$,
             satisfying:
             \begin{enumerate}
                 \item\label{itm:5.4.1.1} $A_{\left< \cdot \right>} \subseteq A$, with $|A|_{\left< \cdot \right>} = m_0$.
-                \item\label{itm:5.4.1.2} $B_\eta$ is an $\eta$-good set witnessing that $A_\eta$ is not
+                \item\label{itm:5.4.1.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
                     $\left(\frac{m_{k+1}}{m_{k}}, \zeta\right)$-excellent, for all $k < k_{**}$.
                 \item\label{itm:5.4.1.3} $A_{\eta \frown \left< i \right>} = \left\{ a \in A_\eta \mid t(a, B_\eta) \equiv i \right\}$
                     for all $i \in \left\{ 0,1 \right\}$ and $k < k_{**}$.
@@ -108,26 +112,26 @@
             Notice that, by (\ref{itm:5.4.1.1}) and (\ref{itm:5.4.1.4}), the size of $A_\eta$ is $m_k$,
             so by IH none of the sets $A_\eta$ is $\left(\frac{m_{k+1}}{m_{k}}, \zeta\right)$-excellent.
             Then, $B_\eta$ in (\ref{itm:5.4.1.2}) is well-defined.
-            Also, by $\eta$-goodness of $B_\eta$, $t(a, B_\eta)$ in (\ref{itm:5.4.1.3}) is well-defined.
+            Also, by $\zeta$-goodness of $B_\eta$, $t(a, B_\eta)$ in (\ref{itm:5.4.1.3}) is well-defined.
             Then, since $B_\eta$ is witnessing the non-$\left(\frac{m_{k+1}}{m_{k}}, \zeta\right)$-excellence of $A_\eta$,
             we have that $|A_{\eta \frown \left< i \right>}| \geq \frac{m_{k+1}}{m_k} m_{k} = m_{k+1}$ for all
             $i \in \left\{ 0,1 \right\}$, satisfying (\ref{itm:5.4.1.4}).
             Finally, by definition (\ref{itm:5.4.1.3}), we have the disjoint union (\ref{itm:5.4.1.6}) which by itself
             ensures (\ref{itm:5.4.1.7}).
+
             Now, our goal is to build two sequences $\left\{ b_\eta \mid \eta \in [2]^{<k_{**}} \right\}$ and
             $\left\{ a_\eta \mid \eta \in [2]^{k_{**}} \right\}$ to contradict the tree bound $k_{**}$.
             First of all, notice that, for $\eta \in [2]^{k_{**}}$
             $$
                 |A_\eta| = m_k \geq m_{k_{**}} \geq 1
             $$
-            so $A_\eta \neq \emptyset$.
-            For each $\eta \in [2]^{k_{**}}$ we may choose an $a_\eta \in A_\eta$.
+            So, for each $\eta \in [2]^{k_{**}}$, $A_\eta \neq \emptyset$ and we may choose an $a_\eta \in A_\eta$.
             Now, for $\nu \in [2]^{<k_{**}}$ and $\eta \in [2]^{k_{**}}$ such that $\nu \triangleleft \eta$, let
             $$
                 U_{\nu,\eta} = \left\{ b \in B_\nu \mid (a_\eta R b) \not\equiv t(a_\eta, B_\nu) \right\}
             $$
             be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
-            By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\eta \in [2]^{k_{**}}$,
+            By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in [2]^{<k_{**}}$,
             $$
                 \left|\bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}\right| <
                 2^{k_{**}} \zeta |B_\nu| < |B_\nu|
@@ -141,67 +145,91 @@
             This contradicts the definition of tree bound $k_{**}$ (\ref{tree_bound}).
         \end{proof}
 
-    \lemma[Fact 5.9]\label{fact_5.9}
-        Let $p,q \in \left( 0,1 \right)$.
-        Let $A$ be a set of size $n$, $B \subseteq A$ a subset of size $p|A|$, and $A' \subseteq A$ a random subset
-        of size $\geq q|A|$. % TODO: check conditions
-        Then, for $\zeta > 0$,
-        $$
-            P\left( \frac{\left| A' \cap B \right|}{\left| A' \right|} \in
-                 \left( \frac{\left| B \right|}{\left| A \right|} -
-                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right)
-        $$
-        can be modeled by a random variable which is asymptotically normally distributed when $n \to +\infty$.
+%    \lemma[Fact 5.9]\label{fact_5.9}
+%        Let $p,q \in \left( 0,1 \right)$.
+%        Let $A$ be a set of size $n$, $B \subseteq A$ a subset of size $p|A|$, and $A' \subseteq A$ a random subset
+%        of size $\geq q|A|$. % TODO: check conditions
+%        Then, for $\zeta > 0$,
+%        $$
+%            P\left( \frac{\left| A' \cap B \right|}{\left| A' \right|} \in
+%                 \left( \frac{\left| B \right|}{\left| A \right|} -
+%                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right)
+%        $$
+%        can be modeled by a random variable which is asymptotically normally distributed when $n \to +\infty$.
+%
+%    \lemma[Fact 5.10]\label{fact_5.10}
+%        Let $A$ be a set of events measured with a probability $P_A$.
+%        Let $S$ a family of subsets of $A$, which are measurable with $P_A$.
+%        Let $A_r = \left\{ a_1, \dots, a_r \right\} \subseteq A$ be a random sample of size $r$.
+%        For each $B \in S$, we may define $v_B^{A_r}$ the relative frequency of events of $B$ in $A_r$, i.e.,
+%        $$
+%            v_B^{A_r} = \frac{P_A(A_r \cap B)}{P_A(A_r)}
+%        $$
+%        Let
+%        $$
+%            \pi ^{A_r} = \sup_{B \in S} \left| v_B^{A_r} - P_A(B) \right|
+%        $$
+%        i.e. the upperbound of error of $v_B^{A_r}$ as an approximation of $P_A(B)$.
+%        Also let $\Delta^s(A_r)$ be the number of subsets of $A_r$ induced by sets of $S$ ($B\in S$ induces
+%        $B \cap A_r \subseteq A_r$), i.e.
+%        $$
+%            \Delta^s(A_r) = \left| \left\{ B \cap A_r \mid B \in S \right\} \right|
+%        $$
+%        Finally, let
+%        $$
+%            m^S(r) = \max_{C \in {A \choose r}} \Delta^s(C)
+%        $$
+%        Then, if there exists a finite $k > 0$ such that $m^s(r) \leq r^k +1$ for all $r > 0$, we have that,
+%        for all $\epsilon > 0$,
+%        $$
+%            \lim_{r \to +\infty} P_A\left( \pi^{A_r} > \epsilon \right) = 0
+%        $$
+%
+%    \begin{remark}[Fact 5.12]\label{fact_5.12}
+%        If there exists $k > 0$ such that $m^s(r) \leq r^k + 1$ and $r$ satisfies:
+%        $$
+%            r \geq \frac{16}{\zeta^2} \left( k \log \frac{16 k}{\zeta^2} - \log \frac{\eta}{4} \right)^{k+1}
+%        $$
+%        for some $\eta > 0$, then
+%        $$
+%            P\left( \pi^{A_r} < \zeta \right) \geq 1 - \eta
+%        $$
+%        In particular, if we suppose that all events in $A$ are equiprobable and sampled without replacement, then
+%        $$
+%            P\left( \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
+%                 \left( \frac{\left| B \right|}{\left| A \right|} -
+%                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right) \geq 1 - \eta
+%        $$
+%        or in other words, for all but a fraction $\eta$ of all possible choices of $A_r$, we have that
+%        $$
+%            \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
+%                 \left( \frac{\left| B \right|}{\left| A \right|} -
+%                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right)
+%        $$
+%    \end{remark}
 
-    \lemma[Fact 5.10]\label{fact_5.10}
-        Let $A$ be a set of events measured with a probability $P_A$.
-        Let $S$ a family of subsets of $A$, which are measurable with $P_A$.
-        Let $A_r = \left\{ a_1, \dots, a_r \right\} \subseteq A$ be a random sample of size $r$.
-        For each $B \in S$, we may define $v_B^{A_r}$ the relative frequency of events of $B$ in $A_r$, i.e.,
-        $$
-            v_B^{A_r} = \frac{P_A(A_r \cap B)}{P_A(A_r)}
-        $$
-        Let
-        $$
-            \pi ^{A_r} = \sup_{B \in S} \left| v_B^{A_r} - P_A(B) \right|
-        $$
-        i.e. the upperbound of error of $v_B^{A_r}$ as an approximation of $P_A(B)$.
-        Also let $\Delta^s(A_r)$ be the number of subsets of $A_r$ induced by sets of $S$ ($B\in S$ induces
-        $B \cap A_r \subseteq A_r$), i.e.
-        $$
-            \Delta^s(A_r) = \left| \left\{ B \cap A_r \mid B \in S \right\} \right|
-        $$
-        Finally, let
-        $$
-            m^S(r) = \max_{C \in {A \choose r}} \Delta^s(C)
-        $$
-        Then, if there exists a finite $k > 0$ such that $m^s(r) \leq r^k +1$ for all $r > 0$, we have that,
-        for all $\epsilon > 0$,
-        $$
-            \lim_{r \to +\infty} P_A\left( \pi^{A_r} > \epsilon \right) = 0
-        $$
-
-    \remark[Fact 5.12]\label{fact_5.12}
-        If there exists $k > 0$ such that $m^s(r) \leq r^k + 1$ and $r$ satisfies:
-        $$
-            r \geq \frac{16}{\zeta^2} \left( k \log \frac{16 k}{\zeta^2} - \log \frac{\eta}{4} \right)^{k+1}
-        $$
-        for some $\eta > 0$, then
-        $$
-            P\left( \pi^{A_r} < \zeta \right) \geq 1 - \eta
-        $$
-        In particular, if we suppose that all events in $A$ are equiprobable and sampled without replacement, then
-        $$
-            P\left( \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
-                 \left( \frac{\left| B \right|}{\left| A \right|} -
-                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right) \geq 1 - \eta
-        $$
-        or in other words, for all but a fraction $\eta$ of all possible choices of $A_r$, we have that
-        $$
-            \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
-                 \left( \frac{\left| B \right|}{\left| A \right|} -
-                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right)
-        $$
+    \lemma\label{ineq_5.13}
+        For $k > 1$, $\zeta, \eta \in \parround{0,1}$ the function $f(m) = m^k \cdot e^{-2 \zeta^2 m}$ satisfies
+        $f(m) \leq \eta$ for all $m \geq \frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}$.
+        \begin{proof}
+            First of all, notice that for $m = \frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}$,
+            \[
+                f(m) = \frac{m^k}{e^{2 \zeta^2 m}}
+                     = \frac{\parround{\frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}}^k}{
+                        \parround{\frac{k}{\zeta^2}}^{2k} \eta^{-2}}
+                     \leq \frac{k^k \parround{\log{\frac{k}{\zeta^2}\parround{\frac{1}{\eta}}^{\frac{1}{k}}}}^k}
+                        {k^k \parround{\frac{k}{\zeta^2} \parround{\frac{1}{\eta}}^{\frac{1}{k}}}^k} \eta
+                     < \eta
+            \]
+            To conclude, we prove that $f$ is decreasing for larger values of $m$:
+            \[
+                f'(m)
+                    = \frac{k m^{k-1} e^{2 \zeta^2 m} - 2 \zeta^2 m^k e^{2 \zeta^2 m}}{\parround{e^{2 \zeta^2 m}}^2}
+                    = \parround{k - 2m\zeta^2} \frac{m^{k-1}}{e^{2 \zeta^2 m}}
+            \]
+            The second factor is always positive, and $m > \frac{k}{\zeta^2} > \frac{k}{2\zeta^2}$, proving that $f'(m) < 0$
+            and thus $f$ is decreasing.
+        \end{proof}
 
     \lemma[Claim 5.13]\label{claim_5.13}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -210,7 +238,7 @@
             \item \label{itm:5.13.1} For every $\epsilon \in \left(0, \frac{1}{2}\right)$,
                 $\zeta \in \left(0, \frac{1}{2} - \epsilon \right)$ and $\xi \in \left(0, 1 \right)$ there is
                 $N_1 = N_1\left(\epsilon, \zeta, \xi \right)$ such that for all $n > N_1$, if $A \subseteq G$ is an
-                $\epsilon$-good subset of size $n$, and $n \geq m \geq \log \log n$, %TODO: not sure actually which is the condition here!!
+                $\epsilon$-good subset of size $n$, and $n \geq m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
                 then if we choose a random subset $A' \subseteq A$ of size $m$, it is $(\epsilon + \zeta)$-good
                 with probability $1-\xi$.
             \item \label{itm:5.13.1*} Moreover, such $A'$ satisfies $t(b, A') = t(b, A)$ for all $b \in G$.
@@ -229,47 +257,71 @@
         \end{enumerate}
         \begin{proof}
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            % TODO: add some intuition about the proof.
-            \item For each $b \in G$ we say that $\overline{B}_{A,b}$ is \emph{exceptional} if
-                $\left| \overline{B}_{A,b} \right| \geq \epsilon \left| A' \right|$.
-                Notice that, if we prove that, with probability $1-\xi$, $A'$ satisfies that for all exceptional $\overline{B}_{A,b}$:
-                $$
-                    \frac{\left| A' \cap \overline{B}_{A,b} \right|}{\left| A' \right|} \in
-                         \left( \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} -
-                         \zeta, \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} + \zeta \right)
-                $$
-                then, with the same probability:
-                \begin{equation}\label{eq:equation1}
-                    \left| A' \cap \overline{B}_{A,b} \right| < \left( \frac{\left| \overline{B}_{A,b} \right|}{|A|} + \zeta \right) |A'|
-                        < \left( \epsilon + \zeta \right) |A'|
-                \end{equation}
-                and we are done.
-
-                By Lemma~\ref{fact_5.9}, for $n = |A|$ large enough, we can approximate sampling a set of size $m$ from $A$,
-                with $m$ i.i.d. random variables $x_1, \dots, x_m$, where each $x_i$ picks a vertex uniformly at random from $A$.
-                % TODO: here we ignored the fact that we need to fix p and q in Fact 5.9.
-                Let $S \coloneq \left\{ \text{Exceptional } \overline{B}_{A,b} \right\}$.
-                Since $G$ has the non-$k_{*}$-order property, we can apply Lemma~\ref{itm:2.6.1} to $G_{\ref{itm:2.6.1}} = A$
-                and $A_{\ref{itm:2.6.1}} = A'$, which gets us that:
-                $$
-                    |S| \leq \left|\left\{ \left\{ a \in A' \mid a R b \not\equiv t(A', b) \right\} \mid b \in G \right\} \right|
-                    \leq |A'|^{k_*}
-                $$
-                Then,
-                $$
-                    m^s(\ell) \leq \left| S \right| \leq |A'|^{k_*} \leq \ell^{k_*} \leq \ell^{k_{*}} + 1 \quad \forall \ell \geq |A'|
-                $$
-                Notice that this is enough to satisfy the conditions of Lemma~\ref{fact_5.10}:
-                For each $\ell < |A'|$, let $k_l$ be the smallest integer such that $m^s(\ell) \leq \ell^{k_l} + 1$.
-                Since there are finitely many of them, we can take the maximum
-                $k_{\max} = \max \left\{ k_1, \dots, k_{|A'|-1}, k_* \right\}$, which satisfies
-                $$
-                    m^s(\ell) \leq \ell^{k_{\max}} + 1 \quad \forall \ell
-                $$
-                % TODO: all of this may not be necessary, since I think that if \ell' < \ell, then k_l' < k_l
-                % TODO: in \ref{fact_5.12}, the bound on m grows with k_max, and here k_max grows with m. Need to solve this
-                So we conclude equation (\ref{eq:equation1}), which by itself is sufficient to prove $A'$ is
-                $(\epsilon + \zeta)$-good.
+%            % TODO: add some intuition about the proof.
+%            \item For each $b \in G$ we say that $\overline{B}_{A,b}$ is \emph{exceptional} if
+%                $\left| \overline{B}_{A,b} \right| \geq \epsilon \left| A' \right|$.
+%                Notice that, if we prove that, with probability $1-\xi$, $A'$ satisfies that for all exceptional $\overline{B}_{A,b}$:
+%                $$
+%                    \frac{\left| A' \cap \overline{B}_{A,b} \right|}{\left| A' \right|} \in
+%                         \left( \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} -
+%                         \zeta, \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} + \zeta \right)
+%                $$
+%                then, with the same probability:
+%                \begin{equation}\label{eq:equation1}
+%                    \left| A' \cap \overline{B}_{A,b} \right| < \left( \frac{\left| \overline{B}_{A,b} \right|}{|A|} + \zeta \right) |A'|
+%                        < \left( \epsilon + \zeta \right) |A'|
+%                \end{equation}
+%                and we are done.
+%
+%                By Lemma~\ref{fact_5.9}, for $n = |A|$ large enough, we can approximate sampling a set of size $m$ from $A$,
+%                with $m$ i.i.d. random variables $x_1, \dots, x_m$, where each $x_i$ picks a vertex uniformly at random from $A$.
+%                % TODO: here we ignored the fact that we need to fix p and q in Fact 5.9.
+%                Let $S \coloneq \left\{ \text{Exceptional } \overline{B}_{A,b} \right\}$.
+%                Since $G$ has the non-$k_{*}$-order property, we can apply Lemma~\ref{itm:2.6.1} to $G_{\ref{itm:2.6.1}} = A$
+%                and $A_{\ref{itm:2.6.1}} = A'$, which gets us that:
+%                $$
+%                    |S| \leq \left|\left\{ \left\{ a \in A' \mid a R b \not\equiv t(A', b) \right\} \mid b \in G \right\} \right|
+%                    \leq |A'|^{k_*}
+%                $$
+%                Then,
+%                $$
+%                    m^s(\ell) \leq \left| S \right| \leq |A'|^{k_*} \leq \ell^{k_*} \leq \ell^{k_{*}} + 1 \quad \forall \ell \geq |A'|
+%                $$
+%                Notice that this is enough to satisfy the conditions of Lemma~\ref{fact_5.10}:
+%                For each $\ell < |A'|$, let $k_l$ be the smallest integer such that $m^s(\ell) \leq \ell^{k_l} + 1$.
+%                Since there are finitely many of them, we can take the maximum
+%                $k_{\max} = \max \left\{ k_1, \dots, k_{|A'|-1}, k_* \right\}$, which satisfies
+%                $$
+%                    m^s(\ell) \leq \ell^{k_{\max}} + 1 \quad \forall \ell
+%                $$
+%                % TODO: all of this may not be necessary, since I think that if \ell' < \ell, then k_l' < k_l
+%                % TODO: in \ref{fact_5.12}, the bound on m grows with k_max, and here k_max grows with m. Need to solve this
+%                So we conclude equation (\ref{eq:equation1}), which by itself is sufficient to prove $A'$ is
+%                $(\epsilon + \zeta)$-good.
+            \item For each $b \in G$, we say that $B_{A,b}$ is \emph{bad} if $\parstraight{B_{A,b}} \geq \epsilon \parstraight{A'}$.
+                For each bad $B_{A,b}$, let $X_{A,b}$ be the event that
+                $\parstraight{B_{A,b}} \geq \parround{\epsilon + \zeta} \parstraight{A'}$ for a random subset
+                $A' \subseteq A$ of size $m$.
+                Notice that $X_{A,b}$ is modelled by a hypergeometric distribution, and so the probability of
+                upperly deviating from the mean by $\zeta$, can be modeled by
+                \[
+                    P\parround{X_{A,b} = 1} \leq e^{-2\zeta^2 m}
+                \]
+                Now we want to study the random variable $X$ counting the number of events $X_{A,b}$ that are satisfied.
+                That is, $X = \sum_{\text{bad } B_{A,b}} X_{A,b}$.
+                We compute the expectation
+                \[
+                    \mathbb{E}[X] = \sum_{\text{bad } B_{A,b}} \mathbb{E}[X_{A,b}]
+                        = \sum_{\text{bad } B_{A,b}} P\parround{X_{A,b} = 1}
+                        \leq \sum_{\text{bad } B_{A,b}} e^{-2\zeta^2 m}
+                \]
+                Following (\ref{itm:2.6.1.2}), the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded $m^{k_*}$.
+                Thus, using the First Moment Method, we have that:
+                \[
+                    P\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi
+                \]
+                Last inequality follows Lemma~\ref{ineq_5.13} using the lower bound on $m$.
+                Thus, with probability at least $1 - \xi$, we have that $A'$ is $(\epsilon + \zeta)$-good.
             \item We proved in (\ref{itm:5.13.1}) that, with probability $1 - \xi$, $A'$ satisfies that for all
                 $b \in G$:
                 $$
@@ -385,7 +437,7 @@
         \end{enumerate}
         \end{proof}
 
-    \remark[Remark 5.13.1]\label{remark_5.13.1}
+    \begin{remark}[Remark 5.13.1]\label{remark_5.13.1}
         For following applications, we would like to use Lemma~\ref{claim_5.13} (\ref{itm:5.13.3}) with
         $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
         Notice that if $\epsilon, \zeta < \frac{1}{t}, \epsilon' < \frac{1}{t'}$ and $t > t' \geq 5$, then:
@@ -417,6 +469,7 @@
         $$
             \epsilon, \zeta' < \frac{1}{4k} \quad \text{ and } \quad \epsilon' < \frac{1}{5}
         $$
+    \end{remark}
 
     We use this fact to reformulate point (\ref{itm:5.13.3}) of Lemma~\ref{claim_5.13} as:
 
@@ -519,7 +572,7 @@
             which proves that (\ref{itm:5.14.2.c}) can be satisfied.
         \end{proof}
 
-    \remark[Remark 5.14.3]\label{epsilons_proportion_can_be_k}
+    \begin{remark}[Remark 5.14.3]\label{epsilons_proportion_can_be_k}
         In the context of Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item \label{itm:5.14.3.a} $m_{**} > \frac{1}{\frac{\epsilon'}{k}}$
@@ -566,6 +619,7 @@
             $$
             completing the proof.
         \end{proof}
+    \end{remark}
 
     \lemma[Corollary 5.15]\label{resume_of_all_conditions_for_excellent_partitions}
         Let $G$ be a graph with the non-$k_{*}$-order property.
