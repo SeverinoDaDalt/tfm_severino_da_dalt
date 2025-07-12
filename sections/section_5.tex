@@ -13,15 +13,18 @@
         In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
 
     \begin{remark}\label{remark_excellence_imply_little_exceptions}
-        Notice that, if $A$ is $(\epsilon, \epsilon')$-excellent and $B \subseteq G$ is an $\epsilon'$-good set, then
-        the number of exceptional edges between $A$ and $B$, i.e. these vertex pairs that do not follow $t(A,B)$, is
-        relatively small:
+        Notice that, if $A, B \subseteq G$ are two (not necessarily disjoint) subsets of vertices
+        with $A$ $(\epsilon, \epsilon')$-excellent and $B$ $\epsilon'$-good set, then the number of exceptional edges between $A$ and $B$,
+        i.e. these vertex pairs that do not follow $t(A,B)$, is relatively small:
         $$
             \parstraight{\parcurly{\text{Exceptional edges between } A \text{ and } B}} <
                 \epsilon |A| |B| + (1- \epsilon) |A| \epsilon' |B| = \parround{\epsilon + \parround{1-\epsilon} \epsilon'} |A| |B|
         $$
-        A relevant example is that of two $\epsilon$-excellent sets, in which case we have that the fraction
+        A relevant example is that of two disjoint $\epsilon$-excellent sets, in which case we have that the fraction
         of exceptional edges between them is less than $2\epsilon$.
+        If they are not disjoint, we can still use the same reasoning to conclude that the fraction of exceptional edges
+        is less than $2 \epsilon \frac{\parstraight{A} \parstraight{B}}{e(A,B)} < 4 \epsilon$, since
+        $e(A,B) > \frac{\parstraight{A} \parstraight{B}}{2}$.
     \end{remark}
 
     \lemma[Claim 5.4]\label{existance_of_excellent_subsets}
@@ -36,7 +39,7 @@
             satisfying:
             \begin{enumerate}
                 \item\label{itm:5.4.1} $A_{\left< \cdot \right>} = A$.
-                \item\label{itm:5.4.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
+                \item\label{itm:5.4.2} $B_\eta$ is a $\zeta$-good set witnessing that $A_\eta$ is not
                     $(\epsilon, \zeta)$-excellent, for $k < k_{**}$.
                 \item\label{itm:5.4.3} $A_{\eta \frown \left< i \right>} = \left\{ a \in A_\eta \mid t(a, B_\eta) \equiv i \right\}$
                     for all $i \in \left\{ 0,1 \right\}$ and $k < k_{**}$.
@@ -315,36 +318,30 @@
                         = \sum_{\text{bad } B_{A,b}} P\parround{X_{A,b} = 1}
                         \leq \sum_{\text{bad } B_{A,b}} e^{-2\zeta^2 m}
                 \]
-                Following (\ref{itm:2.6.1.2}), the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded $m^{k_*}$.
+                Following (\ref{itm:2.6.1.2}), the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded
+                by $m^{k_*}$.
                 Thus, using the First Moment Method, we have that:
                 \[
                     P\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi
                 \]
                 Last inequality follows Lemma~\ref{ineq_5.13} using the lower bound on $m$.
                 Thus, with probability at least $1 - \xi$, we have that $A'$ is $(\epsilon + \zeta)$-good.
-            \item We proved in (\ref{itm:5.13.1}) that, with probability $1 - \xi$, $A'$ satisfies that for all
-                $b \in G$:
-                $$
-                    |S| \leq \left|\left\{ \left\{ a \in A' \mid a R b \not\equiv t(A', b) \right\} \mid b \in G \right\} \right|
-                    \leq |A'|^{k_*}
-                $$
-                We want to prove that these sets $A'$ that satisfy the previous equation also satisfy $t(b,A') = t(b,A)$
-                for all $b \in G$.
-                Now, for any $b \in G$:
+            \item Suppose that $A'$ is the subset described in (\ref{itm:5.13.1}).
+                We proved that, such set satisfies
+                \[
+                    \parstraight{A' \cap B_{A,b}} < \parround{\epsilon + \zeta} \parstraight{A'}
+                \]
+                for all $b \in G$ such that $\parstraight{B_{A,b}} \geq \epsilon m$.
+                Thus, we have that:
                 \begin{itemize}
-                    \item if $\parstraight{B_{A,b}} < \epsilon \parstraight{A'}$, then
-                        $$
-                            \parcurly{a \in A' \mid a R b \not\equiv t(b, A)} \leq \parstraight{B_{A,b}} < \epsilon \parstraight{A'}
-                                \parround{\epsilon + \zeta} \parstraight{A'}
-                        $$
-                    \item if $\parstraight{B_{A,b}} \geq \epsilon \parstraight{A'}$, then by (\ref{itm:5.13.1}) we have that:
-                        $$
-                            \parcurly{A' \cap B_{A,b}} < \frac{\parstraight{B_{A,b}}\parstraight{A'}}{\parstraight{A}} 
-                                + \zeta \parstraight{A'} = \parround{\epsilon + \zeta} \parstraight{A'}
-                        $$
-                        so $\parcurly{a \in A' \mid a R b \not\equiv t(b, A)} < \parround{\epsilon + \zeta}\parstraight{A'}$.
+                    \item If $\parstraight{B_{A,b}} < \epsilon m$, then
+                        $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} \leq \parstraight{B_{A,b}}
+                        < \epsilon m < \parround{\epsilon + \zeta} m$.
+                    \item If $\parstraight{B_{A,b}} \geq \epsilon m$, then
+                        $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} = \parstraight{A' \cap B_{A,b}}
+                        < \parround{\epsilon + \zeta} m$.
                 \end{itemize}
-                So, in both cases we have that $t(b, A') = t(b, A)$.
+            We conclude that $t(b,A) = t(b,A')$ for all $b \in G$.
             \item Let $B \subseteq G$ be an $\epsilon'$-good set.
                 We first upperbound the number of exceptional vertices of $B$ with respect to $A'$:
                 \begin{align*}
@@ -408,7 +405,7 @@
                     \overset{\epsilon' \to 0}{\longrightarrow} \parround{\epsilon + \zeta'} |A'|
                 $$
                 So, there exists an $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ small enough such that for all
-                $(\epsilon <) \epsilon' \leq \epsilon_1$, we have that $\parstraight{Q} < \parround{\epsilon + \zeta} |A'|$,
+                $(\epsilon <)$ $\epsilon' \leq \epsilon_1$, we have that $\parstraight{Q} < \parround{\epsilon + \zeta} |A'|$,
                 and since $A'$ is $(\epsilon + \zeta')$-good, and thus $(\epsilon + \zeta)$-good, we conclude that
                 $A'$ is $(\epsilon + \zeta, \epsilon')$-excellent.
             \item Let $\zeta, \zeta', \epsilon, \epsilon'$ and $r$ be given satisfying the conditions of the statement.
@@ -440,7 +437,7 @@
     \begin{remark}[Remark 5.13.1]\label{remark_5.13.1}
         For following applications, we would like to use Lemma~\ref{claim_5.13} (\ref{itm:5.13.3}) with
         $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
-        Notice that if $\epsilon, \zeta < \frac{1}{t}, \epsilon' < \frac{1}{t'}$ and $t > t' \geq 5$, then:
+        Notice that if $\epsilon, \zeta' < \frac{1}{t}, \epsilon' < \frac{1}{t'}$ and $t > t' \geq 5$, then:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item $\frac{\epsilon}{1-\epsilon} < \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
                 = \frac{1}{t-1}$
@@ -467,14 +464,14 @@
         $$
         All in all, a sufficient condition, for the lemma to hold under the constraint $\epsilon' > k \parround{\epsilon + \zeta}$, is:
         $$
-            \epsilon, \zeta' < \frac{1}{4k} \quad \text{ and } \quad \epsilon' < \frac{1}{5}
+            \epsilon, \zeta' < \frac{1}{4k} \epsilon' \quad \text{ and } \quad \epsilon' < \frac{1}{5}
         $$
     \end{remark}
 
     We use this fact to reformulate point (\ref{itm:5.13.3}) of Lemma~\ref{claim_5.13} as:
 
     \lemma[Claim 5.13.2(3)]\label{existance_of_equitable_excellent_subpartition}
-        For all $k, r \geq 1$, $\epsilon' \leq \frac{1}{5}$ and $\epsilon < \frac{1}{4k} \epsilon'$, there exists
+        For all $k, r \geq 1$, $\epsilon' < \frac{1}{5}$ and $\epsilon < \frac{1}{4k} \epsilon'$, there exists
         $N_3 = N_3\parround{\epsilon, \epsilon', r}$ large enough such that, for all $n > N_3$ and $r$ dividing $n$,
         if $A \subseteq G$ is $\left( \epsilon, \epsilon' \right)$-excellent, with $|A| = n$, then there exists a
         partition into $r$ disjoint pieces of equal size, each of which is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
@@ -488,16 +485,15 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' < \frac{1}{2^{k_{**}}}$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\partriangle{m\ell \mid \ell \in [0, k_{**}]}$ be a decreasing sequence of natural numbers such that
-        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in [0, k_{**}-1]$, $m_{k_{**}} \geq 1$,
-        and $m_{k_{**}-1} > k_{**}$. %TODO: necessary?
+        Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         Denote $m_* \coloneq m_0$ and $m_{**} \coloneq m_{k_{**}}$.
-        Then, there is a partition $\overline{A} = \partriangle{A_j \mid j \in \parsquared{0, j(*)}}$ with remainder
+        Then, there is a partition $\overline{A} = \partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
         $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:5.14.1.a} For all $j \in \parsquared{0, j(*)}$, $|A_j| \in \partriangle{m\ell \mid \ell \in [0, k_{**}-1]}$.
-            \item \label{itm:5.14.1.b} For all $i \neq j \in \parsquared{0, j(*)}$, $A_i \cap A_j = \emptyset$.
-            \item \label{itm:5.14.1.c} For all $j \in \parsquared{0, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
+            \item \label{itm:5.14.1.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
+            \item \label{itm:5.14.1.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
+            \item \label{itm:5.14.1.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
             \item \label{itm:5.14.1.d} $|B| < \epsilon m_*$.
         \end{enumerate}
         \begin{proof}
@@ -512,37 +508,37 @@
 
     \lemma[Claim 5.14.1a]\label{existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' < \frac{1}{2^{k_{**}}}$.
+        Let $\epsilon \in \parround{0, \frac{1}{2}}$, $\epsilon' < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $k > 1$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\partriangle{m\ell \mid \ell \in [0, k_{**}]}$ be a decreasing sequence of natural numbers such that
-        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in [0, k_{**}-1]$, $m_{k_{**}} \geq 1$,
-        $m_{**} \coloneq m_{k_{**}} \mid m_l$ for all $l \in [0, k_{**}]$ and
+        Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
+        $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ and
         $m_{k_{**}-1} > N_3\parround{\epsilon, \epsilon', \frac{m_*}{m_{**}}}$
         (in the sense of Claim~\ref{existance_of_equitable_excellent_subpartition}), where $m_* \coloneq m_0$.
-        Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, i(*)}}$
-        with remainder $B = A \setminus \bigcup_{i \in \parsquared{1, i(*)}}$ such that:
+        Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+        with remainder $B = A \setminus \bigcup \overline{A}$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:5.14.1a.a} For all $i \in \parsquared{1, i(*)}$, $|A_i| = m_{**}$.
-            \item \label{itm:5.14.1a.b} For all $i \neq j \in \parsquared{1, i(*)}$, $A_i \cap A_j = \emptyset$.
-            \item \label{itm:5.14.1a.c} For all $i \in \parsquared{1, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
+            \item \label{itm:5.14.1a.a} For all $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
+%            \item \label{itm:5.14.1a.b} For all $i \neq j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
+            \item \label{itm:5.14.1a.c} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
             \item \label{itm:5.14.1a.d} $|B| < \epsilon m_*$.
         \end{enumerate}
         \begin{proof}
             Use Claim~\ref{existance_of_excellent_partition} to obtain a partition
-            $\overline{A}' = \partriangle{A_j' \mid j \in \parsquared{0, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
-            Then, we can apply Claim~\ref{existance_of_equitable_excellent_subpartition} with $r = m_{**}$ to each of
+            $\overline{A}' = \partriangle{A_j' \mid j \in \parcurly{1, \dots, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
+            Then, we can apply Claim~\ref{existance_of_equitable_excellent_subpartition} with $r = \frac{m_*}{m_{**}}$ to each of
             the parts $A_j'$.
-            Putting together all the new subparts, we obtain a new partition $\overline{A} = \partriangle{A_i \mid i \in \parsquared{0, i(*)}}$
+            Putting together all the new subparts, we obtain a new partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             with remainder $B$, satisfying all the conditions of the statement.
         \end{proof}
 
     \lemma[Claim 5.14.2]\label{existance_of_excellent_partition_with_equal_size_and_no_remainder}
         Under the same condition of Lemma~\ref{existance_of_excellent_partition_with_equal_size}, we can get a
-        partition $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, i(*)}}$ with no remainder, such that:
+        partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:5.14.2.a} For all $i \neq j \in \parsquared{1, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:5.14.2.b} For all $i \neq j \in \parsquared{1, i(*)}$, $A_i \cap A_j = \emptyset$.
-            \item \label{itm:5.14.2.c} For all $i \in \parsquared{1, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent,
+            \item \label{itm:5.14.2.a} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:5.14.2.b} For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
+            \item \label{itm:5.14.2.c} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent,
                 where
                 $$
                     \epsilon'' \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}
@@ -550,15 +546,15 @@
             \item \label{itm:5.14.2.d} $A = \bigcup \overline{A}$.
         \end{enumerate}
         \begin{proof}
-            Let $\overline{A}' = \partriangle{A_i' \mid i \in \parsquared{1, i(*)}}$ and $B$ from 
+            Let $\overline{A}' = \partriangle{A_i' \mid i \in \parcurly{1, \dots, i(*)}}$ and $B$ from
             Claim~\ref{existance_of_excellent_partition_with_equal_size}.
-            We can partition $B$ into $\overline{B} = \partriangle{B_i \mid i \in \parsquared{1, i(*)}}$ in such a way that
-            for all $i \in \parsquared{1, i(*)}$, 
+            We can partition $B$ into $\overline{B} = \partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$ in such a way that
+            for all $i \in \parcurly{1, \dots, i(*)}$,
             $$
                 |B_i| \in \parcurly{\floor{\frac{\parstraight{B}}{i(*)}}, \ceil{\frac{\parstraight{B}}{i(*)}}}
             $$
             Notice that we are allowing $B_i = \emptyset$.
-            Then, the new partition $\overline{A} = \partriangle{A_i' \cup B_i \mid i \in \parsquared{1, i(*)}}$ satisfies
+            Then, the new partition $\overline{A} = \partriangle{A_i' \cup B_i \mid i \in \parcurly{1, \dots, i(*)}}$ satisfies
             (\ref{itm:5.14.2.a}), (\ref{itm:5.14.2.b}) and (\ref{itm:5.14.2.d}) by construction.
             To conclude, notice that for each $\epsilon'$-good set $B$, the number of exceptions is bounded by
             \begin{align*}
@@ -580,7 +576,7 @@
         \end{enumerate}
         then $\epsilon'' < \frac{3 \epsilon'}{k}$.
         \begin{proof}
-            Notice that, if $\parstraight{B_i} \leq 2 \frac{\epsilon'}{k} \parstraight{A_i}$ for all $i \in \parsquared{1, i(*)}$,
+            Notice that, if $\parstraight{B_i} \leq 2 \frac{\epsilon'}{k} \parstraight{A_i}$ for all $i \in \parcurly{1, \dots, i(*)}$,
             then $\epsilon''$ can be bounded by:
             $$
                 \epsilon'' \leq \frac{\frac{\epsilon'}{k} \parstraight{A_i} + \parstraight{B_i}}{\parstraight{A_i} + \parstraight{B_i}}
@@ -626,11 +622,11 @@
         Suppose that we are given:
         \begin{enumerate}
             \item $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
-            \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in [0, k_{**}]}$ such that:
+            \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that:
             \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                 \item \label{itm:5.15.a} $m_\ell \leq \frac{\epsilon}{12} m_{\ell + 1}$.
                 \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} \geq \frac{\epsilon}{3}$.
-                \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in [0, k_{**}]$.
+                \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
                 \item \label{itm:5.15.d} $m_{k_{**}-1} > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
                     of Claim~\ref{existance_of_equitable_excellent_subpartition}).
             \end{enumerate}
@@ -641,11 +637,11 @@
             \end{enumerate}
         \end{enumerate}
         Then, there exists $i(*) \leq \frac{n}{m_{**}}$ and a partition of $A$ into disjoint pieces
-        $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, i(*)}}$ such that:
+        $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ such that:
         \begin{enumerate}[label=(\roman*), ref=\roman*]
-            \item \label{itm:5.15.i} For all $i \neq j \in \parsquared{1, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:5.15.ii} For all $i \in \parsquared{1, i(*)}$, $A_i$ is $\epsilon$-excellent,
-            \item \label{itm:5.15.iii} For all $i \neq j \in \parsquared{1, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
+            \item \label{itm:5.15.i} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:5.15.ii} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent,
+            \item \label{itm:5.15.iii} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
         \end{enumerate}
         \begin{proof}
             Simply apply Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder} in the context of
@@ -666,12 +662,12 @@
         Let $k_*$ and therefore $k_{**}$ be given.
         Then, for all $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, there is $m = m\parround{\epsilon, k_*}$
         and $N = N\parround{\epsilon, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
-        every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, i(*)}}$
+        every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
         of $A$ into at most $m$ pieces, such that:
         \begin{enumerate}
-            \item \label{itm:5.18.1} For all $i, j \in \parsquared{1, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:5.18.2} For all $i \in \parsquared{1, i(*)}$, $A_i$ is $\epsilon$-excellent.
-            \item \label{itm:5.18.3} For all $i \neq j \in \parsquared{1, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
+            \item \label{itm:5.18.1} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:5.18.2} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
+            \item \label{itm:5.18.3} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
             \item \label{itm:5.18.4} $m \leq \parround{3 + \epsilon} \parround{\frac{12}{\epsilon}}^{k_{**}}$.
         \end{enumerate}
         \begin{proof}
@@ -688,14 +684,14 @@
             \end{enumerate}
             Then, setting $m_{k_{**}} = m_{**}$ we can build recursively a sequence of integers
             $\partriangle{m_\ell \mid \ell \in [0, k_{**}]}$ such that $m_\ell = q m_{\ell + 1}$ for all
-            $\ell \in \parsquared{0, k_{**}-1}$.
+            $\ell \in \parcurly{0, \dots, k_{**}-1}$.
             Finally, let $m_* = q^{k_{**}-1} m_{**}$.
             Notice that by (\ref{itm:5.18.a}) we have that $m_* = m_{**} q^{k_{**}-1} \leq \frac{\epsilon n}{3 + \epsilon}$.
             This sequence satisfies all the conditions of Lemma~\ref{resume_of_all_conditions_for_excellent_partitions}:
             \begin{itemize}[label={}]
                 \item (\ref{itm:5.15.a}) $m_{\ell-1} = q m_\ell \leq \frac{\epsilon}{12} m_\ell$.
                 \item (\ref{itm:5.15.b}) $m_{**} \geq \frac{3}{\epsilon}$.
-                \item (\ref{itm:5.15.c}) $m_\ell = q^{k_{**}-\ell} m_{**}$ so that $m_{**} \mid m_\ell$ for all $\ell \in [0, k_{**}]$.
+                \item (\ref{itm:5.15.c}) $m_\ell = q^{k_{**}-\ell} m_{**}$ so that $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
                 \item (\ref{itm:5.15.d}) $m_{k_{**}-1} = q m_{**} < q \frac{N_3\parround{\frac{\epsilon}{12}, \epsilon, q^{k_{**}-1}}}{q}
                     = N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$.
                 \item (\ref{itm:5.15.b'}) $m_* \leq \frac{\epsilon n}{3 + \epsilon} \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
