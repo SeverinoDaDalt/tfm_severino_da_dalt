@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  12 JUL 2025 17:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  13 JUL 2025 17:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1364,7 +1364,14 @@ $. Fi-nally, the se-quences $[]$
  []
 
 [18] [19] [20] [21] [22]
-Overfull \hbox (33.82976pt too wide) in paragraph at lines 549--553
+Overfull \hbox (1.402pt too wide) in paragraph at lines 510--521
+[][]\OT1/cmss/bx/n/10.95 Lemma 5.11 \OT1/cmss/m/n/10.95 (Claim 5.14.1a)\OT1/cms
+s/bx/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$
+k[]$-order prop-erty. Let $\OML/cmm/m/it/10.95 ^^O[] < [] []$
+ []
+
+
+Overfull \hbox (33.82976pt too wide) in paragraph at lines 550--554
 []\OT1/cmss/m/n/10.95 Let $[][] = []$ and $\OT1/cmss/m/sl/10.95 B$ \OT1/cmss/m/
 n/10.95 from Claim [][]5.11[][]. We can par-ti-tion $\OT1/cmss/m/sl/10.95 B$ \O
 T1/cmss/m/n/10.95 into $[] = []$
@@ -1374,7 +1381,7 @@ T1/cmss/m/n/10.95 into $[] = []$
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 722.
+(amsmath)                 on input line 723.
 
 [26] [27]) [28] (./sections/bibliography.tex
 
@@ -1392,20 +1399,17 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `authorfile.out' has not changed.
 (rerunfilecheck)             Checksum: 032EC763077F2BCCEC331A5BA96DD5A2;783.
  ) 
 Here is how much of TeX's memory you used:
- 26583 strings out of 476106
- 472057 string characters out of 5793933
+ 26592 strings out of 476106
+ 472261 string characters out of 5793933
  1984975 words of memory out of 5000000
- 47861 multiletter control sequences out of 15000+600000
+ 47869 multiletter control sequences out of 15000+600000
  569338 words of font info for 80 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,18n,101p,3242b,1113s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,18n,101p,3242b,1207s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texli
@@ -1424,10 +1428,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/t
 exmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-authorfile.pdf (35 pages, 337875 bytes).
+authorfile.pdf (35 pages, 338332 bytes).
 PDF statistics:
- 689 PDF objects out of 1000 (max. 8388607)
- 609 compressed objects within 7 object streams
- 237 named destinations out of 1000 (max. 500000)
+ 690 PDF objects out of 1000 (max. 8388607)
+ 610 compressed objects within 7 object streams
+ 238 named destinations out of 1000 (max. 500000)
  69 words of extra memory for PDF output out of 10000 (max. 10000000)
 

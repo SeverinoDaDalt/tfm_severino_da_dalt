@@ -494,7 +494,7 @@
             \item \label{itm:5.14.1.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
             \item \label{itm:5.14.1.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
             \item \label{itm:5.14.1.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
-            \item \label{itm:5.14.1.d} $|B| < \epsilon m_*$.
+            \item \label{itm:5.14.1.d} $|B| < m_*$.
         \end{enumerate}
         \begin{proof}
             Apply Lemma~\ref{existance_of_excellent_subsets_fixed_size_choices} recursively to the remainder
@@ -508,20 +508,21 @@
 
     \lemma[Claim 5.14.1a]\label{existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon \in \parround{0, \frac{1}{2}}$, $\epsilon' < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $k > 1$.
+        Let $\epsilon' < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon < \frac{1}{4k} \epsilon'$ for some $k > 1$.
         Let $A \subseteq G$ such that $|A| = n$.
         Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
-        $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ and
+        $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
         $m_{k_{**}-1} > N_3\parround{\epsilon, \epsilon', \frac{m_*}{m_{**}}}$
-        (in the sense of Claim~\ref{existance_of_equitable_excellent_subpartition}), where $m_* \coloneq m_0$.
+        (in the sense of Claim~\ref{existance_of_equitable_excellent_subpartition}), and $n \geq m_0$.
+        Let $m_* \coloneq m_0$.
         Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
         with remainder $B = A \setminus \bigcup \overline{A}$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item \label{itm:5.14.1a.a} For all $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
 %            \item \label{itm:5.14.1a.b} For all $i \neq j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
             \item \label{itm:5.14.1a.c} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
-            \item \label{itm:5.14.1a.d} $|B| < \epsilon m_*$.
+            \item \label{itm:5.14.1a.d} $|B| < m_*$.
         \end{enumerate}
         \begin{proof}
             Use Claim~\ref{existance_of_excellent_partition} to obtain a partition
@@ -624,15 +625,15 @@
             \item $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
             \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that:
             \begin{enumerate}[label=(\alph*), ref=2.\alph*]
-                \item \label{itm:5.15.a} $m_\ell \leq \frac{\epsilon}{12} m_{\ell + 1}$.
-                \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} \geq \frac{\epsilon}{3}$.
+                \item \label{itm:5.15.a} $m_\ell \geq \frac{\epsilon}{12} m_{\ell + 1}$.
+                \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} > \frac{3}{\epsilon}$.
                 \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
                 \item \label{itm:5.15.d} $m_{k_{**}-1} > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
                     of Claim~\ref{existance_of_equitable_excellent_subpartition}).
             \end{enumerate}
-            \item $A \subseteq G$ such that $|A| = n$, where $n$ satisfies:
+            \item $A \subseteq G$ such that $|A| = n$, where $n$ is large enough to satisfy:
             \begin{enumerate}[label=(\alph*'), ref=3.\alph*]
-                \item \label{itm:5.15.a'} $n \geq m_0$.
+                \item \label{itm:5.15.a'} $n \geq m_0$. \todo{This is implied by next condition.}
                 \item \label{itm:5.15.b'} $m_* \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
             \end{enumerate}
         \end{enumerate}
@@ -646,7 +647,7 @@
         \begin{proof}
             Simply apply Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder} in the context of
             Remark~\ref{epsilons_proportion_can_be_k} with $k > 3$, ${\epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \epsilon$
-            and ${\epsilon_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \frac{1}{12} \epsilon$.
+            and ${\epsilon_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} < \frac{1}{12} \epsilon$.
             This results in a partition of $A$ into disjoint pieces that satisfy (\ref{itm:5.15.i}) and that are
             $\parround{{\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}},
                 \epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}}$-excellent,
@@ -705,7 +706,7 @@
             $$
                 m \leq \frac{n}{m_{**}} \leq \frac{2 \parround{3 + \epsilon} q^{k_{**}-1}}{\epsilon} \leq
                     \parround{3 + \epsilon} \parround{\frac{2}{\epsilon}} \parround{\frac{12}{\epsilon}}^{k_{**}-1} <
-                    \parround{3 + \epsilon} \parround{\frac{12}{\epsilon}}^{k_{**}-1}
+                    \parround{3 + \epsilon} \parround{\frac{12}{\epsilon}}^{k_{**}}
             $$
             Notice that the bound on $m$ only depends on $\epsilon$ and $k_{**}$.
 
