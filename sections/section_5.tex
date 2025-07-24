@@ -239,11 +239,10 @@
         Then:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item \label{itm:5.13.1} For every $\epsilon \in \left(0, \frac{1}{2}\right)$,
-                $\zeta \in \left(0, \frac{1}{2} - \epsilon \right)$ and $\xi \in \left(0, 1 \right)$ there is
-                $N_1 = N_1\left(\epsilon, \zeta, \xi \right)$ such that for all $n > N_1$, if $A \subseteq G$ is an
-                $\epsilon$-good subset of size $n$, and $n \geq m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
-                then if we choose a random subset $A' \subseteq A$ of size $m$, it is $(\epsilon + \zeta)$-good
-                with probability $1-\xi$.
+                $\zeta \in \left(0, \frac{1}{2} - \epsilon \right)$, $\xi \in \left(0, 1 \right)$ and
+                $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
+                if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
+                then a random subset $A' \subseteq A$ of size $m$ is $(\epsilon + \zeta)$-good with probability $1-\xi$.
             \item \label{itm:5.13.1*} Moreover, such $A'$ satisfies $t(b, A') = t(b, A)$ for all $b \in G$.
             \item \label{itm:5.13.2} For every $\zeta \in \left(0, \frac{1}{2}\right)$ and $\zeta' < \zeta$, there is
                 $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
@@ -254,7 +253,7 @@
                 then, $A'$ is $\left( \epsilon + \zeta, \epsilon' \right)$-excellent.
             \item \label{itm:5.13.3} For all $\zeta \in \left(0, \frac{1}{2}\right)$, $\zeta' < \zeta$, $r \geq 1$ and for all
                 $\epsilon < \epsilon'$ small enough (in the sense of the previous point) there exists
-                $N_2 = N_2\left(\epsilon, \zeta', r \right)$ such that, if $|A| = n > N_2$, $r$ divides $n$ and $A$ is
+                $N = N\left(k_{*}, \zeta', r \right)$ such that, if $|A| = n > N$, $r$ divides $n$ and $A$ is
                 $\left( \epsilon, \epsilon' \right)$-excellent, there exists a partition into $r$ disjoint pieces of equal
                 size, each of which is $\left( \epsilon + \zeta, \epsilon' \right)$-excellent.
         \end{enumerate}
@@ -407,15 +406,19 @@
                 So, there exists an $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ small enough such that for all
                 $(\epsilon <)$ $\epsilon' \leq \epsilon_1$, we have that $\parstraight{Q} < \parround{\epsilon + \zeta} |A'|$,
                 and since $A'$ is $(\epsilon + \zeta')$-good, and thus $(\epsilon + \zeta)$-good, we conclude that
-                $A'$ is $(\epsilon + \zeta, \epsilon')$-excellent.
+                $A'$ is $(\epsilon + \zeta, \epsilon')$-excellent. \todo{Mention that in the next claim we show valid values for this.}
             \item Let $\zeta, \zeta', \epsilon, \epsilon'$ and $r$ be given satisfying the conditions of the statement.
                 Set $\xi = \frac{1}{r + 1}$.
-                We will see that the condition $n > N_2 \coloneq N_1\parround{\epsilon, \zeta', \frac{1}{r + 1}}$ is sufficient.
+                We will see that the condition
+                $n > N = N\left(k_{*}, \zeta', r \right) \coloneq r \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\frac{1}{r + 1}}}$
+                is sufficient.
                 First of all, randomly choose a function $h: A \longrightarrow \left\{ 1, \dots, r-1 \right\}$ such that
                 for all $s < n$ we have that $\parstraight{\parcurly{a \in A \mid h(a) = s}} = \frac{n}{r}$.
                 Since $h$ is random, each $A' \in [A]^\frac{n}{r}$ has the same probability of being part of the partition
                 induced by $h$, i.e. to satisfy $A' = h^{-1}(s)$ for some $s \in \left\{ 1, \dots, r-1 \right\}$.
-                For each element of the partition $A'$, we can apply (\ref{itm:5.13.1}) to get that
+                Since each element of the partition $A'$ has size
+                $\frac{n}{r} > \frac{N}{r} = \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\xi}}$,
+                we can apply (\ref{itm:5.13.1}) to get that
                 $$
                     P\parround{A' \text{ is not } \parround{\epsilon + \zeta'}\text{-good}} < \xi
                 $$
@@ -623,13 +626,14 @@
         Suppose that we are given:
         \begin{enumerate}
             \item $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
-            \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that:
-            \begin{enumerate}[label=(\alph*), ref=2.\alph*]
-                \item \label{itm:5.15.a} $m_\ell \geq \frac{\epsilon}{12} m_{\ell + 1}$.
-                \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} > \frac{3}{\epsilon}$.
-                \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
-                \item \label{itm:5.15.d} $m_{k_{**}-1} > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
-                    of Claim~\ref{existance_of_equitable_excellent_subpartition}).
+            \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
+                and $m_{**}$, such that:
+                \begin{enumerate}[label=(\alph*), ref=2.\alph*]
+                    \item \label{itm:5.15.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
+                    \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} > \frac{3}{\epsilon}$.
+                    \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
+                    \item \label{itm:5.15.d} $m_{k_{**}-1} > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
+                        of Claim~\ref{existance_of_equitable_excellent_subpartition}).
             \end{enumerate}
             \item $A \subseteq G$ such that $|A| = n$, where $n$ is large enough to satisfy:
             \begin{enumerate}[label=(\alph*'), ref=3.\alph*]
@@ -693,7 +697,7 @@
                 \item (\ref{itm:5.15.a}) $m_{\ell-1} = q m_\ell \leq \frac{\epsilon}{12} m_\ell$.
                 \item (\ref{itm:5.15.b}) $m_{**} \geq \frac{3}{\epsilon}$.
                 \item (\ref{itm:5.15.c}) $m_\ell = q^{k_{**}-\ell} m_{**}$ so that $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
-                \item (\ref{itm:5.15.d}) $m_{k_{**}-1} = q m_{**} < q \frac{N_3\parround{\frac{\epsilon}{12}, \epsilon, q^{k_{**}-1}}}{q}
+                \item (\ref{itm:5.15.d}) $m_{k_{**}-1} = q m_{**} > q \frac{N_3\parround{\frac{\epsilon}{12}, \epsilon, q^{k_{**}-1}}}{q}
                     = N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$.
                 \item (\ref{itm:5.15.b'}) $m_* \leq \frac{\epsilon n}{3 + \epsilon} \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
             \end{itemize}
