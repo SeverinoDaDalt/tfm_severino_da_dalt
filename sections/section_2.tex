@@ -207,12 +207,70 @@
         \end{proof}
 
     \todo{Short introduction to the idea of the tree bound and how it is connected with order property.}
+
+    \definition\label{k-tree}
+        A \emph{$k$-tree} is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
+        \begin{itemize}
+            \item $\overline{c} = \parcurly{ c_\eta \mid \eta \in \left[ 2 \right]^{<k_{**}} }$, the set of \emph{nodes}.
+            \item $\overline{b} = \parcurly{ b_\rho \mid \rho \in \left[ 2 \right]^{k_{**}} }$, the set of \emph{branches}.
+        \end{itemize}
+        satisfying that, for all $\eta \in \left[ 2 \right]^{<k_{**}}$ and $\rho \in \left[ 2 \right]^{k_{**}}$,
+        if $\eta \frown \left< \ell \right> \triangleleft \rho$, then $\left( a_\rho R b_\eta \right) \equiv \left( \ell = 1 \right)$.
+    \todo{Make a visual example of the k-tree.}
+
     \definition[Definition 2.11]\label{tree_bound}
-        Suppose $G$ is a finite graph with the non-$k_*$-property.
-        We denote the \emph{tree bound} $k_{**} = k_{**}(G) < \omega$ as the minimal value such that there
-        do not exist sequences $\overline{a} = \left< a_\eta \mid \eta \in \left[ 2 \right]^{k_{**}} \right>$ and
-        $\overline{b} = \left< b_\rho \mid \rho \in \left[ 2 \right]^{<k_{**}} \right>$ of elements of $G$ satisfying that
-        if $\rho \frown \left< \ell \right> \triangleleft \eta$, then $\left( a_\eta R b_\rho \right) \equiv \left( \ell = 1 \right)$.
-    \todo{Make a visual example of the tree bound.}
-    \todo{Relate tree bound with order property as in Notes for Stable Graphs.}
-    \todo{Change this definition so that k** only depends on k*, not the graph G}
+        Suppose $G$ is a finite graph.
+        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal value such that there
+        do not exist two sets $\overline{b}$ and $\overline{c}$ of vertices of $G$ such that
+        $H = (\overline{c},\overline{b})$ is a $k_{**}$-tree.
+
+    \theorem\label{tree_implies_order}
+        If a graph $G$ has tree bound at least $2^{k_*+1}-2$, then it has the $k_*$-order property.
+        \begin{proof}
+            During the proof, we will say that a set of nodes $N$ of a $k$-tree $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if
+            there exists a map $f \colon [2]^{<k'} \longrightarrow [2]^{<k}$ such that for all $\eta, \eta' \in [2]^{<k'}$,
+            $c_{f(\eta)}$ and $c_{f(\eta')}$ are in $N$, and if $\eta \frown \partriangle{i} = \eta'$ then
+            $f(\eta) \frown \partriangle{i} \triangleleft f(\eta')$, for all $i \in [2]$.
+
+            Notice that this clearly implies that there is a $k'$-tree $H'$ with nodes in $N$ and branches in $\overline{b}$.
+            Simply, for each $\eta \in [2]^{k'-1}$, pick exactly two branches $b_{\rho_0}$ and $b_{\rho_1}$ such that
+            $f(\eta)\frown\partriangle{i} \triangleleft \rho_i$ for $i \in \parcurly{0,1}$.
+
+            In order to prove the theorem, we will show this important claim, which ensures that we can always find a tree
+            in one of the parts of a bipartition of the nodes of a larger tree.
+
+            \begin{claim}
+                For all $n, k \geq 0$, if $H$ is a $(n + k)$-tree and the nodes are partitioned into two sets $N$ and $P$,
+                then either $N$ contains an $n$-tree or $P$ contains a $k$-tree.
+                \begin{proof} \it{(of claim)}
+                    We prove this by induction on $n + k$.
+                    Clearly, the statement is true for the trivial case $n = k = 0$.
+                    Suppose $n + k > 0$.
+                    Without loss of generality, we may assume that the root $c_\emptyset$ is in $N$.
+                    Let $Z_i = \parcurly{\eta \in [2]^{<k'} \mid \partriangle{i} \triangleleft \eta}$.
+                    By H.I., for all $i \in \parcurly{0,1}$, either $N \cap Z_i$ contains an $(n-1)$-tree or
+                    $P \cap Z_i$ contains a $k$-tree.
+                    If either $P \cap Z_0$ or $P \cap Z_1$ contains a $k$-tree, then $P$ contains a $k$-tree, and we are done.
+                    Otherwise, both $N \cap Z_0$ and $N \cap Z_1$ contain an $(n-1)$-tree.
+                    Since $c_\emptyset$ is in $N$, the root with the two $k-1$-tree are in $N$ and make an $n$-tree.
+                    Thus, $N$ contains an $n$-tree.
+                \end{proof}
+            \end{claim}
+
+            Suppose that $G$ has tree bound at least $2^{k_*+1}-2$, and thus contains a $2^{k_*+1}-2$-tree.
+            We show by induction on $n-r$, $1 \leq r \leq n$, that the following scenario $S_r$ holds:
+            \begin{enumerate}
+                \item\label{itm:tree_implies_order.1} There are
+                    \[
+                        b_0, c_0, \dots, b_{q-1}, c_{q-1}, H, b_q, c_q, \dots, b_{n-r-1}, c_{n-r-1}
+                    \]
+                    such that:
+                \item\label{itm:tree_implies_order.2} $H$ is a $2^{r+1}-2$-tree.
+                \item\label{itm:tree_implies_order.3} for all $i,j \in \parcurly{0, \dots, n-r-1}$, $b_i R c_j \Leftrightarrow i \geq j$.
+                \item\label{itm:tree_implies_order.4} if $c$ is a node of $H$, $b_i R c \Leftrightarrow i \geq q$.
+                \item\label{itm:tree_implies_order.5} if $b$ is a branch of $H$, $b R c_i \Leftrightarrow i < q$.
+            \end{enumerate}
+
+            TO BE CONTINUED...
+            \emph{JoJo's Bizarre Adventure theme plays in the background.}
+        \end{proof}
