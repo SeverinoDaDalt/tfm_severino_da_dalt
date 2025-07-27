@@ -215,62 +215,87 @@
             \item $\overline{b} = \parcurly{ b_\rho \mid \rho \in \left[ 2 \right]^{k_{**}} }$, the set of \emph{branches}.
         \end{itemize}
         satisfying that, for all $\eta \in \left[ 2 \right]^{<k_{**}}$ and $\rho \in \left[ 2 \right]^{k_{**}}$,
-        if $\eta \frown \left< \ell \right> \triangleleft \rho$, then $\left( a_\rho R b_\eta \right) \equiv \left( \ell = 1 \right)$.
+        if $\eta \frown \left< \ell \right> \triangleleft \rho$, then $\left( b_\rho R c_\eta \right) \equiv \left( \ell = 1 \right)$.
     \todo{Make a visual example of the k-tree.}
 
     \definition[Definition 2.11]\label{tree_bound}
         Suppose $G$ is a finite graph.
-        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal value such that there
-        do not exist two sets $\overline{b}$ and $\overline{c}$ of vertices of $G$ such that
-        $H = (\overline{c},\overline{b})$ is a $k_{**}$-tree.
+        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal value such that there is no $k_{**}$-tree
+        $H = (\overline{c},\overline{b})$, where $\overline{b}$ and $\overline{c}$ are two sets of vertices of $G$.
 
     \theorem\label{tree_implies_order}
-        If a graph $G$ has tree bound at least $2^{k_*+1}-2$, then it has the $k_*$-order property.
+        If a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-2$, then it has the $k_*$-order property.
         \begin{proof}
             During the proof, we will say that a set of nodes $N$ of a $k$-tree $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if
             there exists a map $f \colon [2]^{<k'} \longrightarrow [2]^{<k}$ such that for all $\eta, \eta' \in [2]^{<k'}$,
             $c_{f(\eta)}$ and $c_{f(\eta')}$ are in $N$, and if $\eta \frown \partriangle{i} = \eta'$ then
-            $f(\eta) \frown \partriangle{i} \triangleleft f(\eta')$, for all $i \in [2]$.
+            $f(\eta) \frown \partriangle{i} \triangleleft f(\eta')$, for all $i \in \parcurly{0, 1}$.
 
-            Notice that this clearly implies that there is a $k'$-tree $H'$ with nodes in $N$ and branches in $\overline{b}$.
+            This clearly implies that there is a $k'$-tree $H'$ with nodes in $N$ and branches in $\overline{b}$.
             Simply, for each $\eta \in [2]^{k'-1}$, pick exactly two branches $b_{\rho_0}$ and $b_{\rho_1}$ such that
             $f(\eta)\frown\partriangle{i} \triangleleft \rho_i$ for $i \in \parcurly{0,1}$.
 
-            In order to prove the theorem, we will show this important claim, which ensures that we can always find a tree
+            Next, we prove the following claim, which shows that we can always find a tree
             in one of the parts of a bipartition of the nodes of a larger tree.
 
             \begin{claim}
-                For all $n, k \geq 0$, if $H$ is a $(n + k)$-tree and the nodes are partitioned into two sets $N$ and $P$,
+                For all $n, k \geq 0$, if $H$ is a $(n + k)$-tree and the nodes of $H$ are partitioned into two sets $N$ and $P$,
                 then either $N$ contains an $n$-tree or $P$ contains a $k$-tree.
                 \begin{proof} \it{(of claim)}
                     We prove this by induction on $n + k$.
                     Clearly, the statement is true for the trivial case $n = k = 0$.
                     Suppose $n + k > 0$.
-                    Without loss of generality, we may assume that the root $c_\emptyset$ is in $N$.
-                    Let $Z_i = \parcurly{\eta \in [2]^{<k'} \mid \partriangle{i} \triangleleft \eta}$.
-                    By H.I., for all $i \in \parcurly{0,1}$, either $N \cap Z_i$ contains an $(n-1)$-tree or
+                    Without loss of generality, we may assume that the root node $c_\emptyset$ is in $N$.
+                    Let $Z_i = \parcurly{c_\eta \mid \eta \in [2]^{<k'}, \partriangle{i} \triangleleft \eta}$.
+                    By H.I., for each $i \in \parcurly{0,1}$, either $N \cap Z_i$ contains an $(n-1)$-tree or
                     $P \cap Z_i$ contains a $k$-tree.
                     If either $P \cap Z_0$ or $P \cap Z_1$ contains a $k$-tree, then $P$ contains a $k$-tree, and we are done.
                     Otherwise, both $N \cap Z_0$ and $N \cap Z_1$ contain an $(n-1)$-tree.
-                    Since $c_\emptyset$ is in $N$, the root with the two $k-1$-tree are in $N$ and make an $n$-tree.
+                    Since $c_\emptyset$ is in $N$, the root with the two $(k-1)$-tree are in $N$ and make an $n$-tree.
                     Thus, $N$ contains an $n$-tree.
                 \end{proof}
             \end{claim}
 
-            Suppose that $G$ has tree bound at least $2^{k_*+1}-2$, and thus contains a $2^{k_*+1}-2$-tree.
-            We show by induction on $n-r$, $1 \leq r \leq n$, that the following scenario $S_r$ holds:
+            Suppose that $G$ has tree bound at least $2^{k_*+1}-2$, and thus contains a $(2^{k_*+1}-2)$-tree.
+            We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds:
             \begin{enumerate}
                 \item\label{itm:tree_implies_order.1} There are
                     \[
-                        b_0, c_0, \dots, b_{q-1}, c_{q-1}, H, b_q, c_q, \dots, b_{n-r-1}, c_{n-r-1}
+                        b_0, c_0, \dots, b_{q-1}, c_{q-1}, H, b_q, c_q, \dots, b_{k_*-r-1}, c_{k_*-r-1}
                     \]
                     such that:
-                \item\label{itm:tree_implies_order.2} $H$ is a $2^{r+1}-2$-tree.
-                \item\label{itm:tree_implies_order.3} for all $i,j \in \parcurly{0, \dots, n-r-1}$, $b_i R c_j \Leftrightarrow i \geq j$.
+                \item\label{itm:tree_implies_order.2} for all $i \in \parcurly{0, \dots, k_*-r-1}$, $b_i$ and $c_i$ are vertices in $G$,
+                    and $H$ is a $(2^{r+1}-2)$-tree in $G$.
+                \item\label{itm:tree_implies_order.3} for all $i,j \in \parcurly{0, \dots, k_*-r-1}$, $b_i R c_j \Leftrightarrow i \geq j$.
                 \item\label{itm:tree_implies_order.4} if $c$ is a node of $H$, $b_i R c \Leftrightarrow i \geq q$.
                 \item\label{itm:tree_implies_order.5} if $b$ is a branch of $H$, $b R c_i \Leftrightarrow i < q$.
             \end{enumerate}
 
-            TO BE CONTINUED...
-            \emph{JoJo's Bizarre Adventure theme plays in the background.}
+            The initial case $S_{k_*}$ only requires the existence of a $(2^{k_*+1}-2)$-tree in $G$, which is the premise.
+            If the final case $S_1$ is true, then we are done:
+            this case assumes that $H$ is a $2$-tree, in which case there is a node $c_*$ and branch $b_*$ in $H$ which
+            are connected.
+            These vertices satisfy conditions (\ref{itm:tree_implies_order.4}) and (\ref{itm:tree_implies_order.5}), so
+            the sequence resulting by replacing $H$ in (\ref{itm:tree_implies_order.1}) by $b_*$, $c_*$ is a $k_*$-order.
+
+            To conclude the proof it remains to prove that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
+            Assume $S_r$.
+            Fixing $h = 2^r - 2$, by (\ref{itm:tree_implies_order.2}) we have that $H$ is a $(2h +2)$-tree.
+            For each branch $b$ of $H$ we denote $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
+
+            We have two cases:
+            \begin{itemize}
+                \item \emph{Case 1.} There is a branch $b_*$ such that $Z(b_*)$ contains an $(h+1)$-tree.
+                    In that case, we can take $c_*$ to be the top node of the $(h+1)$-tree, and $H'$ to be its
+                    "disconnected"-side $h$-subtree. \todo{"Disconnected side" can be formalized}
+                    Replacing $H$ in (\ref{itm:tree_implies_order.1}) with $H'$, $b_*$, $c_*$ in this order, the
+                    conditions for $S_{r-1}$ are satisfied.
+                \item \emph{Case 1.} There is no branch $b$ such that $Z(b)$ contains an $(h+1)$-tree.
+                    Now, let $c_*$ be the top node of $H$, $Z_1$ the set of nodes in the "connected"-side of $H$, and
+                    $b_*$ any branch of the "connected"-side of $H$. \todo{"Connected side" can be formalized}
+                    By the assumption of this case, $Z(b) \cap Z_1$ contains no $h+1$-tree, so by the claim,
+                    $Z_1 \setminus Z(b)$ contains an $h$-tree.
+                    Finally, replacing $H$ in (\ref{itm:tree_implies_order.1}) by $b_*$, $c_*$, $H'$ in this order, the
+                    conditions for $S_{r-1}$ are satisfied.
+            \end{itemize}
         \end{proof}
