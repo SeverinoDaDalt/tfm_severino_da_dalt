@@ -29,7 +29,7 @@
 
     \lemma[Claim 5.4]\label{existance_of_excellent_subsets}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \left\{ 0, \frac{1}{2} \right\}$.
+        Let $\zeta \leq \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists an $(\epsilon, \zeta)$-excellent
         subset $A' \subseteq A$ such that $|A'| \geq \epsilon^{k_{**}-1} |A|$.
         \begin{proof}
@@ -75,7 +75,7 @@
             By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in [2]^{<k_{**}}$,
             \[
                 \left|\bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}\right| <
-                2^{k_{**}} \zeta |B_\nu| < |B_\nu|
+                2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|
             \]
             We may choose $b_\nu \in B_\nu \setminus \bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}$,
             for all $\nu \in [2]^{<k_{**}}$.
@@ -87,7 +87,7 @@
 
     \lemma[Claim 5.4.1]\label{existance_of_excellent_subsets_fixed_size_choices}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \left\{ 0, \frac{1}{2} \right\}$.
+        Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Let $\left< m\ell \mid \ell \in \parcurly{0, \dots, k_{**}} \right>$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         % Notice that we needed to add m_{k_{**}} to the sequence, since it is needed in (c)' in the paper
@@ -135,10 +135,10 @@
             $$
             be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
             By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in [2]^{<k_{**}}$,
-            $$
+            \[
                 \left|\bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}\right| <
-                2^{k_{**}} \zeta |B_\nu| < |B_\nu|
-            $$
+                2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|
+            \]
             We may choose $b_\nu \in B_\nu \setminus \bigcup\left\{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in [2]^{k_{**}} \right\}$,
             for all $\nu \in [2]^{<k_{**}}$.
             Finally, the sequences $\left< a_\eta \mid \eta \in [2]^{k_{**}} \right>$ and
@@ -440,22 +440,23 @@
     \begin{remark}[Remark 5.13.1]\label{remark_5.13.1}
         For following applications, we would like to use Lemma~\ref{claim_5.13} (\ref{itm:5.13.3}) with
         $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
-        Notice that if $\epsilon, \zeta' < \frac{1}{t}, \epsilon' < \frac{1}{t'}$ and $t > t' \geq 5$, then:
+        Notice that if $\epsilon, \zeta' \leq \frac{1}{t}, \epsilon' \leq \frac{1}{t'}$ and $t > t' \geq 5$, then:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item $\frac{\epsilon}{1-\epsilon} < \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
+            \item $\frac{\epsilon}{1-\epsilon} \leq \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
                 = \frac{1}{t-1}$
-            \item $1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon} > 1 - \frac{2}{t'} - \frac{1}{t-1} > 1 - \frac{3}{t'-1}
+            \item $1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon} \geq 1 - \frac{2}{t'} - \frac{1}{t-1} > 1 - \frac{3}{t'-1}
                 = \frac{t'-4}{t'-1}$
-            \item\label{itm:5.13.1.c} $\parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}} <
-                \parround{1 + \frac{t'-1}{t'-4} \epsilon'} \parround{\epsilon + \zeta'}$
+            \item\label{itm:5.13.1.c} $\parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}}
+                < 1 + \frac{\epsilon'}{1 - \frac{3}{t'-1}}
+                = \parround{1 + \frac{t'-1}{t'-4} \epsilon'} \parround{\epsilon + \zeta'}$
         \end{enumerate}
-        Then, by requiring $\frac{1}{t} < \frac{1}{4k}\epsilon'$ we have that
+        Then, by requiring $\frac{1}{t} \leq \frac{1}{4k}\epsilon'$ we have that
         \begin{align*}
             \epsilon + \zeta'
-                & < \frac{2}{t} < 2 \parround{\frac{1}{4k}\epsilon'} < \frac{1}{2} \parround{\frac{1}{k}\epsilon'} \\
+                & \leq \frac{2}{t} \leq 2 \parround{\frac{1}{4k}\epsilon'} = \frac{1}{2} \parround{\frac{1}{k}\epsilon'} \\
                 & < \frac{t'-4}{t'- 3} \frac{1}{k} \epsilon' = \frac{1}{k} \frac{\epsilon'}{1 + \frac{1}{t'-4}} \\
                 & < \frac{1}{k} \frac{\epsilon'}{1 + \frac{t'-1}{t'}\frac{1}{t'-4}} = \frac{1}{k} \frac{\epsilon'}{1 + \frac{t'-1}{t'-4}\frac{1}{t'}} \\
-                & < \frac{1}{k} \frac{\epsilon'}{1 + \frac{t'-1}{t'-4}\epsilon'}
+                & \leq \frac{1}{k} \frac{\epsilon'}{1 + \frac{t'-1}{t'-4}\epsilon'}
         \end{align*}
         i.e., we have:
         $$
@@ -465,28 +466,36 @@
         $$
             \parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}} < \frac{1}{k} \epsilon'
         $$
-        All in all, a sufficient condition, for the lemma to hold under the constraint $\epsilon' > k \parround{\epsilon + \zeta}$, is:
+        All in all, a sufficient condition, for the lemma to hold under the constraint $\epsilon' \geq k \parround{\epsilon + \zeta}$, is:
         $$
-            \epsilon, \zeta' < \frac{1}{4k} \epsilon' \quad \text{ and } \quad \epsilon' < \frac{1}{5}
+            \epsilon, \zeta' \leq \frac{1}{4k} \epsilon' \quad \text{ and } \quad \epsilon' \leq \frac{1}{5}
         $$
     \end{remark}
 
     We use this fact to reformulate point (\ref{itm:5.13.3}) of Lemma~\ref{claim_5.13} as:
 
     \lemma[Claim 5.13.2(3)]\label{existance_of_equitable_excellent_subpartition}
-        For all $k, r \geq 1$, $\epsilon' < \frac{1}{5}$ and $\epsilon < \frac{1}{4k} \epsilon'$, there exists
-        $N_3 = N_3\parround{\epsilon, \epsilon', r}$ large enough such that, for all $n > N_3$ and $r$ dividing $n$,
+        Let $G$ be a finite graph with the non-$k_*$-property.
+        For all $k, r \geq 1$, $\epsilon' \leq \frac{1}{5}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$, there exists
+        $N = N\parround{k, k_*, \epsilon', r}$ large enough such that, for all $n > N$ and $r$ dividing $n$,
         if $A \subseteq G$ is $\left( \epsilon, \epsilon' \right)$-excellent, with $|A| = n$, then there exists a
         partition into $r$ disjoint pieces of equal size, each of which is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
         \begin{proof}
-            Choose any $\zeta' < \frac{1}{4k} \epsilon'$ and set $N_3 \coloneq N_2\parround{\epsilon, \zeta', r}$.
+            Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set $N \coloneq N_{\ref{claim_5.13}}\parround{k_*, \zeta', r}$.
             Remark~\ref{remark_5.13.1} sufficiency condition is satisfied, Claim~\ref{claim_5.13} (\ref{itm:5.13.3}) holds
             and we are done.
         \end{proof}
 
+    \begin{remark}
+        A sufficient condition for $N_{\ref{existance_of_equitable_excellent_subpartition}}$ to be large enough is
+        to choose $\zeta' = \frac{1}{4k} \epsilon'$ in which case
+        $N_{\ref{existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneq
+        N_{\ref{claim_5.13}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
+    \end{remark}
+
     \lemma[Claim 5.14.1]\label{existance_of_excellent_partition}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' < \frac{1}{2^{k_{**}}}$.
+        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
         Let $A \subseteq G$ such that $|A| = n$.
         Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
@@ -511,12 +520,12 @@
 
     \lemma[Claim 5.14.1a]\label{existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon' < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon < \frac{1}{4k} \epsilon'$ for some $k > 1$.
+        Let $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
         Let $A \subseteq G$ such that $|A| = n$.
         Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
         $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
-        $m_{k_{**}-1} > N_3\parround{\epsilon, \epsilon', \frac{m_*}{m_{**}}}$
+        $m_{k_{**}-1} > N\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$
         (in the sense of Claim~\ref{existance_of_equitable_excellent_subpartition}), and $n \geq m_0$.
         Let $m_* \coloneq m_0$.
         Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
@@ -575,10 +584,10 @@
     \begin{remark}[Remark 5.14.3]\label{epsilons_proportion_can_be_k}
         In the context of Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:5.14.3.a} $m_{**} > \frac{1}{\frac{\epsilon'}{k}}$
+            \item \label{itm:5.14.3.a} $m_{**} \geq \frac{1}{\frac{\epsilon'}{k}}$
             \item \label{itm:5.14.3.b} $m_* \leq \frac{\frac{\epsilon'}{k} n + 1}{\frac{\epsilon'}{k} + 1}$
         \end{enumerate}
-        then $\epsilon'' < \frac{3 \epsilon'}{k}$.
+        then $\epsilon'' \leq \frac{3 \epsilon'}{k}$.
         \begin{proof}
             Notice that, if $\parstraight{B_i} \leq 2 \frac{\epsilon'}{k} \parstraight{A_i}$ for all $i \in \parcurly{1, \dots, i(*)}$,
             then $\epsilon''$ can be bounded by:
@@ -600,14 +609,14 @@
             $$
             % TODO: lower bound needed?
             Thus, $\parstraight{B_i} - 1 \leq \frac{m_* - 1}{i(*)} \leq \frac{\parround{m_* - 1} m_{**}}{n - m_*}$,
-            then $\frac{\parstraight{B_i} - 1}{m_{**}} < \frac{m_* - 1}{n - m_*}$, and since $\parstraight{A_i} = m_{**}$
+            then $\frac{\parstraight{B_i} - 1}{m_{**}} \leq \frac{m_* - 1}{n - m_*}$, and since $\parstraight{A_i} = m_{**}$
             we get:
             $$
-                \frac{\parstraight{B_i}}{\parstraight{A_i}} < \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}}
+                \frac{\parstraight{B_i}}{\parstraight{A_i}} \leq \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}}
             $$
             Finally, notice that condition (\ref{itm:5.14.3.a}) implies:
             $$
-                \frac{\epsilon'}{k} > \frac{1}{m_{**}}
+                \frac{\epsilon'}{k} \geq \frac{1}{m_{**}}
             $$
             and condition (\ref{itm:5.14.3.b}) implies:
             $$
@@ -615,7 +624,7 @@
             $$
             We conclude:
             $$
-                \frac{\parstraight{B_i}}{\parstraight{A_i}} < \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}} < 2 \frac{\epsilon'}{k}
+                \frac{\parstraight{B_i}}{\parstraight{A_i}} \leq \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}} \leq 2 \frac{\epsilon'}{k}
             $$
             completing the proof.
         \end{proof}
@@ -625,14 +634,14 @@
         Let $G$ be a graph with the non-$k_{*}$-order property.
         Suppose that we are given:
         \begin{enumerate}
-            \item $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
+            \item $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
             \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
                 and $m_{**}$, such that:
                 \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                     \item \label{itm:5.15.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
                     \item \label{itm:5.15.b} $m_{**} \coloneq m_{k_{**}} > \frac{3}{\epsilon}$.
                     \item \label{itm:5.15.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
-                    \item \label{itm:5.15.d} $m_{k_{**}-1} > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
+                    \item \label{itm:5.15.d} $m_{k_{**}-1} > N\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
                         of Claim~\ref{existance_of_equitable_excellent_subpartition}).
             \end{enumerate}
             \item $A \subseteq G$ such that $|A| = n$, where $n$ is large enough to satisfy:
@@ -650,14 +659,14 @@
         \end{enumerate}
         \begin{proof}
             Simply apply Lemma~\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder} in the context of
-            Remark~\ref{epsilons_proportion_can_be_k} with $k > 3$, ${\epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \epsilon$
-            and ${\epsilon_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} < \frac{1}{12} \epsilon$.
+            Remark~\ref{epsilons_proportion_can_be_k} with $k = 3$, ${\epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \epsilon$
+            and ${\epsilon_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq \frac{1}{12} \epsilon$.
             This results in a partition of $A$ into disjoint pieces that satisfy (\ref{itm:5.15.i}) and that are
             $\parround{{\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}},
                 \epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}}$-excellent,
-            with ${\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} <
+            with ${\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq
                 \frac{3 \epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}}{k}$.
-            But since $k > 3$, ${\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} <
+            But since $k \geq 3$, ${\epsilon''_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq
                 \epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}$, they are also
             $\epsilon'_{\ref{existance_of_excellent_partition_with_equal_size_and_no_remainder}}$-excellent, satisfying
             (\ref{itm:5.15.ii}) and (\ref{itm:5.15.iii}).
@@ -665,69 +674,93 @@
 
     \theorem[Theorem 5.18]\label{minimal_conditions_for_excellent_partitions}
         Let $k_*$ and therefore $k_{**}$ be given.
-        Then, for all $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, there is $m = m\parround{\epsilon, k_*}$
-        and $N = N\parround{\epsilon, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
+        Then, for all $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
+        and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
         every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
-        of $A$ into at most $m$ pieces, such that:
+        of $A$, such that:
         \begin{enumerate}
+            \item \label{itm:5.18.0} The number of parts is bounded by
+                $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$. \todo{Move the bound on $M$ to another point?}
             \item \label{itm:5.18.1} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
             \item \label{itm:5.18.2} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
-            \item \label{itm:5.18.3} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
-            \item \label{itm:5.18.4} $m \leq \parround{3 + \epsilon} \parround{\frac{12}{\epsilon}}^{k_{**}}$.
+            \item \label{itm:5.18.3} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.  \todo{Redundant?}
         \end{enumerate}
         \begin{proof}
-            Suppose $N = N\parround{\epsilon, k_*}$ is large enough.
-            We will state at the end of the proof the required size of $N$.
             Our goal is to apply Lemma~\ref{resume_of_all_conditions_for_excellent_partitions}.
             Let $q = \ceil{\frac{12}{\epsilon}}$.
-            For $n$ large enough (\ref{itm:5.18.H1}), we can choose $m_{**}$ satisfying:
+            For $N\parround{\epsilon, m, k_*}$, and thus $n$, large enough, we can then choose the smallest $m_{**}$ satisfying:
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item \label{itm:5.18.a} $m_{**} \in \parround{\frac{\epsilon n}{\parround{3 + \epsilon} q^{k_{**}-1}} - 1,
-                    \frac{\epsilon n}{\parround{3 + \epsilon} q^{k_{**}-1}}}$.
-                \item \label{itm:5.18.b} $m_{**} \geq \frac{3}{\epsilon}$.
-                \item \label{itm:5.18.c} $m_{**} > \frac{N_3\parround{\frac{\epsilon}{12}, \epsilon, q^{k_{**}-1}}}{q}$.
+                \item \label{itm:5.18.a} $m_{**} \in \parsquared{\delta n -1, \delta n}$, where
+                    $\delta = \min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$
+                \item \label{itm:5.18.b} $m_{**} > \frac{3}{\epsilon}$.
+                \item \label{itm:5.18.c} $m_{**} > \frac{N_{\ref{existance_of_equitable_excellent_subpartition}}
+                    \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
             \end{enumerate}
-            Then, setting $m_{k_{**}} = m_{**}$ we can build recursively a sequence of integers
-            $\partriangle{m_\ell \mid \ell \in [0, k_{**}]}$ such that $m_\ell = q m_{\ell + 1}$ for all
+            We set $m_{k_{**}} = m_{**}$ and we build recursively a sequence of integers
+            $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that $m_\ell = q m_{\ell + 1}$ for all
             $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-            Finally, let $m_* = q^{k_{**}-1} m_{**}$.
-            Notice that by (\ref{itm:5.18.a}) we have that $m_* = m_{**} q^{k_{**}-1} \leq \frac{\epsilon n}{3 + \epsilon}$.
+            Also, let $m_* \coloneqq m_0 = q^{k_{**}} m_{**}$.
+            By (\ref{itm:5.18.a}) we have that $m_* \leq \frac{\epsilon n}{3 + \epsilon}$.
             This sequence satisfies all the conditions of Lemma~\ref{resume_of_all_conditions_for_excellent_partitions}:
             \begin{itemize}[label={}]
-                \item (\ref{itm:5.15.a}) $m_{\ell-1} = q m_\ell \leq \frac{\epsilon}{12} m_\ell$.
+                \item (\ref{itm:5.15.a}) $m_{\ell+1} = \frac{1}{q} m_\ell \leq \frac{\epsilon}{12} m_\ell$.
                 \item (\ref{itm:5.15.b}) $m_{**} \geq \frac{3}{\epsilon}$.
-                \item (\ref{itm:5.15.c}) $m_\ell = q^{k_{**}-\ell} m_{**}$ so that $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
-                \item (\ref{itm:5.15.d}) $m_{k_{**}-1} = q m_{**} > q \frac{N_3\parround{\frac{\epsilon}{12}, \epsilon, q^{k_{**}-1}}}{q}
-                    = N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$.
-                \item (\ref{itm:5.15.b'}) $m_* \leq \frac{\epsilon n}{3 + \epsilon} \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
+                \item (\ref{itm:5.15.c}) $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$, since $q$ is an integer.
+                \item (\ref{itm:5.15.d}) $m_{k_{**}-1} = q m_{**} >
+                    q \frac{N_{\ref{existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, q^{k_{**}}}}{q} =
+                    N_{\ref{existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$.
+                \item (\ref{itm:5.15.b'}) $m_* < \frac{\epsilon n}{3 + \epsilon} < \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
+                \item (\ref{itm:5.15.a'}) $m_0 = m* < \frac{\epsilon n}{3 + \epsilon} < n$
             \end{itemize}
-            Finally, we need $N > m_0$ to satisfy (\ref{itm:5.15.a'}) (\ref{itm:5.18.H2}).
-            Now, we can apply Lemma~\ref{resume_of_all_conditions_for_excellent_partitions} to obtain a partition
+            We can apply Lemma~\ref{resume_of_all_conditions_for_excellent_partitions} to obtain a partition
             satisfying (\ref{itm:5.18.1}), (\ref{itm:5.18.2}) and (\ref{itm:5.18.3}).
-            We just need to check that (\ref{itm:5.18.4}) holds.
-            By (\ref{itm:5.18.a}), we have that $m_{**} \geq \frac{1}{2} \frac{\epsilon n}{\parround{3 + \epsilon}q^{k_{**}-1}}$.
-            Thus, we can bound the number of pieces by:
-            $$
-                m \leq \frac{n}{m_{**}} \leq \frac{2 \parround{3 + \epsilon} q^{k_{**}-1}}{\epsilon} \leq
-                    \parround{3 + \epsilon} \parround{\frac{2}{\epsilon}} \parround{\frac{12}{\epsilon}}^{k_{**}-1} <
-                    \parround{3 + \epsilon} \parround{\frac{12}{\epsilon}}^{k_{**}}
-            $$
-            Notice that the bound on $m$ only depends on $\epsilon$ and $k_{**}$.
 
-            % TODO: fix what follows. Wait until all bounds from previous sections are clear.
-            To conclude, let's put together all requirements on $N$:
-            \begin{enumerate}[label=(H\arabic*), ref=H\arabic*]
-                \item \label{itm:5.18.H1} $N$ needs to be large enough to satisfy
-                \item \label{itm:5.18.H2} $N > N_3\parround{\frac{\epsilon}{12}, \epsilon, \frac{m_*}{m_{**}}}$.
-            \end{enumerate}
+            We proceed to bound the number of parst $i(*)$.
+            First, the upper bound follows from the fact that
+            $m_{**} \geq \frac{1}{2} \min \parround{\frac{\epsilon} {3 + \epsilon}, \frac{1}{m + q^{k_{**}}}} n$:
+            \[
+                i(*) \leq \frac{n}{m_{**}} \leq \frac{2 \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}}n}{n}
+                     < 2 \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, 2m}
+                     \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}
+            \]
+            In the last inequality, we used that if $m < q^{k_{**}}$, then $m + q^{k_{**}} \leq 2q^{k_{**}} < \frac{3 + \epsilon}{\epsilon} q^{k_{**}}$,
+            which is dealt in the first argument of the maximum, so we may assume that $m \geq q^{k_{**}}$.
+            We also show that the lower bound is satisfied:
+            \[
+                i(*) \geq \frac{n - m_*}{m_{**}}
+                     \geq \frac{n - m_{**}q^{k_{**}}}{m_{**}}
+                     = \frac{n}{m_{**}} - q^{k_{**}}
+                     \geq \frac{m + q^{k_{**}}}{n} n - q^{k_{**}}
+                     = m
+            \]
         \end{proof}
+
+    \begin{remark}
+        We now see how large $N$, and thus $n$, actually needs to be.
+        First of all, we see that:
+        \begin{align*}
+            \frac{1}{q} N_{\ref{existance_of_equitable_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}
+                & = \frac{1}{q} N_{\ref{claim_5.13}}\parround{k_*, \frac{1}{4 \cdot 3} \epsilon, q^{k_{**}}} \\
+                & = \frac{1}{q} q^{k_{**}} \parround{\frac{12}{\epsilon}}^2
+                    \parround{k_* \log{\parround{\frac{12}{\epsilon}}^2 k_*} - \log{\frac{1}{q^{k_{**}}+1}}} \\
+                & < k_*^2 q^{2 k_{**} + 3}
+        \end{align*}
+        Also, $\frac{3}{\epsilon}$ is clearly smaller than this value.
+        Then, since $m_{**}$ is the smallest integer larger than both values, we conclude:
+        \begin{align*}
+            \frac{m_{**}}{\delta}
+                & \leq \frac{k_*^2 q^{2 k_{**} + 3}}
+                    {\min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}} \\
+                & = k_*^2 q^{2 k_{**} + 3} \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}} \\
+                & \leq \max \parround{q^{k_{**} + 1}, 4m} k_*^2 q^{2 k_{**} + 3}
+        \end{align*}
+    \end{remark}
 
     % TODO: define uniformity.
     \lemma[Lemma 5.17]\label{excellence_implies_regularity}
         Suppose that $\epsilon_1, \epsilon_2, \epsilon_3 \in \parround{0, {1 \over 2}}$ with
         ${{\epsilon_1 + \epsilon_2} \over \epsilon_3} < {1 \over 2}$ and the pair $\parround{A,B}$ is
-        $\parround{\epsilon_1, \epsilon_2}$uniform.
-        By uniformity, there is a truth value $t\parround{A,B} \in \parcurly{0,1}$.
+        $\parround{\epsilon_1, \epsilon_2}$-uniform.
         Let $A' \subseteq A$ with $\parstraight{A'} \geq \epsilon_3 \parstraight{A}$,
         $B' \subseteq B$ with $\parstraight{B'} \geq \epsilon_3 \parstraight{B}$ and
         denote $Z = \parcurly{\parround{a,b} \in \parround{A \times B} \mid a R b \not\equiv t\parround{A,B}}$ and
@@ -814,28 +847,27 @@
         \end{proof}
 
     \theorem[Theorem 5.19]\label{existance_of_regular_partitions}
-        For every $k_* \in \naturals$ and $\epsilon \in \parround{0, {1 \over 2}}$, there exist $N = N\parround{\epsilon, k_*}$
-        and $m = m\parround{\epsilon, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
-        and every $A \subseteq G$ with $|A| \geq N$, there is $\ell < m$ and a partition
+        For every $k_* \in \naturals$ and $\epsilon \in \parround{0, {1 \over 2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
+        and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
+        and every $A \subseteq G$ with $|A| \geq N$, there is $m < \ell < M$ and a partition
         $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, \ell}}$ of $A$ such that each $A_i$ is
-        ${{\epsilon^2} \over 2}$-excellent, and for every $i \neq j \in \parsquared{1, \ell}$,
+        ${{\epsilon^2} \over 2}$-excellent, and for every $i, j \in \parcurly{1, \dots, \ell}$,
         \begin{enumerate}
             \item \label{itm:5.19.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:5.19.2} $\parround{A_i, A_j}$ is $\epsilon$-uniform, and moreover if
+            \item \label{itm:5.19.2} $\parround{A_i, A_j}$ is $\epsilon$-regular, and moreover if
                 $B_i \in \parsquared{A_i}^{\geq \epsilon \parstraight{A_i}}$ and $B_j \in \parsquared{A_j}^{\geq \epsilon \parstraight{A_j}}$,
-                then either $d \parround{B_i, B_j} < \epsilon$ or $d \parround{B_i, B_j} \geq 1 - \epsilon$.
-            \item \label{itm:5.19.3} If $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
-                $m \leq \parround{3 + {{\epsilon^2} \over 2}} \parround{24 \over \epsilon}^{k_{**}}$.
+                then either $d\parround{B_i, B_j} < \epsilon$ or $d\parround{B_i, B_j} \geq 1 - \epsilon$.
+            \item \label{itm:5.19.3} If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
+                $M \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
         \end{enumerate}
         \begin{proof}
-            If $\epsilon < \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we can apply Theorem~\ref{minimal_conditions_for_excellent_partitions}
+            If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we can apply Theorem~\ref{minimal_conditions_for_excellent_partitions}
             to $A$ with ${{\epsilon^2} \over 2}$, and then use Lemma~\ref{excellence_implies_regularity} to replace the
             ${{\epsilon^2} \over 2}$-uniformity of pairs by $\epsilon$-regularity.
             Otherwise, to get (\ref{itm:5.19.1}) and (\ref{itm:5.19.2}), just do the same process for some
-            $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
+            $\epsilon' = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
             Then, since regularity is monotone, we get the wanted $\epsilon$-regularity from the resulting $\epsilon'$-regularity.
-            Notice that a bound for $m$ can be still obtained by replacing $\epsilon = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$
-            in $m \leq \parround{3 + {{\epsilon^2} \over 2}} \parround{24 \over \epsilon}^{k_{**}}$.
+            In this last case, the bound on $M$ is $M \leq \max \parround{\ceil{\frac{12}{\epsilon'}}^{k_{**}+1}, 4m}$.
         \end{proof}
 
     % up to here it was compiling with no problem.
