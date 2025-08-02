@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  2 AUG 2025 10:31
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  2 AUG 2025 14:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1391,12 +1391,12 @@ Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 761.
 
-[29]) [30] (./sections/bibliography.tex
+[29] [30]) [31] (./sections/section_6.tex) [32] (./sections/bibliography.tex
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
 (Font)              using `OT1/cmss/bx/n' instead on input line 18.
 
-) [31] [32] [33] 
+) [33] [34] [35] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/authorfile.aux)
  ***********
@@ -1411,13 +1411,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `authorfile.out' has not changed.
-(rerunfilecheck)             Checksum: 032EC763077F2BCCEC331A5BA96DD5A2;783.
+(rerunfilecheck)             Checksum: 5EFAC0D35C054229A51781598C1188EC;874.
  ) 
 Here is how much of TeX's memory you used:
- 26631 strings out of 476106
- 472978 string characters out of 5793933
+ 26645 strings out of 476106
+ 473246 string characters out of 5793933
  1983975 words of memory out of 5000000
- 47896 multiletter control sequences out of 15000+600000
+ 47903 multiletter control sequences out of 15000+600000
  569338 words of font info for 80 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  99i,18n,101p,3242b,1207s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1439,10 +1439,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/t
 exmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-authorfile.pdf (37 pages, 350061 bytes).
+authorfile.pdf (39 pages, 351466 bytes).
 PDF statistics:
- 726 PDF objects out of 1000 (max. 8388607)
- 642 compressed objects within 7 object streams
- 250 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 742 PDF objects out of 1000 (max. 8388607)
+ 656 compressed objects within 7 object streams
+ 254 named destinations out of 1000 (max. 500000)
+ 77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

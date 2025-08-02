@@ -870,6 +870,15 @@
             In this last case, the bound on $M$ is $M \leq \max \parround{\ceil{\frac{12}{\epsilon'}}^{k_{**}+1}, 4m}$.
         \end{proof}
 
+    \begin{remark}
+        By Theorem~\ref{tree_implies_order}, we have that $k_{**} \leq 2^{k_* + 1}-2$ in the context of the non-$k_*$-order
+        property.
+        Thus, the bound on the number of parts $M$ can clearly be reformulated as a function of only $k_*$, $\epsilon$ and $m$:
+        \[
+            M \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{2^{k_* + 1}-1}, 4m}
+        \]
+    \end{remark}
+
     % up to here it was compiling with no problem.
 
 
