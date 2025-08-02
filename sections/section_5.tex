@@ -780,28 +780,28 @@
                 $d \parround{A',B'} \geq 1 - \epsilon$.
         \end{enumerate}
         \begin{proof}
-            Let $U = \parcurly{a \in A \mid \parstraight{\overline{B}_{a,B}} > \epsilon_1 \parstraight{A}}$, i.e. the set
+            Let $U = \parcurly{a \in A \mid \parstraight{\overline{B}_{B,a}} > \epsilon_1 \parstraight{A}}$, i.e. the set
             of exceptional vertices $a \in A$.
             Then,
             \[
-                Z \subseteq U \times B \cup \bigcup_{a \in A \setminus U} \parcurly{a} \times W_a
+                Z \subseteq U \times B \cup \bigcup_{a \in A \setminus U} \parcurly{a} \times \overline{B}_{B,a}
             \]
             and
             \[
-                Z' \subseteq U \times B' \cup \bigcup_{a \in A' \setminus U} \parcurly{a} \times W_a
+                Z' \subseteq U \times B' \cup \bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}
             \]
-            Notice that, if $a \in A \setminus U$, then $\parstraight{W_a} < \epsilon_2 \parstraight{B}$, so
+            Notice that, if $a \in A \setminus U$, then $\parstraight{\overline{B}_{B,a}} < \epsilon_2 \parstraight{B}$, so
             \[
                 \parstraight{Z} \leq \epsilon_1 \parstraight{A} \parstraight{B} + \parstraight{A} \epsilon_2 \parstraight{B}
             \]
             which can be written as
             \[
-                    {\parstraight{Z}} \over {\parstraight{A} \parstraight{B}} \leq \epsilon_1 + \epsilon_2
+                    \frac{\parstraight{Z}}{\parstraight{A} \parstraight{B}} \leq \epsilon_1 + \epsilon_2
             \]
             which proves (\ref{itm:5.17.1}).
-            On the other hand,
+            Similarly,
             \begin{align*}
-                \parstraight{Z'} & \leq \parstraight{U} \parstraight{B'} + \parstraight{A'} \max \parcurly{\parstraight{W_a} \mid a \notin U} \\
+                \parstraight{Z'} & \leq \parstraight{U} \parstraight{B'} + \parstraight{A'} \max \parcurly{\parstraight{\overline{B}_{B,a}} \mid a \notin U} \\
                                  & < \epsilon_1 \parstraight{A} \parstraight{B'} + \parstraight{A'} \epsilon_2 \parstraight{B}
             \end{align*}
             By dividing both sides by $\parstraight{A'} \parstraight{B'}$ we conclude
@@ -814,20 +814,19 @@
             Let's now prove (\ref{itm:5.17.a}) and (\ref{itm:5.17.b}).
             First of all, notice that:
             \begin{itemize}
-                \item \underline{if $t\parround{A,B} = 1$},then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
-                    and $d \parround{A',B'} > 1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$ by (\ref{itm:5.17.1}) and
-                    (\ref{itm:5.17.2}).
+                \item \underline{if $t\parround{A,B} = 1$}, then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
+                    and $d \parround{A',B'} > 1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$, which follows (\ref{itm:5.17.1}) and
+                    (\ref{itm:5.17.2}) respectively.
                     Thus,
                     \begin{align*}
                         \parstraight{d \parround{A,B} - d \parround{A',B'}}
-                            & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
+                            & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B'} - d \parround{A,B}} \\
                             & < \max \parcurly{ 1 - \parround{1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}},
                                 1 - \parround{1 - \epsilon_1 - \epsilon_2}} \\
                             & = {{\epsilon_1 + \epsilon_2} \over \epsilon_3}
                     \end{align*}
-                \item \underline{if $t\parround{A,B} = 0$},then $d\parround{A,B} < \parround{\epsilon_1 + \epsilon_2}$
-                    and $d \parround{A',B'} < {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$, again by (\ref{itm:5.17.1}) and
-                    (\ref{itm:5.17.2}).
+                \item \underline{if $t\parround{A,B} = 0$}, similarly $d\parround{A,B} < \parround{\epsilon_1 + \epsilon_2}$
+                    and $d \parround{A',B'} < {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$.
                     Thus,
                     \begin{align*}
                         \parstraight{d \parround{A,B} - d \parround{A',B'}}
@@ -850,7 +849,7 @@
         For every $k_* \in \naturals$ and $\epsilon \in \parround{0, {1 \over 2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
         and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
         and every $A \subseteq G$ with $|A| \geq N$, there is $m < \ell < M$ and a partition
-        $\overline{A} = \partriangle{A_i \mid i \in \parsquared{1, \ell}}$ of $A$ such that each $A_i$ is
+        $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
         ${{\epsilon^2} \over 2}$-excellent, and for every $i, j \in \parcurly{1, \dots, \ell}$,
         \begin{enumerate}
             \item \label{itm:5.19.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.

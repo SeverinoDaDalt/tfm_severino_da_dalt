@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  2 AUG 2025 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  2 AUG 2025 15:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1407,9 +1407,6 @@ L3 programming layer <2024-01-22>
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `authorfile.out' has not changed.
 (rerunfilecheck)             Checksum: 5EFAC0D35C054229A51781598C1188EC;874.
  ) 
@@ -1439,10 +1436,10 @@ b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr
 texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/t
 exmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-authorfile.pdf (39 pages, 351466 bytes).
+authorfile.pdf (39 pages, 351817 bytes).
 PDF statistics:
- 742 PDF objects out of 1000 (max. 8388607)
- 656 compressed objects within 7 object streams
+ 740 PDF objects out of 1000 (max. 8388607)
+ 654 compressed objects within 7 object streams
  254 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 
