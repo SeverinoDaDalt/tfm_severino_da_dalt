@@ -23,8 +23,9 @@
         A relevant example is that of two disjoint $\epsilon$-excellent sets, in which case we have that the fraction
         of exceptional edges between them is less than $2\epsilon$.
         If they are not disjoint, we can still use the same reasoning to conclude that the fraction of exceptional edges
-        is less than $2 \epsilon \frac{\parstraight{A} \parstraight{B}}{e(A,B)} < 4 \epsilon$, since
-        $e(A,B) > \frac{\parstraight{A} \parstraight{B}}{2}$.
+        is less than $2 \epsilon \frac{\parstraight{A} \parstraight{B}}{e(A,B)} < 8 \epsilon$, since
+        $e(A,B) > \frac{\parstraight{A} \parstraight{B}}{4}$.
+        \todo{Discuss with Luis, this may be reduced but I am not sure.}
     \end{remark}
 
     \lemma[Claim 5.4]\label{existance_of_excellent_subsets}
@@ -792,11 +793,11 @@
             \]
             Notice that, if $a \in A \setminus U$, then $\parstraight{\overline{B}_{B,a}} < \epsilon_2 \parstraight{B}$, so
             \[
-                \parstraight{Z} \leq \epsilon_1 \parstraight{A} \parstraight{B} + \parstraight{A} \epsilon_2 \parstraight{B}
+                \parstraight{Z} < \epsilon_1 \parstraight{A} \parstraight{B} + \parstraight{A} \epsilon_2 \parstraight{B}
             \]
             which can be written as
             \[
-                    \frac{\parstraight{Z}}{\parstraight{A} \parstraight{B}} \leq \epsilon_1 + \epsilon_2
+                    \frac{\parstraight{Z}}{\parstraight{A} \parstraight{B}} < \epsilon_1 + \epsilon_2
             \]
             which proves (\ref{itm:5.17.1}).
             Similarly,
@@ -813,6 +814,8 @@
             proving (\ref{itm:5.17.2}).
             Let's now prove (\ref{itm:5.17.a}) and (\ref{itm:5.17.b}).
             First of all, notice that:
+            \todo{This only works so nice when $A$ and $B$ are disjoint. Check what happens when they are not.
+                Something more on the line of $d\parround{A,B} > 1 - 4 \parround{\epsilon_1 + \epsilon_2}$}
             \begin{itemize}
                 \item \underline{if $t\parround{A,B} = 1$}, then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
                     and $d \parround{A',B'} > 1 - {{\epsilon_1 + \epsilon_2} \over \epsilon_3}$, which follows (\ref{itm:5.17.1}) and
