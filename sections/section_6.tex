@@ -69,7 +69,7 @@
             $(\delta - \epsilon) \parstraight{V_i}$ neighbors in $V_i$ is less then $\epsilon \parstraight{V_i}$.
             Otherwise, the set of such vertices, say $U \in [V_1]^{\geq \epsilon \parstraight{V_1}}$ together with $V_i$
             would form a subpair $\parround{U, V_i}$ with density $< \delta - \epsilon$ which, by
-            Lemma~\ref{lem:regularity_is_transitive} contradicts the $\epsilon$-regularity of the pair $\parround{V_1, V_i}$.
+            \Cref{lem:regularity_is_transitive} contradicts the $\epsilon$-regularity of the pair $\parround{V_1, V_i}$.
 
             Therefore, at least $(1 - (\ell -1) \epsilon) \parstraight{V_1}$ of the vertices of $V_1$ have at least
             $(\delta - \epsilon) \parstraight{V_i}$ neighbors in $V_i$ for all $1 < i \leq \ell$.
@@ -79,7 +79,7 @@
 
             For each such vertex $w_1 \in V_1$, let $V_i'$ denote the subset of vertices of $V_i$ which are neighbors
             of $w_1$.
-            Since $epsilon \leq \frac{1}{2}\delta$, Lemma~\ref{lem:regularity_is_transitive} implies that for all
+            Since $epsilon \leq \frac{1}{2}\delta$, \Cref{lem:regularity_is_transitive} implies that for all
             $1 < i < i' \leq \ell$, the pair $\parround{V_i', V_{i'}'}$ is $\parround{\frac{\epsilon}{\delta-\epsilon}}$-regular,
             and given that $\parround{\frac{\epsilon}{\delta-\epsilon}} \leq \parround{\frac{2\epsilon}{\delta}} \leq \epsilon\parround{\frac{1}{2}\delta, \ell-1}$,
             it is $\epsilon\parround{\frac{1}{2}\delta, \ell-1}$-regular.
@@ -109,26 +109,22 @@
         vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
         $\delta$-abundant in $G$.
         \begin{proof}
-            Apply Theorem~\ref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \parround{\frac{\sqrt{\gamma}}{2},
+            Apply \Cref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \parround{\frac{\sqrt{\gamma}}{2},
                 \frac{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}}$,
             $k_*$ and $m=0$.
             We have a partition $\overline{A} = \parcurly{A_i \mid i \in \parcurly{1, \dots, m_+}}$ into $m_* \leq M$
             disjoint parts with,
-%            \[
-%                M \leq \ceil{\frac{12}{\min\parround{\frac{\sqrt{\gamma}}{2}, \frac{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
-%                    \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}}}}^{2^{k_*+1}-1}
-%            \]
             \[
                 M \leq \ceil{12 \max\parround{\frac{2}{\sqrt{\gamma}}, \frac{\ell}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
                     \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}}}^{2^{k_*+1}-1}
             \]
             such that all pairs of parts are $\epsilon$-regular, and self-pairs are $4 \epsilon$-regular.
-            Also, by Remark~\ref{remark_excellence_imply_little_exceptions} and $\frac{\epsilon^2}{2}$-excellence of the parts,
+            Also, by \Cref{rmk:excellence_imply_little_exceptions} and $\frac{\epsilon^2}{2}$-excellence of the parts,
             pairs have density at most $\epsilon^2$ or at least $1 - \epsilon^2$. \todo{Maybe make a remark in Theorem 5.19}
 
             Now, we randomly partition each part $A_i$ into $\ell$ equitable subparts $A_{i,j}$.
-            By Lemma~\ref{lem:regularity_is_transitive}, each pair of such subparts is $\ell \epsilon$-regular.
-            On the other hand, Theorem~\ref{thm:existance_of_regular_partitions} guarantees that such pairs have density
+            By \Cref{lem:regularity_is_transitive}, each pair of such subparts is $\ell \epsilon$-regular.
+            On the other hand, \Cref{thm:existance_of_regular_partitions} guarantees that such pairs have density
             at most $\epsilon$ or at least $1 - \epsilon$.
 
             Next, we modify the graph $G$ into $G'$ by only adding and removing no more than $\gamma {|G| \choose 2}$
@@ -148,7 +144,7 @@
             Thus, the $\gamma$-unavoidability of $H$ in $G$ ensures that there is still a copy of $H$ in $G'$.
             Denote its vertices $v_{i_1}, \dots, v_{i_\ell}$, choosing $i_1, \dots, i_\ell$ such that
             $v_{i_1} \in A_{i_1,1}, \dots, v_{i_\ell} \in A_{i_\ell, \ell}$.
-            Notice that $A_{i_1,1}, \dots, A_{i_\ell, \ell}$ satisfy the conditions of Lemma~\ref{lem:H_like_partition_implies_H_abundance}
+            Notice that $A_{i_1,1}, \dots, A_{i_\ell, \ell}$ satisfy the conditions of \Cref{lem:H_like_partition_implies_H_abundance}
             with $\delta_{\ref{lem:H_like_partition_implies_H_abundance}} = 1 - \frac{\sqrt{\gamma}}{2}$:
             \begin{itemize}
                 \item Each subpair $\parround{A_{i_j, j}, A_{i_{j'}, j'}}$ with $j \neq j'$ is $\ell \epsilon$-regular,
