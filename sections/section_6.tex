@@ -1,13 +1,15 @@
 \section{Section 6} \label{sec:section_6}
-    \definition \label{def:unavoidable}
+    \begin{definition} \label{def:unavoidable}
         A graph $H$ is \emph{$\gamma$-unavoidable} in a graph $G$ if no adding or removing of up to $\epsilon {|G| \choose 2}$
         edges in $G$ results in $H$ not appearing as an induced subgraph of $G$.
+    \end{definition}
 
-    \definition \label{def:abundant}
+    \begin{definition} \label{def:abundant}
         A graph $H$ is \emph{$\eta$-abundant} in a graph $G$ if $G$ contains at least $\eta |G|^{|H|}$
         induced copies of $H$.
+    \end{definition}
 
-    \lemma[Lemma 3.1 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:regularity_is_transitive}
+    \begin{lemma}[Lemma 3.1 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:regularity_is_transitive}
         Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
         If $\parround{A,B}$ is an $\epsilon$-regular pair with density $\delta$, and $A' \in [A]^{\geq \epsilon' |A|}$,
         $B' \in [B]^{\geq \epsilon' |B|}$, then $\parround{A', B'}$ is an $\parround{\frac{\epsilon}{\epsilon'}}$-regular
@@ -35,8 +37,9 @@
                 \delta - \epsilon < d(A',B') < \delta + \epsilon
             \]
         \end{proof}
+    \end{lemma}
 
-    \lemma[Lemma 3.2 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:H_like_partition_implies_H_abundance}
+    \begin{lemma}[Lemma 3.2 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:H_like_partition_implies_H_abundance}
         For every $\delta \in \parround{0, 1}$ and $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
         $\eta = \eta \parround{\eta, \ell}$ satisfying the following property:
 
@@ -46,9 +49,6 @@
         if $v_i v_{i'}$ is not an edge of $H$.
         Then, at least $\eta \prod_{i=1}^\ell \parstraight{V_i}$ of $\ell$-tuples $w_1 \in V_1, \dots, w_\ell \in V_\ell$
         span induced copies of $H$ where $w_i$ plays the role of $v_i$.
-
-    % up to here it was compiling with no problem.
-
         \begin{proof}
             Without loss of generality, we assume that $H$ is the complete graph, since we can simply replace each non-edge
             $v_i v_{i'}$ of $H$ with an edge by exchanging all edges and non-edges between $V_i$ and $V_{i'}$.
@@ -94,6 +94,7 @@
             Since there are at least $\frac{1}{2} \parstraight{V_1}$ vertices $w_1$ which satisfy the above condition,
             the chosen values of $\eta$ satisfies the lemma, and we are done.
         \end{proof}
+    \end{lemma}
 
     \begin{remark}
         The non-recursive form of $\epsilon$ and $\eta$ for $\ell > 1$ is:
@@ -103,7 +104,7 @@
         \end{align*}
     \end{remark}
 
-    \theorem \label{lem:property_testing_with_stable_partitions}
+    \begin{theorem} \label{lem:property_testing_with_stable_partitions}
         For every $k_*, \gamma, \ell$ there is a $\delta(k_*, \gamma, \ell)$ such that if $H$ is a graph with $\ell$
         vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
         $\delta$-abundant in $G$.
@@ -173,6 +174,7 @@
             \]
             and $H$ is at least $\eta$-abundant in $G$.
         \end{proof}
+    \end{theorem}
 
     \begin{remark}
         A more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
@@ -183,3 +185,5 @@
                 \parround{\frac{1}{\ell}}^{\ell}
         \]
     \end{remark}
+
+    % up to here it was compiling with no problem.

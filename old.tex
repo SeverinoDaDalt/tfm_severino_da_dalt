@@ -1,0 +1,145 @@
+
+    \remark
+        Notice that the previous two definitions become meaningful only if $|A|^{\epsilon} \leq \frac{\parstraight{A}}{2}$ and
+        $f(|A|) \leq \frac{\parstraight{A}}{2}$ respectively.
+        In this context, the definition of the truth value $t$ is compatible with that of Definition~\ref{def:truth_value}.
+        In particular, Definition~\ref{def:epsilon_indivisible} would require that $\parstraight{A} \geq \parround{2}^{\frac{1}{1-\epsilon}}$.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \lemma[Claim 4.5]\label{existance_of_ordered_epsilon_indivisible_partitions}
+    Let $G$ be a graph with the non-$k_{*}$-order property.
+    Assume $n \geq m_0 > \dots > m_{k_{**}}$ is a sequence of non-zero natural numbers satisfying that for all $l \in [k_{**}]$
+        $\lfloor (m_{l-1})^\epsilon \rfloor = m_l$, for $\epsilon \in (0, \frac{1}{2})$.
+    If $A \subseteq G$, $|A| = n$, then we can find $\overline{A} = \left< A_i \mid i \in [i(*)] \right>$ with remainder
+        $B = A \setminus \bigcup \overline{A}$ such that:
+    \begin{enumerate}  % If you do any changes here, update 4.10 too...
+        \item \label{itm:4.5.1} For each $j \in [j(*)]$, $A_j$ is $\epsilon$-indivisible
+        \item \label{itm:4.5.2} For each $j \in [j(*)]$, $|A_j| \in \left\{ m_0, \dots, m_{k_{**}-1} \right\}$
+        \item \label{itm:4.5.3} $A_i \cap A_j = \emptyset$ $\forall i \neq j$
+        \item \label{itm:4.5.4} $|B| < m_0$
+        \item \label{itm:4.5.5} $\overline{A}$ is $\leq$-increasing
+    \end{enumerate}
+        \begin{proof}
+            The first four clauses are direct consequence of applying Claim~\ref{existance_of_f_indivisible_partitions}
+                with $f(n) = n^\epsilon$.
+            By renaming the $A_i$'s in ascending-size order, we get (\ref{itm:4.5.5}).
+        \end{proof}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \remark
+    In this context, if $m_{k_{**}} > k_{**}$
+    \[
+        n^{\epsilon^{k_{**}}} \geq m_0^{\epsilon^{k_{**}}} \geq m_1^{\epsilon^{k_{**}-1}} \geq \dots \geq m_{k_{**}} > k_{**}
+    \]
+    So, $n^{\epsilon^{k_{**}}} > k_{**}$.
+
+    \lemma[Fact 5.9]\label{fact_5.9}
+        Let $p,q \in \left( 0,1 \right)$.
+        Let $A$ be a set of size $n$, $B \subseteq A$ a subset of size $p|A|$, and $A' \subseteq A$ a random subset
+        of size $\geq q|A|$. % TODO: check conditions
+        Then, for $\zeta > 0$,
+        $$
+            P\left( \frac{\left| A' \cap B \right|}{\left| A' \right|} \in
+                 \left( \frac{\left| B \right|}{\left| A \right|} -
+                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right)
+        $$
+        can be modeled by a random variable which is asymptotically normally distributed when $n \to +\infty$.
+
+    \lemma[Fact 5.10]\label{fact_5.10}
+        Let $A$ be a set of events measured with a probability $P_A$.
+        Let $S$ a family of subsets of $A$, which are measurable with $P_A$.
+        Let $A_r = \left\{ a_1, \dots, a_r \right\} \subseteq A$ be a random sample of size $r$.
+        For each $B \in S$, we may define $v_B^{A_r}$ the relative frequency of events of $B$ in $A_r$, i.e.,
+        $$
+            v_B^{A_r} = \frac{P_A(A_r \cap B)}{P_A(A_r)}
+        $$
+        Let
+        $$
+            \pi ^{A_r} = \sup_{B \in S} \left| v_B^{A_r} - P_A(B) \right|
+        $$
+        i.e. the upperbound of error of $v_B^{A_r}$ as an approximation of $P_A(B)$.
+        Also let $\Delta^s(A_r)$ be the number of subsets of $A_r$ induced by sets of $S$ ($B\in S$ induces
+        $B \cap A_r \subseteq A_r$), i.e.
+        $$
+            \Delta^s(A_r) = \left| \left\{ B \cap A_r \mid B \in S \right\} \right|
+        $$
+        Finally, let
+        $$
+            m^S(r) = \max_{C \in {A \choose r}} \Delta^s(C)
+        $$
+        Then, if there exists a finite $k > 0$ such that $m^s(r) \leq r^k +1$ for all $r > 0$, we have that,
+        for all $\epsilon > 0$,
+        $$
+            \lim_{r \to +\infty} P_A\left( \pi^{A_r} > \epsilon \right) = 0
+        $$
+
+    \begin{remark}[Fact 5.12]\label{fact_5.12}
+        If there exists $k > 0$ such that $m^s(r) \leq r^k + 1$ and $r$ satisfies:
+        $$
+            r \geq \frac{16}{\zeta^2} \left( k \log \frac{16 k}{\zeta^2} - \log \frac{\eta}{4} \right)^{k+1}
+        $$
+        for some $\eta > 0$, then
+        $$
+            P\left( \pi^{A_r} < \zeta \right) \geq 1 - \eta
+        $$
+        In particular, if we suppose that all events in $A$ are equiprobable and sampled without replacement, then
+        $$
+            P\left( \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
+                 \left( \frac{\left| B \right|}{\left| A \right|} -
+                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right) \right) \geq 1 - \eta
+        $$
+        or in other words, for all but a fraction $\eta$ of all possible choices of $A_r$, we have that
+        $$
+            \forall B \in S, \; \frac{\left| A_r \cap B \right|}{\left| A_r \right|} \in
+                 \left( \frac{\left| B \right|}{\left| A \right|} -
+                 \zeta, \frac{\left| B \right|}{\left| A \right|} + \zeta \right)
+        $$
+    \end{remark}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+            % TODO: add some intuition about the proof.
+            \item For each $b \in G$ we say that $\overline{B}_{A,b}$ is \emph{exceptional} if
+                $\left| \overline{B}_{A,b} \right| \geq \epsilon \left| A' \right|$.
+                Notice that, if we prove that, with probability $1-\xi$, $A'$ satisfies that for all exceptional $\overline{B}_{A,b}$:
+                $$
+                    \frac{\left| A' \cap \overline{B}_{A,b} \right|}{\left| A' \right|} \in
+                         \left( \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} -
+                         \zeta, \frac{\left| \overline{B}_{A,b} \right|}{\left| A \right|} + \zeta \right)
+                $$
+                then, with the same probability:
+                \begin{equation}\label{eq:equation1}
+                    \left| A' \cap \overline{B}_{A,b} \right| < \left( \frac{\left| \overline{B}_{A,b} \right|}{|A|} + \zeta \right) |A'|
+                        < \left( \epsilon + \zeta \right) |A'|
+                \end{equation}
+                and we are done.
+
+                By Lemma~\ref{fact_5.9}, for $n = |A|$ large enough, we can approximate sampling a set of size $m$ from $A$,
+                with $m$ i.i.d. random variables $x_1, \dots, x_m$, where each $x_i$ picks a vertex uniformly at random from $A$.
+                % TODO: here we ignored the fact that we need to fix p and q in Fact 5.9.
+                Let $S \coloneq \left\{ \text{Exceptional } \overline{B}_{A,b} \right\}$.
+                Since $G$ has the non-$k_{*}$-order property, we can apply Lemma~\ref{itm:2.6.1} to $G_{\ref{itm:2.6.1}} = A$
+                and $A_{\ref{itm:2.6.1}} = A'$, which gets us that:
+                $$
+                    |S| \leq \left|\left\{ \left\{ a \in A' \mid a R b \not\equiv t(A', b) \right\} \mid b \in G \right\} \right|
+                    \leq |A'|^{k_*}
+                $$
+                Then,
+                $$
+                    m^s(\ell) \leq \left| S \right| \leq |A'|^{k_*} \leq \ell^{k_*} \leq \ell^{k_{*}} + 1 \quad \forall \ell \geq |A'|
+                $$
+                Notice that this is enough to satisfy the conditions of Lemma~\ref{fact_5.10}:
+                For each $\ell < |A'|$, let $k_l$ be the smallest integer such that $m^s(\ell) \leq \ell^{k_l} + 1$.
+                Since there are finitely many of them, we can take the maximum
+                $k_{\max} = \max \left\{ k_1, \dots, k_{|A'|-1}, k_* \right\}$, which satisfies
+                $$
+                    m^s(\ell) \leq \ell^{k_{\max}} + 1 \quad \forall \ell
+                $$
+                % TODO: all of this may not be necessary, since I think that if \ell' < \ell, then k_l' < k_l
+                % TODO: in \ref{fact_5.12}, the bound on m grows with k_max, and here k_max grows with m. Need to solve this
+                So we conclude equation (\ref{eq:equation1}), which by itself is sufficient to prove $A'$ is
+                $(\epsilon + \zeta)$-good.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
