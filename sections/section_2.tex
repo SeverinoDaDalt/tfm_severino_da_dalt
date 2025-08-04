@@ -216,7 +216,8 @@
             \item $\overline{b} = \parcurly{ b_\rho \mid \rho \in \left[ 2 \right]^{k_{**}} }$, the set of \emph{branches}.
         \end{itemize}
         satisfying that, for all $\eta \in \left[ 2 \right]^{<k_{**}}$ and $\rho \in \left[ 2 \right]^{k_{**}}$,
-        if $\eta \frown \left< \ell \right> \triangleleft \rho$, then $\left( b_\rho R c_\eta \right) \equiv \left( \ell = 1 \right)$.
+        if given $\ell \in \parcurly{0, 1}$ we have $\eta \frown \left< \ell \right> \triangleleft \rho$, then
+        $\left( b_\rho R c_\eta \right) \equiv \left( \ell = 1 \right)$.
     \todo{Make a visual example of the k-tree.}
 
     \definition[Definition 2.11]\label{tree_bound}
@@ -297,10 +298,10 @@
                     $h$-subtree $H'_0$.
                     Replacing $H$ in (\ref{itm:tree_implies_order.1}) with $H_*$, $b_*$, $c_*$ in this order, the
                     conditions for $S_{r-1}$ are satisfied.
-                \item \emph{Case 1.} There is no branch $b$ such that $Z(b)$ contains an $(h+1)$-tree.
+                \item \emph{Case 2.} There is no branch $b$ such that $Z(b)$ contains an $(h+1)$-tree.
                     Now, let $c_*$ be the top node of $H$, $Z_1$ the set of nodes of $H_1$, and
                     $b_*$ any branch of $H_1$.
-                    By the case assumption, $Z(b) \cap Z_1$ contains no $h+1$-tree, so by the claim,
+                    By the case assumption, $Z(b) \cap Z_1$ contains no $(h+1)$-tree, so by the claim,
                     $Z_1 \setminus Z(b)$ contains an $h$-tree $H_*$.
                     Finally, replacing $H$ in (\ref{itm:tree_implies_order.1}) by $b_*$, $c_*$, $H_*$ in this order, the
                     conditions for $S_{r-1}$ are satisfied.

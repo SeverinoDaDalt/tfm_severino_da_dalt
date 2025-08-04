@@ -1,1 +1,185 @@
 \section{Section 6} \label{sec:section_6}
+    \definition \label{def:unavoidable}
+        A graph $H$ is \emph{$\gamma$-unavoidable} in a graph $G$ if no adding or removing of up to $\epsilon {|G| \choose 2}$
+        edges in $G$ results in $H$ not appearing as an induced subgraph of $G$.
+
+    \definition \label{def:abundant}
+        A graph $H$ is \emph{$\eta$-abundant} in a graph $G$ if $G$ contains at least $\eta |G|^{|H|}$
+        induced copies of $H$.
+
+    \lemma[Lemma 3.1 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:regularity_is_transitive}
+        Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
+        If $\parround{A,B}$ is an $\epsilon$-regular pair with density $\delta$, and $A' \in [A]^{\geq \epsilon' |A|}$,
+        $B' \in [B]^{\geq \epsilon' |B|}$, then $\parround{A', B'}$ is an $\parround{\frac{\epsilon}{\epsilon'}}$-regular
+        pair with density at least $\delta - \epsilon$ and at most $\delta + \epsilon$.
+        \begin{proof}
+            Let $A'' \subseteq A' \subseteq A$, $B'' \subseteq B' \subseteq B$ be such that
+            \begin{align*}
+                |A''| & \geq \frac{\epsilon}{\epsilon'} |A'| \geq \frac{\epsilon}{\epsilon'} \epsilon' |A| = \epsilon |A|
+                \text{ and } \\
+                |B''| & \geq \frac{\epsilon}{\epsilon'} |B'| \geq \frac{\epsilon}{\epsilon'} \epsilon' |B| = \epsilon |B|
+            \end{align*}
+            By $\epsilon$-regularity of $\parround{A,B}$, $\parstraight{d(A,B) - d(A'',B'')} < \epsilon$.
+            Thus,
+            \begin{align*}
+                \parstraight{d(A',B') - d(A'',B'')}
+                    & = \parstraight{d(A',B') - d(A,B) + d(A,B) - d(A'',B'')} \\
+                    & \leq \parstraight{d(A',B') - d(A,B)} + \parstraight{d(A,B) - d(A'',B'')} \\
+                    & < 2 \epsilon \leq \frac{\epsilon}{\epsilon'}
+            \end{align*}
+            This proves the $\parround{\frac{\epsilon}{\epsilon'}}$-regularity of $\parround{A',B'}$.
+
+            Also, since $\parround{A,B}$ is $\epsilon$-regular, $\parstraight{d(A,B) - d(A',B')} < \epsilon$,
+            and thus,
+            \[
+                \delta - \epsilon < d(A',B') < \delta + \epsilon
+            \]
+        \end{proof}
+
+    \lemma[Lemma 3.2 of "Efficient Testing of Large graphs", \it{Alon et al.}] \label{lem:H_like_partition_implies_H_abundance}
+        For every $\delta \in \parround{0, 1}$ and $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
+        $\eta = \eta \parround{\eta, \ell}$ satisfying the following property:
+
+        Let $H$ be a graph with vertices $v_1, \dots,v_\ell$ and let $V_1, \dots, V_\ell$ be an $\ell$-tuple of disjoint
+        sets of vertices of a graph $G$ such that for every $1 \leq i < i' \leq \ell$, the pair $\parround{V_i, V_{i'}}$
+        is $\epsilon$-regular, with density at least $\delta$ if $v_i v_{i'}$ is an edge of $H$, and at most $1 - \delta$
+        if $v_i v_{i'}$ is not an edge of $H$.
+        Then, at least $\eta \prod_{i=1}^\ell \parstraight{V_i}$ of $\ell$-tuples $w_1 \in V_1, \dots, w_\ell \in V_\ell$
+        span induced copies of $H$ where $w_i$ plays the role of $v_i$.
+
+    % up to here it was compiling with no problem.
+
+        \begin{proof}
+            Without loss of generality, we assume that $H$ is the complete graph, since we can simply replace each non-edge
+            $v_i v_{i'}$ of $H$ with an edge by exchanging all edges and non-edges between $V_i$ and $V_{i'}$.
+
+            We prove the lemma by induction on $\ell$.
+            The case $k=1$ is trivial, and the number of induced copies of $H$ is $|V_1|$, so $\eta(\delta, 1) = 1$ and
+            $\epsilon(\delta, 1) = 1$ (No regularity needed if no pairs).
+            The I.H. is that the values $\eta(\delta, \ell-1)$ and $\epsilon(\delta, \ell-1)$ exist and are known for all
+            $\ell$.
+            We proceed to prove that the following values $\eta$ and $\epsilon$ hold:
+            \begin{align*}
+                \epsilon &= \epsilon(\delta, \ell)
+                    = \min \parround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)} \\
+                \eta &= \eta(\delta, \ell)
+                    = \frac{1}{2} (\delta - \epsilon)^{\ell-1} \eta(\frac{1}{2}\delta, \ell-1)
+            \end{align*}
+            For each $1 < i \leq \ell$, the number of vertices of $V_1$ which have less then
+            $(\delta - \epsilon) \parstraight{V_i}$ neighbors in $V_i$ is less then $\epsilon \parstraight{V_i}$.
+            Otherwise, the set of such vertices, say $U \in [V_1]^{\geq \epsilon \parstraight{V_1}}$ together with $V_i$
+            would form a subpair $\parround{U, V_i}$ with density $< \delta - \epsilon$ which, by
+            Lemma~\ref{lem:regularity_is_transitive} contradicts the $\epsilon$-regularity of the pair $\parround{V_1, V_i}$.
+
+            Therefore, at least $(1 - (\ell -1) \epsilon) \parstraight{V_1}$ of the vertices of $V_1$ have at least
+            $(\delta - \epsilon) \parstraight{V_i}$ neighbors in $V_i$ for all $1 < i \leq \ell$.
+            In particular, since $\epsilon \leq \frac{1}{2\ell - 2}$ we have that $(\ell - 1) \epsilon \leq \frac{1}{2}$
+            and then $1 - (\ell - 1) \epsilon \geq \frac{1}{2}$, so at least half of the vertices of $V_1$ satisfy the
+            above condition.
+
+            For each such vertex $w_1 \in V_1$, let $V_i'$ denote the subset of vertices of $V_i$ which are neighbors
+            of $w_1$.
+            Since $epsilon \leq \frac{1}{2}\delta$, Lemma~\ref{lem:regularity_is_transitive} implies that for all
+            $1 < i < i' \leq \ell$, the pair $\parround{V_i', V_{i'}'}$ is $\parround{\frac{\epsilon}{\delta-\epsilon}}$-regular,
+            and given that $\parround{\frac{\epsilon}{\delta-\epsilon}} \leq \parround{\frac{2\epsilon}{\delta}} \leq \epsilon\parround{\frac{1}{2}\delta, \ell-1}$,
+            it is $\epsilon\parround{\frac{1}{2}\delta, \ell-1}$-regular.
+            Also, it has density at least $\delta - \epsilon \geq \frac{1}{2} \delta$.
+            By the induction hypothesis, we have at least
+            \[
+                \eta \parround{\frac{1}{2}\delta, \ell-1} \prod_{i=2}^\ell \parstraight{V_i'}
+                    \geq \eta \parround{\frac{1}{2}\delta, \ell-1} \prod_{i=2}^\ell \parround{\delta - \epsilon} \parstraight{V_i}
+            \]
+            possible choices of $w_2 \in V_2, \dots, w_\ell \in V_\ell$ such that the induced subgraph spanned by
+            $w_1, \dots, w_\ell$ is complete.
+            Since there are at least $\frac{1}{2} \parstraight{V_1}$ vertices $w_1$ which satisfy the above condition,
+            the chosen values of $\eta$ satisfies the lemma, and we are done.
+        \end{proof}
+
+    \begin{remark}
+        The non-recursive form of $\epsilon$ and $\eta$ for $\ell > 1$ is:
+        \begin{align*}
+            \epsilon(\delta, \ell) & = 2 \parround{\frac{\delta}{4}}^{\ell-1} \\
+            \eta(\delta, \ell) & \geq \frac{1}{2^{\frac{(\ell+2)(\ell+1)}{2}-4}} \delta^{\frac{\ell(\ell-1)}{2}}
+        \end{align*}
+    \end{remark}
+
+    \theorem \label{lem:property_testing_with_stable_partitions}
+        For every $k_*, \gamma, \ell$ there is a $\delta(k_*, \gamma, \ell)$ such that if $H$ is a graph with $\ell$
+        vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
+        $\delta$-abundant in $G$.
+        \begin{proof}
+            Apply Theorem~\ref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \parround{\frac{\sqrt{\gamma}}{2},
+                \frac{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}}$,
+            $k_*$ and $m=0$.
+            We have a partition $\overline{A} = \parcurly{A_i \mid i \in \parcurly{1, \dots, m_+}}$ into $m_* \leq M$
+            disjoint parts with,
+%            \[
+%                M \leq \ceil{\frac{12}{\min\parround{\frac{\sqrt{\gamma}}{2}, \frac{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
+%                    \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}}}}^{2^{k_*+1}-1}
+%            \]
+            \[
+                M \leq \ceil{12 \max\parround{\frac{2}{\sqrt{\gamma}}, \frac{\ell}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
+                    \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}}}^{2^{k_*+1}-1}
+            \]
+            such that all pairs of parts are $\epsilon$-regular, and self-pairs are $4 \epsilon$-regular.
+            Also, by Remark~\ref{remark_excellence_imply_little_exceptions} and $\frac{\epsilon^2}{2}$-excellence of the parts,
+            pairs have density at most $\epsilon^2$ or at least $1 - \epsilon^2$. \todo{Maybe make a remark in Theorem 5.19}
+
+            Now, we randomly partition each part $A_i$ into $\ell$ equitable subparts $A_{i,j}$.
+            By Lemma~\ref{lem:regularity_is_transitive}, each pair of such subparts is $\ell \epsilon$-regular.
+            On the other hand, Theorem~\ref{thm:existance_of_regular_partitions} guarantees that such pairs have density
+            at most $\epsilon$ or at least $1 - \epsilon$.
+
+            Next, we modify the graph $G$ into $G'$ by only adding and removing no more than $\gamma {|G| \choose 2}$
+            edges:
+            \begin{itemize}
+                \item For each pair of parts $\parround{A_{i_1}, A_{i_2}}$ with $i_1 \neq i_2$, if the pair's density is
+                    at most $\epsilon^2$, we remove all edges between $A_{i_1}$ and $A_{i_2}$.
+                    Otherwise, the pair's density is at least $1 - \epsilon^2$, and we add all remaining edges.
+                    This changes at most a fraction $\epsilon^2$ of the edges between (disjoint) parts.
+                \item For each self-pair $\parround{A_i, A_i}$, if the pair's density is at most $4 \epsilon^2$ again we
+                    remove all edges in $A_i$.
+                    Otherwise, the pair's density is at least $1 - 4 \epsilon^2$, and we add all remaining edges.
+                    This changes at most a fraction $4 \epsilon^2$ of the edges in self-pairs.
+            \end{itemize}
+            The resulting graph $G'$ differs from $G$ in at most $4 \epsilon^2 {|G| \choose 2} \leq \gamma {|G| \choose 2}$
+            edges.
+            Thus, the $\gamma$-unavoidability of $H$ in $G$ ensures that there is still a copy of $H$ in $G'$.
+            Denote its vertices $v_{i_1}, \dots, v_{i_\ell}$, choosing $i_1, \dots, i_\ell$ such that
+            $v_{i_1} \in A_{i_1,1}, \dots, v_{i_\ell} \in A_{i_\ell, \ell}$.
+            Notice that $A_{i_1,1}, \dots, A_{i_\ell, \ell}$ satisfy the conditions of Lemma~\ref{lem:H_like_partition_implies_H_abundance}
+            with $\delta_{\ref{lem:H_like_partition_implies_H_abundance}} = 1 - \frac{\sqrt{\gamma}}{2}$:
+            \begin{itemize}
+                \item Each subpair $\parround{A_{i_j, j}, A_{i_{j'}, j'}}$ with $j \neq j'$ is $\ell \epsilon$-regular,
+                    and since $\epsilon \leq \frac{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}$,
+                    in particular is $\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}$-regular.
+                \item For each $i_j \neq i_{j'}$, if $v_{i_j} v_{i_{j'}}$ is an edge of $G$ then, by construction of $G'$,
+                    the subpair $\parround{A_{i_j, j}, A_{i_{j'}, j'}}$ has density at least $1 - \epsilon \leq 1 - \frac{\sqrt{\gamma}}{2}$,
+                    and if $v_{i_j} v_{i_{j'}}$ is not an edge of $G$, the subpair $\parround{A_{i_j, j}, A_{i_{j'}, j'}}$
+                    has density at most $\epsilon \geq 1 - \parround{1 - \frac{\sqrt{\gamma}}{2}}$
+            \end{itemize}
+            The lemma guarantees that there are at least $\eta_{\ref{lem:H_like_partition_implies_H_abundance}}
+                \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell} \prod_{j=1}^\ell \parcurly{A_{i_j},j}$
+            copies of $H$ in $G$.
+            The fraction of induced copies of $H$ in $G$ is at least
+            \[
+                \frac{\eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}
+                    \prod_{j=1}^\ell \parcurly{A_{i_j},j}}{n^\ell}
+                    \geq \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}
+                        \parround{\frac{\frac{n}{M \cdot \ell}}{n}}^{\ell}
+                    = \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}
+                        \parround{M \cdot \ell}^{-\ell}
+                    \eqqcolon \eta
+            \]
+            and $H$ is at least $\eta$-abundant in $G$.
+        \end{proof}
+
+    \begin{remark}
+        A more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
+        \[
+            \eta \geq \frac{1}{2^{\frac{(\ell+2)(\ell+1)}{2}-4}} \parround{1 - \frac{\sqrt{\gamma}}{2}}^{\frac{\ell(\ell-1)}{2}}
+                \parround{\frac{1}{24} \min\parround{\frac{\sqrt{\gamma}}{2},
+                    \frac{\epsilon\parround{1 - \frac{\sqrt{\gamma}}{2}, \ell}}{\ell}}}^{\ell \parround{2^{k_*+1}-1}}
+                \parround{\frac{1}{\ell}}^{\ell}
+        \]
+    \end{remark}
