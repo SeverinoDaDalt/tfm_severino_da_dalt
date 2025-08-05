@@ -37,7 +37,7 @@
         % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
         \begin{proof}
             Suppose not.
-            Then we can construct the sequences $\partriangle{b_\eta \mid \eta \in [2]^{<k}}$ and $\partriangle{A_\eta \mid \eta \in [2]^{\leq k}}$
+            Then we can construct the sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
             on induction over $k = |\eta|$, satisfying:
             \begin{enumerate}
                 \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
@@ -56,10 +56,10 @@
             $|A_{\eta^\frown \partriangle{i}}| = m_{k}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
             \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
             Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$.
-            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in [2]^{<k_{**}}}$ and $\partriangle{A_\eta \mid \eta \in [2]^{k_{**}}}$
+            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
             with the property:
             \[
-                \forall \rho \in [2]^{<k_{**}} \forall \eta \in [2]^{k_{**}} \text{ such that } \rho^\frown \partriangle{i} \trianglelefteq
+                \forall \rho \in \parcurly{0,1}^{<k_{**}} \forall \eta \in \parcurly{0,1}^{k_{**}} \text{ such that } \rho^\frown \partriangle{i} \trianglelefteq
                     \eta \text{, } (a_\eta R b_\rho)
             \]
             since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \partriangle{i}}$.
