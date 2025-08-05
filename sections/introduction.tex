@@ -1,14 +1,67 @@
 \section{Introduction} \label{sec:introduction}
 
-This is an example of a document using the mammeTFM.cls document class. The mammeTFM.cls document class is a modification of the Reports@SCM class with minor differences (cover page, title colors and format for references) to facilitate the submission of your work to the journal Reports@SCM.
+\todo{Things to talk about:
+- Szemer\'edi's regularity lemma. \\
+- Half-graphs and stable regularity lemma. \\
+- Property testing. \\
+- Stable regularity lemma for testing whether a graph has the property of not containing a fixed graph as a subgraph.
+    (Specify this is a $\forall$ P first order property)
+}
 
-If your plan is submitting your work to the \textbf{journal Reports@SCM}, please note that:
+Szemer\'edi's regularity lemma is a powerful tool in graph theory, stating that any sufficiently large graph can be
+decomposed into an equitable partition of its vertices such that most pairs of parts are \emph{regular}.
+A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with many
+applications in extremal graph theory.
+The primary drawback of the lemma, however, is the immense bound on the required number of parts, which grows as a tower
+of exponentials whose height depends on the regularity parameter.
+
+The source of this combinatorial complexity can be traced to the presence of specific induced subgraphs.
+As demonstrated by Malliaris and Shelah in their seminal work~\cite{regularity_lemmas_for_stable_graphs}, a key structure
+responsible for irregularity is the \emph{half-graph}.
+For graphs that exclude large half-graphs, a class known as \emph{stable graphs}, they proved that a much stronger form
+of regularity is achievable.
+Their \emph{stable regularity lemma} not only yield vastly improved bounds on the partition size but, remarkably,
+can guarantee a decomposition entirely free of irregular pairs.
+
+Regularity lemmas are particularly useful in the field of \emph{property testing}.
+A property testing algorithm for a decision problem $P$ is a randomized algorithm that, by querying only a small portion
+of its input, can distinguish with high probability between objects that satisfy $P$ and those that are \say{far} from
+satisfying it.
+For instance, in~\cite{efficient_testing_of_large_graphs} the authors use Szemer\'edi's regularity lemma
+to prove that it is possible to test the property of a graph $G$ being $H$-free (for a fixed graph $H$) using an algorithm
+which query complexity is independent on the size of the input graph $G$.
+
+The query complexity of such testers, however, is intrinsically linked to the number of parts in the underlying regular
+partition.
+Consequently, the power-tower bounds of the standard regularity lemma lead to prohibitively large, although constant,
+query counts.
+This raises a natural question: can the superior bounds of the stable regularity lemma be exploited to create more
+efficient property testers for graphs in a half-graph-restricted setting?
+
+In this thesis, we present an algorithm for testing $H$-freeness in stable graphs, thereby providing
+a concrete application that highlights the practical strength and utility of stable regularity partitions.
+
+The main contributions of this thesis are:
 \begin{itemize}
-	\item The length of the core of the document should not exceed 10 pages, see the Reports@SCM web page for details.
-	\item Further developments, explanations, codes or results are expected to be also included in this document as appendixes.
-	\item You should not add any extra packages unless you consider it very necessary. See Section (He matado la referencia) to see which standard packages  are considered by default.
+    \item \textbf{A rigorous reformulation and correction of the central proofs}
+        in~\cite{regularity_lemmas_for_stable_graphs}.
+        Our contribution provides a self-contained, combinatorial framework for these results, systematically
+        resolving foundational gaps and inaccuracies in the original arguments to ensure their validity.
+        This reworking also makes the associated combinatorial bounds fully explicit for the first time.
+    \item \textbf{The construction of an efficient property testing algorithm} for H-freeness tailored to stable graphs.
+        The algorithm's analysis leverages the stable regularity lemma to achieve a query complexity with significantly
+        improved bounds compared to the general case.
+    \item \textbf{The development of a unified notational framework} that cohesively integrates the concepts from
+        extremal graph theory, stability, and property testing used throughout the thesis.
 \end{itemize}
 
-If you do not plan submitting your work to the journal  Reports@SCM, you can use this document as an example. \textbf{Using this template is not mandatory}.
-
-In any case, \textbf{you must use the template for the main cover page} \texttt{coverMAMMEmasterThesis.doc} as explained in section (He matado la referencia).
+The remainder of this thesis is organized as follows.
+\Cref{sec:section_2} reviews fundamental concepts from graph theory, culminating in a formal statement of Szemerédi's
+Regularity Lemma.
+\Cref{sec:section_3} introduces the graph-theoretic notion of stability and proves some basic results in this context.
+\Cref{sec:section_4} presents and analyzes a weaker variant of the stable regularity lemma, and illustrate both its
+strengths and its inherent limitations.
+\Cref{sec:section_5} dedicated to the proof of the main Stable Regularity Lemma, which forms the technical core of this
+work.
+Finally, \Cref{sec:section_6} applies this previous results to prove our property testing algorithm for
+$H$-freeness in stable graphs works, providing explicit bounds on its query complexity.
