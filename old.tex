@@ -167,3 +167,152 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
             \]
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{lemma}[Claim 4.14] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
+        for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+        Also, suppose $m_0$ satisfies $m_0 < \frac{n}{n^{(1 - 2\epsilon)\epsilon^{k_{**}}}}$ and
+        $n^\epsilon \leq m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
+        \todo{Probably put both conditions together with a max()}
+        Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
+        $m_{**} \leq n^{\frac{\epsilon^{k_{**}+1}}{3}}$.
+        If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$
+        with reminder $B = A \setminus \bigcup \overline{A}$ such that:
+        \begin{enumerate}
+            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1} $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, r}$.
+            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}r^2$ of the pairs
+                $(A_i, A_j)$ with $i<j$ there are no exceptional edges, i.e.
+                \[
+                    \parcurly{(a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j)} = \emptyset
+                \]
+            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3} $|B| < m_0$
+        \end{enumerate}
+        \begin{proof}
+            We can use \Cref{lem:existance_of_ordered_f_indivisible_partitions} to get a partition
+            $\overline{A'} = \Partriangle{A'_i \mid i \in \parcurly{1, \dots, i(*)}}$ and remainder $B' = A \setminus \bigcup A'$.
+            We can refine the partition by randomly splitting each $A'_i$ into pieces of size $m_{**}$ (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1}).
+            Consider the resulting partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$ with remainder $B = B'$
+            (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3}).
+            First of all, notice that for each pair $(A_i, A_j)$ such that $A_i \subseteq A'_{i_1}$ and
+            $A_j \subseteq A'_{j_1}$ with $i_1 \neq j_1$, the probability of the pair having exceptional edges is
+            upper bounded by $\frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$.
+            This follows \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions} in the context of
+            \Cref{rmk:subpair_bound_specification}.
+            Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
+            \[
+                E(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} E(X_{A_i, A_j})
+                     = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
+                     \leq \frac{r^2}{2} \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}
+            \]
+            where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
+            Since the expectation is an average, for some refinement $\overline{A}$ of $\overline{A'}$ we have that
+            the number of exceptional pairs when $i_1 \neq j_1$ is at most $\frac{r^2}{2} \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$.
+            Now, we have no control if $i_1 = j_1$, so let's bound how many of these we have:
+            \[
+                \begin{split}
+                    |\parcurly{\text{Exceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in \parcurly{1, \dots, i(*)}}|
+                        & \leq {\frac{m_0}{m_{**}} \choose 2} \frac{n}{m_0} \\
+                        & \leq \frac{\parround{\frac{m_0}{m_{**}}}^2}{2} \frac{n}{m_0}
+                            = \frac{m_0 n}{2 m_{**}^2}
+                            = \frac{m_0}{n} \parround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
+                        & \leq \frac{m_0}{n} \parround{\frac{n - m_0}{m_{**}}}^2
+                            \leq \frac{m_0}{n} r^2
+                            < \frac{r^2}{n^{(1-2\epsilon) \epsilon^{k_{**}}}}
+                \end{split}
+            \]
+            Notice that the third inequality comes after the condition $m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
+            Putting it all together, we see that the number of exceptional pairs is upper bounded by
+                $\frac{2r^2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}}$ satisfying \dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2}.
+        \end{proof}
+    \end{lemma}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{theorem}[Theorem 4.16] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
+        Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding error)
+        and $k_*$ be given.
+        Let $G$ be a finite graph with the non-$k_*$-order property.
+        Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_**}}{1-2\epsilon}}$.
+        Then, for any $m_{**} \in \parsquared{n^{\frac{\epsilon^{k_{**}+2}}{3}},
+        \parround{\frac{\sqrt{2}-1}{\sqrt{2}}}^{\frac{1}{3}\epsilon^{k_{**}+1}} n^{\frac{\epsilon^{k_{**}+1}}{3} -
+        \frac{1-2\epsilon}{3}\epsilon^{2k_{**} + 1}}}$, there is a partition
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, m}}$ of $A$ with remainder
+        $B = A \setminus \bigcup \overline{A}$ such that:
+        \begin{enumerate}
+            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.1}
+                $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, m}$.
+            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
+                $|B| < m_{**}^{3r^{k_{**}+1}}$.
+            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.3}
+                $|\parcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
+                \parcurly{(a,b) \in A_i \times A_j \mid a R b} \notin
+                \parcurly{A_i \times A_j, \emptyset}}|
+                \leq \frac{2}{n^{(1-2\epsilon)\epsilon^{k_{**}}}} m^2$
+        \end{enumerate}
+        \begin{proof}
+            Let $m_{k_{**}} = m_{**}^{3r}$, and consider the sequence
+            \[
+                m_{**} \leq m_{k_{**}} < \dots < m_0
+            \]
+            such that for all $\ell \in \parcurly{1, \dots, k_{**}}$ we have that $m_{\ell-1} = m_\ell^r$.
+            Notice that:
+            \begin{enumerate}
+                \item $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ since the $m_\ell$'s are powers of $m_{k_{**}}$
+                    and $m_{**}$ divides $m_{k_{**}}$ by construction.
+                \todo{Probably it is not needed that $m_{**}$ divides $m_{k_{**}}$, with $m_{k_{**}-1}$ is enough}
+                \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$.
+                \item $m_{**} \leq n^{\frac{1}{3}\epsilon^{k_{**}+1}}$.
+                \item $m_0 = m_{**}^{3r^{k_{**}+1}}$, so on one hand
+                    \[
+                        m_0 = m_{**}^{3r^{k_{**}+1}} \geq n^{\frac{1}{3}\epsilon^{k_{**}+2} 3r^{k_{**}+1}}
+                            \geq n^{\epsilon}
+                    \]
+                    and on the other hand,
+                    \[
+                        m_0 = m_{**}^{3r^{k_{**}+1}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - \parround{1 - 2\epsilon} \epsilon^{k_{**}}}
+                    \]
+                    and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
+                    smaller than $n^{1 - \parround{1 - 2\epsilon} \epsilon^{k_{**}}}$.
+                \item $m_{k_{**}-1} = m_{**}^{3r^2} \geq n^{\epsilon^{k_{**}}} > 2^{\frac{1}{1-2\epsilon}}$.
+            \end{enumerate}
+            So, all the conditions of \Cref{lem:existance_of_equitative_partition_with_bound_exceptional_pairs} are satisfied,
+            and we can use it to get a partition $\overline{A}$ with remainder $B$ satisfying the statement.
+            Notice that \dref{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
+            is satisfied by the fact that $|B| < m_0 \leq m_{**}^{3r^{k_{**}+1}}$.
+        \end{proof}
+    \end{theorem}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{remark} \label{rmk:subpair_bound_specification}
+        Since $\epsilon < \frac{1}{2}$, we can take $c = 1 - 2\epsilon$.
+        In this context, $\zeta \leq \frac{\epsilon^{k_{**}+1}}{3}$.
+    \end{remark} \todo{Move remark at the end, and add other values.}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

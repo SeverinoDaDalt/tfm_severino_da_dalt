@@ -46,15 +46,15 @@
             $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ on induction over $k<k_{**}$, where $k = |\eta|$,
             satisfying:
             \begin{enumerate}
-                \item\label{itm:existance_of_excellent_subsets.1} $A_{\partriangle{\cdot}} = A$.
+                \item\label{itm:existance_of_excellent_subsets.1} $A_{\Partriangle{\cdot}} = A$.
                 \item\label{itm:existance_of_excellent_subsets.2} $B_\eta$ is a $\zeta$-good set witnessing that $A_\eta$ is not
                     $(\epsilon, \zeta)$-excellent, for $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets.3} $A_{\eta \frown \partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
+                \item\label{itm:existance_of_excellent_subsets.3} $A_{\eta \frown \Partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
                     for all $i \in \parcurly{0,1}$ and $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets.4} $\parstraight{A_{\eta \frown \partriangle{i}}} \geq \epsilon |A_\eta|$
+                \item\label{itm:existance_of_excellent_subsets.4} $\parstraight{A_{\eta \frown \Partriangle{i}}} \geq \epsilon |A_\eta|$
                     for all $i \in \parcurly{0,1}$ and $k < k_{**}$.
                 \item\label{itm:existance_of_excellent_subsets.5} $|A_\eta| \geq \epsilon^k |A|$, for $k \leq k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets.6} $A_\eta = A_{\eta \frown \partriangle{0}} \sqcup A_{\eta \frown \partriangle{1}}$,
+                \item\label{itm:existance_of_excellent_subsets.6} $A_\eta = A_{\eta \frown \Partriangle{0}} \sqcup A_{\eta \frown \Partriangle{1}}$,
                     for $k < k_{**}$.
                 \item\label{itm:existance_of_excellent_subsets.7} $\overline{A_k} = \parcurly{A_\eta \mid \eta \in \parcurly{0,1}^k}$ is a partition of $A$,
                     for $k \leq k_{**}$.
@@ -62,7 +62,7 @@
             First of all, notice that at each step, the non-$(\epsilon, \zeta)$-excellence of $A_\eta$ comes by IH
             from \dref{itm:existance_of_excellent_subsets.1} or \dref{itm:existance_of_excellent_subsets.5},
             and thus allows the existence of $B_\eta$ in \dref{itm:existance_of_excellent_subsets.2}.
-            \dref{itm:existance_of_excellent_subsets.4} follows the definition of $A_{\eta \frown \partriangle{i}}$ in
+            \dref{itm:existance_of_excellent_subsets.4} follows the definition of $A_{\eta \frown \Partriangle{i}}$ in
             \dref{itm:existance_of_excellent_subsets.3} and the fact $B_\eta$ is witnessing that $A_\eta$ is not $(\epsilon, \zeta)$-excellent.
             Applying recursively this last point we obtain \dref{itm:existance_of_excellent_subsets.5}.
             Finally, by definition \dref{itm:existance_of_excellent_subsets.3}, we have the disjoint union
@@ -89,8 +89,8 @@
             \]
             We may choose $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$,
             for all $\nu \in \parcurly{0,1}^{<k_{**}}$.
-            Finally, the sequences $\partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
-            satisfy that $\forall \eta, \nu$ such that $\nu \frown \partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$
+            Finally, the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
+            satisfy that $\forall \eta, \nu$ such that $\nu \frown \Partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$
             by \dref{itm:existance_of_excellent_subsets.3} and \dref{itm:existance_of_excellent_subsets.6}.
             This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
         \end{proof}
@@ -99,7 +99,7 @@
     \begin{lemma}[Claim 5.4.1] \label{lem:existance_of_excellent_subsets_fixed_size_choices}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
-        Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         % Notice that we needed to add m_{k_{**}} to the sequence, since it is needed in (c)' in the paper
         % (m_{l+1} may take that value!!).
@@ -112,13 +112,13 @@
             $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ on induction over $k<k_{**}$, where $k = |\eta|$,
             satisfying:
             \begin{enumerate}
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.1} $A_{\partriangle{\cdot}} \subseteq A$, with $|A|_{\partriangle{\cdot}} = m_0$.
+                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.1} $A_{\Partriangle{\cdot}} \subseteq A$, with $|A|_{\Partriangle{\cdot}} = m_0$.
                 \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
                     $\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellent, for all $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.3} $A_{\eta \frown \partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
+                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.3} $A_{\eta \frown \Partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
                     for all $i \in \parcurly{0,1}$ and $k < k_{**}$.
                 \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.4} $|A_{\eta}| = m_k$, for all $k \leq k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.6} $A_{\eta \frown \partriangle{0}} \sqcup A_{\eta \frown \partriangle{1}} \subseteq A_\eta$,
+                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.6} $A_{\eta \frown \Partriangle{0}} \sqcup A_{\eta \frown \Partriangle{1}} \subseteq A_\eta$,
                     for all $k < k_{**}$.
                 \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.7} $\overline{A_k} = \parcurly{A_\eta \mid \eta \in \parcurly{0,1}^k}$ is a partition of
                     a subset of $A$, for all $k \leq k_{**}$.
@@ -129,7 +129,7 @@
             Then, $B_\eta$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.2} is well-defined.
             Also, by $\zeta$-goodness of $B_\eta$, $t(a, B_\eta)$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3} is well-defined.
             Then, since $B_\eta$ is witnessing the non-$\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellence of $A_\eta$,
-            we have that $|A_{\eta \frown \partriangle{i}}| \geq \frac{m_{k+1}}{m_k} m_{k} = m_{k+1}$ for all
+            we have that $|A_{\eta \frown \Partriangle{i}}| \geq \frac{m_{k+1}}{m_k} m_{k} = m_{k+1}$ for all
             $i \in \parcurly{0,1}$, satisfying \dref{itm:existance_of_excellent_subsets_fixed_size_choices.4}.
             Finally, by definition \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}, we have the disjoint union
             \dref{itm:existance_of_excellent_subsets_fixed_size_choices.6} which by itself
@@ -154,9 +154,9 @@
             \]
             We may choose $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$,
             for all $\nu \in \parcurly{0,1}^{<k_{**}}$.
-            Finally, the sequences $\partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and
-            $\partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$ satisfy that $\forall \eta, \nu$ such that
-            $\nu \frown \partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$, which follows
+            Finally, the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and
+            $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$ satisfy that $\forall \eta, \nu$ such that
+            $\nu \frown \Partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$, which follows
             \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}.
             This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
         \end{proof}
@@ -412,13 +412,13 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         Denote $m_* \coloneq m_0$ and $m_{**} \coloneq m_{k_{**}}$.
-        Then, there is a partition $\overline{A} = \partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
+        Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
         $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
+            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
             \item \label{itm:existance_of_excellent_partition.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
             \item \label{itm:existance_of_excellent_partition.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
             \item \label{itm:existance_of_excellent_partition.d} $|B| < m_*$.
@@ -438,13 +438,13 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
         $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
         $m_{k_{**}-1} > N\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$
         (in the sense of \Cref{lem:existance_of_equitable_excellent_subpartition}), and $n \geq m_0$.
         Let $m_* \coloneq m_0$.
-        Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+        Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
         with remainder $B = A \setminus \bigcup \overline{A}$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item \label{itm:existance_of_excellent_partition_with_equal_size.a} For all $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
@@ -453,17 +453,17 @@
         \end{enumerate}
         \begin{proof}
             Use \Cref{lem:existance_of_excellent_partition} to obtain a partition
-            $\overline{A}' = \partriangle{A_j' \mid j \in \parcurly{1, \dots, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
+            $\overline{A}' = \Partriangle{A_j' \mid j \in \parcurly{1, \dots, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
             Then, we can apply \Cref{lem:existance_of_equitable_excellent_subpartition} with $r = \frac{m_*}{m_{**}}$ to each of
             the parts $A_j'$.
-            Putting together all the new subparts, we obtain a new partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+            Putting together all the new subparts, we obtain a new partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             with remainder $B$, satisfying all the conditions of the statement.
         \end{proof}
     \end{lemma}
 
     \begin{lemma}[Claim 5.14.2] \label{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
         Under the same condition of \Cref{lem:existance_of_excellent_partition_with_equal_size}, we can get a
-        partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
+        partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
             \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b} For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
@@ -475,15 +475,15 @@
             \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.d} $A = \bigcup \overline{A}$.
         \end{enumerate}
         \begin{proof}
-            Let $\overline{A}' = \partriangle{A_i' \mid i \in \parcurly{1, \dots, i(*)}}$ and $B$ from
+            Let $\overline{A}' = \Partriangle{A_i' \mid i \in \parcurly{1, \dots, i(*)}}$ and $B$ from
             \Cref{lem:existance_of_excellent_partition_with_equal_size}.
-            We can partition $B$ into $\overline{B} = \partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$ in such a way that
+            We can partition $B$ into $\overline{B} = \Partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$ in such a way that
             for all $i \in \parcurly{1, \dots, i(*)}$,
             \[
                 |B_i| \in \parcurly{\floor{\frac{\parstraight{B}}{i(*)}}, \ceil{\frac{\parstraight{B}}{i(*)}}}
             \]
             Notice that we are allowing $B_i = \emptyset$.
-            Then, the new partition $\overline{A} = \partriangle{A_i' \cup B_i \mid i \in \parcurly{1, \dots, i(*)}}$ satisfies
+            Then, the new partition $\overline{A} = \Partriangle{A_i' \cup B_i \mid i \in \parcurly{1, \dots, i(*)}}$ satisfies
             \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a},
             \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b} and
             \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.d} by construction.
@@ -554,7 +554,7 @@
         Suppose that we are given:
         \begin{enumerate}
             \item $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
-            \item A sequence of positive integers $\partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
+            \item A sequence of positive integers $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
                 and $m_{**}$, such that:
                 \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                     \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
@@ -570,7 +570,7 @@
             \end{enumerate}
         \end{enumerate}
         Then, there exists $i(*) \leq \frac{n}{m_{**}}$ and a partition of $A$ into disjoint pieces
-        $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ such that:
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ such that:
         \begin{enumerate}[label=(\roman*), ref=\roman*]
             \item \label{itm:resume_of_all_conditions_for_excellent_partitions.i} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
             \item \label{itm:resume_of_all_conditions_for_excellent_partitions.ii} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent,
@@ -599,7 +599,7 @@
         Let $k_*$ and therefore $k_{**}$ be given.
         Then, for all $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
         and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
-        every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+        every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
         of $A$, such that:
         \begin{enumerate}
             \item \label{itm:minimal_conditions_for_excellent_partitions.0} The number of parts is bounded by
@@ -620,7 +620,7 @@
                     \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
             \end{enumerate}
             We set $m_{k_{**}} = m_{**}$ and we build recursively a sequence of integers
-            $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that $m_\ell = q m_{\ell + 1}$ for all
+            $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that $m_\ell = q m_{\ell + 1}$ for all
             $\ell \in \parcurly{0, \dots, k_{**}-1}$.
             Also, let $m_* \coloneqq m_0 = q^{k_{**}} m_{**}$.
             By \dref{itm:minimal_conditions_for_excellent_partitions.a} we have that $m_* \leq \frac{\epsilon n}{3 + \epsilon}$.
@@ -780,7 +780,7 @@
         For every $k_* \in \naturals$ and $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
         and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
         and every $A \subseteq G$ with $|A| \geq N$, there is $m < \ell < M$ and a partition
-        $\overline{A} = \partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
         $\frac{\epsilon^2}{2}$-excellent, and for every $i, j \in \parcurly{1, \dots, \ell}$,
         \begin{enumerate}
             \item \label{itm:existance_of_regular_partitions.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
