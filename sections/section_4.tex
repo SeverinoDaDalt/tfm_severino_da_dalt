@@ -1,6 +1,20 @@
 \section{Section 4} \label{sec:section_4}
 
-    \todo{Make an intrduction explaining what is the goal of this section, and how we will reach it. Explain what is the purpose of each Claim.}
+    This section works around the idea of \emph{$\epsilon$-indivisible} sets, a strong condition on the regularity of a subset
+    respect to all the vertices of the graph.
+    This condition results in pairs of sufficiently large subsets of vertices satisfying
+    the \emph{average condition}, which strictly bounds the number of exceptional edges in the pair.
+    Using these tools we obtain the first result in \Cref{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound},
+    which proves the existence of a partition of highly regular pairs with no exceptions, at the cost of a
+    strongly non-homogeneous partition.
+    Next, we improve the results obtaining an equitable partition in
+    \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}, but this time with a
+    small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and exponentially small parts.
+    The final result, \Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}, achieves removing irregular pairs
+    and reduce the size of the remainder set.
+    All in all, even though the partitions of this section present a very strong form of \say{regularity}, they all share
+    the same drawback: a large number of parts that grows with the size of the graph, something that we will be dealing
+    with in the next section.
 
     \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
         Let $\epsilon \in (0,1)$.
@@ -19,77 +33,10 @@
     \end{definition}
 
     \begin{remark}
-        If $f(n) = \epsilon n$, then $f$-indivisible $\equiv$ $\epsilon$-good.
-        \todo{Probably move this to section 5}
+        An $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
     \end{remark}
 
-    \begin{remark}
-        $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
-    \end{remark}
-
-    \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
-        Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
-        such that $x \geq f(x)$.
-        Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
-        If $A \subseteq G$, $|A| = m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
-        of size $m_\ell$ which is $f$-indivisible.
-        % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
-        \begin{proof}
-            Suppose not.
-            Then we can construct the sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
-            on induction over $k = |\eta|$, satisfying:
-            \begin{enumerate}
-                \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \partriangle{0}} \cap A_{\eta^\frown \partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
-                \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv (i=1)}$,
-                    $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-            \end{enumerate}
-            Let's prove the induction.
-            For $k=0$, we consider $A_{\partriangle{\cdot}} = A$, which satisfies $|A_{\partriangle{\cdot}}| = m_0$ and
-            $b_{\partriangle{\cdot}}$ is witnessing the non-$f$-indivisibility of $A_{\partriangle{\cdot}}$.
-            For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
-            Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
-            $A_{\eta^\frown \partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
-            $|A_{\eta^\frown \partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
-            \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
-            Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
-            for all $\ell$.
-            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
-            with the property:
-            \[
-                \forall \rho \in \parcurly{0,1}^{<k_{**}} \forall \eta \in \parcurly{0,1}^{k_{**}} \text{ such that } \rho^\frown \partriangle{i} \trianglelefteq
-                    \eta \text{, } (a_\eta R b_\rho)
-            \]
-            since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \partriangle{i}}$.
-            This contradicts the $k_{**}$ tree bound.
-        \end{proof}
-    \end{lemma}
-
-    \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a non-decreasing function.
-        Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
-        If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
-        and reminder $B = A \setminus \bigcup \overline{A}$ such that:
-        \begin{enumerate}
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.3} $A_j \subseteq A \setminus \bigcup\parcurly{A_i \mid i < j}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.4} $|B| < m_0$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $\overline{A}$ is $\leq$-increasing.
-        \end{enumerate}
-        \begin{proof}
-            Iteratively, apply \Cref{lem:existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \parcurly{A_i \mid i < j}$
-            (\dref{itm:existance_of_ordered_f_indivisible_partitions.3}) to get an $f$-indivisible $A_j$ (\dref{itm:existance_of_ordered_f_indivisible_partitions.1}) of size $m_\ell$, $\ell \in \parcurly{0, \dots, k_{**}-1}$
-            (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less then $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
-            To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
-        \end{proof}
-    \end{lemma}
-
-    \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
+\begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
         Let $G$ be a finite graph.
         Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
         Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
@@ -126,23 +73,6 @@
 
     \begin{remark}[Remark 4.7]
         When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
-    \end{remark}
-
-    \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
-        If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
-        then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
-        \[
-            \frac{|A|^\epsilon |B|^\epsilon}{|B|}
-                \leq \frac{|B|^{2\epsilon}}{|B|}
-                = \frac{1}{|B|^{1-2\epsilon}}
-                = \frac{1}{m^{1-2\epsilon}}
-                < \frac{1}{2}
-        \]
-        We will be using this fact in the context of a sequence of non-zero natural numbers
-        $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
-        for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-        Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
-        $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
     \end{remark}
 
     \begin{lemma}[Claim 4.8] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
@@ -225,6 +155,68 @@
         \end{proof}
     \end{corollary}
 
+    \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
+        Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
+        such that $x \geq f(x)$.
+        Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
+        If $A \subseteq G$, $|A| = m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
+        of size $m_\ell$ which is $f$-indivisible.
+        % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
+        \begin{proof}
+            Suppose not.
+            Then we can construct the sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
+            on induction over $k = |\eta|$, satisfying:
+            \begin{enumerate}
+                \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \partriangle{0}} \cap A_{\eta^\frown \partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
+                \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv (i=1)}$,
+                    $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+            \end{enumerate}
+            Let's prove the induction.
+            For $k=0$, we consider $A_{\partriangle{\cdot}} = A$, which satisfies $|A_{\partriangle{\cdot}}| = m_0$ and
+            $b_{\partriangle{\cdot}}$ is witnessing the non-$f$-indivisibility of $A_{\partriangle{\cdot}}$.
+            For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
+            Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
+            $A_{\eta^\frown \partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
+            $|A_{\eta^\frown \partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
+            \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
+            Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
+            for all $\ell$.
+            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
+            with the property:
+            \[
+                \forall \rho \in \parcurly{0,1}^{<k_{**}} \forall \eta \in \parcurly{0,1}^{k_{**}} \text{ such that } \rho^\frown \partriangle{i} \trianglelefteq
+                    \eta \text{, } (a_\eta R b_\rho)
+            \]
+            since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \partriangle{i}}$.
+            This contradicts the $k_{**}$ tree bound.
+        \end{proof}
+    \end{lemma}
+
+    \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a non-decreasing function.
+        Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
+        If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
+        and reminder $B = A \setminus \bigcup \overline{A}$ such that:
+        \begin{enumerate}
+            \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
+            \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
+            \item \label{itm:existance_of_ordered_f_indivisible_partitions.3} $A_j \subseteq A \setminus \bigcup\parcurly{A_i \mid i < j}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$.
+            \item \label{itm:existance_of_ordered_f_indivisible_partitions.4} $|B| < m_0$.
+            \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $\overline{A}$ is $\leq$-increasing.
+        \end{enumerate}
+        \begin{proof}
+            Iteratively, apply \Cref{lem:existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \parcurly{A_i \mid i < j}$
+            (\dref{itm:existance_of_ordered_f_indivisible_partitions.3}) to get an $f$-indivisible $A_j$ (\dref{itm:existance_of_ordered_f_indivisible_partitions.1}) of size $m_\ell$, $\ell \in \parcurly{0, \dots, k_{**}-1}$
+            (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less then $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
+            To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
+        \end{proof}
+    \end{lemma}
+
     \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
@@ -265,6 +257,23 @@
     \end{lemma}
 
     \todo{comment the fact that the condition on $m_{k_{**}-1}$ is not that resrtictive (maybe with some numerical example?)}
+
+    \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
+        If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
+        then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
+        \[
+            \frac{|A|^\epsilon |B|^\epsilon}{|B|}
+                \leq \frac{|B|^{2\epsilon}}{|B|}
+                = \frac{1}{|B|^{1-2\epsilon}}
+                = \frac{1}{m^{1-2\epsilon}}
+                < \frac{1}{2}
+        \]
+        We will be using this fact in the context of a sequence of non-zero natural numbers
+        $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
+        for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+        Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
+        $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
+    \end{remark}
 
     \begin{definition}
         Let $A, B$ be $f$-indivisible sets with $f(A) \times f(B) < \frac{1}{2} |B|$.
@@ -640,7 +649,7 @@
         and the non-$k_*$-order of $G$.
     \end{lemma}
 
-    \begin{theorem}[Theorem 4.23]
+    \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
         Let $G$ be a graph with the non-$k_*$-property.
         For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
         (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ with
