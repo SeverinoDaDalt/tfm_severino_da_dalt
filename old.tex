@@ -6,6 +6,16 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+        A couple of of notes need to be made about what is purposely not specified in the previous definition.
+        First, vertices from the same sequence are clearly different, since they are uniquely described by the
+        connectivity with the other set.
+        On the other hand, the two sequences of vertices need not to be disjoint, allowing any pair $a_i, b_j$ with
+        $\neg a_i R b_j$ to represent the same vertex.
+        Also, the definition does not specify whether vertices from the same sequence are connected or not.
+        This results, in the property not only excluding just half-graphs, but a much larger class of subgraphs.
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
     \remark
         Notice that the previous two definitions become meaningful only if $|A|^{\epsilon} \leq \frac{\parstraight{A}}{2}$ and
         $f(|A|) \leq \frac{\parstraight{A}}{2}$ respectively.

@@ -4,17 +4,17 @@
 
     \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
         Let $\epsilon \in (0,1)$.
-        We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $B \in G$, the truth value $t = t(A,b)$ satisfies
+        We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
         \[
-            \parstraight{\parcurly{a\in A \mid a R b \not\equiv t}} < |A|^{\epsilon}
+            \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
         \]
     \end{definition}
 
     \begin{definition}[Definition 4.2(b)] \label{def:f_indivisible}
-        Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a non-decreasing function.
-        We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $B \in G$, the truth value $t = t(A,b)$ satisfies
+        Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
+        We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $b \in G$,
         \[
-            \parstraight{\parcurly{a\in A \mid a R b \not\equiv t}} < f(|A|)
+            \parstraight{\overline{B}_{A,b}} < f(|A|)
         \]
     \end{definition}
 
@@ -28,8 +28,8 @@
     \end{remark}
 
     \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
-        Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a non-decreasing function.
-        \todo{Maybe add some other condition on $f$ so that the image is at most half of the input.}
+        Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
+        such that $x \geq f(x)$.
         Let $\partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
         for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
         If $A \subseteq G$, $|A| = m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
@@ -50,13 +50,14 @@
             Let's prove the induction.
             For $k=0$, we consider $A_{\partriangle{\cdot}} = A$, which satisfies $|A_{\partriangle{\cdot}}| = m_0$ and
             $b_{\partriangle{\cdot}}$ is witnessing the non-$f$-indivisibility of $A_{\partriangle{\cdot}}$.
-            For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k-1}$, is not $f$-indivisible.
-            Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k-1}) \geq m_{k}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
+            For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
+            Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
             $A_{\eta^\frown \partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
-            $|A_{\eta^\frown \partriangle{i}}| = m_{k}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
+            $|A_{\eta^\frown \partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
             \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
-            Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$.
-            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
+            Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
+            for all $\ell$.
+            Then, we have two sequences $\partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
             with the property:
             \[
                 \forall \rho \in \parcurly{0,1}^{<k_{**}} \forall \eta \in \parcurly{0,1}^{k_{**}} \text{ such that } \rho^\frown \partriangle{i} \trianglelefteq
