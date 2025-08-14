@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  14 AUG 2025 18:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  14 AUG 2025 19:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1480,11 +1480,14 @@ L3 programming layer <2024-01-22>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `authorfile.out' has not changed.
-(rerunfilecheck)             Checksum: B3991EEDF759D1BF9D2B24CB2CB9CFCD;991.
 
-Package biblatex Warning: Please rerun LaTeX.
+Package rerunfilecheck Warning: File `authorfile.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
+Package rerunfilecheck Info: Checksums for `authorfile.out':
+(rerunfilecheck)             Before: B3991EEDF759D1BF9D2B24CB2CB9CFCD;991
+(rerunfilecheck)             After:  5EFAC0D35C054229A51781598C1188EC;874.
 Package logreq Info: Writing requests to 'authorfile.run.xml'.
 \openout1 = `authorfile.run.xml'.
 
