@@ -16,13 +16,9 @@
     the same drawback: a large number of parts that grows with the size of the graph, something that we will be dealing
     with in the next section.
 
-    \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
-        Let $\epsilon \in (0,1)$.
-        We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
-        \[
-            \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
-        \]
-    \end{definition}
+    First step is defining \emph{indivisibility}.
+    The general definition is for any function $f$, but for the rest of the section we are mostly interested in the case
+    of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and at the end in the constant case $f(n) = c$.
 
     \begin{definition}[Definition 4.2(b)] \label{def:f_indivisible}
         Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
@@ -32,11 +28,22 @@
         \]
     \end{definition}
 
+    \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
+        Let $\epsilon \in (0,1)$.
+        We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
+        \[
+            \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
+        \]
+    \end{definition}
+
     \begin{remark}
         An $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
-    \end{remark}
+    \end{remark} \todo{Redundant.}
 
-\begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
+    A natural follow-up question, is how strongly bounded are exceptions in the context of two indivisible sets.
+    The following lemma measures precisely that, although doing so in a \say{directed} way.
+
+    \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
         Let $G$ be a finite graph.
         Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
         Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
@@ -73,6 +80,11 @@
         When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
     \end{remark}
     \todo{I don't think this is useful in any way.}
+
+    Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity of
+    large enough subpairs, in the sense of bounding exceptional edges.
+    We study the $f$ and $\epsilon$ case separately, as the specific case of $\epsilon$ gives a slightly better condition
+    on the range of the size of the subpair.
 
     \begin{lemma}[Claim 4.8] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
         Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
@@ -141,6 +153,9 @@
         \end{proof}
     \end{lemma}
 
+    For later use, we are particularly interested in the case when $f(n) = c$.
+    \todo{This may be skipped, and be directly commented in the appropiate remark following the theorem.}
+
     \begin{corollary}[Corollary 4.9]
         Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
         Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
@@ -155,6 +170,7 @@
     \end{corollary}
 
     \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
+        Notice that the average condition is easily satisfied if a large enough condition is met by the pair.
         If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
         then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
         \[
@@ -170,6 +186,14 @@
         Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
         $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
     \end{remark}
+
+    Now that we have proven the nice properties of indivisible sets, we are actually interested in whether they can be
+    found in a graph.
+    It turns out that the non-$k$-order property, or more specifically the associated tree bound, is sufficient for
+    proving it.
+    The proof resumes in assuming that there is no indivisible set to recursively refine a \say{semi-partition}
+    \todo{Lluis: hi ha alguna manera de dir una partició que no cubreix tots els vertex amb una paraula?}
+    which by construction contains a $k_{**}$-tree.
 
     \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
         Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
@@ -209,6 +233,10 @@
         \end{proof}
     \end{lemma}
 
+    The previous proof can be iteratively be used to partition the graph into indivisible parts with a small reminder.
+    As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
+    and fix an ascending order on the size of the parts.
+
     \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
         Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
         such that $x \geq f(x)$.
@@ -230,6 +258,9 @@
             To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
         \end{proof}
     \end{lemma}
+
+    Finally, we can ensure the pairs satisfy the average condition by simply ensuring a minimal size of the parts,
+    which can be easily implemented in the sequence of integers.
 
     \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -269,11 +300,14 @@
             This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} and concludes the proof of the statement.
         \end{proof}
     \end{lemma}
+    \todo{Maybe merge the last two lemmas?}
 
     \begin{remark}
         For sufficiently small $\epsilon$, the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is almost, trivial.
-        For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} > 4$.
+        For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 4$.
     \end{remark}
+
+    \jojo
 
     \begin{definition}
         Let $A, B$ be $f$-indivisible sets with $f(A) \times f(B) < \frac{1}{2} |B|$.
@@ -290,7 +324,7 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
         $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
-    paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
+        paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
         for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
         Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
         for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
