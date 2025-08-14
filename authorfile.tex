@@ -13,6 +13,13 @@
 \usepackage{dirtytalk}
 \usepackage[nameinlink]{cleveref}
 
+%BIBLIOGRAPHY
+\usepackage[
+    backend=biber,
+
+]{biblatex}
+\addbibresource{sections/bibliography.bib}
+
 % Temporal
 \usepackage[textsize=tiny]{todonotes}
 \setlength{\marginparwidth}{15mm}
@@ -101,10 +108,6 @@ Thanks to...}
 \input{sections/section_3}
     \newpage
 
-%\section{1}
-%\section{2}
-%\section{3}
-
 \input{sections/section_4}
     \newpage
 
@@ -114,7 +117,10 @@ Thanks to...}
 \input{sections/section_6}
     \newpage
 
-\input{sections/bibliography}
+%\input{sections/bibliography}
+\printbibliography
+\addcontentsline{toc}{chapter}{References}
+
 %%%%%%%%%
 
 
