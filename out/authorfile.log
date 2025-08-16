@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  16 AUG 2025 16:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  16 AUG 2025 17:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1425,10 +1425,14 @@ Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
 (amsmath)                 on input line 209.
 
-[7] [8]
+[7]
+
+LaTeX Warning: Marginpar on page 8 moved.
+
+[8]
 
 LaTeX Warning: Reference `pic:tree_implies_order' on page 1 undefined on input 
-line 331.
+line 332.
 
 [9]) [10] (./sections/section_4.tex [11] [12] [13] [14]
 Overfull \hbox (6.71062pt too wide) in paragraph at lines 324--340
@@ -1472,11 +1476,20 @@ T1/cmss/m/n/10.95 into $[] = []$
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 (Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 128.
 
+
+Overfull \hbox (2.1784pt too wide) in paragraph at lines 129--129
+[]\OT1/cmss/m/n/10.95 Tung Nguyen, Alex Scott, and Paul Sey-mour. ``In-duced su
+b-graph den-sity. VI. Bounded VC-dimension''.
+ []
+
 [38] [39] 
 AED: lastpage setting LastPage
 [40] (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 Package rerunfilecheck Info: File `authorfile.out' has not changed.
 (rerunfilecheck)             Checksum: 5EFAC0D35C054229A51781598C1188EC;874.
@@ -1485,10 +1498,10 @@ Package logreq Info: Writing requests to 'authorfile.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35796 strings out of 480247
- 675712 string characters out of 5896152
- 1425017 words of memory out of 5000000
- 52893 multiletter control sequences out of 15000+600000
+ 35853 strings out of 480247
+ 676892 string characters out of 5896152
+ 1425540 words of memory out of 5000000
+ 52947 multiletter control sequences out of 15000+600000
  482125 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  99i,18n,94p,3242b,1360s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1513,10 +1526,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on /home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.p
-df (44 pages, 421275 bytes).
+df (44 pages, 422710 bytes).
 PDF statistics:
- 956 PDF objects out of 1000 (max. 8388607)
- 856 compressed objects within 9 object streams
- 282 named destinations out of 1000 (max. 500000)
+ 960 PDF objects out of 1000 (max. 8388607)
+ 860 compressed objects within 9 object streams
+ 285 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

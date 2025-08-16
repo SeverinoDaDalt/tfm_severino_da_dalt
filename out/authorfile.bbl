@@ -130,6 +130,30 @@
       \verb https://doi.org/10.1007/PL00001621
       \endverb
     \endentry
+    \entry{model_theory}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5982fe965747f607f6042392bb0197f1}{%
+           family={Hodges},
+           familyi={H\bibinitperiod},
+           given={Wilfrid},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge university press}%
+      }
+      \strng{namehash}{5982fe965747f607f6042392bb0197f1}
+      \strng{fullhash}{5982fe965747f607f6042392bb0197f1}
+      \strng{bibnamehash}{5982fe965747f607f6042392bb0197f1}
+      \strng{authorbibnamehash}{5982fe965747f607f6042392bb0197f1}
+      \strng{authornamehash}{5982fe965747f607f6042392bb0197f1}
+      \strng{authorfullhash}{5982fe965747f607f6042392bb0197f1}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Model theory}
+      \field{year}{1993}
+    \endentry
     \entry{regularity_partitions_and_the_topology_of_graphons}{incollection}{}
       \name{author}{2}{}{%
         {{hash=0d1784a2f9a807b1da8d15d5b1029c08}{%
