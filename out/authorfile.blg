@@ -1,15 +1,17 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out/authorfile.blg'
-[38] biber:340> INFO - === jue ago 14, 2025, 19:01:03
-[45] Biber.pm:419> INFO - Reading 'out/authorfile.bcf'
-[74] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
-[81] Biber.pm:4419> INFO - Processing section 0
-[86] Biber.pm:4610> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
-[87] bibtex.pm:1713> INFO - LaTeX decoding ...
-[88] bibtex.pm:1519> INFO - Found BibTeX data source 'sections/bibliography.bib'
-[112] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[112] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[112] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[112] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[114] bbl.pm:660> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
-[114] bbl.pm:763> INFO - Output to out/authorfile.bbl
+[74] biber:340> INFO - === sáb ago 16, 2025, 14:06:33
+[85] Biber.pm:418> INFO - Reading 'out/authorfile.bcf'
+[142] Biber.pm:972> INFO - Found 6 citekeys in bib section 0
+[153] Biber.pm:4383> INFO - Processing section 0
+[162] Biber.pm:4574> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
+[163] bibtex.pm:1713> INFO - LaTeX decoding ...
+[172] bibtex.pm:1518> INFO - Found BibTeX data source 'sections/bibliography.bib'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[259] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[259] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[272] bbl.pm:654> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
+[275] bbl.pm:757> INFO - Output to out/authorfile.bbl
+[276] Biber.pm:130> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
+[276] Biber.pm:132> INFO - WARNINGS: 1

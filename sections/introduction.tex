@@ -1,6 +1,6 @@
 \section{Introduction} \label{sec:introduction}
 
-\todo{Things to talk about:
+\todo{Things to talk about: \\
 - Szemer\'edi's regularity lemma. \\
 - Half-graphs and stable regularity lemma. \\
 - Property testing. \\
@@ -9,19 +9,23 @@
 }
 
 Szemer\'edi's regularity lemma is a powerful tool in graph theory, stating that any sufficiently large graph can be
-decomposed into an equitable partition of its vertices such that most pairs of parts are \emph{regular}.
+decomposed into an equitable partition of its vertices such that most, but not all, pairs of parts are \emph{regular}.
 A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with many
 applications in extremal graph theory.
-The primary drawback of the lemma, however, is the immense bound on the required number of parts, which grows as a tower
-of exponentials whose height depends on the regularity parameter.
+On top of the presence of a small number of irregular pairs, a major drawback of the lemma is the immense
+bound on the required number of parts, which grows as a tower of exponentials whose height depends on the regularity parameter.
 
-The source of this combinatorial complexity can be traced to the presence of specific induced subgraphs.
-As demonstrated by Malliaris and Shelah in their seminal work~\cite{regularity_lemmas_for_stable_graphs}, a key structure
-responsible for irregularity is the \emph{half-graph}.\todo{Lluis: is there a better prior cite for this?}
-For graphs that exclude large half-graphs, a class known as \emph{stable graphs}, they proved that a much stronger form
+In the general setting, both limitations has been proven unavoidable.
+In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma} the authors show that there exist a family of graphs
+for which lower bound on the number of parts is still a tower of exponentials.
+On the other hand, it is general knowledge that large-enough half-graphs present irregular pairs in any
+regular partition (\cite{irregular_pairs_in_half_graphs_szemeredi_regularity} gives a written proof of this fact).
+
+In the context of graphs with no bi-induced large half-graph, a class known as \emph{stable graphs},
+the authors of~\cite{regularity_lemmas_for_stable_graphs} show that a much stronger form
 of regularity is achievable.
-Their \emph{stable regularity lemma} not only yield vastly improved bounds on the partition size but, remarkably,
-can guarantee a decomposition entirely free of irregular pairs.
+Their \emph{stable regularity lemma} not only guarantees a decomposition entirely free of irregular pairs, but also yields
+vastly improved bounds on the partition size. \todo{Maybe mention here that the pairs are also homogeneous.}
 
 Regularity lemmas are particularly useful in the field of \emph{property testing}.
 A property testing algorithm for a decision problem $P$ is a randomized algorithm that, by querying only a small portion

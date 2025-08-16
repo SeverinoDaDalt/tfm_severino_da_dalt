@@ -1,18 +1,34 @@
 \section{Section 3} \label{sec:section_3}
 
-    In this section we introduce the class of graphs we will be working on, the \emph{stable} graphs.
-    Stable graphs are graphs which do not contain \say{quasi-induced}\todo{Lluis: what is the right term here?}
-    large half-graphs, a particularly \say{irregular} structure in graphs. \todo{Mention how different papers call this differently.}
-    See \Cref{pic:half_graph} for an example of such graph. \todo{Add visual example of a half-graph}
-    We formally define the stability as the non-$k$-order, where $k$ establishes how large are the half-graphs we are
-    excluding.
+    In this section we introduce the class of \emph{stable} graphs.
+    A graph is considered stable, if it does not contain bi-induced (as defined in~\cite{induced_subgraph_density_vi_bounded_vc_dimension})
+    \todo{Maybe move cite to section 2, and mention there other references such as "induced sub-bigraph"}
+    large half-graphs, a particularly \irregular\todo{Explain somewhere what this means.} structure in graphs.
+    See \Cref{pic:half_graph} for an example of such a graph. \todo{Add visual example of a half-graph}
+
+    First, stability implies a bounded \emph{Vapnik-Chervonenkis (VC) dimension}, which limits the variety of
+    neighborhoods of vertices within the graph.
+    While stability implies a bounded VC-dimension for the entire graph
+    (See~\cite{regularity_partitions_and_the_topology_of_graphons}), our work primarily focuses on bounding
+    the VC-dimension restricted to a subset of vertices.
+    This is formalized in \Cref{lem:k_order_property_bounds_BAbs}.
+
+    Second, stability implies a finite \emph{tree bound}.
+    This property is the foundational tool we use to prove the existence of parts that are \regular
+    with respect to the rest of the graph.
+    We use this to establish the existence of indivisible parts in \Cref{sec:section_4}
+    (\Cref{lem:existance_of_indivisible_sets}) and
+    excellent parts in \Cref{sec:section_5} (\Cref{lem:existance_of_excellent_subsets}).
+
+    First, we formally define stability as the non-$k$-order property, where $k$ determines the size of the
+    excluded half-graphs.
 
     \begin{definition} \label{def:k_order_property}
         Let $G$ be a graph.
         We say that $G$ has the \emph{$k$-order property} if there exist two sequences of vertices
         $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
         for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
-        Otherwise, we say that $G$ has the \emph{non-$k$-order property}.
+        Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
     \end{definition}
 
     \begin{remark}
@@ -28,12 +44,13 @@
     \end{remark}
 
     \begin{remark}
-        $G$ having $k$-order property implies $G$ having $k'$-order property for all $k' \leq k$.
-        Conversely, $G$ having the non-$k$-order property implies $G$ having non-$k'$-order property for all $k' \geq k$.
+        $G$ having the $k$-order property implies that $G$ has the $k'$-order property for all $k' \leq k$.
+        Conversely, $G$ having the non-$k$-order property implies that $G$ has the non-$k'$-order property for all $k' \geq k$.
     \end{remark}
 
     An important concept used all over the thesis is that of \emph{exceptional edges} and \emph{exceptional vertices}.
-    That is, edges and vertices that in some sense are not regular, and do not behave as the rest of the graph.
+    That is, edges and vertices that, in the context of a pair of sets of vertices, do not \say{behave} as the rest.
+    \todo{Echarle un ojo.}
     In order to classify what is the expected behaviour in a graph, or more specifically, in a pair of sets of vertices,
     we define the \emph{truth value}.
 
@@ -64,11 +81,13 @@
         \item $\overline{B}_{A,b} = \parcurly{a \in A \mid a R b \not\equiv t(A,b)}$, the set of exceptional vertices of $A$ with
             respect to $B$.
         \item $B^+_{A,b} = \parcurly{a \in A \mid a R b}$, the vertices of $A$ connected to $b$.
-            \todo{Maybe, move these two to the lemma where they are needed.}
         \item $B^-_{A,b} = \parcurly{a \in A \mid \neg a R b}$, the vertices of $A$ that are not connected to $b$.
     \end{itemize}
     With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
-    Large sets $B_{A,b}$, as we will see in the next sections, are closely related with lack of regularity in the graph.
+
+    Sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards creating a \regular,
+    and more specifically homogeneous \todo{Define homogeneous} partition, as the number of exceptional edges with respect
+    to the entire graph is large and concentrated.
     A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of such sets under the
     non-$k$-order property.
     In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
@@ -88,7 +107,7 @@
 
     \begin{lemma}[Sauer-Shelah] \label{lem:sauer-shelah}
         Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
-        If the VC dimension of $S$ is at most $k$, and the union of all sets in $S$ has $n$ elements, then
+        If the VC dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
         $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
     \end{lemma}
 
@@ -182,7 +201,7 @@
             Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
             \begin{itemize}
                 \item if $n \leq k$, then $\parstraight{S} \leq 2^n \leq 2^k \leq n^k$.
-                \item if $n > k$, then $\parstraight{S} \leq \sum_{i=0}^{k-1} + n \leq n^{k-1} + n \leq 2n^{k-1} \leq n^k$.
+                \item if $n > k$, then $\parstraight{S} \leq \sum_{i=0}^{k-1} {n \choose i} + n \leq n^{k-1} + n \leq 2n^{k-1} \leq n^k$.
             \end{itemize}
             We conclude that $\parstraight{S} \leq n^k$.
         \end{proof}
@@ -216,20 +235,21 @@
         \end{enumerate}
         \begin{proof}
         \begin{enumerate}
-            \item First of all, notice that $B^+_{A,b} = B - B^-_{A,b}$, since by definition they are complementary.
+            \item First of all, notice that $B^+_{A,b} = A - B^-_{A,b}$, since by definition they are complementary.
                 Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
                 It follows that
                 \[
                     \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
                     \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
                 \]
-                where the last inequality follows \Cref{lem:k_order_property_bounds_BAbs}.
+                where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
             \item Consider the following map:
                 \begin{align*}
                     \pi: \parcurly{\overline{B}_{A,b} \mid b \in G} & \longrightarrow \parcurly{B^+_{A,b} \mid b \in G} \\
                                                        \overline{B}_{A,b} & \longmapsto B^+_{A,b}
                 \end{align*}
                 We show that the map $\pi$ is injective.
+                \todo{Should I prove it is well defined?}
                 Let $b,b' \in G$ such that $\overline{B}_{A,b} = \overline{B}_{A,b'}$.
                 Then, $t(A,b) = t(A,b')$, otherwise (w.l.o.g., suppose that $t(A,b) = 1$ and $t(A,b') = 0$), we would have
                 \[
@@ -251,7 +271,7 @@
                     \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
                 \]
                 This concludes the proof.
-                Notice that in particular $\pi$ is a bijection, but this is not needed for the proof.
+                Notice that actually $\pi$ is a bijection, but this is not needed for the proof.
         \end{enumerate}
         \end{proof}
     \end{corollary}
