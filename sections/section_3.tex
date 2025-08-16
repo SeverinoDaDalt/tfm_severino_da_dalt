@@ -188,7 +188,7 @@
         \end{proof}
     \end{lemma}
 
-    \begin{lemma}[Claim 2.6] \label{lem:k_order_property_bounds_BAbs}
+    \begin{lemma}[Claim 2.6 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:k_order_property_bounds_BAbs}
         Let $G$ be a graph with the (disjoint) non-$k$-order property.
         Then, for any finite non-trivial $A \subseteq G$,
         \[
@@ -283,14 +283,15 @@
     In order to do so, a useful structure strongly related to the $k$-order property is the \emph{$k$-tree}.
 
     \begin{definition} \label{def:k-tree}
-        A \emph{$k$-tree} is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
+        A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
         \begin{itemize}
-            \item $\overline{c} = \parcurly{ c_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes}.
-            \item $\overline{b} = \parcurly{ b_\rho \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches}.
+            \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes}.
+            \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches}.
         \end{itemize}
         satisfying that, for all $\eta \in \parcurly{0,1}^{<k_{**}}$ and $\rho \in \parcurly{0,1}^{k_{**}}$,
         if given $\ell \in \parcurly{0, 1}$ we have $\eta \frown \Partriangle{\ell} \triangleleft \rho$, then
         $\parround{b_\rho R c_\eta} \equiv \parround{\ell = 1}$.
+        The two sequences are not necessarily disjoint. \todo{Lluis: millor una remark?}
     \end{definition}
 
     \todo{Make a visual example of the k-tree.}
@@ -300,15 +301,15 @@
 
     \begin{definition}[Definition 2.11] \label{def:tree_bound}
         Suppose $G$ is a finite graph.
-        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal positive integer such that there is no $k_{**}$-tree
-        $H = (\overline{c},\overline{b})$, where $\overline{b}$ and $\overline{c}$ are two sets of vertices of $G$.
+        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal positive integer such that there is no
+        $k_{**}$-tree $H = (\overline{c},\overline{b})$ in $G$.
     \end{definition}
 
     As mentioned earlier, the tree bound is closely related to the $k$-order property.
     The following theorem states that if a graph has a sufficiently large tree bound, then it has the $k$-order property
     and vice versa.
 
-    \begin{theorem} \label{thm:tree_implies_order}
+    \begin{theorem}[Lemma Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
         If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
         On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-3$, then it has the $k_*$-order
         property.
@@ -331,34 +332,34 @@
             See \Cref{pic:tree_implies_order} for a visual example of this construction.
             \todo{Add visual example of order implies tree.}
 
-            During the proof of the second implication, we will say that a set of nodes $N$ of a $k$-tree
+            During the proof of the second implication, we say that a set of nodes $N$ of a $k$-tree
             $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if there exists a map
             $f \colon \parcurly{0,1}^{<k'} \longrightarrow \parcurly{0,1}^{<k}$ such that for all $\eta, \eta' \in \parcurly{0,1}^{<k'}$,
             $c_{f(\eta)}$ and $c_{f(\eta')}$ are in $N$, and if $\eta \frown \Partriangle{i} = \eta'$ then
             $f(\eta) \frown \Partriangle{i} \triangleleft f(\eta')$, for all $i \in \parcurly{0, 1}$.
-
             This clearly implies that there is a $k'$-tree $H'$ with nodes in $N$ and branches in $\overline{b}$.
             Simply, for each $\eta \in \parcurly{0,1}^{k'-1}$, pick exactly two branches $b_{\rho_0}$ and $b_{\rho_1}$ such that
             $f(\eta)\frown\Partriangle{i} \triangleleft \rho_i$ for $i \in \parcurly{0,1}$.
 
-            Also, we will use $H_i$ to denote the subtree of $H$ consisting of the nodes $c_{f(\eta)}$ and branches
-            $b_{f(\rho)}$ such that $\Partriangle{i} \triangleleft \eta$ and $\Partriangle{i} \triangleleft \rho$.
+            Also, we will use $H'_i$ to denote the subtree of $H'$ consisting of the nodes $c_{f(\eta)}$ and branches
+            $b_{f(\rho)}$ such that $\Partriangle{i} \triangleleft \eta$ and $\Partriangle{i} \triangleleft \rho$, with $\eta \in \parcurly{0,1}^{<k'}$
+            and $\rho \in \parcurly{0,1}^{k'}$.
             Notice that, if $H$ is an $h$-tree, $H_0$ and $H_1$ are $(h-1)$-trees, and together with the root node
             $c_{f(\emptyset)}$, they partition $H$.
 
             Next, we prove the following claim, which shows that we can always find a tree
             in one of the parts of a bipartition of the nodes of a larger tree.
 
-            \begin{claim}
+            \begin{claim} \label{clm:n_or_k_tree_in_partition_of_n_plus_k_tree}
                 For all $n, k \geq 0$, if $H$ is a $(n + k)$-tree and the nodes of $H$ are partitioned into two sets $N$ and $P$,
                 then either $N$ contains an $n$-tree or $P$ contains a $k$-tree.
-                \begin{proof} \it{(of claim)}
+                \begin{proof}[Proof of \Cref{clm:n_or_k_tree_in_partition_of_n_plus_k_tree}]
                     We prove this by induction on $n + k$.
                     Clearly, the statement is true for the trivial case $n = k = 0$.
                     Suppose $n + k > 0$.
                     Without loss of generality, we may assume that the root node $c_\emptyset$ is in $N$.
-                    Let $Z_i$ be the set of nodes of $H_i$.
-                    By H.I., for each $i \in \parcurly{0,1}$, either $N \cap Z_i$ contains an $(n-1)$-tree or
+                    Let $Z_i$ be the set of nodes of $H_i$, which is an $(n+k-1)$-tree.
+                    By I.H., for each $i \in \parcurly{0,1}$, either $N \cap Z_i$ contains an $(n-1)$-tree or
                     $P \cap Z_i$ contains a $k$-tree.
                     If either $P \cap Z_0$ or $P \cap Z_1$ contains a $k$-tree, then $P$ contains a $k$-tree, and we are done.
                     Otherwise, both $N \cap Z_0$ and $N \cap Z_1$ contain an $(n-1)$-tree.
@@ -367,32 +368,32 @@
                 \end{proof}
             \end{claim}
 
-            Suppose that $G$ has tree bound at least $2^{k_*+1}-3$, and thus contains a $(2^{k_*+1}-2)$-tree.
-            We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds:
+            Suppose that $G$ has a tree bound of at least $2^{k_*+1}-3$, and thus contains a $(2^{k_*+1}-2)$-tree.
+            We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds.
+            There are
+            \begin{equation}\label{eq:tree_implies_order.1}
+                b_0, c_0, \dots, b_{q-1}, c_{q-1}, H, b_q, c_q, \dots, b_{k_*-r-1}, c_{k_*-r-1}
+            \end{equation}
+            such that:
             \begin{enumerate}
-                \item\label{itm:tree_implies_order.1} There are
-                    \[
-                        b_0, c_0, \dots, b_{q-1}, c_{q-1}, H, b_q, c_q, \dots, b_{k_*-r-1}, c_{k_*-r-1}
-                    \]
-                    such that:
-                \item\label{itm:tree_implies_order.2} for all $i \in \parcurly{0, \dots, k_*-r-1}$, $b_i$ and $c_i$ are vertices in $G$,
+                \item\label{itm:tree_implies_order.1} for all $i \in \parcurly{0, \dots, k_*-r-1}$, $b_i$ and $c_i$ are vertices in $G$,
                     and $H$ is a $(2^{r+1}-2)$-tree in $G$.
-                \item\label{itm:tree_implies_order.3} for all $i,j \in \parcurly{0, \dots, k_*-r-1}$, $b_i R c_j \Leftrightarrow i \geq j$.
-                \item\label{itm:tree_implies_order.4} if $c$ is a node of $H$, $b_i R c \Leftrightarrow i \geq q$.
-                \item\label{itm:tree_implies_order.5} if $b$ is a branch of $H$, $b R c_i \Leftrightarrow i < q$.
+                \item\label{itm:tree_implies_order.2} for all $i,j \in \parcurly{0, \dots, k_*-r-1}$, $b_i R c_j \Leftrightarrow i \geq j$.
+                \item\label{itm:tree_implies_order.3} if $c$ is a node of $H$, $b_i R c \Leftrightarrow i \geq q$.
+                \item\label{itm:tree_implies_order.4} if $b$ is a branch of $H$, $b R c_i \Leftrightarrow i < q$.
             \end{enumerate}
 
             The initial case $S_{k_*}$ only requires the existence of a $(2^{k_*+1}-2)$-tree in $G$, which is the premise.
             If the final case $S_1$ is true, then we are done:
             this case assumes that $H$ is a $2$-tree, in which case there is a node $c_*$ and branch $b_*$ in $H$ which
             are connected.
-            These vertices satisfy conditions \dref{itm:tree_implies_order.4} and \dref{itm:tree_implies_order.5}, so
-            the sequence resulting by replacing $H$ in \dref{itm:tree_implies_order.1} by $b_*$, $c_*$ implies that $G$
-            has the $k_*$-order property.
+            These vertices satisfy conditions \dref{itm:tree_implies_order.3} and \dref{itm:tree_implies_order.4}, so
+            the sequence resulting from replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$, $c_*$ implies that $G$
+            has the $k_*$-order property. \todo{specify k-order}
 
-            To conclude the proof it remains to prove that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
+            To conclude the proof it remains to show that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
             Assume $S_r$.
-            Fixing $h = 2^r - 2$, by \dref{itm:tree_implies_order.2} we have that $H$ is a $(2h +2)$-tree.
+            Fixing $h = 2^r - 2$, by \dref{itm:tree_implies_order.1} we have that $H$ is a $(2h +2)$-tree.
             For each branch $b$ of $H$ we denote $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
 
             We have two cases:
@@ -400,14 +401,15 @@
                 \item \emph{Case 1.} There is a branch $b_*$ such that $Z(b_*)$ contains an $(h+1)$-tree $H'$.
                     In that case, we can take $c_*$ to be the top node of the $(h+1)$-tree, and $H_*$ to be the
                     $h$-subtree $H'_0$.
-                    Replacing $H$ in \dref{itm:tree_implies_order.1} with $H_*$, $b_*$, $c_*$ in this order, the
+                    Replacing $H$ in~\eqref{eq:tree_implies_order.1} with $H_*$, $b_*$, $c_*$ in this order, the
                     conditions for $S_{r-1}$ are satisfied.
                 \item \emph{Case 2.} There is no branch $b$ such that $Z(b)$ contains an $(h+1)$-tree.
                     Now, let $c_*$ be the top node of $H$, $Z_1$ the set of nodes of $H_1$, and
                     $b_*$ any branch of $H_1$.
-                    By the case assumption, $Z(b) \cap Z_1$ contains no $(h+1)$-tree, so by the claim,
+                    By the case assumption, $Z(b) \cap Z_1$ contains no $(h+1)$-tree, so by the claim
+                    and the fact that $Z_1$ is the set of nodes of a $(2h+1)$-tree,
                     $Z_1 \setminus Z(b)$ contains an $h$-tree $H_*$.
-                    Finally, replacing $H$ in \dref{itm:tree_implies_order.1} by $b_*$, $c_*$, $H_*$ in this order, the
+                    Finally, replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$, $c_*$, $H_*$ in this order, the
                     conditions for $S_{r-1}$ are satisfied.
             \end{itemize}
             In any case, $S_{r-1}$ is satisfied, and the proof is complete.
@@ -421,5 +423,8 @@
         some \say{unknown} edges, independently on the choice of those.
     \end{remark}
 
-    Given that stability of the studied graph is fixed for all proofs in the next sections, from now on we will use
+    The second implication of this theorem is of special interest in the next sections, as it proves that in the context
+    of a $k$-stable graph no $2^{k+1}-2$-trees can be found.
+
+    Given that the stability of the studied graphs is fixed for all proofs in the next sections, from now on we will use
     $k_*$ as the value of the non-$k$-property of the studied graphs, and $k_{**}$ for the associated tree bound.
