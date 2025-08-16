@@ -333,8 +333,8 @@
         It can be enforced because the only lemma that uses it actually suppose it in the construction.}
         Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
         $m \coloneqq n^\zeta$ divides $|A_1|$ and $|A_2|$.
-        Then, let $\Partriangle{A_{1,s} \mid s \in \parcurly{1, \dots, \frac{|A_1|}{m}}}$ and
-        $\Partriangle{A_{2,t} \mid t \in \parcurly{1, \dots, \frac{|A_2|}{m}}}$ be random partitions of $A_1$ and $A_2$
+        Then, let $\Partriangle{A_{1,s} \mid s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}}$ and
+        $\Partriangle{A_{2,t} \mid t \in \bparcurly{1, \dots, \frac{|A_2|}{m}}}$ be random partitions of $A_1$ and $A_2$
         respectively, with pieces of size $m$.
         We have that
         \[
@@ -342,13 +342,14 @@
         \]
         \begin{proof}
             Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
-            It follows the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
+            It follows from the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
             that the pair $(A_{1}, A_{2})$ satisfies the average condition.
-            Let $U_1 = \parcurly{a \in A_1 \mid \parcurly{b \in A_2 \mid a R b \equiv \neg t(A_1, A_2)}| \geq |A_2|^\epsilon}$
+            Let $U_1 = \bparcurly{a \in A_1 \mid \bparstraight{\parcurly{b \in A_2 \mid a R b \equiv \neg t(A_1, A_2)}} \geq |A_2|^\epsilon}$
             and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \parcurly{b \in A_j \mid a R b \equiv \neg t(A_1, A_2)}$.
             By \Cref{lem:average_condition_statement}, $|U_1| \leq |A_1|^\epsilon$ and $\forall a \in A_1 \setminus U_1$,
             $|U_{2,a}| \leq |A_2|^\epsilon$.
-            Now, we can bound the probability $P_1$ that $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
+            Now, given $\bparcurly{1, \dots, \frac{|A_1|}{m}}$, we can bound the probability $P_1$ that
+            $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
             \[
                 \begin{split}
                     P_1
@@ -366,7 +367,8 @@
             \]
             The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
             Then, if $A_{1,s} \cap U_1= \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}| |A_2|^\epsilon$.
-            So we can bound $P_2$, the probability that $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} = \emptyset$, by:
+            So, given $\bparcurly{1, \dots, \frac{|A_2|}{m}}$, we can bound $P_2$, the probability that
+            $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} \neq \emptyset$, by:
             \[
                 \begin{split}
                     P_2
@@ -402,7 +404,7 @@
         Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
         $m_{**} \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$.
         If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$
-        with reminder $B = A \setminus \bigcup \overline{A}$ such that:
+        with reminder $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, r}} A_i$ such that:
         \begin{enumerate}
             \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1} $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, r}$.
             \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{c\epsilon^{k_{**}}}}r^2$ of the pairs
@@ -424,7 +426,7 @@
             This follows \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}.
             Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
             \[
-                E(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} E(X_{A_i, A_j})
+                \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
                      = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
                      \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}}
             \]
@@ -464,7 +466,7 @@
     \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
 
     \begin{theorem}[Theorem 4.16] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
-        Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding error),
+        Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
         $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
         Let $G$ be a finite graph with the non-$k_*$-order property.
         Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
@@ -479,9 +481,9 @@
             \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
                 $|B| < m_{**}^{\frac{3}{(1-\epsilon-c)}r^{k_{**}}}$.
             \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.3}
-                $|\parcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
+                $\bparstraight{\bparcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
                 \parcurly{(a,b) \in A_i \times A_j \mid a R b} \notin
-                \parcurly{A_i \times A_j, \emptyset}}|
+                \parcurly{A_i \times A_j, \emptyset}}}
                 \leq \frac{2}{n^{c\epsilon^{k_{**}}}} m^2$
         \end{enumerate}
         \begin{proof}
@@ -495,8 +497,8 @@
                 \item $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ since the $m_\ell$'s are powers of $m_{k_{**}}$
                     and $m_{**}$ divides $m_{k_{**}}$ by construction.
                 \todo{Probably it is not needed that $m_{**}$ divides $m_{k_{**}}$, with $m_{k_{**}-1}$ is enough, but it comes for free.}
-                \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$.
-                \item $m_{**} \leq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}}$.
+                \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$, by construction.
+                \item $m_{**} \leq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}}$, by choice of $m_{**}$.
                 \item $m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}}$, so on one hand
                     \[
                         m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \geq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}+1} \frac{3}{1-\epsilon-c}r^{k_{**}}}
@@ -539,9 +541,7 @@
     \begin{lemma}[Lemma 4.19] \label{lem:n_large_enough_valid_values}
         If the reals $\epsilon, \zeta, \xi$ and the natural numbers $n, c$ satisfy:
         \begin{itemize}
-            \item $\epsilon \in (0,1)$
-            \item $\zeta > 0$
-            \item $0 < \xi < \frac{1}{2}$
+            \item $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$
             \item $n$ sufficiently large ($n > n(\epsilon, \zeta, \xi, c)$) to satisfy the equation:
             \[
                 \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
@@ -613,7 +613,7 @@
         Let $k_*, k, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
         \begin{enumerate}
             \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.1} $G$ is a graph with the non-$k_*$-order property.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $A \subseteq G$ implies $\parstraight{\parcurly{\parcurly{ a \in A \mid a R b \equiv t(a,b)} \mid b \in G}}
+            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $A \subseteq G$ implies $\bparstraight{\bparcurly{\parcurly{ a \in A \mid a R b \equiv t(a,b)} \mid b \in G}}
                 \leq |A|^k$.
             \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\epsilon \in \parround{0, \frac{1}{2}}$.
             \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
@@ -641,19 +641,21 @@
             Notice that:
             \begin{itemize}
                 \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3}.
-                \item $\zeta \coloneqq \frac{1}{k} > 0$.
-                \item since $\epsilon \in \parround{0, \frac{1}{2}}$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
+                \item Set $\zeta \coloneqq \frac{1}{k} > 0$.
+                \item Since $\epsilon \in \parround{0, \frac{1}{2}}$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
                     then by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}
                     $\frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2} < 1 - \epsilon$ and
                     thus $0 < \xi < \min(1-\epsilon, \frac{1}{2})$.
-                \item $m_\ell$ sufficiently large: $m_\ell = n^{\epsilon^\ell} \geq n^{\epsilon^{k_{**}}} > n\parround{\epsilon, \frac{1}{k},
+                \item For all $\ell \in \parcurly{0,\dots,k_{**}}$, $m_\ell$ is sufficiently large:
+                    $m_\ell = n^{\epsilon^\ell} \geq n^{\epsilon^{k_{**}}} > n\parround{\epsilon, \frac{1}{k},
                     \frac{\xi}{\epsilon^{k_{**}}}, c} > n\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}$.
                 \item $c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
-                    = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$.
+                    = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.5}.
             \end{itemize}
             By \Cref{lem:n_large_enough_valid_values} then, $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}}$
-            holds, and we can take $A_{(\ref{def:n_large_enough_property})} \coloneqq A_1$ and
-            $P_{(\ref{def:n_large_enough_property})} \coloneqq P$ which satisfy the conditions:
+            (as in \Cref{def:n_large_enough_property}) holds, and we can take
+            $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ as $A_1$ and $P$
+            respectively, which then satisfy the conditions:
             \begin{itemize}
                 \item $|A_1| = m_\ell$.
                 \item $|P| \leq m_\ell^k = m_\ell^{\frac{1}{\zeta}}$.
