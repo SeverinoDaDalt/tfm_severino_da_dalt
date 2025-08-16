@@ -1,17 +1,17 @@
 [0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out/authorfile.blg'
-[99] biber:340> INFO - === sáb ago 16, 2025, 18:44:17
-[115] Biber.pm:418> INFO - Reading 'out/authorfile.bcf'
-[227] Biber.pm:972> INFO - Found 10 citekeys in bib section 0
-[251] Biber.pm:4383> INFO - Processing section 0
-[268] Biber.pm:4574> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
-[270] bibtex.pm:1713> INFO - LaTeX decoding ...
-[292] bibtex.pm:1518> INFO - Found BibTeX data source 'sections/bibliography.bib'
-[471] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[471] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[471] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[471] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[496] bbl.pm:654> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
-[503] bbl.pm:757> INFO - Output to out/authorfile.bbl
-[503] Biber.pm:130> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
-[503] Biber.pm:132> INFO - WARNINGS: 1
+[75] biber:340> INFO - === sáb ago 16, 2025, 20:57:57
+[88] Biber.pm:418> INFO - Reading 'out/authorfile.bcf'
+[152] Biber.pm:972> INFO - Found 10 citekeys in bib section 0
+[171] Biber.pm:4383> INFO - Processing section 0
+[186] Biber.pm:4574> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
+[188] bibtex.pm:1713> INFO - LaTeX decoding ...
+[211] bibtex.pm:1518> INFO - Found BibTeX data source 'sections/bibliography.bib'
+[360] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[360] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[361] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[361] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[384] bbl.pm:654> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
+[391] bbl.pm:757> INFO - Output to out/authorfile.bbl
+[391] Biber.pm:130> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
+[391] Biber.pm:132> INFO - WARNINGS: 1

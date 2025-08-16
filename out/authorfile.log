@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  16 AUG 2025 18:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  16 AUG 2025 20:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1226,24 +1226,24 @@ File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.aux)
 \openout1 = `authorfile.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 106.
-LaTeX Font Info:    ... okay on input line 106.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1267,7 +1267,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 106.
+Package hyperref Info: Link coloring ON on input line 117.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
@@ -1280,9 +1280,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count476
 )
-LaTeX Info: Redefining \ref on input line 106.
-LaTeX Info: Redefining \pageref on input line 106.
-LaTeX Info: Redefining \nameref on input line 106.
+LaTeX Info: Redefining \ref on input line 117.
+LaTeX Info: Redefining \pageref on input line 117.
+LaTeX Info: Redefining \nameref on input line 117.
 
 (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.out)
 (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.out)
@@ -1291,7 +1291,7 @@ LaTeX Info: Redefining \nameref on input line 106.
 
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 106.
+(lastpage)             ! on input line 117.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1327,18 +1327,18 @@ Package lastpage Info: Please have a look at the pageslts package at
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 106
+LaTeX Font Info:    Trying to load font information for U+msa on input line 117
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 106
+LaTeX Font Info:    Trying to load font information for U+msb on input line 117
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package xypdf Info: Line width: 0.43799pt on input line 106.
+Package xypdf Info: Line width: 0.43799pt on input line 117.
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -1354,26 +1354,26 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'authorfile.bbl' found.
 
 (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.bbl)
-Package biblatex Info: Reference section=0 on input line 106.
-Package biblatex Info: Reference segment=0 on input line 106.
+Package biblatex Info: Reference section=0 on input line 117.
+Package biblatex Info: Reference segment=0 on input line 117.
 
 
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 106.
+loading the todonotes package. on input line 117.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 109.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 120.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.109 
+l.120 
        [1
 
 ] (./sections/introduction.tex
@@ -1391,12 +1391,12 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.112     \newpage
+l.123     \newpage
                    [2]pdfTeX warning (ext4): destination with the same identifi
 er (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.112     \newpage
+l.123     \newpage
                    [3] (./sections/section_2.tex
 
 LaTeX Warning: Marginpar on page 4 moved.
@@ -1408,7 +1408,7 @@ LaTeX Warning: Marginpar on page 4 moved.
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.115     \newpage
+l.126     \newpage
                    [4] (./sections/section_3.tex
 
 LaTeX Warning: Reference `pic:half_graph' on page 1 undefined on input line 7.
@@ -1434,8 +1434,12 @@ LaTeX Warning: Marginpar on page 8 moved.
 LaTeX Warning: Reference `pic:tree_implies_order' on page 1 undefined on input 
 line 332.
 
-[9]) [10] (./sections/section_4.tex [11] [12] [13] [14]
-Overfull \hbox (6.71062pt too wide) in paragraph at lines 324--340
+[9]) [10] (./sections/section_4.tex
+
+LaTeX Warning: Marginpar on page 11 moved.
+
+[11] [12] [13] [14]
+Overfull \hbox (6.71062pt too wide) in paragraph at lines 330--344
 []\OT1/cmss/bx/n/10.95 Lemma 4.17 \OT1/cmss/m/n/10.95 (Claim 4.13)\OT1/cmss/bx/
 n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]$-
 order prop-erty. Let $[]$
@@ -1445,25 +1449,21 @@ order prop-erty. Let $[]$
 LaTeX Warning: Marginpar on page 15 moved.
 
 [15]
-Overfull \hbox (6.71062pt too wide) in paragraph at lines 398--409
-[]\OT1/cmss/bx/n/10.95 Lemma 4.18 \OT1/cmss/m/n/10.95 (Claim 4.14)\OT1/cmss/bx/
+Overfull \hbox (6.71062pt too wide) in paragraph at lines 413--424
+[]\OT1/cmss/bx/n/10.95 Lemma 4.19 \OT1/cmss/m/n/10.95 (Claim 4.14)\OT1/cmss/bx/
 n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]$-
 order prop-erty. Let $[]$
  []
 
 [16]
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 486.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 503.
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 486.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 503.
 
- [17]
-
-LaTeX Warning: Marginpar on page 18 moved.
-
-[18] [19] [20]) [21] (./sections/section_5.tex [22] [23] [24] [25] [26]
-[27]
+ [17] [18] [19] [20]) [21] (./sections/section_5.tex [22] [23] [24]
+[25] [26] [27]
 Overfull \hbox (41.09937pt too wide) in paragraph at lines 478--482
 []\OT1/cmss/m/n/10.95 Let $[][] = []$ and $\OT1/cmss/m/sl/10.95 B$ \OT1/cmss/m/
 n/10.95 from [][]Lemma 5.13[][]. We can par-ti-tion $\OT1/cmss/m/sl/10.95 B$ \O
@@ -1474,10 +1474,10 @@ T1/cmss/m/n/10.95 into $[] = []$
 [37]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 130.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 141.
 
 
-Overfull \hbox (2.1784pt too wide) in paragraph at lines 131--131
+Overfull \hbox (2.1784pt too wide) in paragraph at lines 142--142
 []\OT1/cmss/m/n/10.95 Tung Nguyen, Alex Scott, and Paul Sey-mour. ``In-duced su
 b-graph den-sity. VI. Bounded VC-dimension''.
  []
@@ -1495,13 +1495,13 @@ Package logreq Info: Writing requests to 'authorfile.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 35823 strings out of 480247
- 676409 string characters out of 5896152
- 1427707 words of memory out of 5000000
- 52917 multiletter control sequences out of 15000+600000
+ 35837 strings out of 480247
+ 676666 string characters out of 5896152
+ 1429887 words of memory out of 5000000
+ 52929 multiletter control sequences out of 15000+600000
  482125 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,18n,94p,3242b,1360s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 99i,19n,94p,3242b,1360s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/sdadalt/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcss1095.6
 00pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
@@ -1523,10 +1523,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 Output written on /home/sdadalt/Workspace/tfm_severino_da_dalt/out/authorfile.p
-df (44 pages, 424057 bytes).
+df (44 pages, 426021 bytes).
 PDF statistics:
- 963 PDF objects out of 1000 (max. 8388607)
- 863 compressed objects within 9 object streams
- 285 named destinations out of 1000 (max. 500000)
+ 967 PDF objects out of 1000 (max. 8388607)
+ 867 compressed objects within 9 object streams
+ 287 named destinations out of 1000 (max. 500000)
  77 words of extra memory for PDF output out of 10000 (max. 10000000)
 

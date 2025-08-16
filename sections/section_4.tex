@@ -1,18 +1,18 @@
 \section{Section 4} \label{sec:section_4}
 
-    This section works around the concept of \emph{$\epsilon$-indivisible} sets, a strong condition on the regularity of a subset
+    This section works around the concept of \emph{$\epsilon$-indivisible} sets, a strong condition on the \regularity~of a subset
     respect to all the vertices of the graph.
     This condition results in pairs of sufficiently large subsets of vertices satisfying
-    the \emph{average condition}, which strictly bounds the number of exceptional edges in the pair.
+    the \emph{average condition}, which (asymmetrically) strictly bounds the number of exceptional edges in the pair.
     Using these tools we obtain the first result in \Cref{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound},
-    which proves the existence of a partition of highly regular pairs with no exceptions, at the cost of a
+    which proves the existence of a partition of highly \regular~pairs with no exceptions, at the cost of a
     non-homogeneous partition.
     Next, we improve the results obtaining an equitable partition in
     \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}, but this time with a
-    small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and exponentially small parts.
-    The final result, \Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}, achieves removing irregular pairs
+    small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and even smaller parts.
+    The final result, \Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}, achieves removing \irregular~pairs
     and reduce the size of the remainder set.
-    All in all, even though the partitions of this section present a very strong form of \say{regularity}, they all share
+    All in all, even though the partitions of this section present a very strong form of \regularity, they all share
     the same drawback: a large number of parts that grows with the size of the graph, something that we will be dealing
     with in the next section.
 
@@ -41,7 +41,7 @@
     \end{remark} \todo{Redundant.}
 
     A natural follow-up question, is how strongly bounded are exceptions in the context of two indivisible sets.
-    The following lemma measures precisely that, although doing so in a \say{directed} way.
+    The following lemma measures precisely that, although doing so in asymmetrically.
 
     \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
         Let $G$ be a finite graph.
@@ -49,7 +49,7 @@
         Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
         the $b \in B$ we have that $a R b \equiv t$.
         \begin{proof}
-            Since $B$ is $g$-indivisible, for each $a \in A$ we have that $\parstraight{B_{B,a}} < g(|B|)$.
+            Since $B$ is $g$-indivisible, for each $a \in A$ we have that $\parstraight{\overline{B}_{B,a}} < g(|B|)$.
             Let $U_i = \parcurly{a \in A \mid t(a,B) \equiv i}$ for $i \in \parcurly{0,1}$.
             If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
             Suppose not.
@@ -81,8 +81,9 @@
     \end{remark}
     \todo{I don't think this is useful in any way.}
 
-    Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity of
-    large enough subpairs, in the sense of bounding exceptional edges.
+    Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity
+    \todo{Define homogeneity.}
+    of large enough subpairs, in the sense of bounding exceptional edges.
     We study the $f$ and $\epsilon$ case separately, as the specific case of $\epsilon$ gives a slightly better condition
     on the range of the size of the subpair.
 
@@ -170,7 +171,7 @@
     \end{corollary}
 
     \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
-        Notice that the average condition is easily satisfied if a large enough condition is met by the pair.
+        Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
         If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
         then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
         \[
@@ -187,7 +188,7 @@
         $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
     \end{remark}
 
-    Now that we have proven the nice properties of indivisible sets, we are actually interested in whether they can be
+    Now that we have proven some properties of indivisible sets, we are actually interested in whether they can be
     found in a graph.
     It turns out that the non-$k$-order property, or more specifically the associated tree bound, is sufficient for
     proving it.
@@ -233,7 +234,7 @@
         \end{proof}
     \end{lemma}
 
-    The previous proof can be iteratively be used to partition the graph into indivisible parts with a small reminder.
+    The previous proof can be iteratively used to partition the graph into indivisible parts, with a small reminder.
     As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
     and fix an ascending order on the size of the parts.
 
@@ -259,8 +260,8 @@
         \end{proof}
     \end{lemma}
 
-    Finally, we can ensure the pairs satisfy the average condition by simply ensuring a minimal size of the parts,
-    which can be easily implemented in the sequence of integers.
+    Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts,
+    a condition that can be easily integrated in the definition of the sequence of integers.
 
     \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -307,10 +308,15 @@
         For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 4$.
     \end{remark}
 
-    \jojo
+    As stated earlier, the principal drawback of the previous result is that the obtained partition is not equitable.
+    To deal with this, we study the event of randomly partitioning a pair of indivisible sets
+    \todo{Hehe, "partition indivisible sets", sona contradictiu.}
+    into subparts of equal size.
+    We prove that the event of a pair of subparts of the refinement being either fully connected or completely empty,
+    is satisfied with very high probability.
 
     \begin{definition}
-        Let $A, B$ be $f$-indivisible sets with $f(A) \times f(B) < \frac{1}{2} |B|$.
+        Let $A, B$ be $f$-indivisible sets with $f(A) f(B) < \frac{1}{2} |B|$.
         Let $\Partriangle{A_i \mid i \in \parcurly{1, \dots, i_A}}$ be a partition of $A$ with $|A_i| = m$ for all
         $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_i \mid i \in \parcurly{1, \dots, i_B}}$ be a partition of
         $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
@@ -324,13 +330,11 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
         $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
-        paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
+        paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
+        \todo{Here we have enforced the equality. Should be commented that this is easily achievable as we do in the next results.}
         for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
         Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
         for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
-        In order to simplify computation, we will assume some approximation error by supposing $m_{\ell+1} = (m_{\ell})^\epsilon$.
-        \todo{We should probably avoid the approximation error by enforcing this equality as a condition.
-        It can be enforced because the only lemma that uses it actually suppose it in the construction.}
         Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
         $m \coloneqq n^\zeta$ divides $|A_1|$ and $|A_2|$.
         Then, let $\Partriangle{A_{1,s} \mid s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}}$ and
@@ -358,7 +362,7 @@
                             \leq \frac{m |A_1|^\epsilon}{|A_1| - m} \\
                         & \leq \frac{m^2 |A_1|^\epsilon}{|A_1|}
                             = \frac{m^2}{|A_1|^{1-\epsilon}}
-                            = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} % the approximation error is here
+                            = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} % the requirement of equality in the condition of m_l's is required here
                             \leq \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_1 + 1}}} \\
                         & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                             \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
@@ -377,7 +381,7 @@
                             \leq \frac{m m |A_2|^\epsilon}{|A_2| - m} \\
                         & \leq \frac{m^3 |A_2|^\epsilon}{|A_2|}
                             = \frac{m^3}{|A_2|^{1-\epsilon}}
-                            = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} % the approximation error is here
+                            = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} % the requirement of equality in the condition of m_l's is required here
                             \leq \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_2 + 1}}} \\
                         & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                             \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
@@ -394,10 +398,21 @@
         \end{proof}
     \end{lemma}
 
+    \begin{remark}
+        The condition on the size of $m_0$, which is both an upper and lower bound, is very strong and will be carried over
+        up to \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}.
+        The greater limitations of this resides in the fact that the size of the parts of the resulting partition $m_{**}$
+        is set by the size of $m_0$, and thus inherits the same limitations.
+    \end{remark}
+
+    Now, since the event of a given subpair not satisfying the desired property is very unlikely, it can be easily proven
+    that a random refinement of the partition given by \Cref{lem:existance_of_ordered_f_indivisible_partitions} only has
+    a small number of exceptional pairs.
+
     \begin{lemma}[Claim 4.14] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
+        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
         for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
         Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parround{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
         with $c \in (0, 1-\epsilon)$.
@@ -436,12 +451,12 @@
             Now, we have no control if $i_1 = j_1$, so let's bound how many of these we have:
             \[
                 \begin{split}
-                    |\parcurly{\text{Exceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in \parcurly{1, \dots, i(*)}}|
+                    \bparstraight{\bparcurly{\text{Exceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in \parcurly{1, \dots, i(*)}}}
                         & \leq {\frac{m_0}{m_{**}} \choose 2} \frac{n}{m_0} \\
                         & \leq \frac{\parround{\frac{m_0}{m_{**}}}^2}{2} \frac{n}{m_0}
                             = \frac{m_0 n}{2 m_{**}^2}
-                            = \frac{m_0}{n} \parround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
-                        & \leq \frac{m_0}{n} \parround{\frac{n - m_0}{m_{**}}}^2
+                            = \frac{m_0}{n} \bbparround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
+                        & \leq \frac{m_0}{n} \bbparround{\frac{n - m_0}{m_{**}}}^2
                             \leq \frac{m_0}{n} r^2
                             < \frac{r^2}{n^{c \epsilon^{k_{**}}}}
                 \end{split}
@@ -459,9 +474,11 @@
         (the second part of the proof), the number of exceptional pairs can be generally bounded by
         \[
             |\parcurly{\text{Exceptional pairs}}|
-                \leq \parround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2
+                \leq \bbparround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2
         \]
     \end{remark}
+
+    We now resume the previous results in a theorem with minimal conditions.
 
     \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
 
@@ -470,7 +487,7 @@
         $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
         Let $G$ be a finite graph with the non-$k_*$-order property.
         Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
-        Then, for any $m_{**} \in \parsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
+        Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
         \parround{\frac{\sqrt{2}-1}{\sqrt{2}}}^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}} n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}} -
         \frac{(1-\epsilon-c)c}{3}\epsilon^{2k_{**}}}}$, there is a partition
         $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, m}}$ of $A$ with remainder
@@ -520,13 +537,20 @@
     \end{theorem}
 
     \begin{remark}
-        \jojo
-        \todo{Things to be discussed in the remark: \\
-            - the upperbound on $m_{**}$ is close to a more reasonable value. \\
-            - in any case, the window of choice for $m_{**}$ is not that large. \\
-            - $c$ closer to $0$ increases the number of exceptional pairs but decreases size of the remainder, and viceversa.
-            }
+        Some notes on the partition obtained in the previous theorem:
+        \begin{itemize}
+            \item With any choice of $c$ and $m_{**}$, the fraction of exceptional pairs is asymptotically small,
+                but we obtain very small parts, that is, $m_{**} \thickapprox n^{\epsilon^{k_{**}}}$.
+            \item A smaller value of $c$ results in larger parts and smaller reminder, at the cost of a larger fraction
+                of exceptional pairs.
+            \item The window of choice of $m_{**}$ is very small, and taking a larger value
+                (in the given interval), results in a strongly larger reminder.
+                The edge case of choosing $m_{**}$ as the larger value, results in the bound on the size of the
+                reminder becoming $\parstraight{B} < \frac{\sqrt{2}-1}{\sqrt{2}} n^{1-\epsilon^{k_{**}}}$.
+        \end{itemize}
     \end{remark}
+
+    \jojo
 
     \todo{In what follows, $c$ should be another letter, it collides with previous definition.}
 
