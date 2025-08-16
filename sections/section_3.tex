@@ -88,8 +88,8 @@
     Sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards creating a \regular,
     and more specifically homogeneous \todo{Define homogeneous} partition, as the number of exceptional edges with respect
     to the entire graph is large and concentrated.
-    A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of such sets under the
-    non-$k$-order property.
+    A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of
+    such sets under the non-$k$-order property.
     In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
     $k$-order property.
     This, together with \Cref{lem:sauer-shelah}, will give us the desired result.
@@ -105,7 +105,11 @@
         The \emph{VC dimension} of $S$ is the size of the largest set $A \subseteq G$ that is shattered by $S$.
     \end{definition}
 
-    \begin{lemma}[Sauer-Shelah] \label{lem:sauer-shelah}
+    \begin{lemma}[Sauer-Shelah (-Perles -Vapnik-Chervonenkis) Lemma,
+            \cite{on_the_density_of_families_of_sets},
+            \cite{a_combinatorial_problem_stability_and_order_for_models_and_theories_in_infinitary_languages}]
+        % 4 names with parenthesis title from: https://gilkalai.wordpress.com/2008/09/28/extremal-combinatorics-iii-some-basic-theorems/
+        \label{lem:sauer-shelah}  % both authors proved this independently
         Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
         If the VC dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
         $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
@@ -114,7 +118,7 @@
     We'll begin by proving a stronger version of this lemma from Pajor, for which Sauer-Shelah will be a straightforward
     consequence.
 
-    \begin{lemma}[Sauer-Shelah-Pajor] \label{lem:pajor}
+    \begin{lemma}[Pajor's variant,~\cite{sous_spaces_1_des_espaces_de_banach_travaux_en_cours}] \label{lem:pajor}
         Let $G$ be a set and $S$ be a finite family of sets in $G$.
         Then $S$ shatters at least $\parstraight{S}$ sets.
         \begin{proof}
@@ -145,7 +149,7 @@
         \end{proof}
     \end{lemma}
 
-    \begin{proof} (of \Cref{lem:sauer-shelah})
+    \begin{proof}[Proof of \Cref{lem:sauer-shelah}.]
         Suppose that $\bigcup S$ has $n$ elements.
         By \Cref{lem:pajor}, $S$ shatters at least $\parstraight{S}$ subsets, and since there are at most
         $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
@@ -158,15 +162,16 @@
     Instead, we prove a stronger result, that is we prove this same bound with only the condition that $G$
     has the \say{disjoint} non-$k$-order property, in which the two sequences of vertices in the \Cref{def:k_order_property}
     are in fact disjoint.
-    This stronger version is neither more useful nor easier to prove, but remarks that the non-disjointness of the sequences,
-    and thus the broadening of the excluded structures, is not needed to obtain the bound, but later on.
-    \todo{Lluis: pot semblar raro aixó, pero crec que aixi deixa clar que és més endavant on de veritat necessitem que
-    puguin ser non disjoint.}
+    This stronger version (\Cref{lem:k_order_property_bounds_BAbs}) is neither more useful nor easier to prove,
+    but remarks that the non-disjointness of the sequences, and thus the broadening of the excluded structures,
+    is not needed to obtain the bound, but later on.
 
     \begin{lemma} \label{lem:vc_dimension_implies_k_order_property}
         Let $G$ be a graph and $A \subseteq G$.
         Let $S = \parcurly{B^+_{A,b} \mid b \in G \setminus A}$.
-        If $S$ has VC dimension (at least) $k$, then $G$ has the $k$-order property.
+        If $S$ has VC dimension (at least) $k$, then $G$ has the (disjoint)
+        \todo{Lluis: faig una definició separada o s'enten pel context que ja he posat?}
+        $k$-order property.
         \begin{proof}
             If $S$ has VC dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
             Now, choose any order of the vertices of $A' = \Partriangle{a_1, \dots, a_k}$.
@@ -184,7 +189,7 @@
     \end{lemma}
 
     \begin{lemma}[Claim 2.6] \label{lem:k_order_property_bounds_BAbs}
-        Let $G$ be a graph with the non-$k$-order property.
+        Let $G$ be a graph with the (disjoint) non-$k$-order property.
         Then, for any finite non-trivial $A \subseteq G$,
         \[
             \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
@@ -234,45 +239,41 @@
                 \]
         \end{enumerate}
         \begin{proof}
-        \begin{enumerate}
-            \item First of all, notice that $B^+_{A,b} = A - B^-_{A,b}$, since by definition they are complementary.
-                Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
-                It follows that
-                \[
-                    \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
-                    \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
-                \]
-                where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
-            \item Consider the following map:
-                \begin{align*}
-                    \pi: \parcurly{\overline{B}_{A,b} \mid b \in G} & \longrightarrow \parcurly{B^+_{A,b} \mid b \in G} \\
-                                                       \overline{B}_{A,b} & \longmapsto B^+_{A,b}
-                \end{align*}
-                We show that the map $\pi$ is injective.
-                \todo{Should I prove it is well defined?}
-                Let $b,b' \in G$ such that $\overline{B}_{A,b} = \overline{B}_{A,b'}$.
-                Then, $t(A,b) = t(A,b')$, otherwise (w.l.o.g., suppose that $t(A,b) = 1$ and $t(A,b') = 0$), we would have
-                \[
-                    \parstraight{B^-_{A,b'}} > \parstraight{B^+_{A,b'}} = \parstraight{B^+_{A,b}} \geq
-                        \parstraight{B^-_{A,b}} = \parstraight{B^-_{A,b'}}
-                \]
-                which is a contradiction.
-                Then:
-                \begin{itemize}
-                    \item if $t(A,b) = t(A,b') = 1$, we have that $B_{A,b} = B^+_{A,b} = B^+_{A,b'} = B_{A,b'}$.
-                    \item if $t(A,b) = t(A,b') = 0$, we have that
-                    $B_{A,b} = B^-_{A,b} = A \setminus B^+_{A,b} = A \setminus B^+_{A,b'} = B^-_{A,b'} = B_{A,b'}$.
-                \end{itemize}
-                This proves that $\pi$ is injective.
-                Hence, we have that
-                \[
-                    \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
-                    \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
-                    \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
-                \]
-                This concludes the proof.
-                Notice that actually $\pi$ is a bijection, but this is not needed for the proof.
-        \end{enumerate}
+            \begin{enumerate}
+                \item First of all, notice that $B^+_{A,b} = A - B^-_{A,b}$, since by definition they are complementary.
+                    Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
+                    It follows that
+                    \[
+                        \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
+                        \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
+                    \]
+                    where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
+                \item Consider the following map:
+                    \begin{align*}
+                        \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G} \\
+                                                     B^+_{A,b} & \longmapsto \overline{B}_{A,b}
+                    \end{align*}
+                    We first prove that the map $\pi$ is well-defined.
+                    If $B^+_{A,b}$ and $B^+_{A,b'}$ are equal, then they have the same size, and thus the same truth value.
+                    Then,
+                    \begin{itemize}
+                        \item if $t(A,b) = t(A,b') = 1$, we have that $\overline{B}_{A,b} = B^+_{A,b} = B^+_{A,b'} = \overline{B}_{A,b'}$.
+                        \item if $t(A,b) = t(A,b') = 0$, we have that
+                        $\overline{B}_{A,b} = B^-_{A,b} = A \setminus B^+_{A,b} = A \setminus B^+_{A,b'} = B^-_{A,b'} = \overline{B}_{A,b'}$.
+                    \end{itemize}
+                    which proves that the map is well-defined.
+                    The map $\pi$ is also surjective, since for each $b \in G$, and thus for each $\overline{B}_{A,b}$,
+                    the set $B^+_{A,b}$ is mapped to $\overline{B}_{A,b}$ by construction.
+                    Hence,
+                    \[
+                        \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
+                        \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
+                        \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                    \]
+                    This concludes the proof.
+                    Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
+                    different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$.
+            \end{enumerate}
         \end{proof}
     \end{corollary}
 
