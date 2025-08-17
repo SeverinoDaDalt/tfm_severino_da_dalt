@@ -550,9 +550,16 @@
         \end{itemize}
     \end{remark}
 
-    \jojo
+    Next, we will follow another approach.
+    That is, if our \regular property is transferred to subsets, then creating an equitable partition is not a hard
+    problem, as we can simply choose a subset of the obtained part to be of the desired size.
+    A very simple such property is $f_c$-indivisibility, where $f_c$ is the constant function $f_c(x) = c$.
+    That is, the number of exceptional edges is at most $c$ for each vertex of the graph, thus taking a subset cannot
+    introduce new exceptions.
+    This property is much stronger then $\epsilon$-indivisibility, \jojo
 
-    \todo{In what follows, $c$ should be another letter, it collides with previous definition.}
+    \todo{In what follows, $c$ should be another letter, it collides with previous definition. Also, what about renaming
+        $c$-indivisible to $f_c$-indivisible or something like that?}
 
     \begin{definition}[Definition 4.18] \label{def:n_large_enough_property}
         For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
@@ -563,18 +570,15 @@
     \end{definition}
 
     \begin{lemma}[Lemma 4.19] \label{lem:n_large_enough_valid_values}
-        If the reals $\epsilon, \zeta, \xi$ and the natural numbers $n, c$ satisfy:
-        \begin{itemize}
-            \item $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$
-            \item $n$ sufficiently large ($n > N \coloneqq N(\epsilon, \zeta, \xi, c)$) to satisfy the equation:
-            \[
+        If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
+        the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
+            \begin{equation} \label{eq:n_large_enough_valid_values.1}
                 \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
-            \]
-            \item $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$
-        \end{itemize}
+            \end{equation}
+        and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$,
         then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
         \begin{proof}
-            First of all, notice that the last condition implies that $(1 - \xi - \epsilon) > 0$, and thus $\xi < 1 -\epsilon$.
+            First of all, notice that the condition on $c$ implies that $(1 - \xi - \epsilon) > 0$, and thus $\xi < 1 -\epsilon$.
             Let $m = \lfloor n^\xi \rfloor$ be the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$
             the set of sequences of elements of $A$ with length $m$.
             Let $\mu$ be a probability distribution on $\mathcal{F}_*$ such that for all $F \in \mathcal{F}_*$,
@@ -582,7 +586,7 @@
             We want to prove that the probability that a random $U$ satisfies:
             \begin{enumerate}
                 \item\label{itm:n_large_enough_valid_values.1} All elements of $U$ are distinct.
-                \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$ $|U \cap B| < c$.
+                \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$, $|U \cap B| < c$.
             \end{enumerate}
             is non-zero.
             First of all let's bound the converse of \dref{itm:n_large_enough_valid_values.1}, i.e. the probability that there are two equal elements
@@ -598,7 +602,7 @@
             $U$ are in a given $B \in P$:
             \[
                 P_B = P(\exists^{\geq c} t\in [m] \mid U_t \in B)
-                    \leq {m \choose c} \parround{\frac{|B|}{n}}^c
+                    \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
                     \leq \frac{m^c |B|^c}{n^c}
                     \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
                     = \frac{1}{n^{c (1 - \xi - \epsilon)}}
@@ -622,13 +626,14 @@
                 \item Since $\xi < \frac{1}{2}$ we have that $1 - 2\xi > 0$.
                 \item $c (1 - \xi - \epsilon) - \frac{1}{\zeta}> 0$.
             \end{itemize}
-            so, the $n$-large enough condition of the forth point of the statement is well defined and
+            so, the $n$-large enough condition \eqref{eq:n_large_enough_valid_values.1} is well defined and
             \[
                 P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
                     < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\xi}}}
                     < 1
             \]
-            Thus, the probability that there exists a $U \subseteq A$ satisfying the condition is non-trivial,
+            holds.
+            We conclude that the probability that there exists a $U \subseteq A$ satisfying the condition is non-trivial,
             and $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
         \end{proof}
     \end{lemma}
@@ -643,7 +648,7 @@
                 c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
             \]
         \end{enumerate}
-        Then, for every sufficiently large $n \in \mathbb{N}$ ($n >
+        Then, for every sufficiently large $n \in \mathbb{N}$ (it suffices that $n >
         g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$,
         where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$),
         if $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
@@ -654,17 +659,13 @@
         \begin{proof}
             Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_\ell = \floor{m_{\ell-1}^\epsilon} \geq g_\epsilon^{-1}(m_{\ell-1}) \geq g_\epsilon^{-\ell}(n)$.
             Then, $m_\ell \geq m_{\ell+1}$ and we can use \Cref{lem:existance_of_indivisible_sets}
-            to get $A_1 \subseteq A$ with $|A_1| = m_\ell$ for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $A_1$ $\epsilon$-indivisible.
-            By \dref{itm:k_order_propery_bounds_BAbs.2} of \Cref{cor:k_order_propery_bounds_BAbs}, we have that
-            $\bparstraight{\bparcurly{\overline{B}_{A_1,b} \mid b \in G}} \leq |A_1|^k = m_\ell^k$.
+            to getan $\epsilon$-indivisible subset $A_1 \subseteq A$, with $|A_1| = m_\ell$ for some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
             Notice that:
             \begin{itemize}
                 \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2}.
                 \item We can set $\zeta \coloneqq \frac{1}{k} > 0$.
-                \item Since $\epsilon \in \parround{0, \frac{1}{2}}$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2},
-                    then by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3}
-                    $\frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2} < 1 - \epsilon$ and
-                    thus $0 < \xi < \min(1-\epsilon, \frac{1}{2})$.
+                \item By \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
+                    $\frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2}$, so $0 < \frac{\xi}{\epsilon^\ell} < \frac{1}{2}$.
                 \item For all $\ell \in \parcurly{0,\dots,k_{**}}$, $m_\ell$ is sufficiently large:
                     \[
                         m_\ell \geq g_\epsilon^{-\ell}(n) \geq g_\epsilon^{-k_{**}}(n) > n\parround{\epsilon, \frac{1}{k},
@@ -679,7 +680,8 @@
             $P \coloneqq \bparcurly{\overline{B}_{A_1,b} \mid b \in G}$ respectively, which then satisfy the conditions:
             \begin{itemize}
                 \item $|A_1| = m_\ell$.
-                \item $|P| \leq m_\ell^k = m_\ell^{\frac{1}{\zeta}}$.
+                \item $|P| \leq m_\ell^k = m_\ell^{\frac{1}{\zeta}}$, where first inequality follows \dref{itm:k_order_propery_bounds_BAbs.2}
+                    of \Cref{cor:k_order_propery_bounds_BAbs}.
                 \item $\forall B \in P$, $|B| \leq |A_1|^\epsilon$ by $\epsilon$-indivisibility of $A_1$.
             \end{itemize}
             Thus, by \Cref{def:n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
@@ -698,15 +700,18 @@
         For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
         (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ large enough
         $\parstraight{A} = n > N\parround{c, \epsilon, \zeta, \xi, \theta}$,
-        there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder $B = A \setminus \bigcup \overline{A}$
-        satisfying:
+        there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder
+        $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, i(*)}} A_i$ satisfying:
         \begin{itemize}
             \item $|A_i| = \lfloor \lfloor n^\theta \rfloor ^\zeta \rfloor$ for all $i \in \parcurly{1, \dots, i(*)}$.
             \item $A_i$ is $c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$ where $c$ is the constant function $f(x) = c$.
-            \item $|B| < \lfloor n^{\frac{\theta}{\epsilon^{k_{**}}}} \rfloor$.
+            \item $|B| < m_0$. \todo{$m_0$ cannot be the bound as it is not defined in the statement. There is no clear
+                to write the real bound in a clear way without error or absurdly worse bounds. I think the better
+                solution is to force $\epsilon$ (and possibly other parameters) to be a fraction $\frac{1}{r}$.
+                If so, make a remark saying that this condition is not necessary but makes bounds cleaner.}
         \end{itemize}
         \begin{proof}
-            Let $n > N \coloneqq \bparround{g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
+            Let $n > N\parround{c, \epsilon, \zeta, \xi, \theta} \coloneqq \bparround{g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
                 \parround{ \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}} + 1 }^{\frac{1}{\theta}}$,
             so that $\lfloor n^\theta \rfloor$ satisfies the large enough condition of
             \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}:
@@ -720,19 +725,18 @@
             This sequence satisfies the condition of \Cref{lem:existance_of_indivisible_sets} for $f(n) = n^\epsilon$.
             We will build a sequence of disjoint $c$-indivisible subsets $A_i$ by induction on $i$ as follows.
             Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
-            If $R_i < \lfloor n^{\frac{\theta}{\epsilon^{k_{**}}}} \rfloor$, then
+            If $R_i < m_0$, then
             $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$, and we are done.
             Otherwise, we can apply \Cref{lem:existance_of_indivisible_sets} to $R_i$ with the sequence
             $\Partriangle{m_\ell}_{\ell \leq k_{**}}$, to obtain an $\epsilon$-indivisible subset $B_i \subseteq R_i$ of
             size $m_{k_{**}-\ell}$.
             Then, since $|B_i| = m_{k_{**}-\ell} \geq m_{k_{**}} = \lfloor n^\theta \rfloor$ by the $n$-large-enough assumption,
-            \todo{Something is odd here.}
             we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} and get a
             $c$-indivisible subset $Z_i$ of size $|Z_i| = \lfloor m_{k_{**}-\ell}^\zeta \rfloor
             \geq \lfloor \lfloor n^{\frac{\theta}{\epsilon^\ell}} \rfloor ^\zeta \rfloor
             \geq \lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
-            Since $c$-indivisible is preserved when taking subsets,
-            we can choose $A_i \subseteq Z_i$ $c$-indivisible of size $\lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
+            Since $c$-indivisibility is preserved when taking subsets,
+            we can choose $A_i \subseteq Z_i$ to be a $c$-indivisible subset of size $\lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
         \end{proof}
     \end{theorem}
 
