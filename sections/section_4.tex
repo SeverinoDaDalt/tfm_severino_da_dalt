@@ -201,7 +201,7 @@
         such that $x \geq f(x)$.
         Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
         for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
-        If $A \subseteq G$, $|A| = m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
+        If $A \subseteq G$, $|A| \geq m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
         of size $m_\ell$ which is $f$-indivisible.
         % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
         \begin{proof}
@@ -217,8 +217,8 @@
                     $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
             \end{enumerate}
             Let's prove the induction.
-            For $k=0$, we consider $A_{\Partriangle{\cdot}} = A$, which satisfies $|A_{\Partriangle{\cdot}}| = m_0$ and
-            $b_{\Partriangle{\cdot}}$ is witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
+            For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
+            any $b_{\Partriangle{\cdot}}$ witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
             For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
             Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
             $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
@@ -566,7 +566,7 @@
         If the reals $\epsilon, \zeta, \xi$ and the natural numbers $n, c$ satisfy:
         \begin{itemize}
             \item $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$
-            \item $n$ sufficiently large ($n > n(\epsilon, \zeta, \xi, c)$) to satisfy the equation:
+            \item $n$ sufficiently large ($n > N \coloneqq N(\epsilon, \zeta, \xi, c)$) to satisfy the equation:
             \[
                 \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
             \]
@@ -637,49 +637,46 @@
         Let $k_*, k, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
         \begin{enumerate}
             \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.1} $G$ is a graph with the non-$k_*$-order property.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $A \subseteq G$ implies $\bparstraight{\bparcurly{\parcurly{ a \in A \mid a R b \equiv t(a,b)} \mid b \in G}}
-                \leq |A|^k$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\epsilon \in \parround{0, \frac{1}{2}}$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.5} $c$ satisfies \[
+            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $\epsilon \in \parround{0, \frac{1}{2}}$.
+            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
+            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $c$ satisfies \[
                 c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
             \]
         \end{enumerate}
-        Then, for every sufficiently large $n \in \mathbb{N}$ ($n^{\epsilon^{k_{**}}} > n\parround{\epsilon, \frac{1}{k},
-        \frac{\xi}{\epsilon^{k_{**}}}, c}$ in the sense of \Cref{lem:n_large_enough_valid_values} (d)), if
-        $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
+        Then, for every sufficiently large $n \in \mathbb{N}$ ($n >
+        g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$,
+        where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$),
+        if $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
         \begin{enumerate}[label=(\alph*), ref=\alph*]
             \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} $|Z| = \lfloor n^\xi \rfloor$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b} $Z$ is $\epsilon$-indivisible in $G$.
+            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b} $Z$ is $c$-indivisible in $G$.
         \end{enumerate}
         \begin{proof}
-            In order to simplify the calculation, we will assume that $n^{\epsilon^\ell} \in \mathbb{N}$ for all
-            $\ell \in \parcurly{0, \dots, k_{**}}$.
-            \todo{This should be coherent with previous sections.}
-            Notice that can be easily achieved by setting $\epsilon$ as $\epsilon = \frac{1}{r}$ with $r \in \mathbb{N}$.
-            Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_\ell = n^{\epsilon^{\ell}}$.
-            So $m_{\ell+1} = m_\ell^\epsilon = \lfloor (m_\ell)^\epsilon \rfloor$ and we can use \Cref{lem:existance_of_indivisible_sets}
+            Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_\ell = \floor{m_{\ell-1}^\epsilon} \geq g_\epsilon^{-1}(m_{\ell-1}) \geq g_\epsilon^{-\ell}(n)$.
+            Then, $m_\ell \geq m_{\ell+1}$ and we can use \Cref{lem:existance_of_indivisible_sets}
             to get $A_1 \subseteq A$ with $|A_1| = m_\ell$ for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $A_1$ $\epsilon$-indivisible.
-            By \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} we have that $|P| \leq |A_1|^k = m_\ell^k$.
-            \todo{Define $P$ in this context.}
+            By \dref{itm:k_order_propery_bounds_BAbs.2} of \Cref{cor:k_order_propery_bounds_BAbs}, we have that
+            $\bparstraight{\bparcurly{\overline{B}_{A_1,b} \mid b \in G}} \leq |A_1|^k = m_\ell^k$.
             Notice that:
             \begin{itemize}
-                \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3}.
-                \item Set $\zeta \coloneqq \frac{1}{k} > 0$.
-                \item Since $\epsilon \in \parround{0, \frac{1}{2}}$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
-                    then by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}
+                \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2}.
+                \item We can set $\zeta \coloneqq \frac{1}{k} > 0$.
+                \item Since $\epsilon \in \parround{0, \frac{1}{2}}$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2},
+                    then by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3}
                     $\frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2} < 1 - \epsilon$ and
                     thus $0 < \xi < \min(1-\epsilon, \frac{1}{2})$.
                 \item For all $\ell \in \parcurly{0,\dots,k_{**}}$, $m_\ell$ is sufficiently large:
-                    $m_\ell = n^{\epsilon^\ell} \geq n^{\epsilon^{k_{**}}} > n\parround{\epsilon, \frac{1}{k},
-                    \frac{\xi}{\epsilon^{k_{**}}}, c} > n\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}$.
+                    \[
+                        m_\ell \geq g_\epsilon^{-\ell}(n) \geq g_\epsilon^{-k_{**}}(n) > n\parround{\epsilon, \frac{1}{k},
+                        \frac{\xi}{\epsilon^{k_{**}}}, c} > n\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}
+                    \]
                 \item $c > \frac{1}{\frac{1}{k} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
-                    = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.5}.
+                    = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}.
             \end{itemize}
             By \Cref{lem:n_large_enough_valid_values} then, $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}}$
             (as in \Cref{def:n_large_enough_property}) holds, and we can take
-            $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ as $A_1$ and $P$
-            respectively, which then satisfy the conditions:
+            $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ as $A_1$ and
+            $P \coloneqq \bparcurly{\overline{B}_{A_1,b} \mid b \in G}$ respectively, which then satisfy the conditions:
             \begin{itemize}
                 \item $|A_1| = m_\ell$.
                 \item $|P| \leq m_\ell^k = m_\ell^{\frac{1}{\zeta}}$.
@@ -687,8 +684,8 @@
             \end{itemize}
             Thus, by \Cref{def:n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
             \begin{itemize}
-                \item $|U| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
-                    \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
+                \item $|Z| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
+                    = \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
                 \item $Z$ is $c$-indivisible since $|B \cap Z| \leq c$ for all $B \in P$,
                     satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b}.
             \end{itemize}
@@ -696,17 +693,11 @@
         \end{proof}
     \end{lemma}
 
-    \begin{remark}[Remark 4.22] \label{rmk:k_asterisk_enough_for_k}
-        Notice that if $k = k_*$, the condition \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} will be satisfied by \Cref{cor:k_order_propery_bounds_BAbs}
-        and the non-$k_*$-order of $G$.
-    \end{remark}
-
     \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
         Let $G$ be a graph with the non-$k_*$-property.
         For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
-        (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ with
-        $A = n > n\parround{c, \epsilon, \zeta, \xi, \theta}$ (i.e. $n$ large enough in the sense of \Cref{lem:n_large_enough_valid_values}),
-        \todo{Change this notation to use $N_{\ref{lem:n_large_enough_valid_values}}$.}
+        (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ large enough
+        $\parstraight{A} = n > N\parround{c, \epsilon, \zeta, \xi, \theta}$,
         there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder $B = A \setminus \bigcup \overline{A}$
         satisfying:
         \begin{itemize}
@@ -715,16 +706,15 @@
             \item $|B| < \lfloor n^{\frac{\theta}{\epsilon^{k_{**}}}} \rfloor$.
         \end{itemize}
         \begin{proof}
-            Let $n > \parround{n\parround{ \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}^{\frac{1}{\epsilon^{k_{**}}}} + 1 }^{\frac{1}{\theta}}$
-            in the sense of \Cref{lem:n_large_enough_valid_values}, so that $\lfloor n^\theta \rfloor$ satisfies the
-            large enough condition of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}:
+            Let $n > N \coloneqq \bparround{g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
+                \parround{ \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}} + 1 }^{\frac{1}{\theta}}$,
+            so that $\lfloor n^\theta \rfloor$ satisfies the large enough condition of
+            \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}:
             \[
-                \parround{\lfloor n^\theta \rfloor}^{\epsilon^{k_{**}}}
-                    > n\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}
+                \lfloor n^\theta \rfloor
+                    > g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
+                        \parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}
             \]
-            Notice that condition \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} in
-            \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
-            is satisfied by \Cref{rmk:k_asterisk_enough_for_k}.
             Now, we define a decreasing sequence $m_0 > m_1 > \dots > m_{k_{**}}$ with $m_{k_{**}} = \lfloor n^\theta \rfloor$
             and $m_{\ell} = \lceil \parround{m_{\ell+1}}^{\frac{1}{\epsilon}} \rceil$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
             This sequence satisfies the condition of \Cref{lem:existance_of_indivisible_sets} for $f(n) = n^\epsilon$.
