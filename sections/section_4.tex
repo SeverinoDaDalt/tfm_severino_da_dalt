@@ -550,13 +550,19 @@
         \end{itemize}
     \end{remark}
 
-    Next, we will follow another approach.
-    That is, if our \regular property is transferred to subsets, then creating an equitable partition is not a hard
-    problem, as we can simply choose a subset of the obtained part to be of the desired size.
+    Next, we will follow another approach to obtain an equitable partition.
+    That is, if a given \regular~property is transitive to subsets, then creating such a partition is not a hard
+    problem, as we can simply choose a subset of the desired size from each \regular~part.
     A very simple such property is $f_c$-indivisibility, where $f_c$ is the constant function $f_c(x) = c$.
-    That is, the number of exceptional edges is at most $c$ for each vertex of the graph, thus taking a subset cannot
-    introduce new exceptions.
-    This property is much stronger then $\epsilon$-indivisibility, \jojo
+    With this property, the number of exceptional edges is at most $c$ for each vertex of the graph,
+    and taking a subset can only reduce the absolute number of exceptional edges.
+    This property is much stronger then $\epsilon$-indivisibility, but in the next few lemmas we will show that actually,
+    in each $\epsilon$-indivisible set, there is a subset of vertices which is $f_c$-indivisible
+    (\Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}).
+
+    To prove so, we use a probabilistic argument, and show that the event of there existing a subset which has
+    intersection smaller than $c$ with every $\overline{B}_{A,b}$ (\Cref{def:n_large_enough_property}) is highly
+    probable under some very specific conditions (\Cref{lem:n_large_enough_valid_values}).
 
     \todo{In what follows, $c$ should be another letter, it collides with previous definition. Also, what about renaming
         $c$-indivisible to $f_c$-indivisible or something like that?}
@@ -695,6 +701,14 @@
         \end{proof}
     \end{lemma}
 
+    We know use the previous results to build an equitable partition.
+    The strategy is to use \Cref{lem:existance_of_indivisible_sets} to find an $\epsilon$-indivisible set of vertices in
+    the graph, to which \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} is used to obtain
+    a subset which is $f_c$-indivisible.
+    Since $f_c$-indivisibility is transitive to taking subsets, we can take a smaller subset with the same property.
+    We move aside this as the first part of our partition, and repeat the strategy on the reminder.
+    This process finishes when the reminder is too small to apply \Cref{lem:existance_of_indivisible_sets}.
+
     \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
         Let $G$ be a graph with the non-$k_*$-property.
         For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
@@ -705,7 +719,7 @@
         \begin{itemize}
             \item $|A_i| = \lfloor \lfloor n^\theta \rfloor ^\zeta \rfloor$ for all $i \in \parcurly{1, \dots, i(*)}$.
             \item $A_i$ is $c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$ where $c$ is the constant function $f(x) = c$.
-            \item $|B| < m_0$. \todo{$m_0$ cannot be the bound as it is not defined in the statement. There is no clear
+            \item $|B| < m_0 \approx n^{\frac{\theta}{\epsilon^{k_{**}}}}$. \todo{$m_0$ cannot be the bound as it is not defined in the statement. There is no clear
                 to write the real bound in a clear way without error or absurdly worse bounds. I think the better
                 solution is to force $\epsilon$ (and possibly other parameters) to be a fraction $\frac{1}{r}$.
                 If so, make a remark saying that this condition is not necessary but makes bounds cleaner.}
@@ -729,7 +743,7 @@
             $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$, and we are done.
             Otherwise, we can apply \Cref{lem:existance_of_indivisible_sets} to $R_i$ with the sequence
             $\Partriangle{m_\ell}_{\ell \leq k_{**}}$, to obtain an $\epsilon$-indivisible subset $B_i \subseteq R_i$ of
-            size $m_{k_{**}-\ell}$.
+            size $m_{k_{**}-\ell}$. \todo{WHY IN THE HELL DO WE NEED TO HAVE EPSILON_INDIVISIBLE SETS??}
             Then, since $|B_i| = m_{k_{**}-\ell} \geq m_{k_{**}} = \lfloor n^\theta \rfloor$ by the $n$-large-enough assumption,
             we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} and get a
             $c$-indivisible subset $Z_i$ of size $|Z_i| = \lfloor m_{k_{**}-\ell}^\zeta \rfloor
@@ -741,5 +755,14 @@
     \end{theorem}
 
     \todo{Make some remark on the fact that $\theta$ needs to be smaller then $\epsilon^{k_{**}}$ for this to make sense.}
+
+    \begin{remark}
+        Some notes on the partition obtained in the previous theorem:
+        \begin{itemize}
+            \item For the theorem to have any value $\theta$ needs to be smaller then $\epsilon^{k_{**}}$, otherwise the
+                reminder may be as large as the whole graph.
+            \item \jojo
+        \end{itemize}
+    \end{remark}
 
     % up to here it was compiling with no problem.
