@@ -4,7 +4,9 @@
     A graph is considered stable, if it does not contain bi-induced (as defined in~\cite{induced_subgraph_density_vi_bounded_vc_dimension})
     \todo{Maybe move cite to section 2, and mention there other references such as "induced sub-bigraph"}
     large half-graphs, a particularly \irregular\todo{Explain somewhere what this means.}~structure in graphs.
-    See \Cref{pic:half_graph} for an example of such a graph. \todo{Add visual example of a half-graph}
+    See \Cref{fig:half_graph} for an example of such a graph.
+
+    \input{pictures/half-graph}
 
     First, stability implies a bounded \emph{Vapnik-Chervonenkis (VC) dimension}, which limits the variety of
     neighborhoods of vertices within the graph.
@@ -294,7 +296,9 @@
         The two sequences are not necessarily disjoint. \todo{Lluis: millor una remark?}
     \end{definition}
 
-    \todo{Make a visual example of the k-tree.}
+    See \Cref{fig:k_tree} for an example of such a structure.
+
+    \input{pictures/k-tree}
 
     Similarly to stability, we can define the \emph{tree bound} of a graph to measure the level of freeness from $k$-trees
     of graph.
@@ -309,7 +313,7 @@
     The following theorem states that if a graph has a sufficiently large tree bound, then it has the $k$-order property
     and vice versa.
 
-    \begin{theorem}[Lemma Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
+    \begin{theorem}[Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
         If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
         On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-3$, then it has the $k_*$-order
         property.
@@ -329,7 +333,7 @@
             \end{itemize}
             Notice that at each step, the sequence $C_\eta$ has an odd number of elements.
             The resulting two sequences of nodes and branches form a $k_{**}$-tree.
-            See \Cref{pic:tree_implies_order} for a visual example of this construction.
+            See \Cref{pic:order_implies_tree} for a visual example of this construction.
             \todo{Add visual example of order implies tree.}
 
             During the proof of the second implication, we say that a set of nodes $N$ of a $k$-tree
