@@ -1,76 +1,284 @@
 \begin{figure}
     \centering
 
-    % Parameters
-    \def\nodessep{1}
-    \def\n{10} % Number of nodes (each part)
-    \def\cellsize{0.5} %set as 5 divided by \n
-
     \begin{tikzpicture}[
-        vertex/.style={circle, draw, fill=gray!20, minimum size=5mm, inner sep=1pt},
+        vertex/.style={circle, draw, fill=gray!20, minimum size=0.3 cm, inner sep=1pt},
         label_a/.style={above=2pt, font=\small},
         label_b/.style={below=2pt, font=\small},
         node distance=1.5cm,
         solid edge/.style={draw, thick, black!60},
         dashed edge/.style={draw, dashed, thick, black!40},
-        matrix cell/.style={draw, minimum size=\cellsize cm, inner sep=0pt},
+        matrix cell/.style={draw, minimum size=0.5 cm, inner sep=0pt},
         matrix label/.style={font=\small, anchor=center}
     ]
+	\node[vertex] (a_1) at (1,0) {};
+	\node[vertex] (b_1) at (1,-4) {};
+	\node[vertex] (a_2) at (2,0) {};
+	\node[vertex] (b_2) at (2,-4) {};
+	\node[vertex] (a_3) at (3,0) {};
+	\node[vertex] (b_3) at (3,-4) {};
+	\node[vertex] (a_4) at (4,0) {};
+	\node[vertex] (b_4) at (4,-4) {};
+	\node[vertex] (a_5) at (5,0) {};
+	\node[vertex] (b_5) at (5,-4) {};
+	\node[vertex] (a_6) at (6,0) {};
+	\node[vertex] (b_6) at (6,-4) {};
+	\node[vertex] (a_7) at (7,0) {};
+	\node[vertex] (b_7) at (7,-4) {};
+	\node[vertex] (a_8) at (8,0) {};
+	\node[vertex] (b_8) at (8,-4) {};
+	\node[vertex] (a_9) at (9,0) {};
+	\node[vertex] (b_9) at (9,-4) {};
+	\node[vertex] (a_10) at (10,0) {};
+	\node[vertex] (b_10) at (10,-4) {};
+	\draw[solid edge] (a_1) -- (b_1);
+	\draw[dashed edge] (a_1) -- (b_2);
+	\draw[dashed edge] (a_1) -- (b_3);
+	\draw[dashed edge] (a_1) -- (b_4);
+	\draw[dashed edge] (a_1) -- (b_5);
+	\draw[dashed edge] (a_1) -- (b_6);
+	\draw[dashed edge] (a_1) -- (b_7);
+	\draw[dashed edge] (a_1) -- (b_8);
+	\draw[dashed edge] (a_1) -- (b_9);
+	\draw[dashed edge] (a_1) -- (b_10);
+	\draw[solid edge] (a_2) -- (b_1);
+	\draw[solid edge] (a_2) -- (b_2);
+	\draw[dashed edge] (a_2) -- (b_3);
+	\draw[dashed edge] (a_2) -- (b_4);
+	\draw[dashed edge] (a_2) -- (b_5);
+	\draw[dashed edge] (a_2) -- (b_6);
+	\draw[dashed edge] (a_2) -- (b_7);
+	\draw[dashed edge] (a_2) -- (b_8);
+	\draw[dashed edge] (a_2) -- (b_9);
+	\draw[dashed edge] (a_2) -- (b_10);
+	\draw[solid edge] (a_3) -- (b_1);
+	\draw[solid edge] (a_3) -- (b_2);
+	\draw[solid edge] (a_3) -- (b_3);
+	\draw[dashed edge] (a_3) -- (b_4);
+	\draw[dashed edge] (a_3) -- (b_5);
+	\draw[dashed edge] (a_3) -- (b_6);
+	\draw[dashed edge] (a_3) -- (b_7);
+	\draw[dashed edge] (a_3) -- (b_8);
+	\draw[dashed edge] (a_3) -- (b_9);
+	\draw[dashed edge] (a_3) -- (b_10);
+	\draw[solid edge] (a_4) -- (b_1);
+	\draw[solid edge] (a_4) -- (b_2);
+	\draw[solid edge] (a_4) -- (b_3);
+	\draw[solid edge] (a_4) -- (b_4);
+	\draw[dashed edge] (a_4) -- (b_5);
+	\draw[dashed edge] (a_4) -- (b_6);
+	\draw[dashed edge] (a_4) -- (b_7);
+	\draw[dashed edge] (a_4) -- (b_8);
+	\draw[dashed edge] (a_4) -- (b_9);
+	\draw[dashed edge] (a_4) -- (b_10);
+	\draw[solid edge] (a_5) -- (b_1);
+	\draw[solid edge] (a_5) -- (b_2);
+	\draw[solid edge] (a_5) -- (b_3);
+	\draw[solid edge] (a_5) -- (b_4);
+	\draw[solid edge] (a_5) -- (b_5);
+	\draw[dashed edge] (a_5) -- (b_6);
+	\draw[dashed edge] (a_5) -- (b_7);
+	\draw[dashed edge] (a_5) -- (b_8);
+	\draw[dashed edge] (a_5) -- (b_9);
+	\draw[dashed edge] (a_5) -- (b_10);
+	\draw[solid edge] (a_6) -- (b_1);
+	\draw[solid edge] (a_6) -- (b_2);
+	\draw[solid edge] (a_6) -- (b_3);
+	\draw[solid edge] (a_6) -- (b_4);
+	\draw[solid edge] (a_6) -- (b_5);
+	\draw[solid edge] (a_6) -- (b_6);
+	\draw[dashed edge] (a_6) -- (b_7);
+	\draw[dashed edge] (a_6) -- (b_8);
+	\draw[dashed edge] (a_6) -- (b_9);
+	\draw[dashed edge] (a_6) -- (b_10);
+	\draw[solid edge] (a_7) -- (b_1);
+	\draw[solid edge] (a_7) -- (b_2);
+	\draw[solid edge] (a_7) -- (b_3);
+	\draw[solid edge] (a_7) -- (b_4);
+	\draw[solid edge] (a_7) -- (b_5);
+	\draw[solid edge] (a_7) -- (b_6);
+	\draw[solid edge] (a_7) -- (b_7);
+	\draw[dashed edge] (a_7) -- (b_8);
+	\draw[dashed edge] (a_7) -- (b_9);
+	\draw[dashed edge] (a_7) -- (b_10);
+	\draw[solid edge] (a_8) -- (b_1);
+	\draw[solid edge] (a_8) -- (b_2);
+	\draw[solid edge] (a_8) -- (b_3);
+	\draw[solid edge] (a_8) -- (b_4);
+	\draw[solid edge] (a_8) -- (b_5);
+	\draw[solid edge] (a_8) -- (b_6);
+	\draw[solid edge] (a_8) -- (b_7);
+	\draw[solid edge] (a_8) -- (b_8);
+	\draw[dashed edge] (a_8) -- (b_9);
+	\draw[dashed edge] (a_8) -- (b_10);
+	\draw[solid edge] (a_9) -- (b_1);
+	\draw[solid edge] (a_9) -- (b_2);
+	\draw[solid edge] (a_9) -- (b_3);
+	\draw[solid edge] (a_9) -- (b_4);
+	\draw[solid edge] (a_9) -- (b_5);
+	\draw[solid edge] (a_9) -- (b_6);
+	\draw[solid edge] (a_9) -- (b_7);
+	\draw[solid edge] (a_9) -- (b_8);
+	\draw[solid edge] (a_9) -- (b_9);
+	\draw[dashed edge] (a_9) -- (b_10);
+	\draw[solid edge] (a_10) -- (b_1);
+	\draw[solid edge] (a_10) -- (b_2);
+	\draw[solid edge] (a_10) -- (b_3);
+	\draw[solid edge] (a_10) -- (b_4);
+	\draw[solid edge] (a_10) -- (b_5);
+	\draw[solid edge] (a_10) -- (b_6);
+	\draw[solid edge] (a_10) -- (b_7);
+	\draw[solid edge] (a_10) -- (b_8);
+	\draw[solid edge] (a_10) -- (b_9);
+	\draw[solid edge] (a_10) -- (b_10);
+	\node[label_a] at (a_1.north) {$a_{1}$};
+	\node[label_b] at (b_1.south) {$b_{1}$};
+	\node[label_a] at (a_2.north) {$a_{2}$};
+	\node[label_b] at (b_2.south) {$b_{2}$};
+	\node[label_a] at (a_3.north) {$a_{3}$};
+	\node[label_b] at (b_3.south) {$b_{3}$};
+	\node[label_a] at (a_4.north) {$a_{4}$};
+	\node[label_b] at (b_4.south) {$b_{4}$};
+	\node[label_a] at (a_5.north) {$a_{5}$};
+	\node[label_b] at (b_5.south) {$b_{5}$};
+	\node[label_a] at (a_6.north) {$a_{6}$};
+	\node[label_b] at (b_6.south) {$b_{6}$};
+	\node[label_a] at (a_7.north) {$a_{7}$};
+	\node[label_b] at (b_7.south) {$b_{7}$};
+	\node[label_a] at (a_8.north) {$a_{8}$};
+	\node[label_b] at (b_8.south) {$b_{8}$};
+	\node[label_a] at (a_9.north) {$a_{9}$};
+	\node[label_b] at (b_9.south) {$b_{9}$};
+	\node[label_a] at (a_10.north) {$a_{10}$};
+	\node[label_b] at (b_10.south) {$b_{10}$};
 
-    % Graph nodes (top and bottom)
-    % Top part vertices (a_i)
-    \foreach \i in {1,...,\n} {
-        \node[vertex] (a\i) at (\i*\nodessep, 0) {};
-        \node[label_a] at (a\i.north) {$a_{\i}$};
-    }
-
-    % Bottom part vertices (b_j)
-    \foreach \j in {1,...,\n} {
-        \node[vertex] (b\j) at (\j*\nodessep, -4) {};
-        \node[label_b] at (b\j.south) {$b_{\j}$};
-    }
-
-    % Draw edges
-    \foreach \i in {1,...,\n} {
-        \foreach \j in {1,...,\n} {
-            \ifnum\i<\j
-                \draw[dashed edge] (a\i) -- (b\j);
-            \else
-                \draw[solid edge] (a\i) -- (b\j);
-            \fi
-        }
-    }
-
-    % Adjacency Matrix
-    \begin{scope}[xshift=2cm+\n*\nodessep cm]
-
-    % Matrix labels
-    \foreach \i in {1,...,\n} {
-        \node[matrix label] at (-1 + \i*\cellsize, 0.7) {$b_{\i}$};
-        \node[matrix label] at (-1, 0.7 -\i*\cellsize) {$a_{\i}$};
-    }
-
-    % Draw the matrix cells and fill based on adjacency
-    \foreach \i in {1,...,\n} {
-        \foreach \j in {1,...,\n} {
-            \pgfmathsetmacro{\xcoord}{\j*\cellsize}
-            \pgfmathsetmacro{\ycoord}{-\i*\cellsize}
-            \ifnum\i<\j
-                \node[matrix cell] at (-1 + \xcoord, 0.7 + \ycoord) {0};
-            \else
-                \node[matrix cell, fill=gray!20] at (-1 + \xcoord, 0.7 + \ycoord) {1};
-            \fi
-        }
-    }
-
-    \end{scope}
+\begin{scope}[xshift=12 cm]
+		\node[matrix cell, fill=gray!20] at (-0.5, 0.19999999999999996) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -0.30000000000000004) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -0.8) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -1.3) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -1.8) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (-0.5, -4.3) {1};
+		\node[matrix cell] at (0.0, 0.19999999999999996) {0};
+		\node[matrix cell, fill=gray!20] at (0.0, -0.30000000000000004) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -0.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -1.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -1.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.0, -4.3) {1};
+		\node[matrix cell] at (0.5, 0.19999999999999996) {0};
+		\node[matrix cell] at (0.5, -0.30000000000000004) {0};
+		\node[matrix cell, fill=gray!20] at (0.5, -0.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -1.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -1.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (0.5, -4.3) {1};
+		\node[matrix cell] at (1.0, 0.19999999999999996) {0};
+		\node[matrix cell] at (1.0, -0.30000000000000004) {0};
+		\node[matrix cell] at (1.0, -0.8) {0};
+		\node[matrix cell, fill=gray!20] at (1.0, -1.3) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -1.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.0, -4.3) {1};
+		\node[matrix cell] at (1.5, 0.19999999999999996) {0};
+		\node[matrix cell] at (1.5, -0.30000000000000004) {0};
+		\node[matrix cell] at (1.5, -0.8) {0};
+		\node[matrix cell] at (1.5, -1.3) {0};
+		\node[matrix cell, fill=gray!20] at (1.5, -1.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.5, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (1.5, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.5, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (1.5, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (1.5, -4.3) {1};
+		\node[matrix cell] at (2.0, 0.19999999999999996) {0};
+		\node[matrix cell] at (2.0, -0.30000000000000004) {0};
+		\node[matrix cell] at (2.0, -0.8) {0};
+		\node[matrix cell] at (2.0, -1.3) {0};
+		\node[matrix cell] at (2.0, -1.8) {0};
+		\node[matrix cell, fill=gray!20] at (2.0, -2.3) {1};
+		\node[matrix cell, fill=gray!20] at (2.0, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (2.0, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (2.0, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (2.0, -4.3) {1};
+		\node[matrix cell] at (2.5, 0.19999999999999996) {0};
+		\node[matrix cell] at (2.5, -0.30000000000000004) {0};
+		\node[matrix cell] at (2.5, -0.8) {0};
+		\node[matrix cell] at (2.5, -1.3) {0};
+		\node[matrix cell] at (2.5, -1.8) {0};
+		\node[matrix cell] at (2.5, -2.3) {0};
+		\node[matrix cell, fill=gray!20] at (2.5, -2.8) {1};
+		\node[matrix cell, fill=gray!20] at (2.5, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (2.5, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (2.5, -4.3) {1};
+		\node[matrix cell] at (3.0, 0.19999999999999996) {0};
+		\node[matrix cell] at (3.0, -0.30000000000000004) {0};
+		\node[matrix cell] at (3.0, -0.8) {0};
+		\node[matrix cell] at (3.0, -1.3) {0};
+		\node[matrix cell] at (3.0, -1.8) {0};
+		\node[matrix cell] at (3.0, -2.3) {0};
+		\node[matrix cell] at (3.0, -2.8) {0};
+		\node[matrix cell, fill=gray!20] at (3.0, -3.3) {1};
+		\node[matrix cell, fill=gray!20] at (3.0, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (3.0, -4.3) {1};
+		\node[matrix cell] at (3.5, 0.19999999999999996) {0};
+		\node[matrix cell] at (3.5, -0.30000000000000004) {0};
+		\node[matrix cell] at (3.5, -0.8) {0};
+		\node[matrix cell] at (3.5, -1.3) {0};
+		\node[matrix cell] at (3.5, -1.8) {0};
+		\node[matrix cell] at (3.5, -2.3) {0};
+		\node[matrix cell] at (3.5, -2.8) {0};
+		\node[matrix cell] at (3.5, -3.3) {0};
+		\node[matrix cell, fill=gray!20] at (3.5, -3.8) {1};
+		\node[matrix cell, fill=gray!20] at (3.5, -4.3) {1};
+		\node[matrix cell] at (4.0, 0.19999999999999996) {0};
+		\node[matrix cell] at (4.0, -0.30000000000000004) {0};
+		\node[matrix cell] at (4.0, -0.8) {0};
+		\node[matrix cell] at (4.0, -1.3) {0};
+		\node[matrix cell] at (4.0, -1.8) {0};
+		\node[matrix cell] at (4.0, -2.3) {0};
+		\node[matrix cell] at (4.0, -2.8) {0};
+		\node[matrix cell] at (4.0, -3.3) {0};
+		\node[matrix cell] at (4.0, -3.8) {0};
+		\node[matrix cell, fill=gray!20] at (4.0, -4.3) {1};
+		\node[matrix label] at (-0.5, 0.7) {$b_{1}$};
+		\node[matrix label] at (-1, 0.19999999999999996) {$a_{1}$};
+		\node[matrix label] at (0.0, 0.7) {$b_{2}$};
+		\node[matrix label] at (-1, -0.30000000000000004) {$a_{2}$};
+		\node[matrix label] at (0.5, 0.7) {$b_{3}$};
+		\node[matrix label] at (-1, -0.8) {$a_{3}$};
+		\node[matrix label] at (1.0, 0.7) {$b_{4}$};
+		\node[matrix label] at (-1, -1.3) {$a_{4}$};
+		\node[matrix label] at (1.5, 0.7) {$b_{5}$};
+		\node[matrix label] at (-1, -1.8) {$a_{5}$};
+		\node[matrix label] at (2.0, 0.7) {$b_{6}$};
+		\node[matrix label] at (-1, -2.3) {$a_{6}$};
+		\node[matrix label] at (2.5, 0.7) {$b_{7}$};
+		\node[matrix label] at (-1, -2.8) {$a_{7}$};
+		\node[matrix label] at (3.0, 0.7) {$b_{8}$};
+		\node[matrix label] at (-1, -3.3) {$a_{8}$};
+		\node[matrix label] at (3.5, 0.7) {$b_{9}$};
+		\node[matrix label] at (-1, -3.8) {$a_{9}$};
+		\node[matrix label] at (4.0, 0.7) {$b_{10}$};
+		\node[matrix label] at (-1, -4.3) {$a_{10}$};
+   \end{scope}
 
     \end{tikzpicture}
-    \caption{
-        A half-graph with 2 × 10 vertices.
-        \emph{On the left}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices.
-        Pairs of vertices without a line may or may not be connected.
-        \emph{On the right} is the corresponding adjacency matrix.
-    }
-    \label{fig:half_graph}
+    \caption{A half-graph with 2 × 10 vertices. 
+\emph{On the left}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. 
+Pairs of vertices without a line may or may not be connected. 
+\emph{On the right} is the corresponding adjacency matrix.}
+    \label{fig:half-graph}
 \end{figure}

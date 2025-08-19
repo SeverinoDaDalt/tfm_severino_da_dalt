@@ -2,6 +2,7 @@ K=3
 Y_SEP=1.8
 Y_EXP=0.9
 X_SEP=2.2
+CELL_SIZE=0.3
 CAPTION=(f"Example of a {K}-tree. \n"
          f"Notice that connections between disjoint sub-trees are not defined, and may be edges or non-edges in \n"
          f"any combination.")
@@ -21,13 +22,13 @@ def binary_decomposition(value, digits, text=False):
 
 
 def main():
-    prefix = """\\begin{figure}
+    prefix = f"""\\begin{{figure}}
     \centering
-    \\begin{tikzpicture}[
-        vertex/.style={circle, draw, fill=gray!20, minimum size=5mm, inner sep=1pt},
-        label/.style={above=2pt, font=\small},
-        solid edge/.style={draw, thick, black!60},
-        dashed edge/.style={draw, dashed, thick, black!40},
+    \\begin{{tikzpicture}}[
+        vertex/.style={{circle, draw, fill=gray!20, minimum size={CELL_SIZE}cm, inner sep=1pt}},
+        label/.style={{below=2pt, font=\small}},
+        solid edge/.style={{draw, thick, black!60}},
+        dashed edge/.style={{draw, dashed, thick, black!40}},
     ]
 """
     nodes = ""
@@ -55,7 +56,7 @@ def main():
                      + "\n")
             labels += ("\t" + r"\node[label] at (a_"
                        + sub_
-                       + rf".north) {{$a_{{{sub_ if sub_ else emptyset}}}$}};"
+                       + rf".south) {{$a_{{{sub_ if sub_ else emptyset}}}$}};"
                        + "\n")
 
     for i in range(K):

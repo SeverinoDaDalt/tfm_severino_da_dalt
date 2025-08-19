@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  18 AUG 2025 17:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.2.7)  19 AUG 2025 11:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -525,8 +525,7 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
-(./pictures/half-graph.tex) (./pictures/test_half-graph.tex)
-(./pictures/k-tree.tex
+(./pictures/half-graph.tex) (./pictures/k-tree.tex
 Overfull \hbox (10.2629pt too wide) in paragraph at lines 63--66
  [][] 
  []
@@ -534,13 +533,13 @@ Overfull \hbox (10.2629pt too wide) in paragraph at lines 63--66
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
 (/home/sdadalt/Workspace/tfm_severino_da_dalt/out/pictures.aux) ) 
 Here is how much of TeX's memory you used:
- 14912 strings out of 480247
- 300328 string characters out of 5896152
- 679569 words of memory out of 5000000
- 32633 multiletter control sequences out of 15000+600000
+ 14662 strings out of 480247
+ 296228 string characters out of 5896152
+ 640515 words of memory out of 5000000
+ 32386 multiletter control sequences out of 15000+600000
  472442 words of font info for 39 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 100i,8n,104p,409b,928s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 100i,8n,104p,409b,826s stack positions out of 5000i,500n,10000p,200000b,80000s
  </home/sdadal
 t/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texliv
@@ -549,7 +548,7 @@ e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
 nts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmti10.pfb>
 Output written on /home/sdadalt/Workspace/tfm_severino_da_dalt/out/pictures.pdf
- (1 page, 68727 bytes).
+ (1 page, 65177 bytes).
 PDF statistics:
  41 PDF objects out of 1000 (max. 8388607)
  26 compressed objects within 1 object stream

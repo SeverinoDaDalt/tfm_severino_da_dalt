@@ -1,8 +1,8 @@
 \begin{figure}
     \centering
     \begin{tikzpicture}[
-        vertex/.style={circle, draw, fill=gray!20, minimum size=5mm, inner sep=1pt},
-        label/.style={above=2pt, font=\small},
+        vertex/.style={circle, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt},
+        label/.style={below=2pt, font=\small},
         solid edge/.style={draw, thick, black!60},
         dashed edge/.style={draw, dashed, thick, black!40},
     ]
@@ -45,21 +45,21 @@
 	\draw[solid edge] (a_10) -- (a_101);
 	\draw[dashed edge] (a_11) -- (a_110);
 	\draw[solid edge] (a_11) -- (a_111);
-	\node[label] at (a_.north) {$a_{\emptyset}$};
-	\node[label] at (a_0.north) {$a_{0}$};
-	\node[label] at (a_1.north) {$a_{1}$};
-	\node[label] at (a_00.north) {$a_{00}$};
-	\node[label] at (a_01.north) {$a_{01}$};
-	\node[label] at (a_10.north) {$a_{10}$};
-	\node[label] at (a_11.north) {$a_{11}$};
-	\node[label] at (a_000.north) {$a_{000}$};
-	\node[label] at (a_001.north) {$a_{001}$};
-	\node[label] at (a_010.north) {$a_{010}$};
-	\node[label] at (a_011.north) {$a_{011}$};
-	\node[label] at (a_100.north) {$a_{100}$};
-	\node[label] at (a_101.north) {$a_{101}$};
-	\node[label] at (a_110.north) {$a_{110}$};
-	\node[label] at (a_111.north) {$a_{111}$};
+	\node[label] at (a_.south) {$a_{\emptyset}$};
+	\node[label] at (a_0.south) {$a_{0}$};
+	\node[label] at (a_1.south) {$a_{1}$};
+	\node[label] at (a_00.south) {$a_{00}$};
+	\node[label] at (a_01.south) {$a_{01}$};
+	\node[label] at (a_10.south) {$a_{10}$};
+	\node[label] at (a_11.south) {$a_{11}$};
+	\node[label] at (a_000.south) {$a_{000}$};
+	\node[label] at (a_001.south) {$a_{001}$};
+	\node[label] at (a_010.south) {$a_{010}$};
+	\node[label] at (a_011.south) {$a_{011}$};
+	\node[label] at (a_100.south) {$a_{100}$};
+	\node[label] at (a_101.south) {$a_{101}$};
+	\node[label] at (a_110.south) {$a_{110}$};
+	\node[label] at (a_111.south) {$a_{111}$};
     \end{tikzpicture}
     \caption{Example of a 3-tree. 
 Notice that connections between disjoint sub-trees are not defined, and may be edges or non-edges in 

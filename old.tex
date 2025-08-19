@@ -302,7 +302,51 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+    \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
+        Let $G$ be a graph with the non-$k_*$-property.
+        For any $c \in \mathbb{N}$, $\epsilon, \xi \in \mathbb{R}$ satisfying the hypothesis of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
+        (with $k = k_*$ and $\zeta = \frac{1}{k_*}$), any $\theta \in (0,1)$ and $A \subseteq G$ large enough
+        $\parstraight{A} = n > N\parround{c, \epsilon, \zeta, \xi, \theta}$,
+        there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder
+        $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, i(*)}} A_i$ satisfying:
+        \begin{itemize}
+            \item $|A_i| = \lfloor \lfloor n^\theta \rfloor ^\zeta \rfloor$ for all $i \in \parcurly{1, \dots, i(*)}$.
+            \item $A_i$ is $c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$ where $c$ is the constant function $f(x) = c$.
+            \item $|B| < m_0 \approx n^{\frac{\theta}{\epsilon^{k_{**}}}}$. \todo{$m_0$ cannot be the bound as it is not defined in the statement. There is no clear
+                to write the real bound in a clear way without error or absurdly worse bounds. I think the better
+                solution is to force $\epsilon$ (and possibly other parameters) to be a fraction $\frac{1}{r}$.
+                If so, make a remark saying that this condition is not necessary but makes bounds cleaner.}
+        \end{itemize}
+        \begin{proof}
+            Let $n > N\parround{c, \epsilon, \zeta, \xi, \theta} \coloneqq \bparround{g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
+                \parround{ \epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}} + 1 }^{\frac{1}{\theta}}$,
+            so that $\lfloor n^\theta \rfloor$ satisfies the large enough condition of
+            \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}:
+            \[
+                \lfloor n^\theta \rfloor
+                    > g_\epsilon^{k_{**}}\bparround{N_{\ref{lem:n_large_enough_valid_values}}
+                        \parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}
+            \]
+            Now, we define a decreasing sequence $m_0 > m_1 > \dots > m_{k_{**}}$ with $m_{k_{**}} = \lfloor n^\theta \rfloor$
+            and $m_{\ell} = \lceil \parround{m_{\ell+1}}^{\frac{1}{\epsilon}} \rceil$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+            This sequence satisfies the condition of \Cref{lem:existance_of_indivisible_sets} for $f(n) = n^\epsilon$.
+            We will build a sequence of disjoint $c$-indivisible subsets $A_i$ by induction on $i$ as follows.
+            Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
+            If $R_i < m_0$, then
+            $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$, and we are done.
+            Otherwise, we can apply \Cref{lem:existance_of_indivisible_sets} to $R_i$ with the sequence
+            $\Partriangle{m_\ell}_{\ell \leq k_{**}}$, to obtain an $\epsilon$-indivisible subset $B_i \subseteq R_i$ of
+            size $m_{k_{**}-\ell}$.
+            \todo{WHY IN THE HELL DO WE NEED TO HAVE EPSILON-INDIVISIBLE SETS??}
+            Then, since $|B_i| = m_{k_{**}-\ell} \geq m_{k_{**}} = \lfloor n^\theta \rfloor$ by the $n$-large-enough assumption,
+            we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} and get a
+            $c$-indivisible subset $Z_i$ of size $|Z_i| = \lfloor m_{k_{**}-\ell}^\zeta \rfloor
+            \geq \lfloor \lfloor n^{\frac{\theta}{\epsilon^\ell}} \rfloor ^\zeta \rfloor
+            \geq \lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
+            Since $c$-indivisibility is preserved when taking subsets,
+            we can choose $A_i \subseteq Z_i$ to be a $c$-indivisible subset of size $\lfloor \lfloor n^{\theta} \rfloor ^\zeta \rfloor$.
+        \end{proof}
+    \end{theorem}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
