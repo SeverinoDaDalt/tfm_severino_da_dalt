@@ -1,15 +1,16 @@
 \section{Section 5} \label{sec:section_5}
 
+    This section focuses in leveraging the stability of a graph to create a stable partition which maximum number
+    of parts does not grow with the size of the graph.
+    In order to do so, we first prove the existence of a partition which parts satisfy a property which we prove stronger
+    then regularity: \emph{excellence}.
+    We proceed to formalize this concept.
+
     \begin{definition}[Definition 5.2(a)]
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
         $t = t(b, A) \in \parcurly{0, 1}$ satisfies $\parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
     \end{definition}
-
-    \begin{remark}
-        The property of a set being $\epsilon$-good is equivalent to the set being $f$-indivisible with $f(n) = \epsilon n$,
-        and $\epsilon$-indivisible is a much stronger condition then $\epsilon$-good.
-    \end{remark}
 
     \begin{definition}[Definition 5.2(b)]
         Let $G$ be a finite graph with the non-$k_*$-property.
@@ -18,6 +19,22 @@
 
         In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
     \end{definition}
+
+    We now make some observations about these two properties.
+
+    \begin{remark}
+        For comparison with the properties studied in the previous section, a set being $\epsilon$-good is equivalent to the
+        set being $f$-indivisible with $f(n) = \epsilon n$, while $\epsilon$-indivisibility is a much stronger condition then
+        $\epsilon$-goodness, as for large enough $n$, we have that $n^\epsilon < \epsilon n$.
+
+        On the other hand, $\epsilon$-excellence carries some kind of reciprocity with other good (and in particularly
+        excellent) sets, which makes it particularly suitable for studying \regularity~between pairs of sets.
+        While independence and goodness only bound the number of exceptions with each vertex of the graph independently,
+        excellence of a set $A$ also ensures that the truth values with respect to all the vertices of another good set
+        $B$ are mostly the same.
+        \Cref{fig:good_not_excellent} shows an example of an $\epsilon$-good set that, as it does not satisfy this
+        reciprocity condition with another good set, it is not $\epsilon$-excellent.
+    \end{remark}
 
     \begin{remark} \label{rmk:excellence_imply_little_exceptions}
         Notice that, if $A, B \subseteq G$ are two (not necessarily disjoint) subsets of vertices
@@ -34,6 +51,32 @@
         $e(A,B) > \frac{\parstraight{A} \parstraight{B}}{4}$.
         \todo{Discuss with Luis, this may be reduced but I am not sure.}
     \end{remark}
+
+    \begin{remark}
+        A final important remark, is the fact that differently then most \regular~properties, $\epsilon$-excellence is
+        not monotonic. \todo{Lluis: això està ben dit?}
+        That is, in general, for $\epsilon < \epsilon'$, a set being $\epsilon$-excellent does not imply
+        it being also $\epsilon'$-excellent (and neither the converse).
+        See \Cref{fig:excellence_is_not_monotonic} for a counter example to the monotonicity of this property.
+
+        On the other hand, the non-symmetric $(\epsilon, \epsilon')$-excellence satisfies some sort of monotonicity.
+        That is, if a given set is $(\epsilon_1, \epsilon'_1)$-excellent, then it is also
+        $(\epsilon_2, \epsilon'_2)$-excellent for all $\epsilon_1 \leq \epsilon_2$ and $\epsilon'_1 \geq \epsilon'_2$,
+        since restricting the condition on the goodness of the relevant good sets ($\epsilon'_1$ to $\epsilon'_2$)
+        takes less of such sets into account, and relaxing the condition on the \say{exceptional truth values}
+        ($\epsilon_1$ to $\epsilon_2$) only enlarges the error accepted.
+    \end{remark}
+
+    The first step to construct a partition of such sets, is to prove their existence under the stability condition.
+    Similar to \Cref{lem:existance_of_indivisible_sets} in \Cref{sec:section_4}, we will prove this by assuming
+    the converse and getting to contradiction with the tree bound.
+
+    We actually show two versions of the same lemma on existence of excellent sets.
+    \Cref{lem:existance_of_excellent_subsets} is slightly more readable, while
+    \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} is actually the one we will be using for further
+    proofs, as it fixes the possibles sizes of the resulting set.
+    For that reason, in this section we only prove the first one, and leave the proof of the other in
+    \Cref{sec:appendix_other_proofs}.
 
     \begin{lemma}[Claim 5.4] \label{lem:existance_of_excellent_subsets}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -106,61 +149,45 @@
         Then, for every $A \subseteq G$ with $|A| \geq m_0$ there exists
         $\parround{\frac{m_{\ell+1}}{m_{\ell}}, \zeta}$-excellent subset $A' \subseteq A$ such that $|A'| = m_\ell$ for
         some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-        \begin{proof}
-            Suppose the converse.
-            We use this fact to build sets $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
-            $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ on induction over $k<k_{**}$, where $k = |\eta|$,
-            satisfying:
-            \begin{enumerate}
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.1} $A_{\Partriangle{\cdot}} \subseteq A$, with $|A|_{\Partriangle{\cdot}} = m_0$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
-                    $\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellent, for all $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.3} $A_{\eta \frown \Partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
-                    for all $i \in \parcurly{0,1}$ and $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.4} $|A_{\eta}| = m_k$, for all $k \leq k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.6} $A_{\eta \frown \Partriangle{0}} \sqcup A_{\eta \frown \Partriangle{1}} \subseteq A_\eta$,
-                    for all $k < k_{**}$.
-                \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.7} $\overline{A_k} = \parcurly{A_\eta \mid \eta \in \parcurly{0,1}^k}$ is a partition of
-                    a subset of $A$, for all $k \leq k_{**}$.
-            \end{enumerate}
-            Notice that, by \dref{itm:existance_of_excellent_subsets_fixed_size_choices.1} and
-            \dref{itm:existance_of_excellent_subsets_fixed_size_choices.4}, the size of $A_\eta$ is $m_k$,
-            so by IH none of the sets $A_\eta$ is $\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellent.
-            Then, $B_\eta$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.2} is well-defined.
-            Also, by $\zeta$-goodness of $B_\eta$, $t(a, B_\eta)$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3} is well-defined.
-            Then, since $B_\eta$ is witnessing the non-$\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellence of $A_\eta$,
-            we have that $|A_{\eta \frown \Partriangle{i}}| \geq \frac{m_{k+1}}{m_k} m_{k} = m_{k+1}$ for all
-            $i \in \parcurly{0,1}$, satisfying \dref{itm:existance_of_excellent_subsets_fixed_size_choices.4}.
-            Finally, by definition \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}, we have the disjoint union
-            \dref{itm:existance_of_excellent_subsets_fixed_size_choices.6} which by itself
-            ensures \dref{itm:existance_of_excellent_subsets_fixed_size_choices.7}.
+    \end{lemma}
 
-            Now, our goal is to build two sequences $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
-            $\parcurly{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ to contradict the tree bound $k_{**}$.
-            First of all, notice that, for $\eta \in \parcurly{0,1}^{k_{**}}$
-            \[
-                |A_\eta| = m_k \geq m_{k_{**}} \geq 1
-            \]
-            So, for each $\eta \in \parcurly{0,1}^{k_{**}}$, $A_\eta \neq \emptyset$ and we may choose an $a_\eta \in A_\eta$.
-            Now, for $\nu \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$ such that $\nu \triangleleft \eta$, let
-            \[
-                U_{\nu,\eta} = \parcurly{b \in B_\nu \mid (a_\eta R b) \not\equiv t(a_\eta, B_\nu)}
-            \]
-            be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
-            By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in \parcurly{0,1}^{<k_{**}}$,
-            \[
-                \parstraight{\bigcup\parcurly{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}} <
-                2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|
-            \]
-            We may choose $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$,
-            for all $\nu \in \parcurly{0,1}^{<k_{**}}$.
-            Finally, the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and
-            $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$ satisfy that $\forall \eta, \nu$ such that
-            $\nu \frown \Partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$, which follows
-            \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}.
-            This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
+    Now, we can get the first version of a partition by applying the previous lemma recursively, until the remainder is too
+    small for the condition on the size of the graph to be satisfied.
+
+    \begin{lemma}[Claim 5.14.1] \label{lem:existance_of_excellent_partition}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
+        Let $A \subseteq G$ such that $|A| = n$.
+        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
+        Denote $m_* \coloneqq m_0$ and $m_{**} \coloneqq m_{k_{**}}$.
+        Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
+        $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
+        \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
+            \item \label{itm:existance_of_excellent_partition.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
+            \item \label{itm:existance_of_excellent_partition.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
+            \item \label{itm:existance_of_excellent_partition.d} $|B| < m_*$.
+        \end{enumerate}
+        \begin{proof}
+            Apply \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} recursively to the remainder
+            $A \setminus \bigcup_{i < j} A_i$, to obtain $A_j$ at each step.
+            The process stops at $j(*)$ when the remainder is smaller than $m_0$, and thus the lemma cannot be applied.
+            Notice that, since $\frac{m_\ell}{m_{\ell-1}} \leq \epsilon$, $\parround{\frac{m_\ell}{m_{\ell-1}}, \epsilon'}$-excellence
+            implies $\parround{\epsilon, \epsilon'}$-excellence.
         \end{proof}
     \end{lemma}
+
+    \todo{Say that if $A$ is smaller than $m_0$, then the partition is empty and $B = A$.}
+
+    The next step is refining this partition to obtain an equitable partition.
+    In order to do so, we first show that any random sample of a given size from an excellent set is still excellent
+    with high probability, at the cost of a slightly reduced excellence (\dref{itm:equitable_partition_of_excellent_parts.2} of
+    \Cref{lem:equitable_partition_of_excellent_parts}).
+    Then, we use this result in union-bound argument to show that we can actually fully partition the excellent set into
+    pieces of equal size (\dref{itm:equitable_partition_of_excellent_parts.3} of
+    \Cref{lem:equitable_partition_of_excellent_parts}).
+    \jojo
 
     \begin{lemma} \label{lem:ineq_5.13}
         For $k > 1$, $\zeta, \eta \in \parround{0,1}$ the function $f(m) = m^k \cdot e^{-2 \zeta^2 m}$ satisfies
@@ -301,7 +328,7 @@
                                     & = \parround{1 + \frac{\epsilon'}{1 - 2\epsilon' - \frac{\epsilon}{1 - \epsilon}}}
                                         (\epsilon + \zeta') |A'|
                 \end{align*}
-                Notice that $f(\epsilon, \epsilon') \coloneq \frac{\epsilon'}{1 - 2\epsilon' - \frac{\epsilon}{1 - \epsilon}}$
+                Notice that $f(\epsilon, \epsilon') \coloneqq \frac{\epsilon'}{1 - 2\epsilon' - \frac{\epsilon}{1 - \epsilon}}$
                 decreases with $\epsilon$ and $\epsilon'$.
                 In particular,
                 \[
@@ -321,7 +348,7 @@
             \item Let $\zeta, \zeta', \epsilon, \epsilon'$ and $r$ be given satisfying the conditions of the statement.
                 Set $\xi = \frac{1}{r + 1}$.
                 We will see that the condition
-                $n > N = N\parround{k_{*}, \zeta', r} \coloneq r \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\frac{1}{r + 1}}}$
+                $n > N = N\parround{k_{*}, \zeta', r} \coloneqq r \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\frac{1}{r + 1}}}$
                 is sufficient.
                 First of all, randomly choose a function $h: A \longrightarrow \parcurly{1, \dots, r-1}$ such that
                 for all $s < n$ we have that $\parstraight{\parcurly{a \in A \mid h(a) = s}} = \frac{n}{r}$.
@@ -394,7 +421,7 @@
         if $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent, with $|A| = n$, then there exists a
         partition into $r$ disjoint pieces of equal size, each of which is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
         \begin{proof}
-            Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set $N \coloneq N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
+            Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set $N \coloneqq N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
             \Cref{rmk:value_for_equitable_partition_of_excellent_parts} sufficiency condition is satisfied,
             \dref{itm:equitable_partition_of_excellent_parts.3} from \Cref{lem:equitable_partition_of_excellent_parts}
             holds and we are done.
@@ -404,35 +431,9 @@
     \begin{remark}
         A sufficient condition for $N_{\ref{lem:existance_of_equitable_excellent_subpartition}}$ to be large enough is
         to choose $\zeta' = \frac{1}{4k} \epsilon'$ in which case
-        $N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneq
+        $N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneqq
         N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
     \end{remark}
-
-    \begin{lemma}[Claim 5.14.1] \label{lem:existance_of_excellent_partition}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
-        Let $A \subseteq G$ such that $|A| = n$.
-        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
-        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
-        Denote $m_* \coloneq m_0$ and $m_{**} \coloneq m_{k_{**}}$.
-        Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
-        $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
-        \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
-            \item \label{itm:existance_of_excellent_partition.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
-            \item \label{itm:existance_of_excellent_partition.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
-            \item \label{itm:existance_of_excellent_partition.d} $|B| < m_*$.
-        \end{enumerate}
-        \begin{proof}
-            Apply \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} recursively to the remainder
-            $A \setminus \bigcup_{i < j} A_i$, to obtain $A_j$ at each step.
-            The process stops at $j(*)$ when the remainder is smaller than $m_0$, and thus the lemma cannot be applied.
-            Notice that, since $\frac{m_\ell}{m_{\ell-1}} \leq \epsilon$, $\parround{\frac{m_\ell}{m_{\ell-1}}, \epsilon'}$-excellence
-            implies $\parround{\epsilon, \epsilon'}$-excellence.
-        \end{proof}
-    \end{lemma}
-
-    \todo{Say that if $A$ is smaller than $m_0$, then the partition is empty and $B = A$.}
 
     \begin{lemma}[Claim 5.14.1a] \label{lem:existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -440,10 +441,10 @@
         Let $A \subseteq G$ such that $|A| = n$.
         Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
-        $m_{**} \coloneq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
+        $m_{**} \coloneqq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
         $m_{k_{**}-1} > N\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$
         (in the sense of \Cref{lem:existance_of_equitable_excellent_subpartition}), and $n \geq m_0$.
-        Let $m_* \coloneq m_0$.
+        Let $m_* \coloneqq m_0$.
         Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
         with remainder $B = A \setminus \bigcup \overline{A}$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
@@ -558,7 +559,7 @@
                 and $m_{**}$, such that:
                 \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                     \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
-                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b} $m_{**} \coloneq m_{k_{**}} > \frac{3}{\epsilon}$.
+                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b} $m_{**} \coloneqq m_{k_{**}} > \frac{3}{\epsilon}$.
                     \item \label{itm:resume_of_all_conditions_for_excellent_partitions.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
                     \item \label{itm:resume_of_all_conditions_for_excellent_partitions.d} $m_{k_{**}-1} > N\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
                         of \Cref{lem:existance_of_equitable_excellent_subpartition}).

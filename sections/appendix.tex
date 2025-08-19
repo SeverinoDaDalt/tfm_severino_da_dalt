@@ -1,0 +1,62 @@
+\appendix
+
+\vfill\newpage \section{Other proofs} \label{sec:appendix_other_proofs}
+
+    For completeness, here we leave the proof of \Cref{lem:existance_of_excellent_subsets_fixed_size_choices}.
+
+    \begin{proof}
+        Suppose the converse.
+        We use this fact to build sets $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
+        $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ on induction over $k<k_{**}$, where $k = |\eta|$,
+        satisfying:
+        \begin{enumerate}
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.1} $A_{\Partriangle{\cdot}} \subseteq A$, with $|A|_{\Partriangle{\cdot}} = m_0$.
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.2} $B_\eta$ is an $\zeta$-good set witnessing that $A_\eta$ is not
+                $\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellent, for all $k < k_{**}$.
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.3} $A_{\eta \frown \Partriangle{i}} = \parcurly{a \in A_\eta \mid t(a, B_\eta) \equiv i}$
+                for all $i \in \parcurly{0,1}$ and $k < k_{**}$.
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.4} $|A_{\eta}| = m_k$, for all $k \leq k_{**}$.
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.6} $A_{\eta \frown \Partriangle{0}} \sqcup A_{\eta \frown \Partriangle{1}} \subseteq A_\eta$,
+                for all $k < k_{**}$.
+            \item\label{itm:existance_of_excellent_subsets_fixed_size_choices.7} $\overline{A_k} = \parcurly{A_\eta \mid \eta \in \parcurly{0,1}^k}$ is a partition of
+                a subset of $A$, for all $k \leq k_{**}$.
+        \end{enumerate}
+        Notice that, by \dref{itm:existance_of_excellent_subsets_fixed_size_choices.1} and
+        \dref{itm:existance_of_excellent_subsets_fixed_size_choices.4}, the size of $A_\eta$ is $m_k$,
+        so by IH none of the sets $A_\eta$ is $\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellent.
+        Then, $B_\eta$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.2} is well-defined.
+        Also, by $\zeta$-goodness of $B_\eta$, $t(a, B_\eta)$ in \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3} is well-defined.
+        Then, since $B_\eta$ is witnessing the non-$\parround{\frac{m_{k+1}}{m_{k}}, \zeta}$-excellence of $A_\eta$,
+        we have that $|A_{\eta \frown \Partriangle{i}}| \geq \frac{m_{k+1}}{m_k} m_{k} = m_{k+1}$ for all
+        $i \in \parcurly{0,1}$, satisfying \dref{itm:existance_of_excellent_subsets_fixed_size_choices.4}.
+        Finally, by definition \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}, we have the disjoint union
+        \dref{itm:existance_of_excellent_subsets_fixed_size_choices.6} which by itself
+        ensures \dref{itm:existance_of_excellent_subsets_fixed_size_choices.7}.
+
+        Now, our goal is to build two sequences $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
+        $\parcurly{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ to contradict the tree bound $k_{**}$.
+        First of all, notice that, for $\eta \in \parcurly{0,1}^{k_{**}}$
+        \[
+            |A_\eta| = m_k \geq m_{k_{**}} \geq 1
+        \]
+        So, for each $\eta \in \parcurly{0,1}^{k_{**}}$, $A_\eta \neq \emptyset$ and we may choose an $a_\eta \in A_\eta$.
+        Now, for $\nu \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$ such that $\nu \triangleleft \eta$, let
+        \[
+            U_{\nu,\eta} = \parcurly{b \in B_\nu \mid (a_\eta R b) \not\equiv t(a_\eta, B_\nu)}
+        \]
+        be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
+        By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in \parcurly{0,1}^{<k_{**}}$,
+        \[
+            \parstraight{\bigcup\parcurly{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}} <
+            2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|
+        \]
+        We may choose $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$,
+        for all $\nu \in \parcurly{0,1}^{<k_{**}}$.
+        Finally, the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and
+        $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$ satisfy that $\forall \eta, \nu$ such that
+        $\nu \frown \Partriangle{i} \triangleleft \eta$, $\parround{a_\eta R b_\nu}^i$, which follows
+        \dref{itm:existance_of_excellent_subsets_fixed_size_choices.3}.
+        This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
+    \end{proof}
+
+\vfill\newpage \section{1000 razones para querer morirme...}
