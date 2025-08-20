@@ -9,14 +9,14 @@
     \begin{definition}[Definition 5.2(a)]
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
-        $t = t(b, A) \in \parcurly{0, 1}$ satisfies $\parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
+        $t = t(b, A) \in \parcurly{0, 1}$ satisfies
+        $\parstraight{\overline{B}_{A,b}} = \parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
     \end{definition}
 
     \begin{definition}[Definition 5.2(b)]
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
         $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $\parstraight{\parcurly{a \in A \mid t(a,B) \neq t(A,B)}} < \epsilon |A|$.
-
         In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
     \end{definition}
 
@@ -27,17 +27,17 @@
         set being $f$-indivisible with $f(n) = \epsilon n$, while $\epsilon$-indivisibility is a much stronger condition then
         $\epsilon$-goodness, as for large enough $n$, we have that $n^\epsilon < \epsilon n$.
 
-        On the other hand, $\epsilon$-excellence carries some kind of reciprocity with other good (and in particularly
+        On the other hand, $\epsilon$-excellence carries some kind of reciprocity with other good (and in particular,
         excellent) sets, which makes it particularly suitable for studying \regularity~between pairs of sets.
         While independence and goodness only bound the number of exceptions with each vertex of the graph independently,
-        excellence of a set $A$ also ensures that the truth values with respect to all the vertices of another good set
-        $B$ are mostly the same.
+        excellence of a set $A$ also ensures that the truth values of each of its vertex with respect to each
+        good set in the graph remains mostly the same.
         \Cref{fig:good_not_excellent} shows an example of an $\epsilon$-good set that, as it does not satisfy this
         reciprocity condition with another good set, it is not $\epsilon$-excellent.
     \end{remark}
 
     \begin{remark} \label{rmk:excellence_imply_little_exceptions}
-        Notice that, if $A, B \subseteq G$ are two (not necessarily disjoint) subsets of vertices
+        If $A, B \subseteq G$ are two (not necessarily disjoint) subsets of vertices
         with $A$ $(\epsilon, \epsilon')$-excellent and $B$ $\epsilon'$-good set, then the number of exceptional edges between $A$ and $B$,
         i.e. these vertex pairs that do not follow $t(A,B)$, is relatively small:
         \[
@@ -56,7 +56,7 @@
         A final important remark, is the fact that differently then most \regular~properties, $\epsilon$-excellence is
         not monotonic. \todo{Lluis: això està ben dit?}
         That is, in general, for $\epsilon < \epsilon'$, a set being $\epsilon$-excellent does not imply
-        it being also $\epsilon'$-excellent (and neither the converse).
+        it being also $\epsilon'$-excellent (and trivially neither the converse).
         See \Cref{fig:excellence_is_not_monotonic} for a counter example to the monotonicity of this property.
 
         On the other hand, the non-symmetric $(\epsilon, \epsilon')$-excellence satisfies some sort of monotonicity.
@@ -67,13 +67,14 @@
         ($\epsilon_1$ to $\epsilon_2$) only enlarges the error accepted.
     \end{remark}
 
-    The first step to construct a partition of such sets, is to prove their existence under the stability condition.
+    The first step towards constructing a partition of sets with such property, is to prove their existence under the
+    stability condition.
     Similar to \Cref{lem:existance_of_indivisible_sets} in \Cref{sec:section_4}, we will prove this by assuming
     the converse and getting to contradiction with the tree bound.
 
     We actually show two versions of the same lemma on existence of excellent sets.
     \Cref{lem:existance_of_excellent_subsets} is slightly more readable, while
-    \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} is actually the one we will be using for further
+    \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} is the one we will be using for further
     proofs, as it fixes the possibles sizes of the resulting set.
     For that reason, in this section we only prove the first one, and leave the proof of the other in
     \Cref{sec:appendix_other_proofs}.
@@ -143,7 +144,7 @@
         The two sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
         are not necessarily disjoint.
         This is the reason why, for this to work, the \Cref{def:k-tree}, and consequently \Cref{def:k_order_property},
-        do not make this assumption.
+        do not take this condition.
         Although it makes the non-$k$-order assumption on the graph stricter, this also allows the definition of excellence
         to work with respect to the set itself (as it is good by definition).
         Thus, the resulting partition will not only satisfy \regularity~between different parts, but actually ensures
@@ -201,8 +202,8 @@
     Finally, \Cref{lem:existance_of_excellent_partition_with_equal_size} applies this result to the partition from
     \Cref{lem:existance_of_excellent_partition} to get an equitable excellent partition.
 
-    The following lemma is a small calculus result, which will be required in the subsequent proof.
-    The statement comes from~\cite{no_me_acuerdo} and, for completeness, we provide herea short proof here.
+    Before getting to it, we prove the following calculus result, which will be required in the subsequent proof.
+    The statement comes from~\cite{no_me_acuerdo} \todo{To do.}and, for completeness, we provide here a short proof.
 
     \begin{lemma} \label{lem:ineq_5.13}
         For $k > 1$, $\zeta, \eta \in \parround{0,1}$ the function $f(m) = m^k \cdot e^{-2 \zeta^2 m}$ satisfies
@@ -450,12 +451,11 @@
         N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
     \end{remark}
 
-    Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an equitable one using
-    the previous results.
-    Notice that in the conditions we require a decreasing sequence of integers which has no direct appearance in the
-    consequences.
-    This is because it is part of the construction, and requiring its existence (in the context of the rest of the other
-    variables) avoids unnecessary relaxations of the bounds or approximation errors.
+    Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an equitable one.
+    Notice that, in the conditions of the following couple of lemmas, we require a decreasing sequence of integers which
+    has no direct appearance in the consequences of the statements.
+    This is because it is part of the construction, and proving its existence in later results (in the context of the
+    rest of the other variables) avoids unnecessary relaxations of the bounds or approximation errors.
 
     \begin{lemma}[Claim 5.14.1a] \label{lem:existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -485,16 +485,18 @@
     \end{lemma}
 
     Notice that our partition still has reminder, which is unwanted and, as the next lemma proves,
-    it is avoidable at the cost of aanother slight increase of the excellence parameter.
+    it is avoidable at the cost of another slight increase of the excellence parameter.
 
     \begin{lemma}[Claim 5.14.2] \label{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
         Under the same condition of \Cref{lem:existance_of_excellent_partition_with_equal_size}, we can get a
         partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b} For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
-            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent,
-                where
+            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
+            \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c}
+                For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent, where
                 \[
                     \epsilon'' \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}
                 \]
@@ -581,7 +583,8 @@
         \end{proof}
     \end{remark}
 
-    We now resume all the conditions necessaries for the previous result to hold in the context of the previous remark.
+    We now resume all the conditions necessaries for the previous result to hold in the context of the values
+    $m_*$ and $m_{**}$ given by the previous remark.
 
     \begin{lemma}[Corollary 5.15] \label{lem:resume_of_all_conditions_for_excellent_partitions}
         Let $G$ be a graph with the non-$k_{*}$-order property.
@@ -629,9 +632,9 @@
         \end{proof}
     \end{lemma}
 
-    To conclude, we finally prove the existence of the decreasing sequence of integers, under some minimal conditions
+    To conclude, we prove the existence of the decreasing sequence of integers, under some minimal conditions
     of the two parameters $\epsilon$ (the excellence parameter) and $m$ (the minimum number of parts in the resulting
-    partition).
+    partition), and rewrite the statement accordingly.
 
     \begin{theorem}[Theorem 5.18] \label{thm:minimal_conditions_for_excellent_partitions}
         Let $k_*$ and therefore $k_{**}$ be given.
@@ -721,6 +724,12 @@
     \end{remark}
 
     \todo{Define or remove uniformity.}
+
+    As mentioned in the beginning of the section, it can be proven that excellence is a stronger condition then
+    regularity.
+    In fact, as shown in the following lemma, excellence of a pair not only implies some level of regularity, but
+    also it ensures that the pair is mostly full or empty of edges.
+    \todo{Mention homogeneity?}
 
     \begin{lemma}[Lemma 5.17] \label{lem:excellence_implies_regularity}
         Suppose that $\epsilon_1, \epsilon_2, \epsilon_3 \in \parround{0, \frac{1}{2}}$ with
@@ -813,6 +822,9 @@
             $< \epsilon$ or $\geq 1 - \epsilon$ (\dref{itm:excellence_implies_regularity.b}).
         \end{proof}
     \end{lemma}
+
+    We finally prove the Stable Regularity Lemma using the previous lemma to reformulate
+    \Cref{thm:minimal_conditions_for_excellent_partitions} in the context of regularity.
 
     \begin{theorem}[Theorem 5.19] \label{thm:existance_of_regular_partitions}
         For every $k_* \in \naturals$ and $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$

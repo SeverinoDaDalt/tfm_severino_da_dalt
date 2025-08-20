@@ -23,10 +23,10 @@ def binary_decomposition(value, digits, text=False):
 
 def main():
     prefix = f"""\\begin{{figure}}
-    \centering
+    \\centering
     \\begin{{tikzpicture}}[
         vertex/.style={{circle, draw, fill=gray!20, minimum size={CELL_SIZE}cm, inner sep=1pt}},
-        label/.style={{below=2pt, font=\small}},
+        label/.style={{below=2pt, font=\\small}},
         solid edge/.style={{draw, thick, black!60}},
         dashed edge/.style={{draw, dashed, thick, black!40}},
     ]
@@ -35,10 +35,10 @@ def main():
     branches = ""
     labels = ""
     edges = ""
-    suffix = f"""    \end{{tikzpicture}}
-    \caption{{{CAPTION}}}
-    \label{{fig:{FIG_NAME}}}
-\end{{figure}}
+    suffix = f"""    \\end{{tikzpicture}}
+    \\caption{{{CAPTION}}}
+    \\label{{fig:{FIG_NAME}}}
+\\end{{figure}}
 """
 
     for i in range(K+1):
@@ -68,10 +68,10 @@ def main():
                 branch = f"a_{prec}{cont}"
                 if cont[0] == "0":
                     edges += ("\t"
-                              + f"\draw[dashed edge] ({node}) -- ({branch});\n")
+                              + f"\\draw[dashed edge] ({node}) -- ({branch});\n")
                 else:
                     edges += ("\t"
-                              + f"\draw[solid edge] ({node}) -- ({branch});\n")
+                              + f"\\draw[solid edge] ({node}) -- ({branch});\n")
 
 
     with open(OUTPUT_FILE, "w") as o_f:

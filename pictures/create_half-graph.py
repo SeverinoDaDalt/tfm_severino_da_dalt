@@ -6,35 +6,35 @@ K=10
 CELL_SIZE=0.5
 NODE_SIZE=0.3
 CAPTION=(f"A half-graph with 2 × {K} vertices. \n"
-         f"\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
+         f"\\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
          f"Pairs of vertices without a line may or may not be connected. \n"
-         f"\emph{{On the right}} is the corresponding adjacency matrix.")
+         f"\\emph{{On the right}} is the corresponding adjacency matrix.")
 FIG_NAME="half-graph"
 OUTPUT_FILE="pictures/half-graph.tex"
 
 
 def main():
     prefix = f"""\\begin{{figure}}
-    \centering
+    \\centering
 
     \\begin{{tikzpicture}}[
         vertex/.style={{circle, draw, fill=gray!20, minimum size={NODE_SIZE} cm, inner sep=1pt}},
-        label_a/.style={{above=2pt, font=\small}},
-        label_b/.style={{below=2pt, font=\small}},
+        label_a/.style={{above=2pt, font=\\small}},
+        label_b/.style={{below=2pt, font=\\small}},
         node distance=1.5cm,
         solid edge/.style={{draw, thick, black!60}},
         dashed edge/.style={{draw, dashed, thick, black!40}},
         matrix cell/.style={{draw, minimum size={CELL_SIZE} cm, inner sep=0pt}},
-        matrix label/.style={{font=\small, anchor=center}}
+        matrix label/.style={{font=\\small, anchor=center}}
     ]
 """
     nodes = ""
     labels = ""
     edges = ""
-    suffix = f"""    \end{{tikzpicture}}
-    \caption{{{CAPTION}}}
-    \label{{fig:{FIG_NAME}}}
-\end{{figure}}
+    suffix = f"""    \\end{{tikzpicture}}
+    \\caption{{{CAPTION}}}
+    \\label{{fig:{FIG_NAME}}}
+\\end{{figure}}
 """
 
     for i in range(1,K+1):
@@ -72,16 +72,16 @@ def main():
         for j in range(1,K+1):
             if i < j:
                 edges += ("\t"
-                          + f"\draw[dashed edge] (a_{i}) -- (b_{j});\n")
+                          + f"\\draw[dashed edge] (a_{i}) -- (b_{j});\n")
             else:
                 edges += ("\t"
-                          + f"\draw[solid edge] (a_{i}) -- (b_{j});\n")
+                          + f"\\draw[solid edge] (a_{i}) -- (b_{j});\n")
 
     # matrix
     matrix_prefix=f"""
 \\begin{{scope}}[xshift={2+K*X_SEP} cm]
 """
-    matrix_suffix="""   \end{scope}
+    matrix_suffix="""   \\end{scope}
 
 """
     matrix_cells = ""
