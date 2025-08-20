@@ -1,4 +1,50 @@
 \section{Section 6} \label{sec:section_6}
+
+    In this section, we showcase a specific example of application of the Stable Regularity Lemma
+    (\Cref{thm:existance_of_regular_partitions}).
+
+    Property testing is a field of theoretical computer science, concerned about finding low-complexity algorithms
+    for testing approximate properties in large objects, such as graphs.
+    The algorithm needs to be successful with high probability, and only distinguish between objects that do not
+    satisfy the property, and those which are \say{far} from satisfying it.
+
+    We now formalize these concepts in the context of graphs.
+
+    \begin{definition}
+        We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a property $\mathcal{P}$ if no adding or
+        removing of up to $\epsilon {|G| \choose 2}$ edges in $G$ results in the graph satisfying the property.
+
+        An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
+        $q(n)$ is a randomized algorith that, on input graph $G$ of size $n$,
+        satisfies:
+        \begin{enumerate}
+            \item If $G \in \mathcal{P}$, then $P\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
+            \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
+                then $P\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
+        \end{enumerate}
+
+        The query complexity $q(n)$ is the maximum number of queries the algorithm can make to discern whether a desired
+        pair of vertices in the graph $G$ is adjacent or not.
+
+        We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
+        with a constant query-complexity with respect to the size of the input graph, that is, it only depends on the
+        parameter $\epsilon$.
+    \end{definition}
+
+    A case of particular interest is that of \emph{hereditary} properties, these properties that are preserved under
+    taking induced subgraphs.
+    In this context, Szemer\'edi's Regularity Lemma found an application in proving the following result:
+
+    \begin{theorem}[Alon \& Shapira Theorem,~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
+        Every hereditary graph property is testable (with one-sided error).
+    \end{theorem}
+
+    Although constant with respect to the size of the input graph, the query complexity of the resulting $\epsilon$-test
+    from the previous problem is very large.
+    Again, this is due to the tower function bound of Szemer\'edi's Regularity Lemma.
+
+    \jojo
+
     \begin{definition} \label{def:unavoidable}
         A graph $H$ is \emph{$\gamma$-unavoidable} in a graph $G$ if no adding or removing of up to $\epsilon {|G| \choose 2}$
         edges in $G$ results in $H$ not appearing as an induced subgraph of $G$.

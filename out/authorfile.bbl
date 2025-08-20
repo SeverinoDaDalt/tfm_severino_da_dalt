@@ -50,6 +50,40 @@
       \verb https://mathoverflow.net/q/404954
       \endverb
     \endentry
+    \entry{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}{article}{}
+      \name{author}{2}{}{%
+        {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
+           family={Alon},
+           familyi={A\bibinitperiod},
+           given={Noga},
+           giveni={N\bibinitperiod}}}%
+        {{hash=10eae8b0e805bc5205b1e7f1011f62a0}{%
+           family={Shapira},
+           familyi={S\bibinitperiod},
+           given={Asaf},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \strng{fullhash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \strng{bibnamehash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \strng{authorbibnamehash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \strng{authornamehash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \strng{authorfullhash}{df3ddf2642eeed3c24061d75536a6aa5}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{SIAM Journal on Computing}
+      \field{number}{6}
+      \field{title}{A characterization of the (natural) graph properties testable with one-sided error}
+      \field{volume}{37}
+      \field{year}{2008}
+      \field{pages}{1703\bibrangedash 1727}
+      \range{pages}{25}
+    \endentry
     \entry{efficient_testing_of_large_graphs}{article}{}
       \name{author}{4}{}{%
         {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
