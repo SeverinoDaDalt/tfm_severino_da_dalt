@@ -139,6 +139,17 @@
         \end{proof}
     \end{lemma}
 
+    \begin{remark}
+        The two sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
+        are not necessarily disjoint.
+        This is the reason why, for this to work, the \Cref{def:k-tree}, and consequently \Cref{def:k_order_property},
+        do not make this assumption.
+        Although it makes the non-$k$-order assumption on the graph stricter, this also allows the definition of excellence
+        to work with respect to the set itself (as it is good by definition).
+        Thus, the resulting partition will not only satisfy \regularity~between different parts, but actually ensures
+        that the parts are \regular~within themsleves.
+    \end{remark}
+
     \begin{lemma}[Claim 5.4.1] \label{lem:existance_of_excellent_subsets_fixed_size_choices}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
@@ -184,10 +195,14 @@
     In order to do so, we first show that any random sample of a given size from an excellent set is still excellent
     with high probability, at the cost of a slightly reduced excellence (\dref{itm:equitable_partition_of_excellent_parts.2} of
     \Cref{lem:equitable_partition_of_excellent_parts}).
-    Then, we use this result in union-bound argument to show that we can actually fully partition the excellent set into
+    Then, we use this result in a union-bound argument to show that we can actually fully partition the excellent set into
     pieces of equal size (\dref{itm:equitable_partition_of_excellent_parts.3} of
-    \Cref{lem:equitable_partition_of_excellent_parts}).
-    \jojo
+    \Cref{lem:equitable_partition_of_excellent_parts}), which are still excellent.
+    Finally, \Cref{lem:existance_of_excellent_partition_with_equal_size} applies this result to the partition from
+    \Cref{lem:existance_of_excellent_partition} to get an equitable excellent partition.
+
+    The following lemma is a small calculus result, which will be required in the subsequent proof.
+    The statement comes from~\cite{no_me_acuerdo} and, for completeness, we provide herea short proof here.
 
     \begin{lemma} \label{lem:ineq_5.13}
         For $k > 1$, $\zeta, \eta \in \parround{0,1}$ the function $f(m) = m^k \cdot e^{-2 \zeta^2 m}$ satisfies
@@ -435,6 +450,13 @@
         N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
     \end{remark}
 
+    Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an equitable one using
+    the previous results.
+    Notice that in the conditions we require a decreasing sequence of integers which has no direct appearance in the
+    consequences.
+    This is because it is part of the construction, and requiring its existence (in the context of the rest of the other
+    variables) avoids unnecessary relaxations of the bounds or approximation errors.
+
     \begin{lemma}[Claim 5.14.1a] \label{lem:existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
@@ -461,6 +483,9 @@
             with remainder $B$, satisfying all the conditions of the statement.
         \end{proof}
     \end{lemma}
+
+    Notice that our partition still has reminder, which is unwanted and, as the next lemma proves,
+    it is avoidable at the cost of aanother slight increase of the excellence parameter.
 
     \begin{lemma}[Claim 5.14.2] \label{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
         Under the same condition of \Cref{lem:existance_of_excellent_partition_with_equal_size}, we can get a
@@ -500,6 +525,12 @@
             which proves that \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c} can be satisfied.
         \end{proof}
     \end{lemma}
+
+    We now have an $(\epsilon'', \epsilon')$-excellent equitable partition with no remainder.
+    Also $\epsilon''$ is bounded by something very close to $\frac{\epsilon'}{k}$, where $k$ is a settable parameter
+    which only affects the large-enough condition on the size of the graph.
+    It is reasonable to assume that, under some conditions of $m_*$ and $m_{**}$, and under an appropriate choice of $k$,
+    we can upper bound $\epsilon''$ by $\epsilon'$, thus ensuring that the partition is $\epsilon'$-excellent.
 
     \begin{remark}[Remark 5.14.3] \label{rmk:epsilons_proportion_can_be_k}
         In the context of \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
@@ -550,6 +581,8 @@
         \end{proof}
     \end{remark}
 
+    We now resume all the conditions necessaries for the previous result to hold in the context of the previous remark.
+
     \begin{lemma}[Corollary 5.15] \label{lem:resume_of_all_conditions_for_excellent_partitions}
         Let $G$ be a graph with the non-$k_{*}$-order property.
         Suppose that we are given:
@@ -595,6 +628,10 @@
             \dref{itm:resume_of_all_conditions_for_excellent_partitions.iii}.
         \end{proof}
     \end{lemma}
+
+    To conclude, we finally prove the existence of the decreasing sequence of integers, under some minimal conditions
+    of the two parameters $\epsilon$ (the excellence parameter) and $m$ (the minimum number of parts in the resulting
+    partition).
 
     \begin{theorem}[Theorem 5.18] \label{thm:minimal_conditions_for_excellent_partitions}
         Let $k_*$ and therefore $k_{**}$ be given.
