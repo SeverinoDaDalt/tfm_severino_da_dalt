@@ -8,7 +8,18 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{dirtytalk}
-\usepackage[nameinlink]{cleveref}
+
+
+% ALGORITHM
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\makeatletter
+\AddToHook{env/algorithmic/before}{\def\@currentcounter{ALG@line}}
+\makeatother
+\usepackage[nameinlink]{cleveref}  % this is for a lot of things, not only algorithms
+\crefalias{ALG@line}{line}
+
 
 % PICTURES
 \usepackage{calc}
