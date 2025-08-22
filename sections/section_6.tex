@@ -67,14 +67,18 @@
     In fact, our $\epsilon$-test will only have one-sided error, as if the input graph is $H$-free the tester will
     report so with probability $1$.
 
-    The first step towards constructing such tester is proving \Cref{lem:property_testing_with_stable_partitions}.
-    This lemma uses the Stable Regularity Lemma to prove in the context of stable graphs, that a graph being $\epsilon$-far
+    The first step towards constructing such tester is proving \Cref{thm:property_testing_with_stable_partitions}.
+    This theorem uses the Stable Regularity Lemma to prove that a graph being $\epsilon$-far
     from being $H$-free implies it containing many (as a fixed fraction of all induced subgraphs of size $|H|$)
     induced copies of $H$.
     This point is central for the construction, and once proved we can simply let the tester ask for all the edges
     in a sample of vertices of fixed size.
+    \todo{Adapt if multiple samples is still the strategy.}
     The algorithm then simply checks whether a copy of $H$ can be found in the subgraph induced by the sample, and report
     accordingly.
+
+    We now briefly formalize the concepts of being far from $H$-freeness, and containing many copies of $H$ using the
+    notation from~\cite{efficient_testing_of_large_graphs}.
 
     \begin{definition} \label{def:unavoidable}
         A graph $H$ is \emph{$\gamma$-unavoidable} in a graph $G$ if no adding or removing of up to $\epsilon {|G| \choose 2}$
@@ -85,6 +89,10 @@
         A graph $H$ is \emph{$\eta$-abundant} in a graph $G$ if $G$ contains at least $\eta |G|^{|H|}$
         induced copies of $H$.
     \end{definition}
+
+    An important property of regularity, which is needed for the proof of the theorem, is that regularity is
+    partially maintained when moving to subsets.
+    Not only that, but it also ensures that the density of the pair does not change too much.
 
     \begin{lemma}[Lemma 3.1,~\cite{efficient_testing_of_large_graphs}] \label{lem:regularity_is_transitive}
         Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
@@ -115,6 +123,12 @@
             \]
         \end{proof}
     \end{lemma}
+
+    The pivotal point in the proof of \Cref{thm:property_testing_with_stable_partitions} is the fact that, if the
+    reduced graph from a regular partition contains an induced structure resembling $H$, i.e. where pairs of parts are
+    mostly connected if the corresponding vertices in $H$ are connected, and mostly not connected otherwise,
+    then the original graph contains many induced copies of $H$.
+    The following lemma formalizes this idea.
 
     \begin{lemma}[Lemma 3.2,~\cite{efficient_testing_of_large_graphs}] \label{lem:H_like_partition_implies_H_abundance}
         For every $\delta \in \parround{0, 1}$ and $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
@@ -181,7 +195,17 @@
         \end{align*}
     \end{remark}
 
-    \begin{theorem} \label{lem:property_testing_with_stable_partitions}
+    We are now ready to prove the main theorem of this section.
+    The proof is similar to that of Theorem 5.1 in~\cite{efficient_testing_of_large_graphs},
+    but with some major simplification and optimization allowed by using the Stable Regularity Lemma.
+    The main difference is the fact that we do not need to refine the partition to get rid of irregular pairs.
+    To resume, we first apply \Cref{thm:existance_of_regular_partitions} to get a regular partition,
+    then, we create a copy of the graph where pairs are changed slightly to become either complete or empty.
+    By the $\gamma$-unavoidability of $H$, this new graph still contains a copy of $H$.
+    This fact ensures the existence of an induced structure in the partition of the original graph which allows
+    us to apply \Cref{lem:H_like_partition_implies_H_abundance} and conclude that $H$ is abundant in $G$.
+
+    \begin{theorem} \label{thm:property_testing_with_stable_partitions}
         For every $k_*, \gamma, \ell$ there is a $\eta(k_*, \gamma, \ell)$ such that if $H$ is a graph with $\ell$
         vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
         $\eta$-abundant in $G$.
@@ -250,7 +274,7 @@
     \end{theorem}
 
     Notice that this same result can be proved in the general context instead of only for stable graphs
-    as shown in Theorem 5.1 from~\cite{efficient_testing_of_large_graphs}.
+    as the original Theorem 5.1 from~\cite{efficient_testing_of_large_graphs} proves.
     The difference is that the resulting $\eta$ is much larger (although not given explicitly).
 
     \begin{remark}
@@ -263,45 +287,74 @@
         \]
     \end{remark}
 
-    Now we have all the tools to build our $\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given graph $H$
-    of size $\ell$.
-    See \Cref{alg:h-freeness_tester} to see the steps of the algorithm.
+    Now we have all the tools needed to build our $\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given
+    graph $H$ of size $\ell$.
+    See \Cref{alg:h-freeness_tester} for pseudo-code of the steps that $\mathcal{A}$ follows to make its decision.
 
     \begin{algorithm}[H]
         \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given graph $H$ of size $\ell$}
         \label{alg:h-freeness_tester}
         \begin{algorithmic}[1]
             \Require a graph $G$ of size $n$ with non-$k_*$-order property
+            \State $t \leftarrow \frac{\ell \log\parround{\frac{2}{3}}}
+                {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}$
             \If{$n < \ell$}
                 \State return 0 \label{line:G_smaller_then_H}
-            \Else
-                \While{$i \leq \frac{2}{3}\frac{1}{\eta_{\ref{lem:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}$}
-                    \State $S_i = \parcurly{s_{i,1}, \dots, s_{i,\ell}}$ such that $s_{i,j} \sim G$
-                    \State query all edges from induced subgraph $S_i$
-                    \If{$S_i \cong H$}
-                        \State return 1 \label{line:found_H}
-                    \EndIf
+            \ElsIf{$n < t$}
+                \State query all edges in $G$
+                \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in \overline{G}$ such that
+                        $\parcurly{v_{i_1}, \dots, v_{i_\ell}}$ induces a copy of $H$ in $G$}
+                    \State return 1 \label{line:G_small_enough_found_H}
+                \Else
+                    \State return 0 \label{line:G_small_enough_not_found_H}
+                \EndIf
+            \Else \label{line:random_sampling}
+                \State $S \leftarrow \emptyset$
+                \While{$i \leq t$}
+                    \State $s_{i} \sim G$
+                    \While{$s_i \in S$}
+                        \State $s_{i} \sim G$
+                    \EndWhile
+                    \State $S \leftarrow S \cup \parcurly{s_i}$
                 \EndWhile
-                \State return 0 \label{line:not_found_H}
+                \State query all edges induced by the vertex set $S$
+                \If{$\exists v_1, \dots, v_\ell \in S$ such that
+                        $\parcurly{v_1, \dots, v_\ell}$ induces a copy of $H$ in $G$}
+                    \State return 1 \label{line:found_H}
+                \Else
+                    \State return 0 \label{line:not_found_H}
+                \EndIf
             \EndIf
         \end{algorithmic}
     \end{algorithm}
 
     Indeed, $\mathcal{A}$ is an $\epsilon$-test.
-    If the input graph $G$ is $H$-free, then the algorithm returns $0$, either because the graph $G$ it too small to
+    If the input graph $G$ is $H$-free, then the algorithm returns $0$, either because the graph $G$ is too small to
     contain $H$ (\cref{line:G_smaller_then_H}) or because all attempts of finding $H$ as an induced subgraph of $G$
-    failed (\cref{line:not_found_H}).
-    On the other hand, if $G$ is $\epsilon$-far from being $H$-free, \Cref{lem:property_testing_with_stable_partitions}
-    ensures that $H$ is $\eta_{\ref{lem:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)$-abundant in $G$.
-    Thus, the probability that $\mathcal{A}$ finds one copy of $H$ during its completion (\cref{line:found_H}) is at least:
+    failed (either \cref{line:G_small_enough_not_found_H} or \cref{line:not_found_H}).
+    On the other hand, if $G$ is $\epsilon$-far from being $H$-free, \Cref{thm:property_testing_with_stable_partitions}
+    ensures that $H$ is $\eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)$-abundant in $G$.
+    Thus, checking $t_*$ times whether a random sample of $\ell$ vertices contains is an
+    induced copy of $H$, the probability of not finding any copy of $H$ is at most
+    $\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}^{t_*}$.
+    By letting $t_* = \frac{\log\parround{\frac{2}{3}}}
+        {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}$
+    the probability of finding at least one copy of $H$ is at least $\frac{2}{3}$.
+    The total number of vertices included in the samples is at most (as there may be repetitions) $t_* \coloneqq t \cdot \ell$,
+    and this probability is at most as high as simply querying all the edges within a sample of vertices of size
+    $t_*$, and checking whether $H$ appears as an induced subgraph of $G$.
+    For completeness, we also need to ensure that $n \geq t_*$.
+    If $n < t_*$, then the algorithm simply queries all edges of $G$, checks whether $H$ appears as an induced subgraph
+    of $G$ and reports accordingly (either \cref{line:G_small_enough_found_H} or \cref{line:G_small_enough_not_found_H}).
+
+    The resulting query complexity of the algorithm $\mathcal{A}$ can bounded by
     \[
-        \sum_{i=1}^{\frac{2}{3}\frac{1}{\eta_{\ref{lem:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}
-                P\parround{S_i \text{ is an induced copy of } H \text{ in } G}
-            \geq
+        q \leq {t_* \choose 2}
+          \leq \Parround{ \frac{\log\parround{\frac{2}{3}}}
+               {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2
     \]
 
-    \jojo
-
-
+    \todo{Comment on optimization such as checking if copies of $H$ are found as soon as the sample is large enough and
+        stopping early if so.}
 
     % up to here it was compiling with no problem.

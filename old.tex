@@ -350,7 +350,35 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+    \begin{algorithm}[H]
+        \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given graph $H$ of size $\ell$}
+        \label{alg:h-freeness_tester}
+        \begin{algorithmic}[1]
+            \Require a graph $G$ of size $n$ with non-$k_*$-order property
+            \State $t \leftarrow \frac{2}{3}\frac{1}{\eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}$
+            \If{$n < \ell$}
+                \State return 0 \label{line:G_smaller_then_H}
+            \ElsIf{$n^\ell < t$}
+                \State return 0 \label{line:G_and_H_too_small_for_t}
+            \Else
+                \State $S \leftarrow \emptyset$
+                \While{$i \leq t$}
+                    \State $S_i = \Partriangle{s_{i,1}, \dots, s_{i,\ell}}$ such that $s_{i,j} \sim G$
+                    \While{$S_i \in S$}
+                        \State $S_i = \parcurly{s_{i,1}, \dots, s_{i,\ell}}$ such that $s_{i,j} \sim G$
+                    \EndWhile
+                    \State $S \leftarrow S \cup \parcurly{S_i}$
+                \EndWhile
+                \State query all edges induced by the vertex set $\overline{S} = \cup_{i \leq t} S_i$
+                \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in \overline{S}$ such that
+                        $\parcurly{v_{i_1}, \dots, v_{i_\ell}}$ induces a copy of $H$ in $G$}
+                    \State return 1 \label{line:found_H}
+                \Else
+                    \State return 0 \label{line:not_found_H}
+                \EndIf
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
