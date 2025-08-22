@@ -1,18 +1,18 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:307> INFO - This is Biber 2.17
 [0] Config.pm:310> INFO - Logfile is 'out/authorfile.blg'
-[39] biber:340> INFO - === jue ago 21, 2025, 17:42:38
-[49] Biber.pm:419> INFO - Reading 'out/authorfile.bcf'
-[83] Biber.pm:979> INFO - Found 12 citekeys in bib section 0
-[89] Biber.pm:4419> INFO - Processing section 0
-[95] Biber.pm:4610> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
-[96] bibtex.pm:1713> INFO - LaTeX decoding ...
-[102] bibtex.pm:1519> INFO - Found BibTeX data source 'sections/bibliography.bib'
-[152] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[152] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[152] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[152] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[160] bbl.pm:660> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
-[162] bbl.pm:763> INFO - Output to out/authorfile.bbl
-[162] Biber.pm:131> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
-[162] Biber.pm:131> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
-[162] Biber.pm:133> INFO - WARNINGS: 2
+[81] biber:340> INFO - === vie ago 22, 2025, 10:57:55
+[93] Biber.pm:418> INFO - Reading 'out/authorfile.bcf'
+[148] Biber.pm:972> INFO - Found 12 citekeys in bib section 0
+[159] Biber.pm:4383> INFO - Processing section 0
+[168] Biber.pm:4574> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
+[169] bibtex.pm:1713> INFO - LaTeX decoding ...
+[185] bibtex.pm:1518> INFO - Found BibTeX data source 'sections/bibliography.bib'
+[272] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[272] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[272] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[272] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
+[295] bbl.pm:654> INFO - Writing 'out/authorfile.bbl' with encoding 'UTF-8'
+[300] bbl.pm:757> INFO - Output to out/authorfile.bbl
+[300] Biber.pm:130> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
+[300] Biber.pm:130> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
+[301] Biber.pm:132> INFO - WARNINGS: 2

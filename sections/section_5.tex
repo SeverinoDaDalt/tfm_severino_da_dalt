@@ -154,7 +154,7 @@
     \begin{lemma}[Claim 5.4.1] \label{lem:existance_of_excellent_subsets_fixed_size_choices}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
-        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         % Notice that we needed to add m_{k_{**}} to the sequence, since it is needed in (c)' in the paper
         % (m_{l+1} may take that value!!).
@@ -170,13 +170,13 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
         Denote $m_* \coloneqq m_0$ and $m_{**} \coloneqq m_{k_{**}}$.
         Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
         $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
+            \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
             \item \label{itm:existance_of_excellent_partition.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
             \item \label{itm:existance_of_excellent_partition.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
             \item \label{itm:existance_of_excellent_partition.d} $|B| < m_*$.
@@ -461,7 +461,7 @@
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
         Let $A \subseteq G$ such that $|A| = n$.
-        Let $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
         $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
         $m_{**} \coloneqq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
         $m_{k_{**}-1} > N\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$
@@ -591,7 +591,7 @@
         Suppose that we are given:
         \begin{enumerate}
             \item $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
-            \item A sequence of positive integers $\Partriangle{m\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
+            \item A sequence of positive integers $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
                 and $m_{**}$, such that:
                 \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                     \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
