@@ -128,6 +128,33 @@
       \field{pages}{451\bibrangedash 476}
       \range{pages}{26}
     \endentry
+    \entry{extremal_graph_theory}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=d7750765c1eb004bdcdce07ed2272ba7}{%
+           family={Diestel},
+           familyi={D\bibinitperiod},
+           given={Reinhard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \strng{fullhash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \strng{bibnamehash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \strng{authorbibnamehash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \strng{authornamehash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \strng{authorfullhash}{d7750765c1eb004bdcdce07ed2272ba7}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Graph theory}
+      \field{title}{Extremal graph theory}
+      \field{year}{2024}
+      \field{pages}{179\bibrangedash 226}
+      \range{pages}{48}
+    \endentry
     \entry{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}{article}{}
       \name{author}{1}{}{%
         {{hash=fca789c8d8642fdcf0c24e26455ba279}{%
@@ -382,6 +409,36 @@
       \field{year}{1972}
       \field{pages}{247\bibrangedash 261}
       \range{pages}{15}
+    \endentry
+    \entry{regular_partitions_of_graphs}{incollection}{}
+      \name{author}{1}{}{%
+        {{hash=11eac7d5df5a432005f8b6395c03384c}{%
+           family={Szemerédi},
+           familyi={S\bibinitperiod},
+           given={Endre},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {CNRS, Paris}%
+      }
+      \strng{namehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{fullhash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{bibnamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authorbibnamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authornamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authorfullhash}{11eac7d5df5a432005f8b6395c03384c}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Problèmes combinatoires et théorie des graphes ({C}olloq. {I}nternat. {CNRS}, {U}niv. {O}rsay, {O}rsay, 1976)}
+      \field{isbn}{2-222-02070-0}
+      \field{series}{Colloq. Internat. CNRS}
+      \field{title}{Regular partitions of graphs}
+      \field{volume}{260}
+      \field{year}{1978}
+      \field{pages}{399\bibrangedash 401}
+      \range{pages}{3}
     \endentry
   \enddatalist
   \missing{no_me_acuerdo}

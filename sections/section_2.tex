@@ -1,18 +1,6 @@
-\section{Section 2} \label{sec:section_2}
-    \todo{Things that should be included in this section: \\
-        - General notation. \\
-        - Definition of a graph. \\
-        - Probably, also present edges as a relation on vertices, mentioning its properties, and explain
-            that this is the bridge with model theory. \\
-        - Define density of a (non necessarily disjoint) pair of sets of vertices. \\
-        - Definition of a bipartite graph. \\
-        - Reglarity definitions. \\
-        - Szemer\'edi's regularity lemma.
-    }
+\section{Graphs and Regularity Lemma} \label{sec:section_2}
 
     \todo{Notation:
-        - By abuse of notation $a R b$ is a value in $\parcurly{0,1}$. \\
-        - Abuse of notation: $a \in G$ to say that $a \in V(G)$. \\
         - $\Partriangle{\cdot}$ to represent tuples. \\
         - $\cdot^{<k}$. \\
         - $\frown$ and $\triangleleft$. \\
@@ -21,3 +9,128 @@
     \todo{Mention that during the thesis, a lot of results carry many conditions most of which seem almost trivial,
         but are necessary for the computations to work. In the final result of each section, the results are cleaned out
         and tried to be delivered in a more readable form.}
+
+    \subsection{Graphs and Basic Notation} \label{subsec:subsection_2.1}
+
+        In all this work we will consider only simple graphs, that is, unweighted, undirected graphs with no loops or
+        multiple edges.
+        The following definition accounts for this.
+
+        \begin{definition}
+            A (simple) \emph{graph} is a pair $G = (V, E)$ where $V$ is a finite set whose elements are called \emph{vertices}
+            and $E \subseteq \parcurly{\parcurly{v_1, v_2} \mid v_1, v_2 \in V \text{ and } v_1 \neq v_2}$ is a set of
+            unordered pairs of distinct vertices, whose elements are called \emph{edges}.
+            If $\parcurly{v_1, v_2} \in E$, then $v_1$ and $v_2$ are said to be \emph{the endpoints} of the edge.
+        \end{definition}
+
+        \todo{Define neighbor?}
+
+        By abuse of notation, we will often denote a graph $G = (V, E)$ simply by $G$ and write $v \in G$ to mean $v \in V$.
+        Similarly, we will write $u v \in G$ to mean $\parcurly{u, v} \in E$.
+
+        As most of this work is tightly related to model theory results, it is useful to note that vertices adjacency
+        (two vertices being connected by an edge) can be seen as a symmetric and irreflexive binary relation on the
+        vertex set.
+        With this perspective, to denote vertex adjacency we will often use the notation $v_1 R v_2$, where $R$ is the
+        adjacency relation in $V$.
+
+        A type of graphs that will be particularly relevant in this work are bipartite graphs.
+
+        \begin{definition}
+            A graph $G = (V, E)$ is \emph{bipartite} if there exists a partition of its vertex set $V$ into two disjoint sets
+            $L$ and $R$ such that every edge in $E$ connects a vertex in $L$ to a vertex in $R$.
+            That is, no edge connects vertices within the same set of the partition.
+        \end{definition}
+
+        It is often useful to be able to restrict a graph to a subset of its vertices.
+
+        \begin{definition}
+            Let $G = (V, E)$ be a graph and let $S \subseteq V$ be a subset of its vertices.
+            The \emph{subgraph of $G$ induced by $S$}, denoted by $G[S]$, is the graph whose vertex set is $S$ and whose edge
+            set consists of all edges in $E$ that have both endpoints in $S$.
+            Formally, $G[S] = (S, E_S)$ where $E_S = \parcurly{\parcurly{v_1, v_2} \in E \mid v_1, v_2 \in S}$.
+        \end{definition}
+
+    \subsection{Szemer\'edi's Regularity Lemma} \label{subsec:subsection_2.2}
+        We now want to formalize the concept of regular pairs of vertex sets, which is central to Szemer\'edi's Regularity Lemma.
+        The idea is that a pair of vertex sets is regular if the edges between them are \say{randomly} distributed,
+        an idea that we can formalize using edge density.
+
+        \begin{definition}
+            Let $G$ be a graph and let $X, Y \subseteq G$ be two (not necessarily disjoint) subsets of its vertices.
+            The \emph{edge density} between $X$ and $Y$ is defined as
+            \[
+                d(X, Y) = \frac{\parstraight{e(X, Y)}}{|X| |Y|}
+            \]
+            where $e(X, Y) = \parcurly{\parround{x, y} \in E \mid x \in X, y \in Y}$ is the set of edges with one endpoint in
+            $X$ and the other in $Y$.
+        \end{definition}
+
+        When $X$ and $Y$ are disjoint, the edge density $d(X, Y)$ measures the proportion of possible edges between $X$
+        and $Y$ that are actually present in the graph.
+        If $X$ and $Y$ are not disjoint, this is not the case.
+        On one hand, because simple graphs do not allow loops, and so edges between the same vertex are never present in
+        $e(X,Y)$, but they are counted in the denominator as \say{possible edges}.
+        On the other hand, edges between vertices in the intersection $X \cap Y$ are counted twice both in $e(X,Y)$
+        and $\parstraight{X}\parstraight{Y}$.
+        However, as this thesis deals with pairs of (non-necessarily different) parts of a partition of a vertex set,
+        we only have to deal with two cases: either $X$ and $Y$ are disjoint, or $X = Y$.
+        The first case has no problems, while for the second vase we note the following.
+
+        \begin{remark}
+            If $X$ is a subset of vertices of a graph $G$, then the proportion of possible edges between vertices in $X$
+            that are actually present in $G$ is larger than the density $d(X, X)$.
+            That is,
+            \[
+                \frac{\parstraight{E_X}}{{|X| \choose 2}}
+                    = \frac{\parstraight{e(X, X)} / 2}{\parround{|X|-1}|X| / 2}
+                    \geq \frac{\parstraight{e(X, X)}}{|X|^2}
+                    = d(X, X)
+            \]
+            Where first equality follows from the fact that $E_X$ counts each edge in $e(X, X)$ twice.
+        \end{remark}
+
+        \begin{definition}
+            Given $\epsilon > 0$ and a graph $G$, a pair of (not necessarily disjoint) subsets of vertices $A, B \subseteq G$
+            is said to be \emph{$\epsilon$-regular} if for all $A' \subseteq A$ and $B' \subseteq B$ such that
+            $|A'| \geq \epsilon |A|$ and $|B'| \geq \epsilon |B|$, we have
+            \[
+                |d(A', B') - d(A, B)| \leq \epsilon
+            \]
+        \end{definition}
+
+        Intuitively, this means that the edges of the pair are fairly uniformly distributed, and the pair behaves
+        similarly to a random bipartite graph with edge density $d(A, B)$.
+
+        Now, this notion of regularity can be used in the context od a partition of a graph's vertex set.
+        This partition allows a small number of pairs to be irregular.
+        Also, a small \emph{remainder set} is allowed, which is a set of vertices that are not included in any part
+        of the partition.
+
+        \begin{definition}
+            Let $G$ be a graph and let $\epsilon > 0$.
+            An \emph{$\epsilon$-regular partition} of $G$ is a partition of its vertex set into $k$ parts
+            $\parcurly{A_1, \ldots, A_k}$ with remainder set $B$ such that:
+            \begin{itemize}
+                \item $|B| \leq \epsilon |G|$, and may be empty.
+                \item $|A_1| = |A_2| = \cdots = |A_k|$.
+                \item All but at most $\epsilon k^2$ of the pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$ are
+                    $\epsilon$-regular.
+            \end{itemize}
+        \end{definition}
+
+        The following is the celebrated Szemer\'edi's Regularity Lemma.
+        The statement and proof we provide in this thesis follows the one given in~\cite{extremal_graph_theory},
+        with minor notation modifications.
+
+        \begin{theorem}[Szemer\'edi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
+            For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
+            such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
+            $\parcurly{A_1, \ldots, A_k}$ and reminder $B$ with $m \leq k \leq M$.
+        \end{theorem}
+
+        The principal strength of this lemma lies in the fact that it guarantees the existence of a regular partition
+        which number of parts is independent of the size of the graph, and only depends on the regularity parameter
+        $\epsilon$ and the minimum number of parts (and thus vertices) $m$.
+
+        Before proving the theorem, it is useful to introduce some additional notation and definitions.
