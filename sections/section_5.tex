@@ -437,7 +437,8 @@
         if $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent, with $|A| = n$, then there exists a
         partition into $r$ disjoint pieces of equal size, each of which is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
         \begin{proof}
-            Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set $N \coloneqq N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
+            Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set
+            $N \coloneqq N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
             \Cref{rmk:value_for_equitable_partition_of_excellent_parts} sufficiency condition is satisfied,
             \dref{itm:equitable_partition_of_excellent_parts.3} from \Cref{lem:equitable_partition_of_excellent_parts}
             holds and we are done.
@@ -452,34 +453,39 @@
     \end{remark}
 
     Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an equitable one.
-    Notice that, in the conditions of the following couple of lemmas, we require a decreasing sequence of integers which
-    has no direct appearance in the consequences of the statements.
-    This is because it is part of the construction, and proving its existence in later results (in the context of the
-    rest of the other variables) avoids unnecessary relaxations of the bounds or approximation errors.
 
     \begin{lemma}[Claim 5.14.1a] \label{lem:existance_of_excellent_partition_with_equal_size}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
-        Let $A \subseteq G$ such that $|A| = n$.
-        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
-        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_{k_{**}} \geq 1$,
-        $m_{**} \coloneqq m_{k_{**}} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$,
-        $m_{k_{**}-1} > N\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$
-        (in the sense of \Cref{lem:existance_of_equitable_excellent_subpartition}), and $n \geq m_0$.
-        Let $m_* \coloneqq m_0$.
-        Then, for some $i(*) \leq \frac{n}{m_{**}}$, there is a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
-        with remainder $B = A \setminus \bigcup \overline{A}$ such that:
+        Let $\epsilon'$ and $\epsilon$ be two real numbers such that
+        $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
+        Also, let $m_*$, $m_{**}$ and $q$ be natural numbers such that $q \geq \ceil{\frac{1}{\epsilon}}$,
+        $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+            \parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}}{q}$ and $m_* \coloneqq q^{k_{**}} m_{**}$.
+        Then, for any $A \subseteq G$ with $|A| = n \geq m_*$ there exists a partition
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with remainder $B = A \setminus \bigcup \overline{A}$ such that:
         \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item \label{itm:existance_of_excellent_partition_with_equal_size.a} For all $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
-            \item \label{itm:existance_of_excellent_partition_with_equal_size.c} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
+            \item \label{itm:existance_of_excellent_partition_with_equal_size.a} $i(*) \leq \frac{n}{m_{**}}$.
+            \item \label{itm:existance_of_excellent_partition_with_equal_size.b} For all
+                $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
+            \item \label{itm:existance_of_excellent_partition_with_equal_size.c} For all
+                $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
             \item \label{itm:existance_of_excellent_partition_with_equal_size.d} $|B| < m_*$.
         \end{enumerate}
         \begin{proof}
-            Use \Cref{lem:existance_of_excellent_partition} to obtain a partition
+            Consider the decreasing sequence of natural numbers
+            \[
+                m_0 \geq m_1 \geq \dots \geq m_{k_{**}} = m_{**}
+            \]
+            defined by $m_\ell = q m_{\ell+1}$, so that it satisfies $m_\ell \geq \frac{m_{\ell+1}}{\epsilon}$ for all
+            $\ell \in \parcurly{0, \dots, k_{**} - 1}$.
+            Then $m_0 = q^{k_{**}} m_{**} = m_* \leq n$, and $m_{k_{**}-1} = q m_{**} >
+                N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$.
+            With such a sequence, we can apply \Cref{lem:existance_of_excellent_partition} to $A$ to obtain a partition
             $\overline{A}' = \Partriangle{A_j' \mid j \in \parcurly{1, \dots, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
-            Then, we can apply \Cref{lem:existance_of_equitable_excellent_subpartition} with $r = \frac{m_*}{m_{**}}$ to each of
-            the parts $A_j'$.
-            Putting together all the new subparts, we obtain a new partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+            Then, we can apply \Cref{lem:existance_of_equitable_excellent_subpartition} to each of the parts $A_j'$
+            with $r = \frac{m_*}{m_{**}}$, as $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**} - 1}$.
+            Putting together all the new subparts, we obtain a new partition
+            $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             with remainder $B$, satisfying all the conditions of the statement.
         \end{proof}
     \end{lemma}
@@ -590,32 +596,34 @@
         Let $G$ be a graph with the non-$k_{*}$-order property.
         Suppose that we are given:
         \begin{enumerate}
-            \item $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
-            \item A sequence of positive integers $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$, and values $m_*$
-                and $m_{**}$, such that:
+            \item A real value $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
+            \item Three natural numbers $m_*$, $m_{**}$ and $q$ such that:
                 \begin{enumerate}[label=(\alph*), ref=2.\alph*]
-                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $\frac{\epsilon}{12} m_\ell \geq m_{\ell + 1}$.
-                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b} $m_{**} \coloneqq m_{k_{**}} > \frac{3}{\epsilon}$.
-                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
-                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.d} $m_{k_{**}-1} > N\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$ (in the sense
-                        of \Cref{lem:existance_of_equitable_excellent_subpartition}).
+                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $q \geq \ceil{\frac{1}{\epsilon}}$.
+                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b}
+                        $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+                            \parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}}{q}$
+                    \item \label{itm:resume_of_all_conditions_for_excellent_partitions.c} $m_* \coloneqq q^{k_{**}} m_{**}$.
             \end{enumerate}
-            \item $A \subseteq G$ such that $|A| = n$, where $n$ is large enough to satisfy:
-            \begin{enumerate}[label=(\alph*'), ref=3.\alph*]
-                \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a'} $n \geq m_0$. \todo{This is implied by next condition.}
-                \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b'} $m_* \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
-            \end{enumerate}
+            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.3}
+                $A \subseteq G$ such that $|A| = n$, where $n$ is large enough to satisfy
+                $m_* \leq \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
         \end{enumerate}
         Then, there exists $i(*) \leq \frac{n}{m_{**}}$ and a partition of $A$ into disjoint pieces
         $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ such that:
         \begin{enumerate}[label=(\roman*), ref=\roman*]
-            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.i} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.ii} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent,
-            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.iii} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
+            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.i}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.ii}
+                For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent,
+            \item \label{itm:resume_of_all_conditions_for_excellent_partitions.iii}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
         \end{enumerate}
         \begin{proof}
-            Simply apply \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder} in the context of
-            \Cref{rmk:epsilons_proportion_can_be_k} with $k = 3$,
+            First of all, notice that condition \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
+            is a tighter bound then $m_{**} \geq \frac{3}{\epsilon}$.
+            To prove the statement, we simply apply \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
+            in the context of \Cref{rmk:epsilons_proportion_can_be_k} with $k = 3$,
             ${\epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \epsilon$
             and ${\epsilon_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq \frac{1}{12} \epsilon$.
             This results in a partition of $A$ into disjoint pieces that satisfy
@@ -632,7 +640,7 @@
         \end{proof}
     \end{lemma}
 
-    To conclude, we prove the existence of the decreasing sequence of integers, under some minimal conditions
+    To conclude, we prove that the conditions of the previous lemma can be satisfied, under some minimal conditions
     of the two parameters $\epsilon$ (the excellence parameter) and $m$ (the minimum number of parts in the resulting
     partition), and rewrite the statement accordingly.
 
@@ -644,10 +652,14 @@
         of $A$, such that:
         \begin{enumerate}
             \item \label{itm:minimal_conditions_for_excellent_partitions.0} The number of parts is bounded by
-                $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$. \todo{Move the bound on $M$ to another point?}
-            \item \label{itm:minimal_conditions_for_excellent_partitions.1} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
-            \item \label{itm:minimal_conditions_for_excellent_partitions.2} For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
-            \item \label{itm:minimal_conditions_for_excellent_partitions.3} For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.  \todo{Redundant?}
+                $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
+                \todo{Move the bound on $M$ to another point?}
+            \item \label{itm:minimal_conditions_for_excellent_partitions.1}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item \label{itm:minimal_conditions_for_excellent_partitions.2}
+                For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
+            \item \label{itm:minimal_conditions_for_excellent_partitions.3}
+                For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.  \todo{Redundant?}
         \end{enumerate}
         \begin{proof}
             Our goal is to apply \Cref{lem:resume_of_all_conditions_for_excellent_partitions}.
@@ -660,21 +672,19 @@
                 \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
                     \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
             \end{enumerate}
-            We set $m_{k_{**}} = m_{**}$ and we build recursively a sequence of integers
-            $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ such that $m_\ell = q m_{\ell + 1}$ for all
-            $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-            Also, let $m_* \coloneqq m_0 = q^{k_{**}} m_{**}$.
             By \dref{itm:minimal_conditions_for_excellent_partitions.a} we have that $m_* \leq \frac{\epsilon n}{3 + \epsilon}$.
             This sequence satisfies all the conditions of \Cref{lem:resume_of_all_conditions_for_excellent_partitions}:
             \begin{itemize}[label={}]
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a} $m_{\ell+1} = \frac{1}{q} m_\ell \leq \frac{\epsilon}{12} m_\ell$.
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b} $m_{**} \geq \frac{3}{\epsilon}$.
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.c} $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$, since $q$ is an integer.
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.d} $m_{k_{**}-1} = q m_{**} >
+                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a}
+                    $q \geq \ceil{\frac{1}{\epsilon}}$, and in particular defined it to be equal.
+                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
+                        $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+                            \parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}}{q}$ by choice of $m_{**}$.
+                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.c}
+                    $m_* \coloneqq q^{k_{**}} m_{**}$.
+                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.3} $m_{k_{**}-1} = q m_{**} >
                     q \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, q^{k_{**}}}}{q} =
                     N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$.
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b'} $m_* < \frac{\epsilon n}{3 + \epsilon} < \frac{1 + \frac{\epsilon}{3}n}{1 + \frac{\epsilon}{3}}$.
-                \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a'} $m_0 = m* < \frac{\epsilon n}{3 + \epsilon} < n$
             \end{itemize}
             We can apply \Cref{lem:resume_of_all_conditions_for_excellent_partitions} to obtain a partition
             satisfying \dref{itm:minimal_conditions_for_excellent_partitions.1},
