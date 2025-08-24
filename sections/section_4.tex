@@ -1,4 +1,4 @@
-\section{Section 4} \label{sec:section_4}
+\section{Unbounded Stable Regularity Lemmas} \label{sec:section_4}
 
     This section works around the concept of \emph{$\epsilon$-indivisible} sets, a strong condition on the \regularity~of a subset
     respect to all the vertices of the graph.
@@ -16,744 +16,750 @@
     the same drawback: a large number of parts that grows with the size of the graph, something that we will be dealing
     with in the next section.
 
-    First step is defining \emph{indivisibility}.
-    The general definition is for any function $f$, but for the rest of the section we are mostly interested in the case
-    of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and at the end in the constant case $f(n) = c$.
+    \subsection{Indivisibility and Average Condition} \label{subsec:subsection_4.1}
 
-    \begin{definition}[Definition 4.2(b)] \label{def:f_indivisible}
-        Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
-        We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $b \in G$,
-        \[
-            \parstraight{\overline{B}_{A,b}} < f(|A|)
-        \]
-    \end{definition}
+        First step is defining \emph{indivisibility}.
+        The general definition is for any function $f$, but for the rest of the section we are mostly interested in the case
+        of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and at the end in the constant case $f(n) = c$.
 
-    \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
-        Let $\epsilon \in (0,1)$.
-        We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
-        \[
-            \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
-        \]
-    \end{definition}
-
-    \begin{remark}
-        An $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
-    \end{remark} \todo{Redundant.}
-
-    A natural follow-up question, is how strongly bounded are exceptions in the context of two indivisible sets.
-    The following lemma measures precisely that, although doing so in asymmetrically.
-
-    \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
-        Let $G$ be a finite graph.
-        Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
-        Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
-        the $b \in B$ we have that $a R b \equiv t$.
-        \begin{proof}
-            Since $B$ is $g$-indivisible, for each $a \in A$ we have that $\parstraight{\overline{B}_{B,a}} < g(|B|)$.
-            Let $U_i = \parcurly{a \in A \mid t(a,B) \equiv i}$ for $i \in \parcurly{0,1}$.
-            If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
-            Suppose not.
-            Then, there are $W_i \subseteq U_i$ with $|W_i| = f(|A|)$ for $i \in \parcurly{0,1}$.
-            Now, let $V = \parcurly{b \in B \mid (\exists a \in W_0 \mid a R b) \vee (\exists a \in W_1 \mid \lnot a R b)}$,
-            i.e. the $b$'s which are an exception for some $a \in W_0 \cup W_1$.
-            Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 f(|A|) g(|B|) < |B|$, where the first inequality follows the
-            $g$-indivisibility of $B$.
-            Finally, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
-            $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = f(|A|)$, which contradicts the $f$-indivisibility of $A$.
-        \end{proof}
-    \end{lemma}
-
-    \begin{definition}
-        We say that the pair $(A,B)$ with $A$ $f$-indivisible and $B$ $g$-indivisible satisfies the \emph{average condition} if
-        $f(|A|) g(|B|) < \frac{1}{2} |B|$ and thus the statement of \Cref{lem:average_condition_statement} is true for
-        the pair $(A,B)$.
-    \end{definition}
-
-    \begin{remark}
-        The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter, that is,
-        \[
-            (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition }
-        \]
-    \end{remark}
-
-    \begin{remark}[Remark 4.7]
-        When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
-    \end{remark}
-    \todo{I don't think this is useful in any way.}
-
-    Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity
-    \todo{Define homogeneity.}
-    of large enough subpairs, in the sense of bounding exceptional edges.
-    We study the $f$ and $\epsilon$ case separately, as the specific case of $\epsilon$ gives a slightly better condition
-    on the range of the size of the subpair.
-
-    \begin{lemma}[Claim 4.8] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
-        Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
-        Then, for all $\epsilon_1 \in \parround{0, 1-\epsilon}$, $\zeta_1 \in \parround{0, 1-\zeta}$, $A' \subseteq A$
-            and $B' \subseteq B$ such that $|A'| \geq |A|^{\epsilon + \epsilon_1}$ and $|B'| \geq |B|^{\zeta + \zeta_1}$,
-            we have that:
-        \[
-            \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
-        \]
-        \begin{proof}
-            Notice:
-            \begin{itemize}
-                \item There are at most $|A|^\epsilon$ vertices of $A$ (hence in $A' \subseteq A$) which are exceptional
-                    (in the sense of the average condition).
-                \todo{This is not the same use of the word exceptional as defined in \Cref{sec:section_3}.}
-                \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $|B|^\zeta$ elements
-                    $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
-            \end{itemize}
-            Putting it all together:
-            \todo{This makes my eyes bleed.}
+        \begin{definition}[Definition 4.2(b)] \label{def:f_indivisible}
+            Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
+            We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $b \in G$,
             \[
-                \begin{split}
-                    \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
-                        &\leq \frac{|A|^\epsilon |B'| + (|A'| - |A|^\epsilon) |B|^\zeta}{|A'| |B'|} \\
-                        &= \frac{|A|^\epsilon}{|A'|} + \frac{|A'| - |A|^\epsilon}{|A'|} \frac{|B|^\zeta}{|B'|} \\
-                        &\leq \frac{|A|^\epsilon}{|A'|} + \frac{|B|^\zeta}{|B'|} \\
-                        &\leq \frac{|A|^\epsilon}{|A|^{\epsilon + \epsilon_1}} + \frac{|B|^\zeta}{|B|^{\zeta + \zeta_1}} \\
-                        &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
-                \end{split}
+                \parstraight{\overline{B}_{A,b}} < f(|A|)
             \]
-        \end{proof}
-    \end{lemma}
+        \end{definition}
 
-    \todo{This next generalization may seem to make previous lemma redundant. But they actually prove different results.
-        But is it worth to keep both?}
-
-    \begin{lemma}[$f$-indivisible version] \label{lem:exceptions_bound_of_f_indivisible_sets}
-        Let $A$ be $f$-indivisible, $B$ $g$-indivisible and let the pair $(A,B)$ satisfy the average condition.
-        Then, for all $\epsilon_1 \in \parround{0, 1-\frac{f(|A|)}{|A|}}$, $\zeta_1 \in \parround{0, 1-\frac{g(|B|)}{|B|}}$, $A' \subseteq A$
-            and $B' \subseteq B$ such that $|A'| \geq f(|A|) |A|^{\epsilon_1}$ and $|B'| \geq g(|B|) |B|^{\zeta_1}$,
-            we have that:
-        \[
-            \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
-        \]
-        \begin{proof}
-            Notice:
-            \begin{itemize}
-                \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
-                    (in the sense of the average condition).
-                \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
-                    $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
-            \end{itemize}
-            Putting it all together:
+        \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
+            Let $\epsilon \in (0,1)$.
+            We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
             \[
-                \begin{split}
-                    \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
-                        &\leq \frac{f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)}{|A'| |B'|} \\
-                        &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
-                        &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
-                        &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
-                        &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
-                \end{split}
+                \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
             \]
-        \end{proof}
-    \end{lemma}
+        \end{definition}
 
-    For later use, we are particularly interested in the case when $f(n) = c$.
-    \todo{This may be skipped, and be directly commented in the appropiate remark following the theorem.}
+        \begin{remark}
+            An $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
+        \end{remark} \todo{Redundant.}
 
-    \begin{corollary}[Corollary 4.9] \label{cor:exceptions_bound_of_c_indivisible_sets}
-        Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
-        Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
-            $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
-        \[
-            \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
-        \]
-        \begin{proof}
-            Use \Cref{lem:exceptions_bound_of_f_indivisible_sets} with $f(n) = c$.
-        \end{proof}
-    \end{corollary}
+        A natural follow-up question, is how strongly bounded are exceptions in the context of two indivisible sets.
+        The following lemma measures precisely that, although doing so in asymmetrically.
 
-    \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
-        Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
-        If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
-        then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
-        \[
-            \frac{|A|^\epsilon |B|^\epsilon}{|B|}
-                \leq \frac{|B|^{2\epsilon}}{|B|}
-                = \frac{1}{|B|^{1-2\epsilon}}
-                = \frac{1}{m^{1-2\epsilon}}
-                < \frac{1}{2}
-        \]
-        We will be using this fact in the context of a sequence of non-zero natural numbers
-        $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
-        for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-        Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
-        $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
-    \end{remark}
+        \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
+            Let $G$ be a finite graph.
+            Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
+            Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
+            the $b \in B$ we have that $a R b \equiv t$.
+            \begin{proof}
+                Since $B$ is $g$-indivisible, for each $a \in A$ we have that $\parstraight{\overline{B}_{B,a}} < g(|B|)$.
+                Let $U_i = \parcurly{a \in A \mid t(a,B) \equiv i}$ for $i \in \parcurly{0,1}$.
+                If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
+                Suppose not.
+                Then, there are $W_i \subseteq U_i$ with $|W_i| = f(|A|)$ for $i \in \parcurly{0,1}$.
+                Now, let $V = \parcurly{b \in B \mid (\exists a \in W_0 \mid a R b) \vee (\exists a \in W_1 \mid \lnot a R b)}$,
+                i.e. the $b$'s which are an exception for some $a \in W_0 \cup W_1$.
+                Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 f(|A|) g(|B|) < |B|$, where the first inequality follows the
+                $g$-indivisibility of $B$.
+                Finally, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
+                $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = f(|A|)$, which contradicts the $f$-indivisibility of $A$.
+            \end{proof}
+        \end{lemma}
 
-    Now that we have proven some properties of indivisible sets, we are actually interested in whether they can be
-    found in a graph.
-    It turns out that the non-$k$-order property, or more specifically the associated tree bound, is sufficient for
-    proving it.
-    The proof resumes in assuming that there is no indivisible set to recursively refine a \say{semi-partition}
-    \todo{Lluis: hi ha alguna manera de dir una partició que no cubreix tots els vertex amb una paraula?}
-    which by construction contains a $k_{**}$-tree.
+        \begin{definition}
+            We say that the pair $(A,B)$ with $A$ $f$-indivisible and $B$ $g$-indivisible satisfies the \emph{average condition} if
+            $f(|A|) g(|B|) < \frac{1}{2} |B|$ and thus the statement of \Cref{lem:average_condition_statement} is true for
+            the pair $(A,B)$.
+        \end{definition}
 
-    \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
-        Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
-        such that $x \geq f(x)$.
-        Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
-        If $A \subseteq G$, $|A| \geq m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
-        of size $m_\ell$ which is $f$-indivisible.
-        % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
-        \begin{proof}
-            Suppose not.
-            Then we can construct the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
-            on induction over $k = |\eta|$, satisfying:
-            \begin{enumerate}
-                \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
-                \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv (i=1)}$,
-                    $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-            \end{enumerate}
-            Let's prove the induction.
-            For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
-            any $b_{\Partriangle{\cdot}}$ witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
-            For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
-            Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
-            $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
-            $|A_{\eta^\frown \Partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
-            \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
-            Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
-            for all $\ell$.
-            Then, we have two sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
-            satisfying the $k_{**}$-tree property: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
-            if given $\ell \in \parcurly{0, 1}$ we have $\rho^\frown \Partriangle{\ell} \trianglelefteq \eta$ then
-            $(a_\eta R b_\rho) \equiv \parround{\ell = 1}$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
-            This contradicts the $k_{**}$ tree bound.
-        \end{proof}
-    \end{lemma}
+        \begin{remark}
+            The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter, that is,
+            \[
+                (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition }
+            \]
+        \end{remark}
 
-    The previous proof can be iteratively used to partition the graph into indivisible parts, with a small reminder.
-    As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
-    and fix an ascending order on the size of the parts.
+        \begin{remark}[Remark 4.7]
+            When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
+        \end{remark}
+        \todo{I don't think this is useful in any way.}
 
-    \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
-        such that $x \geq f(x)$.
-        Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
-        If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
-        and reminder $B = A \setminus \bigcup \overline{A}$ such that:
-        \begin{enumerate}
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.3} $A_j \subseteq A \setminus \bigcup\parcurly{A_i \mid i < j}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.4} $|B| < m_0$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $\overline{A}$ is $\leq$-increasing.
-        \end{enumerate}
-        \begin{proof}
-            Iteratively, apply \Cref{lem:existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \parcurly{A_i \mid i < j}$
-            (\dref{itm:existance_of_ordered_f_indivisible_partitions.3}) to get an $f$-indivisible $A_j$ (\dref{itm:existance_of_ordered_f_indivisible_partitions.1}) of size $m_\ell$, $\ell \in \parcurly{0, \dots, k_{**}-1}$
-            (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less then $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
-            To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
-        \end{proof}
-    \end{lemma}
+        Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity
+        \todo{Define homogeneity.}
+        of large enough subpairs, in the sense of bounding exceptional edges.
+        We study the $f$ and $\epsilon$ case separately, as the specific case of $\epsilon$ gives a slightly better condition
+        on the range of the size of the subpair.
 
-    Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts,
-    a condition that can be easily integrated in the definition of the sequence of integers.
-
-    \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
-        for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
-        \todo{Last condition can be changed (and probably should) for a condition on $m_{k_{**}}$}
-        If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
-        and reminder $B = A \setminus \bigcup \overline{A}$ satisfying:
-        \begin{enumerate}
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.1} For each $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-indivisible.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2} For each $i \in \parcurly{1, \dots, i(*)}$, $|A_i| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.3} $A_i \cap A_j = \emptyset$ for all $i \neq j$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.4} $|B| < m_0$.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.5} $\overline{A}$ is $\leq$-increasing.
-            \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} If $\zeta \in \parround{0,\epsilon^{k_{**}}}$ then for every $i,j \in \parcurly{1, \dots, i(*)}$ with $i < j$,
-                $A \subseteq A_i$ ad $B \subseteq A_j$ such that $|A| \geq |A_i|^{\epsilon + \zeta}$ and $|B| \geq |A_j|^{\epsilon + \zeta}$
+        \begin{lemma}[Claim 4.8] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
+            Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
+            Then, for all $\epsilon_1 \in \parround{0, 1-\epsilon}$, $\zeta_1 \in \parround{0, 1-\zeta}$, $A' \subseteq A$
+                and $B' \subseteq B$ such that $|A'| \geq |A|^{\epsilon + \epsilon_1}$ and $|B'| \geq |B|^{\zeta + \zeta_1}$,
                 we have that:
+            \[
+                \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+            \]
+            \begin{proof}
+                Notice:
+                \begin{itemize}
+                    \item There are at most $|A|^\epsilon$ vertices of $A$ (hence in $A' \subseteq A$) which are exceptional
+                        (in the sense of the average condition).
+                    \todo{This is not the same use of the word exceptional as defined in \Cref{sec:section_3}.}
+                    \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $|B|^\zeta$ elements
+                        $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+                \end{itemize}
+                Putting it all together:
+                \todo{This makes my eyes bleed.}
                 \[
                     \begin{split}
-                        \frac{|\parcurly{(a,b) \in (A,B) \mid a R b \equiv \neg t(A_i,A_j)}|}{|A \times B|}
-                            &\leq \frac{1}{|A_i|^\zeta} + \frac{1}{|A_j|^\zeta} \\
-                            &\leq \frac{1}{|A|^\zeta} + \frac{1}{|B|^\zeta}
+                        \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
+                            &\leq \frac{|A|^\epsilon |B'| + (|A'| - |A|^\epsilon) |B|^\zeta}{|A'| |B'|} \\
+                            &= \frac{|A|^\epsilon}{|A'|} + \frac{|A'| - |A|^\epsilon}{|A'|} \frac{|B|^\zeta}{|B'|} \\
+                            &\leq \frac{|A|^\epsilon}{|A'|} + \frac{|B|^\zeta}{|B'|} \\
+                            &\leq \frac{|A|^\epsilon}{|A|^{\epsilon + \epsilon_1}} + \frac{|B|^\zeta}{|B|^{\zeta + \zeta_1}} \\
+                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
                     \end{split}
                 \]
-        \end{enumerate}
-        \begin{proof}
-            The five points are direct consequence of \Cref{lem:existance_of_ordered_f_indivisible_partitions},
-            setting $f(x) = x^\epsilon$.
-            Now, by \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2}, for any $A_i, A_j \in \overline{A}$ with $i < j$
-            there is some $\ell \in \parcurly{0, \dots, k_{**}-1}$ such that $|A_i| \leq |A_j| = m_\ell$.
-            Also, it follows the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
-            that the pair $(A_i,A_j)$ satisfies the average condition.
-            Finally, notice that $\epsilon^{k_{**}} < \epsilon < 1 - \epsilon$ since $\epsilon \in (0, \frac{1}{2})$,
-            so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
-            \Cref{lem:exceptions_bound_of_epsilon_indivisible_sets} is satisfied.
-            This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} and concludes the proof of the statement.
-        \end{proof}
-    \end{lemma}
-    \todo{Maybe merge the last two lemmas?}
+            \end{proof}
+        \end{lemma}
 
-    \begin{remark}
-        For sufficiently small $\epsilon$, the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is almost, trivial.
-        For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 4$.
-    \end{remark}
+        \todo{This next generalization may seem to make previous lemma redundant. But they actually prove different results.
+            But is it worth to keep both?}
 
-    As stated earlier, the principal drawback of the previous result is that the obtained partition is not equitable.
-    To deal with this, we study the event of randomly partitioning a pair of indivisible sets
-    \todo{Hehe, "partition indivisible sets", sona contradictiu.}
-    into subparts of equal size.
-    We prove that the event of a pair of subparts of the refinement being either fully connected or completely empty,
-    is satisfied with very high probability.
-
-    \begin{definition}
-        Let $A, B$ be $f$-indivisible sets with $f(A) f(B) < \frac{1}{2} |B|$.
-        Let $\Partriangle{A_i \mid i \in \parcurly{1, \dots, i_A}}$ be a partition of $A$ with $|A_i| = m$ for all
-        $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_i \mid i \in \parcurly{1, \dots, i_B}}$ be a partition of
-        $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
-        We define $\varepsilon^+_{A_i,A_j,m}$ as the event:
-        \[
-            \forall a \in A_i \ \forall b \in B_i, a R b = t(A,B)
-        \]
-    \end{definition}
-
-    \begin{lemma}[Claim 4.13] \label{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
-        paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
-        \todo{Here we have enforced the equality. Should be commented that this is easily achievable as we do in the next results.}
-        for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
-        Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
-        for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
-        Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
-        $m \coloneqq n^\zeta$ divides $|A_1|$ and $|A_2|$.
-        Then, let $\Partriangle{A_{1,s} \mid s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}}$ and
-        $\Partriangle{A_{2,t} \mid t \in \bparcurly{1, \dots, \frac{|A_2|}{m}}}$ be random partitions of $A_1$ and $A_2$
-        respectively, with pieces of size $m$.
-        We have that
-        \[
-            P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
-        \]
-        \begin{proof}
-            Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
-            It follows from the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
-            that the pair $(A_{1}, A_{2})$ satisfies the average condition.
-            Let $U_1 = \bparcurly{a \in A_1 \mid \bparstraight{\parcurly{b \in A_2 \mid a R b \equiv \neg t(A_1, A_2)}} \geq |A_2|^\epsilon}$
-            and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \parcurly{b \in A_j \mid a R b \equiv \neg t(A_1, A_2)}$.
-            By \Cref{lem:average_condition_statement}, $|U_1| \leq |A_1|^\epsilon$ and $\forall a \in A_1 \setminus U_1$,
-            $|U_{2,a}| \leq |A_2|^\epsilon$.
-            Now, given $\bparcurly{1, \dots, \frac{|A_1|}{m}}$, we can bound the probability $P_1$ that
-            $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
+        \begin{lemma}[$f$-indivisible version] \label{lem:exceptions_bound_of_f_indivisible_sets}
+            Let $A$ be $f$-indivisible, $B$ $g$-indivisible and let the pair $(A,B)$ satisfy the average condition.
+            Then, for all $\epsilon_1 \in \parround{0, 1-\frac{f(|A|)}{|A|}}$, $\zeta_1 \in \parround{0, 1-\frac{g(|B|)}{|B|}}$, $A' \subseteq A$
+                and $B' \subseteq B$ such that $|A'| \geq f(|A|) |A|^{\epsilon_1}$ and $|B'| \geq g(|B|) |B|^{\zeta_1}$,
+                we have that:
             \[
-                \begin{split}
-                    P_1
-                        & \leq \frac{|U_1|}{|A_1|} + \dots + \frac{|U_1|}{|A_1|-m+1}
-                            < \frac{m |U_1|}{|A_1| - m}
-                            \leq \frac{m |A_1|^\epsilon}{|A_1| - m} \\
-                        & \leq \frac{m^2 |A_1|^\epsilon}{|A_1|}
-                            = \frac{m^2}{|A_1|^{1-\epsilon}}
-                            = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} % the requirement of equality in the condition of m_l's is required here
-                            \leq \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_1 + 1}}} \\
-                        & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                            \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                            = \frac{1}{n^{c \epsilon^{k_{**}}}}
-                \end{split}
+                \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
             \]
-            The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
-            Then, if $A_{1,s} \cap U_1= \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}| |A_2|^\epsilon$.
-            So, given $\bparcurly{1, \dots, \frac{|A_2|}{m}}$, we can bound $P_2$, the probability that
-            $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} \neq \emptyset$, by:
-            \[
-                \begin{split}
-                    P_2
-                        & \leq \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|} + \dots + \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|-m+1}
-                            < \frac{m |\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2| - m}
-                            \leq \frac{m m |A_2|^\epsilon}{|A_2| - m} \\
-                        & \leq \frac{m^3 |A_2|^\epsilon}{|A_2|}
-                            = \frac{m^3}{|A_2|^{1-\epsilon}}
-                            = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} % the requirement of equality in the condition of m_l's is required here
-                            \leq \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_2 + 1}}} \\
-                        & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                            \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                            = \frac{1}{n^{c \epsilon^{k_{**}}}}
-                \end{split}
-            \]
-            Putting it all together:
-            \[
-                P(\varepsilon^+_{A_{1,s},A_{2,t},m})
-                    \geq (1 - P_1) (1 - P_2)
-                    \geq \parround{1 - \frac{1}{n^{c \epsilon^{k_{**}}}}}^2
-                    \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
-            \]
-        \end{proof}
-    \end{lemma}
-
-    \begin{remark}
-        The condition on the size of $m_0$, which is both an upper and lower bound, is very strong and will be carried over
-        up to \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}.
-        The greater limitations of this resides in the fact that the size of the parts of the resulting partition $m_{**}$
-        is set by the size of $m_0$, and thus inherits the same limitations.
-    \end{remark}
-
-    Now, since the event of a given subpair not satisfying the desired property is very unlikely, it can be easily proven
-    that a random refinement of the partition given by \Cref{lem:existance_of_ordered_f_indivisible_partitions} only has
-    a small number of exceptional pairs.
-
-    \begin{lemma}[Claim 4.14] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-        for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
-        for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
-        Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parround{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
-        with $c \in (0, 1-\epsilon)$.
-        Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
-        $m_{**} \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$.
-        If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$
-        with reminder $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, r}} A_i$ such that:
-        \begin{enumerate}
-            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1} $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, r}$.
-            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{c\epsilon^{k_{**}}}}r^2$ of the pairs
-                $(A_i, A_j)$ with $i<j$ there are no exceptional edges, i.e.
+            \begin{proof}
+                Notice:
+                \begin{itemize}
+                    \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
+                        (in the sense of the average condition).
+                    \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
+                        $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+                \end{itemize}
+                Putting it all together:
                 \[
-                    \parcurly{(a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j)} = \emptyset
+                    \begin{split}
+                        \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
+                            &\leq \frac{f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)}{|A'| |B'|} \\
+                            &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
+                            &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
+                            &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
+                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                    \end{split}
                 \]
-            \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3} $|B| < m_0$
-        \end{enumerate}
-        \begin{proof}
-            We can use \Cref{lem:existance_of_ordered_f_indivisible_partitions} to get a partition
-            $\overline{A'} = \Partriangle{A'_i \mid i \in \parcurly{1, \dots, i(*)}}$ and remainder $B' = A \setminus \bigcup A'$.
-            We can refine the partition by randomly splitting each $A'_i$ into pieces of size $m_{**}$ (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1}).
-            Consider the resulting partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$ with remainder $B = B'$
-            (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3}).
-            First of all, notice that for each pair $(A_i, A_j)$ such that $A_i \subseteq A'_{i_1}$ and
-            $A_j \subseteq A'_{j_1}$ with $i_1 \neq j_1$, the probability of the pair having exceptional edges is
-            upper bounded by $\frac{2}{n^{c\epsilon^{k_{**}}}}$.
-            This follows \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}.
-            Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
+            \end{proof}
+        \end{lemma}
+
+        For later use, we are particularly interested in the case when $f(n) = c$.
+        \todo{This may be skipped, and be directly commented in the appropiate remark following the theorem.}
+
+        \begin{corollary}[Corollary 4.9] \label{cor:exceptions_bound_of_c_indivisible_sets}
+            Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
+            Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
+                $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
             \[
-                \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
-                     = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
-                     \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}}
+                \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
             \]
-            where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
-            Since the expectation is an average, for some refinement $\overline{A}$ of $\overline{A'}$ we have that
-            the number of exceptional pairs when $i_1 \neq j_1$ is at most $\frac{r^2}{n^{c\epsilon^{k_{**}}}}$.
-            Now, we have no control if $i_1 = j_1$, so let's bound how many of these we have:
+            \begin{proof}
+                Use \Cref{lem:exceptions_bound_of_f_indivisible_sets} with $f(n) = c$.
+            \end{proof}
+        \end{corollary}
+
+        \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
+            Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
+            If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
+            then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
             \[
-                \begin{split}
-                    \bparstraight{\bparcurly{\text{Exceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in \parcurly{1, \dots, i(*)}}}
-                        & \leq {\frac{m_0}{m_{**}} \choose 2} \frac{n}{m_0} \\
-                        & \leq \frac{\parround{\frac{m_0}{m_{**}}}^2}{2} \frac{n}{m_0}
-                            = \frac{m_0 n}{2 m_{**}^2}
-                            = \frac{m_0}{n} \bbparround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
-                        & \leq \frac{m_0}{n} \bbparround{\frac{n - m_0}{m_{**}}}^2
-                            \leq \frac{m_0}{n} r^2
-                            < \frac{r^2}{n^{c \epsilon^{k_{**}}}}
-                \end{split}
+                \frac{|A|^\epsilon |B|^\epsilon}{|B|}
+                    \leq \frac{|B|^{2\epsilon}}{|B|}
+                    = \frac{1}{|B|^{1-2\epsilon}}
+                    = \frac{1}{m^{1-2\epsilon}}
+                    < \frac{1}{2}
             \]
-            Notice that the third inequality comes after the condition $m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
-            Putting it all together, we see that the number of exceptional pairs is upper bounded by
-                $\frac{2r^2}{n^{c\epsilon^{k_{**}}}}$ satisfying \dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2}.
-        \end{proof}
-    \end{lemma}
+            We will be using this fact in the context of a sequence of non-zero natural numbers
+            $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
+            for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+            Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
+            $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
+        \end{remark}
 
-    \begin{remark}[Remark 4.15]
-        In the previous proof, the condition $m_0 < \frac{n}{n^{c\epsilon^{k_{**}}}}$ can be
-        weakened at the cost of increasing the number of exceptional pairs.
-        More specifically, since this condition is only used to bound the exceptional sub-pairs in the same pair
-        (the second part of the proof), the number of exceptional pairs can be generally bounded by
-        \[
-            |\parcurly{\text{Exceptional pairs}}|
-                \leq \bbparround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2
-        \]
-    \end{remark}
+        Now that we have proven some properties of indivisible sets, we are actually interested in whether they can be
+        found in a graph.
+        It turns out that the non-$k$-order property, or more specifically the associated tree bound, is sufficient for
+        proving it.
+        The proof resumes in assuming that there is no indivisible set to recursively refine a \say{semi-partition}
+        \todo{Lluis: hi ha alguna manera de dir una partició que no cubreix tots els vertex amb una paraula?}
+        which by construction contains a $k_{**}$-tree.
 
-    We now resume the previous results in a theorem with minimal conditions.
+        \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
+            Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
+            such that $x \geq f(x)$.
+            Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
+            If $A \subseteq G$, $|A| \geq m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
+            of size $m_\ell$ which is $f$-indivisible.
+            % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
+            \begin{proof}
+                Suppose not.
+                Then we can construct the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
+                on induction over $k = |\eta|$, satisfying:
+                \begin{enumerate}
+                    \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                    \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                    \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
+                    \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                    \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv (i=1)}$,
+                        $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                \end{enumerate}
+                Let's prove the induction.
+                For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
+                any $b_{\Partriangle{\cdot}}$ witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
+                For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
+                Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
+                $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
+                $|A_{\eta^\frown \Partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
+                \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
+                Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
+                for all $\ell$.
+                Then, we have two sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
+                satisfying the $k_{**}$-tree property: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
+                if given $\ell \in \parcurly{0, 1}$ we have $\rho^\frown \Partriangle{\ell} \trianglelefteq \eta$ then
+                $(a_\eta R b_\rho) \equiv \parround{\ell = 1}$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
+                This contradicts the $k_{**}$ tree bound.
+            \end{proof}
+        \end{lemma}
 
-    \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
+        The previous proof can be iteratively used to partition the graph into indivisible parts, with a small reminder.
+        As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
+        and fix an ascending order on the size of the parts.
 
-    \begin{theorem}[Theorem 4.16] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
-        Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
-        $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
-        Let $G$ be a finite graph with the non-$k_*$-order property.
-        Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
-        Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
-        \parround{\frac{\sqrt{2}-1}{\sqrt{2}}}^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}} n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}} -
-        \frac{(1-\epsilon-c)c}{3}\epsilon^{2k_{**}}}}$, there is a partition
-        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, m}}$ of $A$ with remainder
-        $B = A \setminus \bigcup \overline{A}$ such that:
-        \begin{enumerate}
-            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.1}
-                $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, m}$.
-            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
-                $|B| < m_{**}^{\frac{3}{(1-\epsilon-c)}r^{k_{**}}}$.
-            \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.3}
-                $\bparstraight{\bparcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
-                \parcurly{(a,b) \in A_i \times A_j \mid a R b} \notin
-                \parcurly{A_i \times A_j, \emptyset}}}
-                \leq \frac{2}{n^{c\epsilon^{k_{**}}}} m^2$
-        \end{enumerate}
-        \begin{proof}
-            Let $m_{k_{**}} = m_{**}^{\frac{3}{1-\epsilon-c}}$, and consider the sequence
-            \[
-                m_{**} \leq m_{k_{**}} < \dots < m_0
-            \]
-            such that for all $\ell \in \parcurly{1, \dots, k_{**}}$ we have that $m_{\ell-1} = m_\ell^r$.
-            Notice that:
+        \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
+            Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
+            such that $x \geq f(x)$.
+            Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
+            If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
+            and reminder $B = A \setminus \bigcup \overline{A}$ such that:
             \begin{enumerate}
-                \item $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ since the $m_\ell$'s are powers of $m_{k_{**}}$
-                    and $m_{**}$ divides $m_{k_{**}}$ by construction.
-                \todo{Probably it is not needed that $m_{**}$ divides $m_{k_{**}}$, with $m_{k_{**}-1}$ is enough, but it comes for free.}
-                \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$, by construction.
-                \item $m_{**} \leq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}}$, by choice of $m_{**}$.
-                \item $m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}}$, so on one hand
-                    \[
-                        m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \geq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}+1} \frac{3}{1-\epsilon-c}r^{k_{**}}}
-                            \geq n^{\epsilon}
-                    \]
-                    and on the other hand,
-                    \[
-                        m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}}
-                    \]
-                    and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
-                    smaller than $n^{1 - c \epsilon^{k_{**}}}$.
-                \item $m_{k_{**}-1} = m_{**}^{\frac{3}{1-\epsilon-c}r} \geq n^{\epsilon^{k_{**}}} > 2^{\frac{1}{1-2\epsilon}}$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.3} $A_j \subseteq A \setminus \bigcup\parcurly{A_i \mid i < j}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.4} $|B| < m_0$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $\overline{A}$ is $\leq$-increasing.
             \end{enumerate}
-            So, all the conditions of \Cref{lem:existance_of_equitative_partition_with_bound_exceptional_pairs} are satisfied,
-            and we can use it to get a partition $\overline{A}$ with remainder $B$ satisfying the statement.
-            Notice that \dref{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
-            is satisfied by the fact that $|B| < m_0 \leq m_{**}^{\frac{3}{(1-\epsilon-c)}r^{k_{**}}}$.
-        \end{proof}
-    \end{theorem}
+            \begin{proof}
+                Iteratively, apply \Cref{lem:existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \parcurly{A_i \mid i < j}$
+                (\dref{itm:existance_of_ordered_f_indivisible_partitions.3}) to get an $f$-indivisible $A_j$ (\dref{itm:existance_of_ordered_f_indivisible_partitions.1}) of size $m_\ell$, $\ell \in \parcurly{0, \dots, k_{**}-1}$
+                (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less then $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
+                To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
+            \end{proof}
+        \end{lemma}
 
-    \begin{remark}
-        Some notes on the partition obtained in the previous theorem:
-        \begin{itemize}
-            \item With any choice of $c$ and $m_{**}$, the fraction of exceptional pairs is asymptotically small,
-                but we obtain very small parts, that is, $m_{**} \thickapprox n^{\epsilon^{k_{**}}}$.
-            \item A smaller value of $c$ results in larger parts and smaller reminder, at the cost of a larger fraction
-                of exceptional pairs.
-            \item The window of choice of $m_{**}$ is very small, and taking a larger value
-                (in the given interval), results in a strongly larger reminder.
-                The edge case of choosing $m_{**}$ as the larger value, results in the bound on the size of the
-                reminder becoming $\parstraight{B} < \frac{\sqrt{2}-1}{\sqrt{2}} n^{1-\epsilon^{k_{**}}}$.
-        \end{itemize}
-    \end{remark}
+        Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts,
+        a condition that can be easily integrated in the definition of the sequence of integers.
 
-    Next, we will follow another approach to obtain an equitable partition.
-    That is, we prove a result similar to that of \Cref{lem:existance_of_indivisible_sets}, but this time the size of the resulting
-    \regular~set can be chosen in advance.
-    The resulting \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} has also the advantage that
-    the associated \regular~property is $f_c$-indivisibility, where $f_c$ is the constant function $f_c(x) = c$, which
-    is much stronger then $\epsilon$-indivisibility as the bound on the number of exceptions is constant.
-
-    To prove this result, we use a probabilistic argument, and show that the event of there existing a subset which has
-    intersection smaller than $c$ with every $\overline{B}_{A,b}$ (\Cref{def:n_large_enough_property}) is highly
-    probable under some very specific conditions (\Cref{lem:n_large_enough_valid_values}).
-
-    \todo{In what follows, $c$ should be another letter, it collides with previous definition. Also, what about renaming
-        $c$-indivisible to $f_c$-indivisible or something like that?}
-
-    \begin{definition}[Definition 4.18] \label{def:n_large_enough_property}
-        For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
-        the statement:
-        For any set $A$ and family of subsets $P \subseteq \mathcal{P}(A)$ such that $|A| = n$ and $|P| \leq n^{\frac{1}{\zeta}}$,
-        and for all $B \in P$ with $|B| \leq n^\epsilon$, there exists $U \subseteq A$ with $|U| = \lfloor n^\xi \rfloor$ such that
-        for all $B \in P$, $|U \cap B| \leq c$.
-    \end{definition}
-
-    \begin{lemma}[Lemma 4.19] \label{lem:n_large_enough_valid_values}
-        If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
-        the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
-            \begin{equation} \label{eq:n_large_enough_valid_values.1}
-                \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
-            \end{equation}
-        and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$,
-        then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
-        \begin{proof}
-            First of all, notice that the condition on $c$ implies that $(1 - \xi - \epsilon) > 0$, and thus $\xi < 1 -\epsilon$.
-            Let $m = \lfloor n^\xi \rfloor$ be the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$
-            the set of sequences of elements of $A$ with length $m$.
-            Let $\mu$ be a probability distribution on $\mathcal{F}_*$ such that for all $F \in \mathcal{F}_*$,
-            $\mu(F) = \frac{|F|}{|\mathcal{F}_*|}$.
-            We want to prove that the probability that a random $U$ satisfies:
+        \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
+            Let $G$ be a finite graph with the non-$k_{*}$-order property.
+            Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            \todo{Last condition can be changed (and probably should) for a condition on $m_{k_{**}}$}
+            If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+            and reminder $B = A \setminus \bigcup \overline{A}$ satisfying:
             \begin{enumerate}
-                \item\label{itm:n_large_enough_valid_values.1} All elements of $U$ are distinct.
-                \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$, $|U \cap B| < c$.
-            \end{enumerate}
-            is non-zero.
-            First of all let's bound the converse of \dref{itm:n_large_enough_valid_values.1}, i.e. the probability that there are two equal elements
-            in $U$:
-            \[
-                P_1 = P(\exists s < t \in [m] \mid U_s = U_t)
-                    \leq {m \choose 2} \frac{n}{n^2}
-                    \leq \frac{m^2}{2n}
-                    \leq \frac{n^{2\xi}}{2n}
-                    < \frac{1}{2n^{1-2\xi}}
-            \]
-            Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound the probability that at least $c$ elements of
-            $U$ are in a given $B \in P$:
-            \[
-                P_B = P(\exists^{\geq c} t\in [m] \mid U_t \in B)
-                    \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
-                    \leq \frac{m^c |B|^c}{n^c}
-                    \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
-                    = \frac{1}{n^{c (1 - \xi - \epsilon)}}
-            \]
-            Then, we can bound the converse of \dref{itm:n_large_enough_valid_values.2}, i.e. the probability that this happens for some $B \in P$,
-            by:
-            \[
-                P_2 = P(\exists B \in P \mid \exists^{\geq c} t\in [m], U_t \in B)
-                    \leq \sum_{B \in P} P_B
-                    = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
-                    \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
-            \]
-            Putting it all together, we have that
-            \[
-                P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
-                    \leq P_1 + P_2
-                    < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
-            \]
-            Notice that
-            \begin{itemize}
-                \item Since $\xi < \frac{1}{2}$ we have that $1 - 2\xi > 0$.
-                \item $c (1 - \xi - \epsilon) - \frac{1}{\zeta}> 0$.
-            \end{itemize}
-            so, the $n$-large enough condition \eqref{eq:n_large_enough_valid_values.1} is well defined and
-            \[
-                P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
-                    < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
-                    < 1
-            \]
-            holds.
-            We conclude that the probability that there exists a $U \subseteq A$ satisfying the condition is non-trivial,
-            and $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
-        \end{proof}
-    \end{lemma}
-
-    \begin{remark}
-        In the context of the condition $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$ from the previous lemma, we note that
-        the lower bound on $c$ increases as $\xi$ and $\epsilon$ grow, and as $\zeta$ decreases.
-
-        A similar pattern is also followed by the large enough condition of $n$ given by
-        \Cref{eq:n_large_enough_valid_values.1}.
-        For the condition to be met, $n$ needs to grow as the exponents $1-2\xi$ and
-        $(1 - \xi - \epsilon)c - \frac{1}{\zeta}$ become smaller.
-        That is, the lower bound on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
-    \end{remark}
-
-    \begin{lemma}[Claim 4.21] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
-        Let $k_*, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
-        \begin{enumerate}
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.1} $G$ is a graph with the non-$k_*$-order property.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $\epsilon \in (0, \frac{1}{2}]$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $c$ satisfies \[
-                c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
-            \]
-        \end{enumerate}
-        Then, for every sufficiently large $n \in \mathbb{N}$ (it suffices that $n >
-        g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$,
-        where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$),
-        if $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
-        \begin{enumerate}[label=(\alph*), ref=\alph*]
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} $|Z| = \lfloor n^\xi \rfloor$.
-            \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b} $Z$ is $f_c$-indivisible in $G$.
-        \end{enumerate}
-        \begin{proof}
-            Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_\ell = \floor{m_{\ell-1}^\epsilon} \geq g_\epsilon^{-1}(m_{\ell-1}) \geq g_\epsilon^{-\ell}(n)$.
-            Then, $m_\ell \geq m_{\ell+1}$ and we can use \Cref{lem:existance_of_indivisible_sets}
-            to get an $\epsilon$-indivisible subset $A_1 \subseteq A$, with $|A_1| = m_\ell$ for some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-            Notice that:
-            \begin{itemize}
-                \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2}.
-                \item We can set $\zeta \coloneqq \frac{1}{k_*} > 0$.
-                \item By \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
-                    $0 < \frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2}$.
-                \item For all $\ell \in \parcurly{0,\dots,k_{**}}$, $m_\ell$ is sufficiently large:
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.1} For each $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-indivisible.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2} For each $i \in \parcurly{1, \dots, i(*)}$, $|A_i| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.3} $A_i \cap A_j = \emptyset$ for all $i \neq j$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.4} $|B| < m_0$.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.5} $\overline{A}$ is $\leq$-increasing.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} If $\zeta \in \parround{0,\epsilon^{k_{**}}}$ then for every $i,j \in \parcurly{1, \dots, i(*)}$ with $i < j$,
+                    $A \subseteq A_i$ ad $B \subseteq A_j$ such that $|A| \geq |A_i|^{\epsilon + \zeta}$ and $|B| \geq |A_j|^{\epsilon + \zeta}$
+                    we have that:
                     \[
-                        m_\ell \geq g_\epsilon^{-\ell}(n) \geq g_\epsilon^{-k_{**}}(n)
-                            > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}
-                            > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}
+                        \begin{split}
+                            \frac{|\parcurly{(a,b) \in (A,B) \mid a R b \equiv \neg t(A_i,A_j)}|}{|A \times B|}
+                                &\leq \frac{1}{|A_i|^\zeta} + \frac{1}{|A_j|^\zeta} \\
+                                &\leq \frac{1}{|A|^\zeta} + \frac{1}{|B|^\zeta}
+                        \end{split}
                     \]
-                \item $c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
-                    = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}.
-            \end{itemize}
-            Conditions of \Cref{lem:n_large_enough_valid_values} are met, so
-            $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}}$
-            (as defined in \Cref{def:n_large_enough_property}) holds.
-            We can take $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ to be
-            $A_1$ and $P \coloneqq \bparcurly{\overline{B}_{A_1,b} \mid b \in G}$ respectively, which satisfy:
+            \end{enumerate}
+            \begin{proof}
+                The five points are direct consequence of \Cref{lem:existance_of_ordered_f_indivisible_partitions},
+                setting $f(x) = x^\epsilon$.
+                Now, by \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2}, for any $A_i, A_j \in \overline{A}$ with $i < j$
+                there is some $\ell \in \parcurly{0, \dots, k_{**}-1}$ such that $|A_i| \leq |A_j| = m_\ell$.
+                Also, it follows the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
+                that the pair $(A_i,A_j)$ satisfies the average condition.
+                Finally, notice that $\epsilon^{k_{**}} < \epsilon < 1 - \epsilon$ since $\epsilon \in (0, \frac{1}{2})$,
+                so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
+                \Cref{lem:exceptions_bound_of_epsilon_indivisible_sets} is satisfied.
+                This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} and concludes the proof of the statement.
+            \end{proof}
+        \end{lemma}
+        \todo{Maybe merge the last two lemmas?}
+
+        \begin{remark}
+            For sufficiently small $\epsilon$, the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is almost, trivial.
+            For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 4$.
+        \end{remark}
+
+    \subsection{$\epsilon$-indivisible Equitable Partition} \label{subsec:subsection_4.2}
+
+        As stated earlier, the principal drawback of the previous result is that the obtained partition is not equitable.
+        To deal with this, we study the event of randomly partitioning a pair of indivisible sets
+        \todo{Hehe, "partition indivisible sets", sona contradictiu.}
+        into subparts of equal size.
+        We prove that the event of a pair of subparts of the refinement being either fully connected or completely empty,
+        is satisfied with very high probability.
+
+        \begin{definition}
+            Let $A, B$ be $f$-indivisible sets with $f(A) f(B) < \frac{1}{2} |B|$.
+            Let $\Partriangle{A_i \mid i \in \parcurly{1, \dots, i_A}}$ be a partition of $A$ with $|A_i| = m$ for all
+            $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_i \mid i \in \parcurly{1, \dots, i_B}}$ be a partition of
+            $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
+            We define $\varepsilon^+_{A_i,A_j,m}$ as the event:
+            \[
+                \forall a \in A_i \ \forall b \in B_i, a R b = t(A,B)
+            \]
+        \end{definition}
+
+        \begin{lemma}[Claim 4.13] \label{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}
+            Let $G$ be a finite graph with the non-$k_{*}$-order property.
+            Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
+            paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
+            \todo{Here we have enforced the equality. Should be commented that this is easily achievable as we do in the next results.}
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
+            for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
+            Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
+            $m \coloneqq n^\zeta$ divides $|A_1|$ and $|A_2|$.
+            Then, let $\Partriangle{A_{1,s} \mid s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}}$ and
+            $\Partriangle{A_{2,t} \mid t \in \bparcurly{1, \dots, \frac{|A_2|}{m}}}$ be random partitions of $A_1$ and $A_2$
+            respectively, with pieces of size $m$.
+            We have that
+            \[
+                P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+            \]
+            \begin{proof}
+                Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
+                It follows from the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
+                that the pair $(A_{1}, A_{2})$ satisfies the average condition.
+                Let $U_1 = \bparcurly{a \in A_1 \mid \bparstraight{\parcurly{b \in A_2 \mid a R b \equiv \neg t(A_1, A_2)}} \geq |A_2|^\epsilon}$
+                and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \parcurly{b \in A_j \mid a R b \equiv \neg t(A_1, A_2)}$.
+                By \Cref{lem:average_condition_statement}, $|U_1| \leq |A_1|^\epsilon$ and $\forall a \in A_1 \setminus U_1$,
+                $|U_{2,a}| \leq |A_2|^\epsilon$.
+                Now, given $\bparcurly{1, \dots, \frac{|A_1|}{m}}$, we can bound the probability $P_1$ that
+                $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
+                \[
+                    \begin{split}
+                        P_1
+                            & \leq \frac{|U_1|}{|A_1|} + \dots + \frac{|U_1|}{|A_1|-m+1}
+                                < \frac{m |U_1|}{|A_1| - m}
+                                \leq \frac{m |A_1|^\epsilon}{|A_1| - m} \\
+                            & \leq \frac{m^2 |A_1|^\epsilon}{|A_1|}
+                                = \frac{m^2}{|A_1|^{1-\epsilon}}
+                                = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} % the requirement of equality in the condition of m_l's is required here
+                                \leq \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_1 + 1}}} \\
+                            & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                                \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                                = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                    \end{split}
+                \]
+                The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
+                Then, if $A_{1,s} \cap U_1= \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}| |A_2|^\epsilon$.
+                So, given $\bparcurly{1, \dots, \frac{|A_2|}{m}}$, we can bound $P_2$, the probability that
+                $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} \neq \emptyset$, by:
+                \[
+                    \begin{split}
+                        P_2
+                            & \leq \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|} + \dots + \frac{|\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2|-m+1}
+                                < \frac{m |\bigcup_{a \in A_{1,s}} U_{2,a}|}{|A_2| - m}
+                                \leq \frac{m m |A_2|^\epsilon}{|A_2| - m} \\
+                            & \leq \frac{m^3 |A_2|^\epsilon}{|A_2|}
+                                = \frac{m^3}{|A_2|^{1-\epsilon}}
+                                = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} % the requirement of equality in the condition of m_l's is required here
+                                \leq \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_2 + 1}}} \\
+                            & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                                \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
+                                = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                    \end{split}
+                \]
+                Putting it all together:
+                \[
+                    P(\varepsilon^+_{A_{1,s},A_{2,t},m})
+                        \geq (1 - P_1) (1 - P_2)
+                        \geq \parround{1 - \frac{1}{n^{c \epsilon^{k_{**}}}}}^2
+                        \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+                \]
+            \end{proof}
+        \end{lemma}
+
+        \begin{remark}
+            The condition on the size of $m_0$, which is both an upper and lower bound, is very strong and will be carried over
+            up to \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}.
+            The greater limitations of this resides in the fact that the size of the parts of the resulting partition $m_{**}$
+            is set by the size of $m_0$, and thus inherits the same limitations.
+        \end{remark}
+
+        Now, since the event of a given subpair not satisfying the desired property is very unlikely, it can be easily proven
+        that a random refinement of the partition given by \Cref{lem:existance_of_ordered_f_indivisible_partitions} only has
+        a small number of exceptional pairs.
+
+        \begin{lemma}[Claim 4.14] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
+            Let $G$ be a finite graph with the non-$k_{*}$-order property.
+            Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parround{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
+            with $c \in (0, 1-\epsilon)$.
+            Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
+            $m_{**} \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$.
+            If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$
+            with reminder $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, r}} A_i$ such that:
+            \begin{enumerate}
+                \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1} $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, r}$.
+                \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{c\epsilon^{k_{**}}}}r^2$ of the pairs
+                    $(A_i, A_j)$ with $i<j$ there are no exceptional edges, i.e.
+                    \[
+                        \parcurly{(a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j)} = \emptyset
+                    \]
+                \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3} $|B| < m_0$
+            \end{enumerate}
+            \begin{proof}
+                We can use \Cref{lem:existance_of_ordered_f_indivisible_partitions} to get a partition
+                $\overline{A'} = \Partriangle{A'_i \mid i \in \parcurly{1, \dots, i(*)}}$ and remainder $B' = A \setminus \bigcup A'$.
+                We can refine the partition by randomly splitting each $A'_i$ into pieces of size $m_{**}$ (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1}).
+                Consider the resulting partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$ with remainder $B = B'$
+                (\dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3}).
+                First of all, notice that for each pair $(A_i, A_j)$ such that $A_i \subseteq A'_{i_1}$ and
+                $A_j \subseteq A'_{j_1}$ with $i_1 \neq j_1$, the probability of the pair having exceptional edges is
+                upper bounded by $\frac{2}{n^{c\epsilon^{k_{**}}}}$.
+                This follows \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}.
+                Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
+                \[
+                    \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
+                         = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
+                         \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}}
+                \]
+                where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
+                Since the expectation is an average, for some refinement $\overline{A}$ of $\overline{A'}$ we have that
+                the number of exceptional pairs when $i_1 \neq j_1$ is at most $\frac{r^2}{n^{c\epsilon^{k_{**}}}}$.
+                Now, we have no control if $i_1 = j_1$, so let's bound how many of these we have:
+                \[
+                    \begin{split}
+                        \bparstraight{\bparcurly{\text{Exceptional } (A_i, A_j) \mid A_i, A_j \subseteq A'_{i_1}, i_1 \in \parcurly{1, \dots, i(*)}}}
+                            & \leq {\frac{m_0}{m_{**}} \choose 2} \frac{n}{m_0} \\
+                            & \leq \frac{\parround{\frac{m_0}{m_{**}}}^2}{2} \frac{n}{m_0}
+                                = \frac{m_0 n}{2 m_{**}^2}
+                                = \frac{m_0}{n} \bbparround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
+                            & \leq \frac{m_0}{n} \bbparround{\frac{n - m_0}{m_{**}}}^2
+                                \leq \frac{m_0}{n} r^2
+                                < \frac{r^2}{n^{c \epsilon^{k_{**}}}}
+                    \end{split}
+                \]
+                Notice that the third inequality comes after the condition $m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
+                Putting it all together, we see that the number of exceptional pairs is upper bounded by
+                    $\frac{2r^2}{n^{c\epsilon^{k_{**}}}}$ satisfying \dref{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2}.
+            \end{proof}
+        \end{lemma}
+
+        \begin{remark}[Remark 4.15]
+            In the previous proof, the condition $m_0 < \frac{n}{n^{c\epsilon^{k_{**}}}}$ can be
+            weakened at the cost of increasing the number of exceptional pairs.
+            More specifically, since this condition is only used to bound the exceptional sub-pairs in the same pair
+            (the second part of the proof), the number of exceptional pairs can be generally bounded by
+            \[
+                |\parcurly{\text{Exceptional pairs}}|
+                    \leq \bbparround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2
+            \]
+        \end{remark}
+
+        We now resume the previous results in a theorem with minimal conditions.
+
+        \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
+
+        \begin{theorem}[Theorem 4.16] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
+            Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
+            $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
+            Let $G$ be a finite graph with the non-$k_*$-order property.
+            Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
+            Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
+            \parround{\frac{\sqrt{2}-1}{\sqrt{2}}}^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}} n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}} -
+            \frac{(1-\epsilon-c)c}{3}\epsilon^{2k_{**}}}}$, there is a partition
+            $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, m}}$ of $A$ with remainder
+            $B = A \setminus \bigcup \overline{A}$ such that:
+            \begin{enumerate}
+                \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.1}
+                    $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, m}$.
+                \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
+                    $|B| < m_{**}^{\frac{3}{(1-\epsilon-c)}r^{k_{**}}}$.
+                \item\label{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.3}
+                    $\bparstraight{\bparcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
+                    \parcurly{(a,b) \in A_i \times A_j \mid a R b} \notin
+                    \parcurly{A_i \times A_j, \emptyset}}}
+                    \leq \frac{2}{n^{c\epsilon^{k_{**}}}} m^2$
+            \end{enumerate}
+            \begin{proof}
+                Let $m_{k_{**}} = m_{**}^{\frac{3}{1-\epsilon-c}}$, and consider the sequence
+                \[
+                    m_{**} \leq m_{k_{**}} < \dots < m_0
+                \]
+                such that for all $\ell \in \parcurly{1, \dots, k_{**}}$ we have that $m_{\ell-1} = m_\ell^r$.
+                Notice that:
+                \begin{enumerate}
+                    \item $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ since the $m_\ell$'s are powers of $m_{k_{**}}$
+                        and $m_{**}$ divides $m_{k_{**}}$ by construction.
+                    \todo{Probably it is not needed that $m_{**}$ divides $m_{k_{**}}$, with $m_{k_{**}-1}$ is enough, but it comes for free.}
+                    \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$, by construction.
+                    \item $m_{**} \leq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}}$, by choice of $m_{**}$.
+                    \item $m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}}$, so on one hand
+                        \[
+                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \geq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}+1} \frac{3}{1-\epsilon-c}r^{k_{**}}}
+                                \geq n^{\epsilon}
+                        \]
+                        and on the other hand,
+                        \[
+                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}}
+                        \]
+                        and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
+                        smaller than $n^{1 - c \epsilon^{k_{**}}}$.
+                    \item $m_{k_{**}-1} = m_{**}^{\frac{3}{1-\epsilon-c}r} \geq n^{\epsilon^{k_{**}}} > 2^{\frac{1}{1-2\epsilon}}$.
+                \end{enumerate}
+                So, all the conditions of \Cref{lem:existance_of_equitative_partition_with_bound_exceptional_pairs} are satisfied,
+                and we can use it to get a partition $\overline{A}$ with remainder $B$ satisfying the statement.
+                Notice that \dref{itm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs.2}
+                is satisfied by the fact that $|B| < m_0 \leq m_{**}^{\frac{3}{(1-\epsilon-c)}r^{k_{**}}}$.
+            \end{proof}
+        \end{theorem}
+
+        \begin{remark}
+            Some notes on the partition obtained in the previous theorem:
             \begin{itemize}
-                \item $|A_1| = m_\ell$.
-                \item $|P| \leq m_\ell^{k_*} = m_\ell^{\frac{1}{\zeta}}$, where first inequality follows \dref{itm:k_order_propery_bounds_BAbs.2}
-                    of \Cref{cor:k_order_propery_bounds_BAbs}.
-                \item $\forall B \in P$, $|B| \leq |A_1|^\epsilon$ by $\epsilon$-indivisibility of $A_1$.
+                \item With any choice of $c$ and $m_{**}$, the fraction of exceptional pairs is asymptotically small,
+                    but we obtain very small parts, that is, $m_{**} \thickapprox n^{\epsilon^{k_{**}}}$.
+                \item A smaller value of $c$ results in larger parts and smaller reminder, at the cost of a larger fraction
+                    of exceptional pairs.
+                \item The window of choice of $m_{**}$ is very small, and taking a larger value
+                    (in the given interval), results in a strongly larger reminder.
+                    The edge case of choosing $m_{**}$ as the larger value, results in the bound on the size of the
+                    reminder becoming $\parstraight{B} < \frac{\sqrt{2}-1}{\sqrt{2}} n^{1-\epsilon^{k_{**}}}$.
             \end{itemize}
-            Thus, by \Cref{def:n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
+        \end{remark}
+
+    \subsection{$f_c$-indivisible Equitable Partition} \label{subsec:subsection_4.3}
+
+        Next, we will follow another approach to obtain an equitable partition.
+        That is, we prove a result similar to that of \Cref{lem:existance_of_indivisible_sets}, but this time the size of the resulting
+        \regular~set can be chosen in advance.
+        The resulting \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} has also the advantage that
+        the associated \regular~property is $f_c$-indivisibility, where $f_c$ is the constant function $f_c(x) = c$, which
+        is much stronger then $\epsilon$-indivisibility as the bound on the number of exceptions is constant.
+
+        To prove this result, we use a probabilistic argument, and show that the event of there existing a subset which has
+        intersection smaller than $c$ with every $\overline{B}_{A,b}$ (\Cref{def:n_large_enough_property}) is highly
+        probable under some very specific conditions (\Cref{lem:n_large_enough_valid_values}).
+
+        \todo{In what follows, $c$ should be another letter, it collides with previous definition. Also, what about renaming
+            $c$-indivisible to $f_c$-indivisible or something like that?}
+
+        \begin{definition}[Definition 4.18] \label{def:n_large_enough_property}
+            For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
+            the statement:
+            For any set $A$ and family of subsets $P \subseteq \mathcal{P}(A)$ such that $|A| = n$ and $|P| \leq n^{\frac{1}{\zeta}}$,
+            and for all $B \in P$ with $|B| \leq n^\epsilon$, there exists $U \subseteq A$ with $|U| = \lfloor n^\xi \rfloor$ such that
+            for all $B \in P$, $|U \cap B| \leq c$.
+        \end{definition}
+
+        \begin{lemma}[Lemma 4.19] \label{lem:n_large_enough_valid_values}
+            If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
+            the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
+                \begin{equation} \label{eq:n_large_enough_valid_values.1}
+                    \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
+                \end{equation}
+            and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$,
+            then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
+            \begin{proof}
+                First of all, notice that the condition on $c$ implies that $(1 - \xi - \epsilon) > 0$, and thus $\xi < 1 -\epsilon$.
+                Let $m = \lfloor n^\xi \rfloor$ be the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$
+                the set of sequences of elements of $A$ with length $m$.
+                Let $\mu$ be a probability distribution on $\mathcal{F}_*$ such that for all $F \in \mathcal{F}_*$,
+                $\mu(F) = \frac{|F|}{|\mathcal{F}_*|}$.
+                We want to prove that the probability that a random $U$ satisfies:
+                \begin{enumerate}
+                    \item\label{itm:n_large_enough_valid_values.1} All elements of $U$ are distinct.
+                    \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$, $|U \cap B| < c$.
+                \end{enumerate}
+                is non-zero.
+                First of all let's bound the converse of \dref{itm:n_large_enough_valid_values.1}, i.e. the probability that there are two equal elements
+                in $U$:
+                \[
+                    P_1 = P(\exists s < t \in [m] \mid U_s = U_t)
+                        \leq {m \choose 2} \frac{n}{n^2}
+                        \leq \frac{m^2}{2n}
+                        \leq \frac{n^{2\xi}}{2n}
+                        < \frac{1}{2n^{1-2\xi}}
+                \]
+                Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound the probability that at least $c$ elements of
+                $U$ are in a given $B \in P$:
+                \[
+                    P_B = P(\exists^{\geq c} t\in [m] \mid U_t \in B)
+                        \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
+                        \leq \frac{m^c |B|^c}{n^c}
+                        \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
+                        = \frac{1}{n^{c (1 - \xi - \epsilon)}}
+                \]
+                Then, we can bound the converse of \dref{itm:n_large_enough_valid_values.2}, i.e. the probability that this happens for some $B \in P$,
+                by:
+                \[
+                    P_2 = P(\exists B \in P \mid \exists^{\geq c} t\in [m], U_t \in B)
+                        \leq \sum_{B \in P} P_B
+                        = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
+                        \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
+                \]
+                Putting it all together, we have that
+                \[
+                    P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
+                        \leq P_1 + P_2
+                        < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
+                \]
+                Notice that
+                \begin{itemize}
+                    \item Since $\xi < \frac{1}{2}$ we have that $1 - 2\xi > 0$.
+                    \item $c (1 - \xi - \epsilon) - \frac{1}{\zeta}> 0$.
+                \end{itemize}
+                so, the $n$-large enough condition \eqref{eq:n_large_enough_valid_values.1} is well defined and
+                \[
+                    P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
+                        < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
+                        < 1
+                \]
+                holds.
+                We conclude that the probability that there exists a $U \subseteq A$ satisfying the condition is non-trivial,
+                and $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
+            \end{proof}
+        \end{lemma}
+
+        \begin{remark}
+            In the context of the condition $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$ from the previous lemma, we note that
+            the lower bound on $c$ increases as $\xi$ and $\epsilon$ grow, and as $\zeta$ decreases.
+
+            A similar pattern is also followed by the large enough condition of $n$ given by
+            \Cref{eq:n_large_enough_valid_values.1}.
+            For the condition to be met, $n$ needs to grow as the exponents $1-2\xi$ and
+            $(1 - \xi - \epsilon)c - \frac{1}{\zeta}$ become smaller.
+            That is, the lower bound on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
+        \end{remark}
+
+        \begin{lemma}[Claim 4.21] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
+            Let $k_*, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
+            \begin{enumerate}
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.1} $G$ is a graph with the non-$k_*$-order property.
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $\epsilon \in (0, \frac{1}{2}]$.
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $c$ satisfies \[
+                    c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
+                \]
+            \end{enumerate}
+            Then, for every sufficiently large $n \in \mathbb{N}$ (it suffices that $n >
+            g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$,
+            where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$),
+            if $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
+            \begin{enumerate}[label=(\alph*), ref=\alph*]
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} $|Z| = \lfloor n^\xi \rfloor$.
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b} $Z$ is $f_c$-indivisible in $G$.
+            \end{enumerate}
+            \begin{proof}
+                Let $n = m_0 > m_1 > \dots > m_{k_{**}}$ with $m_\ell = \floor{m_{\ell-1}^\epsilon} \geq g_\epsilon^{-1}(m_{\ell-1}) \geq g_\epsilon^{-\ell}(n)$.
+                Then, $m_\ell \geq m_{\ell+1}$ and we can use \Cref{lem:existance_of_indivisible_sets}
+                to get an $\epsilon$-indivisible subset $A_1 \subseteq A$, with $|A_1| = m_\ell$ for some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+                Notice that:
+                \begin{itemize}
+                    \item $\epsilon \in (0,1)$ by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2}.
+                    \item We can set $\zeta \coloneqq \frac{1}{k_*} > 0$.
+                    \item By \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3},
+                        $0 < \frac{\xi}{\epsilon^\ell} \leq \frac{\xi}{\epsilon^{k_{**}}} < \frac{1}{2}$.
+                    \item For all $\ell \in \parcurly{0,\dots,k_{**}}$, $m_\ell$ is sufficiently large:
+                        \[
+                            m_\ell \geq g_\epsilon^{-\ell}(n) \geq g_\epsilon^{-k_{**}}(n)
+                                > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}
+                                > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}
+                        \]
+                    \item $c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
+                        = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}.
+                \end{itemize}
+                Conditions of \Cref{lem:n_large_enough_valid_values} are met, so
+                $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}}$
+                (as defined in \Cref{def:n_large_enough_property}) holds.
+                We can take $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ to be
+                $A_1$ and $P \coloneqq \bparcurly{\overline{B}_{A_1,b} \mid b \in G}$ respectively, which satisfy:
+                \begin{itemize}
+                    \item $|A_1| = m_\ell$.
+                    \item $|P| \leq m_\ell^{k_*} = m_\ell^{\frac{1}{\zeta}}$, where first inequality follows \dref{itm:k_order_propery_bounds_BAbs.2}
+                        of \Cref{cor:k_order_propery_bounds_BAbs}.
+                    \item $\forall B \in P$, $|B| \leq |A_1|^\epsilon$ by $\epsilon$-indivisibility of $A_1$.
+                \end{itemize}
+                Thus, by \Cref{def:n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
+                \begin{itemize}
+                    \item $|Z| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
+                        = \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
+                    \item $Z$ is $f_c$-indivisible since $|B \cap Z| \leq c$ for all $B \in P$,
+                        satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b}.
+                \end{itemize}
+                This proves the statement.
+            \end{proof}
+        \end{lemma}
+
+        We now use the previous result to build an equitable partition.
+        Similarly to \Cref{lem:existance_of_ordered_f_indivisible_partitions}, we will iteratively extract an $f_c$-indivisible
+        set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, until
+        the sufficiently large condition holds.
+
+        \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
+            Let $G$ be a graph with the non-$k_*$-property.
+            For any $\epsilon \in (0, \frac{1}{2}]$, $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$ and
+            $c > \frac{k_*}{1-\frac{\xi}{\epsilon^{k_{**}}} - \epsilon}$, any $A \subseteq G$ with $\parstraight{A} = n$
+            has a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder
+            $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, i(*)}} A_i$ satisfying:
             \begin{itemize}
-                \item $|Z| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
-                    = \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
-                \item $Z$ is $f_c$-indivisible since $|B \cap Z| \leq c$ for all $B \in P$,
-                    satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b}.
+                \item $|A_i| = \floor{n^\xi}$ for all $i \in \parcurly{1, \dots, i(*)}$.
+                \item $A_i$ is $f_c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$, where $f_c(x) = c$ is a constant function.
+                \item $|B| \leq N \coloneqq g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$
+                    where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$.
             \end{itemize}
-            This proves the statement.
-        \end{proof}
-    \end{lemma}
+            \begin{proof}
+                We will build a sequence of disjoint $f_c$-indivisible subsets $A_i$ by induction on $i$ as follows.
+                Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
+                At each step, if $\parstraight{R_i} > N$, we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} to $R_i$
+                with the values $f_c$, $\epsilon$ and $\xi$ of the statement of this theorem,
+                to obtain a $f_c$-indivisible subset $A_i$ of $R_i$ of size $\floor{n^\xi}$ which will be disjoint with
+                all $A_j$ with $j < i$.
+                Otherwise, we stop and let $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$.
+                By the case hypothesis, $\parstraight{B} = \parstraight{R_i} \leq N$, and we are done.
+            \end{proof}
+        \end{theorem}
 
-    We now use the previous result to build an equitable partition.
-    Similarly to \Cref{lem:existance_of_ordered_f_indivisible_partitions}, we will iteratively extract an $f_c$-indivisible
-    set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, until
-    the sufficiently large condition holds.
+        \begin{remark}
+            Some notes on the partition obtained in the previous theorem:
+            \begin{itemize}
+                \item The partition is exceptionally \regular, and the number of exceptional edges in each pair of parts
+                    and subparts is strongly bounded as shown by \Cref{cor:exceptions_bound_of_c_indivisible_sets}.
+                \item As the upper bound on the size of the remainder is constant with respect to the size of the graph $n$,
+                    the remainder as a fraction of the total graph can be made as small as possible (but not completely avoided).
+                    If we want the remainder to be at most $\frac{1}{x}$ of the total graph, we can simply impose
+                    $n \geq x \cdot N$, and we are done.
+                \item The parts are exponentially smaller then the size of the graph.
+                    Hence, the number of parts grows with the size of the graph, which is actually the principal drawback of
+                    this theorem.
+                    This will be solved in the partition studied in \Cref{sec:section_5}.
+            \end{itemize}
+        \end{remark}
 
-    \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
-        Let $G$ be a graph with the non-$k_*$-property.
-        For any $\epsilon \in (0, \frac{1}{2}]$, $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$ and
-        $c > \frac{k_*}{1-\frac{\xi}{\epsilon^{k_{**}}} - \epsilon}$, any $A \subseteq G$ with $\parstraight{A} = n$
-        has a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder
-        $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, i(*)}} A_i$ satisfying:
-        \begin{itemize}
-            \item $|A_i| = \floor{n^\xi}$ for all $i \in \parcurly{1, \dots, i(*)}$.
-            \item $A_i$ is $f_c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$, where $f_c(x) = c$ is a constant function.
-            \item $|B| \leq N \coloneqq g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$
-                where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$.
-        \end{itemize}
-        \begin{proof}
-            We will build a sequence of disjoint $f_c$-indivisible subsets $A_i$ by induction on $i$ as follows.
-            Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
-            At each step, if $\parstraight{R_i} > N$, we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} to $R_i$
-            with the values $f_c$, $\epsilon$ and $\xi$ of the statement of this theorem,
-            to obtain a $f_c$-indivisible subset $A_i$ of $R_i$ of size $\floor{n^\xi}$ which will be disjoint with
-            all $A_j$ with $j < i$.
-            Otherwise, we stop and let $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$.
-            By the case hypothesis, $\parstraight{B} = \parstraight{R_i} \leq N$, and we are done.
-        \end{proof}
-    \end{theorem}
-
-    \begin{remark}
-        Some notes on the partition obtained in the previous theorem:
-        \begin{itemize}
-            \item The partition is exceptionally \regular, and the number of exceptional edges in each pair of parts
-                and subparts is strongly bounded as shown by \Cref{cor:exceptions_bound_of_c_indivisible_sets}.
-            \item As the upper bound on the size of the remainder is constant with respect to the size of the graph $n$,
-                the remainder as a fraction of the total graph can be made as small as possible (but not completely avoided).
-                If we want the remainder to be at most $\frac{1}{x}$ of the total graph, we can simply impose
-                $n \geq x \cdot N$, and we are done.
-            \item The parts are exponentially smaller then the size of the graph.
-                Hence, the number of parts grows with the size of the graph, which is actually the principal drawback of
-                this theorem.
-                This will be solved in the partition studied in \Cref{sec:section_5}.
-        \end{itemize}
-    \end{remark}
-
-    % up to here it was compiling with no problem.
+        % up to here it was compiling with no problem.

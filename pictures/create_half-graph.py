@@ -14,7 +14,7 @@ OUTPUT_FILE="pictures/half-graph.tex"
 
 
 def main():
-    prefix = f"""\\begin{{figure}}
+    prefix = f"""\\begin{{figure}}[h]
     \\centering
 
     \\begin{{tikzpicture}}[
@@ -81,7 +81,7 @@ def main():
     matrix_prefix=f"""
 \\begin{{scope}}[xshift={2+K*X_SEP} cm]
 """
-    matrix_suffix="""   \\end{scope}
+    matrix_suffix="""    \\end{scope}
 
 """
     matrix_cells = ""
@@ -93,9 +93,9 @@ def main():
     for i in range(1,K+1):
         for j in range(1,K+1):
             if i > j:
-                matrix_cells += f"\t\t\\node[matrix cell] at ({X_MATRIX_ADJ + i * CELL_SIZE}, {Y_MATRIX_ADJ - j * CELL_SIZE}) {{0}};\n"
+                matrix_cells += f"\t\t\\node[matrix cell, fill=gray!20] at ({X_MATRIX_ADJ + i * CELL_SIZE}, {Y_MATRIX_ADJ - j * CELL_SIZE}) {{0}};\n"
             else:
-                matrix_cells += f"\t\t\\node[matrix cell, fill=gray!20] at ({X_MATRIX_ADJ + i * CELL_SIZE}, {Y_MATRIX_ADJ - j * CELL_SIZE}) {{1}};\n"
+                matrix_cells += f"\t\t\\node[matrix cell] at ({X_MATRIX_ADJ + i * CELL_SIZE}, {Y_MATRIX_ADJ - j * CELL_SIZE}) {{1}};\n"
 
     matrix = f"{matrix_prefix}{matrix_cells}{matrix_labels}{matrix_suffix}"
 
