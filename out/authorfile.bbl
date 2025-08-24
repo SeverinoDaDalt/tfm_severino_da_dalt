@@ -381,6 +381,56 @@
       \field{title}{Model theory}
       \field{year}{1993}
     \endentry
+    \entry{the_regulariy_lemma_and_its_applications_in_graph_theory}{incollection}{}
+      \name{author}{4}{}{%
+        {{hash=3756019aaa8edc42f2cf872c9850284c}{%
+           family={Komlós},
+           familyi={K\bibinitperiod},
+           given={János},
+           giveni={J\bibinitperiod}}}%
+        {{hash=caf5e2b7c9b4da246deba96ed1d22dbf}{%
+           family={Shokoufandeh},
+           familyi={S\bibinitperiod},
+           given={Ali},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6940bfccbf200c17ed75850ed2335305}{%
+           family={Simonovits},
+           familyi={S\bibinitperiod},
+           given={Miklós},
+           giveni={M\bibinitperiod}}}%
+        {{hash=11eac7d5df5a432005f8b6395c03384c}{%
+           family={Szemerédi},
+           familyi={S\bibinitperiod},
+           given={Endre},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {English}%
+      }
+      \list{publisher}{1}{%
+        {Berlin: Springer}%
+      }
+      \strng{namehash}{b0942041f613343fd740fc25fd8cfa58}
+      \strng{fullhash}{460679c9fb00b6d31a9383e4cc5349dc}
+      \strng{bibnamehash}{b0942041f613343fd740fc25fd8cfa58}
+      \strng{authorbibnamehash}{b0942041f613343fd740fc25fd8cfa58}
+      \strng{authornamehash}{b0942041f613343fd740fc25fd8cfa58}
+      \strng{authorfullhash}{460679c9fb00b6d31a9383e4cc5349dc}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Theoretical aspects of computer science. Advanced lectures}
+      \field{isbn}{3-540-43328-7}
+      \field{title}{The regularity lemma and its applications in graph theory}
+      \field{year}{2002}
+      \field{pages}{84\bibrangedash 112}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1007/3-540-45878-6_3
+      \endverb
+      \keyw{68R10,05C80,05C35,05C55,05C85}
+    \endentry
     \entry{regularity_partitions_and_the_topology_of_graphons}{incollection}{}
       \name{author}{2}{}{%
         {{hash=0d1784a2f9a807b1da8d15d5b1029c08}{%
