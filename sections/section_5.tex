@@ -9,14 +9,14 @@
 
         We proceed to formalize this concept.
 
-        \begin{definition}[Definition 5.2(a)]
+        \begin{definition}[Definition 5.2(a)] \label{def:epsilon_good}
             Let $G$ be a finite graph with the non-$k_*$-property.
             We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
             $t = t(b, A) \in \parcurly{0, 1}$ satisfies
             $\parstraight{\overline{B}_{A,b}} = \parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
         \end{definition}
 
-        \begin{definition}[Definition 5.2(b)]
+        \begin{definition}[Definition 5.2(b)] \label{def:epsilon_excellent}
             Let $G$ be a finite graph with the non-$k_*$-property.
             We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
             $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $\parstraight{\parcurly{a \in A \mid t(a,B) \neq t(A,B)}} < \epsilon |A|$.
@@ -55,7 +55,7 @@
             \todo{Discuss with Luis, this may be reduced but I am not sure.}
         \end{remark}
 
-        \begin{remark}
+        \begin{remark} \label{rmk:excellence_is_not_monotonic}
             A final important remark, is the fact that differently then most \regular~properties, $\epsilon$-excellence is
             not monotonic. \todo{Lluis: això està ben dit?}
             That is, in general, for $\epsilon < \epsilon'$, a set being $\epsilon$-excellent does not imply

@@ -50,6 +50,63 @@
       \verb https://mathoverflow.net/q/404954
       \endverb
     \endentry
+    \entry{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
+           family={Alon},
+           familyi={A\bibinitperiod},
+           given={Noga},
+           giveni={N\bibinitperiod}}}%
+        {{hash=9c224159035ed70a4e6ff4e308b6e172}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Eldar},
+           giveni={E\bibinitperiod}}}%
+        {{hash=ca3dcf3febe178efd49f8c0649431f8c}{%
+           family={Newman},
+           familyi={N\bibinitperiod},
+           given={Ilan},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \strng{fullhash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \strng{bibnamehash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \strng{authorbibnamehash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \strng{authornamehash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \strng{authorfullhash}{45dafa6b8708674d51a45dbb6e6ab033}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0097-5397, 1095-7111}
+      \field{journaltitle}{SIAM Journal on Computing}
+      \field{month}{1}
+      \field{number}{3}
+      \field{title}{Efficient {Testing} of {Bipartite} {Graphs} for {Forbidden} {Induced} {Subgraphs}}
+      \field{urlday}{16}
+      \field{urlmonth}{8}
+      \field{urlyear}{2025}
+      \field{volume}{37}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \field{pages}{959\bibrangedash 976}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1137/050627915
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/crovellu/Zotero/storage/949DGPCP/Alon et al. - 2007 - Efficient Testing of Bipartite Graphs for Forbidden Induced Subgraphs.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://epubs.siam.org/doi/10.1137/050627915
+      \endverb
+      \verb{url}
+      \verb http://epubs.siam.org/doi/10.1137/050627915
+      \endverb
+    \endentry
     \entry{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}{article}{}
       \name{author}{2}{}{%
         {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
@@ -155,6 +212,115 @@
       \field{pages}{179\bibrangedash 226}
       \range{pages}{48}
     \endentry
+    \entry{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3f0a67a902c8bcd7eb3fbad276c47365}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=731ceb2118937ceadfefb82b48b5b1f2}{%
+           family={Pach},
+           familyi={P\bibinitperiod},
+           given={János},
+           giveni={J\bibinitperiod}}}%
+        {{hash=5a22d5f98599c0ad2ceba239e042eacf}{%
+           family={Suk},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{d9729e1efb63e8506b89f433bd62f94e}
+      \strng{fullhash}{d9729e1efb63e8506b89f433bd62f94e}
+      \strng{bibnamehash}{d9729e1efb63e8506b89f433bd62f94e}
+      \strng{authorbibnamehash}{d9729e1efb63e8506b89f433bd62f94e}
+      \strng{authornamehash}{d9729e1efb63e8506b89f433bd62f94e}
+      \strng{authorfullhash}{d9729e1efb63e8506b89f433bd62f94e}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0179-5376, 1432-0444}
+      \field{journaltitle}{Discrete \& Computational Geometry}
+      \field{month}{6}
+      \field{number}{4}
+      \field{title}{Erdős–{Hajnal} {Conjecture} for {Graphs} with {Bounded} {VC}-{Dimension}}
+      \field{urlday}{28}
+      \field{urlmonth}{6}
+      \field{urlyear}{2025}
+      \field{volume}{61}
+      \field{year}{2019}
+      \field{urldateera}{ce}
+      \field{pages}{809\bibrangedash 829}
+      \range{pages}{21}
+      \verb{doi}
+      \verb 10.1007/s00454-018-0046-5
+      \endverb
+      \verb{file}
+      \verb PDF:/Users/crovellu/Zotero/storage/PAV88BVB/Fox et al. - 2019 - Erdős–Hajnal Conjecture for Graphs with Bounded VC-Dimension.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s00454-018-0046-5
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s00454-018-0046-5
+      \endverb
+    \endentry
+    \entry{quick_approximation_to_matrices_and_applications}{article}{}
+      \name{author}{2}{}{%
+        {{hash=cd6e0c0e1fc09ebd7397805403881ead}{%
+           family={Frieze},
+           familyi={F\bibinitperiod},
+           given={Alan},
+           giveni={A\bibinitperiod}}}%
+        {{hash=a03ceeabae250c6ea8708e78c5071bdc}{%
+           family={Kannan},
+           familyi={K\bibinitperiod},
+           given={Ravi},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \strng{fullhash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \strng{bibnamehash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \strng{authorbibnamehash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \strng{authornamehash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \strng{authorfullhash}{cccffc578d4b806ed3b083dd5c96b46c}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0209-9683, 1439-6912}
+      \field{journaltitle}{Combinatorica}
+      \field{month}{2}
+      \field{number}{2}
+      \field{title}{Quick {Approximation} to {Matrices} and {Applications}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2018}
+      \field{volume}{19}
+      \field{year}{1999}
+      \field{urldateera}{ce}
+      \field{pages}{175\bibrangedash 220}
+      \range{pages}{46}
+      \verb{doi}
+      \verb 10.1007/s004930050052
+      \endverb
+      \verb{file}
+      \verb Frieze and Kannan - 1999 - Quick Approximation to Matrices and Applications.pdf:/Users/crovellu/Zotero/storage/M27YF7TI/Frieze and Kannan - 1999 - Quick Approximation to Matrices and Applications.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s004930050052
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s004930050052
+      \endverb
+    \endentry
     \entry{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}{article}{}
       \name{author}{1}{}{%
         {{hash=fca789c8d8642fdcf0c24e26455ba279}{%
@@ -237,6 +403,7 @@
       \strng{authorbibnamehash}{ad6a005694e1128df86cc3f04800d25c}
       \strng{authornamehash}{ad6a005694e1128df86cc3f04800d25c}
       \strng{authorfullhash}{ad6a005694e1128df86cc3f04800d25c}
+      \field{extraname}{1}
       \field{sortinit}{L}
       \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
       \field{labelnamesource}{author}
@@ -259,6 +426,114 @@
       \verb https://doi.org/10.1007/978-3-642-14444-8_12
       \endverb
     \endentry
+    \entry{szemeredis_lemma_for_the_analyst}{article}{}
+      \name{author}{2}{}{%
+        {{hash=0d1784a2f9a807b1da8d15d5b1029c08}{%
+           family={Lovász},
+           familyi={L\bibinitperiod},
+           given={László},
+           giveni={L\bibinitperiod}}}%
+        {{hash=067dab294b3126701daab12e05fc2e58}{%
+           family={Szegedy},
+           familyi={S\bibinitperiod},
+           given={Balázs},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{ad6a005694e1128df86cc3f04800d25c}
+      \strng{fullhash}{ad6a005694e1128df86cc3f04800d25c}
+      \strng{bibnamehash}{ad6a005694e1128df86cc3f04800d25c}
+      \strng{authorbibnamehash}{ad6a005694e1128df86cc3f04800d25c}
+      \strng{authornamehash}{ad6a005694e1128df86cc3f04800d25c}
+      \strng{authorfullhash}{ad6a005694e1128df86cc3f04800d25c}
+      \field{extraname}{2}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Szemer´edi’s regularity lemma is a fundamental tool in graph theory: it has many applications to extremal graph theory, graph property testing, combinatorial number theory, etc. The goal of this paper is to point out that Szemer´edi’s lemma can be thought of as a result in analysis. We show three diﬀerent analytic interpretations.}
+      \field{issn}{1016-443X, 1420-8970}
+      \field{journaltitle}{GAFA Geometric And Functional Analysis}
+      \field{month}{4}
+      \field{number}{1}
+      \field{title}{Szemerédi’s {Lemma} for the {Analyst}}
+      \field{urlday}{11}
+      \field{urlmonth}{12}
+      \field{urlyear}{2018}
+      \field{volume}{17}
+      \field{year}{2007}
+      \field{urldateera}{ce}
+      \field{pages}{252\bibrangedash 270}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1007/s00039-007-0599-6
+      \endverb
+      \verb{file}
+      \verb Lovász and Szegedy - 2007 - Szemerédi’s Lemma for the An_pap.pdf:/Users/crovellu/Zotero/storage/4RNTDHIJ/Lovász and Szegedy - 2007 - Szemerédi’s Lemma for the Analyst.pdf:application/pdf;Lovász and Szegedy - 2007 - Szemerédi’s Lemma for the Ana_prep.pdf:/Users/crovellu/Zotero/storage/6VEWV4SP/Lovász and Szegedy - 2007 - Szemerédi’s Lemma for the Analyst.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb http://link.springer.com/10.1007/s00039-007-0599-6
+      \endverb
+      \verb{url}
+      \verb http://link.springer.com/10.1007/s00039-007-0599-6
+      \endverb
+    \endentry
+    \entry{notes_on_the_stable_regularity_lemma}{article}{}
+      \name{author}{2}{}{%
+        {{hash=12375baf9af77e574fd46219f43ce123}{%
+           family={Malliaris},
+           familyi={M\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=10ec953cfd4e361cfbd9d318c12ee123}{%
+           family={Shelah},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {en}%
+      }
+      \strng{namehash}{33d1cfce9d49096d3101fbad1c063098}
+      \strng{fullhash}{33d1cfce9d49096d3101fbad1c063098}
+      \strng{bibnamehash}{33d1cfce9d49096d3101fbad1c063098}
+      \strng{authorbibnamehash}{33d1cfce9d49096d3101fbad1c063098}
+      \strng{authornamehash}{33d1cfce9d49096d3101fbad1c063098}
+      \strng{authorfullhash}{33d1cfce9d49096d3101fbad1c063098}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This is a short expository account of the regularity lemma for stable graphs proved by the authors, with some comments on the model theoretic context, written for a general logical audience.}
+      \field{issn}{1079-8986, 1943-5894}
+      \field{journaltitle}{The Bulletin of Symbolic Logic}
+      \field{month}{12}
+      \field{number}{4}
+      \field{title}{Notes on the stable regularity lemma}
+      \field{urlday}{18}
+      \field{urlmonth}{10}
+      \field{urlyear}{2022}
+      \field{volume}{27}
+      \field{year}{2021}
+      \field{urldateera}{ce}
+      \field{pages}{415\bibrangedash 425}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1017/bsl.2021.69
+      \endverb
+      \verb{file}
+      \verb Malliaris and Shelah - 2021 - NOTES ON THE STABLE REGULARITY LEMMA.pdf:/Users/crovellu/Zotero/storage/8MG9P6FT/Malliaris and Shelah - 2021 - NOTES ON THE STABLE REGULARITY LEMMA.pdf:application/pdf;Submitted Version:/Users/crovellu/Zotero/storage/PF6U3D2F/Malliaris and Shelah - 2021 - Notes on the stable regularity lemma.pdf:application/pdf
+      \endverb
+      \verb{urlraw}
+      \verb https://www.cambridge.org/core/product/identifier/S107989862100069X/type/journal_article
+      \endverb
+      \verb{url}
+      \verb https://www.cambridge.org/core/product/identifier/S107989862100069X/type/journal_article
+      \endverb
+    \endentry
     \entry{regularity_lemmas_for_stable_graphs}{article}{}
       \name{author}{2}{}{%
         {{hash=4f9e2cdf33e8c79a5a9dcb7b65342887}{%
@@ -278,6 +553,7 @@
       \strng{authorbibnamehash}{8b2d9d6a4f3d1f392b00867dd498112c}
       \strng{authornamehash}{8b2d9d6a4f3d1f392b00867dd498112c}
       \strng{authorfullhash}{8b2d9d6a4f3d1f392b00867dd498112c}
+      \field{extraname}{2}
       \field{sortinit}{M}
       \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
       \field{labelnamesource}{author}
@@ -439,6 +715,71 @@
       \field{year}{1978}
       \field{pages}{399\bibrangedash 401}
       \range{pages}{3}
+    \endentry
+    \entry{the_uniform_convergence_of_frequencies_of_the_appearance_of_events_to_their_probabilities}{article}{}
+      \name{author}{2}{}{%
+        {{hash=a9b883c22a232a6ae49617cdffba6b34}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={V.\bibnamedelimi N.},
+           giveni={V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=0cc3be4a7e5dc4e581490097ae4f76d5}{%
+           family={Červonenkis},
+           familyi={Č\bibinitperiod},
+           given={A.\bibnamedelimi Ja.},
+           giveni={A\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{62e60874963884e0226f4f0e4f7f85b6}
+      \strng{fullhash}{62e60874963884e0226f4f0e4f7f85b6}
+      \strng{bibnamehash}{62e60874963884e0226f4f0e4f7f85b6}
+      \strng{authorbibnamehash}{62e60874963884e0226f4f0e4f7f85b6}
+      \strng{authornamehash}{62e60874963884e0226f4f0e4f7f85b6}
+      \strng{authorfullhash}{62e60874963884e0226f4f0e4f7f85b6}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0040-361x}
+      \field{journaltitle}{Teor. Verojatnost. i Primenen.}
+      \field{title}{The uniform convergence of frequencies of the appearance of events to their probabilities}
+      \field{volume}{16}
+      \field{year}{1971}
+      \field{pages}{264\bibrangedash 279}
+      \range{pages}{16}
+    \endentry
+    \entry{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=a9b883c22a232a6ae49617cdffba6b34}{%
+           family={Vapnik},
+           familyi={V\bibinitperiod},
+           given={V.\bibnamedelimi N.},
+           giveni={V\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=63e24035068f75a3145da02f37e7d140}{%
+           family={Chervonenkis},
+           familyi={C\bibinitperiod},
+           given={A.\bibnamedelimi Ya.},
+           giveni={A\bibinitperiod\bibinitdelim Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer, Cham}%
+      }
+      \strng{namehash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \strng{fullhash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \strng{bibnamehash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \strng{authorbibnamehash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \strng{authornamehash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \strng{authorfullhash}{4e4a295bcae4717e8037ef7e6062ce10}
+      \field{sortinit}{V}
+      \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Measures of complexity}
+      \field{isbn}{978-3-319-21851-9; 978-3-319-21852-6}
+      \field{note}{Reprint of Theor. Probability Appl. {\bf 16} (1971), 264--280}
+      \field{title}{On the uniform convergence of relative frequencies of events to their probabilities}
+      \field{year}{2015}
+      \field{pages}{11\bibrangedash 30}
+      \range{pages}{20}
     \endentry
   \enddatalist
   \missing{no_me_acuerdo}
