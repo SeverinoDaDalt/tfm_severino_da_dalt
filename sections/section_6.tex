@@ -20,8 +20,8 @@
             \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
                 then $P\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
         \end{enumerate}
-        The query complexity $q(n)$ is the maximum number of queries the algorithm can make, each query discerning
-        whether a desired pair of vertices in the input graph $G$ are adjacent or not.
+        The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
+        a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.
     \end{definition}
 
     Of course, the most desirable testers are those with lower query complexity.
@@ -37,7 +37,7 @@
     In~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}, Alon and Shapira
     showed that a large class of properties, a subclass of which will be the center of our attention, are testable.
 
-    \begin{theorem}[Alon \& Shapira Theorem,~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
+    \begin{theorem}[Alon \& Shapira Theorem in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
         Every hereditary graph property is testable (with one-sided error).
     \end{theorem}
 
@@ -97,7 +97,7 @@
         partially maintained when moving to subsets.
         Not only that, but it also ensures that the density of the pair does not change too much.
 
-        \begin{lemma}[Lemma 3.1,~\cite{efficient_testing_of_large_graphs}] \label{lem:regularity_is_transitive}
+        \begin{lemma}[Lemma 3.1 in~\cite{efficient_testing_of_large_graphs}] \label{lem:regularity_is_transitive}
             Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
             If $\parround{A,B}$ is an $\epsilon$-regular pair with density $\delta$, $A' \subseteq A$ with $A \geq \epsilon' |A|$, and
             $B' \subseteq B$ with $|B'| \geq \epsilon' |B|$, then $\parround{A', B'}$ is an $\parround{\frac{\epsilon}{\epsilon'}}$-regular
@@ -130,13 +130,13 @@
         The pivotal point in the proof of \Cref{thm:property_testing_with_stable_partitions} is the fact that, if the
         reduced graph \todo{Define reduced subgraph as a remark of the stable regularity lemma.} from a regular partition contains an induced structure resembling $H$, i.e. where pairs of parts are
         mostly connected if the corresponding vertices in $H$ are connected, and mostly not connected otherwise,
-        then the original graph contains many induced copies of $H$ (the \emph{Counting Lemma}
+        then the original graph contains many induced copies of $H$ (this is a version of the so called \emph{Counting Lemma}
         from~\cite{the_regulariy_lemma_and_its_applications_in_graph_theory}).
         The following lemma formalizes this idea.
 
-        \begin{lemma}[Lemma 3.2,~\cite{efficient_testing_of_large_graphs}] \label{lem:H_like_partition_implies_H_abundance}
+        \begin{lemma}[Lemma 3.2 in~\cite{efficient_testing_of_large_graphs}] \label{lem:H_like_partition_implies_H_abundance}
             For every $\delta \in \parround{0, 1}$ and $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
-            $\eta = \eta \parround{\eta, \ell}$ satisfying the following property:
+            $\eta = \eta \parround{\delta, \ell}$ satisfying the following property:
 
             Let $H$ be a graph with vertices $v_1, \dots,v_\ell$ and let $V_1, \dots, V_\ell$ be an $\ell$-tuple of disjoint
             sets of vertices of a graph $G$ such that for every $1 \leq i < i' \leq \ell$, the pair $\parround{V_i, V_{i'}}$
@@ -262,7 +262,7 @@
                         and if $v_{i_j} v_{i_{j'}}$ is not an edge of $G$, the subpair $\parround{A_{i_j, j}, A_{i_{j'}, j'}}$
                         has density at most $\epsilon \geq 1 - \parround{1 - \frac{\sqrt{\gamma}}{2}}$
                 \end{itemize}
-                The lemma guarantees that there are at least $\eta_{\ref{lem:H_like_partition_implies_H_abundance}}
+                Hence, the lemma guarantees that there are at least $\eta_{\ref{lem:H_like_partition_implies_H_abundance}}
                     \parround{1 - \frac{\sqrt{\gamma}}{2}, \ell} \prod_{j=1}^\ell \parcurly{A_{i_j},j}$
                 copies of $H$ in $G$.
                 The fraction of induced copies of $H$ in $G$ is at least
@@ -282,6 +282,7 @@
         Notice that this same result can be proved in the general context instead of only for stable graphs
         as the original Theorem 5.1 from~\cite{efficient_testing_of_large_graphs} proves.
         The difference is that the resulting $\eta$ is much larger (although not given explicitly).
+        \todo{Explain where is the improvement (irregular pairs, partition size, etc.)}
 
         \begin{remark}
             A more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
@@ -310,7 +311,7 @@
                     \State return 0 \label{line:G_smaller_then_H}
                 \ElsIf{$n < t$}
                     \State query all edges in $G$
-                    \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in \overline{G}$ such that
+                    \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in G$ such that
                             $\parcurly{v_{i_1}, \dots, v_{i_\ell}}$ induces a copy of $H$ in $G$}
                         \State return 1 \label{line:G_small_enough_found_H}
                     \Else

@@ -114,19 +114,19 @@
             $\parcurly{A_1, \ldots, A_k}$ with remainder set $B$ such that:
             \begin{itemize}
                 \item $|B| \leq \epsilon |G|$, and may be empty.
-                \item $|A_1| = |A_2| = \cdots = |A_k|$.
                 \item All but at most $\epsilon k^2$ of the pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$ are
                     $\epsilon$-regular.
             \end{itemize}
+            Also, we say that the partition is \emph{equitable} if $|A_1| = |A_2| = \cdots = |A_k|$.
         \end{definition}
 
         The following is the celebrated Szemer\'edi's Regularity Lemma.
         The statement and proof we provide in this thesis follows the one given in~\cite{extremal_graph_theory},
         with minor notation modifications.
 
-        \begin{theorem}[Szemer\'edi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
+        \begin{theorem}[Szemer\'edi's Regularity Lemma, \cite{regular_partitions_of_graphs}] \label{thm:szemeredi_regularity_lemma}
             For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
-            such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
+            such that every graph with at least $m$ vertices admits an equitable $\epsilon$-regular partition
             $\parcurly{A_1, \ldots, A_k}$ and reminder $B$ with $m \leq k \leq M$.
         \end{theorem}
 
@@ -134,4 +134,260 @@
         which number of parts is independent of the size of the graph, and only depends on the regularity parameter
         $\epsilon$ and the minimum number of parts (and thus vertices) $m$.
 
+        Note that the lower bound on the number of parts $m$ can be used to increase the number of edges that connect
+        different parts of the partition, over edges in the parts themselves.
+        This is useful in some applications of the lemma.
+
         Before proving the theorem, it is useful to introduce some additional notation and definitions.
+        First, we note that the following inequality holds for any $\mu_1, \dots, \mu_k > 0$ and for all
+        $e_1, \dots, e_k \geq 0$:
+        \begin{equation} \label{eq:cauchy_schwarz_inequality_plus}
+            \sum_{i=1}^k \frac{e_i^2}{\mu_i}
+                \geq \frac{\parround{\sum_{i=1}^k e_i}^2}{\sum_{i=1}^k \mu_i}
+        \end{equation}
+        This is a direct consequence of applying the Cauchy-Schwarz inequality $\sum a_i^2 \sum b_i^2 \geq (\sum a_i b_i)^2$
+        with the sequences $a_i = \sqrt{\mu_i}$ and $b_i = e_i / \sqrt{\mu_i}$.
+
+        A crucial concept in the proof of the Regularity Lemma is that of the \emph{energy} of a partition.
+
+        \begin{definition}
+            Let $G$ be a graph with $n$ vertices and let $A_1, A_2$ be two disjoint subset of its vertex set.
+            Then, we define
+            \[
+                q(A_1, A_2) = \frac{|A_1||A_2|}{n^2} d(A_1, A_2)^2 = \frac{e(A_1, A_2)^2}{n^2 |A_1| |A_2|}
+            \]
+            For a partition $\overline{A_1}$ of $A_1$ and $\overline{A_2}$ of $A_2$, we define
+            \[
+                q(\overline{A_1}, \overline{A_2}) = \sum_{A_1' \in \overline{A_1}, A_2' \in \overline{A_2}} q(A_1', A_2')
+            \]
+            Finally, we define the \emph{energy} of a partition $\overline{A} = \parcurly{A_1, \dots, A_k}$ of the
+            vertex set of $G$ as
+            \[
+                q(\overline{A}) = \sum_{1 \leq i < j \leq k} q(A_i, A_j)
+            \]
+        \end{definition}
+
+        Let $\overline{A}$ be a partition with reminder set $B$, we define
+        $\widetilde{A} \coloneqq \overline{A} \cup \overline{B}$, and we use $\overline{B}$ to denote the set
+        of singletons of the remainder set, $\overline{B} \coloneqq \parcurly{\parcurly{b} \mid b \in B}$.
+        Then, $q(\widetilde{A}) = q(\overline{A} \cup \overline{B})$
+
+        The energy function $q$ i the main tool to prove the Regularity Lemma.
+        We will prove that, if a given partition has a large enough number of irregular pairs, taking the
+        associated parts and make them a partition of their own, results in a refinement of the original partition
+        with a large increase in energy, which only depends on the regularity parameter $\epsilon$.
+        But the energy of a partition is upper bounded:
+        \begin{align*}
+            q(\widetilde{A}) &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} q(C_1, C_2) \\
+                &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} \frac{|C_1||C_2|}{n^2} d(C_1, C_2)^2 \\
+                &\leq \frac{\sum |C_1||C_2|}{n^2} \leq 1
+        \end{align*}
+        Hence, the process of refinement must stop after a finite number of steps.
+
+        We first prove that refining a pair of parts or a whole partition does not decrease its energy.
+        \begin{lemma} \label{lem:energy_does_not_decrease_when_refining}
+            Let $G$ be a graph.
+            \begin{enumerate}
+                \item Let $A_1, A_2 \subseteq G$ be disjoint.
+                    If $\overline{A}_1$ is a partition of $A_1$ and $\overline{A}_2$ is a partition of $A_2$, then
+                    $q(\overline{A}_1, \overline{A}_2) \geq q(A_1, A_2)$.
+                \item If $\overline{A}, \overline{A}'$ are partitions of $G$ and $\overline{A}'$ is a refinement of
+                    $\overline{A}$, then $q(\overline{A}') \geq q(\overline{A})$.
+            \end{enumerate}
+            \begin{proof}
+                \begin{enumerate}
+                    \item \label{lem:energy_does_not_decrease_when_refining.1}
+                        Let $\overline{A}_1 = \parcurly{A_{1,1}, \dots, A_{1,k}}$ and
+                        $\overline{A}_2 = \parcurly{A_{2,1}, \dots, A_{2,\ell}}$.
+                        Then
+                        \begin{align*}
+                            q(\overline{A}_1, \overline{A}_2)
+                                & = \sum_{i=1}^k \sum_{j=1}^\ell q(A_{1,i}, A_{2,j}) \\
+                                & = \frac{1}{n^2} \sum_{i=1}^k \sum_{j=1}^\ell \frac{e(A_{1,i}, A_{2,j})^2}{|A_{1,i}||A_{2,j}|} \\
+                                & \stackrel{\eqref{eq:cauchy_schwarz_inequality_plus}}{\geq} \frac{1}{n^2}
+                                    \frac{\Parround{\sum_{i=1}^k \sum_{j=1}^\ell e(A_{1,i}, A_{2,j})}^2}
+                                    {\sum_{i=1}^k \sum_{j=1}^\ell |A_{1,i}||A_{2,j}|} \\
+                                & = \frac{1}{n^2} \frac{e(A_1, A_2)^2}
+                                    {(\sum_{i=1}^k |A_{1,i}|)(\sum_{j=1}^\ell |A_{2,j}|)} \\
+                                & = q(A_1, A_2)
+                        \end{align*}
+                    \item \label{lem:energy_does_not_decrease_when_refining.2}
+                        Let $\overline{A} = \parcurly{A_1, \dots, A_k}$, and for all $i \in \parcurly{1, \dots, k}$ let
+                        $\overline{A}_i$ be the partition of $A_i$ induced by $\overline{A}'$.
+                        Then,
+                        \begin{align*}
+                            q(\overline{A})
+                                & = \sum_{1 \leq i < j \leq k} q(A_i, A_j) \\
+                                & \stackrel{\dref{lem:energy_does_not_decrease_when_refining.1}}{\leq}
+                                    \sum_{1 \leq i < j \leq k} q(\overline{A}_i, \overline{A}_j) \\
+                                & \leq q(\overline{A}')
+                        \end{align*}
+                        where last inequality follows from the fact that
+                        $q(\overline{A}') = \sum_{1 \leq i \leq k} q(\overline{A}_i) + \sum_{1 \leq i < j \leq k} q(\overline{A}_i, \overline{A})$.
+                \end{enumerate}
+            \end{proof}
+        \end{lemma}
+
+        Next, we show that refining an irregular pair results in a significant increase in energy.
+        This amount, does not yet depend only on $\epsilon$, but it will when applied to all irregular pairs
+        at the same time.
+        \begin{lemma} \label{lem:increase_in_energy_when_refining_an_irregular_pair}
+            Let $G$ be a graph with $n$ vertices, $A_1, A_2 \subseteq G$ be disjoint subsets and $\epsilon > 0$.
+            If the pair $(A_1, A_2)$ is not $\epsilon$-regular, then there exist partitions
+            $\overline{A}_1 = \parcurly{A_{1,1}, A_{1,2}}$ of $A_1$ and
+            $\overline{A}_2 = \parcurly{A_{2,1}, A_{2,2}}$ of $A_2$ such that
+            \[
+                q(\overline{A}_1, \overline{A}_2) \geq q(A_1, A_2) + \epsilon^4 \frac{|A_1||A_2|}{n^2}
+            \]
+            \begin{proof}
+                Suppose that $(A_1, A_2)$ is not $\epsilon$-regular.
+                Then there are subsets $A_{1,1} \subseteq A_1$ and $A_{2,1} \subseteq A_2$ with
+                $|A_{1,1}| \geq \epsilon |A_1|$ and $|A_{2,1}| \geq \epsilon |A_2|$ such that
+                \begin{equation} \label{eq:irregular_pair_density_difference}
+                    |\eta| > \epsilon
+                \end{equation}
+                where $\eta = d(A_{1,1}, A_{2,1}) - d(A_1, A_2)$.
+                We now show that $\overline{A}_1 = \parcurly{A_{1,1}, A_{1,2}}$ and
+                $\overline{A}_2 = \parcurly{A_{2,1}, A_{2,2}}$, where $A_{1,2} \coloneqq A_1 \setminus A_{1,1}$ and
+                $A_{2,2} \coloneqq A_2 \setminus A_{2,1}$, satisfy the statement.
+
+                For ease of notation, we write $c_i \coloneqq |A_{1,i}|$, $d_i \coloneqq |A_{2,i}|$,
+                $e_{ij} \coloneqq e(A_{1,i},A_{2,j})$, $c \coloneqq |A_1|$, $d \coloneqq |A_2|$ and $e = e(A_1, A_2)$.
+                Then, we have
+                \begin{align*}
+                    q(\overline{A}_1, \overline{A}_2)
+                        & = \frac{1}{n^2} \sum_{i=1}^2 \sum_{j=1}^2 \frac{e_{ij}^2}{c_i d_j} \\
+                        & = \frac{1}{n^2} \Parround{
+                            \frac{e_{11}^2}{c_1 d_1} + \sum_{i + j > 2} \frac{e_{ij}^2}{c_i d_j}} \\
+                        & \stackrel{\eqref{eq:cauchy_schwarz_inequality_plus}}{\geq}
+                            \frac{1}{n^2} \Parround{
+                                \frac{e_{11}^2}{c_1 d_1} + \frac{(e - e_{11})^2}{cd - c_1 d_1}}
+                \end{align*}
+                By definition of $\eta$, in the new notation we have that $e_{11} = \frac{c_1 d_1 e}{cd} + \eta c_1 d_1$,
+                and so
+                \begin{align*}
+                    n^2 q(\overline{A}_1, \overline{A}_2)
+                        & \geq \frac{1}{c_1 d_1} \Parround{\frac{c_1 d_1 e}{cd} + \eta c_1 d_1}^2
+                            + \frac{1}{cd - c_1 d_1} \Parround{e - \frac{c_1 d_1 e}{cd} - \eta c_1 d_1}^2 \\
+                        & \geq \frac{1}{c_1 d_1} \Parround{\frac{c_1 d_1 e}{cd} + \eta c_1 d_1}^2
+                            + \frac{1}{cd - c_1 d_1} \Parround{\frac{cd - c_1 d_1}{cd} e - \eta c_1 d_1}^2 \\
+                        & = \frac{c_1 d_1 e^2}{c^2 d^2} + \frac{2 e \eta c_1 d_1}{cd}
+                            + \eta^2 c_1 d_1
+                            + \frac{(cd - c_1 d_1) e^2}{c^2 d^2}
+                            - \frac{2 e \eta c_1 d_1}{cd}
+                            + \frac{\eta^2 c_1^2 d_1^2}{cd - c_1 d_1} \\
+                        & \geq \frac{e^2}{cd} + \eta^2 c_1 d_1 \\
+                        & \stackrel{\eqref{eq:irregular_pair_density_difference}}{\geq}
+                            \frac{e^2}{cd} + \epsilon^4 c d = n^2 q(A_1, A_2) + \epsilon^4 c d
+                \end{align*}
+                and we obtain the inequality from the statement by simply dividing by $n^2$ at each side of the inequality.
+            \end{proof}
+        \end{lemma}
+
+        The next lemma show that applying the previous lemma to all irregular pairs of a partition achieves the desired
+        constant increase in energy.
+
+        \begin{lemma} \label{lem:increase_in_energy_when_refining_an_irregular_partition}
+            Let $0 < \epsilon \leq \frac{1}{4}$, let $G$ be a graph with $n$ vertices, and let
+            $\overline{A} = \parcurly{A_1, \dots, A_k}$ be a partition of its vertex set with remainder set $B$ such that
+            $|B| \leq \epsilon n$ and $|A_1| = \dots = |A_k| \eqqcolon c$.
+            If the partition $\overline{A}$ is not $\epsilon$-regular, then there is a refinement
+            $\overline{A}' = \parcurly{A'_1, \dots, A'_\ell}$ of $\overline{A}$ with remainder set $B'$ such that
+            $k \leq \ell \leq k 4^{k+1}$, $|A'_0| \leq |A_0| + \frac{n}{2^k}$, $|A'_1| = \dots = |A'_\ell|$ and
+            either $\overline{A}'$ is $\epsilon$-regular, or
+            \[
+                q(\widetilde{A}') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+            \]
+            \begin{proof}
+                For all $1 \leq i < j \leq k$, let $\overline{A}_{ij}$ be a partition of $A_i$ and $\overline{A}_{ji}$ a
+                partition of $A_j$ as follows.
+                If the pair $(A_i, A_j)$ is $\epsilon$-regular, then $\overline{A}_{ij} \coloneqq \parcurly{A_i}$ and
+                $\overline{A}_{ji} \coloneqq \parcurly{A_j}$.
+                Otherwise, we can apply \Cref{lem:increase_in_energy_when_refining_an_irregular_pair} to obtain a
+                partition $\overline{A}_{ij}$ of $A_i$ and a partition $\overline{A}_{ji}$ of $A_j$ with
+                $|\overline{A}_{ij}| = |\overline{A}_{ji}| = 2$ such that
+                \begin{equation} \label{eq:increase_in_energy_in_refined_ij_pair}
+                    q(\overline{A}_{ij}, \overline{A}_{ji}) \geq q(A_i, A_j) + \epsilon^4 \frac{c^2}{n^2}
+                \end{equation}
+                Now, consider two vertices $u, v \in A_i$ to be equivalent if for every $j \neq i$ they belong to the
+                same set of the partition $\overline{A}_{ij}$.
+                We can define $\overline{A}_i$ to be the set of such equivalence classes.
+                Then, each partition $\overline{C}_{ij}$ may at most double the number of parts of $\overline{A}_i$,
+                we have that $|\overline{A}_i| \leq 2^{k-1}$.
+                Putting all of this together, we have a new partition
+                \[
+                    \overline{A}'' \coloneqq \bigcup_{i=1}^k \overline{A}_i
+                \]
+                of $G$ with reminder set still $B$.
+                Note that $\overline{A}''$ refines $\overline{A}$, and that
+                \begin{equation} \label{eq:size_of_refined_partition}
+                    k \leq |\overline{A}''| \leq k 2^{k-1} \leq k 2^{k}
+                \end{equation}
+                By hypothesis, we now that $\overline{A}$ is not $\epsilon$-regular, and so there are at least
+                $\epsilon k^2$ pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$, the partition $\overline{A}_{ij}$ is
+                non-trivial.
+                Thus,
+                \begin{align*}
+                    q(\widetilde{A}'')
+                        & = \sum_{1 \leq i < j \leq k} q(\overline{A}_i, \overline{A}_j) + \sum_{1 \leq i \leq k} q(\overline{A}_i, \overline{B})
+                            + \sum_{1 \leq i \leq k} q(\overline{A}_i) + q(\overline{B}) \\
+                        & \geq \sum_{1 \leq i < j \leq k} q(\overline{A}_{ij}, \overline{A}_{ji})
+                            + \sum_{1 \leq i \leq k} q(\parcurly{A_i}, \overline{B}) + q(\overline{B}) \\
+                        & \stackrel{\eqref{eq:increase_in_energy_in_refined_ij_pair}}{\geq}
+                            \sum_{1 \leq i < j \leq k} q(A_i, A_j) + \epsilon k^2 \epsilon^4 \frac{c^2}{n^2}
+                            + \sum_{1 \leq i \leq k} q(\parcurly{A_i}, \overline{B}) + q(\overline{B}) \\
+                        & = q(\widetilde{A}) + \epsilon^5 \parround{\frac{c k}{n}}^2 \\
+                        & \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+                \end{align*}
+                First equality follows from the definition of energy, first inequality uses
+                \dref{lem:energy_does_not_decrease_when_refining.1} from \Cref{lem:energy_does_not_decrease_when_refining}
+                and last inequality follows from the fact that
+                $|B| \leq \epsilon n \leq \frac{1}{4}$, so $kc$ is necessarily at least $\frac{3}{4}n$.
+
+                Finally, we need to turn $\overline{A}''$ into an equitable partition.
+                In order to achieve this, we will split refine each part into pieces of equal size, and move the
+                remaining vertices to the reminder set.
+                We need to separate two cases, as we may not have enough vertices to make substantially sized parts.
+
+                If $c < 4^k$, we just consider all the parts to be singletons, and keep the reminder set $B$ as it is.
+                Since there are at most $k$ parts in $\overline{A}$, we have that the resulting partition $\overline{A}'$
+                of size $\ell$ satisfies $k \leq \ell = kc < k 4^k$.
+
+                Otherwise, if $c \geq 4^k$, consider $A'_1, \dots, A'_\ell$ to be a maximal collection of disjoint
+                sets of size $d \coloneqq \floor{\frac{c}{4^k}} \geq 1$ such that each $A'_i$ is contained in some part of
+                $\overline{A}''$.
+                Then, the remainder set $B'$ is obtained by adding to $B$ all the remaining vertices from all the parts
+                of $\overline{A}''$, or simply $B' = G \setminus \bigcup_{i=1}^\ell A'_i$.
+
+                The resulting partition $\overline{A}' = \parcurly{A'_1, \dots, A'_\ell}$ is a refinement of
+                $\overline{A}''$ and, following \dref{lem:energy_does_not_decrease_when_refining.2} from
+                \Cref{lem:energy_does_not_decrease_when_refining}, satisfies
+                \[
+                    q(\widetilde{A}') \geq q(\widetilde{A}'') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+                \]
+
+                Now, no more than $\frac{c}{d} \leq 4^{k+1}$ sets $A'_i$ can lie within the same part of $\overline{A}''$,
+                so the condition $k \leq \ell k 4^{k+1}$ is satisfied.
+                Also, no more than $d$ vertices are left out from each part of $\overline{A}''$, and so
+                \begin{align*}
+                    |B'|
+                        & \leq |B| + d |\overline{A}''| \\
+                        & \stackrel{\eqref{eq:size_of_refined_partition}}{\leq}
+                            |B| + \frac{c}{4^k} k 2^k \\
+                        & = |B| + \frac{kc}{2^k} \\
+                        & \leq |B| + \frac{n}{2^k}
+                \end{align*}
+                Thus, the partition $\overline{A}'$ with remainder set $B'$ satisfies all the conditions in the statement,
+                and we are done.
+            \end{proof}
+        \end{lemma}
+
+        We now have all the tools required to prove Szemer\'edi's Regularity Lemma.
+        The idea will be to start with an arbitrary equitable partition, with a large enough number of parts and small
+        enough reminder set, and then keep refining it until we reach a regular partition.
+        Then, reaching regularity is inevitable, as the previous result guarantees a constant increase in energy
+        which we previously proved to be upper bounded.
+
+        \begin{proof}[Proof of \Cref{thm:szemeredi_regularity_lemma}]
+
+        \end{proof}
