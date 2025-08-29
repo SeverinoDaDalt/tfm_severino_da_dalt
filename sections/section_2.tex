@@ -389,5 +389,44 @@
         which we previously proved to be upper bounded.
 
         \begin{proof}[Proof of \Cref{thm:szemeredi_regularity_lemma}]
+            Let $\epsilon > 0$, $m \geq 1$ and assume without loss of generality that $\epsilon \leq \frac{1}{4}$.
+            This is possible by monotonicity of the regularity condition.
+            Also, set $s \coloneqq \frac{2}{\epsilon^5}$.
 
+            While refining repeatedly the partition using \Cref{lem:increase_in_energy_when_refining_an_irregular_partition},
+            ($s$ times) we need to make sure that the remainder set does not grow too large, as the lemma requires it to
+            be at most $\epsilon n$.
+            At each refinement, the size of the reminder set increases by at most $\frac{n}{2^k}$, where $k$ is the
+            number of parts of the partition before refining.
+            Since at each iteration the number of parts can only increase, each time at most $\frac{n}{2^m}$ vertices
+            are added to the reminder set.
+            By choosing $k$ and $n$ large enough, we can ensure that the initial size of the remainder set and the
+            total growth of it over all the $s$ steps is at most $\frac{\epsilon n}{2}$ each.
+
+            With this in mind, we choose $k$ large enough to satisfy $\frac{s}{2^k} \leq \frac{\epsilon}{2}$, and
+            $n$ large enough so that $k \leq \frac{\epsilon n}{2}$.
+            Then,
+            \begin{equation} \label{eq:final_remainder_size_bound}
+                k + \frac{s n}{2^k} \leq \frac{\epsilon n}{2} + \frac{\epsilon n}{2} = \epsilon n
+            \end{equation}
+
+            Now, let's bound the number of parts of the partition at end of the process.
+            Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts,
+            we can simply set $M \coloneqq \max\parround{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
+            The second term ensures that $n \geq M$ is sufficiently large for \eqref{eq:final_remainder_size_bound} to hold.
+
+            Now, given a graph $G$ with $n \geq m$ vertices, we can build a partition into $k'$, with $m \leq \leq M$
+            parts with remainder $B$ as follows.
+            If $n \leq M$, simply take the partition to be all the vertices as singletons, and the remainder set to be empty.
+            The resulting partition is trivially $\epsilon$-regular, as pairs of singletons are always either complete or empty.
+            Suppose now that $n > M$.
+            We randomly partition the vertex set of $G$ into parts of size $k$, and put the remaining vertices in the
+            remainder set.
+            This remainder set has size at most $k - 1 < \epsilon n$ by~\eqref{eq:final_remainder_size_bound}.
+            We now can apply \Cref{lem:increase_in_energy_when_refining_an_irregular_partition} repeatedly,
+            as the choice of $k$ and $n\geq M$ in~\eqref{eq:final_remainder_size_bound} ensures that the reminder is
+            at most $\epsilon n$ during $s$ steps.
+            But this process must stop in at most $s$ steps, as the energy of the partition increases by at least
+            $\frac{\epsilon^5}{2}$ at each step, so after $s$ steps the energy would be at least $1$, which is the theoretical
+            maximum as shown earlier.
         \end{proof}
