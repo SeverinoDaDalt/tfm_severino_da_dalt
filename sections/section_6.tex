@@ -178,14 +178,14 @@
                 $v_i v_{i'}$ of $H$ with an edge by exchanging all edges and non-edges between $V_i$ and $V_{i'}$.
 
                 We prove the lemma by induction on $\ell$.
-                The case $k=1$ is trivial, and the number of induced copies of $H$ is $|V_1|$, so $\eta(\delta, 1) = 1$ and
+                The case $\ell=1$ is trivial, and the number of induced copies of $H$ is $|V_1|$, so $\eta(\delta, 1) = 1$ and
                 $\epsilon(\delta, 1) = 1$ (No regularity needed if no pairs).
                 The I.H. is that the values $\eta(\delta, \ell-1)$ and $\epsilon(\delta, \ell-1)$ exist and are known for all
                 $\ell$.
                 We proceed to prove that the following values $\eta$ and $\epsilon$ hold:
                 \begin{align*}
                     \epsilon &= \epsilon(\delta, \ell)
-                        = \min \parround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)} \\
+                        = \min \bbparround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)} \\
                     \eta &= \eta(\delta, \ell)
                         = \frac{1}{2} (\delta - \epsilon)^{\ell-1} \eta(\frac{1}{2}\delta, \ell-1)
                 \end{align*}
