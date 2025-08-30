@@ -2396,14 +2396,20 @@
     <bcf:citekey order="28" intorder="1">no_me_acuerdo</bcf:citekey>
     <bcf:citekey order="29" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
     <bcf:citekey order="30" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">??</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension</bcf:citekey>
     <bcf:citekey order="37" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">julia_cositas</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
