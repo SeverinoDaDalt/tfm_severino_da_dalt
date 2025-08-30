@@ -2380,24 +2380,30 @@
     <bcf:citekey order="13" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="14" intorder="1">extremal_graph_theory</bcf:citekey>
     <bcf:citekey order="15" intorder="1">regular_partitions_of_graphs</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">induced_subgraph_density_vi_bounded_vc_dimension</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">regularity_partitions_and_the_topology_of_graphons</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">on_the_density_of_families_of_sets</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">a_combinatorial_problem_stability_and_order_for_models_and_theories_in_infinitary_languages</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">sous_spaces_1_des_espaces_de_banach_travaux_en_cours</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">model_theory</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">no_me_acuerdo</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">graph_removal_lemmas</bcf:citekey>
+    <bcf:citekey order="16" intorder="2">graph_theory_and_additive_combinatorics_exploring_structure_and_randomness</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">graph_theory_and_additive_combinatorics_exploring_structure_and_randomness</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">graph_removal_lemmas</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">on_regularity_lemmas_and_their_algorithmic_applications</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">on_regularity_lemmas_and_their_algorithmic_applications</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">induced_subgraph_density_vi_bounded_vc_dimension</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">regularity_partitions_and_the_topology_of_graphons</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">on_the_density_of_families_of_sets</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">a_combinatorial_problem_stability_and_order_for_models_and_theories_in_infinitary_languages</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">sous_spaces_1_des_espaces_de_banach_travaux_en_cours</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">model_theory</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">no_me_acuerdo</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="33" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

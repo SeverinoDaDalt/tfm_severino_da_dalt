@@ -30,9 +30,9 @@
         Similarly, we will write $u v \in G$ to mean $\parcurly{u, v} \in E$.
 
         As most of this work is tightly related to model theory results, it is useful to note that vertices adjacency
-        (two vertices being connected by an edge) is a symmetric and irreflexive binary relation on the
+        (whether two vertices are the endpoints of an edge) is a symmetric and irreflexive binary relation on the
         vertex set.
-        With this perspective, to denote vertex adjacency between twi vertices $v_1$ and $v_2$ we will often use the
+        With this perspective, to denote vertex adjacency between two vertices $v_1$ and $v_2$ we will often use the
         notation $v_1 R v_2$, where $R$ is the adjacency relation in $V$.
 
         A class of graphs of particular relevance in this work is that of bipartite graphs.
@@ -51,6 +51,7 @@
             set consists of all edges in $E$ that have both endpoints in $S$.
             Formally, $G[S] = (S, E_S)$ where $E_S = \parcurly{\parcurly{v_1, v_2} \in E \mid v_1, v_2 \in S}$.
         \end{definition}
+        \todo{Include bi-induced, and make a definition for when the copy uses repeated vertices.}
 
     \subsection{Szemer\'edi's Regularity Lemma} \label{subsec:subsection_2.2}
         We now want to formalize the concept of regular pairs of vertex sets, which is central to Szemer\'edi's Regularity Lemma.
@@ -58,7 +59,7 @@
         an idea that we can formalize using edge density.
 
         \begin{definition}
-            Let $G$ be a graph and let $X, Y \subseteq G$ be two (not necessarily disjoint) subsets of its vertices.
+            Let $G$ be a graph and let $X, Y \subseteq G$ be two (not necessarily disjoint) non-empty subsets of its vertices.
             The \emph{edge density} between $X$ and $Y$ is defined as
             \[
                 d(X, Y) = \frac{\parstraight{e(X, Y)}}{|X| |Y|}
@@ -76,20 +77,23 @@
         and $\parstraight{X}\parstraight{Y}$.
         However, as this thesis deals with pairs of (non-necessarily different) parts of a partition of a vertex set,
         we only have to deal with two cases: either $X$ and $Y$ are disjoint, or $X = Y$.
-        The first case has no problems, while for the second vase we note the following.
+        The first case has no problems, while for the second case we note the following.
 
         \begin{remark}
-            If $X$ is a subset of vertices of a graph $G$, then the proportion of possible edges between vertices in $X$
-            that are actually present in $G$ is larger than the density $d(X, X)$.
+            If $X$ is a subset of vertices of a graph $G$ such that $X \geq 2$, then the proportion of possible edges
+            between vertices in $X$ that are actually present in $G$ is at most twice the density $d(X, X)$.
             That is,
             \[
                 \frac{\parstraight{E_X}}{{|X| \choose 2}}
                     = \frac{\parstraight{e(X, X)} / 2}{\parround{|X|-1}|X| / 2}
-                    \geq \frac{\parstraight{e(X, X)}}{|X|^2}
-                    = d(X, X)
+                    = \frac{|X|}{|X|-1} \frac{\parstraight{e(X, X)}}{|X|^2}
+                    \leq 2 d(X, X)
             \]
             Where first equality follows from the fact that $E_X$ counts each edge in $e(X, X)$ twice.
+            At the same time, the proportion of possible edges between vertices in $X$ that are actually not present
+            in $G$ is at least $1 - 2 d(X,X)$.
         \end{remark}
+        \todo{Lluis: seria molt bo poder demostrar aixó per tot parell non-disjoint, pero no soc capaç.}
 
         \begin{definition}
             Given $\epsilon > 0$ and a graph $G$, a pair of (not necessarily disjoint) subsets of vertices $A, B \subseteq G$
@@ -103,7 +107,7 @@
         Intuitively, this means that the edges of the pair are fairly uniformly distributed, and the pair behaves
         similarly to a random bipartite graph with edge density $d(A, B)$.
 
-        Now, this notion of regularity can be used in the context od a partition of a graph's vertex set.
+        Now, this notion of regularity can be used in the context of a partition of a graph's vertex set.
         This partition allows a small number of pairs to be irregular.
         Also, a small \emph{remainder set} is allowed, which is a set of vertices that are not included in any part
         of the partition.
@@ -174,7 +178,7 @@
 
         The energy function $q$ i the main tool to prove the Regularity Lemma.
         We will prove that, if a given partition has a large enough number of irregular pairs, taking the
-        associated parts and make them a partition of their own, results in a refinement of the original partition
+        associated parts and make them a partition of their own results in a refinement of the original partition
         with a large increase in energy, which only depends on the regularity parameter $\epsilon$.
         But the energy of a partition is upper bounded:
         \begin{align*}
@@ -284,7 +288,7 @@
             \end{proof}
         \end{lemma}
 
-        The next lemma show that applying the previous lemma to all irregular pairs of a partition achieves the desired
+        The next lemma shows that applying the previous lemma to all irregular pairs of a partition achieves the desired
         constant increase in energy.
 
         \begin{lemma} \label{lem:increase_in_energy_when_refining_an_irregular_partition}
@@ -312,8 +316,8 @@
                 Now, consider two vertices $u, v \in A_i$ to be equivalent if for every $j \neq i$ they belong to the
                 same set of the partition $\overline{A}_{ij}$.
                 We can define $\overline{A}_i$ to be the set of such equivalence classes.
-                Then, each partition $\overline{C}_{ij}$ may at most double the number of parts of $\overline{A}_i$,
-                we have that $|\overline{A}_i| \leq 2^{k-1}$.
+                Then, since each partition $\overline{A}_{ij}$ may at most double the number of parts that end up in
+                $\overline{A}_i$, we have that $|\overline{A}_i| \leq 2^{k-1}$.
                 Putting all of this together, we have a new partition
                 \[
                     \overline{A}'' \coloneqq \bigcup_{i=1}^k \overline{A}_i
@@ -323,8 +327,8 @@
                 \begin{equation} \label{eq:size_of_refined_partition}
                     k \leq |\overline{A}''| \leq k 2^{k-1} \leq k 2^{k}
                 \end{equation}
-                By hypothesis, we now that $\overline{A}$ is not $\epsilon$-regular, and so there are at least
-                $\epsilon k^2$ pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$, the partition $\overline{A}_{ij}$ is
+                By hypothesis, we know that $\overline{A}$ is not $\epsilon$-regular, and so there are at least
+                $\epsilon k^2$ pairs $(A_i, A_j)$, with $1 \leq i < j \leq k$, such that the partition $\overline{A}_{ij}$ is
                 non-trivial.
                 Thus,
                 \begin{align*}
@@ -340,12 +344,12 @@
                         & \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
                 \end{align*}
                 First equality follows from the definition of energy, first inequality uses
-                \dref{lem:energy_does_not_decrease_when_refining.1} from \Cref{lem:energy_does_not_decrease_when_refining}
+                \dref{lem:energy_does_not_decrease_when_refining.1}~from \Cref{lem:energy_does_not_decrease_when_refining},
                 and last inequality follows from the fact that
                 $|B| \leq \epsilon n \leq \frac{1}{4}$, so $kc$ is necessarily at least $\frac{3}{4}n$.
 
                 Finally, we need to turn $\overline{A}''$ into an equitable partition.
-                In order to achieve this, we will split refine each part into pieces of equal size, and move the
+                In order to achieve this, we split each part into pieces of equal size, and move the
                 remaining vertices to the reminder set.
                 We need to separate two cases, as we may not have enough vertices to make substantially sized parts.
 
@@ -360,14 +364,14 @@
                 of $\overline{A}''$, or simply $B' = G \setminus \bigcup_{i=1}^\ell A'_i$.
 
                 The resulting partition $\overline{A}' = \parcurly{A'_1, \dots, A'_\ell}$ is a refinement of
-                $\overline{A}''$ and, following \dref{lem:energy_does_not_decrease_when_refining.2} from
+                $\overline{A}''$ and, following \dref{lem:energy_does_not_decrease_when_refining.2}~from
                 \Cref{lem:energy_does_not_decrease_when_refining}, satisfies
                 \[
                     q(\widetilde{A}') \geq q(\widetilde{A}'') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
                 \]
 
-                Now, no more than $\frac{c}{d} \leq 4^{k+1}$ sets $A'_i$ can lie within the same part of $\overline{A}''$,
-                so the condition $k \leq \ell k 4^{k+1}$ is satisfied.
+                Now, no more than $\frac{c}{d} \leq 4^{k+1}$ sets $A'_i$ can lie within the same part of $\overline{A}$,
+                so the condition $k \leq \ell \leq k 4^{k+1}$ is satisfied.
                 Also, no more than $d$ vertices are left out from each part of $\overline{A}''$, and so
                 \begin{align*}
                     |B'|
@@ -398,10 +402,10 @@
             be at most $\epsilon n$.
             At each refinement, the size of the reminder set increases by at most $\frac{n}{2^k}$, where $k$ is the
             number of parts of the partition before refining.
-            Since at each iteration the number of parts can only increase, each time at most $\frac{n}{2^m}$ vertices
+            Since at each iteration the number of parts can only increase, at most $\frac{n}{2^k}$ vertices
             are added to the reminder set.
             By choosing $k$ and $n$ large enough, we can ensure that the initial size of the remainder set and the
-            total growth of it over all the $s$ steps is at most $\frac{\epsilon n}{2}$ each.
+            total growth of it over all the $s$ steps are at most $\frac{\epsilon n}{2}$ each.
 
             With this in mind, we choose $k$ large enough to satisfy $\frac{s}{2^k} \leq \frac{\epsilon}{2}$, and
             $n$ large enough so that $k \leq \frac{\epsilon n}{2}$.
@@ -410,18 +414,18 @@
                 k + \frac{s n}{2^k} \leq \frac{\epsilon n}{2} + \frac{\epsilon n}{2} = \epsilon n
             \end{equation}
 
-            Now, let's bound the number of parts of the partition at end of the process.
-            Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts,
+            Now, let's bound the number of parts of the partition at the end of the process.
+            Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts
             we can simply set $M \coloneqq \max\parround{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
             The second term ensures that $n \geq M$ is sufficiently large for \eqref{eq:final_remainder_size_bound} to hold.
 
-            Now, given a graph $G$ with $n \geq m$ vertices, we can build a partition into $k'$, with $m \leq \leq M$
-            parts with remainder $B$ as follows.
+            Now, given a graph $G$ with $n \geq m$ vertices, we can build a partition into $k'$, with $m \leq k' \leq M$
+            parts, and with remainder $B$ as follows.
             If $n \leq M$, simply take the partition to be all the vertices as singletons, and the remainder set to be empty.
             The resulting partition is trivially $\epsilon$-regular, as pairs of singletons are always either complete or empty.
             Suppose now that $n > M$.
-            We randomly partition the vertex set of $G$ into parts of size $k$, and put the remaining vertices in the
-            remainder set.
+            We randomly partition the vertex set of $G$ into $k$ maximal parts of equal size, and put the remaining
+            vertices in the remainder set.
             This remainder set has size at most $k - 1 < \epsilon n$ by~\eqref{eq:final_remainder_size_bound}.
             We now can apply \Cref{lem:increase_in_energy_when_refining_an_irregular_partition} repeatedly,
             as the choice of $k$ and $n\geq M$ in~\eqref{eq:final_remainder_size_bound} ensures that the reminder is
@@ -430,3 +434,25 @@
             $\frac{\epsilon^5}{2}$ at each step, so after $s$ steps the energy would be at least $1$, which is the theoretical
             maximum as shown earlier.
         \end{proof}
+
+        For the matters of this thesis, it is important to note that it is actually known that:
+        \begin{itemize}
+            \item \label{itm:regular_partition_with_no_remainder}
+                The remainder set can be avoided in the resulting partition of Szemer\'edi's Regularity Lemma,
+                at the cost of allowing a small $\pm 1$ size difference between parts in the definition of equitable.
+            \item \label{itm:regular_partition_with_regular_self_pairs}
+                It can be ensured that not only (most) pairs of different parts are regular, but also (most) parts
+                with themselves (self-pairs) satisfy this property.
+        \end{itemize}
+        The proof of these escapes the goal of this work.
+        The interested reader is redirected
+        to~\cite{graph_removal_lemmas, graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}\footnote{
+            In~\cite{graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}, authors show how to
+            obtain a regular parition that includes regularity within pairs themselves, but omit the details on how to get
+            an equitable partition and no reminder.
+            \cite{graph_removal_lemmas} proves the existence of a partition has regular self-pairs and no reminder, but
+            the proof of the critical lemma to refine a partition into an equitable one (at the loss of a small amount
+            of energy) is omitted.}
+        \todo{Lluis: \cite{on_regularity_lemmas_and_their_algorithmic_applications} no demostra casi
+            res. Ni el menciono.}
+        for more detailed proofs on how to obtain such partitions.

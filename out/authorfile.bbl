@@ -185,6 +185,36 @@
       \field{pages}{451\bibrangedash 476}
       \range{pages}{26}
     \endentry
+    \entry{graph_removal_lemmas}{article}{}
+      \name{author}{2}{}{%
+        {{hash=73b7c96f5bce351583e0fc6f209a6f09}{%
+           family={Conlon},
+           familyi={C\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3f0a67a902c8bcd7eb3fbad276c47365}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{be1960be1d47385f056ae750713b1a2b}
+      \strng{fullhash}{be1960be1d47385f056ae750713b1a2b}
+      \strng{bibnamehash}{be1960be1d47385f056ae750713b1a2b}
+      \strng{authorbibnamehash}{be1960be1d47385f056ae750713b1a2b}
+      \strng{authornamehash}{be1960be1d47385f056ae750713b1a2b}
+      \strng{authorfullhash}{be1960be1d47385f056ae750713b1a2b}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Surveys in combinatorics}
+      \field{title}{Graph removal lemmas.}
+      \field{volume}{409}
+      \field{year}{2013}
+      \field{pages}{1\bibrangedash 49}
+      \range{pages}{49}
+    \endentry
     \entry{extremal_graph_theory}{incollection}{}
       \name{author}{1}{}{%
         {{hash=d7750765c1eb004bdcdce07ed2272ba7}{%
@@ -211,6 +241,45 @@
       \field{year}{2024}
       \field{pages}{179\bibrangedash 226}
       \range{pages}{48}
+    \endentry
+    \entry{on_regularity_lemmas_and_their_algorithmic_applications}{article}{}
+      \name{author}{3}{}{%
+        {{hash=3f0a67a902c8bcd7eb3fbad276c47365}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed74a1f3747cb9d7d1b7895ffb0c3aae}{%
+           family={Lovász},
+           familyi={L\bibinitperiod},
+           given={László\bibnamedelima Miklós},
+           giveni={L\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=6b0656736f97f8058eb859f69cdc40ed}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Yufei},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \strng{fullhash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \strng{bibnamehash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \strng{authorbibnamehash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \strng{authornamehash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \strng{authorfullhash}{6ac4498ce8aa3f8ed362deac08f87e8b}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Combinatorics, Probability and Computing}
+      \field{number}{4}
+      \field{title}{On regularity lemmas and their algorithmic applications}
+      \field{volume}{26}
+      \field{year}{2017}
+      \field{pages}{481\bibrangedash 505}
+      \range{pages}{25}
     \endentry
     \entry{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension}{article}{}
       \name{author}{3}{}{%
@@ -830,6 +899,30 @@
       \field{year}{2015}
       \field{pages}{11\bibrangedash 30}
       \range{pages}{20}
+    \endentry
+    \entry{graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}{book}{}
+      \name{author}{1}{}{%
+        {{hash=6b0656736f97f8058eb859f69cdc40ed}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Yufei},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{6b0656736f97f8058eb859f69cdc40ed}
+      \strng{fullhash}{6b0656736f97f8058eb859f69cdc40ed}
+      \strng{bibnamehash}{6b0656736f97f8058eb859f69cdc40ed}
+      \strng{authorbibnamehash}{6b0656736f97f8058eb859f69cdc40ed}
+      \strng{authornamehash}{6b0656736f97f8058eb859f69cdc40ed}
+      \strng{authorfullhash}{6b0656736f97f8058eb859f69cdc40ed}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Graph Theory and Additive Combinatorics: Exploring Structure and Randomness}
+      \field{year}{2023}
     \endentry
   \enddatalist
   \missing{no_me_acuerdo}
