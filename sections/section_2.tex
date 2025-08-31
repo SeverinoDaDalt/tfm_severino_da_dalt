@@ -79,7 +79,7 @@
         we only have to deal with two cases: either $X$ and $Y$ are disjoint, or $X = Y$.
         The first case has no problems, while for the second case we note the following.
 
-        \begin{remark}
+        \begin{remark} \label{rmk:density_vs_real_density}
             If $X$ is a subset of vertices of a graph $G$ such that $X \geq 2$, then the proportion of possible edges
             between vertices in $X$ that are actually present in $G$ is at most twice the density $d(X, X)$.
             That is,
@@ -97,7 +97,6 @@
             At the same time, the proportion of possible edges between vertices in $X$ that are actually not present
             in $G$ lies between $1 - 2 d(X,X)$ and $1 - d(X,X)$.
         \end{remark}
-        \todo{Lluis: seria molt bo poder demostrar aixó per tot parell non-disjoint, pero no soc capaç.}
 
         \begin{definition}
             Given $\epsilon > 0$ and a graph $G$, a pair of (not necessarily disjoint) subsets of vertices $A, B \subseteq G$

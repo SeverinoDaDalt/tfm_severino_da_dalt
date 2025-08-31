@@ -751,8 +751,8 @@
 
         \begin{lemma}[Lemma 5.17] \label{lem:excellence_implies_regularity}
             Suppose that $\epsilon_1, \epsilon_2, \epsilon_3 \in \parround{0, \frac{1}{2}}$ with
-            $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3} < \frac{1}{2}$ and the pair $\parround{A,B}$ is
-            $\parround{\epsilon_1, \epsilon_2}$-uniform.
+            $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3} < \frac{1}{2}$ and the (not necessarily disjoint) pair $\parround{A,B}$ satisfies that
+            $A$ is $\epsilon_1$-excellent and $B$ is $\epsilon_2$-good.
             Let $A' \subseteq A$ with $\parstraight{A'} \geq \epsilon_3 \parstraight{A}$,
             $B' \subseteq B$ with $\parstraight{B'} \geq \epsilon_3 \parstraight{B}$ and
             denote $Z = \parcurly{\parround{a,b} \in \parround{A \times B} \mid a R b \not\equiv t\parround{A,B}}$ and
@@ -763,8 +763,8 @@
                 \item \label{itm:excellence_implies_regularity.2} $\frac{\parstraight{Z'}}{\parstraight{A} \parstraight{B}} <
                     \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$.
             \end{enumerate}
-            In particular, if for some $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$, the pair
-            $\parround{A,B}$ is $\epsilon_0$-uniform, for $\epsilon_0 \leq \frac{\epsilon^2}{2}$, then:
+            In particular, if for some $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$, and $A, B$ are $\epsilon_0$-excellent,
+            for $\epsilon_0 \leq \frac{\epsilon^2}{2}$, then:
             \begin{enumerate}[label=\alph*., ref=\alph*]
                 \item \label{itm:excellence_implies_regularity.a} $\parround{A,B}$ is $\epsilon$-regular.
                 \item \label{itm:excellence_implies_regularity.b} If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
@@ -772,7 +772,7 @@
                     $d \parround{A',B'} \geq 1 - \epsilon$.
             \end{enumerate}
             \begin{proof}
-                Let $U = \parcurly{a \in A \mid \parstraight{\overline{B}_{B,a}} > \epsilon_1 \parstraight{A}}$, i.e. the set
+                Let $U = \parcurly{a \in A \mid t(a,B) \not\equiv t(A,B)}$, i.e.~the set
                 of exceptional vertices $a \in A$.
                 Then,
                 \[
@@ -782,7 +782,10 @@
                 \[
                     Z' \subseteq U \times B' \cup \bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}
                 \]
-                Notice that, if $a \in A \setminus U$, then $\parstraight{\overline{B}_{B,a}} < \epsilon_2 \parstraight{B}$, so
+                Notice that, by $\epsilon_1$-excellence of $A$, $|U| < \epsilon_1 |A|$.
+                Furthermore, by $\epsilon_2$-goodness of $B$,
+                if $a \in A \setminus U$, then $\parstraight{\overline{B}_{B,a}} < \epsilon_2 \parstraight{B}$.
+                So,
                 \[
                     \parstraight{Z} < \epsilon_1 \parstraight{A} \parstraight{B} + \parstraight{A} \epsilon_2 \parstraight{B}
                 \]
@@ -805,8 +808,6 @@
                 proving \dref{itm:excellence_implies_regularity.2}.
                 Let's now prove \dref{itm:excellence_implies_regularity.a} and \dref{itm:excellence_implies_regularity.b}.
                 First of all, notice that:
-                \todo{This only works so nice when $A$ and $B$ are disjoint. Check what happens when they are not.
-                    Something more on the line of $d\parround{A,B} > 1 - 4 \parround{\epsilon_1 + \epsilon_2}$}
                 \begin{itemize}
                     \item \underline{if $t\parround{A,B} = 1$}, then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
                         and $d \parround{A',B'} > 1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$, which follows
@@ -815,7 +816,7 @@
                         Thus,
                         \begin{align*}
                             \parstraight{d \parround{A,B} - d \parround{A',B'}}
-                                & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B'} - d \parround{A,B}} \\
+                                & = \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B'} - d \parround{A,B}} \\
                                 & < \max \parcurly{ 1 - \parround{1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}},
                                     1 - \parround{1 - \epsilon_1 - \epsilon_2}} \\
                                 & = \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}
@@ -825,7 +826,7 @@
                         Thus,
                         \begin{align*}
                             \parstraight{d \parround{A,B} - d \parround{A',B'}}
-                                & \leq \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
+                                & = \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
                                 & < \max \parcurly{\parround{\epsilon_1 + \epsilon_2}, \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}} \\
                                 & = \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}
                         \end{align*}
