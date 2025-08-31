@@ -25,8 +25,8 @@
     \end{definition}
 
     Of course, the most desirable testers are those with lower query complexity.
-    A class of particular interest is that of testers which complexity does not grow with the size of the
-    graph.
+    A class of particular interest is that of testers whose complexity does not grow with the size of the
+    graph $G$.
 
     \begin{definition}
         We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
@@ -47,8 +47,39 @@
     is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
     not give false negatives.
 
-    Towards Alon \& Shapira Theorem,~\cite{efficient_testing_of_large_graphs} shows that $H$-freeness is testable, where
-    we note that $H$-freeness is an hereditary property that will be the focus of our attention later in the section.
+    Towards Alon \& Shapira Theorem,~\cite{efficient_testing_of_large_graphs} shows that \emph{$H$-freeness} is testable.
+    A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in $G$.
+    Clearly, $H$-freeness is an hereditary property, and it will be the focus of our attention later in the section.
+
+    Both~\cite{} and~\cite{} made use of what it has become known as the ‘Strong Regularity lemma’.
+    The Strong Regularity Lemma is a stronger version of Szemer\'edi's Regularity Lemma.
+    It features a partition and one refinement of it, both regular, with the second having a stronger regularity then
+    the first one.
+    The partition's regularity can be any given value, and the refinement's regularity is a function
+    on the number of pairs of the first partition.
+    Again, such function can be any \say{reasonable} one (See~\cite{efficient_testing_of_large_graphs}[Lemma 4.1]).
+    The goal of this strenghthened version of the regularity lemma is to be able to deal with the counting of the
+    induced copies of graphs within G. Indeed, in the usual regularity lemma, theorem ~\ref{}, there are irregular
+    pairs of clusters.
+    Recall that these irregular pairs are unavoidable (see the comment in the introduction, due to the possible presence
+    of a large half-graph).
+    Since there is no control on the edges of the irregular pairs (the only information is that they are not regular,
+    which is not very restrictive), it is hard to know how the induced copies behave when some of the edges or non-edges
+    should belong to these irregular pairs.
+    See … (put the example of the irregular pairs from the book of Zhao, or put the example that we developed regarding
+    the induced path with 4 vertices), where each modification of the edges withing the irregular pair will shift
+    induced copies of $P_4$, and thus, it is not completely clear how to eliminate those copies.
+
+    In order to solve these technical challanges, Alon …. and Szegedy \cite[Theorem~]{} applied the regularity lemma
+    twice, refining an already regular partition, in order to gain control on most of the parts of the refined
+    (aquí pots explicar amb una mica de bla bla bla l statement).
+    However, this implies that the number of parts in the final refinement increases.
+    \footnote{As the reader might have guess, there is a \emph{weak} version of the regularity lemma, in which the
+        number of parts is much smaller, but less information can be gathered from the partition. This result can be found
+        in \cite{} and, together with the regular and the strong version of the regularity lemma, can be seen as one of a
+        sequence of many possible regularity lemmas with varying strength \cite{regulary lemma for the analyst, lov szegedy}.}
+
+    %%%%
     This requires the use of the so-called Strong Regularity Lemma\footnote{It is a
         stronger version of Szemer\'edi's Regularity Lemma, and it is shown in Lemma 4.1 of~\cite{efficient_testing_of_large_graphs}.
         It features a partition and one refinement of it, both regular,
@@ -65,12 +96,30 @@
     general setting~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}.
     Then, \Cref{thm:alon_and_shapira_theorem} is a generalization of the results for $H$-freeness to all
     hereditary properties.
+    %%%%
 
     A natural solution in order to avoid such immense bound from the Regularity Lemma is to restrict the problem
-    to a favorable class of graphs, for example these with bounded VC-dimension (See \Cref{def:VC_dimension}).
+    to a favorable class of graphs, for example, restricting to the class of graphs with bounded VC-dimension
+    (See \Cref{def:VC_dimension}).
+    %%START
     In the context of bipartite graphs with bounded VC-dimension,~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}
     shows a family of regularity lemmas (from weaker to stronger than the Szemer\'edi's) which bound on the number of parts
     is only polynomial in $\epsilon^{-1}$.
+    %%END
+
+    A first result in that direction, with the focuss on bipartite graphs, appeared in \cite{??}, where the bound on the
+    number of parts of the regular partition is greatily improved, and also the information that each regular pair
+    is either almost or almost empty of edges is given.
+    The version where no restriction was placed on the graph G was given in \cite{??},
+    and the one with the best bounds in this context is given by
+    the~\cite[theorem ..]{fox suk…},
+    which we quote below;
+
+    \begin{theorem}
+    \end{theorem}
+
+    i hi poses les cotes.
+
     The author uses the stronger version to prove testability of $H$-freeness, with a much lower query complexity.
     \todo{Lluis, imagino que no ho diu aixó ultim al paper, pero está clar que baixa, no?}
     Then,~\cite{??} shows a similar result but generalizing to all graphs with bounded VC-dimension,
@@ -78,9 +127,23 @@
     These last two results use the so-called Ultra Strong Regularity Lemma, in which (most of) the resulting partition
     pairs have density either at most $\epsilon$ or at least $1 -\epsilon$, which they call \say{$\epsilon$-homogeneous}.
 
+    %%START
     Still, the class of graphs with bounded VC-dimension does not avoid irregular pairs, and thus neither avoids
     the associated increase in parts when further refining the partition when proving the testability of $H$-freeness
     (which is a standard procedure to deal with such pairs~\cite{efficient_testing_of_large_graphs}).
+    %%END
+
+    Note that, even with the problem of getting better bounds in the regularity lemma addressed, the regular partitions
+    of graphs with bounded VC-dimension may contain irregular pairs (Indeed, the half-graph itself has bounded
+    VC-dimension).
+    The lack of irregular pairs in the class of stable graphs, allows us to use Theorem~\ref{??}
+    (regularity lemma for stable graphs) to give an straightforward argument that proves that  being (induced)
+    H-free is testable, with one-sided error, with some explicit (and more reasonable) bounds than the ones given by
+    Theorem~\ref{??} (alon shapira).
+    The algorithm is given as Algorithm 1, the proof of the correctness and its explanation is given just before.
+    Let us remark that using l’esquema de l’Alon-…szegedy usant el resultat per la bounded VC.-dimension, one could be
+    able to obtain bounds on the … of the type … which are better than … For further discussion the reader is referred
+    to the end of the section (posarem alguna cosa per dir que el del irregular pairs, de fet, permet dir més).
 
     Now, by moving to a subclass of graphs with bounded VC-dimension, the class of stable graphs,
     all these difficulties are easily avoided by using the Stable Regularity Lemma instead.
@@ -91,9 +154,9 @@
     Ultra Strong Regularity Lemma.
     It is an open problem whether the bound from the Stable Regularity Lemma can be improved~\cite{julia_cositas}.
 
-    The remaining of this section will be dedicated to the construction of an $\epsilon$-test for \emph{$H$-freeness} in stable graphs.
-    A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in $G$.
-    Thus, the given $\epsilon$-test needs to be able to distinguish between graphs that are $H$-free and graphs that
+    The remaining of this section will be dedicated to the construction of an $\epsilon$-test for $H$-freeness in stable graphs.
+    %A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in $G$.
+    Such an $\epsilon$-test needs to be able to distinguish between graphs that are $H$-free and graphs that
     are $\epsilon$-far from it, with some error.
     In fact, our $\epsilon$-test will only have one-sided error, as if the input graph is $H$-free the tester will
     report so with probability $1$.
@@ -125,6 +188,7 @@
         An important property of regularity, which is needed for the proof of the theorem, is that the regularity is
         partially maintained when moving to subsets.
         Not only that, but it also ensures that the density of the pair does not change too much.
+        \todo{Possibly move this to section 2.}
 
         \begin{lemma}[Lemma 3.1 in~\cite{efficient_testing_of_large_graphs}] \label{lem:regularity_is_transitive}
             Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
@@ -305,10 +369,13 @@
         Notice that this same result can be proved in the general context instead of only for stable graphs
         as the original Theorem 5.1 from~\cite{efficient_testing_of_large_graphs} proves.
         The difference is that the resulting $\eta$ is much larger (although not given explicitly).
-        \todo{Explain where is the improvement (irregular pairs, partition size, etc.)}
+        The main reasons of such an improvement, as mentioned earlier, is that neither a double partition is required to
+        elude irregular pairs, neither the bound on the number of parts is a tower of powers.
+        This allows the resulting set of parts $A_{i_1}, \dots, A_{i_\ell}$, the ones used as a restricted copy of $H$ in $G$
+        in the previous theorem, to be a larger proportion of the whole graph, and thus inducing more copies of $H$.
 
         \begin{remark}
-            A more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
+            We now provide a more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
             \[
                 \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
                     \cdot \delta^{\frac{\ell(\ell-1)}{2}}
@@ -319,48 +386,62 @@
 
     \subsection{The Algorithm} \label{subsec:subsection_6.2}
 
-        Now we have all the tools needed to build our $\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given
-        graph $H$ of size $\ell$.
-        See \Cref{alg:h-freeness_tester} for pseudo-code of the steps that $\mathcal{A}$ follows to make its decision.
+        Now we have all the tools needed to build an $\epsilon$-test $\mathcal{A}$, which decides
+        $H$-freeness for a given graph $H$ of size $\ell$, in the context of graphs with the non-$k_*$-order property.
+
+        $\mathcal{A} = \mathcal{A}(H,\epsilon,k_*)$ works as follows.
+        Given a graph $H$, with all edges known, a natural number $k_*$, a real number $\epsilon$, and a graph $G$ with
+        the non-$k_*$-order property, whose edges are unknown, the algorithm computes $\ell = |H|$, and the value
+        $t = \frac{\ell \log\parround{\frac{2}{3}}}
+            {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}$.
+        It then samples $t$ different vertices from $G$ uniformly at random.
+        $\mathcal{A}$ queries all edges from the sampled set, and checks whether a copy of $H$ as an induced
+        subgraph can be found in it.
+        If a copy of $H$ is found, then $\mathcal{A}$ accepts $G$.
+        Otherwise, $\mathcal{A}$ rejects it.
+        See \Cref{alg:h-freeness_tester} for a more detailed step to step description of $\mathcal{A}$.
 
         \begin{algorithm}[H]
             \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given graph $H$ of size $\ell$}
             \label{alg:h-freeness_tester}
             \begin{algorithmic}[1]
-                \Require a graph $G$ of size $n$ with non-$k_*$-order property
-                \State $t \leftarrow \frac{\ell \log\parround{\frac{2}{3}}}
-                    {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}$
-                \If{$n < \ell$}
-                    \State return 0 \label{line:G_smaller_then_H}
-                \ElsIf{$n < t$}
-                    \State query all edges in $G$
+                \Require a graph $H$ of size $\ell$, a natural number $k_*$ and a real number $\epsilon > 0$.
+                \Require an oracle $\mathcal{O}$ accepting queries of whether two vertices of a graph $G$ are adjacent.
+                    The graph $G$ has the non-$k_*$-order property, and only its size $n$ is known.
+                \State $t \leftarrow \ell \log\parround{\frac{2}{3}} /
+                    \log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}$ \Comment{
+                        Compute sample size $t$}
+                \If{$n < \ell$} \Comment{Check if $G$ is large enough to contain $H$}
+                    \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:G_smaller_then_H}
+                \ElsIf{$n < t$} \Comment{Check if $G$ is small enough to query all edges}
+                    \State query all pairs of vertices of $G$ to $\mathcal{O}$
                     \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in G$ such that
                             $\parcurly{v_{i_1}, \dots, v_{i_\ell}}$ induces a copy of $H$ in $G$}
-                        \State return 1 \label{line:G_small_enough_found_H}
+                        \State $\mathcal{A}$ \emph{accepts} $G$ \label{line:G_small_enough_found_H}
                     \Else
-                        \State return 0 \label{line:G_small_enough_not_found_H}
+                        \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:G_small_enough_not_found_H}
                     \EndIf
-                \Else \label{line:random_sampling}
+                \Else \label{line:random_sampling} \Comment{Sample $t$ vertices uniformly at random, without repetitions}
                     \State $S \leftarrow \emptyset$
                     \While{$i \leq t$}
                         \State $s_{i} \sim G$
-                        \While{$s_i \in S$}
+                        \While{$s_i \in S$} \Comment{Repeat until a new vertex is sampled}
                             \State $s_{i} \sim G$
                         \EndWhile
                         \State $S \leftarrow S \cup \parcurly{s_i}$
                     \EndWhile
-                    \State query all edges induced by the vertex set $S$
+                    \State query all pairs of vertices of $S$ to $\mathcal{O}$
                     \If{$\exists v_1, \dots, v_\ell \in S$ such that
                             $\parcurly{v_1, \dots, v_\ell}$ induces a copy of $H$ in $G$}
-                        \State return 1 \label{line:found_H}
+                        \State $\mathcal{A}$ \emph{accepts} $G$ \label{line:found_H}
                     \Else
-                        \State return 0 \label{line:not_found_H}
+                        \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:not_found_H}
                     \EndIf
                 \EndIf
             \end{algorithmic}
         \end{algorithm}
 
-        Indeed, $\mathcal{A}$ is an $\epsilon$-test.
+        We now proceed to prove that, indeed, $\mathcal{A}$ is an $\epsilon$-test.
         If the input graph $G$ is $H$-free, then the algorithm returns $0$, either because the graph $G$ is too small to
         contain $H$ (\cref{line:G_smaller_then_H}) or because all attempts of finding $H$ as an induced subgraph of $G$
         failed (either \cref{line:G_small_enough_not_found_H} or \cref{line:not_found_H}).
