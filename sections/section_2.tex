@@ -75,12 +75,12 @@
         $e(X,Y)$, but they are counted in the denominator as \say{possible edges}.
         On the other hand, edges between vertices in the intersection $X \cap Y$ are counted twice both in $e(X,Y)$
         and $\parstraight{X}\parstraight{Y}$.
-        However, as this thesis deals with pairs of (non-necessarily different) parts of a partition of a vertex set,
-        we only have to deal with two cases: either $X$ and $Y$ are disjoint, or $X = Y$.
+        However, we will only be interested in knowing the exact proportion of edges in a pair in two specific cases:
+        either when $X$ and $Y$ are disjoint, or when they are equal.
         The first case has no problems, while for the second case we note the following.
 
         \begin{remark} \label{rmk:density_vs_real_density}
-            If $X$ is a subset of vertices of a graph $G$ such that $X \geq 2$, then the proportion of possible edges
+            If $X$ is a subset of vertices of a graph $G$ such that $|X| \geq 2$, then the proportion of possible edges
             between vertices in $X$ that are actually present in $G$ is at most twice the density $d(X, X)$.
             That is,
             \[
@@ -94,7 +94,7 @@
                     \leq \frac{\parstraight{E_X}}{{|X| \choose 2}}
                     \leq 2 d(X, X)
             \]
-            At the same time, the proportion of possible edges between vertices in $X$ that are actually not present
+            This also implies that the proportion of possible edges between vertices in $X$ that are actually not present
             in $G$ lies between $1 - 2 d(X,X)$ and $1 - d(X,X)$.
         \end{remark}
 

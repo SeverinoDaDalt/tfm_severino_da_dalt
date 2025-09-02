@@ -285,7 +285,7 @@
         \end{lemma}
 
         \begin{remark}
-            The non-recursive form of $\epsilon$ and $\eta$ for $\ell > 1$ is:
+            The non-recursive form of $\epsilon$ and $\eta$ for $\ell \geq 1$ is:
             \begin{align*}
                 \epsilon(\delta, \ell) & = \bbparround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \cdot \delta^{\ell-1} \\
                 \eta(\delta, \ell) & \geq \bbparround{\frac{1}{2}}^{\frac{\ell^3+5\ell-6}{6}} \cdot \delta^{\frac{\ell(\ell-1)}{2}}
@@ -402,7 +402,7 @@
         See \Cref{alg:h-freeness_tester} for a more detailed step to step description of $\mathcal{A}$.
 
         \begin{algorithm}[H]
-            \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness for a given graph $H$ of size $\ell$}
+            \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness}
             \label{alg:h-freeness_tester}
             \begin{algorithmic}[1]
                 \Require a graph $H$ of size $\ell$, a natural number $k_*$ and a real number $\epsilon > 0$.
@@ -453,17 +453,17 @@
         By letting $t_* = \frac{\log\parround{\frac{2}{3}}}
             {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}$
         the probability of finding at least one copy of $H$ is at least $\frac{2}{3}$.
-        The total number of vertices included in the samples is at most (as there may be repetitions) $t_* \coloneqq t \cdot \ell$,
-        and this probability is at most as high as simply querying all the edges within a sample of vertices of size
-        $t_*$, and checking whether $H$ appears as an induced subgraph of $G$.
-        For completeness, we also need to ensure that $n \geq t_*$.
-        If $n < t_*$, then the algorithm simply queries all edges of $G$, checks whether $H$ appears as an induced subgraph
+        The total number of vertices included in the samples is at most (as there may be repetitions) $t \coloneqq t_* \cdot \ell$.
+        Hence, querying for all pairs of vertices in a random sample of $t$ vertices has strictly more probabilities of
+        finding a copy of $H$ appearing as an induced subgraph of $G$.
+        For completeness, we also need to ensure that $n \geq t$.
+        If $n < t$, then the algorithm simply queries all edges of $G$, checks whether $H$ appears as an induced subgraph
         of $G$ and reports accordingly (either \cref{line:G_small_enough_found_H} or \cref{line:G_small_enough_not_found_H}).
 
         The resulting query complexity of the algorithm $\mathcal{A}$ can bounded by
         \[
-            q \leq {t_* \choose 2}
-              \leq \Parround{ \frac{\log\parround{\frac{2}{3}}}
+            q \leq {t \choose 2}
+              \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
                    {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2
         \]
 

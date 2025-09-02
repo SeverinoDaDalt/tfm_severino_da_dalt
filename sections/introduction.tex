@@ -1,12 +1,26 @@
 \section{Introduction} \label{sec:introduction}
 
+    \subsection{Szemer\'edi's Regularity Lemma}
+
     Szemer\'edi's Regularity Lemma~\cite{regular_partitions_of_graphs} is a powerful tool in graph theory,
-    stating that any sufficiently large graph can have its vertex set decomposed into an equitable partition such that most,
+    stating that every graph can have its vertex set decomposed into an equitable partition such that most,
     but not all, pairs of parts are \emph{regular}.
-    A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with many
-    applications in extremal graph theory.
-    On top of the presence of a small number of irregular pairs, a major drawback of the lemma is the immense
-    bound on the required number of parts, which grows as a tower of exponentials whose height depends on the regularity parameter.
+    A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with
+    many applications in extremal graph theory.
+
+    % \subsection{Applications}
+    This theorem has seen applications in many areas of mathematics
+    (see an early survey from the mid 1990's~\cite{survey of regularity lemma}), such as extremal graph
+    theory(such as~\cite{kuhn ostus, ...}), graph limits, number theory (Szemer\'edi's Theorem), Ramsey Theory,
+    and other results in combinatorics.
+    Also in computer science, such as in property testing.
+
+    % \subsection{Problems with SzRL}
+    Since this result is applicable to ANY graph and the number of parts of this partition with good properties is constant,
+    it should not be surprising that some limitations arise.
+    Namely, the (enormously) large bound on the required number of parts is a tower of
+        exponentials ($2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$ with height depending on the regularity parameter)
+    whose height depends on the regularity parameter, but also the presence of some irregular pairs.
 
     In the general setting, both limitations have been proven to be unavoidable.
     In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma} the author shows that there exist a family of graphs
@@ -21,14 +35,30 @@
     Having seen this unavoidability, it is natural to ask for the underlying reasons of those limitations and which
     additional conditions can be imposed or levied so that the parameters can be improved.
 
-    In this context, one of the first attempts was to make the regularity condition weaker so that the bound on the
-    number of parts can be improved: this is now known as
-    \emph{the weak regularity lemma}~\cite{quick_approximation_to_matrices_and_applications} and,
-    besides its own applications, allows to put the SzRL in the context of a spectra of regularity lemmas, with
-    different strengths (the stronger the conclusion the larger the number of
-    parts)~\cite{szemeredis_lemma_for_the_analyst, regularity_partitions_and_the_topology_of_graphons};
-    a notable example on the other direction (making the regularity lemma stronger) allows its use for Property Testing
-    as it is suitable for the study of induced subgraphs~\cite{efficient_testing_of_large_graphs}.
+
+    \subsection{Versions of SzRL}
+    % \subsection{Weak and strong versions}
+    In this context, one can aim at reducing the number of parts by relaxing the property required on the partition
+    by the statement.
+    One of the first successful implementations of such approach was given
+    by~\cite[Theorem ??]{quick_approximation_to_matrices_and_applications} which is known as
+    \emph{the weak regularity lemma}.
+    Towards the other direction one can strengthen the property on the
+    partition~\cite[Theorem ??]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
+    The previous results can be thought as three instances of a family of regularity lemmas, with varying
+    strength~\cite{szemeredis_lemma_for_the_analyst, regularity_partitions_and_the_topology_of_graphons}.
+
+    % \subsection{Subclasses versions}
+    Now, another way of tackling the limitations of the SzRL is to reduce the studied graphs to an appropriate subclass.
+    A relevant example of this approach is the class of graphs with bounded VC-dimension.
+    For this class of graphs the bound on the number of parts can be greatly reduced.
+    Indeed, if a given graph has VC dimension bounded by $d$, we can obtain a regular partition with only
+    $\bbparround{\frac{1}{\epsilon}}^f(d)$ parts, where $\epsilon$ is the regularity parameter.
+
+
+    \subsection{Property Testing}
+
+
 
     Another option is to restrict the class of graphs where we want to find a regular partition.
     An example of this effort is the class of graphs with bounded VC-dimension: this concept was introduced
