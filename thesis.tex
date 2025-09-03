@@ -30,11 +30,9 @@
 \usepackage{caption}
 
 
-% BIBLIOGRAPHY TODO: use "plain" style or "abbrv"
-% \bibliographystyle{plain}
-% \bibliography{references}
 \usepackage[
-    backend=biber
+    backend=biber,
+    style=trad-abbrv
 ]{biblatex}
 \addbibresource{sections/bibliography.bib}
 
@@ -158,6 +156,7 @@ Thanks to...}
 
 % \input{sections/bibliography}
 \printbibliography
+
 
 \input{sections/appendix}
 

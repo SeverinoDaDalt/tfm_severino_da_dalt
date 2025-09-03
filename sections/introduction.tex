@@ -11,19 +11,19 @@
     % \subsection{Applications}
     This theorem has seen applications in many areas of mathematics
     (see an early survey from the mid 1990's~\cite{survey of regularity lemma}), such as extremal graph
-    theory(such as~\cite{kuhn ostus, ...}), graph limits, number theory (Szemer\'edi's Theorem), Ramsey Theory,
-    and other results in combinatorics.
-    Also in computer science, such as in property testing.
+    theory (such as~\cite{kuhn ostus, ...}), graph limits, number theory (Szemer\'edi's Theorem), Ramsey Theory,
+    in combinatorics, and in areas of computer science, such as property testing.
 
     % \subsection{Problems with SzRL}
-    Since this result is applicable to ANY graph and the number of parts of this partition with good properties is constant,
+    Since this result is applicable to \emph{any} graph and the number of parts of this partition with good properties is constant,
     it should not be surprising that some limitations arise.
-    Namely, the (enormously) large bound on the required number of parts is a tower of
-        exponentials ($2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$ with height depending on the regularity parameter)
-    whose height depends on the regularity parameter, but also the presence of some irregular pairs.
+    Firstly, not necessarily all pairs are regular, but most crucially, the required upper bound on the number of parts is
+    constant, but very large.
+    More specifically, it is a tower of exponentials (it has the form $2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$)
+    whose height depends on the regularity parameter.
 
     In the general setting, both limitations have been proven to be unavoidable.
-    In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma} the author shows that there exist a family of graphs
+    In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}, Gowers shows that there exists a family of graphs
     for which the lower bound on the number of parts is still a tower of exponentials\footnote{
     To be more specific, the author shows that the number of parts is lower bounded by an exponenetial tower of $2$'s where
         the height of the tower is at least proportional to $\log\parround{1/\epsilon}$.
@@ -35,25 +35,42 @@
     Having seen this unavoidability, it is natural to ask for the underlying reasons of those limitations and which
     additional conditions can be imposed or levied so that the parameters can be improved.
 
-
     \subsection{Versions of SzRL}
     % \subsection{Weak and strong versions}
-    In this context, one can aim at reducing the number of parts by relaxing the property required on the partition
-    by the statement.
+    In order to reduce the bound on the number of parts, one can relax the property required on the partition.
     One of the first successful implementations of such approach was given
-    by~\cite[Theorem ??]{quick_approximation_to_matrices_and_applications} which is known as
+    by~\cite[Theorem 12]{quick_approximation_to_matrices_and_applications} which is now known as
     \emph{the weak regularity lemma}.
     Towards the other direction one can strengthen the property on the
-    partition~\cite[Theorem ??]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
+    partition~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
     The previous results can be thought as three instances of a family of regularity lemmas, with varying
-    strength~\cite{szemeredis_lemma_for_the_analyst, regularity_partitions_and_the_topology_of_graphons}.
+    strength~\cite{regularity_partitions_and_the_topology_of_graphons, szemeredis_lemma_for_the_analyst}.
 
     % \subsection{Subclasses versions}
-    Now, another way of tackling the limitations of the SzRL is to reduce the studied graphs to an appropriate subclass.
-    A relevant example of this approach is the class of graphs with bounded VC-dimension.
+    Now, another way of tackling the limitations of the SzRL is to reduce the scope to an appropriate subclass of graphs.
+    A relevant example of this approach is the class of graphs with bounded VC-dimension;
+    the notion of VC-dimension was firstly introduced by Vapnik \& Chervonenkis
+    in~\cite{the_uniform_convergence_of_frequencies_of_the_appearance_of_events_to_their_probabilities}
+    \hspace{-3pt}\footnote{
+        See~\cite{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
+        for a translated version.}
+    and one can view it as a graph with \say{low complexity} (but not necessarily sparse), the reader can find more
+    details in \Cref{sec:section_3}.
     For this class of graphs the bound on the number of parts can be greatly reduced.
     Indeed, if a given graph has VC dimension bounded by $d$, we can obtain a regular partition with only
-    $\bbparround{\frac{1}{\epsilon}}^f(d)$ parts, where $\epsilon$ is the regularity parameter.
+    $\parround{{1}/{\epsilon}}^{f(d)}$ parts, where $\epsilon$ is the regularity parameter.
+    Furthermore, the low complexity of graphs with bounded VC-dimension, translates into the additional property that the
+    regular pairs are either almost fully connected or almost empty.
+
+    Another class of graphs that has been considered to alleviate the limitations of SzRL is that of the \emph{stable}
+    graphs.
+    The concept of stability originates in Model Theory
+    (see~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
+    A graph is stable if it avoids any copy of the \emph{half-graph} as an induced subgraph, which is a par\dots
+
+    % Decimos: este graph es un bipartido poco random. Conectamos con VC-dimension diciendo que implica bounded VC y
+    % de hecho evitar cualquier bipartido implica bounded VC (cita).
+
 
 
     \subsection{Property Testing}
