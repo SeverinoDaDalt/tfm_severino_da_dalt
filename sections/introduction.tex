@@ -45,6 +45,9 @@
     partition~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
     The previous results can be thought as three instances of a family of regularity lemmas, with varying
     strength~\cite{regularity_partitions_and_the_topology_of_graphons, szemeredis_lemma_for_the_analyst}.
+    This is hinted in~\cite[Lemma 4.1 and its discussion]{szemeredis_lemma_for_the_analyst}, and for example, an even
+    stronger instance in this family is given explicitly in~\cite[Section 5.1 - pg. 439]{regularity_partitions_and_the_topology_of_graphons},
+    where is referred to as an \emph{ultra-strong} regularity lemma.
 
     % \subsection{Subclasses versions}
     Now, another way of tackling the limitations of the SzRL is to reduce the scope to an appropriate subclass of graphs.
@@ -66,10 +69,34 @@
     graphs.
     The concept of stability originates in Model Theory
     (see~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
-    A graph is stable if it avoids any copy of the \emph{half-graph} as an induced subgraph, which is a par\dots
+    A graph is $k$-stable if it avoids any \emph{bi-induced} (See \Cref{def:bi_induced}) copy of the \emph{half-graph}
+    on $2k$ vertices, which is a bipartite graph that behaves in a very \emph{non-quasi-random} way (See~\Cref{fig:half-graph}).
+    In fact,~\cite[Theorem 5.19]{regularity_lemmas_for_stable_graphs} shows that restricting to this class of graphs not only achieves
+    a partition with a bound on the number of parts which is only exponential on $1/\epsilon$, but also completely avoids
+    irregular pairs; the exponent depends on the size of the avoided half-graph.
+    Again, (all) pairs are either almost fully connected or almost empty.
+    This result is the pivotal point of this work, and \Cref{sec:section_5} is devoted to its proof
+    (\Cref{thm:existance_of_regular_partitions}).
 
-    % Decimos: este graph es un bipartido poco random. Conectamos con VC-dimension diciendo que implica bounded VC y
-    % de hecho evitar cualquier bipartido implica bounded VC (cita).
+    Note that the stable graphs is a subclass of graphs with bounded VC-dimension.
+    Indeed, if a graph does not contain a bi-induced copy of a bipartite graph with stable sets of size $\geq k$,
+    then it has VC-dimension strictly bounded by $k$~\cite{regularity_partitions_and_the_topology_of_graphons}.
+    Hence, $k$-stable graphs have VC-dimension strictly bounded by $k$.
+    Additionally, any half-graph has VC-dimension $1$\footnote{
+        Indeed, the fact that the neighbourhoods of the vertices on the same stable set of a half-graph can be
+        ordered by inclusion, and it is a bipartite graph, results in a VC-dimension of $1$.
+        Alternatively, in \cite{regularity_partitions_and_the_topology_of_graphons} it is shown that if a graph does not
+        contain a bi-induced copy of a bipartite graph where the smaller size is k, then it has VC-dimension (strictly)
+        bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.},
+    so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
+
+    Bipartite bounded VC~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}.
+    First general bounded VC~\cite{regularity_partitions_and_the_topology_of_graphons}.
+    Best general bounded VC~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension}.
+    Stable~\cite{regularity_lemmas_for_stable_graphs}.
+
+    % up to here it was compiling with no problem.
+
 
 
 
