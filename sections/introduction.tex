@@ -2,157 +2,217 @@
 
     \subsection{Szemer\'edi's Regularity Lemma}
 
-    Szemerédi's Regularity Lemma~\cite{regular_partitions_of_graphs} is a powerful tool in graph theory,
-    stating that every graph can have its vertex set decomposed into an equitable partition such that most,
-    but not all, pairs of parts are \emph{regular}.
-    A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with
-    many applications in extremal graph theory.
+        Szemerédi's Regularity Lemma~\cite{regular_partitions_of_graphs} is a powerful tool in graph theory,
+        stating that every graph can have its vertex set decomposed into an equitable partition such that most,
+        but not all, pairs of parts are \emph{regular}.
+        A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with
+        many applications in extremal graph theory.
+        The strength of the quasi-random properties is measured with the regularity parameter $\epsilon$.
 
-    % \subsection{Applications}
-    This theorem has seen applications in many areas of mathematics
-    (see an early survey from the mid 1990's~\cite{survey of regularity lemma}), such as extremal graph
-    theory (such as~\cite{kuhn ostus, ...}), graph limits, number theory (Szemer\'edi's Theorem), Ramsey Theory,
-    in combinatorics, and in areas of computer science, such as property testing.
+        % \subsection{Applications}
+        This theorem has seen applications in many areas of mathematics
+        (see an early survey from the mid 1990's~\cite{the_regulariy_lemma_and_its_applications_in_graph_theory}),
+        such as graph
+        theory~\cite{proof_of_the_alon–yuster_conjecture,
+            on_universality_of_graphs_with_uniformly_distributed_edges,
+            hamilton_decompositions_of_regular_expanders_applications,
+            proof_of_a_tiling_conjecture_of_komlos,
+            the_approximate_loebl_komlos_sos_conjecture_IV,
+            the_approximate_loebl_komlos_sos_conjecture_III,
+            the_approximate_loebl_komlos_sos_conjecture_II,
+            the_approximate_loebl_komlos_sos_conjecture_I}\footnote{Aside from the results that directly apply the SzRL,
+            there are many that either use suitable variants of SzRL or are deeply inspired by its ideas.},
+        limits of dense graphs~\cite{convergent_sequences_of_dense_graphs_I,
+            convergent_sequences_of_dense_graphs_II,
+            szemeredis_lemma_for_the_analyst,
+            regularity_partitions_and_the_topology_of_graphons} (See the book~\cite{large_networks_and_graph_limits}),
+        number theory~\cite[Szemerédi's Theorem]{on_sets_of_integers_containing_k_elements_in_arithmetic_progression},
+        Ramsey Theory~\cite{threshold_functions_for_ramsey_properties,
+            three-color_ramsey_numbers_for_paths,
+            ramsey_turan_theory,},
+        in combinatorics, and the regularity method has been generalized to hypergraphs~\cite{
+            regularity_lemma_for_k_uniform_hypergraphs,
+            regular_partitions_of_hypergraphs_regularity_lemmas,
+            the_counting_lemma_for_regular_k_uniform_hypergraphs,
+            a_variant_of_the_hypergraph_removal_lemma,
+            hypergraph_regularity_and_the_multidimensional_szemeredi_theorem}.
+        Also, it has seen important applications to computer science, such as in property testing (See~\Cref{subsec:subsection_1.3}).
+        This brief summary is by no means an exhaustive list of the many applications that has seen the Regularity Lemma as
+        a key component.
 
-    Originally proved by Szemerédi's as an auxiliary lemma in the proof of Erd\H{o}s \& Turán
-    conjecture~\cite{on_sets_of_integers_containing_no_four_elements_in_arithmetic_progression}.
-    $(6, 3)$-problem, [111], bound on edges of $3$-uniform hypergraph with no $6$ points with more than $3$ triple.
-    Ramsey-Turán for $K_4$, [125], bound on the number of edges of a graph with $n$ vertices and, no $K_4$ and $o(n)$
-    independent vertices.
-    Rödl 1986, [107], which proves that any large enough graph with a given random-like property satisfy that it contains
-    any small enough subgraph as an induced copy.
-    % https://www.ime.usp.br/~spschool2016/wp-content/uploads/2016/07/Komlos-Shokoufandeh-Simonovits-Szemeredi.pdf
+        % \subsection{Problems with SzRL}
+        Since this result is applicable to \emph{any} graph and the number of parts of this partition with good properties is constant,
+        it should not be surprising that some limitations arise.
+        Firstly, not necessarily all pairs are regular, but most crucially, the required upper bound on the number of parts is
+        constant, but very large.
+        More specifically, it is a tower of exponentials (it has the form $2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$)
+        whose height depends on the regularity parameter $\epsilon$.
 
-
-    % \subsection{Problems with SzRL}
-    Since this result is applicable to \emph{any} graph and the number of parts of this partition with good properties is constant,
-    it should not be surprising that some limitations arise.
-    Firstly, not necessarily all pairs are regular, but most crucially, the required upper bound on the number of parts is
-    constant, but very large.
-    More specifically, it is a tower of exponentials (it has the form $2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$)
-    whose height depends on the regularity parameter.
-
-    In the general setting, both limitations have been proven to be unavoidable.
-    In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}, Gowers shows that there exists a family of graphs
-    for which the lower bound on the number of parts is still a tower of exponentials\footnote{
-    To be more specific, the author shows that the number of parts is lower bounded by an exponenetial tower of $2$'s where
-        the height of the tower is at least proportional to $\log\parround{1/\epsilon}$.
-        Meanwhile, in the usual proof of the theorem, the upper bound on the height of the tower is proportional to
-        $\epsilon^{-5}$.
-    }.
-    On the other hand, it is folklore knowledge that large-enough half-graphs present irregular pairs in any
-    regular partition (\cite{irregular_pairs_in_half_graphs_szemeredi_regularity} gives a written proof of this fact).
-    Having seen this unavoidability, it is natural to ask for the underlying reasons of those limitations and which
-    additional conditions can be imposed or levied so that the parameters can be improved.
+        In the general setting, both limitations have been proven to be unavoidable.
+        In~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}, Gowers shows that there exists a family of graphs
+        for which the lower bound on the number of parts is still a tower of exponentials\footnote{
+        To be more specific, the author shows that the number of parts is lower bounded by an exponenetial tower of $2$'s where
+            the height of the tower is at least proportional to $\log\parround{1/\epsilon}$.
+            Meanwhile, in the usual proof of the theorem, the upper bound on the height of the tower is proportional to
+            $\epsilon^{-5}$.
+        }.
+        On the other hand, it is folklore knowledge that large-enough half-graphs present irregular pairs in any
+        regular partition (\cite{irregular_pairs_in_half_graphs_szemeredi_regularity} gives a written proof of this fact).
+        Having seen this unavoidability, it is natural to ask for the underlying reasons of those limitations and which
+        additional conditions can be imposed or levied so that the parameters can be improved.
 
     \subsection{Versions of SzRL}
-    % \subsection{Weak and strong versions}
-    In order to reduce the bound on the number of parts, one can relax the property required on the partition.
-    One of the first successful implementations of such approach was given
-    by~\cite[Theorem 12]{quick_approximation_to_matrices_and_applications} which is now known as
-    \emph{the weak regularity lemma}.
-    Towards the other direction one can strengthen the property on the
-    partition~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
-    The previous results can be thought as three instances of a family of regularity lemmas, with varying
-    strength~\cite{regularity_partitions_and_the_topology_of_graphons, szemeredis_lemma_for_the_analyst}.
-    This is hinted in~\cite[Lemma 4.1 and its discussion]{szemeredis_lemma_for_the_analyst}, and for example, an even
-    stronger instance in this family is given explicitly in~\cite[Section 5.1 - pg. 439]{regularity_partitions_and_the_topology_of_graphons},
-    where is referred to as an \emph{ultra-strong} regularity lemma.
 
-    % \subsection{Subclasses versions}
-    Now, another way of tackling the limitations of the SzRL is to reduce the scope to an appropriate subclass of graphs.
-    A relevant example of this approach is the class of graphs with bounded VC-dimension;
-    the notion of VC-dimension was firstly introduced by Vapnik \& Chervonenkis
-    in~\cite{the_uniform_convergence_of_frequencies_of_the_appearance_of_events_to_their_probabilities}
-    \hspace{-3pt}\footnote{
-        See~\cite{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
-        for a translated version.}
-    and one can view it as a graph with \say{low complexity} (but not necessarily sparse), the reader can find more
-    details in \Cref{sec:section_3}.
-    For this class of graphs the bound on the number of parts can be greatly reduced.
-    Indeed, if a given graph has VC dimension bounded by $d$, we can obtain a regular partition with only
-    $\parround{{1}/{\epsilon}}^{f(d)}$ parts, where $\epsilon$ is the regularity parameter.
-    Furthermore, the low complexity of graphs with bounded VC-dimension, translates into the additional property that the
-    regular pairs are either almost fully connected or almost empty.
+        In order to reduce the bound on the number of parts, one can relax the property required on the partition.
+        One of the first successful implementations of such approach was given
+        by~\cite[Theorem 12]{quick_approximation_to_matrices_and_applications} which is now known as
+        \emph{the weak regularity lemma}.
+        Towards the other direction one can strengthen the property on the
+        partition~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, at the cost of increasing the number of parts.
+        This is known as the \emph{strong regularity lemma} and it is particularly useful when working with induced
+        subgraphs (more on this in \Cref{subsec:subsection_1.3}).
+        The previous results can be thought as three instances of a family of regularity lemmas, with varying
+        strength~\cite{regularity_partitions_and_the_topology_of_graphons, szemeredis_lemma_for_the_analyst}.
+        This is hinted in~\cite[Lemma 4.1 and its discussion]{szemeredis_lemma_for_the_analyst}, and for example, an even
+        stronger instance in this family is given explicitly in~\cite[Section 5.1 - pg. 439]{regularity_partitions_and_the_topology_of_graphons},
+        where is referred to as an \emph{ultra-strong} regularity lemma.
 
-    Another class of graphs that has been considered to alleviate the limitations of SzRL is that of the \emph{stable}
-    graphs.
-    The concept of stability originates in Model Theory
-    (see~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
-    A graph is $k$-stable if it avoids any \emph{bi-induced} (See \Cref{def:bi_induced}) copy of the \emph{half-graph}
-    on $2k$ vertices, which is a bipartite graph that behaves in a very \emph{non-quasi-random} way (See~\Cref{fig:half-graph}).
-    In fact,~\cite[Theorem 5.19]{regularity_lemmas_for_stable_graphs} shows that restricting to this class of graphs not only achieves
-    a partition with a bound on the number of parts which is only exponential on $1/\epsilon$, but also completely avoids
-    irregular pairs; the exponent depends on the size of the avoided half-graph.
-    Again, (all) pairs are either almost fully connected or almost empty.
-    This result is the pivotal point of this work, and \Cref{sec:section_5} is devoted to its proof
-    (\Cref{thm:existance_of_regular_partitions}).
+        % \subsection{Subclasses versions}
+        Now, another way of tackling the limitations of the SzRL is to reduce the scope to an appropriate subclass of graphs.
+        A relevant example of this approach is the class of graphs with bounded VC-dimension;
+        the notion of VC-dimension was firstly introduced by Vapnik \& Chervonenkis
+        in~\cite{the_uniform_convergence_of_frequencies_of_the_appearance_of_events_to_their_probabilities}
+        \hspace{-3pt}\footnote{
+            See~\cite{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
+            for a translated version.}
+        and one can view it as a graph with \say{low complexity} (but not necessarily sparse), the reader can find more
+        details in \Cref{sec:section_3}.
+        For this class of graphs the bound on the number of parts can be greatly reduced.
+        Indeed, if a given graph has VC dimension bounded by $d$, we can obtain a regular partition with only
+        $\parround{{1}/{\epsilon}}^{f(d)}$ parts, where $\epsilon$ is the regularity parameter.
+        Furthermore, the low complexity of graphs with bounded VC-dimension, translates into the additional property that the
+        regular pairs are either almost fully connected or almost empty.
 
-    Note that the stable graphs is a subclass of graphs with bounded VC-dimension.
-    Indeed, if a graph does not contain a bi-induced copy of a bipartite graph with stable sets of size $\geq k$,
-    then it has VC-dimension strictly bounded by $k$~\cite{regularity_partitions_and_the_topology_of_graphons}.
-    Hence, $k$-stable graphs have VC-dimension strictly bounded by $k$.
-    Additionally, any half-graph has VC-dimension $1$\footnote{
-        Indeed, the fact that the neighbourhoods of the vertices on the same stable set of a half-graph can be
-        ordered by inclusion, and it is a bipartite graph, results in a VC-dimension of $1$.
-        Alternatively, in \cite{regularity_partitions_and_the_topology_of_graphons} it is shown that if a graph does not
-        contain a bi-induced copy of a bipartite graph where the smaller size is k, then it has VC-dimension (strictly)
-        bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.},
-    so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
+        The first result for graphs with bounded VC-dimension is a regularity lemma in the context of
+        matrices~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}, which gives
+        a regularity lemma for bipartite graphs.
+        \cite{regularity_partitions_and_the_topology_of_graphons} proves a similar result for (not necessarily bipartite)
+        graphs with bounded VC-dimension.
+        In~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} the authors give
+        an alternative proof obtaining the following result.
 
-    Bipartite bounded VC~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}.
-    First general bounded VC~\cite{regularity_partitions_and_the_topology_of_graphons}.
-    Best general bounded VC~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension}.
-    Stable~\cite{regularity_lemmas_for_stable_graphs}.
+        \begin{theoremA}[Theorem 1.3 in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} for graphs]
+            \label{thm:B}
+            Each graph $G$ with VC-dimension bounded by $k$ admits an equitable partition of its vertex set with at most
+            $c(k)\cdot(1/\epsilon)^{2k+1}$ parts such that all but at most an $\epsilon$-fraction of pairs of parts
+            are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
+        \end{theoremA}
 
-    % up to here it was compiling with no problem.
+        Another class of graphs that has been considered to alleviate the limitations of SzRL is that of the \emph{stable}
+        graphs.
+        The concept of stability originates in Model Theory
+        (See~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
+        A graph is $k$-stable if it avoids any \emph{bi-induced} (See \Cref{def:bi_induced}) copy of the \emph{half-graph}
+        on $2k$ vertices, which is a bipartite graph that behaves in a very \emph{non-quasi-random} way (See~\Cref{fig:half-graph}).
+        In fact, Malliaris \& Shelah showed in~\cite[Theorem 5.19]{regularity_lemmas_for_stable_graphs} that restricting
+        to this class of graphs not only achieves a partition with a bound on the number of parts which is only exponential
+        on $1/\epsilon$, but also completely avoids irregular pairs; the exponent depends on the size of the avoided half-graph.
+        Again, (all) pairs are either almost fully connected or almost empty.
+        This result is the pivotal point of this work, and \Cref{sec:section_5} is devoted to its proof,
+        culminating in \Cref{thm:existance_of_regular_partitions}, which we informally give below.
 
+        \begin{theoremB} \label{thm:A}
+            Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
+            ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such ALL pairs of parts
+            are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
+        \end{theoremB}
 
+        Note that the stable graphs is a subclass of graphs with bounded VC-dimension.
+        Indeed, if a graph does not contain a bi-induced copy of a bipartite graph with stable sets of size $\geq k$,
+        then it has VC-dimension strictly bounded by $k$~\cite{regularity_partitions_and_the_topology_of_graphons}.
+        Hence, $k$-stable graphs have VC-dimension strictly bounded by $k$.
+        Additionally, any half-graph has VC-dimension $1$\footnote{
+            Indeed, the fact that the neighbourhoods of the vertices on the same stable set of a half-graph can be
+            ordered by inclusion, and it is a bipartite graph, results in a VC-dimension of $1$.
+            Alternatively, in \cite{regularity_partitions_and_the_topology_of_graphons} it is shown that if a graph does not
+            contain a bi-induced copy of a bipartite graph where the smaller size is k, then it has VC-dimension (strictly)
+            bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.},
+        so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
 
+        Notice that, in \hyperref[thm:B]{Theorem B} there are no irregular pairs.
+        This fact, suggests that the half-graph has in the need to allow irregular pairs in the partition.
+        On the other hand, the exponent in the bound on the number of parts is exponential on $k$ while,
+        in \hyperref[thm:A]{Theorem A} it is only linear.
+        It is an open question whether the exponential exponent in the bound of \Cref{thm:B} is
+        needed~\cite{julia_wolf_private_comunication}.
 
-    \subsection{Property Testing}
+        % up to here it was compiling with no problem.
 
+    \subsection{Property Testing} \label{subsec:subsection_1.3}
 
+    Property testing is a field of theoretical computer science, concerned about finding low-complexity algorithms
+    for testing (approximate) properties in large objects, such as graphs.
+    These algorithms need to be successful with high probability, and are only required to distinguish between objects
+    that do not satisfy the property, and those which are \say{far} from satisfying it.
+    For the purposes of this thesis, it is useful to formalize these concepts in the context of graphs.
 
-    Another option is to restrict the class of graphs where we want to find a regular partition.
-    An example of this effort is the class of graphs with bounded VC-dimension: this concept was introduced
-    in~\cite{the_uniform_convergence_of_frequencies_of_the_appearance_of_events_to_their_probabilities}\footnote{
-        See~\cite{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
-        for a translated version.}
-    and one can view it as a graph with \say{low complexity} (but not necessarily sparse).
-    The reader can find more details in \Cref{sec:section_3}.
-    For these graphs the number of parts is highly reduced from a tower type to a polynomial in $1/\epsilon$, whose
-    power depends on the bound on the dimension of the graph~\cite{regularity_partitions_and_the_topology_of_graphons,
-        erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension,
-        efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}.
-    Even more, when the graphs have bounded VC-dimension, the density of edge in the regular pairs are either close to $1$,
-    or close to $0$.
-    However, the issue on the presence of irregular pairs remains, as any half-graph has bounded VC-dimension\footnote{
-        Indeed, the fact that the neighbourhoods of the vertices on the same stable set can be ordered by inclusion,
-        prevents the VC-dimension to grow beyond $2$.
-        Alternatively, in \cite{regularity_partitions_and_the_topology_of_graphons} it is shown that if a graph does not
-        contain a bi-induced copy of a bipartite graph where the smaller size is k, then it has VC-dimension (strictly)
-        bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.}.
+    \begin{definition}
+        We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a graph property $\mathcal{P}$ if no adding or
+        removing of up to $\epsilon {|G| \choose 2}$ edges in $G$ results in the graph satisfying the property.
+    \end{definition}
 
-    In this work we focus our attention on the result by Malliaris and Shelah~\cite{regularity_lemmas_for_stable_graphs,
-        notes_on_the_stable_regularity_lemma}
-    which states that, if one cannot find a bi-induced copy of a half-graph, then a regular partition can be found, with
-    not many pairs ($1/\epsilon$ to the power of an exponential on the size of the half-graph), and where no irregular
-    pairs are found.
+    \begin{definition} \label{def:epsilon_test}
+        An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
+        $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
+        satisfies:
+        \begin{enumerate}
+            \item If $G \in \mathcal{P}$, then $P\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
+            \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
+                then $P\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
+        \end{enumerate}
+        The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
+        a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.
+    \end{definition}
 
-    The graphs where no large half-graph can be found are called stable graphs, and their study stems from results in
-    Model Theory and Logic.
-    We shall stress that these stable graphs have, in fact, bounded VC-dimension (since we are forbidding a bi-induced
-    copy of a fixed bipartite graph).
+    Of course, the most desirable testers are those with lower query complexity.
+    A class of particular interest is that of testers whose complexity does not grow with the size of the
+    graph $G$.
 
-    One of the many applications of the regularity lemma for which these bounds on the number of parts become relevant is in
-    \emph{property testing}.
-    A property testing algorithm for a decision problem $P$ is a randomized algorithm that, by querying only a small portion
-    of its input, can distinguish with high probability between objects that satisfy $P$ and those that are \say{far} from
-    satisfying it.
-    For instance, in~\cite{efficient_testing_of_large_graphs} the authors use Szemer\'edi's Regularity Lemma
-    to prove that it is possible to test the property of a graph $G$ being $H$-free (for a fixed graph $H$) using an algorithm
-    which query complexity is independent on the size of the input graph $G$.
+    \begin{definition}
+        We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
+        with a constant query-complexity with respect to the size of the input graph, that is, it only depends on the
+        parameter $\epsilon$.
+    \end{definition}
+
+    In~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}, Alon and Shapira
+    showed that a large class of properties, a subclass of which will be the center of our attention, are testable.
+
+    \begin{theorem}[Alon \& Shapira Theorem in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
+        \label{thm:alon_and_shapira_theorem}
+        Every hereditary graph property is testable (with one-sided error).
+    \end{theorem}
+
+    A property is said to be \emph{hereditary} if it is preserved under taking induced subgraphs.
+    A property is testable \emph{with one-sided error} if the first condition in \Cref{def:epsilon_test}
+    is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
+    not give false negatives.
+
+    % - Alon Shapira uses SRL
+    % - Limitations are inherited
+    % - H-freeness is hereditary and was the first step in the general case (still SRL)
+    % - Since strength of reducing to stable case, we use this to H-free tester
+    % - Similar result, but dealing with irregular pairs, can be done for bounded VC-dimension
+
+    A stepping stone towards Alon \& Shapira Theorem was the work of
+    Alon-Fischer-Krivelevich-Szegedy~\cite{efficient_testing_of_large_graphs} where they show, among other things,
+    that \emph{$H$-freeness} is testable.
+    A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in
+    $G$, which clearly makes it an hereditary property.
+    Both Alon-Fischer-Krivelevich-Szegedy and Alon \& Shapira results use the strong regularity lemma~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}
+    mentioned earlier, and thus are tied to the enormously bounds on the number of parts.
+
+    \jojo
+    % explain that 4.1 is to deal with irregular pairs
 
     The query complexity of such testers, however, is intrinsically linked to the number of parts in the underlying regular
     partition.

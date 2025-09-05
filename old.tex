@@ -416,6 +416,24 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+    One of the many applications of the regularity lemma for which these bounds on the number of parts become relevant is in
+    \emph{property testing}.
+    A property testing algorithm for a decision problem $P$ is a randomized algorithm that, by querying only a small portion
+    of its input, can distinguish with high probability between objects that satisfy $P$ and those that are \say{far} from
+    satisfying it.
+    For instance, in~\cite{efficient_testing_of_large_graphs} the authors use Szemer\'edi's Regularity Lemma
+    to prove that it is possible to test the property of a graph $G$ being $H$-free (for a fixed graph $H$) using an algorithm
+    which query complexity is independent on the size of the input graph $G$.
+
+    The query complexity of such testers, however, is intrinsically linked to the number of parts in the underlying regular
+    partition.
+    Consequently, the power-tower bounds of the standard regularity lemma lead to prohibitively large, although constant,
+    query counts.
+    This raises a natural question: can the superior bounds of the stable regularity lemma be exploited to create more
+    efficient property testers for graphs in a half-graph-restricted setting?
+
+    In this thesis, we present an algorithm for testing $H$-freeness in stable graphs, thereby providing
+    a concrete application that highlights the practical strength and utility of stable regularity partitions.
 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
