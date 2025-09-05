@@ -832,6 +832,36 @@
       \field{volume}{92}
       \field{year}{1990}
     \endentry
+    \entry{on_sets_of_integers_containing_no_four_elements_in_arithmetic_progression}{article}{}
+      \name{author}{1}{}{%
+        {{hash=11eac7d5df5a432005f8b6395c03384c}{%
+           family={Szemerédi},
+           familyi={S\bibinitperiod},
+           given={Endre},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Akadémiai Kiadó, co-published with Springer Science+ Business Media BV~…}%
+      }
+      \strng{namehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{fullhash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{bibnamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authorbibnamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authornamehash}{11eac7d5df5a432005f8b6395c03384c}
+      \strng{authorfullhash}{11eac7d5df5a432005f8b6395c03384c}
+      \field{extraname}{1}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Acta Mathematica Hungarica}
+      \field{number}{1-2}
+      \field{title}{On sets of integers containing no four elements in arithmetic progression}
+      \field{volume}{20}
+      \field{year}{1969}
+      \field{pages}{89\bibrangedash 104}
+      \range{pages}{16}
+    \endentry
     \entry{regular_partitions_of_graphs}{incollection}{}
       \name{author}{1}{}{%
         {{hash=11eac7d5df5a432005f8b6395c03384c}{%
@@ -849,6 +879,7 @@
       \strng{authorbibnamehash}{11eac7d5df5a432005f8b6395c03384c}
       \strng{authornamehash}{11eac7d5df5a432005f8b6395c03384c}
       \strng{authorfullhash}{11eac7d5df5a432005f8b6395c03384c}
+      \field{extraname}{2}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}

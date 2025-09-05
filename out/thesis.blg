@@ -1,27 +1,27 @@
-[0] Config.pm:307> INFO - This is Biber 2.17
+[0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'out/thesis.blg'
-[182] biber:340> INFO - === jue sep  4, 2025, 19:13:03
-[194] Biber.pm:418> INFO - Reading 'out/thesis.bcf'
-[252] Biber.pm:972> INFO - Found 34 citekeys in bib section 0
-[262] Biber.pm:4383> INFO - Processing section 0
-[271] Biber.pm:4574> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
-[273] bibtex.pm:1713> INFO - LaTeX decoding ...
-[303] bibtex.pm:1518> INFO - Found BibTeX data source 'sections/bibliography.bib'
-[599] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[600] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[601] Biber.pm:4203> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[602] Biber.pm:4209> INFO - No sort tailoring available for locale 'en-US'
-[662] bbl.pm:654> INFO - Writing 'out/thesis.bbl' with encoding 'UTF-8'
-[730] bbl.pm:757> INFO - Output to out/thesis.bbl
-[730] Biber.pm:130> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
-[730] Biber.pm:130> WARN - ISBN '978-3-319-21851-9; 978-3-319-21852-6' in entry 'on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities' is invalid - run biber with '--validate_datamodel' for details.
-[730] Biber.pm:130> WARN - I didn't find a database entry for 'survey of regularity lemma' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for 'kuhn ostus' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for '...' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for 'regulary lemma for the analyst' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for 'lov szegedy' (section 0)
-[730] Biber.pm:130> WARN - I didn't find a database entry for '??' (section 0)
-[731] Biber.pm:130> WARN - I didn't find a database entry for 'fox suk' (section 0)
-[732] Biber.pm:130> WARN - I didn't find a database entry for 'julia_cositas' (section 0)
-[732] Biber.pm:132> INFO - WARNINGS: 11
+[39] biber:340> INFO - === vie sep  5, 2025, 10:38:16
+[48] Biber.pm:419> INFO - Reading 'out/thesis.bcf'
+[84] Biber.pm:979> INFO - Found 35 citekeys in bib section 0
+[91] Biber.pm:4419> INFO - Processing section 0
+[96] Biber.pm:4610> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
+[97] bibtex.pm:1713> INFO - LaTeX decoding ...
+[111] bibtex.pm:1519> INFO - Found BibTeX data source 'sections/bibliography.bib'
+[212] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[212] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[212] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[212] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[226] bbl.pm:660> INFO - Writing 'out/thesis.bbl' with encoding 'UTF-8'
+[230] bbl.pm:763> INFO - Output to out/thesis.bbl
+[231] Biber.pm:131> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
+[231] Biber.pm:131> WARN - ISBN '978-3-319-21851-9; 978-3-319-21852-6' in entry 'on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities' is invalid - run biber with '--validate_datamodel' for details.
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'survey of regularity lemma' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'kuhn ostus' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for '...' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'regulary lemma for the analyst' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'lov szegedy' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for '??' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'fox suk' (section 0)
+[231] Biber.pm:131> WARN - I didn't find a database entry for 'julia_cositas' (section 0)
+[231] Biber.pm:133> INFO - WARNINGS: 11
