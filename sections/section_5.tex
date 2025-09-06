@@ -197,15 +197,15 @@
 
         \todo{Say that if $A$ is smaller than $m_0$, then the partition is empty and $B = A$.}
 
-        The next step is refining this partition to obtain an equitable partition.
+        The next step is refining this partition to obtain an even partition.
         In order to do so, we first show that any random sample of a given size from an excellent set is still excellent
-        with high probability, at the cost of a slightly reduced excellence (\dref{itm:equitable_partition_of_excellent_parts.2} of
-        \Cref{lem:equitable_partition_of_excellent_parts}).
+        with high probability, at the cost of a slightly reduced excellence (\dref{itm:even_partition_of_excellent_parts.2} of
+        \Cref{lem:even_partition_of_excellent_parts}).
         Then, we use this result in a union-bound argument to show that we can actually fully partition the excellent set into
-        pieces of equal size (\dref{itm:equitable_partition_of_excellent_parts.3} of
-        \Cref{lem:equitable_partition_of_excellent_parts}), which are still excellent.
+        pieces of equal size (\dref{itm:even_partition_of_excellent_parts.3} of
+        \Cref{lem:even_partition_of_excellent_parts}), which are still excellent.
         Finally, \Cref{lem:existance_of_excellent_partition_with_equal_size} applies this result to the partition from
-        \Cref{lem:existance_of_excellent_partition} to get an equitable excellent partition.
+        \Cref{lem:existance_of_excellent_partition} to get an even excellent partition.
 
         Before getting to it, we prove the following calculus result, which will be required in the subsequent proof.
         The statement comes from~\cite{no_me_acuerdo} \todo{To do.}and, for completeness, we provide here a short proof.
@@ -234,24 +234,24 @@
             \end{proof}
         \end{lemma}
 
-        \begin{lemma}[Claim 5.13] \label{lem:equitable_partition_of_excellent_parts}
+        \begin{lemma}[Claim 5.13] \label{lem:even_partition_of_excellent_parts}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Then:
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item \label{itm:equitable_partition_of_excellent_parts.1} For every $\epsilon \in \parround{0, \frac{1}{2}}$,
+                \item \label{itm:even_partition_of_excellent_parts.1} For every $\epsilon \in \parround{0, \frac{1}{2}}$,
                     $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
                     $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
                     if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
                     then a random subset $A' \subseteq A$ of size $m$ is $(\epsilon + \zeta)$-good with probability $1-\xi$.
-                \item \label{itm:equitable_partition_of_excellent_parts.1*} Moreover, such $A'$ satisfies $t(b, A') = t(b, A)$ for all $b \in G$.
-                \item \label{itm:equitable_partition_of_excellent_parts.2} For every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
+                \item \label{itm:even_partition_of_excellent_parts.1*} Moreover, such $A'$ satisfies $t(b, A') = t(b, A)$ for all $b \in G$.
+                \item \label{itm:even_partition_of_excellent_parts.2} For every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
                     $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
                     \begin{itemize}
                         \item $A \subseteq G$ is $\parcurly{\epsilon, \epsilon'}$-excellent.
                         \item $A' \subseteq A$ is $\parcurly{\epsilon + \zeta'}$-good.
                     \end{itemize}
                     then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
-                \item \label{itm:equitable_partition_of_excellent_parts.3} For all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
+                \item \label{itm:even_partition_of_excellent_parts.3} For all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
                     $\epsilon < \epsilon'$ small enough (in the sense of the previous point) there exists
                     $N = N\parround{k_{*}, \zeta', r}$ such that, if $|A| = n > N$, $r$ divides $n$ and $A$ is
                     $\parround{\epsilon, \epsilon'}$-excellent, there exists a partition into $r$ disjoint pieces of equal
@@ -284,7 +284,7 @@
                     \]
                     Last inequality follows \Cref{lem:ineq_5.13} using the lower bound on $m$.
                     Thus, with probability at least $1 - \xi$, we have that $A'$ is $(\epsilon + \zeta)$-good.
-                \item Suppose that $A'$ is the subset described in \dref{itm:equitable_partition_of_excellent_parts.1}.
+                \item Suppose that $A'$ is the subset described in \dref{itm:even_partition_of_excellent_parts.1}.
                     We proved that, such set satisfies
                     \[
                         \parstraight{A' \cap B_{A,b}} < \parround{\epsilon + \zeta} \parstraight{A'}
@@ -309,7 +309,7 @@
                                 {\parround{1 - \epsilon}\parstraight{A}} \\
                             & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}
                     \end{align*}
-                    The first equality follows \dref{itm:equitable_partition_of_excellent_parts.1*}, and the first inequality follows from
+                    The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}, and the first inequality follows from
                     \Cref{rmk:excellence_imply_little_exceptions} for the numerator, and taking the worst case of only
                     $(1 - \epsilon) \parstraight{A}$ exceptional edges per exceptional $b \in B$
                     (considering that $A$ is $\epsilon$-good).
@@ -377,11 +377,11 @@
                     induced by $h$, i.e. to satisfy $A' = h^{-1}(s)$ for some $s \in \parcurly{1, \dots, r-1}$.
                     Since each element of the partition $A'$ has size
                     $\frac{n}{r} > \frac{N}{r} = \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\xi}}$,
-                    we can apply \dref{itm:equitable_partition_of_excellent_parts.1} to get that
+                    we can apply \dref{itm:even_partition_of_excellent_parts.1} to get that
                     \[
                         P\parround{A' \text{ is not } \parround{\epsilon + \zeta'}\text{-good}} < \xi
                     \]
-                    In particular, since $A$ is $(\epsilon, \epsilon')$-excellent, it follows \dref{itm:equitable_partition_of_excellent_parts.2} that if $A'$ is
+                    In particular, since $A$ is $(\epsilon, \epsilon')$-excellent, it follows \dref{itm:even_partition_of_excellent_parts.2} that if $A'$ is
                     $\parround{\epsilon + \zeta'}$-good then it is also $\parround{\epsilon + \zeta, \epsilon'}$-excellent, so:
                     \[
                         P\parround{A' \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} < \xi
@@ -397,16 +397,16 @@
             \end{proof}
         \end{lemma}
 
-        \begin{remark}[Remark 5.13.1] \label{rmk:value_for_equitable_partition_of_excellent_parts}
-            For following applications, we would like to use \dref{itm:equitable_partition_of_excellent_parts.3} from
-            \Cref{lem:equitable_partition_of_excellent_parts} with $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
+        \begin{remark}[Remark 5.13.1] \label{rmk:value_for_even_partition_of_excellent_parts}
+            For following applications, we would like to use \dref{itm:even_partition_of_excellent_parts.3} from
+            \Cref{lem:even_partition_of_excellent_parts} with $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
             Notice that if $\epsilon, \zeta' \leq \frac{1}{t}, \epsilon' \leq \frac{1}{t'}$ and $t > t' \geq 5$, then:
             \begin{enumerate}[label=(\alph*), ref=\alph*]
                 \item $\frac{\epsilon}{1-\epsilon} \leq \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
                     = \frac{1}{t-1}$
                 \item $1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon} \geq 1 - \frac{2}{t'} - \frac{1}{t-1} > 1 - \frac{3}{t'-1}
                     = \frac{t'-4}{t'-1}$
-                \item \label{itm:value_for_equitable_partition_of_excellent_parts.c} $\parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}}
+                \item \label{itm:value_for_even_partition_of_excellent_parts.c} $\parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}}
                     < 1 + \frac{\epsilon'}{1 - \frac{3}{t'-1}}
                     = \parround{1 + \frac{t'-1}{t'-4} \epsilon'} \parround{\epsilon + \zeta'}$
             \end{enumerate}
@@ -422,7 +422,7 @@
             \[
                 \parround{1 + \frac{t'-1}{t'-4} \epsilon'} \parround{\epsilon + \zeta'} < \frac{1}{k} \epsilon'
             \]
-            which by \dref{itm:value_for_equitable_partition_of_excellent_parts.c} gives us:
+            which by \dref{itm:value_for_even_partition_of_excellent_parts.c} gives us:
             \[
                 \parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}} < \frac{1}{k} \epsilon'
             \]
@@ -432,10 +432,10 @@
             \]
         \end{remark}
 
-        We use this fact to reformulate point \dref{itm:equitable_partition_of_excellent_parts.3} of
-        \Cref{lem:equitable_partition_of_excellent_parts} as:
+        We use this fact to reformulate point \dref{itm:even_partition_of_excellent_parts.3} of
+        \Cref{lem:even_partition_of_excellent_parts} as:
 
-        \begin{lemma}[Claim 5.13.2(3)] \label{lem:existance_of_equitable_excellent_subpartition}
+        \begin{lemma}[Claim 5.13.2(3)] \label{lem:existance_of_even_excellent_subpartition}
             Let $G$ be a finite graph with the non-$k_*$-property.
             For all $k, r \geq 1$, $\epsilon' \leq \frac{1}{5}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$, there exists
             $N = N\parround{k, k_*, \epsilon', r}$ large enough such that, for all $n > N$ and $r$ dividing $n$,
@@ -443,28 +443,28 @@
             partition into $r$ disjoint pieces of equal size, each of which is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
             \begin{proof}
                 Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set
-                $N \coloneqq N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
-                \Cref{rmk:value_for_equitable_partition_of_excellent_parts} sufficiency condition is satisfied,
-                \dref{itm:equitable_partition_of_excellent_parts.3} from \Cref{lem:equitable_partition_of_excellent_parts}
+                $N \coloneqq N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
+                \Cref{rmk:value_for_even_partition_of_excellent_parts} sufficiency condition is satisfied,
+                \dref{itm:even_partition_of_excellent_parts.3} from \Cref{lem:even_partition_of_excellent_parts}
                 holds and we are done.
             \end{proof}
         \end{lemma}
 
         \begin{remark}
-            A sufficient condition for $N_{\ref{lem:existance_of_equitable_excellent_subpartition}}$ to be large enough is
+            A sufficient condition for $N_{\ref{lem:existance_of_even_excellent_subpartition}}$ to be large enough is
             to choose $\zeta' = \frac{1}{4k} \epsilon'$ in which case
-            $N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneqq
-            N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
+            $N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneqq
+            N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
         \end{remark}
 
-        Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an equitable one.
+        Now we proceed to refine the partition from \Cref{lem:existance_of_excellent_partition} into an even one.
 
         \begin{lemma}[Claim 5.14.1a] \label{lem:existance_of_excellent_partition_with_equal_size}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\epsilon'$ and $\epsilon$ be two real numbers such that
             $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
             Also, let $m_*$, $m_{**}$ and $q$ be natural numbers such that $q \geq \ceil{\frac{1}{\epsilon}}$,
-            $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+            $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                 \parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}}{q}$ and $m_* \coloneqq q^{k_{**}} m_{**}$.
             Then, for any $A \subseteq G$ with $|A| = n \geq m_*$ there exists a partition
             $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with remainder $B = A \setminus \bigcup \overline{A}$ such that:
@@ -484,10 +484,10 @@
                 defined by $m_\ell = q m_{\ell+1}$, so that it satisfies $m_\ell \geq \frac{m_{\ell+1}}{\epsilon}$ for all
                 $\ell \in \parcurly{0, \dots, k_{**} - 1}$.
                 Then $m_0 = q^{k_{**}} m_{**} = m_* \leq n$, and $m_{k_{**}-1} = q m_{**} >
-                    N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$.
+                    N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}$.
                 With such a sequence, we can apply \Cref{lem:existance_of_excellent_partition} to $A$ to obtain a partition
                 $\overline{A}' = \Partriangle{A_j' \mid j \in \parcurly{1, \dots, j(*)}}$ and remainder $B$ with $\parstraight{B} < m_*$.
-                Then, we can apply \Cref{lem:existance_of_equitable_excellent_subpartition} to each of the parts $A_j'$
+                Then, we can apply \Cref{lem:existance_of_even_excellent_subpartition} to each of the parts $A_j'$
                 with $r = \frac{m_*}{m_{**}}$, as $m_{**} \mid m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**} - 1}$.
                 Putting together all the new subparts, we obtain a new partition
                 $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
@@ -495,8 +495,9 @@
             \end{proof}
         \end{lemma}
 
-        Notice that our partition still has reminder, which is unwanted and, as the next lemma proves,
-        it is avoidable at the cost of another slight increase of the excellence parameter.
+        Notice that our partition is even with a small reminder.
+        We can turn it into an equitable one, as the next lemma proves,
+        at the cost of another slight increase of the excellence parameter.
 
         \begin{lemma}[Claim 5.14.2] \label{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
             Under the same condition of \Cref{lem:existance_of_excellent_partition_with_equal_size}, we can get a
@@ -539,7 +540,7 @@
             \end{proof}
         \end{lemma}
 
-        We now have an $(\epsilon'', \epsilon')$-excellent equitable partition with no remainder.
+        We now have an $(\epsilon'', \epsilon')$-excellent equitable partition.
         Also $\epsilon''$ is bounded by something very close to $\frac{\epsilon'}{k}$, where $k$ is a settable parameter
         which only affects the large-enough condition on the size of the graph.
         It is reasonable to assume that, under some conditions of $m_*$ and $m_{**}$, and under an appropriate choice of $k$,
@@ -606,7 +607,7 @@
                     \begin{enumerate}[label=(\alph*), ref=2.\alph*]
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $q \geq \ceil{\frac{1}{\epsilon}}$.
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b}
-                            $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+                            $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                                 \parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}}{q}$
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.c} $m_* \coloneqq q^{k_{**}} m_{**}$.
                 \end{enumerate}
@@ -674,7 +675,7 @@
                     \item \label{itm:minimal_conditions_for_excellent_partitions.a} $m_{**} \in \parsquared{\delta n -1, \delta n}$, where
                         $\delta = \min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$
                     \item \label{itm:minimal_conditions_for_excellent_partitions.b} $m_{**} > \frac{3}{\epsilon}$.
-                    \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+                    \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                         \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
                 \end{enumerate}
                 By \dref{itm:minimal_conditions_for_excellent_partitions.a} we have that $m_* \leq \frac{\epsilon n}{3 + \epsilon}$.
@@ -683,13 +684,13 @@
                     \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a}
                         $q \geq \ceil{\frac{1}{\epsilon}}$, and in particular defined it to be equal.
                     \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
-                            $m_{**} > \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}
+                            $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                                 \parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}}{q}$ by choice of $m_{**}$.
                     \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.c}
                         $m_* \coloneqq q^{k_{**}} m_{**}$.
                     \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.3} $m_{k_{**}-1} = q m_{**} >
-                        q \frac{N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, q^{k_{**}}}}{q} =
-                        N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$.
+                        q \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{3, k_*, \epsilon, q^{k_{**}}}}{q} =
+                        N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$.
                 \end{itemize}
                 We can apply \Cref{lem:resume_of_all_conditions_for_excellent_partitions} to obtain a partition
                 satisfying \dref{itm:minimal_conditions_for_excellent_partitions.1},
@@ -721,8 +722,8 @@
             We now see how large $N$, and thus $n$, actually needs to be.
             First of all, we see that:
             \begin{align*}
-                \frac{1}{q} N_{\ref{lem:existance_of_equitable_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}
-                    & = \frac{1}{q} N_{\ref{lem:equitable_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4 \cdot 3} \epsilon, q^{k_{**}}} \\
+                \frac{1}{q} N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}
+                    & = \frac{1}{q} N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4 \cdot 3} \epsilon, q^{k_{**}}} \\
                     & = \frac{1}{q} q^{k_{**}} \parround{\frac{12}{\epsilon}}^2
                         \parround{k_* \log{\parround{\frac{12}{\epsilon}}^2 k_*} - \log{\frac{1}{q^{k_{**}}+1}}} \\
                     & < k_*^2 q^{2 k_{**} + 3}

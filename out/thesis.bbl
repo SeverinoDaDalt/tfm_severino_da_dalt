@@ -120,6 +120,38 @@
       \verb http://epubs.siam.org/doi/10.1137/050627915
       \endverb
     \endentry
+    \entry{efficient_arithmetic_regularity_and_removal_lemmas_for_induced_bipartite_patterns}{article}{}
+      \name{author}{3}{}{%
+        {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%
+           family={Alon},
+           familyi={A\bibinitperiod},
+           given={Noga},
+           giveni={N\bibinitperiod}}}%
+        {{hash=3f0a67a902c8bcd7eb3fbad276c47365}{%
+           family={Fox},
+           familyi={F\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+        {{hash=6b0656736f97f8058eb859f69cdc40ed}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Yufei},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb5ccef175bad421d4733146b00b4f13}
+      \strng{fullhash}{eb5ccef175bad421d4733146b00b4f13}
+      \strng{bibnamehash}{eb5ccef175bad421d4733146b00b4f13}
+      \strng{authorbibnamehash}{eb5ccef175bad421d4733146b00b4f13}
+      \strng{authornamehash}{eb5ccef175bad421d4733146b00b4f13}
+      \strng{authorfullhash}{eb5ccef175bad421d4733146b00b4f13}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1801.04675}
+      \field{title}{Efficient arithmetic regularity and removal lemmas for induced bipartite patterns}
+      \field{year}{2018}
+    \endentry
     \entry{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}{article}{}
       \name{author}{2}{}{%
         {{hash=f7a4a7818d41bcfdc8addc9e20cdcbd8}{%

@@ -1,12 +1,5 @@
 \section{Graphs and Regularity Lemma} \label{sec:section_2}
 
-    \todo{Notation:
-        - $\Partriangle{\cdot}$ to represent tuples. \\
-        - $\cdot^{<k}$. \\
-        - $\frown$ and $\triangleleft$. \\
-        - when we talk about equitable partitions, we mean +/-1. \\
-    }
-
     \todo{Mention that during the thesis, a lot of results carry many conditions most of which seem almost trivial,
         but are necessary for the computations to work. In the final result of each section, the results are cleaned out
         and tried to be delivered in a more readable form.}
@@ -51,10 +44,26 @@
             set consists of all edges in $E$ that have both endpoints in $S$.
             Formally, $G[S] = (S, E_S)$ where $E_S = \parcurly{\parcurly{v_1, v_2} \in E \mid v_1, v_2 \in S}$.
         \end{definition}
-        \todo{Include bi-induced, and make a definition for when the copy uses repeated vertices.}
 
-    \subsection{Szemer\'edi's Regularity Lemma} \label{subsec:subsection_2.2}
-        We now want to formalize the concept of regular pairs of vertex sets, which is central to Szemer\'edi's Regularity Lemma.
+        A similar restriction can defined for bipartite graphs, but only controlling edges between the two disjoint sets.
+
+        \begin{definition} \label{def:bi_induced}
+            We say that a bipartite graph $H$ with disjoint sets $L$ and $R$ is \emph{bi-induced} in a graph $G$
+            if there exist two injective\footnote{
+                In this thesis, the injective condition is redundant.
+                Still, this is a common way of defining such condition, so it is sensible keep it this way.}
+            homomorphisms $\phi_L: L \longrightarrow G$ and $\phi_R: L \longrightarrow G$ such that, for all
+            $u \in L$ and $v \in G$, $uv \in H \Leftrightarrow uv \in G$.
+        \end{definition}
+
+        Notice that this definition does not require the two sets $\phi_L$ and $\phi_R$ to be disjoint
+        (as defined in~\cite[pg. 417]{regularity_partitions_and_the_topology_of_graphons}
+        and~\cite[pg. 2]{efficient_arithmetic_regularity_and_removal_lemmas_for_induced_bipartite_patterns}).
+        This is very important for the results of this thesis, and needs to be noted that other works define such
+        condition without this relaxation~\cite[pg. 3]{induced_subgraph_density_vi_bounded_vc_dimension}.
+
+    \subsection{Szemerédi's Regularity Lemma} \label{subsec:subsection_2.2}
+        We now want to formalize the concept of regular pairs of vertex sets, which is central to Szemerédi's Regularity Lemma.
         The idea is that a pair of vertex sets is regular if the edges between them are \say{randomly} distributed,
         an idea that we can formalize using edge density.
 
@@ -88,7 +97,8 @@
                     = \frac{\parstraight{e(X, X)} / 2}{\parround{|X|-1}|X| / 2}
                     = \frac{|X|}{|X|-1} \frac{\parstraight{e(X, X)}}{|X|^2}
             \]
-            where first equality follows from the fact that $E_X$ counts each edge in $e(X, X)$ twice. So,
+            where first equality follows from the fact that $E_X$ counts each edge in $e(X, X)$ twice.
+            So,
             \[
                 d(X, X)
                     \leq \frac{\parstraight{E_X}}{{|X| \choose 2}}
@@ -111,9 +121,15 @@
         similarly to a random bipartite graph with edge density $d(A, B)$.
 
         Now, this notion of regularity can be used in the context of a partition of a graph's vertex set.
-        This partition allows a small number of pairs to be irregular.
-        Also, a small \emph{remainder set} is allowed, which is a set of vertices that are not included in any part
-        of the partition.
+
+        \begin{definition}
+            Given a graph $G$, we say that $\parcurly{A_1, \ldots, A_k}$ is a partition of the vertex set of $G$ with
+            \emph{remainder} set $B$, if $G = A_1 \cup \dots \cup A_k \cup B$, and $A_1, \dots, A_k$ are non-empty sets.
+            Implicitly, we allow the remainder to be empty.
+        \end{definition}
+
+        The partition we want to study needs to satisfy that most pairs of parts are regular,
+        but we allow a small number of such pairs to be irregular.
 
         \begin{definition}
             Let $G$ be a graph and let $\epsilon > 0$.
@@ -124,16 +140,37 @@
                 \item All but at most $\epsilon k^2$ of the pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$ are
                     $\epsilon$-regular.
             \end{itemize}
-            Also, we say that the partition is \emph{equitable} if $|A_1| = |A_2| = \cdots = |A_k|$.
         \end{definition}
 
-        The following is the celebrated Szemer\'edi's Regularity Lemma.
+        Also, we want the partition's sets to be roughly of the same size, which can be formalized in two different ways.
+
+        \begin{definition} \label{def:even_and_equitable}
+            A partition $\parcurly{A_1, \ldots, A_k}$ of the vertex set of a graph $G$ is said to be \emph{equitable}
+            if for all $1 \leq i < j \leq k$, we have that $\parstraight{|A_i| - |A_j|} \leq 1$.
+            On the other hand, a partition $\parcurly{A_1, \ldots, A_k}$ with remainder $B$ of the vertex set of a graph $G$
+            is said to be \emph{even} if $|A_1| = |A_2| = \cdots = |A_k|$.
+        \end{definition}
+
+        \begin{remark}
+            The two previous definitions, although very close in concept, have a key difference that needs to be noted.
+            As most of the results requires the partition property (such as regularity) to be satisfied only by parts
+            in the partition, and not necessarily by the reminder, in even partitions the behaviour of a
+            (non-necessarily trivial) fraction of vertices is unknown.
+            On the other hand, the relaxation on the size of the parts in the definition of equitable becomes almost
+            trivial as the size of the parts increases.
+            Then, results with equitable partitions are preferred over those with even partitions, but usually requires
+            extra work to achieve.
+            In line with this, the results of \Cref{sec:section_4} will treat even partitions, while the key Stable
+            Regularity Lemma in \Cref{sec:section_5} uses an equitable one.
+        \end{remark}
+
+        The following is the celebrated Szemerédi's Regularity Lemma.
         The statement and proof we provide in this thesis follows the one given in~\cite{extremal_graph_theory},
         with minor notation modifications.
 
         \begin{theorem}[Szemer\'edi's Regularity Lemma, \cite{regular_partitions_of_graphs}] \label{thm:szemeredi_regularity_lemma}
             For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
-            such that every graph with at least $m$ vertices admits an equitable $\epsilon$-regular partition
+            such that every graph with at least $m$ vertices admits an even $\epsilon$-regular partition
             $\parcurly{A_1, \ldots, A_k}$ and reminder $B$ with $m \leq k \leq M$.
         \end{theorem}
 
@@ -351,7 +388,7 @@
                 and last inequality follows from the fact that
                 $|B| \leq \epsilon n \leq \frac{1}{4}$, so $kc$ is necessarily at least $\frac{3}{4}n$.
 
-                Finally, we need to turn $\overline{A}''$ into an equitable partition.
+                Finally, we need to turn $\overline{A}''$ into an even partition.
                 In order to achieve this, we split each part into pieces of equal size, and move the
                 remaining vertices to the reminder set.
                 We need to separate two cases, as we may not have enough vertices to make substantially sized parts.
@@ -390,7 +427,7 @@
         \end{lemma}
 
         We now have all the tools required to prove Szemer\'edi's Regularity Lemma.
-        The idea will be to start with an arbitrary equitable partition, with a large enough number of parts and small
+        The idea will be to start with an arbitrary even partition, with a large enough number of parts and small
         enough reminder set, and then keep refining it until we reach a regular partition.
         Then, reaching regularity is inevitable, as the previous result guarantees a constant increase in energy
         which we previously proved to be upper bounded.
@@ -420,7 +457,7 @@
             Now, let's bound the number of parts of the partition at the end of the process.
             Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts
             we can simply set $M \coloneqq \max\parround{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
-            The second term ensures that $n \geq M$ is sufficiently large for \eqref{eq:final_remainder_size_bound} to hold.
+            The second term ensures that $n \geq M$ is sufficiently large for~\eqref{eq:final_remainder_size_bound} to hold.
 
             Now, given a graph $G$ with $n \geq m$ vertices, we can build a partition into $k'$, with $m \leq k' \leq M$
             parts, and with remainder $B$ as follows.
@@ -441,8 +478,8 @@
         For the matters of this thesis, it is important to note that it is actually known that:
         \begin{itemize}
             \item \label{itm:regular_partition_with_no_remainder}
-                The remainder set can be avoided in the resulting partition of Szemer\'edi's Regularity Lemma,
-                at the cost of allowing a small $\pm 1$ size difference between parts in the definition of equitable.
+                The remainder set can be avoided in the resulting partition of Szemerédi's Regularity Lemma,
+                moving from an even partition to an equitable one (\Cref{def:even_and_equitable}).
             \item \label{itm:regular_partition_with_regular_self_pairs}
                 It can be ensured that not only (most) pairs of different parts are regular, but also (most) parts
                 with themselves (self-pairs) satisfy this property.
@@ -452,7 +489,7 @@
         to~\cite{graph_removal_lemmas, graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}\footnote{
             In~\cite{graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}, authors show how to
             obtain a regular parition that includes regularity within pairs themselves, but omit the details on how to get
-            an equitable partition and no reminder.
+            an equitable partition.
             \cite{graph_removal_lemmas} proves the existence of a partition has regular self-pairs and no reminder, but
             the proof of the critical lemma to refine a partition into an equitable one (at the loss of a small amount
             of energy) is omitted.}

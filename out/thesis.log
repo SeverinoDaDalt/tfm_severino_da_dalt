@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  6 SEP 2025 18:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  6 SEP 2025 19:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1460,11 +1460,6 @@ been already used, duplicate ignored
                    \relax 
 l.95 
       [2]
-
-LaTeX Warning: Reference `def:bi_induced' on page 1 undefined on input line 114
-.
-
-
 Overfull \hbox (10.5417pt too wide) in paragraph at lines 124--127
 []\OT1/cmss/bx/n/10.95 Theorem B. []\OT1/cmss/m/sl/10.95 Each $k$-stable graph 
 $G$ ad-mits an eq-ui-table par-ti-tion of its ver-tex set with at most $[]$
@@ -1494,10 +1489,7 @@ l.210             \item T
 [4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]) [5]
 (./sections/section_2.tex
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 8.
-
-
-LaTeX Warning: Marginpar on page 6 moved.
+ine 5.
 
 
 LaTeX Warning: Marginpar on page 6 moved.
@@ -1506,31 +1498,31 @@ LaTeX Warning: Marginpar on page 6 moved.
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 87.
+(amsmath)                 on input line 96.
 
-[7] [8] [9] [10] [11]) [12] (./sections/section_3.tex
+[7] [8] [9]
+Underfull \vbox (badness 5274) has occurred while \output is active []
 
-LaTeX Warning: Marginpar on page 13 moved.
-
-(./pictures/half-graph.tex)
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 25.
-
+ [10]
+[11] [12]) [13] (./sections/section_3.tex (./pictures/half-graph.tex)
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 25.
+(hyperref)                removing `math shift' on input line 24.
 
-[13] [14] [15] [16] (./pictures/k-tree.tex) [17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 24.
+
+[14] [15] [16] [17] (./pictures/k-tree.tex) [18]
 
 LaTeX Warning: Reference `pic:order_implies_tree' on page 1 undefined on input 
-line 340.
+line 339.
 
-[18]) [19] (./sections/section_4.tex [20]
+[19]) [20] (./sections/section_4.tex [21]
 
-LaTeX Warning: Marginpar on page 21 moved.
+LaTeX Warning: Marginpar on page 22 moved.
 
-[21] [22] [23]
+[22] [23] [24]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 313.
@@ -1551,16 +1543,16 @@ order prop-erty. Let $[]$
  []
 
 
-LaTeX Warning: Marginpar on page 24 moved.
+LaTeX Warning: Marginpar on page 25 moved.
 
-[24]
+[25]
 Overfull \hbox (6.71062pt too wide) in paragraph at lines 417--428
 []\OT1/cmss/bx/n/10.95 Lemma 4.19 \OT1/cmss/m/n/10.95 (Claim 4.14)\OT1/cmss/bx/
 n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]$-
 order prop-erty. Let $[]$
  []
 
-[25] [26]
+[26] [27]
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <8> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 507.
 
@@ -1580,7 +1572,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 557.
 
-[27] [28] [29]) [30] (./sections/section_5.tex
+[28] [29] [30]) [31] (./sections/section_5.tex
 
 LaTeX Warning: Reference `fig:good_not_excellent' on page 1 undefined on input 
 line 38.
@@ -1589,35 +1581,35 @@ line 38.
 LaTeX Warning: Reference `fig:excellence_is_not_monotonic' on page 1 undefined 
 on input line 63.
 
-[31] [32]
+[32] [33]
 
-LaTeX Warning: Citation 'no_me_acuerdo' on page 33 undefined on input line 211.
+LaTeX Warning: Citation 'no_me_acuerdo' on page 34 undefined on input line 211.
 
 
-[33] [34] [35] [36] [37]
-Overfull \hbox (41.09937pt too wide) in paragraph at lines 517--521
+[34] [35] [36] [37] [38]
+Overfull \hbox (41.09937pt too wide) in paragraph at lines 518--522
 []\OT1/cmss/m/n/10.95 Let $[][] = []$ and $\OT1/cmss/m/sl/10.95 B$ \OT1/cmss/m/
 n/10.95 from [][]Lemma 5.15[][]. We can par-ti-tion $\OT1/cmss/m/sl/10.95 B$ \O
 T1/cmss/m/n/10.95 into $[] = []$
  []
 
-[38] [39] [40]
+[39] [40] [41]
 
-LaTeX Warning: Marginpar on page 41 moved.
+LaTeX Warning: Marginpar on page 42 moved.
 
-[41] [42]) [43] (./sections/section_6.tex [44] [45] [46]
+[42] [43]) [44] (./sections/section_6.tex [45] [46] [47]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 279.
- [47]
+ [48]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [48])
-[49]
+ [49])
+[50]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
 (Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 164.
 
-[50]
+[51]
 Overfull \hbox (3.36896pt too wide) in paragraph at lines 165--165
 \OT1/cmtt/m/n/10.95 00279 -[] X$[][]\OT1/cmss/m/n/10.95 . \OT1/cmr/m/sc/10.95 u
 rl\OT1/cmss/m/n/10.95 : [][]$\OT1/cmtt/m/n/10.95 https : / / www . sciencedirec
@@ -1625,7 +1617,7 @@ t . com / science / article / pii / S0012365X0000279X$[][]\OT1/cmss/m/n/10.95 .
 
  []
 
-[51] (./sections/appendix.tex [52] [53]) [54]
+[52] [53] (./sections/appendix.tex [54] [55]) [56]
 
 enddocument/afterlastpage: lastpage setting LastPage.
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/thesis.aux)
@@ -1638,16 +1630,16 @@ L3 programming layer <2024-01-22>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 8AF08328D5BF02A49A5EA554EAA6C34B;4189.
+(rerunfilecheck)             Checksum: 131ABA25058564F7BB5B1A4D2BB2A249;4139.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
 \openout1 = `thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38593 strings out of 476106
- 732780 string characters out of 5793933
- 2004975 words of memory out of 5000000
- 59586 multiletter control sequences out of 15000+600000
+ 38580 strings out of 476106
+ 732658 string characters out of 5793933
+ 2000975 words of memory out of 5000000
+ 59568 multiletter control sequences out of 15000+600000
  576816 words of font info for 108 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  90i,19n,93p,3238b,1987s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1656,32 +1648,31 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-tt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msa
-m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb>
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
+ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbo
+ls/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-thesis.pdf (58 pages, 583534 bytes).
+thesis.pdf (60 pages, 578630 bytes).
 PDF statistics:
- 1482 PDF objects out of 1728 (max. 8388607)
- 1311 compressed objects within 14 object streams
- 413 named destinations out of 1000 (max. 500000)
+ 1497 PDF objects out of 1728 (max. 8388607)
+ 1326 compressed objects within 14 object streams
+ 418 named destinations out of 1000 (max. 500000)
  213 words of extra memory for PDF output out of 10000 (max. 10000000)
 
