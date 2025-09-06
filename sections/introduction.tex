@@ -1,16 +1,16 @@
 \section{Introduction} \label{sec:introduction}
 
-    \subsection{Szemer\'edi's Regularity Lemma}
+    \subsection{Szemerédi's Regularity Lemma}
 
-        Szemerédi's Regularity Lemma~\cite{regular_partitions_of_graphs} is a powerful tool in graph theory,
+        Szemerédi's Regularity Lemma (SzRL)~\cite{regular_partitions_of_graphs} is a powerful tool in graph theory,
         stating that every graph can have its vertex set decomposed into an equitable partition such that most,
         but not all, pairs of parts are \emph{regular}.
-        A regular pair is one whose edge distribution resembles that of a random bipartite graph, a powerful property with
-        many applications in extremal graph theory.
+        A regular pair is one whose edge distribution resembles that of a random bipartite graph (in the sense of
+        satisfying its expected properties).
         The strength of the quasi-random properties is measured with the regularity parameter $\epsilon$.
 
         % \subsection{Applications}
-        This theorem has seen applications in many areas of mathematics
+        This theorem has seen many applications in wide variety areas of mathematics
         (see an early survey from the mid 1990's~\cite{the_regulariy_lemma_and_its_applications_in_graph_theory}),
         such as graph
         theory~\cite{proof_of_the_alon–yuster_conjecture,
@@ -25,26 +25,26 @@
         limits of dense graphs~\cite{convergent_sequences_of_dense_graphs_I,
             convergent_sequences_of_dense_graphs_II,
             szemeredis_lemma_for_the_analyst,
-            regularity_partitions_and_the_topology_of_graphons} (See the book~\cite{large_networks_and_graph_limits}),
+            regularity_partitions_and_the_topology_of_graphons} (see the book~\cite{large_networks_and_graph_limits}),
         number theory~\cite[Szemerédi's Theorem]{on_sets_of_integers_containing_k_elements_in_arithmetic_progression},
-        Ramsey Theory~\cite{threshold_functions_for_ramsey_properties,
+        and Ramsey Theory~\cite{threshold_functions_for_ramsey_properties,
             three-color_ramsey_numbers_for_paths,
-            ramsey_turan_theory,},
-        in combinatorics, and the regularity method has been generalized to hypergraphs~\cite{
+            ramsey_turan_theory,}, to name a few.
+        The regularity method has also been generalized to hypergraphs~\cite{
             regularity_lemma_for_k_uniform_hypergraphs,
             regular_partitions_of_hypergraphs_regularity_lemmas,
             the_counting_lemma_for_regular_k_uniform_hypergraphs,
             a_variant_of_the_hypergraph_removal_lemma,
             hypergraph_regularity_and_the_multidimensional_szemeredi_theorem}.
-        Also, it has seen important applications to computer science, such as in property testing (See~\Cref{subsec:subsection_1.3}).
+        Also, it has seen important applications to computer science, such as in property testing (see~\Cref{subsec:subsection_1.3}).
         This brief summary is by no means an exhaustive list of the many applications that has seen the Regularity Lemma as
         a key component.
 
         % \subsection{Problems with SzRL}
         Since this result is applicable to \emph{any} graph and the number of parts of this partition with good properties is constant,
         it should not be surprising that some limitations arise.
-        Firstly, not necessarily all pairs are regular, but most crucially, the required upper bound on the number of parts is
-        constant, but very large.
+        Firstly, not necessarily all pairs are regular, but most crucially, the required upper bound on the number of
+        parts is, although constant, very large.
         More specifically, it is a tower of exponentials (it has the form $2^{2^{2^{\text{\reflectbox{$\dots$}}}}}$)
         whose height depends on the regularity parameter $\epsilon$.
 
@@ -85,35 +85,34 @@
         \hspace{-3pt}\footnote{
             See~\cite{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
             for a translated version.}
-        and one can view it as a graph with \say{low complexity} (but not necessarily sparse), the reader can find more
-        details in \Cref{sec:section_3}.
+        and one can view it as a graph with \say{low complexity} (but not necessarily sparse).
+        The reader can find more details in \Cref{sec:section_3}.
         For this class of graphs the bound on the number of parts can be greatly reduced.
-        Indeed, if a given graph has VC dimension bounded by $d$, we can obtain a regular partition with only
-        $\parround{{1}/{\epsilon}}^{f(d)}$ parts, where $\epsilon$ is the regularity parameter.
+        Indeed, if a given graph has VC dimension bounded by $k$, we can obtain a regular partition with only
+        $\parround{{1}/{\epsilon}}^{f(k)}$ parts, where $\epsilon$ is the regularity parameter.
         Furthermore, the low complexity of graphs with bounded VC-dimension, translates into the additional property that the
         regular pairs are either almost fully connected or almost empty.
 
-        The first result for graphs with bounded VC-dimension is a regularity lemma in the context of
+        The first regularity lemma for graphs with bounded VC-dimension appears in the context of
         matrices~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}, which gives
         a regularity lemma for bipartite graphs.
-        \cite{regularity_partitions_and_the_topology_of_graphons} proves a similar result for (not necessarily bipartite)
-        graphs with bounded VC-dimension.
-        In~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} the authors give
-        an alternative proof obtaining the following result.
+        In~\cite{regularity_partitions_and_the_topology_of_graphons}, the authors prove a similar result for
+        (not necessarily bipartite) graphs with bounded VC-dimension.
+        Fox, Pach, \& Suk give an alternative proof with better bounds of the previous result, which we state below.
 
         \begin{theoremA}[Theorem 1.3 in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} for graphs]
             \label{thm:B}
             Each graph $G$ with VC-dimension bounded by $k$ admits an equitable partition of its vertex set with at most
-            $c(k)\cdot(1/\epsilon)^{2k+1}$ parts such that all but at most an $\epsilon$-fraction of pairs of parts
+            $c(k)\cdot(1/\epsilon)^{2k+1}$ parts such that all but at most an $\epsilon$-fraction of the pairs of parts
             are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
         \end{theoremA}
 
         Another class of graphs that has been considered to alleviate the limitations of SzRL is that of the \emph{stable}
         graphs.
         The concept of stability originates in Model Theory
-        (See~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
-        A graph is $k$-stable if it avoids any \emph{bi-induced} (See \Cref{def:bi_induced}) copy of the \emph{half-graph}
-        on $2k$ vertices, which is a bipartite graph that behaves in a very \emph{non-quasi-random} way (See~\Cref{fig:half-graph}).
+        (see~\cite{classification_theory_and_the_number_of_non_isomorphic_models}).
+        A graph is $k$-stable if it avoids any \emph{bi-induced} (see \Cref{def:bi_induced}) copy of the \emph{half-graph}
+        on $2k$ vertices, which is a bipartite graph that behaves in a very \emph{non-quasi-random} way (see~\Cref{fig:half-graph}).
         In fact, Malliaris \& Shelah showed in~\cite[Theorem 5.19]{regularity_lemmas_for_stable_graphs} that restricting
         to this class of graphs not only achieves a partition with a bound on the number of parts which is only exponential
         on $1/\epsilon$, but also completely avoids irregular pairs; the exponent depends on the size of the avoided half-graph.
@@ -123,7 +122,7 @@
 
         \begin{theoremB} \label{thm:A}
             Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
-            ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such ALL pairs of parts
+            ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such that ALL pairs of parts
             are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
         \end{theoremB}
 
@@ -140,7 +139,7 @@
         so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
 
         Notice that, in \hyperref[thm:B]{Theorem B} there are no irregular pairs.
-        This fact, suggests that the half-graph has in the need to allow irregular pairs in the partition.
+        This fact, shows that the presence of the half-graph plays a key role in requiring irregular pairs in the partition.
         On the other hand, the exponent in the bound on the number of parts is exponential on $k$ while,
         in \hyperref[thm:A]{Theorem A} it is only linear.
         It is an open question whether the exponential exponent in the bound of \Cref{thm:B} is
@@ -207,22 +206,21 @@
     Alon-Fischer-Krivelevich-Szegedy~\cite{efficient_testing_of_large_graphs} where they show, among other things,
     that \emph{$H$-freeness} is testable.
     A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in
-    $G$, which clearly makes it an hereditary property.
-    Both Alon-Fischer-Krivelevich-Szegedy and Alon \& Shapira results use the strong regularity lemma~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}
-    mentioned earlier, and thus are tied to the enormously bounds on the number of parts.
+    $G$, and $H$-freeness is clearly an hereditary property.
 
-    \jojo
-    % explain that 4.1 is to deal with irregular pairs
+    Both Alon-Fischer-Krivelevich-Szegedy and Alon \& Shapira results use the strong regularity
+    lemma~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, which we mentioned earlier.
+    Furthermore, the query complexity of the testers associated to the previous results, is intrinsically linked to the number of
+    parts in the underlying regular partition.
+    Not only that, but even though the standard SzRL is good to understand most of the structure of the graph,
+    it has no control over the irregular pairs, which becomes a problem when looking for induced subgraphs.
+    For this reason, the stronger version is required.
+    This worsens the already enormous power-tower bounds of the standard regularity lemma, leading to prohibitively large,
+    although constant, query counts.
 
-    The query complexity of such testers, however, is intrinsically linked to the number of parts in the underlying regular
-    partition.
-    Consequently, the power-tower bounds of the standard regularity lemma lead to prohibitively large, although constant,
-    query counts.
-    This raises a natural question: can the superior bounds of the stable regularity lemma be exploited to create more
-    efficient property testers for graphs in a half-graph-restricted setting?
-
-    In this thesis, we present an algorithm for testing $H$-freeness in stable graphs, thereby providing
-    a concrete application that highlights the practical strength and utility of stable regularity partitions.
+    This raises a natural question on whether the superior bounds and the lack of irregular pairs of the stable regularity
+    lemma can be exploited to create more efficient property testers for graphs in a half-graph-restricted setting.
+    The final of this work is dedicated to this question.
 
     \subsection{Main Contributions} \label{subsec:main_contributions}
 
@@ -231,12 +229,12 @@
             \item We place a larger emphasis on the combinatorial part of the result
                 in~\cite{regularity_lemmas_for_stable_graphs}, making it self-contained and making some of the argument that
                 previously used some Model Theory fully combinatorial.
-                Further, we make some of the relations between the parameters explicit while correcting some of the typos
-                that inevitably occur.
+                Further, we make some of the relations between the parameters explicit while correcting some of the typos.
                 In addition, we simplify some of the arguments, while making others more explicit and detailed.
-                In particular, we make explicit that the excellence (see \Cref{sec:section_5}) depends on two parameters
+                For example, we make explicit that the excellence (see \Cref{sec:section_5}) depends on two parameters
                 with opposite monotonic properties (see \Cref{def:epsilon_excellent} and \Cref{rmk:excellence_is_not_monotonic}).
-            \item The construction of an efficient property testing algorithm for H-freeness tailored to stable graphs.
+                A more details list of changes is provided in \Cref{sec:appendix_1000_razones}.
+            \item The construction of an efficient property testing algorithm for $H$-freeness tailored to stable graphs.
                 The algorithm's analysis leverages the stable regularity lemma to achieve a query complexity with significantly
                 improved bounds compared to the general case.
             \item The development of a unified notational framework that cohesively integrates the concepts from

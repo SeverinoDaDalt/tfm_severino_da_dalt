@@ -1,10 +1,9 @@
 \section{Property Testing} \label{sec:section_6}
 
-    Property testing is a field of theoretical computer science, concerned about finding low-complexity algorithms
-    for testing (approximate) properties in large objects, such as graphs.
-    These algorithms need to be successful with high probability, and are only required to distinguish between objects
-    that do not satisfy the property, and those which are \say{far} from satisfying it.
-    For the purposes of this thesis, it is useful to formalize these concepts in the context of graphs.
+    This section is dedicated at showcasing the benefits of the stable regularity lemma regarding its partition size
+    and lack of irregular pairs, by giving a concrete application in property testing.
+    More specifically we focus at studying $H$-freeness in stable graphs.
+    We now formalize some key concepts that were loosely defined in the introduction.
 
     \begin{definition}
         We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a graph property $\mathcal{P}$ if no adding or
@@ -24,142 +23,17 @@
         a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.
     \end{definition}
 
-    Of course, the most desirable testers are those with lower query complexity.
-    A class of particular interest is that of testers whose complexity does not grow with the size of the
-    graph $G$.
-
     \begin{definition}
         We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
         with a constant query-complexity with respect to the size of the input graph, that is, it only depends on the
         parameter $\epsilon$.
     \end{definition}
 
-    In~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}, Alon and Shapira
-    showed that a large class of properties, a subclass of which will be the center of our attention, are testable.
-
-    \begin{theorem}[Alon \& Shapira Theorem in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
-        \label{thm:alon_and_shapira_theorem}
-        Every hereditary graph property is testable (with one-sided error).
-    \end{theorem}
-
-    A property is said to be \emph{hereditary} if it is preserved under taking induced subgraphs.
-    A property is testable \emph{with one-sided error} if the first condition in \Cref{def:epsilon_test}
-    is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
-    not give false negatives.
-
-    Towards Alon \& Shapira Theorem,~\cite{efficient_testing_of_large_graphs} shows that \emph{$H$-freeness} is testable.
-    A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in $G$.
-    Clearly, $H$-freeness is an hereditary property, and it will be the focus of our attention later in the section.
-
-    Both~\cite{} and~\cite{} made use of what it has become known as the ‘Strong Regularity lemma’.
-    The Strong Regularity Lemma is a stronger version of Szemer\'edi's Regularity Lemma.
-    It features a partition and one refinement of it, both regular, with the second having a stronger regularity then
-    the first one.
-    The partition's regularity can be any given value, and the refinement's regularity is a function
-    on the number of pairs of the first partition.
-    Again, such function can be any \say{reasonable} one (See~\cite{efficient_testing_of_large_graphs}[Lemma 4.1]).
-    The goal of this strenghthened version of the regularity lemma is to be able to deal with the counting of the
-    induced copies of graphs within G. Indeed, in the usual regularity lemma, theorem ~\ref{}, there are irregular
-    pairs of clusters.
-    Recall that these irregular pairs are unavoidable (see the comment in the introduction, due to the possible presence
-    of a large half-graph).
-    Since there is no control on the edges of the irregular pairs (the only information is that they are not regular,
-    which is not very restrictive), it is hard to know how the induced copies behave when some of the edges or non-edges
-    should belong to these irregular pairs.
-    See … (put the example of the irregular pairs from the book of Zhao, or put the example that we developed regarding
-    the induced path with 4 vertices), where each modification of the edges withing the irregular pair will shift
-    induced copies of $P_4$, and thus, it is not completely clear how to eliminate those copies.
-
-    In order to solve these technical challanges, Alon …. and Szegedy \cite[Theorem~]{} applied the regularity lemma
-    twice, refining an already regular partition, in order to gain control on most of the parts of the refined
-    (aquí pots explicar amb una mica de bla bla bla l statement).
-    However, this implies that the number of parts in the final refinement increases.
-    \footnote{As the reader might have guess, there is a \emph{weak} version of the regularity lemma, in which the
-        number of parts is much smaller, but less information can be gathered from the partition. This result can be found
-        in \cite{} and, together with the regular and the strong version of the regularity lemma, can be seen as one of a
-        sequence of many possible regularity lemmas with varying strength \cite{regulary lemma for the analyst, lov szegedy}.}
-
-    %%%%
-    This requires the use of the so-called Strong Regularity Lemma\footnote{It is a
-        stronger version of Szemer\'edi's Regularity Lemma, and it is shown in Lemma 4.1 of~\cite{efficient_testing_of_large_graphs}.
-        It features a partition and one refinement of it, both regular,
-        with the second having a stronger regularity then the first one.
-        The partition's regularity can be any given value, and the refinement's regularity is a function
-        on the number of pairs of the first partition.
-        Again, such function can be any \say{reasonable} one.},
-    which aims at dealing with the irregular
-    pairs from the original version, of which edges we know nothing and thus hinder property testing.
-    It uses a double partitioning of the vertex set in order to obtain a family of disjoint sets
-    with no irregular pairs.
-    This double partition increases the number of parts, and thus the query complexity of the associated tester, which
-    is already extremely large, although constant, due to the tower of powers function bound which unavoidable in the
-    general setting~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}.
-    Then, \Cref{thm:alon_and_shapira_theorem} is a generalization of the results for $H$-freeness to all
-    hereditary properties.
-    %%%%
-
-    A natural solution in order to avoid such immense bound from the Regularity Lemma is to restrict the problem
-    to a favorable class of graphs, for example, restricting to the class of graphs with bounded VC-dimension
-    (See \Cref{def:VC_dimension}).
-    %%START
-    In the context of bipartite graphs with bounded VC-dimension,~\cite{efficient_testing_of_bipartite_graphs_for_forbidden_induced_subgraphs}
-    shows a family of regularity lemmas (from weaker to stronger than the Szemer\'edi's) which bound on the number of parts
-    is only polynomial in $\epsilon^{-1}$.
-    %%END
-
-    A first result in that direction, with the focuss on bipartite graphs, appeared in \cite{??}, where the bound on the
-    number of parts of the regular partition is greatily improved, and also the information that each regular pair
-    is either almost or almost empty of edges is given.
-    The version where no restriction was placed on the graph G was given in \cite{??},
-    and the one with the best bounds in this context is given by
-    the~\cite[theorem ..]{fox suk},
-    which we quote below;
-
-    \begin{theorem}
-    \end{theorem}
-
-    i hi poses les cotes.
-
-    The author uses the stronger version to prove testability of $H$-freeness, with a much lower query complexity.
-    \todo{Lluis, imagino que no ho diu aixó ultim al paper, pero está clar que baixa, no?}
-    Then,~\cite{??} shows a similar result but generalizing to all graphs with bounded VC-dimension,
-    and~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} improves this bound further.
-    These last two results use the so-called Ultra Strong Regularity Lemma, in which (most of) the resulting partition
-    pairs have density either at most $\epsilon$ or at least $1 -\epsilon$, which they call \say{$\epsilon$-homogeneous}.
-
-    %%START
-    Still, the class of graphs with bounded VC-dimension does not avoid irregular pairs, and thus neither avoids
-    the associated increase in parts when further refining the partition when proving the testability of $H$-freeness
-    (which is a standard procedure to deal with such pairs~\cite{efficient_testing_of_large_graphs}).
-    %%END
-
-    Note that, even with the problem of getting better bounds in the regularity lemma addressed, the regular partitions
-    of graphs with bounded VC-dimension may contain irregular pairs (Indeed, the half-graph itself has bounded
-    VC-dimension).
-    The lack of irregular pairs in the class of stable graphs, allows us to use Theorem~\ref{??}
-    (regularity lemma for stable graphs) to give an straightforward argument that proves that  being (induced)
-    H-free is testable, with one-sided error, with some explicit (and more reasonable) bounds than the ones given by
-    Theorem~\ref{??} (alon shapira).
-    The algorithm is given as Algorithm 1, the proof of the correctness and its explanation is given just before.
-    Let us remark that using l’esquema de l’Alon-…szegedy usant el resultat per la bounded VC.-dimension, one could be
-    able to obtain bounds on the … of the type … which are better than … For further discussion the reader is referred
-    to the end of the section (posarem alguna cosa per dir que el del irregular pairs, de fet, permet dir més).
-
-    Now, by moving to a subclass of graphs with bounded VC-dimension, the class of stable graphs,
-    all these difficulties are easily avoided by using the Stable Regularity Lemma instead.
-    The partition size is only a double exponential of the error parameter $\epsilon$, irregular pairs are
-    completely avoided, and all pairs are also $\epsilon$-homogeneous.
-    It needs to be noted that in the Stable Regularity Lemma the exponent of $\epsilon^{-1}$ in the bound of the number
-    of parts is an exponential on the size of the avoided half-graph, against the lower polynomial exponent of the
-    Ultra Strong Regularity Lemma.
-    It is an open problem whether the bound from the Stable Regularity Lemma can be improved~\cite{julia_cositas}.
-
-    The remaining of this section will be dedicated to the construction of an $\epsilon$-test for $H$-freeness in stable graphs.
-    %A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in $G$.
+    The remaining of this section is dedicated to the construction of an $\epsilon$-test for $H$-freeness in stable graphs.
     Such an $\epsilon$-test needs to be able to distinguish between graphs that are $H$-free and graphs that
     are $\epsilon$-far from it, with some error.
-    In fact, our $\epsilon$-test will only have one-sided error, as if the input graph is $H$-free the tester will
-    report so with probability $1$.
+    In fact, our $\epsilon$-test will only have one-sided error, as if the input graph is $H$-free the tester will report so
+    with probability $1$.
 
     The first step towards constructing such tester is proving \Cref{thm:property_testing_with_stable_partitions}.
     This theorem uses the Stable Regularity Lemma to prove that a graph being $\epsilon$-far
