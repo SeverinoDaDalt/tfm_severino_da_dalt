@@ -46,6 +46,11 @@
 
 \newtheorem*{theoremA}{Theorem A}
 \newtheorem*{theoremB}{Theorem B}
+\newtheorem*{theoremC}{Theorem C}
+\newtheorem{namedthm}{Theorem}
+\newenvironment{thm*}[1]{%
+  \renewcommand\thenamedthm{#1}%
+  \namedthm}{\endnamedthm}
 \newtheorem{theorem}{Theorem}[section]
 
 \newtheorem{proposition}[theorem]{Proposition}

@@ -215,7 +215,7 @@
                     \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
                     \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
                     \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                    \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv (i=1)}$,
+                    \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv i}$,
                         $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
                 \end{enumerate}
                 Let's prove the induction.
@@ -231,7 +231,7 @@
                 Then, we have two sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
                 satisfying the $k_{**}$-tree property: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
                 if given $\ell \in \parcurly{0, 1}$ we have $\rho^\frown \Partriangle{\ell} \trianglelefteq \eta$ then
-                $(a_\eta R b_\rho) \equiv \parround{\ell = 1}$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
+                $a_\eta R b_\rho \equiv \ell$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
                 This contradicts the $k_{**}$ tree bound.
             \end{proof}
         \end{lemma}

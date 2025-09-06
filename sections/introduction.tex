@@ -100,12 +100,12 @@
         (not necessarily bipartite) graphs with bounded VC-dimension.
         Fox, Pach, \& Suk give an alternative proof with better bounds of the previous result, which we state below.
 
-        \begin{theoremA}[Theorem 1.3 in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} for graphs]
-            \label{thm:B}
+        \begin{thm*}{A}[Theorem 1.3 in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} for graphs]
+            \label{thm:A}
             Each graph $G$ with VC-dimension bounded by $k$ admits an equitable partition of its vertex set with at most
             $c(k)\cdot(1/\epsilon)^{2k+1}$ parts such that all but at most an $\epsilon$-fraction of the pairs of parts
             are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
-        \end{theoremA}
+        \end{thm*}
 
         Another class of graphs that has been considered to alleviate the limitations of SzRL is that of the \emph{stable}
         graphs.
@@ -120,11 +120,11 @@
         This result is the pivotal point of this work, and \Cref{sec:section_5} is devoted to its proof,
         culminating in \Cref{thm:existance_of_regular_partitions}, which we informally give below.
 
-        \begin{theoremB} \label{thm:A}
+        \begin{thm*}{B} \label{thm:B}
             Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
             ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such that ALL pairs of parts
             are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
-        \end{theoremB}
+        \end{thm*}
 
         Note that the stable graphs is a subclass of graphs with bounded VC-dimension.
         Indeed, if a graph does not contain a bi-induced copy of a bipartite graph with stable sets of size $\geq k$,
@@ -138,89 +138,59 @@
             bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.},
         so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
 
-        Notice that, in \hyperref[thm:B]{Theorem B} there are no irregular pairs.
+        Notice that, in \Cref{thm:B} there are no irregular pairs.
         This fact, shows that the presence of the half-graph plays a key role in requiring irregular pairs in the partition.
         On the other hand, the exponent in the bound on the number of parts is exponential on $k$ while,
-        in \hyperref[thm:A]{Theorem A} it is only linear.
+        in \Cref{thm:A} it is only linear.
         It is an open question whether the exponential exponent in the bound of \Cref{thm:B} is
         needed~\cite{julia_wolf_private_comunication}.
 
-        % up to here it was compiling with no problem.
-
     \subsection{Property Testing} \label{subsec:subsection_1.3}
 
-    Property testing is a field of theoretical computer science, concerned about finding low-complexity algorithms
-    for testing (approximate) properties in large objects, such as graphs.
-    These algorithms need to be successful with high probability, and are only required to distinguish between objects
-    that do not satisfy the property, and those which are \say{far} from satisfying it.
-    For the purposes of this thesis, it is useful to formalize these concepts in the context of graphs.
+        Property testing is a field of theoretical computer science, concerned about finding low-complexity algorithms
+        for testing (approximate) properties in large objects, such as graphs.
+        These algorithms, called \emph{tests}, need to be successful with high probability, and are only required to distinguish between objects
+        that do not satisfy the property, and those which are \say{far} from satisfying it.
+        The \emph{complexity} of a test is measured by the number of queries it needs to perform in order to decide
+        whether a given input, each query returning whether two given vertices of the input graph are adjacent or not.
 
-    \begin{definition}
-        We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a graph property $\mathcal{P}$ if no adding or
-        removing of up to $\epsilon {|G| \choose 2}$ edges in $G$ results in the graph satisfying the property.
-    \end{definition}
+        Of course, the most desirable testers are those with lower query complexity.
+        A class of particular interest is that of testers whose complexity does not grow with the size of the input
+        graph.
+        Properties for which such testers exist are called \emph{testable}.
+        An important result in this context is given by Alon and Shapira
+        in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}, where they
+        showed that a large class of properties, a subclass of which will be the center of our attention, are testable.
 
-    \begin{definition} \label{def:epsilon_test}
-        An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
-        $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
-        satisfies:
-        \begin{enumerate}
-            \item If $G \in \mathcal{P}$, then $P\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
-            \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
-                then $P\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
-        \end{enumerate}
-        The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
-        a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.
-    \end{definition}
+        \begin{thm*}{C}[Alon \& Shapira Theorem in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
+            \label{thm:alon_and_shapira_theorem}
+            Every hereditary graph property is testable (with one-sided error).
+        \end{thm*}
 
-    Of course, the most desirable testers are those with lower query complexity.
-    A class of particular interest is that of testers whose complexity does not grow with the size of the
-    graph $G$.
+        A property is said to be \emph{hereditary} if it is preserved under taking induced subgraphs.
+        A property is testable \emph{with one-sided error} if the first condition in \Cref{def:epsilon_test}
+        is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
+        not give false negatives.
 
-    \begin{definition}
-        We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
-        with a constant query-complexity with respect to the size of the input graph, that is, it only depends on the
-        parameter $\epsilon$.
-    \end{definition}
+        A stepping stone towards Alon \& Shapira Theorem was the work of
+        Alon-Fischer-Krivelevich-Szegedy~\cite{efficient_testing_of_large_graphs} where they show, among other things,
+        that \emph{$H$-freeness} is testable.
+        A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in
+        $G$, and $H$-freeness is clearly an hereditary property.
 
-    In~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}, Alon and Shapira
-    showed that a large class of properties, a subclass of which will be the center of our attention, are testable.
+        Both Alon-Fischer-Krivelevich-Szegedy and Alon \& Shapira results use the strong regularity
+        lemma~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, which we mentioned earlier.
+        Furthermore, the query complexity of the testers associated to the previous results, is intrinsically linked to the number of
+        parts in the underlying regular partition.
+        Not only that, but even though the standard SzRL is good to understand most of the structure of the graph,
+        it has no control over the irregular pairs, which becomes a problem when looking for induced subgraphs.
+        For this reason, the stronger version is required.
+        This worsens the already enormous power-tower bounds of the standard regularity lemma, leading to prohibitively large,
+        although constant, query counts.
 
-    \begin{theorem}[Alon \& Shapira Theorem in~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}]
-        \label{thm:alon_and_shapira_theorem}
-        Every hereditary graph property is testable (with one-sided error).
-    \end{theorem}
-
-    A property is said to be \emph{hereditary} if it is preserved under taking induced subgraphs.
-    A property is testable \emph{with one-sided error} if the first condition in \Cref{def:epsilon_test}
-    is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
-    not give false negatives.
-
-    % - Alon Shapira uses SRL
-    % - Limitations are inherited
-    % - H-freeness is hereditary and was the first step in the general case (still SRL)
-    % - Since strength of reducing to stable case, we use this to H-free tester
-    % - Similar result, but dealing with irregular pairs, can be done for bounded VC-dimension
-
-    A stepping stone towards Alon \& Shapira Theorem was the work of
-    Alon-Fischer-Krivelevich-Szegedy~\cite{efficient_testing_of_large_graphs} where they show, among other things,
-    that \emph{$H$-freeness} is testable.
-    A graph $G$ is said to be $H$-free, where $H$ is another graph, if no copy of $H$ appears as an induced subgraph in
-    $G$, and $H$-freeness is clearly an hereditary property.
-
-    Both Alon-Fischer-Krivelevich-Szegedy and Alon \& Shapira results use the strong regularity
-    lemma~\cite[Lemma 4.1]{efficient_testing_of_large_graphs}, which we mentioned earlier.
-    Furthermore, the query complexity of the testers associated to the previous results, is intrinsically linked to the number of
-    parts in the underlying regular partition.
-    Not only that, but even though the standard SzRL is good to understand most of the structure of the graph,
-    it has no control over the irregular pairs, which becomes a problem when looking for induced subgraphs.
-    For this reason, the stronger version is required.
-    This worsens the already enormous power-tower bounds of the standard regularity lemma, leading to prohibitively large,
-    although constant, query counts.
-
-    This raises a natural question on whether the superior bounds and the lack of irregular pairs of the stable regularity
-    lemma can be exploited to create more efficient property testers for graphs in a half-graph-restricted setting.
-    The final of this work is dedicated to this question.
+        This raises a natural question on whether the superior bounds and the lack of irregular pairs of the stable regularity
+        lemma can be exploited to create more efficient property testers for graphs in a half-graph-restricted setting.
+        The final of this work is dedicated to this question.
 
     \subsection{Main Contributions} \label{subsec:main_contributions}
 
