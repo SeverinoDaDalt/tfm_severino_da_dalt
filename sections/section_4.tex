@@ -6,7 +6,7 @@
     the \emph{average condition}, which (asymmetrically) strictly bounds the number of exceptional edges in the pair.
     Using these tools we obtain the first result in \Cref{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound},
     which proves the existence of a partition of highly \regular~pairs with no exceptions, at the cost of a
-    non-homogeneous partition.
+    uneven partition.
     Next, we improve the results obtaining an even partition in
     \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}, but this time with a
     small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and even smaller parts.
@@ -22,7 +22,7 @@
         The general definition is for any function $f$, but for the rest of the section we are mostly interested in the case
         of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and at the end in the constant case $f(n) = c$.
 
-        \begin{definition}[Definition 4.2(b)] \label{def:f_indivisible}
+        \begin{definition}[Definition 4.2 (2) in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:f_indivisible}
             Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
             We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $b \in G$,
             \[
@@ -30,7 +30,7 @@
             \]
         \end{definition}
 
-        \begin{definition}[Definition 4.2(a)] \label{def:epsilon_indivisible}
+        \begin{definition}[Definition 4.2 (1) in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:epsilon_indivisible}
             Let $\epsilon \in (0,1)$.
             We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
             \[
@@ -78,18 +78,12 @@
             \]
         \end{remark}
 
-        \begin{remark}[Remark 4.7]
-            When $f(n) = n^\epsilon$ and $g(n) = n^\zeta$, the average condition is $|A|^\epsilon |B|^\zeta < \frac{1}{2} |B|$.
-        \end{remark}
-        \todo{I don't think this is useful in any way.}
+        Next, we are interested in studying how the average condition of an indivisible pair bounds the number of
+        exceptional edges of large subpairs.
+        We study the $f$-indivisible and $\epsilon$-indivisible case separately, as the specific case of $\epsilon$-indivisibility gives
+        a slightly better condition on the range of the size of the subpair.
 
-        Next, we are interested in studying how the average condition of an indivisible pair controls the homogeneity
-        \todo{Define homogeneity.}
-        of large enough subpairs, in the sense of bounding exceptional edges.
-        We study the $f$ and $\epsilon$ case separately, as the specific case of $\epsilon$ gives a slightly better condition
-        on the range of the size of the subpair.
-
-        \begin{lemma}[Claim 4.8] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
+        \begin{lemma}[Claim 4.8 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
             Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
             Then, for all $\epsilon_1 \in \parround{0, 1-\epsilon}$, $\zeta_1 \in \parround{0, 1-\zeta}$, $A' \subseteq A$
                 and $B' \subseteq B$ such that $|A'| \geq |A|^{\epsilon + \epsilon_1}$ and $|B'| \geq |B|^{\zeta + \zeta_1}$,
@@ -159,7 +153,7 @@
         For later use, we are particularly interested in the case when $f(n) = c$.
         \todo{This may be skipped, and be directly commented in the appropiate remark following the theorem.}
 
-        \begin{corollary}[Corollary 4.9] \label{cor:exceptions_bound_of_c_indivisible_sets}
+        \begin{corollary}[Corollary 4.9 in~\cite{regularity_lemmas_for_stable_graphs}] \label{cor:exceptions_bound_of_c_indivisible_sets}
             Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
             Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
                 $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
@@ -172,7 +166,7 @@
             \end{proof}
         \end{corollary}
 
-        \begin{remark}\label{rmk:sufficient_requirement_for_average_condition}
+        \begin{remark} \label{rmk:sufficient_requirement_for_average_condition}
             Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
             If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
             then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
@@ -198,7 +192,7 @@
         \todo{Lluis: hi ha alguna manera de dir una partició que no cubreix tots els vertex amb una paraula?}
         which by construction contains a $k_{**}$-tree.
 
-        \begin{lemma}[Claim 4.3] \label{lem:existance_of_indivisible_sets}
+        \begin{lemma}[Claim 4.3 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_indivisible_sets}
             Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
             such that $x \geq f(x)$.
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
@@ -240,7 +234,7 @@
         As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
         and fix an ascending order on the size of the parts.
 
-        \begin{lemma}[Claim 4.4 + 4.5] \label{lem:existance_of_ordered_f_indivisible_partitions}
+        \begin{lemma}[Claim 4.4 and 4.5 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_ordered_f_indivisible_partitions}
             Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
             such that $x \geq f(x)$.
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
@@ -265,7 +259,7 @@
         Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts,
         a condition that can be easily integrated in the definition of the sequence of integers.
 
-        \begin{lemma}[Claim 4.10] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
+        \begin{lemma}[Claim 4.10 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
@@ -330,7 +324,7 @@
             \]
         \end{definition}
 
-        \begin{lemma}[Claim 4.13] \label{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}
+        \begin{lemma}[Claim 4.13 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
@@ -413,7 +407,7 @@
         that a random refinement of the partition given by \Cref{lem:existance_of_ordered_f_indivisible_partitions} only has
         a small number of exceptional pairs.
 
-        \begin{lemma}[Claim 4.14] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
+        \begin{lemma}[Claim 4.14 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
@@ -471,7 +465,7 @@
             \end{proof}
         \end{lemma}
 
-        \begin{remark}[Remark 4.15]
+        \begin{remark}[Remark 4.15 in~\cite{regularity_lemmas_for_stable_graphs}]
             In the previous proof, the condition $m_0 < \frac{n}{n^{c\epsilon^{k_{**}}}}$ can be
             weakened at the cost of increasing the number of exceptional pairs.
             More specifically, since this condition is only used to bound the exceptional sub-pairs in the same pair
@@ -486,7 +480,7 @@
 
         \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
 
-        \begin{theorem}[Theorem 4.16] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
+        \begin{theorem}[Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
             Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
             $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
             Let $G$ be a finite graph with the non-$k_*$-order property.
@@ -570,7 +564,7 @@
         \todo{In what follows, $c$ should be another letter, it collides with previous definition. Also, what about renaming
             $c$-indivisible to $f_c$-indivisible or something like that?}
 
-        \begin{definition}[Definition 4.18] \label{def:n_large_enough_property}
+        \begin{definition}[Definition 4.18 in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:n_large_enough_property}
             For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
             the statement:
             For any set $A$ and family of subsets $P \subseteq \mathcal{P}(A)$ such that $|A| = n$ and $|P| \leq n^{\frac{1}{\zeta}}$,
@@ -578,7 +572,7 @@
             for all $B \in P$, $|U \cap B| \leq c$.
         \end{definition}
 
-        \begin{lemma}[Lemma 4.19] \label{lem:n_large_enough_valid_values}
+        \begin{lemma}[Lemma 4.19 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:n_large_enough_valid_values}
             If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
             the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
                 \begin{equation} \label{eq:n_large_enough_valid_values.1}
@@ -658,7 +652,7 @@
             That is, the lower bound on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
         \end{remark}
 
-        \begin{lemma}[Claim 4.21] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
+        \begin{lemma}[Claim 4.21 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
             Let $k_*, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
             \begin{enumerate}
                 \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.1} $G$ is a graph with the non-$k_*$-order property.
@@ -722,7 +716,7 @@
         set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, until
         the sufficiently large condition holds.
 
-        \begin{theorem}[Theorem 4.23] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
+        \begin{theorem}[Theorem 4.23 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
             Let $G$ be a graph with the non-$k_*$-property.
             For any $\epsilon \in (0, \frac{1}{2}]$, $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$ and
             $c > \frac{k_*}{1-\frac{\xi}{\epsilon^{k_{**}}} - \epsilon}$, any $A \subseteq G$ with $\parstraight{A} = n$

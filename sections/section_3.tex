@@ -37,7 +37,8 @@
         \begin{remark}
             It is important to note what is left unspecified in \Cref{def:k_order_property}.
             First, the vertices within each sequence must be distinct, as their neighborhoods within the other sequence
-            differ.
+            differ, which makes this definition equivalent to \say{the graph not containing a bi-induced copy of a
+            $k$-half-graph}, as defined in \Cref{def:bi_induced}.
             However, the sequences themselves need not be disjoint.
             One may have $a_i=b_j$, provided $i < j$ (so that $\neg(a_i R b_j)$).
             Furthermore, the definition does not specify the presence or absence of edges within the same sequence.
@@ -89,8 +90,7 @@
         With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
 
         Sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards creating a \regular,
-        and more specifically homogeneous \todo{Define homogeneous} partition, as the number of exceptional edges with respect
-        to the entire graph is large and concentrated.
+        as the number of exceptional edges with respect to the entire graph is large and concentrated.
         A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of
         such sets under the non-$k$-order property.
         In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
@@ -223,10 +223,10 @@
 
         We now prove the following equivalent versions of the lemma, which will be useful in the different sections of the
         thesis.
-        The idea is that any choice of either the exceptional or the non-exceptional vertices set of $A$ with respect to
-        each vertex $b \in G$, have the same bound.
+        The idea is that any choice, of either the exceptional or the non-exceptional vertices set of $A$ with respect to
+        each vertex $b \in G$, has the same bound.
 
-        \begin{corollary}[Claim 2.6.1] \label{cor:k_order_propery_bounds_BAbs}
+        \begin{corollary} \label{cor:k_order_propery_bounds_BAbs}
             Let $G$ be a graph with the non-$k$-order property.
             Then:
             \begin{enumerate}
@@ -285,7 +285,20 @@
         During the next sections, it will be a key point proving that some sort of \say{regular} subgraphs
         (\emph{independent} in \Cref{sec:section_4} and \emph{excellent} in \Cref{sec:section_5}) exist in a given
         stable graph.
-        In order to do so, a useful structure strongly related to the $k$-order property is the \emph{$k$-tree}.
+        A useful structure strongly related to the $k$-order property is the \emph{$k$-tree}.
+
+        Defining such concept requires us to introduce some tuple notation.
+        First of all, we use $\Partriangle{a_1, \dots, a_n}$ to denote an $n$-tuple which is an ordered list of objects
+        (in this work, such objects will be integers).
+        When using such tuples as a subscript of a variable and the tuples are sequences of $0$'s and $1$'s, we
+        may skip the $\Partriangle{}$ and commas for ease of read (for example, $\Partriangle{0,0,1}$ would be
+        written as $001$).
+        The empty tuple is denoted as $\Partriangle{\cdot}$ and occasionally in subscripts as $\emptyset$.
+        A useful operation is the concatenation of tuples, which we denote with the symbol $\frown$.
+        Finally, we say that $\eta_1 \triangleleft \eta_2$ if for some tuple $\eta_3$ we have that
+        $\eta_1 \frown \eta_3 = \eta_2$.
+
+        We now have all the notation to formally define the concept of $k$-tree.
 
         \begin{definition} \label{def:k-tree}
             A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
@@ -306,7 +319,7 @@
         Similarly to stability, we can define the \emph{tree bound} of a graph to measure the level of freeness from $k$-trees
         of graph.
 
-        \begin{definition}[Definition 2.11] \label{def:tree_bound}
+        \begin{definition}[Definition 2.11 in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:tree_bound}
             Suppose $G$ is a finite graph.
             We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal positive integer such that there is no
             $k_{**}$-tree $H = (\overline{c},\overline{b})$ in $G$.

@@ -1,9 +1,5 @@
 \section{Graphs and Regularity Lemma} \label{sec:section_2}
 
-    \todo{Mention that during the thesis, a lot of results carry many conditions most of which seem almost trivial,
-        but are necessary for the computations to work. In the final result of each section, the results are cleaned out
-        and tried to be delivered in a more readable form.}
-
     \subsection{Graphs and Basic Notation} \label{subsec:subsection_2.1}
 
         In all this work we will consider only simple graphs, that is, unweighted, undirected graphs with no loops or
@@ -17,8 +13,6 @@
             If $\parcurly{v_1, v_2} \in E$, then $v_1$ and $v_2$ are said to be \emph{the endpoints} of the edge.
         \end{definition}
 
-        \todo{Define neighbor?}
-
         By abuse of notation, we will often denote a graph $G = (V, E)$ simply by $G$ and write $v \in G$ to mean $v \in V$.
         Similarly, we will write $u v \in G$ to mean $\parcurly{u, v} \in E$.
 
@@ -27,8 +21,13 @@
         vertex set.
         With this perspective, to denote vertex adjacency between two vertices $v_1$ and $v_2$ we will often use the
         notation $v_1 R v_2$, where $R$ is the adjacency relation in $V$.
+        Also, in order to simplify future notation, we will assume that a logical true statement and the value $1$ are
+        equivalent, and similarly a false statement and the value $0$.
+        As an example, if two vertices $v_1$ and $v_2$ are not adjacent, we say that
+        $\neg v_1 R v_2 \equiv \neg 1 \equiv 0$.
 
-        A class of graphs of particular relevance in this work is that of bipartite graphs.
+        Now, a class of graphs of particular relevance in this work is that of bipartite graphs, which we define as
+        follows.
 
         \begin{definition}
             A graph $G$ is \emph{bipartite} if there exists a partition of its vertex set into two disjoint sets
@@ -52,11 +51,11 @@
             if there exist two injective\footnote{
                 In this thesis, the injective condition is redundant.
                 Still, this is a common way of defining such condition, so it is sensible keep it this way.}
-            homomorphisms $\phi_L: L \longrightarrow G$ and $\phi_R: L \longrightarrow G$ such that, for all
+            homomorphisms $\phi_L: L \longrightarrow G$ and $\phi_R: R \longrightarrow G$ such that, for all
             $u \in L$ and $v \in G$, $uv \in H \Leftrightarrow uv \in G$.
         \end{definition}
 
-        Notice that this definition does not require the two sets $\phi_L$ and $\phi_R$ to be disjoint
+        Notice that this definition does not require the two sets $\phi_L(L)$ and $\phi_R(R)$ to be disjoint
         (as defined in~\cite[pg. 417]{regularity_partitions_and_the_topology_of_graphons}
         and~\cite[pg. 2]{efficient_arithmetic_regularity_and_removal_lemmas_for_induced_bipartite_patterns}).
         This is very important for the results of this thesis, and needs to be noted that other works define such
