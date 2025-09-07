@@ -349,8 +349,7 @@
                 \end{itemize}
                 Notice that at each step, the sequence $C_\eta$ has an odd number of elements.
                 The resulting two sequences of nodes and branches form a $k_{**}$-tree.
-                See \Cref{pic:order_implies_tree} for a visual example of this construction.
-                \todo{Add visual example of order implies tree.}
+                See \Cref{fig:half-graph_implies_k-tree} for a visual example of this construction.
 
                 During the proof of the second implication, we say that a set of nodes $N$ of a $k$-tree
                 $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if there exists a map
@@ -387,6 +386,8 @@
                         Thus, $N$ contains an $n$-tree.
                     \end{proof}
                 \end{claim}
+
+                \input{pictures/half-graph_implies_k-tree}
 
                 Suppose that $G$ has a tree bound of at least $2^{k_*+1}-3$, and thus contains a $(2^{k_*+1}-2)$-tree.
                 We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds.

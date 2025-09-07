@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  7 SEP 2025 12:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.31)  7 SEP 2025 17:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1029,6 +1029,14 @@ Package caption Info: Standard document class detected.
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 )
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
+zlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
 (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
 Package: biblatex 2023/03/05 v3.19 programmable bibliographies (PK/MW)
 
@@ -1296,10 +1304,6 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@depth=\count481
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
-zlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)
 \c@@todonotes@numberoftodonotes=\count482
 )
 \c@namedthm=\count483
@@ -1310,24 +1314,24 @@ File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 140.
-LaTeX Font Info:    ... okay on input line 140.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 141.
+LaTeX Font Info:    ... okay on input line 141.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1351,7 +1355,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring ON on input line 140.
+Package hyperref Info: Link coloring ON on input line 141.
 
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/thesis.out)
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/thesis.out)
@@ -1393,18 +1397,18 @@ Package hyperref Info: Link coloring ON on input line 140.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 140
+LaTeX Font Info:    Trying to load font information for U+msa on input line 141
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 140
+LaTeX Font Info:    Trying to load font information for U+msb on input line 141
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Package xypdf Info: Line width: 0.43799pt on input line 140.
+Package xypdf Info: Line width: 0.43799pt on input line 141.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Package biblatex Info: Trying to load language 'english'...
@@ -1430,27 +1434,27 @@ Package biblatex Warning: The following entry could not be found
 (biblatex)                LaTeX afterwards.
 
 )
-Package biblatex Info: Reference section=0 on input line 140.
-Package biblatex Info: Reference segment=0 on input line 140.
+Package biblatex Info: Reference section=0 on input line 141.
+Package biblatex Info: Reference segment=0 on input line 141.
 
 
 Package todonotes Warning: The length marginparwidth is less than 2cm and will 
 most likely cause issues with the appearance of inserted todonotes. The issue c
 an be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to 
-loading the todonotes package. on input line 140.
+loading the todonotes package. on input line 141.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 143.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 144.
 
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.143 
+l.144 
        [1
 
 ] (./sections/introduction.tex
@@ -1510,110 +1514,100 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 24.
 
 [14] [15] [16] [17] (./pictures/k-tree.tex) [18]
-
-LaTeX Warning: Reference `pic:order_implies_tree' on page 1 undefined on input 
-line 353.
-
-[19]) [20] (./sections/section_4.tex [21]
-
-LaTeX Warning: Marginpar on page 22 moved.
-
-[22] [23] [24]
+(./pictures/half-graph_implies_k-tree.tex [19]) [20]) [21]
+(./sections/section_4.tex [22] [23] [24] [25]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 313.
+(hyperref)                removing `math shift' on input line 307.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\epsilon' on input line 313.
+(hyperref)                removing `\epsilon' on input line 307.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 313.
+(hyperref)                removing `math shift' on input line 307.
 
 
-Overfull \hbox (6.71062pt too wide) in paragraph at lines 334--348
-[]\OT1/cmss/bx/n/10.95 Lemma 4.17 \OT1/cmss/m/n/10.95 (Claim 4.13)\OT1/cmss/bx/
-n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]$-
-order prop-erty. Let $[]$
+Overfull \hbox (37.1273pt too wide) in paragraph at lines 328--342
+[]\OT1/cmss/bx/n/10.95 Lemma 4.16 \OT1/cmss/m/n/10.95 (Claim 4.13 in [[][]27[][
+]])\OT1/cmss/bx/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph wit
+h the non-$k[]$-order prop-erty. Let $[]$
  []
 
 
-LaTeX Warning: Marginpar on page 25 moved.
+LaTeX Warning: Marginpar on page 26 moved.
 
-[25]
-Overfull \hbox (6.71062pt too wide) in paragraph at lines 417--428
-[]\OT1/cmss/bx/n/10.95 Lemma 4.19 \OT1/cmss/m/n/10.95 (Claim 4.14)\OT1/cmss/bx/
-n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph with the non-$k[]$-
-order prop-erty. Let $[]$
+[26]
+Overfull \hbox (37.1273pt too wide) in paragraph at lines 411--422
+[]\OT1/cmss/bx/n/10.95 Lemma 4.18 \OT1/cmss/m/n/10.95 (Claim 4.14 in [[][]27[][
+]])\OT1/cmss/bx/n/10.95 . []\OT1/cmss/m/sl/10.95 Let $G$ be a fi-nite graph wit
+h the non-$k[]$-order prop-erty. Let $[]$
  []
 
-[26] [27]
+[27]
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 507.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 501.
 
 LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <6> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 507.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 501.
 
+ [28]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 551.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
+(hyperref)                removing `subscript' on input line 551.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 557.
+(hyperref)                removing `math shift' on input line 551.
 
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 557.
-
-[28] [29] [30]) [31] (./sections/section_5.tex
+[29] [30] [31]) [32] (./sections/section_5.tex
 
 LaTeX Warning: Reference `fig:good_not_excellent' on page 1 undefined on input 
 line 38.
 
+(./pictures/non-monotonic_example.tex
 
-LaTeX Warning: Reference `fig:excellence_is_not_monotonic' on page 1 undefined 
-on input line 63.
+LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32] [33]
+) [33] [34] [35]
 
-LaTeX Warning: Citation 'no_me_acuerdo' on page 34 undefined on input line 211.
+LaTeX Warning: Citation 'no_me_acuerdo' on page 36 undefined on input line 213.
 
 
-[34] [35] [36] [37] [38]
-Overfull \hbox (41.09937pt too wide) in paragraph at lines 518--522
+[36] [37] [38] [39]
+Overfull \hbox (41.09937pt too wide) in paragraph at lines 520--524
 []\OT1/cmss/m/n/10.95 Let $[][] = []$ and $\OT1/cmss/m/sl/10.95 B$ \OT1/cmss/m/
 n/10.95 from [][]Lemma 5.15[][]. We can par-ti-tion $\OT1/cmss/m/sl/10.95 B$ \O
 T1/cmss/m/n/10.95 into $[] = []$
  []
 
-[39] [40] [41]
-
-LaTeX Warning: Marginpar on page 42 moved.
-
-[42] [43]) [44] (./sections/section_6.tex [45] [46] [47]
+[40] [41] [42] [43] [44] [45]) [46] (./sections/section_6.tex [47] [48]
+[49]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 279.
- [48]
+ [50]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [49])
-[50]
+ [51])
+[52]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <10.95> not available
-(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 164.
+(Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 165.
 
-[51]
-Overfull \hbox (3.36896pt too wide) in paragraph at lines 165--165
+[53]
+Overfull \hbox (3.36896pt too wide) in paragraph at lines 166--166
 \OT1/cmtt/m/n/10.95 00279 -[] X$[][]\OT1/cmss/m/n/10.95 . \OT1/cmr/m/sc/10.95 u
 rl\OT1/cmss/m/n/10.95 : [][]$\OT1/cmtt/m/n/10.95 https : / / www . sciencedirec
 t . com / science / article / pii / S0012365X0000279X$[][]\OT1/cmss/m/n/10.95 .
 
  []
 
-[52] [53] (./sections/appendix.tex [54] [55]) [56]
+[54] [55] (./sections/appendix.tex [56] [57]) [58]
 
 enddocument/afterlastpage: lastpage setting LastPage.
 (/home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/thesis.aux)
@@ -1625,9 +1619,6 @@ L3 programming layer <2024-01-22>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 131ABA25058564F7BB5B1A4D2BB2A249;4139.
 Package logreq Info: Writing requests to 'thesis.run.xml'.
@@ -1635,10 +1626,10 @@ Package logreq Info: Writing requests to 'thesis.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 38562 strings out of 476106
- 732250 string characters out of 5793933
- 2000975 words of memory out of 5000000
- 59552 multiletter control sequences out of 15000+600000
+ 38585 strings out of 476106
+ 732983 string characters out of 5793933
+ 2005975 words of memory out of 5000000
+ 59568 multiletter control sequences out of 15000+600000
  576816 words of font info for 108 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  90i,19n,93p,3238b,1987s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1668,10 +1659,10 @@ s/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symb
 ols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbo
 ls/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1095.pfb>
 Output written on /home/severino/Workspace/master_upc/tfm_severino_da_dalt/out/
-thesis.pdf (60 pages, 578879 bytes).
+thesis.pdf (62 pages, 593551 bytes).
 PDF statistics:
- 1496 PDF objects out of 1728 (max. 8388607)
- 1325 compressed objects within 14 object streams
- 416 named destinations out of 1000 (max. 500000)
+ 1531 PDF objects out of 1728 (max. 8388607)
+ 1358 compressed objects within 14 object streams
+ 414 named destinations out of 1000 (max. 500000)
  213 words of extra memory for PDF output out of 10000 (max. 10000000)
 

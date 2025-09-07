@@ -43,29 +43,30 @@ def main():
 
     for i in range(K+1):
         for j in range(2**i):
+            letter = "b" if i == K else "c"
             x_coord = (j+.5) * 2**(K-i) * X_SEP
             y_coord = (Y_SEP * i) * Y_EXP**i
             sub_ = binary_decomposition(j,i,text=True)
             nodes += ("\t"
-                     + r"\node[vertex] (a_"
+                     + f"\\node[vertex] ({letter}_"
                      + sub_
                      + r") at ("
                      + str(x_coord)
                      + "," + str(y_coord)
                      + ") {};"
                      + "\n")
-            labels += ("\t" + r"\node[label] at (a_"
+            labels += ("\t" + f"\\node[label] at ({letter}_"
                        + sub_
-                       + rf".south) {{$a_{{{sub_ if sub_ else emptyset}}}$}};"
+                       + rf".south) {{${letter}_{{{sub_ if sub_ else emptyset}}}$}};"
                        + "\n")
 
     for i in range(K):
         for j in range(2**i):
             prec = binary_decomposition(j,i,text=True)
-            node = f"a_{prec}"
+            node = f"c_{prec}"
             for k in range(2**(K-i)):
                 cont = binary_decomposition(k,K-i,text=True)
-                branch = f"a_{prec}{cont}"
+                branch = f"b_{prec}{cont}"
                 if cont[0] == "0":
                     edges += ("\t"
                               + f"\\draw[dashed edge] ({node}) -- ({branch});\n")
