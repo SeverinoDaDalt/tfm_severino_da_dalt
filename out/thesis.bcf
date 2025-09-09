@@ -2417,15 +2417,15 @@
     <bcf:citekey order="36" intorder="2">graph_theory_and_additive_combinatorics_exploring_structure_and_randomness</bcf:citekey>
     <bcf:citekey order="37" intorder="1">graph_theory_and_additive_combinatorics_exploring_structure_and_randomness</bcf:citekey>
     <bcf:citekey order="38" intorder="1">graph_removal_lemmas</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">on_regularity_lemmas_and_their_algorithmic_applications</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">on_regularity_lemmas_and_their_algorithmic_applications</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">regularity_partitions_and_the_topology_of_graphons</bcf:citekey>
-    <bcf:citekey order="42" intorder="1">on_the_density_of_families_of_sets</bcf:citekey>
-    <bcf:citekey order="43" intorder="1">a_combinatorial_problem_stability_and_order_for_models_and_theories_in_infinitary_languages</bcf:citekey>
-    <bcf:citekey order="44" intorder="1">sous_spaces_1_des_espaces_de_banach_travaux_en_cours</bcf:citekey>
-    <bcf:citekey order="45" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">regularity_partitions_and_the_topology_of_graphons</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">on_the_density_of_families_of_sets</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">a_combinatorial_problem_stability_and_order_for_models_and_theories_in_infinitary_languages</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">sous_spaces_1_des_espaces_de_banach_travaux_en_cours</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">model_theory</bcf:citekey>
     <bcf:citekey order="46" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="47" intorder="1">model_theory</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="48" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="49" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="50" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
@@ -2444,23 +2444,21 @@
     <bcf:citekey order="63" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="64" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="65" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="66" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">no_me_acuerdo</bcf:citekey>
     <bcf:citekey order="67" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="68" intorder="1">no_me_acuerdo</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="69" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="70" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="71" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="72" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="73" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
     <bcf:citekey order="74" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="75" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="76" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
-    <bcf:citekey order="77" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="75" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="76" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="77" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
     <bcf:citekey order="78" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="79" intorder="1">the_regulariy_lemma_and_its_applications_in_graph_theory</bcf:citekey>
+    <bcf:citekey order="79" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
     <bcf:citekey order="80" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="81" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
-    <bcf:citekey order="82" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

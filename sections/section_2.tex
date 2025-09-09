@@ -16,7 +16,8 @@
         By abuse of notation, we will often denote a graph $G = (V, E)$ simply by $G$ and write $v \in G$ to mean $v \in V$.
         Similarly, we will write $u v \in G$ to mean $\parcurly{u, v} \in E$.
 
-        As most of this work is tightly related to model theory results, it is useful to note that vertices adjacency
+        As most of this work is inspired by model theory and logic results (see the use of $k$-trees in
+        \Cref{subsec:subsection_3.2}), it is useful to note that vertices adjacency
         (whether two vertices are the endpoints of an edge) is a symmetric and irreflexive binary relation on the
         vertex set.
         With this perspective, to denote vertex adjacency between two vertices $v_1$ and $v_2$ we will often use the
@@ -48,10 +49,7 @@
 
         \begin{definition} \label{def:bi_induced}
             We say that a bipartite graph $H$ with disjoint sets $L$ and $R$ is \emph{bi-induced} in a graph $G$
-            if there exist two injective\footnote{
-                In this thesis, the injective condition is redundant.
-                Still, this is a common way of defining such condition, so it is sensible keep it this way.}
-            homomorphisms $\phi_L: L \longrightarrow G$ and $\phi_R: R \longrightarrow G$ such that, for all
+            if there exist two injective homomorphisms $\phi_L: L \longrightarrow G$ and $\phi_R: R \longrightarrow G$ such that, for all
             $u \in L$ and $v \in G$, $uv \in H \Leftrightarrow uv \in G$.
         \end{definition}
 
@@ -61,7 +59,7 @@
         This is very important for the results of this thesis, and needs to be noted that other works define such
         condition without this relaxation~\cite[pg. 3]{induced_subgraph_density_vi_bounded_vc_dimension}.
 
-    \subsection{Szemerédi's Regularity Lemma} \label{subsec:subsection_2.2}
+    \subsection{Regular pairs and partitions} \label{subsec:subsection_2.2}
         We now want to formalize the concept of regular pairs of vertex sets, which is central to Szemerédi's Regularity Lemma.
         The idea is that a pair of vertex sets is regular if the edges between them are \say{randomly} distributed,
         an idea that we can formalize using edge density.
@@ -130,7 +128,7 @@
         The partition we want to study needs to satisfy that most pairs of parts are regular,
         but we allow a small number of such pairs to be irregular.
 
-        \begin{definition}
+        \begin{definition} \label{def:regular_partition}
             Let $G$ be a graph and let $\epsilon > 0$.
             An \emph{$\epsilon$-regular partition} of $G$ is a partition of its vertex set into $k$ parts
             $\parcurly{A_1, \ldots, A_k}$ with remainder set $B$ such that:
@@ -145,7 +143,7 @@
 
         \begin{definition} \label{def:even_and_equitable}
             A partition $\parcurly{A_1, \ldots, A_k}$ of the vertex set of a graph $G$ is said to be \emph{equitable}
-            if for all $1 \leq i < j \leq k$, we have that $\parstraight{|A_i| - |A_j|} \leq 1$.
+            if for all $1 \leq i \leq j \leq k$, we have that $\parstraight{|A_i| - |A_j|} \leq 1$.
             On the other hand, a partition $\parcurly{A_1, \ldots, A_k}$ with remainder $B$ of the vertex set of a graph $G$
             is said to be \emph{even} if $|A_1| = |A_2| = \cdots = |A_k|$.
         \end{definition}
@@ -154,14 +152,24 @@
             The two previous definitions, although very close in concept, have a key difference that needs to be noted.
             As most of the results requires the partition property (such as regularity) to be satisfied only by parts
             in the partition, and not necessarily by the reminder, in even partitions the behaviour of a
-            (non-necessarily trivial) fraction of vertices is unknown.
-            On the other hand, the relaxation on the size of the parts in the definition of equitable becomes almost
-            trivial as the size of the parts increases.
-            Then, results with equitable partitions are preferred over those with even partitions, but usually requires
-            extra work to achieve.
-            In line with this, the results of \Cref{sec:section_4} will treat even partitions, while the key Stable
-            Regularity Lemma in \Cref{sec:section_5} uses an equitable one.
+            (not necessarily trivial) fraction of vertices is unknown.
+            Thus, results with equitable partitions are generally preferable over those with even partitions, but
+            require some extra arguments.
+            For example, in the context of regular partitions,
+            one can make an even partition into an equitable one by distributing the remainder (which by definition
+            is small) evenly between all the parts (with some extra arguments).
+            The resulting partition is equitable with a $1$-vertex difference between parts\footnote{
+                This $\pm 1$ size difference is a simple consequence of the number of vertices possibly not being
+                divisible by the number of parts.
+                It has no major consequences, since it becomes proportionally more trivial as the size
+                of the parts gets larger.}, and with a small increase in the regularity error.
+            In other cases, such as the results of \Cref{sec:section_4}, the remainder is much larger, and
+            such a strategy does not work.
+            These (secondary) results will be presented with even partitions.
+            The more relevant Stable Regularity Lemma in \Cref{sec:section_5} presents an equitable one.
         \end{remark}
+
+    \subsection{Szemerédi's Regularity Lemma} \label{subsec:subsection_2.3}
 
         The following is the celebrated Szemerédi's Regularity Lemma.
         The statement and proof we provide in this thesis follows the one given in~\cite{extremal_graph_theory},
@@ -215,11 +223,11 @@
         of singletons of the remainder set, $\overline{B} \coloneqq \parcurly{\parcurly{b} \mid b \in B}$.
         Then, $q(\widetilde{A}) = q(\overline{A} \cup \overline{B})$
 
-        The energy function $q$ i the main tool to prove the Regularity Lemma.
-        We will prove that, if a given partition has a large enough number of irregular pairs, taking the
+        The energy function is the main tool used in the proof the Regularity Lemma.
+        We will show that, if a given partition has a large enough number of irregular pairs, taking the
         associated parts and make them a partition of their own results in a refinement of the original partition
         with a large increase in energy, which only depends on the regularity parameter $\epsilon$.
-        But the energy of a partition is upper bounded:
+        But the energy of a partition is bounded from above:
         \begin{align*}
             q(\widetilde{A}) &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} q(C_1, C_2) \\
                 &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} \frac{|C_1||C_2|}{n^2} d(C_1, C_2)^2 \\
@@ -332,12 +340,11 @@
 
         \begin{lemma} \label{lem:increase_in_energy_when_refining_an_irregular_partition}
             Let $0 < \epsilon \leq \frac{1}{4}$, let $G$ be a graph with $n$ vertices, and let
-            $\overline{A} = \parcurly{A_1, \dots, A_k}$ be a partition of its vertex set with remainder set $B$ such that
+            $\overline{A} = \parcurly{A_1, \dots, A_k}$ be an even partition of its vertex set with remainder set $B$ such that
             $|B| \leq \epsilon n$ and $|A_1| = \dots = |A_k| \eqqcolon c$.
-            If the partition $\overline{A}$ is not $\epsilon$-regular, then there is a refinement
+            If the partition $\overline{A}$ is not $\epsilon$-regular, then there is an even refinement
             $\overline{A}' = \parcurly{A'_1, \dots, A'_\ell}$ of $\overline{A}$ with remainder set $B'$ such that
-            $k \leq \ell \leq k 4^{k+1}$, $|A'_0| \leq |A_0| + \frac{n}{2^k}$, $|A'_1| = \dots = |A'_\ell|$ and
-            either $\overline{A}'$ is $\epsilon$-regular, or
+            $k \leq \ell \leq k 4^{k+1}$, $|A'_0| \leq |A_0| + \frac{n}{2^k}$, and
             \[
                 q(\widetilde{A}') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
             \]
@@ -357,7 +364,7 @@
                 We can define $\overline{A}_i$ to be the set of such equivalence classes.
                 Then, since each partition $\overline{A}_{ij}$ may at most double the number of parts that end up in
                 $\overline{A}_i$, we have that $|\overline{A}_i| \leq 2^{k-1}$.
-                Putting all of this together, we have a new partition
+                Putting all of this together, we have a new (not necessarily even) partition
                 \[
                     \overline{A}'' \coloneqq \bigcup_{i=1}^k \overline{A}_i
                 \]
@@ -433,7 +440,11 @@
 
         \begin{proof}[Proof of \Cref{thm:szemeredi_regularity_lemma}]
             Let $\epsilon > 0$, $m \geq 1$ and assume without loss of generality that $\epsilon \leq \frac{1}{4}$.
-            This is possible by monotonicity of the regularity condition.
+            This is possible by monotonicity of the regularity condition\footnote{
+                By monotonicity of the regularity property we mean that, if a partition is $\epsilon$-regular,
+                than it is also $\epsilon'$-regular for any $\epsilon' \geq \epsilon$.
+                This follows the \Cref{def:regular_partition}, as both the allowed error in
+                regular pairs and the number of irregular ones permitted increase with the regularity parameter.}.
             Also, set $s \coloneqq \frac{2}{\epsilon^5}$.
 
             While refining repeatedly the partition using \Cref{lem:increase_in_energy_when_refining_an_irregular_partition},
@@ -456,14 +467,15 @@
             Now, let's bound the number of parts of the partition at the end of the process.
             Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts
             we can simply set $M \coloneqq \max\parround{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
-            The second term ensures that $n \geq M$ is sufficiently large for~\eqref{eq:final_remainder_size_bound} to hold.
+            The second term ensures that if $n$ is sufficiently large (in particular when $n \geq M$)
+            then~\eqref{eq:final_remainder_size_bound} holds.
 
             Now, given a graph $G$ with $n \geq m$ vertices, we can build a partition into $k'$, with $m \leq k' \leq M$
             parts, and with remainder $B$ as follows.
             If $n \leq M$, simply take the partition to be all the vertices as singletons, and the remainder set to be empty.
             The resulting partition is trivially $\epsilon$-regular, as pairs of singletons are always either complete or empty.
             Suppose now that $n > M$.
-            We randomly partition the vertex set of $G$ into $k$ maximal parts of equal size, and put the remaining
+            We randomly partition the vertex set of $G$ into $k \coloneqq m$ maximal parts of equal size, and put the remaining
             vertices in the remainder set.
             This remainder set has size at most $k - 1 < \epsilon n$ by~\eqref{eq:final_remainder_size_bound}.
             We now can apply \Cref{lem:increase_in_energy_when_refining_an_irregular_partition} repeatedly,
@@ -479,11 +491,16 @@
             \item \label{itm:regular_partition_with_no_remainder}
                 The remainder set can be avoided in the resulting partition of Szemerédi's Regularity Lemma,
                 moving from an even partition to an equitable one (\Cref{def:even_and_equitable}).
+                This is done by evenly distributing the leftover vertices evenly throughout the large clusters of the
+                part, and overserving that energy lost in this operation is smaller than the gains from the former.
             \item \label{itm:regular_partition_with_regular_self_pairs}
                 It can be ensured that not only (most) pairs of different parts are regular, but also (most) parts
                 with themselves (self-pairs) satisfy this property.
         \end{itemize}
-        The proof of these escapes the goal of this work.
+
+        In this work we have focused our attention to the case of the Stable Regularity Lemma, but we have opted to
+        include a proof of a (less technically involved but conceptually complete) version of the SzRL for completeness.
+
         The interested reader is redirected
         to~\cite{graph_removal_lemmas, graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}\footnote{
             In~\cite{graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}, authors show how to
@@ -491,7 +508,5 @@
             an equitable partition.
             \cite{graph_removal_lemmas} proves the existence of a partition has regular self-pairs and no reminder, but
             the proof of the critical lemma to refine a partition into an equitable one (at the loss of a small amount
-            of energy) is omitted.}
-        \todo{Lluis: \cite{on_regularity_lemmas_and_their_algorithmic_applications} no demostra casi
-            res. Ni el menciono.}
+            of energy) is hinted at but omitted.}
         for more detailed proofs on how to obtain such partitions.
