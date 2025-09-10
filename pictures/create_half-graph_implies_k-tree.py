@@ -9,7 +9,7 @@ CAPTION=(f"Example of a $3$-tree in a half-graph with 2 × {K} vertices. \n"
          f"\\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
          f"Pairs of vertices without a line may or may not be connected. \n"
          f"Orange lines and nodes highlight the $3$-tree structure. \n"
-         f"\\emph{{On the right}} is the corresponding adjacency matrix. \n"
+         f"\\emph{{On the right}} is the corresponding bi-adjacency matrix. \n"
          f"Again, orange cells highlight edges relative to the $3$-tree structure. ")
 FIG_NAME="half-graph_implies_k-tree"
 OUTPUT_FILE="pictures/half-graph_implies_k-tree.tex"

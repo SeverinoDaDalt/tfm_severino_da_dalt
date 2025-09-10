@@ -4,6 +4,9 @@
     A graph is considered stable, if it does not contain bi-induced (see \Cref{def:bi_induced})
     large half-graphs, a particularly \irregular\todo{Explain somewhere what this means.}~structure in graphs.
     See \Cref{fig:half-graph} for an example of such a graph.
+    Note that the vertex sets $\parcurly{a_i}_i$ and $\parcurly{b_i}_i$ are \say{ordered} according to their neighbourhood,
+    and so the \emph{$k$-order} is precisely when the graph has these ($2k$) ordered elements, while it not
+    having such elements is precisely the \emph{non-$k$-order} property, defined below.
 
     \input{pictures/half-graph}
 
@@ -32,18 +35,21 @@
             $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
             for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
             Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
+            Additionally, we say that $G$ has the \emph{disjoint $k$-order property} if
+            $\Partriangle{a_i}_i \cap \Partriangle{b_i}_i = \emptyset$.
         \end{definition}
 
         \begin{remark}
-            It is important to note what is left unspecified in \Cref{def:k_order_property}.
-            First, the vertices within each sequence must be distinct, as their neighborhoods within the other sequence
-            differ, which makes this definition equivalent to \say{the graph not containing a bi-induced copy of a
+            Notice that the vertices within each sequence $\parcurly{a_i}_i$, $\parcurly{b_i}_i$ must be distinct,
+            as their neighborhoods within the other sequence differ, which makes this definition equivalent to
+            \say{the graph not containing a bi-induced copy of a
             $k$-half-graph}, as defined in \Cref{def:bi_induced}.
             However, the sequences themselves need not be disjoint.
             One may have $a_i=b_j$, provided $i < j$ (so that $\neg(a_i R b_j)$).
             Furthermore, the definition does not specify the presence or absence of edges within the same sequence.
-            Consequently, the non-$k$-order property requires the containment of a subgraph from a broad class of structures,
-            not merely a k-half-graph.
+            Consequently, the non-$k$-order property requires avoiding not only the $k$-half-graph, but a whole family
+            of induced subgraphs (the ones resulting by adding edges in the independent sets
+            $\parcurly{a_i}_i$, $\parcurly{b_i}_i$, and possibly identifying some pairs of vertices $(a_i, b_j)$).
             \todo{Possibly add visual example of this too.}
         \end{remark}
 
@@ -89,13 +95,15 @@
         \end{itemize}
         With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
 
-        Sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards creating a \regular,
-        as the number of exceptional edges with respect to the entire graph is large and concentrated.
-        A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of
-        such sets under the non-$k$-order property.
-        In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
-        $k$-order property.
-        This, together with \Cref{lem:sauer-shelah}, will give us the desired result.
+        Naturally, sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards
+        creating (close to) full or empty pairs.
+
+    \subsection{VC-dimension and the Sauer-Shelah Lemma} \label{subsec:subsection_3.2}
+
+        Recall from the introduction, that graphs with the non-$k$-order property have bounded VC-dimension.
+        We proceed to formally define the concept of VC-dimension in \Cref{def:VC_dimension}, and some of its properties
+        (\Cref{lem:sauer-shelah}) to bound the number of $\overline{B}_{A,b}$
+        under the non-$k$-order property (\Cref{lem:k_order_property_bounds_BAbs}).
 
         \begin{definition} \label{def:shattered}
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
@@ -149,34 +157,36 @@
                     \parstraight{T} \geq \parstraight{T^+} + \parstraight{T^-} \geq \parstraight{S^+} + \parstraight{S^-}
                                     \geq \parstraight{S}
                 \]
+                which proves the statement.
             \end{proof}
         \end{lemma}
 
         \begin{proof}[Proof of \Cref{lem:sauer-shelah}.]
-            Suppose that $\bigcup S$ has $n$ elements.
+            Suppose that $\bigcup_{s \in S} s$ has $n$ elements.
             By \Cref{lem:pajor}, $S$ shatters at least $\parstraight{S}$ subsets, and since there are at most
             $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
             $\parstraight{S} > \sum_{i=0}^k \binom{n}{i}$, at least one of the shattered sets has cardinality larger than $k$,
-            and hence the VC dimension of $S$ is larger than $k$.
+            and hence the VC-dimension of $S$ is larger than $k$.
         \end{proof}
 
         Next, we want to prove that if $G$ has the non-$k$-order property, then the size of the family of exceptional
         sets of $A$, relative to each vertex $b \in G$, is bounded by $|A|^k$.
         Instead, we prove a stronger result, that is we prove this same bound with only the condition that $G$
-        has the \say{disjoint} non-$k$-order property, in which the two sequences of vertices in the \Cref{def:k_order_property}
-        are in fact disjoint.
-        This stronger version (\Cref{lem:k_order_property_bounds_BAbs}) is neither more useful nor easier to prove,
-        but remarks that the non-disjointness of the sequences, and thus the broadening of the excluded structures,
-        is not needed to obtain the bound, but later on.
+        has the disjoint non-$k$-order property (recall that then the two sequences of vertices in the
+        \Cref{def:k_order_property} are disjoint).
+        Even though results in this thesis use the weaker non-disjoint version of \Cref{lem:k_order_property_bounds_BAbs},
+        we prove it in this form in order to remark that the non-disjointness of the sequences (and thus the broadening of
+        the excluded structures in stable graphs) is not crucial to obtain this value of the bound, but later on\footnote{
+            Specifically, the non-disjointness of the sequences...
+        }.
+        \todo{HERE!}
 
         \begin{lemma} \label{lem:vc_dimension_implies_k_order_property}
             Let $G$ be a graph and $A \subseteq G$.
             Let $S = \parcurly{B^+_{A,b} \mid b \in G \setminus A}$.
-            If $S$ has VC dimension (at least) $k$, then $G$ has the (disjoint)
-            \todo{Lluis: faig una definició separada o s'enten pel context que ja he posat?}
-            $k$-order property.
+            If $S$ has VC-dimension at least $k$, then $G$ has the (disjoint) $k$-order property.
             \begin{proof}
-                If $S$ has VC dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
+                If $S$ has VC-dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
                 Now, choose any order of the vertices of $A' = \Partriangle{a_1, \dots, a_k}$.
                 Then, consider the increasing sequence of subsets $A_1 \subseteq A_2 \subseteq \dots \subseteq A_k = A'$,
                 where $A_i = \parcurly{a_j \mid j \in \parcurly{1, \dots, i}}$.
@@ -280,7 +290,7 @@
             \end{proof}
         \end{corollary}
 
-    \subsection{Tree Bound} \label{subsec:subsection_3.2}
+    \subsection{Tree Bound} \label{subsec:subsection_3.3}
 
         During the next sections, it will be a key point proving that some sort of \say{regular} subgraphs
         (\emph{independent} in \Cref{sec:section_4} and \emph{excellent} in \Cref{sec:section_5}) exist in a given

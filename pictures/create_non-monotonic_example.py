@@ -11,7 +11,7 @@ CAPTION=(f"Example of the $\epsilon$-excellence property not being monotonic. \n
          f"On the other, raising the $\epsilon$-value up to $\\frac{{2}}{{5}}$ introduces a new \n"
          f"$\\frac{{2}}{{5}}$-good set $B$ witnessing that $A$ is not excellent, as half of the vertices of $A$ have one \n"
          f"truth value, and half the other. \n"
-         f"\\emph{{On the right}} is the corresponding adjacency matrix.")
+         f"\\emph{{On the right}} is the corresponding bi-adjacency matrix.")
 FIG_NAME="non-monotonic_example"
 OUTPUT_FILE="pictures/non-monotonic_example.tex"
 

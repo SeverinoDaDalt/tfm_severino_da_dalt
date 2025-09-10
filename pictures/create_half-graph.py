@@ -8,7 +8,7 @@ NODE_SIZE=0.3
 CAPTION=(f"A half-graph with 2 × {K} vertices. \n"
          f"\\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
          f"Pairs of vertices without a line may or may not be connected. \n"
-         f"\\emph{{On the right}} is the corresponding adjacency matrix.")
+         f"\\emph{{On the right}} is the corresponding bi-adjacency matrix.")
 FIG_NAME="half-graph"
 OUTPUT_FILE="pictures/half-graph.tex"
 
