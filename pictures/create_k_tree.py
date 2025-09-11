@@ -10,7 +10,7 @@ CAPTION=(f"\\emph{{On the left}}, example of a {K}-tree. \n"
          f"Solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
          f"Pairs of vertices without a line may or may not be connected. \n"
          f"In particular, notice that connections between disjoint sub-trees are not defined, and may be edges or non-edges in \n"
-         f"any combination. \n"
+         f"any combination (e.g. the pair $(c_1, c_{{01}})$). \n"
          f"\\emph{{On the right}}, the corresponding bi-adjacency matrix. ")
 FIG_NAME="k_tree"
 OUTPUT_FILE="pictures/k-tree.tex"

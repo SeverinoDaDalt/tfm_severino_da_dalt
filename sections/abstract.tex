@@ -1,0 +1,21 @@
+\abstracteng{
+    Szemerédi's Regularity Lemma is a cornerstone of modern graph theory, asserting that any graph can be partitioned
+    into a bounded number of vertex sets, where the connections between most pairs of sets behave quasi-randomly.
+    Despite its wide-ranging applications in areas like number theory and property testing, the lemma suffers from
+    two major limitations:
+    the number of parts in the partition is bounded by a tower of exponentials,
+    and the existence of irregular pairs is unavoidable in the general case.
+
+    This work focuses on a specific subclass of graphs, the \emph{stable graphs}, where these limitations can be overcome.
+    By avoiding a bipartite substructure known as the half-graph, stable graphs admit a much stronger regularity lemma.
+    This specialized lemma, originally developed by Malliaris and Shelah, guarantees a partition where all pairs are
+    regular and the number of parts is bounded by a single exponential, a significant improvement over the general
+    tower-type bound.
+
+    This thesis first presents a self-contained, combinatorial, and complete presentation of the proof of the stable
+    regularity lemma, developing a unified notational framework to bridge concepts from extremal graph theory, stability,
+    and property testing.
+    Building on this theoretical foundation, we then construct an efficient algorithm for testing \emph{$H$-freeness}
+    (the property of not containing an induced copy of a fixed graph $H$) for stable graphs.
+    This application leverages the lemma's superior properties to achieve a query complexity with significantly
+    improved bounds compared to testers for general graphs.}

@@ -7,6 +7,8 @@
     Note that the vertex tuples $\Partriangle{a_i}_i$ and $\Partriangle{b_i}_i$ are \say{ordered} according to their neighbourhood,
     and so the \emph{$k$-order} is precisely when the graph has these ($2k$) ordered elements, while it not
     having such elements is precisely the \emph{non-$k$-order} property, defined below.
+    \todo{No me gusta nada esta ultima frase. Y ponerlo como un footnote cuando definimos k-order? Al final solo
+        queremos mencionar que el nombre cuadra con esta manera de ordenar los vertices...}
 
     \input{pictures/half-graph}
 
@@ -175,9 +177,11 @@
         has the disjoint non-$k$-order property (recall that then the two sequences of vertices in the
         \Cref{def:k_order_property} are disjoint).
         Even though results in this thesis use the weaker non-disjoint version of \Cref{lem:k_order_property_bounds_BAbs},
-        we prove it in this form in order to remark that the non-disjointness of the sequences (and thus the broadening of
+        we prove it in this form to highlight that the non-disjointness of the sequences (and thus the broadening of
         the excluded structures in stable graphs) is not crucial to obtain this value of the bound, but later on\footnote{
-            Specifically, the non-disjointness of the sequences...
+            Specifically, the non-disjointness of the sequences beceomes relevant in \Cref{lem:existance_of_indivisible_sets} of
+            \Cref{sec:section_4} and in \Cref{lem:existance_of_excellent_subsets} of \Cref{sec:section_5}, as it allows
+            to prove the existence of \regular pairs.
         }.
         \todo{HERE!}
 
@@ -231,8 +235,8 @@
             If $k=1$ we are not allowing even a single edge, so $G$ is the empty graph.
         \end{remark}
 
-        We now prove the following equivalent versions of the lemma, which will be useful in the different sections of the
-        thesis.
+        We now prove the following equivalent versions of \Cref{lem:k_order_property_bounds_BAbs}, which will be useful
+        in the different sections of the thesis.
         The idea is that any choice, of either the exceptional or the non-exceptional vertices set of $A$ with respect to
         each vertex $b \in G$, has the same bound.
 
@@ -285,7 +289,7 @@
                         \]
                         This concludes the proof.
                         Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
-                        different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$.
+                        different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$. \qedhere
                 \end{enumerate}
             \end{proof}
         \end{corollary}
@@ -311,18 +315,18 @@
         We now have all the notation to formally define the concept of $k$-tree.
 
         \begin{definition} \label{def:k-tree}
-            A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
+            A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising two (not necessarily
+            disjoint) sequences:
             \begin{itemize}
-                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes} and
-                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches},
+                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k} }$, the set of \emph{nodes} and
+                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^k }$, the set of \emph{branches},
             \end{itemize}
-            satisfying that for all $\eta \in \parcurly{0,1}^{<k_{**}}$ and $\rho \in \parcurly{0,1}^{k_{**}}$,
+            satisfying that for all $\eta \in \parcurly{0,1}^{<k}$ and $\rho \in \parcurly{0,1}^k$,
             if for some $\ell \in \parcurly{0, 1}$ we have $\eta \frown \Partriangle{\ell} \triangleleft \rho$, then
             $b_\rho R c_\eta \equiv \ell$.
-            The two sequences are not necessarily disjoint. \todo{Lluis: millor una remark?}
+            Nothing else is said about the adjacency of the rest of pairs of vertices.
+            See \Cref{fig:k_tree} for an example of such a structure.
         \end{definition}
-
-        See \Cref{fig:k_tree} for an example of such a structure.
 
         \input{pictures/k-tree}
 
@@ -341,7 +345,7 @@
 
         \begin{theorem}[Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
             If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
-            On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-3$, then it has the $k_*$-order
+            On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-1$, then it has the $k_*$-order
             property.
             \begin{proof}
                 For the first implication, just consider $\Partriangle{a_i \mid i \in \parcurly{1, \dots, 2^{k_{**}}-1}}$ and
@@ -351,7 +355,7 @@
                 Take $\Partriangle{b_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-1}}$ to be the branches of the tree, indexing them by
                 the binary decomposition of their index, and run the following construction for the nodes:
                 \begin{itemize}
-                    \item Initiate $C_\empty = \Partriangle{a_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-2}}$.
+                    \item Initiate $C_\emptyset = \Partriangle{a_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-2}}$.
                     \item At each step $k \in \parcurly{0, k_{**}-1}$, for each $\eta \in \parcurly{0,1}^k$, take the middle
                         element of the sequence $C_\eta$ and set it to be the node $c_\eta$.
                         Then, the remaining first half of $C_\eta$ becomes the sequence $C_{\eta \frown \Partriangle{0}}$
@@ -360,9 +364,10 @@
                 Notice that at each step, the sequence $C_\eta$ has an odd number of elements.
                 The resulting two sequences of nodes and branches form a $k_{**}$-tree.
                 See \Cref{fig:half-graph_implies_k-tree} for a visual example of this construction.
+                This finishes the argument for the first part of the argument.
 
                 During the proof of the second implication, we say that a set of nodes $N$ of a $k$-tree
-                $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if there exists a map
+                $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree $H'$, if there exists a map
                 $f \colon \parcurly{0,1}^{<k'} \longrightarrow \parcurly{0,1}^{<k}$ such that for all $\eta, \eta' \in \parcurly{0,1}^{<k'}$,
                 $c_{f(\eta)}$ and $c_{f(\eta')}$ are in $N$, and if $\eta \frown \Partriangle{i} = \eta'$ then
                 $f(\eta) \frown \Partriangle{i} \triangleleft f(\eta')$, for all $i \in \parcurly{0, 1}$.
@@ -374,7 +379,7 @@
                 $b_{f(\rho)}$ such that $\Partriangle{i} \triangleleft \eta$ and $\Partriangle{i} \triangleleft \rho$, with $\eta \in \parcurly{0,1}^{<k'}$
                 and $\rho \in \parcurly{0,1}^{k'}$.
                 Notice that, if $H$ is an $h$-tree, $H_0$ and $H_1$ are $(h-1)$-trees, and together with the root node
-                $c_{f(\emptyset)}$, they partition $H$.
+                singleton $\parcurly{c_{f(\emptyset)}}$, they partition $H$.
 
                 Next, we prove the following claim, which shows that we can always find a tree
                 in one of the parts of a bipartition of the nodes of a larger tree.
@@ -399,7 +404,7 @@
 
                 \input{pictures/half-graph_implies_k-tree}
 
-                Suppose that $G$ has a tree bound of at least $2^{k_*+1}-3$, and thus contains a $(2^{k_*+1}-2)$-tree.
+                Suppose that $G$ has a tree bound of at least $2^{k_*+1}-1$, and thus contains a $(2^{k_*+1}-2)$-tree.
                 We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds.
                 There are
                 \begin{equation}\label{eq:tree_implies_order.1}
@@ -416,8 +421,7 @@
 
                 The initial case $S_{k_*}$ only requires the existence of a $(2^{k_*+1}-2)$-tree in $G$, which is the premise.
                 If the final case $S_1$ is true, then we are done:
-                this case assumes that $H$ is a $2$-tree, in which case there is a node $c_*$ and branch $b_*$ in $H$ which
-                are connected.
+                this case assumes that $H$ is a $2$-tree, hence there is a node $c_*$ and branch $b_*$ in $H$ that are adjacent.
                 These vertices satisfy conditions \dref{itm:tree_implies_order.3} and \dref{itm:tree_implies_order.4}, so
                 the sequence resulting from replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$, $c_*$ implies that $G$
                 has the $k_*$-order property. \todo{specify k-order}
@@ -425,7 +429,7 @@
                 To conclude the proof it remains to show that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
                 Assume $S_r$.
                 Fixing $h = 2^r - 2$, by \dref{itm:tree_implies_order.1} we have that $H$ is a $(2h +2)$-tree.
-                For each branch $b$ of $H$ we denote $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
+                For each branch $b$ of $H$ we denote with $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
 
                 We have two cases:
                 \begin{itemize}
@@ -448,10 +452,10 @@
         \end{theorem}
 
         \begin{remark}
-            The key point of the proof of the second implication of \Cref{thm:tree_implies_order} is that the found $k$-order
-            does not only utilize edges and non-edges of the $k$-tree structure itself.
+            The key point of the proof of the second implication of \Cref{thm:tree_implies_order} is that the found
+            bi-induced half-graph copy does not only utilize edges and non-edges of the $k$-tree structure itself.
             Instead, it relies on the fact that, for a tall enough tree, a $k$-order must appear in some way, leveraging
-            some \say{unknown} edges, independently on the choice of those.
+            some \say{unknown} edges, independently of disposition of the edges.
         \end{remark}
 
         The second implication of this theorem is of special interest in the next sections, as it proves that in the context

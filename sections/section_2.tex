@@ -182,16 +182,26 @@
         \end{theorem}
 
         The principal strength of this lemma lies in the fact that it guarantees the existence of a regular partition
-        which number of parts is independent of the size of the graph, and only depends on the regularity parameter
-        $\epsilon$ and the minimum number of parts (and thus vertices) $m$.
+        whose number of parts is independent of the size of the graph, and only depends on the regularity parameter
+        $\epsilon$ and the minimum number of parts (and thus vertices) $m$\footnote{
+            The dependency of $M$ on $m$ has more to do with practical and applicability purposes (in this form of the
+            result we do not control de edges within each part) than conceptual ones.
+            Since we want to be able to choose a minimal number of parts $m$, the upper bound on the number of pairs will
+            also depend on such value.}.
 
-        Note that the lower bound on the number of parts $m$ can be used to increase the number of edges that connect
-        different parts of the partition, over edges in the parts themselves.
-        This is useful in some applications of the lemma.
+        The proof of the regularity lemma uses a density-increment argument.
+        There is a quantity that we shall call \emph{energy} of the partition (\Cref{def:energy}) that is upper bounded by
+        a constant (\Cref{eq:energy_bounded_by_1}) and which is non-decreasing by partition refinement
+        (\Cref{lem:energy_does_not_decrease_when_refining}).
+        Also, we prove that if an even partition is not $\epsilon$-regular, then one could refine the partition in
+        such a way that the energy increases by a constant depending only on $\epsilon$, and the number of parts in the
+        new partition only depends on the size of the previous partition
+        (\Cref{lem:increase_in_energy_when_refining_an_irregular_partition}).
+        Thus, one can iteratively refine until reaching a regular partition, a process that must culminate in finitely
+        many steps (\Cref{thm:szemeredi_regularity_lemma}).
 
-        Before proving the theorem, it is useful to introduce some additional notation and definitions.
-        First, we note that the following inequality holds for any $\mu_1, \dots, \mu_k > 0$ and for all
-        $e_1, \dots, e_k \geq 0$:
+        The following inequality will be useful during the proof.
+        For any $\mu_1, \dots, \mu_k > 0$ and for all $e_1, \dots, e_k \geq 0$:
         \begin{equation} \label{eq:cauchy_schwarz_inequality_plus}
             \sum_{i=1}^k \frac{e_i^2}{\mu_i}
                 \geq \frac{\parround{\sum_{i=1}^k e_i}^2}{\sum_{i=1}^k \mu_i}.
@@ -199,9 +209,9 @@
         This is a direct consequence of applying the Cauchy-Schwarz inequality $\sum a_i^2 \sum b_i^2 \geq (\sum a_i b_i)^2$
         with the sequences $a_i = \sqrt{\mu_i}$ and $b_i = e_i / \sqrt{\mu_i}$.
 
-        A crucial concept in the proof of the Regularity Lemma is that of the \emph{energy} of a partition.
+        We now formalize the concept of the \emph{energy} of a partition.
 
-        \begin{definition}
+        \begin{definition} \label{def:energy}
             Let $G$ be a graph with $n$ vertices and let $A_1, A_2$ be two disjoint subset of its vertex set.
             Then, we define
             \[
@@ -223,19 +233,14 @@
         of singletons of the remainder set, $\overline{B} \coloneqq \parcurly{\parcurly{b} \mid b \in B}$.
         Then, $q(\widetilde{A}) = q(\overline{A} \cup \overline{B})$
 
-        The energy function is the main tool used in the proof the Regularity Lemma.
-        We will show that, if a given partition has a large enough number of irregular pairs, taking the
-        associated parts and make them a partition of their own results in a refinement of the original partition
-        with a large increase in energy, which only depends on the regularity parameter $\epsilon$.
-        But the energy of a partition is bounded from above:
-        \begin{align*}
-            q(\widetilde{A}) &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} q(C_1, C_2) \\
-                &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} \frac{|C_1||C_2|}{n^2} d(C_1, C_2)^2 \\
+        As promised, we see that the energy of a partition is upper bounded by a constant:
+        \begin{align} \label{eq:energy_bounded_by_1}
+            q(\widetilde{A}) &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} q(C_1, C_2) \nonumber \\
+                &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} \frac{|C_1||C_2|}{n^2} d(C_1, C_2)^2 \nonumber \\
                 &\leq \frac{\sum |C_1||C_2|}{n^2} \leq 1.
-        \end{align*}
-        Hence, the process of refinement must stop after a finite number of steps.
+        \end{align}
 
-        We first prove that refining a pair of parts or a whole partition does not decrease its energy.
+        We now prove that refining a pair of parts or a whole partition does not decrease its energy.
         \begin{lemma} \label{lem:energy_does_not_decrease_when_refining}
             Let $G$ be a graph.
             \begin{enumerate}
@@ -432,7 +437,7 @@
             \end{proof}
         \end{lemma}
 
-        We now have all the tools required to prove Szemer\'edi's Regularity Lemma.
+        We now have all the tools required to prove Szemerédi's Regularity Lemma.
         The idea will be to start with an arbitrary even partition, with a large enough number of parts and small
         enough reminder set, and then keep refining it until we reach a regular partition.
         Then, reaching regularity is inevitable, as the previous result guarantees a constant increase in energy

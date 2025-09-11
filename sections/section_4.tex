@@ -1,26 +1,26 @@
 \section{Unbounded Stable Regularity Lemmas} \label{sec:section_4}
 
-    This section works around the concept of \emph{$\epsilon$-indivisible} sets, a strong condition on the \regularity~of a subset
-    respect to all the vertices of the graph.
+    This section is centered around the concept of \emph{$\epsilon$-indivisible} sets, a strong condition on bounding the
+    non-homogeneous behaviour of a subset respect to all the vertices of the graph.
     This condition results in pairs of sufficiently large subsets of vertices satisfying
     the \emph{average condition}, which (asymmetrically) strictly bounds the number of exceptional edges in the pair.
     Using these tools we obtain the first result in \Cref{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound},
-    which proves the existence of a partition of highly \regular~pairs with no exceptions, at the cost of a
+    which proves the existence of a partition where \emph{all} pairs are highly close to full or empty, at the cost of a
     uneven partition.
     Next, we improve the results obtaining an even partition in
     \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}, but this time with a
-    small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and even smaller parts.
-    The final result, \Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}, achieves removing \irregular~pairs
-    and reduce the size of the remainder set.
+    small number of exceptional pairs, and a tradeoff between a non-negligible remainder set and parts of even smaller size.
+    The final result, \Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}, achieves removing exceptional pairs
+    and reduces the size of the remainder set.
     All in all, even though the partitions of this section present a very strong form of \regularity, they all share
     the same drawback: a large number of parts that grows with the size of the graph, something that we will be dealing
-    with in the next section.
+    with in \Cref{sec:section_5}.
 
     \subsection{Indivisibility and Average Condition} \label{subsec:subsection_4.1}
 
-        First step is defining \emph{indivisibility}.
-        The general definition is for any function $f$, but for the rest of the section we are mostly interested in the case
-        of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and at the end in the constant case $f(n) = c$.
+        Let's first define \emph{indivisibility}.
+        The general definition is dependent on a certain function $f$, but we shall be mostly
+        interested in the case of $f(n) = n^\epsilon$, which we call $\epsilon$-indivisible, and in the constant case $f(n) = c$.
 
         \begin{definition}[Definition 4.2 (2) in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:f_indivisible}
             Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
@@ -38,12 +38,11 @@
             \]
         \end{definition}
 
-        \begin{remark}
-            An $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
-        \end{remark} \todo{Redundant.}
+        As mentioned before, an $\epsilon$-indivisible set is $f$-indivisible for $f(n) = n^\epsilon$.
 
-        A natural follow-up question, is how strongly bounded are exceptions in the context of two indivisible sets.
-        The following lemma measures precisely that, although doing so in asymmetrically.
+        Thus, indivisibility upper bounds the number of exceptional edges with respect to each vertex.
+        A natural follow-up question is how two indivisible sets interact between each other.
+        The following lemma tackles precisely that, although doing so asymmetrically.
 
         \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
             Let $G$ be a finite graph.
