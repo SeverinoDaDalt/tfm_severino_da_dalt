@@ -2,9 +2,9 @@
 
     In this section we introduce the class of \emph{stable} graphs.
     A graph is considered stable, if it does not contain bi-induced (see \Cref{def:bi_induced})
-    large half-graphs, a particularly \irregular\todo{Explain somewhere what this means.}~structure in graphs.
+    large half-graphs, a particularly \irregular~structure in graphs.
     See \Cref{fig:half-graph} for an example of such a graph.
-    Note that the vertex sets $\parcurly{a_i}_i$ and $\parcurly{b_i}_i$ are \say{ordered} according to their neighbourhood,
+    Note that the vertex tuples $\Partriangle{a_i}_i$ and $\Partriangle{b_i}_i$ are \say{ordered} according to their neighbourhood,
     and so the \emph{$k$-order} is precisely when the graph has these ($2k$) ordered elements, while it not
     having such elements is precisely the \emph{non-$k$-order} property, defined below.
 
@@ -40,7 +40,7 @@
         \end{definition}
 
         \begin{remark}
-            Notice that the vertices within each sequence $\parcurly{a_i}_i$, $\parcurly{b_i}_i$ must be distinct,
+            Notice that the vertices within each sequence $\Partriangle{a_i}_i$, $\Partriangle{b_i}_i$ must be distinct,
             as their neighborhoods within the other sequence differ, which makes this definition equivalent to
             \say{the graph not containing a bi-induced copy of a
             $k$-half-graph}, as defined in \Cref{def:bi_induced}.
@@ -49,7 +49,7 @@
             Furthermore, the definition does not specify the presence or absence of edges within the same sequence.
             Consequently, the non-$k$-order property requires avoiding not only the $k$-half-graph, but a whole family
             of induced subgraphs (the ones resulting by adding edges in the independent sets
-            $\parcurly{a_i}_i$, $\parcurly{b_i}_i$, and possibly identifying some pairs of vertices $(a_i, b_j)$).
+            $\Partriangle{a_i}_i$, $\Partriangle{b_i}_i$, and possibly identifying some pairs of vertices $(a_i, b_j)$).
             \todo{Possibly add visual example of this too.}
         \end{remark}
 
@@ -113,7 +113,7 @@
 
         \begin{definition} \label{def:VC_dimension}
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
-            The \emph{VC dimension} of $S$ is the size of the largest set $A \subseteq G$ that is shattered by $S$.
+            The \emph{VC-dimension} of $S$ is the size of the largest set $A \subseteq G$ that is shattered by $S$.
         \end{definition}
 
         \begin{lemma}[Sauer-Shelah (-Perles -Vapnik-Chervonenkis) Lemma,
@@ -122,7 +122,7 @@
             % 4 names with parenthesis title from: https://gilkalai.wordpress.com/2008/09/28/extremal-combinatorics-iii-some-basic-theorems/
             \label{lem:sauer-shelah}  % both authors proved this independently
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
-            If the VC dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
+            If the VC-dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
             $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
         \end{lemma}
 
@@ -155,7 +155,7 @@
                 All in all, we conclude that
                 \[
                     \parstraight{T} \geq \parstraight{T^+} + \parstraight{T^-} \geq \parstraight{S^+} + \parstraight{S^-}
-                                    \geq \parstraight{S}
+                                    \geq \parstraight{S},
                 \]
                 which proves the statement.
             \end{proof}
@@ -195,7 +195,7 @@
                 In particular, the two sequences $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and
                 $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ satisfy
                 \[
-                    a_i R b_j \Leftrightarrow i \leq j
+                    a_i R b_j \Leftrightarrow i \leq j,
                 \]
                 and thus $G$ has the $k$-order property.
             \end{proof}
@@ -205,16 +205,16 @@
             Let $G$ be a graph with the (disjoint) non-$k$-order property.
             Then, for any finite non-trivial $A \subseteq G$,
             \[
-                \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
+                \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k.
             \]
             \begin{proof}
                 By \Cref{lem:vc_dimension_implies_k_order_property}, if $G$ has the non-$k$-order property,
-                then the family $\parcurly{B^+_{A,b} \mid b \in G \setminus A}$ has VC dimension at most $k-1$,
+                then the family $\parcurly{B^+_{A,b} \mid b \in G \setminus A}$ has VC-dimension at most $k-1$,
                 so by the Sauer-Shelah \Cref{lem:sauer-shelah} we have
                 $\parcurly{B^+_{A,b} \mid b \in G \setminus A} \leq \sum_{i=0}^{k-1} \binom{|A|}{i}$.
                 Since $\parcurly{B^+_{A,b} \mid b \in A} \leq \parstraight{A}$, we conclude that
                 \[
-                    \parstraight{S} = \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|
+                    \parstraight{S} = \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|.
                 \]
                 Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
                 \begin{itemize}
@@ -243,12 +243,12 @@
                 \item\label{itm:k_order_propery_bounds_BAbs.1} For any finite $A \subseteq G$
                     \[
                         \parstraight{\parcurly{B^-_{A,b} \mid b \in G}}
-                            \leq |A|^k
+                            \leq |A|^k.
                     \]
                 \item\label{itm:k_order_propery_bounds_BAbs.2} For any finite $A \subseteq G$
                     \[
                         \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}}
-                            \leq |A|^k
+                            \leq |A|^k.
                     \]
             \end{enumerate}
             \begin{proof}
@@ -258,12 +258,12 @@
                         It follows that
                         \[
                             \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
-                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
+                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k,
                         \]
                         where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
                     \item Consider the following map:
                         \begin{align*}
-                            \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G} \\
+                            \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G}. \\
                                                          B^+_{A,b} & \longmapsto \overline{B}_{A,b}
                         \end{align*}
                         We first prove that the map $\pi$ is well-defined.
@@ -281,7 +281,7 @@
                         \[
                             \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
                             \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
-                            \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                            \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k.
                         \]
                         This concludes the proof.
                         Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
@@ -313,10 +313,10 @@
         \begin{definition} \label{def:k-tree}
             A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
             \begin{itemize}
-                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes}.
-                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches}.
+                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes} and
+                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches},
             \end{itemize}
-            satisfying that, for all $\eta \in \parcurly{0,1}^{<k_{**}}$ and $\rho \in \parcurly{0,1}^{k_{**}}$,
+            satisfying that for all $\eta \in \parcurly{0,1}^{<k_{**}}$ and $\rho \in \parcurly{0,1}^{k_{**}}$,
             if for some $\ell \in \parcurly{0, 1}$ we have $\eta \frown \Partriangle{\ell} \triangleleft \rho$, then
             $b_\rho R c_\eta \equiv \ell$.
             The two sequences are not necessarily disjoint. \todo{Lluis: millor una remark?}

@@ -68,7 +68,7 @@
             Let $G$ be a graph and let $X, Y \subseteq G$ be two (not necessarily disjoint) non-empty subsets of its vertices.
             The \emph{edge density} between $X$ and $Y$ is defined as
             \[
-                d(X, Y) = \frac{\parstraight{e(X, Y)}}{|X| |Y|}
+                d(X, Y) = \frac{\parstraight{e(X, Y)}}{|X| |Y|},
             \]
             where $e(X, Y) = \parcurly{\parround{x, y} \in E \mid x \in X, y \in Y}$ is the set of edges with one endpoint in
             $X$ and the other in $Y$.
@@ -92,14 +92,14 @@
             \[
                 \frac{\parstraight{E_X}}{{|X| \choose 2}}
                     = \frac{\parstraight{e(X, X)} / 2}{\parround{|X|-1}|X| / 2}
-                    = \frac{|X|}{|X|-1} \frac{\parstraight{e(X, X)}}{|X|^2}
+                    = \frac{|X|}{|X|-1} \frac{\parstraight{e(X, X)}}{|X|^2},
             \]
             where first equality follows from the fact that $E_X$ counts each edge in $e(X, X)$ twice.
             So,
             \[
                 d(X, X)
                     \leq \frac{\parstraight{E_X}}{{|X| \choose 2}}
-                    \leq 2 d(X, X)
+                    \leq 2 d(X, X).
             \]
             This also implies that the proportion of possible edges between vertices in $X$ that are actually not present
             in $G$ lies between $1 - 2 d(X,X)$ and $1 - d(X,X)$.
@@ -110,7 +110,7 @@
             is said to be \emph{$\epsilon$-regular} if for all $A' \subseteq A$ and $B' \subseteq B$ such that
             $|A'| \geq \epsilon |A|$ and $|B'| \geq \epsilon |B|$, we have
             \[
-                |d(A', B') - d(A, B)| \leq \epsilon
+                |d(A', B') - d(A, B)| \leq \epsilon.
             \]
         \end{definition}
 
@@ -194,7 +194,7 @@
         $e_1, \dots, e_k \geq 0$:
         \begin{equation} \label{eq:cauchy_schwarz_inequality_plus}
             \sum_{i=1}^k \frac{e_i^2}{\mu_i}
-                \geq \frac{\parround{\sum_{i=1}^k e_i}^2}{\sum_{i=1}^k \mu_i}
+                \geq \frac{\parround{\sum_{i=1}^k e_i}^2}{\sum_{i=1}^k \mu_i}.
         \end{equation}
         This is a direct consequence of applying the Cauchy-Schwarz inequality $\sum a_i^2 \sum b_i^2 \geq (\sum a_i b_i)^2$
         with the sequences $a_i = \sqrt{\mu_i}$ and $b_i = e_i / \sqrt{\mu_i}$.
@@ -205,16 +205,16 @@
             Let $G$ be a graph with $n$ vertices and let $A_1, A_2$ be two disjoint subset of its vertex set.
             Then, we define
             \[
-                q(A_1, A_2) = \frac{|A_1||A_2|}{n^2} d(A_1, A_2)^2 = \frac{e(A_1, A_2)^2}{n^2 |A_1| |A_2|}
+                q(A_1, A_2) = \frac{|A_1||A_2|}{n^2} d(A_1, A_2)^2 = \frac{e(A_1, A_2)^2}{n^2 |A_1| |A_2|}.
             \]
             For a partition $\overline{A_1}$ of $A_1$ and $\overline{A_2}$ of $A_2$, we define
             \[
-                q(\overline{A_1}, \overline{A_2}) = \sum_{A_1' \in \overline{A_1}, A_2' \in \overline{A_2}} q(A_1', A_2')
+                q(\overline{A_1}, \overline{A_2}) = \sum_{A_1' \in \overline{A_1}, A_2' \in \overline{A_2}} q(A_1', A_2').
             \]
             Finally, we define the \emph{energy} of a partition $\overline{A} = \parcurly{A_1, \dots, A_k}$ of the
             vertex set of $G$ as
             \[
-                q(\overline{A}) = \sum_{1 \leq i < j \leq k} q(A_i, A_j)
+                q(\overline{A}) = \sum_{1 \leq i < j \leq k} q(A_i, A_j).
             \]
         \end{definition}
 
@@ -231,7 +231,7 @@
         \begin{align*}
             q(\widetilde{A}) &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} q(C_1, C_2) \\
                 &= \sum_{\substack{C_1, C_2 \in \widetilde{A} \\ C_1 \neq C_2}} \frac{|C_1||C_2|}{n^2} d(C_1, C_2)^2 \\
-                &\leq \frac{\sum |C_1||C_2|}{n^2} \leq 1
+                &\leq \frac{\sum |C_1||C_2|}{n^2} \leq 1.
         \end{align*}
         Hence, the process of refinement must stop after a finite number of steps.
 
@@ -260,7 +260,7 @@
                                     {\sum_{i=1}^k \sum_{j=1}^\ell |A_{1,i}||A_{2,j}|} \\
                                 & = \frac{1}{n^2} \frac{e(A_1, A_2)^2}
                                     {(\sum_{i=1}^k |A_{1,i}|)(\sum_{j=1}^\ell |A_{2,j}|)} \\
-                                & = q(A_1, A_2)
+                                & = q(A_1, A_2).
                         \end{align*}
                     \item \label{lem:energy_does_not_decrease_when_refining.2}
                         Let $\overline{A} = \parcurly{A_1, \dots, A_k}$, and for all $i \in \parcurly{1, \dots, k}$ let
@@ -271,7 +271,7 @@
                                 & = \sum_{1 \leq i < j \leq k} q(A_i, A_j) \\
                                 & \stackrel{\dref{lem:energy_does_not_decrease_when_refining.1}}{\leq}
                                     \sum_{1 \leq i < j \leq k} q(\overline{A}_i, \overline{A}_j) \\
-                                & \leq q(\overline{A}')
+                                & \leq q(\overline{A}'),
                         \end{align*}
                         where last inequality follows from the fact that
                         $q(\overline{A}') = \sum_{1 \leq i \leq k} q(\overline{A}_i) + \sum_{1 \leq i < j \leq k} q(\overline{A}_i, \overline{A})$.
@@ -288,14 +288,14 @@
             $\overline{A}_1 = \parcurly{A_{1,1}, A_{1,2}}$ of $A_1$ and
             $\overline{A}_2 = \parcurly{A_{2,1}, A_{2,2}}$ of $A_2$ such that
             \[
-                q(\overline{A}_1, \overline{A}_2) \geq q(A_1, A_2) + \epsilon^4 \frac{|A_1||A_2|}{n^2}
+                q(\overline{A}_1, \overline{A}_2) \geq q(A_1, A_2) + \epsilon^4 \frac{|A_1||A_2|}{n^2}.
             \]
             \begin{proof}
                 Suppose that $(A_1, A_2)$ is not $\epsilon$-regular.
                 Then there are subsets $A_{1,1} \subseteq A_1$ and $A_{2,1} \subseteq A_2$ with
                 $|A_{1,1}| \geq \epsilon |A_1|$ and $|A_{2,1}| \geq \epsilon |A_2|$ such that
                 \begin{equation} \label{eq:irregular_pair_density_difference}
-                    |\eta| > \epsilon
+                    |\eta| > \epsilon,
                 \end{equation}
                 where $\eta = d(A_{1,1}, A_{2,1}) - d(A_1, A_2)$.
                 We now show that $\overline{A}_1 = \parcurly{A_{1,1}, A_{1,2}}$ and
@@ -312,7 +312,7 @@
                             \frac{e_{11}^2}{c_1 d_1} + \sum_{i + j > 2} \frac{e_{ij}^2}{c_i d_j}} \\
                         & \stackrel{\eqref{eq:cauchy_schwarz_inequality_plus}}{\geq}
                             \frac{1}{n^2} \Parround{
-                                \frac{e_{11}^2}{c_1 d_1} + \frac{(e - e_{11})^2}{cd - c_1 d_1}}
+                                \frac{e_{11}^2}{c_1 d_1} + \frac{(e - e_{11})^2}{cd - c_1 d_1}}.
                 \end{align*}
                 By definition of $\eta$, in the new notation we have that $e_{11} = \frac{c_1 d_1 e}{cd} + \eta c_1 d_1$,
                 and so
@@ -346,7 +346,7 @@
             $\overline{A}' = \parcurly{A'_1, \dots, A'_\ell}$ of $\overline{A}$ with remainder set $B'$ such that
             $k \leq \ell \leq k 4^{k+1}$, $|A'_0| \leq |A_0| + \frac{n}{2^k}$, and
             \[
-                q(\widetilde{A}') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+                q(\widetilde{A}') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}.
             \]
             \begin{proof}
                 For all $1 \leq i < j \leq k$, let $\overline{A}_{ij}$ be a partition of $A_i$ and $\overline{A}_{ji}$ a
@@ -357,7 +357,7 @@
                 partition $\overline{A}_{ij}$ of $A_i$ and a partition $\overline{A}_{ji}$ of $A_j$ with
                 $|\overline{A}_{ij}| = |\overline{A}_{ji}| = 2$ such that
                 \begin{equation} \label{eq:increase_in_energy_in_refined_ij_pair}
-                    q(\overline{A}_{ij}, \overline{A}_{ji}) \geq q(A_i, A_j) + \epsilon^4 \frac{c^2}{n^2}
+                    q(\overline{A}_{ij}, \overline{A}_{ji}) \geq q(A_i, A_j) + \epsilon^4 \frac{c^2}{n^2}.
                 \end{equation}
                 Now, consider two vertices $u, v \in A_i$ to be equivalent if for every $j \neq i$ they belong to the
                 same set of the partition $\overline{A}_{ij}$.
@@ -371,7 +371,7 @@
                 of $G$ with reminder set still $B$.
                 Note that $\overline{A}''$ refines $\overline{A}$, and that
                 \begin{equation} \label{eq:size_of_refined_partition}
-                    k \leq |\overline{A}''| \leq k 2^{k-1} \leq k 2^{k}
+                    k \leq |\overline{A}''| \leq k 2^{k-1} \leq k 2^{k}.
                 \end{equation}
                 By hypothesis, we know that $\overline{A}$ is not $\epsilon$-regular, and so there are at least
                 $\epsilon k^2$ pairs $(A_i, A_j)$, with $1 \leq i < j \leq k$, such that the partition $\overline{A}_{ij}$ is
@@ -387,7 +387,7 @@
                             \sum_{1 \leq i < j \leq k} q(A_i, A_j) + \epsilon k^2 \epsilon^4 \frac{c^2}{n^2}
                             + \sum_{1 \leq i \leq k} q(\parcurly{A_i}, \overline{B}) + q(\overline{B}) \\
                         & = q(\widetilde{A}) + \epsilon^5 \parround{\frac{c k}{n}}^2 \\
-                        & \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+                        & \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}.
                 \end{align*}
                 First equality follows from the definition of energy, first inequality uses
                 \dref{lem:energy_does_not_decrease_when_refining.1}~from \Cref{lem:energy_does_not_decrease_when_refining},
@@ -413,7 +413,7 @@
                 $\overline{A}''$ and, following \dref{lem:energy_does_not_decrease_when_refining.2}~from
                 \Cref{lem:energy_does_not_decrease_when_refining}, satisfies
                 \[
-                    q(\widetilde{A}') \geq q(\widetilde{A}'') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}
+                    q(\widetilde{A}') \geq q(\widetilde{A}'') \geq q(\widetilde{A}) + \frac{\epsilon^5}{2}.
                 \]
 
                 Now, no more than $\frac{c}{d} \leq 4^{k+1}$ sets $A'_i$ can lie within the same part of $\overline{A}$,
@@ -425,7 +425,7 @@
                         & \stackrel{\eqref{eq:size_of_refined_partition}}{\leq}
                             |B| + \frac{c}{4^k} k 2^k \\
                         & = |B| + \frac{kc}{2^k} \\
-                        & \leq |B| + \frac{n}{2^k}
+                        & \leq |B| + \frac{n}{2^k}.
                 \end{align*}
                 Thus, the partition $\overline{A}'$ with remainder set $B'$ satisfies all the conditions in the statement,
                 and we are done.
@@ -461,7 +461,7 @@
             $n$ large enough so that $k \leq \frac{\epsilon n}{2}$.
             Then,
             \begin{equation} \label{eq:final_remainder_size_bound}
-                k + \frac{s n}{2^k} \leq \frac{\epsilon n}{2} + \frac{\epsilon n}{2} = \epsilon n
+                k + \frac{s n}{2^k} \leq \frac{\epsilon n}{2} + \frac{\epsilon n}{2} = \epsilon n.
             \end{equation}
 
             Now, let's bound the number of parts of the partition at the end of the process.

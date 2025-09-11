@@ -26,7 +26,7 @@
             Let $f: \mathbb{R} \longrightarrow \mathbb{R}$ be a function.
             We say that $A \subseteq G$ is \emph{$f$-indivisible} if for every $b \in G$,
             \[
-                \parstraight{\overline{B}_{A,b}} < f(|A|)
+                \parstraight{\overline{B}_{A,b}} < f(|A|).
             \]
         \end{definition}
 
@@ -34,7 +34,7 @@
             Let $\epsilon \in (0,1)$.
             We say that $A \subseteq G$ is \emph{$\epsilon$-indivisible} if for every $b \in G$,
             \[
-                \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}
+                \parstraight{\overline{B}_{A,b}} < |A|^{\epsilon}.
             \]
         \end{definition}
 
@@ -74,7 +74,7 @@
         \begin{remark}
             The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter, that is,
             \[
-                (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition }
+                (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition. }
             \]
         \end{remark}
 
@@ -90,7 +90,7 @@
                 we have that:
             \[
                 \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
             \begin{proof}
                 Notice:
@@ -110,7 +110,7 @@
                             &= \frac{|A|^\epsilon}{|A'|} + \frac{|A'| - |A|^\epsilon}{|A'|} \frac{|B|^\zeta}{|B'|} \\
                             &\leq \frac{|A|^\epsilon}{|A'|} + \frac{|B|^\zeta}{|B'|} \\
                             &\leq \frac{|A|^\epsilon}{|A|^{\epsilon + \epsilon_1}} + \frac{|B|^\zeta}{|B|^{\zeta + \zeta_1}} \\
-                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
                     \end{split}
                 \]
             \end{proof}
@@ -126,7 +126,7 @@
                 we have that:
             \[
                 \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
             \begin{proof}
                 Notice:
@@ -144,7 +144,7 @@
                             &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
                             &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
                             &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
-                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
                     \end{split}
                 \]
             \end{proof}
@@ -156,10 +156,10 @@
         \begin{corollary}[Corollary 4.9 in~\cite{regularity_lemmas_for_stable_graphs}] \label{cor:exceptions_bound_of_c_indivisible_sets}
             Let $A$ and $B$ be $f$-indivisible with $f(n) = c$ and $(A,B)$ satisfy the average condition.
             Then, for all $\epsilon_1 \in (0, 1 - \frac{c}{|A|})$, $\zeta_1 \in (0, 1 - \frac{c}{|B|})$, $A' \subseteq A$ and
-                $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
+            $B' \subseteq B$ with $|A'| \geq c |A|^{\epsilon_1}$ and $|B'| \geq c |B|^{\zeta_1}$, we have:
             \[
                 \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
-                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}
+                    \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
             \begin{proof}
                 Use \Cref{lem:exceptions_bound_of_f_indivisible_sets} with $f(n) = c$.
@@ -175,7 +175,7 @@
                     \leq \frac{|B|^{2\epsilon}}{|B|}
                     = \frac{1}{|B|^{1-2\epsilon}}
                     = \frac{1}{m^{1-2\epsilon}}
-                    < \frac{1}{2}
+                    < \frac{1}{2}.
             \]
             We will be using this fact in the context of a sequence of non-zero natural numbers
             $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
@@ -205,12 +205,12 @@
                 Then we can construct the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
                 on induction over $k = |\eta|$, satisfying:
                 \begin{enumerate}
-                    \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                    \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
-                    \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$
-                    \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                    \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
+                    \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
+                    \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$.
+                    \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                     \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv i}$,
-                        $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$
+                        $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                 \end{enumerate}
                 Let's prove the induction.
                 For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
@@ -280,7 +280,7 @@
                         \begin{split}
                             \frac{|\parcurly{(a,b) \in (A,B) \mid a R b \equiv \neg t(A_i,A_j)}|}{|A \times B|}
                                 &\leq \frac{1}{|A_i|^\zeta} + \frac{1}{|A_j|^\zeta} \\
-                                &\leq \frac{1}{|A|^\zeta} + \frac{1}{|B|^\zeta}
+                                &\leq \frac{1}{|A|^\zeta} + \frac{1}{|B|^\zeta}.
                         \end{split}
                     \]
             \end{enumerate}
@@ -320,7 +320,7 @@
             $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
             We define $\varepsilon^+_{A_i,A_j,m}$ as the event:
             \[
-                \forall a \in A_i \ \forall b \in B_i, a R b = t(A,B)
+                \forall a \in A_i \ \forall b \in B_i, a R b = t(A,B).
             \]
         \end{definition}
 
@@ -340,7 +340,7 @@
             respectively, with pieces of size $m$.
             We have that
             \[
-                P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+                P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}.
             \]
             \begin{proof}
                 Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
@@ -364,7 +364,7 @@
                                 \leq \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_1 + 1}}} \\
                             & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                                = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                                = \frac{1}{n^{c \epsilon^{k_{**}}}}.
                     \end{split}
                 \]
                 The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
@@ -383,7 +383,7 @@
                                 \leq \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_2 + 1}}} \\
                             & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
-                                = \frac{1}{n^{c \epsilon^{k_{**}}}}
+                                = \frac{1}{n^{c \epsilon^{k_{**}}}}.
                     \end{split}
                 \]
                 Putting it all together:
@@ -391,7 +391,7 @@
                     P(\varepsilon^+_{A_{1,s},A_{2,t},m})
                         \geq (1 - P_1) (1 - P_2)
                         \geq \parround{1 - \frac{1}{n^{c \epsilon^{k_{**}}}}}^2
-                        \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}
+                        \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}.
                 \]
             \end{proof}
         \end{lemma}
@@ -423,9 +423,9 @@
                 \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{c\epsilon^{k_{**}}}}r^2$ of the pairs
                     $(A_i, A_j)$ with $i<j$ there are no exceptional edges, i.e.
                     \[
-                        \parcurly{(a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j)} = \emptyset
+                        \parcurly{(a,b) \in A_i \times A_j \mid a R b \not\equiv t(A_i, A_j)} = \emptyset.
                     \]
-                \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3} $|B| < m_0$
+                \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.3} $|B| < m_0$.
             \end{enumerate}
             \begin{proof}
                 We can use \Cref{lem:existance_of_ordered_f_indivisible_partitions} to get a partition
@@ -441,7 +441,7 @@
                 \[
                     \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
                          = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
-                         \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}}
+                         \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}},
                 \]
                 where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
                 Since the expectation is an average, for some refinement $\overline{A}$ of $\overline{A'}$ we have that
@@ -456,7 +456,7 @@
                                 = \frac{m_0}{n} \bbparround{\frac{n}{\sqrt{2}m_{**}}}^2 \\
                             & \leq \frac{m_0}{n} \bbparround{\frac{n - m_0}{m_{**}}}^2
                                 \leq \frac{m_0}{n} r^2
-                                < \frac{r^2}{n^{c \epsilon^{k_{**}}}}
+                                < \frac{r^2}{n^{c \epsilon^{k_{**}}}}.
                     \end{split}
                 \]
                 Notice that the third inequality comes after the condition $m_0 \leq \frac{\sqrt{2}-1}{\sqrt{2}} n$.
@@ -472,7 +472,7 @@
             (the second part of the proof), the number of exceptional pairs can be generally bounded by
             \[
                 |\parcurly{\text{Exceptional pairs}}|
-                    \leq \bbparround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2
+                    \leq \bbparround{\frac{m_0}{n} + \frac{2}{n^{c\epsilon^{k_{**}}}}} r^2.
             \]
         \end{remark}
 
@@ -499,7 +499,7 @@
                     $\bparstraight{\bparcurly{ (i,j) \mid i,j \in \parcurly{1, \dots, m}, i < j \text{ and }
                     \parcurly{(a,b) \in A_i \times A_j \mid a R b} \notin
                     \parcurly{A_i \times A_j, \emptyset}}}
-                    \leq \frac{2}{n^{c\epsilon^{k_{**}}}} m^2$
+                    \leq \frac{2}{n^{c\epsilon^{k_{**}}}} m^2$.
             \end{enumerate}
             \begin{proof}
                 Let $m_{k_{**}} = m_{**}^{\frac{3}{1-\epsilon-c}}$, and consider the sequence
@@ -517,11 +517,11 @@
                     \item $m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}}$, so on one hand
                         \[
                             m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \geq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}+1} \frac{3}{1-\epsilon-c}r^{k_{**}}}
-                                \geq n^{\epsilon}
+                                \geq n^{\epsilon},
                         \]
                         and on the other hand,
                         \[
-                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}}
+                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}},
                         \]
                         and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
                         smaller than $n^{1 - c \epsilon^{k_{**}}}$.
@@ -576,7 +576,7 @@
             If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
             the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
                 \begin{equation} \label{eq:n_large_enough_valid_values.1}
-                    \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1
+                    \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1,
                 \end{equation}
             and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$,
             then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
@@ -599,7 +599,7 @@
                         \leq {m \choose 2} \frac{n}{n^2}
                         \leq \frac{m^2}{2n}
                         \leq \frac{n^{2\xi}}{2n}
-                        < \frac{1}{2n^{1-2\xi}}
+                        < \frac{1}{2n^{1-2\xi}}.
                 \]
                 Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound the probability that at least $c$ elements of
                 $U$ are in a given $B \in P$:
@@ -608,7 +608,7 @@
                         \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
                         \leq \frac{m^c |B|^c}{n^c}
                         \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
-                        = \frac{1}{n^{c (1 - \xi - \epsilon)}}
+                        = \frac{1}{n^{c (1 - \xi - \epsilon)}}.
                 \]
                 Then, we can bound the converse of \dref{itm:n_large_enough_valid_values.2}, i.e. the probability that this happens for some $B \in P$,
                 by:
@@ -616,13 +616,13 @@
                     P_2 = P(\exists B \in P \mid \exists^{\geq c} t\in [m], U_t \in B)
                         \leq \sum_{B \in P} P_B
                         = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
-                        \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
+                        \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
                 Putting it all together, we have that
                 \[
                     P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
                         \leq P_1 + P_2
-                        < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
+                        < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
                 Notice that
                 \begin{itemize}
@@ -659,7 +659,7 @@
                 \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.2} $\epsilon \in (0, \frac{1}{2}]$.
                 \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.3} $\xi \in \parround{0, \frac{\epsilon^{k_{**}}}{2}}$.
                 \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4} $c$ satisfies \[
-                    c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
+                    c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}.
                 \]
             \end{enumerate}
             Then, for every sufficiently large $n \in \mathbb{N}$ (it suffices that $n >
@@ -684,7 +684,7 @@
                         \[
                             m_\ell \geq g_\epsilon^{-\ell}(n) \geq g_\epsilon^{-k_{**}}(n)
                                 > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}
-                                > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}
+                                > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}.
                         \]
                     \item $c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
                         = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}.
