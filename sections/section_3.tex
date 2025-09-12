@@ -4,11 +4,6 @@
     A graph is considered stable, if it does not contain bi-induced (see \Cref{def:bi_induced})
     large half-graphs, a particularly \irregular~structure in graphs.
     See \Cref{fig:half-graph} for an example of such a graph.
-    Note that the vertex tuples $\Partriangle{a_i}_i$ and $\Partriangle{b_i}_i$ are \say{ordered} according to their neighbourhood,
-    and so the \emph{$k$-order} is precisely when the graph has these ($2k$) ordered elements, while it not
-    having such elements is precisely the \emph{non-$k$-order} property, defined below.
-    \todo{No me gusta nada esta ultima frase. Y ponerlo como un footnote cuando definimos k-order? Al final solo
-        queremos mencionar que el nombre cuadra con esta manera de ordenar los vertices...}
 
     \input{pictures/half-graph}
 
@@ -33,7 +28,10 @@
 
         \begin{definition} \label{def:k_order_property}
             Let $G$ be a graph.
-            We say that $G$ has the \emph{$k$-order property} if there exist two sequences of vertices
+            We say that $G$ has the \emph{$k$-order property}\footnote{
+                Note that the vertex tuples $\Partriangle{a_i}_i$ and $\Partriangle{b_i}_i$ are \say{ordered} according to their neighbourhood,
+                and thus the name \emph{$k$-order} comes very naturally.
+            } if there exist two sequences of vertices
             $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
             for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
             Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.

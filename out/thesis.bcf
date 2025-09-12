@@ -2459,6 +2459,9 @@
     <bcf:citekey order="78" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
     <bcf:citekey order="79" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
     <bcf:citekey order="80" intorder="1">efficient_testing_of_large_graphs</bcf:citekey>
+    <bcf:citekey order="81" intorder="1">regularity_lemmas_for_stable_graphs</bcf:citekey>
+    <bcf:citekey order="82" intorder="1">regularity_partitions_and_the_topology_of_graphons</bcf:citekey>
+    <bcf:citekey order="83" intorder="1">julia_wolf_private_comunication</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

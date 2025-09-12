@@ -1,15 +1,40 @@
-\section{Conclusions} \label{sec:conclusions}
-    \begin{itemize}
-        \item Repeat contributions from introduction (Mention appendix).
-        \item We wanted to exploit the lack of irregular pairs.
-        \item For testing $H$-freeness, this approach is not the best approach as
-            there is Ultrastrong Ref Lemma with better exponent.
-            Say that this suggests that the Stable Regularity Lemma's bound can be improved
-            to something like $(1/\epsilon)^{c \cdot \delta^2}$ (suggested by Julia that it
-            probably is less than it is now).
-        \item The lack of irregular pairs makes the arguments easier.
-        \item Future work: exploit the lack of irregular pairs to prove $H_n$-freeness
-            where the size oh $H_n$ grows with $n$.
-        \item Future work: exploit the lack of irregular pairs for another property, something
-            like the number of copies in an interval.
-    \end{itemize}
+\section{Conclusion} \label{sec:conclusion}
+    In this thesis, we delved into the powerful framework of Szemerédi's Regularity Lemma,
+    focusing on a refined version for the class of stable graphs.
+    Our primary contributions were threefold: we provided a detailed, self-contained combinatorial proof of the Stable
+    Regularity Lemma from~\cite{regularity_lemmas_for_stable_graphs}, clarifying parameters and simplifying arguments;
+    we developed a unified notational framework to bridge concepts from extremal graph theory, stability,
+    and property testing; and, most significantly, we designed an efficient property testing algorithm for
+    $H$-freeness specifically for stable graphs.
+
+    Our motivation for this final contribution stemmed from a desire to exploit the most striking feature of the Stable
+    Regularity Lemma: the complete absence of irregular pairs in its partitions.
+    We hypothesized that this structural guarantee could be a powerful tool in property testing, and we found a
+    direct application in testing for forbidden induced subgraphs ($H$-freeness).
+
+    Interestingly, during the design of our tester, we observed that a similar argument could be constructed using the
+    Ultra-Strong Regularity Lemma for graphs with bounded VC-dimension, as presented
+    in~\cite{regularity_partitions_and_the_topology_of_graphons}.
+    The stronger regularity conditions of this lemma also allow one to effectively \say{avoid} the issue of irregular
+    pairs.
+    This led to a crucial comparison of the bounds on the number of parts in the partitions.
+    The Ultra-Strong lemma provides a bound of $(1/\epsilon)^{c \cdot d^2}$, where $d$ is the VC-dimension,
+    while the Stable Regularity Lemma's bound is $(1/\epsilon)^{c \cdot 2^k}$, where $k$ is the stability parameter.
+    As established in \Cref{sec:section_3}, stability is a stronger condition than bounded VC-dimension,
+    and the parameters $k$ and $d$ are closely related.
+
+    This comparison suggests that the bound for the Stable Regularity Lemma might not be optimal.
+    The fact that a broader class of graphs (bounded VC-dimension) admits a partition with a polynomially better
+    exponent raises the possibility that the bound for stable graphs could be improved to something akin to
+    $(1/\epsilon)^{c \cdot k^2}$, a question also posed by~\cite{julia_wolf_private_comunication}.
+    Despite the potentially suboptimal bound, the Stable Regularity Lemma remains a valuable tool.
+    Its guarantee of having no irregular pairs whatsoever allows for a uniquely clean and straightforward
+    proof of the testability of $H$-freeness in the context of stable graphs.
+
+    Finally, this work opens several avenues for future research, which could not be included in this thesis due to time
+    constraints.
+    One promising direction is to leverage the lack of irregular pairs to test for $H_n$-freeness, where the forbidden
+    subgraph $H_n$ grows in size with the input graph $G$.
+    Another intriguing possibility is to move beyond simple freeness testing towards subgraph counting, using the clean
+    structure of the stable regular partition to develop a tester that provides an interval estimate for the number of
+    induced copies of a graph $H$.
