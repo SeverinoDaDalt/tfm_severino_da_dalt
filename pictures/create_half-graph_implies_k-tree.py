@@ -5,11 +5,9 @@ Y_MATRIX_ADJ = 0.7
 K=10
 CELL_SIZE=0.5
 NODE_SIZE=0.3
-CAPTION=(f"Example of a $3$-tree in a half-graph with 2 × {K} vertices. \n"
-         f"\\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
-         f"Pairs of vertices without a line may or may not be connected. \n"
-         f"Orange lines and nodes highlight the $3$-tree structure. \n"
-         f"\\emph{{On the right}} is the corresponding adjacency matrix. \n"
+CAPTION=(f"\\emph{{On the left}}, example of a $3$-tree in a half-graph with 2 × {K} vertices. \n"
+         f"Orange lines and nodes highlight the $3$-tree structure, with dashed orange lines remarking the relevant non-edges. \n"
+         f"\\emph{{On the right}} is the corresponding bi-adjacency matrix. \n"
          f"Again, orange cells highlight edges relative to the $3$-tree structure. ")
 FIG_NAME="half-graph_implies_k-tree"
 OUTPUT_FILE="pictures/half-graph_implies_k-tree.tex"
@@ -114,9 +112,10 @@ def main():
             thickness = "thin"
             if (i,j) in tree2edge_or_not:
                 continue
-            if i < j:
-                edges += ("\t"
-                          + f"\\draw[dashed edge, {thickness}] (a_{j}) -- (b_{i});\n")
+            if i > j:
+                # edges += ("\t"
+                #           + f"\\draw[dashed edge, {thickness}] (a_{j}) -- (b_{i});\n")
+                continue
             else:
                 edges += ("\t"
                           + f"\\draw[solid edge, {thickness}] (a_{j}) -- (b_{i});\n")
@@ -128,10 +127,10 @@ def main():
                 continue
             if tree2edge_or_not[(i,j)]:
                 edges += ("\t"
-                          + f"\\draw[dashed edge, {thickness}, {color}] (a_{j}) -- (b_{i});\n")
+                          + f"\\draw[solid edge, {thickness}, {color}] (a_{j}) -- (b_{i});\n")
             else:
                 edges += ("\t"
-                          + f"\\draw[solid edge, {thickness}, {color}] (a_{j}) -- (b_{i});\n")
+                          + f"\\draw[dashed edge, dash pattern=on 3pt off 3pt, {thickness}, {color}] (a_{j}) -- (b_{i});\n")
 
     # matrix
     matrix_prefix=f"""

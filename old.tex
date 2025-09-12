@@ -438,7 +438,16 @@ half-graphs, not only improve drastically the bound on the number of parts, but 
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+            It is important to note what is left unspecified in \Cref{def:k_order_property}.
+            First, the vertices within each sequence must be distinct, as their neighborhoods within the other sequence
+            differ, which makes this definition equivalent to \say{the graph not containing a bi-induced copy of a
+            $k$-half-graph}, as defined in \Cref{def:bi_induced}.
+            However, the sequences themselves need not be disjoint.
+            One may have $a_i=b_j$, provided $i < j$ (so that $\neg(a_i R b_j)$).
+            Furthermore, the definition does not specify the presence or absence of edges within the same sequence.
+            Consequently, the non-$k$-order property requires the containment of a subgraph from a broad class of structures,
+            not merely a k-half-graph.
+            \todo{Possibly add visual example of this too.}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

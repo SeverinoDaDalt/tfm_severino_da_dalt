@@ -2,8 +2,13 @@
 
     In this section we introduce the class of \emph{stable} graphs.
     A graph is considered stable, if it does not contain bi-induced (see \Cref{def:bi_induced})
-    large half-graphs, a particularly \irregular\todo{Explain somewhere what this means.}~structure in graphs.
+    large half-graphs, a particularly \irregular~structure in graphs.
     See \Cref{fig:half-graph} for an example of such a graph.
+    Note that the vertex tuples $\Partriangle{a_i}_i$ and $\Partriangle{b_i}_i$ are \say{ordered} according to their neighbourhood,
+    and so the \emph{$k$-order} is precisely when the graph has these ($2k$) ordered elements, while it not
+    having such elements is precisely the \emph{non-$k$-order} property, defined below.
+    \todo{No me gusta nada esta ultima frase. Y ponerlo como un footnote cuando definimos k-order? Al final solo
+        queremos mencionar que el nombre cuadra con esta manera de ordenar los vertices...}
 
     \input{pictures/half-graph}
 
@@ -32,18 +37,21 @@
             $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
             for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
             Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
+            Additionally, we say that $G$ has the \emph{disjoint $k$-order property} if
+            $\Partriangle{a_i}_i \cap \Partriangle{b_i}_i = \emptyset$.
         \end{definition}
 
         \begin{remark}
-            It is important to note what is left unspecified in \Cref{def:k_order_property}.
-            First, the vertices within each sequence must be distinct, as their neighborhoods within the other sequence
-            differ, which makes this definition equivalent to \say{the graph not containing a bi-induced copy of a
+            Notice that the vertices within each sequence $\Partriangle{a_i}_i$, $\Partriangle{b_i}_i$ must be distinct,
+            as their neighborhoods within the other sequence differ, which makes this definition equivalent to
+            \say{the graph not containing a bi-induced copy of a
             $k$-half-graph}, as defined in \Cref{def:bi_induced}.
             However, the sequences themselves need not be disjoint.
             One may have $a_i=b_j$, provided $i < j$ (so that $\neg(a_i R b_j)$).
             Furthermore, the definition does not specify the presence or absence of edges within the same sequence.
-            Consequently, the non-$k$-order property requires the containment of a subgraph from a broad class of structures,
-            not merely a k-half-graph.
+            Consequently, the non-$k$-order property requires avoiding not only the $k$-half-graph, but a whole family
+            of induced subgraphs (the ones resulting by adding edges in the independent sets
+            $\Partriangle{a_i}_i$, $\Partriangle{b_i}_i$, and possibly identifying some pairs of vertices $(a_i, b_j)$).
             \todo{Possibly add visual example of this too.}
         \end{remark}
 
@@ -89,13 +97,15 @@
         \end{itemize}
         With this notation, notice that either $t(A,b) = 1$ and thus $B_{A,b} = B^+_{A,b}$, or $t(A,b) = 0$ and $B_{A,b} = B^-_{A,b}$.
 
-        Sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards creating a \regular,
-        as the number of exceptional edges with respect to the entire graph is large and concentrated.
-        A useful tool to deal with them is \Cref{lem:k_order_property_bounds_BAbs}, which gives a bound on the number of
-        such sets under the non-$k$-order property.
-        In order to prove it, we first need to introduce the \emph{VC dimension} of a family of sets, and relate it to the
-        $k$-order property.
-        This, together with \Cref{lem:sauer-shelah}, will give us the desired result.
+        Naturally, sets of vertices $A$ with a large number of large $\overline{B}_{A,b}$ are a great obstacle towards
+        creating (close to) full or empty pairs.
+
+    \subsection{VC-dimension and the Sauer-Shelah Lemma} \label{subsec:subsection_3.2}
+
+        Recall from the introduction, that graphs with the non-$k$-order property have bounded VC-dimension.
+        We proceed to formally define the concept of VC-dimension in \Cref{def:VC_dimension}, and some of its properties
+        (\Cref{lem:sauer-shelah}) to bound the number of $\overline{B}_{A,b}$
+        under the non-$k$-order property (\Cref{lem:k_order_property_bounds_BAbs}).
 
         \begin{definition} \label{def:shattered}
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
@@ -105,7 +115,7 @@
 
         \begin{definition} \label{def:VC_dimension}
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
-            The \emph{VC dimension} of $S$ is the size of the largest set $A \subseteq G$ that is shattered by $S$.
+            The \emph{VC-dimension} of $S$ is the size of the largest set $A \subseteq G$ that is shattered by $S$.
         \end{definition}
 
         \begin{lemma}[Sauer-Shelah (-Perles -Vapnik-Chervonenkis) Lemma,
@@ -114,7 +124,7 @@
             % 4 names with parenthesis title from: https://gilkalai.wordpress.com/2008/09/28/extremal-combinatorics-iii-some-basic-theorems/
             \label{lem:sauer-shelah}  % both authors proved this independently
             Let $G$ be a set and $S = \parcurly{S_i \subseteq G \mid i \in I}$ be a family of sets.
-            If the VC dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
+            If the VC-dimension of $S$ is at most $k$, and the union of all the sets in $S$ has $n$ elements, then
             $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
         \end{lemma}
 
@@ -147,36 +157,40 @@
                 All in all, we conclude that
                 \[
                     \parstraight{T} \geq \parstraight{T^+} + \parstraight{T^-} \geq \parstraight{S^+} + \parstraight{S^-}
-                                    \geq \parstraight{S}
+                                    \geq \parstraight{S},
                 \]
+                which proves the statement.
             \end{proof}
         \end{lemma}
 
         \begin{proof}[Proof of \Cref{lem:sauer-shelah}.]
-            Suppose that $\bigcup S$ has $n$ elements.
+            Suppose that $\bigcup_{s \in S} s$ has $n$ elements.
             By \Cref{lem:pajor}, $S$ shatters at least $\parstraight{S}$ subsets, and since there are at most
             $\sum_{i=0}^k \binom{n}{i}$ subsets of $S$ of size at most $k$, if
             $\parstraight{S} > \sum_{i=0}^k \binom{n}{i}$, at least one of the shattered sets has cardinality larger than $k$,
-            and hence the VC dimension of $S$ is larger than $k$.
+            and hence the VC-dimension of $S$ is larger than $k$.
         \end{proof}
 
         Next, we want to prove that if $G$ has the non-$k$-order property, then the size of the family of exceptional
         sets of $A$, relative to each vertex $b \in G$, is bounded by $|A|^k$.
         Instead, we prove a stronger result, that is we prove this same bound with only the condition that $G$
-        has the \say{disjoint} non-$k$-order property, in which the two sequences of vertices in the \Cref{def:k_order_property}
-        are in fact disjoint.
-        This stronger version (\Cref{lem:k_order_property_bounds_BAbs}) is neither more useful nor easier to prove,
-        but remarks that the non-disjointness of the sequences, and thus the broadening of the excluded structures,
-        is not needed to obtain the bound, but later on.
+        has the disjoint non-$k$-order property (recall that then the two sequences of vertices in the
+        \Cref{def:k_order_property} are disjoint).
+        Even though results in this thesis use the weaker non-disjoint version of \Cref{lem:k_order_property_bounds_BAbs},
+        we prove it in this form to highlight that the non-disjointness of the sequences (and thus the broadening of
+        the excluded structures in stable graphs) is not crucial to obtain this value of the bound, but later on\footnote{
+            Specifically, the non-disjointness of the sequences beceomes relevant in \Cref{lem:existance_of_indivisible_sets} of
+            \Cref{sec:section_4} and in \Cref{lem:existance_of_excellent_subsets} of \Cref{sec:section_5}, as it allows
+            to prove the existence of \regular pairs.
+        }.
+        \todo{HERE!}
 
         \begin{lemma} \label{lem:vc_dimension_implies_k_order_property}
             Let $G$ be a graph and $A \subseteq G$.
             Let $S = \parcurly{B^+_{A,b} \mid b \in G \setminus A}$.
-            If $S$ has VC dimension (at least) $k$, then $G$ has the (disjoint)
-            \todo{Lluis: faig una definició separada o s'enten pel context que ja he posat?}
-            $k$-order property.
+            If $S$ has VC-dimension at least $k$, then $G$ has the (disjoint) $k$-order property.
             \begin{proof}
-                If $S$ has VC dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
+                If $S$ has VC-dimension $k$, then it shatters a set $A' \subseteq A$ of size $k$.
                 Now, choose any order of the vertices of $A' = \Partriangle{a_1, \dots, a_k}$.
                 Then, consider the increasing sequence of subsets $A_1 \subseteq A_2 \subseteq \dots \subseteq A_k = A'$,
                 where $A_i = \parcurly{a_j \mid j \in \parcurly{1, \dots, i}}$.
@@ -185,7 +199,7 @@
                 In particular, the two sequences $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and
                 $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ satisfy
                 \[
-                    a_i R b_j \Leftrightarrow i \leq j
+                    a_i R b_j \Leftrightarrow i \leq j,
                 \]
                 and thus $G$ has the $k$-order property.
             \end{proof}
@@ -195,16 +209,16 @@
             Let $G$ be a graph with the (disjoint) non-$k$-order property.
             Then, for any finite non-trivial $A \subseteq G$,
             \[
-                \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
+                \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k.
             \]
             \begin{proof}
                 By \Cref{lem:vc_dimension_implies_k_order_property}, if $G$ has the non-$k$-order property,
-                then the family $\parcurly{B^+_{A,b} \mid b \in G \setminus A}$ has VC dimension at most $k-1$,
+                then the family $\parcurly{B^+_{A,b} \mid b \in G \setminus A}$ has VC-dimension at most $k-1$,
                 so by the Sauer-Shelah \Cref{lem:sauer-shelah} we have
                 $\parcurly{B^+_{A,b} \mid b \in G \setminus A} \leq \sum_{i=0}^{k-1} \binom{|A|}{i}$.
                 Since $\parcurly{B^+_{A,b} \mid b \in A} \leq \parstraight{A}$, we conclude that
                 \[
-                    \parstraight{S} = \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|
+                    \parstraight{S} = \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|.
                 \]
                 Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
                 \begin{itemize}
@@ -221,8 +235,8 @@
             If $k=1$ we are not allowing even a single edge, so $G$ is the empty graph.
         \end{remark}
 
-        We now prove the following equivalent versions of the lemma, which will be useful in the different sections of the
-        thesis.
+        We now prove the following equivalent versions of \Cref{lem:k_order_property_bounds_BAbs}, which will be useful
+        in the different sections of the thesis.
         The idea is that any choice, of either the exceptional or the non-exceptional vertices set of $A$ with respect to
         each vertex $b \in G$, has the same bound.
 
@@ -233,12 +247,12 @@
                 \item\label{itm:k_order_propery_bounds_BAbs.1} For any finite $A \subseteq G$
                     \[
                         \parstraight{\parcurly{B^-_{A,b} \mid b \in G}}
-                            \leq |A|^k
+                            \leq |A|^k.
                     \]
                 \item\label{itm:k_order_propery_bounds_BAbs.2} For any finite $A \subseteq G$
                     \[
                         \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}}
-                            \leq |A|^k
+                            \leq |A|^k.
                     \]
             \end{enumerate}
             \begin{proof}
@@ -248,12 +262,12 @@
                         It follows that
                         \[
                             \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
-                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k
+                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k,
                         \]
                         where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
                     \item Consider the following map:
                         \begin{align*}
-                            \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G} \\
+                            \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G}. \\
                                                          B^+_{A,b} & \longmapsto \overline{B}_{A,b}
                         \end{align*}
                         We first prove that the map $\pi$ is well-defined.
@@ -271,16 +285,16 @@
                         \[
                             \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
                             \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
-                            \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k
+                            \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k.
                         \]
                         This concludes the proof.
                         Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
-                        different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$.
+                        different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$. \qedhere
                 \end{enumerate}
             \end{proof}
         \end{corollary}
 
-    \subsection{Tree Bound} \label{subsec:subsection_3.2}
+    \subsection{Tree Bound} \label{subsec:subsection_3.3}
 
         During the next sections, it will be a key point proving that some sort of \say{regular} subgraphs
         (\emph{independent} in \Cref{sec:section_4} and \emph{excellent} in \Cref{sec:section_5}) exist in a given
@@ -301,18 +315,18 @@
         We now have all the notation to formally define the concept of $k$-tree.
 
         \begin{definition} \label{def:k-tree}
-            A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising:
+            A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising two (not necessarily
+            disjoint) sequences:
             \begin{itemize}
-                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k_{**}} }$, the set of \emph{nodes}.
-                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^{k_{**}} }$, the set of \emph{branches}.
+                \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k} }$, the set of \emph{nodes} and
+                \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^k }$, the set of \emph{branches},
             \end{itemize}
-            satisfying that, for all $\eta \in \parcurly{0,1}^{<k_{**}}$ and $\rho \in \parcurly{0,1}^{k_{**}}$,
+            satisfying that for all $\eta \in \parcurly{0,1}^{<k}$ and $\rho \in \parcurly{0,1}^k$,
             if for some $\ell \in \parcurly{0, 1}$ we have $\eta \frown \Partriangle{\ell} \triangleleft \rho$, then
             $b_\rho R c_\eta \equiv \ell$.
-            The two sequences are not necessarily disjoint. \todo{Lluis: millor una remark?}
+            Nothing else is said about the adjacency of the rest of pairs of vertices.
+            See \Cref{fig:k_tree} for an example of such a structure.
         \end{definition}
-
-        See \Cref{fig:k_tree} for an example of such a structure.
 
         \input{pictures/k-tree}
 
@@ -331,7 +345,7 @@
 
         \begin{theorem}[Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
             If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
-            On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-3$, then it has the $k_*$-order
+            On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-1$, then it has the $k_*$-order
             property.
             \begin{proof}
                 For the first implication, just consider $\Partriangle{a_i \mid i \in \parcurly{1, \dots, 2^{k_{**}}-1}}$ and
@@ -341,7 +355,7 @@
                 Take $\Partriangle{b_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-1}}$ to be the branches of the tree, indexing them by
                 the binary decomposition of their index, and run the following construction for the nodes:
                 \begin{itemize}
-                    \item Initiate $C_\empty = \Partriangle{a_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-2}}$.
+                    \item Initiate $C_\emptyset = \Partriangle{a_i \mid i \in \parcurly{0, \dots, 2^{k_{**}}-2}}$.
                     \item At each step $k \in \parcurly{0, k_{**}-1}$, for each $\eta \in \parcurly{0,1}^k$, take the middle
                         element of the sequence $C_\eta$ and set it to be the node $c_\eta$.
                         Then, the remaining first half of $C_\eta$ becomes the sequence $C_{\eta \frown \Partriangle{0}}$
@@ -350,9 +364,10 @@
                 Notice that at each step, the sequence $C_\eta$ has an odd number of elements.
                 The resulting two sequences of nodes and branches form a $k_{**}$-tree.
                 See \Cref{fig:half-graph_implies_k-tree} for a visual example of this construction.
+                This finishes the argument for the first part of the argument.
 
                 During the proof of the second implication, we say that a set of nodes $N$ of a $k$-tree
-                $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree, if there exists a map
+                $H = (\overline{c},\overline{b})$ \emph{contains} a $k'$-tree $H'$, if there exists a map
                 $f \colon \parcurly{0,1}^{<k'} \longrightarrow \parcurly{0,1}^{<k}$ such that for all $\eta, \eta' \in \parcurly{0,1}^{<k'}$,
                 $c_{f(\eta)}$ and $c_{f(\eta')}$ are in $N$, and if $\eta \frown \Partriangle{i} = \eta'$ then
                 $f(\eta) \frown \Partriangle{i} \triangleleft f(\eta')$, for all $i \in \parcurly{0, 1}$.
@@ -364,7 +379,7 @@
                 $b_{f(\rho)}$ such that $\Partriangle{i} \triangleleft \eta$ and $\Partriangle{i} \triangleleft \rho$, with $\eta \in \parcurly{0,1}^{<k'}$
                 and $\rho \in \parcurly{0,1}^{k'}$.
                 Notice that, if $H$ is an $h$-tree, $H_0$ and $H_1$ are $(h-1)$-trees, and together with the root node
-                $c_{f(\emptyset)}$, they partition $H$.
+                singleton $\parcurly{c_{f(\emptyset)}}$, they partition $H$.
 
                 Next, we prove the following claim, which shows that we can always find a tree
                 in one of the parts of a bipartition of the nodes of a larger tree.
@@ -389,7 +404,7 @@
 
                 \input{pictures/half-graph_implies_k-tree}
 
-                Suppose that $G$ has a tree bound of at least $2^{k_*+1}-3$, and thus contains a $(2^{k_*+1}-2)$-tree.
+                Suppose that $G$ has a tree bound of at least $2^{k_*+1}-1$, and thus contains a $(2^{k_*+1}-2)$-tree.
                 We show by induction on $k_*-r$, with $1 \leq r \leq k_*$, that the following scenario $S_r$ holds.
                 There are
                 \begin{equation}\label{eq:tree_implies_order.1}
@@ -406,8 +421,7 @@
 
                 The initial case $S_{k_*}$ only requires the existence of a $(2^{k_*+1}-2)$-tree in $G$, which is the premise.
                 If the final case $S_1$ is true, then we are done:
-                this case assumes that $H$ is a $2$-tree, in which case there is a node $c_*$ and branch $b_*$ in $H$ which
-                are connected.
+                this case assumes that $H$ is a $2$-tree, hence there is a node $c_*$ and branch $b_*$ in $H$ that are adjacent.
                 These vertices satisfy conditions \dref{itm:tree_implies_order.3} and \dref{itm:tree_implies_order.4}, so
                 the sequence resulting from replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$, $c_*$ implies that $G$
                 has the $k_*$-order property. \todo{specify k-order}
@@ -415,7 +429,7 @@
                 To conclude the proof it remains to show that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
                 Assume $S_r$.
                 Fixing $h = 2^r - 2$, by \dref{itm:tree_implies_order.1} we have that $H$ is a $(2h +2)$-tree.
-                For each branch $b$ of $H$ we denote $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
+                For each branch $b$ of $H$ we denote with $Z(b)$ the set of nodes $c$ of $H$ such that $b R c$.
 
                 We have two cases:
                 \begin{itemize}
@@ -438,10 +452,10 @@
         \end{theorem}
 
         \begin{remark}
-            The key point of the proof of the second implication of \Cref{thm:tree_implies_order} is that the found $k$-order
-            does not only utilize edges and non-edges of the $k$-tree structure itself.
+            The key point of the proof of the second implication of \Cref{thm:tree_implies_order} is that the found
+            bi-induced half-graph copy does not only utilize edges and non-edges of the $k$-tree structure itself.
             Instead, it relies on the fact that, for a tall enough tree, a $k$-order must appear in some way, leveraging
-            some \say{unknown} edges, independently on the choice of those.
+            some \say{unknown} edges, independently of disposition of the edges.
         \end{remark}
 
         The second implication of this theorem is of special interest in the next sections, as it proves that in the context

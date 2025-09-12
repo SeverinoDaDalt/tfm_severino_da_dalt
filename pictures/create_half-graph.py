@@ -1,14 +1,12 @@
 Y_SEP=4
 X_SEP=1
 X_MATRIX_ADJ = -1
-Y_MATRIX_ADJ = 0.7
+Y_MATRIX_ADJ = 0.5
 K=10
 CELL_SIZE=0.5
 NODE_SIZE=0.3
-CAPTION=(f"A half-graph with 2 × {K} vertices. \n"
-         f"\\emph{{On the left}}, solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
-         f"Pairs of vertices without a line may or may not be connected. \n"
-         f"\\emph{{On the right}} is the corresponding adjacency matrix.")
+CAPTION=(f"\\emph{{On the left}}, a half-graph with 2 × {K} vertices. \n"
+         f"\\emph{{On the right}}, the corresponding bi-adjacency matrix.")
 FIG_NAME="half-graph"
 OUTPUT_FILE="pictures/half-graph.tex"
 
@@ -71,8 +69,9 @@ def main():
     for i in range(1,K+1):
         for j in range(1,K+1):
             if i < j:
-                edges += ("\t"
-                          + f"\\draw[dashed edge] (a_{i}) -- (b_{j});\n")
+                # edges += ("\t"
+                #           + f"\\draw[dashed edge] (a_{i}) -- (b_{j});\n")
+                continue
             else:
                 edges += ("\t"
                           + f"\\draw[solid edge] (a_{i}) -- (b_{j});\n")

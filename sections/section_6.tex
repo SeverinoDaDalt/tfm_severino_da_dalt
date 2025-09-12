@@ -13,7 +13,7 @@
     \begin{definition} \label{def:epsilon_test}
         An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
         $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
-        satisfies:
+        satisfies the following.
         \begin{enumerate}
             \item If $G \in \mathcal{P}$, then $P\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
             \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
@@ -74,7 +74,7 @@
                 \begin{align*}
                     |A''| & \geq \frac{\epsilon}{\epsilon'} |A'| \geq \frac{\epsilon}{\epsilon'} \epsilon' |A| = \epsilon |A|
                     \text{ and } \\
-                    |B''| & \geq \frac{\epsilon}{\epsilon'} |B'| \geq \frac{\epsilon}{\epsilon'} \epsilon' |B| = \epsilon |B|
+                    |B''| & \geq \frac{\epsilon}{\epsilon'} |B'| \geq \frac{\epsilon}{\epsilon'} \epsilon' |B| = \epsilon |B|.
                 \end{align*}
                 By $\epsilon$-regularity of $\parround{A,B}$, $\parstraight{d(A,B) - d(A'',B'')} < \epsilon$.
                 Thus,
@@ -82,14 +82,14 @@
                     \parstraight{d(A',B') - d(A'',B'')}
                         & = \parstraight{d(A',B') - d(A,B) + d(A,B) - d(A'',B'')} \\
                         & \leq \parstraight{d(A',B') - d(A,B)} + \parstraight{d(A,B) - d(A'',B'')} \\
-                        & < 2 \epsilon \leq \frac{\epsilon}{\epsilon'}
+                        & < 2 \epsilon \leq \frac{\epsilon}{\epsilon'}.
                 \end{align*}
                 This proves the $\parround{\frac{\epsilon}{\epsilon'}}$-regularity of $\parround{A',B'}$.
 
                 Also, since $\parround{A,B}$ is $\epsilon$-regular, $\parstraight{d(A,B) - d(A',B')} < \epsilon$,
                 and thus,
                 \[
-                    \delta - \epsilon < d(A',B') < \delta + \epsilon
+                    \delta - \epsilon < d(A',B') < \delta + \epsilon.
                 \]
             \end{proof}
         \end{lemma}
@@ -120,12 +120,12 @@
                 $\epsilon(\delta, 1) = 1$ (No regularity needed if no pairs).
                 The I.H. is that the values $\eta(\delta, \ell-1)$ and $\epsilon(\delta, \ell-1)$ exist and are known for all
                 $\ell$.
-                We proceed to prove that the following values $\eta$ and $\epsilon$ hold:
+                We proceed to prove that the following values $\eta$ and $\epsilon$ hold.
                 \begin{align*}
                     \epsilon &= \epsilon(\delta, \ell)
-                        = \min \bbparround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)} \\
+                        = \min \bbparround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)}. \\
                     \eta &= \eta(\delta, \ell)
-                        = \frac{1}{2} (\delta - \epsilon)^{\ell-1} \eta(\frac{1}{2}\delta, \ell-1)
+                        = \frac{1}{2} (\delta - \epsilon)^{\ell-1} \eta(\frac{1}{2}\delta, \ell-1).
                 \end{align*}
                 For each $1 < i \leq \ell$, the number of vertices of $V_1$ which have less then
                 $(\delta - \epsilon) \parstraight{V_i}$ neighbors in $V_i$ is less then $\epsilon \parstraight{V_i}$.
@@ -159,10 +159,10 @@
         \end{lemma}
 
         \begin{remark}
-            The non-recursive form of $\epsilon$ and $\eta$ for $\ell \geq 1$ is:
+            We now give a non-recursive form of $\epsilon$ and a lower bound of $\eta$, for all $\ell \geq 1$.
             \begin{align*}
-                \epsilon(\delta, \ell) & = \bbparround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \cdot \delta^{\ell-1} \\
-                \eta(\delta, \ell) & \geq \bbparround{\frac{1}{2}}^{\frac{\ell^3+5\ell-6}{6}} \cdot \delta^{\frac{\ell(\ell-1)}{2}}
+                \epsilon(\delta, \ell) & = \bbparround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \cdot \delta^{\ell-1}. \\
+                \eta(\delta, \ell) & \geq \bbparround{\frac{1}{2}}^{\frac{\ell^3+5\ell-6}{6}} \cdot \delta^{\frac{\ell(\ell-1)}{2}}.
             \end{align*}
         \end{remark}
 
@@ -187,7 +187,7 @@
                     \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}}$,
                 $k_*$ and $m=0$.
                 We have a partition $\overline{A} = \bparcurly{A_i \mid i \in \parcurly{1, \dots, m_*}}$ into $m_* \leq M$
-                disjoint parts with,
+                disjoint parts, with
                 \[
                     M \leq \ceil{12 \max\Parround{\frac{1}{\sqrt{\gamma}}, \frac{1}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
                         \parround{1 - \sqrt{\gamma}, \ell}}}}^{2^{k_*+1}-1}
@@ -234,7 +234,7 @@
                             \bbparround{\frac{\frac{n}{M}}{n}}^{\ell}
                         = \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}
                             \parround{M}^{-\ell}
-                        \eqqcolon \eta
+                        \eqqcolon \eta,
                 \]
                 and $H$ is at least $\eta$-abundant in $G$.
             \end{proof}
@@ -254,7 +254,7 @@
                 \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
                     \cdot \delta^{\frac{\ell(\ell-1)}{2}}
                     \cdot \Parround{\frac{1}{24} \min\Parcurly{\sqrt{\gamma},
-                        \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \delta^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}
+                        \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \delta^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
             \]
         \end{remark}
 
@@ -338,7 +338,7 @@
         \[
             q \leq {t \choose 2}
               \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
-                   {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2
+                   {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2.
         \]
 
         \todo{Comment on optimization such as checking if copies of $H$ are found as soon as the sample is large enough and
