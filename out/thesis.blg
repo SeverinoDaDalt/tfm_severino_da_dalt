@@ -1,19 +1,19 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
-[0] Config.pm:310> INFO - Logfile is 'out/thesis.blg'
-[51] biber:340> INFO - === jue sep 11, 2025, 20:09:24
-[65] Biber.pm:419> INFO - Reading 'out/thesis.bcf'
-[110] Biber.pm:979> INFO - Found 46 citekeys in bib section 0
-[119] Biber.pm:4419> INFO - Processing section 0
-[126] Biber.pm:4610> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
-[128] bibtex.pm:1713> INFO - LaTeX decoding ...
-[176] bibtex.pm:1519> INFO - Found BibTeX data source 'sections/bibliography.bib'
-[771] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[771] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[772] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[772] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[823] bbl.pm:660> INFO - Writing 'out/thesis.bbl' with encoding 'UTF-8'
-[833] bbl.pm:763> INFO - Output to out/thesis.bbl
-[834] Biber.pm:131> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
-[834] Biber.pm:131> WARN - ISBN '978-3-319-21851-9; 978-3-319-21852-6' in entry 'on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities' is invalid - run biber with '--validate_datamodel' for details.
-[834] Biber.pm:131> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
-[834] Biber.pm:133> INFO - WARNINGS: 3
+[1] Config.pm:310> INFO - Logfile is 'out/thesis.blg'
+[124] biber:340> INFO - === vie sep 12, 2025, 16:56:09
+[144] Biber.pm:419> INFO - Reading 'out/thesis.bcf'
+[302] Biber.pm:979> INFO - Found 46 citekeys in bib section 0
+[331] Biber.pm:4419> INFO - Processing section 0
+[345] Biber.pm:4610> INFO - Looking for bibtex file 'sections/bibliography.bib' for section 0
+[349] bibtex.pm:1713> INFO - LaTeX decoding ...
+[481] bibtex.pm:1519> INFO - Found BibTeX data source 'sections/bibliography.bib'
+[907] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[907] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[907] Biber.pm:4239> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[907] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[944] bbl.pm:660> INFO - Writing 'out/thesis.bbl' with encoding 'UTF-8'
+[955] bbl.pm:763> INFO - Output to out/thesis.bbl
+[955] Biber.pm:131> WARN - ISBN '978-963-9453-14-2; 978-3-642-14443-1' in entry 'regularity_partitions_and_the_topology_of_graphons' is invalid - run biber with '--validate_datamodel' for details.
+[955] Biber.pm:131> WARN - ISBN '978-3-319-21851-9; 978-3-319-21852-6' in entry 'on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities' is invalid - run biber with '--validate_datamodel' for details.
+[955] Biber.pm:131> WARN - I didn't find a database entry for 'no_me_acuerdo' (section 0)
+[955] Biber.pm:133> INFO - WARNINGS: 3

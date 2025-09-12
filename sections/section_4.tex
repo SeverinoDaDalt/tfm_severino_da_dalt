@@ -46,7 +46,7 @@
 
         \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
             Let $G$ be a finite graph.
-            Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $f(|A|) g(|B|) < \frac{1}{2} |B|$.
+            Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $\ceil{f(|A|)} g(|B|) < \frac{1}{2} |B|$.
             Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
             the $b \in B$ we have that $a R b \equiv t$.
             \begin{proof}
@@ -54,24 +54,24 @@
                 Let $U_i = \parcurly{a \in A \mid t(a,B) \equiv i}$ for $i \in \parcurly{0,1}$.
                 If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
                 Suppose not.
-                Then, there are $W_i \subseteq U_i$ with $|W_i| = f(|A|)$ for $i \in \parcurly{0,1}$.
+                Then, there are $W_i \subseteq U_i$ with $|W_i| = \ceil{f(|A|)}$ for $i \in \parcurly{0,1}$.
                 Now, let $V = \parcurly{b \in B \mid (\exists a \in W_0 \mid a R b) \vee (\exists a \in W_1 \mid \lnot a R b)}$,
                 i.e. the $b$'s which are an exception for some $a \in W_0 \cup W_1$.
-                Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 f(|A|) g(|B|) < |B|$, where the first inequality follows the
+                Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 \ceil{f(|A|)} g(|B|) < |B|$, where the first inequality follows the
                 $g$-indivisibility of $B$.
                 Finally, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
-                $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = f(|A|)$, which contradicts the $f$-indivisibility of $A$.
+                $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = \ceil{f(|A|)}$, which contradicts the $f$-indivisibility of $A$.
             \end{proof}
         \end{lemma}
 
         \begin{definition}
             We say that the pair $(A,B)$ with $A$ $f$-indivisible and $B$ $g$-indivisible satisfies the \emph{average condition} if
-            $f(|A|) g(|B|) < \frac{1}{2} |B|$ and thus the statement of \Cref{lem:average_condition_statement} is true for
+            $\ceil{f(|A|)} g(|B|) < \frac{1}{2} |B|$ and thus the statement of \Cref{lem:average_condition_statement} is true for
             the pair $(A,B)$.
         \end{definition}
 
         \begin{remark}
-            The condition $f(|A|) g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter, that is,
+            The condition $\ceil{f(|A|)} g(|B|) < \frac{1}{2} |B|$ makes ordering of the pair $(A,B)$ matter, that is,
             \[
                 (A,B) \text{ has the average condition } \not\Rightarrow (B,A) \text{ has the average condition. }
             \]
@@ -168,18 +168,18 @@
         \begin{remark} \label{rmk:sufficient_requirement_for_average_condition}
             Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
             If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
-            then $m^{1-2\epsilon} > 2$ is sufficient for the average condition to hold for the pair $(A,B)$:
+            then $m^{1-2\epsilon} > 4$ is sufficient for the average condition to hold for the pair $(A,B)$:
             \[
-                \frac{|A|^\epsilon |B|^\epsilon}{|B|}
-                    \leq \frac{|B|^{2\epsilon}}{|B|}
-                    = \frac{1}{|B|^{1-2\epsilon}}
-                    = \frac{1}{m^{1-2\epsilon}}
+                \frac{\ceil{|A|^\epsilon} |B|^\epsilon}{|B|}
+                    \leq \frac{2|B|^{2\epsilon}}{|B|}
+                    = \frac{2}{|B|^{1-2\epsilon}}
+                    = \frac{2}{m^{1-2\epsilon}}
                     < \frac{1}{2}.
             \]
             We will be using this fact in the context of a sequence of non-zero natural numbers
             $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ where $\floor{m_\ell^\epsilon} = m_{\ell+1}$
             for some $\epsilon \in (0, \frac{1}{2})$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-            Here, $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
+            Here, $4 < (m_{k_{**}-1})^{1-2\epsilon}$ is sufficient for any $f$-indivisible $A$ and $B$, with
             $|A|, |B| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$, to satisfy the average condition.
         \end{remark}
 
@@ -262,7 +262,7 @@
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
-            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             \todo{Last condition can be changed (and probably should) for a condition on $m_{k_{**}}$}
             If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             and reminder $B = A \setminus \bigcup \overline{A}$ satisfying:
@@ -288,7 +288,7 @@
                 setting $f(x) = x^\epsilon$.
                 Now, by \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2}, for any $A_i, A_j \in \overline{A}$ with $i < j$
                 there is some $\ell \in \parcurly{0, \dots, k_{**}-1}$ such that $|A_i| \leq |A_j| = m_\ell$.
-                Also, it follows the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
+                Also, it follows the condition $4 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
                 that the pair $(A_i,A_j)$ satisfies the average condition.
                 Finally, notice that $\epsilon^{k_{**}} < \epsilon < 1 - \epsilon$ since $\epsilon \in (0, \frac{1}{2})$,
                 so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
@@ -299,8 +299,8 @@
         \todo{Maybe merge the last two lemmas?}
 
         \begin{remark}
-            For sufficiently small $\epsilon$, the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ is almost, trivial.
-            For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 4$.
+            For sufficiently small $\epsilon$, the condition $4 < (m_{k_{**}-1})^{1-2\epsilon}$ is rather mild.
+            For example, if $\epsilon < \frac{1}{4}$, then we are just requiring that $m_{k_{**}-1} \geq 16$.
         \end{remark}
 
     \subsection{$\epsilon$-indivisible Even Partition} \label{subsec:subsection_4.2}
@@ -313,7 +313,7 @@
         is satisfied with very high probability.
 
         \begin{definition}
-            Let $A, B$ be $f$-indivisible sets with $f(A) f(B) < \frac{1}{2} |B|$.
+            Let $A, B$ be $f$-indivisible sets with $\ceil{f(A)} f(B) < \frac{1}{2} |B|$.
             Let $\Partriangle{A_i \mid i \in \parcurly{1, \dots, i_A}}$ be a partition of $A$ with $|A_i| = m$ for all
             $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_i \mid i \in \parcurly{1, \dots, i_B}}$ be a partition of
             $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
@@ -329,7 +329,7 @@
             $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
             paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
             \todo{Here we have enforced the equality. Should be commented that this is easily achievable as we do in the next results.}
-            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
             for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
             Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
@@ -343,7 +343,7 @@
             \]
             \begin{proof}
                 Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
-                It follows from the condition $2 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
+                It follows from the condition $4 < (m_{k_{**}-1})^{1-2\epsilon}$ and \Cref{rmk:sufficient_requirement_for_average_condition}
                 that the pair $(A_{1}, A_{2})$ satisfies the average condition.
                 Let $U_1 = \bparcurly{a \in A_1 \mid \bparstraight{\parcurly{b \in A_2 \mid a R b \equiv \neg t(A_1, A_2)}} \geq |A_2|^\epsilon}$
                 and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \parcurly{b \in A_j \mid a R b \equiv \neg t(A_1, A_2)}$.
@@ -408,9 +408,9 @@
 
         \begin{lemma}[Claim 4.14 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_equitative_partition_with_bound_exceptional_pairs}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
-            Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            \sloppy Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
-            for some $\epsilon \in (0, \frac{1}{2})$ such that $2 < (m_{k_{**}-1})^{1-2\epsilon}$.
+            for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parround{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
             with $c \in (0, 1-\epsilon)$.
             Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
@@ -483,7 +483,7 @@
             Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
             $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
             Let $G$ be a finite graph with the non-$k_*$-order property.
-            Let $A \subseteq G$ with $|A| = n$, and $n > 2^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
+            Let $A \subseteq G$ with $|A| = n$, and $n > 4^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
             Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
             \parround{\frac{\sqrt{2}-1}{\sqrt{2}}}^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}} n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}} -
             \frac{(1-\epsilon-c)c}{3}\epsilon^{2k_{**}}}}$, there is a partition
@@ -524,7 +524,7 @@
                         \]
                         and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
                         smaller than $n^{1 - c \epsilon^{k_{**}}}$.
-                    \item $m_{k_{**}-1} = m_{**}^{\frac{3}{1-\epsilon-c}r} \geq n^{\epsilon^{k_{**}}} > 2^{\frac{1}{1-2\epsilon}}$.
+                    \item $m_{k_{**}-1} = m_{**}^{\frac{3}{1-\epsilon-c}r} \geq n^{\epsilon^{k_{**}}} > 4^{\frac{1}{1-2\epsilon}}$.
                 \end{enumerate}
                 So, all the conditions of \Cref{lem:existance_of_equitative_partition_with_bound_exceptional_pairs} are satisfied,
                 and we can use it to get a partition $\overline{A}$ with remainder $B$ satisfying the statement.
