@@ -1,29 +1,29 @@
 \contentsline {section}{Contents}{2}{Doc-Start}%
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Szemerédi's Regularity Lemma}{2}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Versions of SzRL}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Property testing}{4}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Main contributions}{4}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Summary}{5}{subsection.1.5}%
-\contentsline {section}{\numberline {2}Graphs and the SzRL}{6}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Graphs and basic notation}{6}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Regular pairs and partitions}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Szemerédi's Regularity Lemma}{8}{subsection.2.3}%
-\contentsline {section}{\numberline {3}Stable graphs}{15}{section.3}%
-\contentsline {subsection}{\numberline {3.1}The $k$-order property}{15}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}VC-dimension and the Sauer-Shelah Lemma}{16}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Tree bound}{19}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Unbounded stable regularity lemmas}{23}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Indivisibility and the average condition}{23}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}$\epsilon $-indivisible even partition}{27}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}$f_c$-indivisible even partition}{31}{subsection.4.3}%
-\contentsline {section}{\numberline {5}The Stable Regularity Lemma}{34}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Goodness and excellence}{34}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Excellent partitions}{35}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{45}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Property testing}{48}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{48}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The algorithm}{51}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Conclusion}{54}{section.7}%
-\contentsline {section}{\numberline {A}Other proofs}{58}{appendix.A}%
-\contentsline {section}{\numberline {B}1000 razones para querer morirme...}{59}{appendix.B}%
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Szemerédi's Regularity Lemma}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Versions of SzRL}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Property testing}{5}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Main contributions}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Summary}{6}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Graphs and the SzRL}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Graphs and basic notation}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Regular pairs and partitions}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Szemerédi's Regularity Lemma}{9}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Stable graphs}{16}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The $k$-order property}{16}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}VC-dimension and the Sauer-Shelah Lemma}{17}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Tree bound}{20}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Unbounded stable regularity lemmas}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Indivisibility and the average condition}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}$\epsilon $-indivisible even partition}{28}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}$f_c$-indivisible even partition}{32}{subsection.4.3}%
+\contentsline {section}{\numberline {5}The Stable Regularity Lemma}{35}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Goodness and excellence}{35}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Excellent partitions}{36}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{46}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Property testing}{49}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{49}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The algorithm}{52}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Conclusion}{55}{section.7}%
+\contentsline {section}{\numberline {A}Other proofs}{59}{appendix.A}%
+\contentsline {section}{\numberline {B}1000 razones para querer morirme...}{60}{appendix.B}%
