@@ -233,10 +233,11 @@
             If $k=1$ we are not allowing even a single edge, so $G$ is the empty graph.
         \end{remark}
 
-        We now prove the following equivalent versions of \Cref{lem:k_order_property_bounds_BAbs}, which will be useful
+        The following equivalent versions of \Cref{lem:k_order_property_bounds_BAbs} will be useful
         in the different sections of the thesis.
         The idea is that any choice, of either the exceptional or the non-exceptional vertices set of $A$ with respect to
         each vertex $b \in G$, has the same bound.
+        The proof is given in \Cref{sec:appendix_other_proofs}.
 
         \begin{corollary} \label{cor:k_order_propery_bounds_BAbs}
             Let $G$ be a graph with the non-$k$-order property.
@@ -253,43 +254,6 @@
                             \leq |A|^k.
                     \]
             \end{enumerate}
-            \begin{proof}
-                \begin{enumerate}
-                    \item First of all, notice that $B^+_{A,b} = A - B^-_{A,b}$, since by definition they are complementary.
-                        Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
-                        It follows that
-                        \[
-                            \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
-                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k,
-                        \]
-                        where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
-                    \item Consider the following map:
-                        \begin{align*}
-                            \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G}. \\
-                                                         B^+_{A,b} & \longmapsto \overline{B}_{A,b}
-                        \end{align*}
-                        We first prove that the map $\pi$ is well-defined.
-                        If $B^+_{A,b}$ and $B^+_{A,b'}$ are equal, then they have the same size, and thus the same truth value.
-                        Then,
-                        \begin{itemize}
-                            \item if $t(A,b) = t(A,b') = 1$, we have that $\overline{B}_{A,b} = B^+_{A,b} = B^+_{A,b'} = \overline{B}_{A,b'}$.
-                            \item if $t(A,b) = t(A,b') = 0$, we have that
-                            $\overline{B}_{A,b} = B^-_{A,b} = A \setminus B^+_{A,b} = A \setminus B^+_{A,b'} = B^-_{A,b'} = \overline{B}_{A,b'}$.
-                        \end{itemize}
-                        which proves that the map is well-defined.
-                        The map $\pi$ is also surjective, since for each $b \in G$, and thus for each $\overline{B}_{A,b}$,
-                        the set $B^+_{A,b}$ is mapped to $\overline{B}_{A,b}$ by construction.
-                        Hence,
-                        \[
-                            \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
-                            \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
-                            \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k.
-                        \]
-                        This concludes the proof.
-                        Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
-                        different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$. \qedhere
-                \end{enumerate}
-            \end{proof}
         \end{corollary}
 
     \subsection{Tree bound} \label{subsec:subsection_3.3}

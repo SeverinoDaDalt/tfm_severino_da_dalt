@@ -81,6 +81,8 @@
         exceptional edges of large subpairs.
         We study the $f$-indivisible and $\epsilon$-indivisible case separately, as the specific case of $\epsilon$-indivisibility gives
         a slightly better condition on the range of the size of the subpair.
+        In any case, the two proofs are very similar, so we prove the $\epsilon$-indivisible case here and the
+        $f$-indivisible case in \Cref{sec:appendix_other_proofs}.
 
         \begin{lemma}[Claim 4.8 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:exceptions_bound_of_epsilon_indivisible_sets}
             Let $A$ be $\epsilon$-indivisible, $B$ $\zeta$-indivisible and let the pair $(A,B)$ satisfy the average condition.
@@ -117,9 +119,6 @@
             \end{proof}
         \end{lemma}
 
-        \todo{This next generalization may seem to make previous lemma redundant. But they actually prove different results.
-            But is it worth to keep both?}
-
         \begin{lemma}[$f$-indivisible version] \label{lem:exceptions_bound_of_f_indivisible_sets}
             Let $A$ be $f$-indivisible, $B$ $g$-indivisible and let the pair $(A,B)$ satisfy the average condition.
             Then, for all $\epsilon_1 \in \parround{0, 1-\frac{f(|A|)}{|A|}}$, $\zeta_1 \in \parround{0, 1-\frac{g(|B|)}{|B|}}$, $A' \subseteq A$
@@ -129,27 +128,6 @@
                 \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
                     \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
-            \begin{proof}
-                Notice:
-                \begin{itemize}
-                    \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
-                        (in the sense of the average condition).
-                    \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
-                        $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
-                \end{itemize}
-                Putting it all together:
-                \[
-                    \begin{split}
-                        \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
-                            &\leq \frac{f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)}{|A'| |B'|} \\
-                            &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
-                            &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
-                            &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
-                            &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
-                    \end{split}
-                \]
-                This finishes the proof.
-            \end{proof}
         \end{lemma}
 
         For later use, we are particularly interested in the case when $f(n) = c$.

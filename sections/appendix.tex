@@ -4,6 +4,67 @@
 
     For completeness, here we leave secondary proofs we skipped in the thesis.
 
+    \begin{proof}[Proof of \Cref{cor:k_order_propery_bounds_BAbs}]
+        \begin{enumerate}
+            \item First of all, notice that $B^+_{A,b} = A - B^-_{A,b}$, since by definition they are complementary.
+                Thus, for any $b, b' \in G$, $B^+_{A,b} = B^+_{A,b'} \Leftrightarrow B^-_{A,b} = B^-_{A,b'}$.
+                It follows that
+                \[
+                    \parstraight{\parcurly{B^-_{A,b} \mid b \in G}} =
+                    \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq |A|^k,
+                \]
+                where the last inequality follows from \Cref{lem:k_order_property_bounds_BAbs}.
+            \item Consider the following map:
+                \begin{align*}
+                    \pi: \parcurly{B^+_{A,b} \mid b \in G} & \longrightarrow \parcurly{\overline{B}_{A,b} \mid b \in G}. \\
+                                                 B^+_{A,b} & \longmapsto \overline{B}_{A,b}
+                \end{align*}
+                We first prove that the map $\pi$ is well-defined.
+                If $B^+_{A,b}$ and $B^+_{A,b'}$ are equal, then they have the same size, and thus the same truth value.
+                Then,
+                \begin{itemize}
+                    \item if $t(A,b) = t(A,b') = 1$, we have that $\overline{B}_{A,b} = B^+_{A,b} = B^+_{A,b'} = \overline{B}_{A,b'}$.
+                    \item if $t(A,b) = t(A,b') = 0$, we have that
+                    $\overline{B}_{A,b} = B^-_{A,b} = A \setminus B^+_{A,b} = A \setminus B^+_{A,b'} = B^-_{A,b'} = \overline{B}_{A,b'}$.
+                \end{itemize}
+                which proves that the map is well-defined.
+                The map $\pi$ is also surjective, since for each $b \in G$, and thus for each $\overline{B}_{A,b}$,
+                the set $B^+_{A,b}$ is mapped to $\overline{B}_{A,b}$ by construction.
+                Hence,
+                \[
+                    \parstraight{\parcurly{\overline{B}_{A,b} \mid b \in G}} \leq
+                    \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq
+                    \sum_{i \leq k} \binom{|A|}{i} \leq |A|^k.
+                \]
+                This concludes the proof.
+                Notice that, actually, the map $\pi$ is a not necessarily a bijection, since (at most) two $b$'s with
+                different truth value with respect to $A$ may induce the same set $\overline{B}_{A,b}$. \qedhere
+        \end{enumerate}
+    \end{proof}
+
+
+    \begin{proof}[Proof of \Cref{lem:exceptions_bound_of_f_indivisible_sets}]
+        Notice:
+        \begin{itemize}
+            \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
+                (in the sense of the average condition).
+            \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
+                $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+        \end{itemize}
+        Putting it all together:
+        \[
+            \begin{split}
+                \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
+                    &\leq \frac{f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)}{|A'| |B'|} \\
+                    &= \frac{f(|A|)}{|A'|} + \frac{|A'| - f(|A|)}{|A'|} \frac{g(|B|)}{|B'|} \\
+                    &\leq \frac{f(|A|)}{|A'|} + \frac{g(|B|)}{|B'|} \\
+                    &\leq \frac{f(|A|)}{f(|A|) |A|^{\epsilon_1}} + \frac{g(|B|)}{g(|B|) |B|^{\zeta_1}} \\
+                    &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
+            \end{split}
+        \]
+        This finishes the proof.
+    \end{proof}
+
     \begin{proof}[Proof of \Cref{lem:existance_of_excellent_subsets_fixed_size_choices}]
         Suppose the converse.
         We use this fact to build sets $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
@@ -59,4 +120,84 @@
         This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
     \end{proof}
 
-\vfill\newpage \section{1000 razones para querer morirme...} \label{sec:appendix_1000_razones}
+\vfill\newpage \section{Main changes} \label{sec:main_changes}
+    This section of the appendix is dedicated at showing the main changes this thesis applies to the original results
+    of~\cite{regularity_lemmas_for_stable_graphs} and~\cite{notes_on_the_stable_regularity_lemma}.
+
+    \begin{itemize}
+        % Section 2
+        \item Definition 2.3 of the $k$-order property in~\cite{regularity_lemmas_for_stable_graphs} does not
+            specify adjacency (or not) of vertices with the same index.
+        % Section 4
+        \item In order for the arguments of Section 4 to work, most results require that the function
+            $f$ (of the $f$-indivisibility) satisfies $x \geq f(x)$, instead of the \emph{non-decreasing} condition
+            given in Definition 4.2 in~\cite{regularity_lemmas_for_stable_graphs}, which is redundant.
+        \item In order for the average condition to be satisfied, and thus being able to apply Claim 4.8 in the proof
+            of Claim 4.10 in~\cite{regularity_lemmas_for_stable_graphs}, something like the extra condition provided
+            by \Cref{rmk:sufficient_requirement_for_average_condition} needs to be added to the claim statement.
+        \item Second to last inequality in the equation of $P_1$ at page 1569 of~\cite{regularity_lemmas_for_stable_graphs}
+            is actually opposite (the $<$ should be a $>$).
+            The same occurs, with last inequality of $P_2$ equation at the same page.
+            This breaks the proof's argument, requiring extra conditions and some (non-trivial) changes in the argument.
+            The most important change in the result is the extra condition $m_0 \geq n^\epsilon$ in
+            \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}, which strongly reduces the
+            interval of possible choices of parts size in the result, and needs to be carried until the end of the subsection.
+        \item Condition $m_{**} > k_{**}$, which is persistent in results of Section 4
+            in~\cite{regularity_lemmas_for_stable_graphs} can be relaxed into $m_{**} \geq 1$.
+        \item Proof of Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs} is unclear, even more when previous points
+            are noted.
+            \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs} provides
+            a complete proof of a weaker (but coherent) version of the same result.
+        \item Theorem 4.23 proof construction first finds an $\epsilon$-indivisible set, and then applies Claim 4.21
+            to find a $c$-indivisible set.
+            But Claim 4.21 itself does not require an $\epsilon$-indivisible set as input, as it is constructed in its
+            own proof.
+            Noticing this allows to fully rewrite the theorem for a stronger (and more interpretable) result
+            (\Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}).
+        % Section 5
+        \item Non-monotonicity\todo{To do...}
+
+    \end{itemize}
+    % Section 3
+    Also, we note that\dots\todo{Section 3 argument does not work because...}
+
+\vfill\newpage \section{Excellence is not monotonic.} \label{sec:excellence_is_not_monotonic}
+    Here give more details on the counterexample to the monotonicity of the excellence property given in
+    \Cref{fig:non-monotonic_example}.
+    We see that this example is in fact the smallest bipartite graph of a family of counterexamples.
+    Each element of the family can be described by the following adjacency matrix, defined by blocks:
+    \[
+        G_r = \left[
+            \begin{array}{c|c}
+                0 & H_r \\
+                \hline
+                H_r^T & 0 \\
+            \end{array}
+        \right]
+        \text{, with }\quad
+        H_r = \left[
+            \begin{array}{c|c}
+                0 & \mathds{1}_r - \mathbb{I}_r \\
+                \hline
+                \mathbb{J}_r & \mathbb{I}_r \\
+            \end{array}
+        \right]
+    \]
+    where $\mathds{1}_r$ is the $r \times r$ matrix of all $1$'s,
+    $\mathbb{I}_r$ is the $r \times r$ diagonal matrix,
+    and $\mathbb{J}_r$ is the $r \times r$ anti-diagonal matrix.
+    Also, we use $H^T$ to refer to the transpose of $H$.
+
+    By calling $A$ the set of the first (as indices) $2r$ vertices of $G_r$, and $B$ the last $2r$,
+    we have the desired counterexample:
+    $A \subseteq G$ is $\frac{1}{2r-1}$-excellent, but $B$ witnesses that $A$ is not $\frac{1}{2r-1}$-excellent.
+    The example in \Cref{fig:non-monotonic_example} shows $G_r$ for $r=3$.
+
+    A sufficient proof of this is a simple exhaustive check, and code for this precise purpose is provided with all
+    the material of this thesis in a GitHub repository\footnote{See \url{https://github.com/SeverinoDaDalt/tfm_severino_da_dalt/}}.
+    There are two main relevant scripts in the repository.
+    One allows to check whether $G_r$ for a given value of $r$ is in fact $\frac{1}{2r-1}$-excellent and not
+    $\frac{1}{2r-1}$-excellent.
+    The other allows for an exhaustive search of \emph{possible} counterexamples under some given parameters, which is how this
+    counterexamples were found in the first place.
+    Read the documentation for more information on how to run the code.

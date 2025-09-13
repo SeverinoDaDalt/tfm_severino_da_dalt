@@ -12,18 +12,19 @@
 \contentsline {section}{\numberline {3}Stable graphs}{16}{section.3}%
 \contentsline {subsection}{\numberline {3.1}The $k$-order property}{16}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}VC-dimension and the Sauer-Shelah Lemma}{17}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Tree bound}{20}{subsection.3.3}%
-\contentsline {section}{\numberline {4}Unbounded stable regularity lemmas}{24}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Indivisibility and the average condition}{24}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}$\epsilon $-indivisible even partition}{28}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}$f_c$-indivisible even partition}{32}{subsection.4.3}%
-\contentsline {section}{\numberline {5}The Stable Regularity Lemma}{35}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Goodness and excellence}{35}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Excellent partitions}{36}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{46}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Property testing}{49}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{49}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The algorithm}{52}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Conclusion}{55}{section.7}%
+\contentsline {subsection}{\numberline {3.3}Tree bound}{19}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Unbounded stable regularity lemmas}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Indivisibility and the average condition}{23}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}$\epsilon $-indivisible even partition}{27}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}$f_c$-indivisible even partition}{30}{subsection.4.3}%
+\contentsline {section}{\numberline {5}The Stable Regularity Lemma}{34}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Goodness and excellence}{34}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Excellent partitions}{35}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{45}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Property testing}{48}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{48}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The algorithm}{51}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Conclusion}{54}{section.7}%
 \contentsline {section}{\numberline {A}Other proofs}{59}{appendix.A}%
-\contentsline {section}{\numberline {B}1000 razones para querer morirme...}{60}{appendix.B}%
+\contentsline {section}{\numberline {B}Main changes}{61}{appendix.B}%
+\contentsline {section}{\numberline {C}Excellence is not monotonic.}{62}{appendix.C}%
