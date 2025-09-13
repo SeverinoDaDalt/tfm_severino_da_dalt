@@ -13,16 +13,15 @@
     direct application in testing for forbidden induced subgraphs ($H$-freeness).
 
     During the design of our tester, we observed that a similar argument could be constructed using the
-    (Ultra-) Strong Regularity Lemma for graphs with bounded VC-dimension, as presented
+    \mbox{(Ultra-)} Strong Regularity Lemma for graphs with bounded VC-dimension, as presented
     in~\cite{regularity_partitions_and_the_topology_of_graphons}.
     The stronger regularity conditions of this lemma allows one to effectively \say{avoid} the issue of irregular
     pairs when dealing with induced subgraphs.
     This led to a crucial comparison of the bounds on the number of parts in the partitions.
-    The (Ultra-)Strong lemma provides a bound of $(1/\epsilon)^{c \cdot d^2}$, where $d$ is the bound on the VC-dimension,
+    The (Ultra-) Strong lemma provides a bound of $(1/\epsilon)^{c \cdot d^2}$, where $d$ is the bound on the VC-dimension,
     while the Stable Regularity Lemma's bound is $(1/\epsilon)^{c \cdot 2^k}$, where $k$ is the stability parameter.
     As established in \Cref{sec:section_3}, stability is a stronger condition than bounded VC-dimension,
-    and the parameters $k$ and $d$ are closely related (when comparing the two in this situation $k=d$).
-    \todo{Aquest últim parentesis no m'agrada.}
+    and the parameters $k$ and $d$ are closely related (when comparing the two in this situation, we can assume $k=d$).
 
     This comparison suggests that the bound for the Stable Regularity Lemma might not be optimal.
     The fact that a broader class of graphs (bounded VC-dimension) admits a partition with a polynomially better

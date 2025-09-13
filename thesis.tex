@@ -31,11 +31,16 @@
 \usetikzlibrary{fit, positioning}
 
 
+% BIBLIOGRAPHY
 \usepackage[
     backend=biber,
     style=trad-abbrv
 ]{biblatex}
 \addbibresource{sections/bibliography.bib}
+
+
+% INDEX
+\usepackage{tocbibind}
 
 
 % Temporal
@@ -137,6 +142,8 @@ Thanks to...}
 
     \maketitle
 
+    \tableofcontents
+
     % sections
     \input{sections/introduction}
         \newpage
@@ -156,12 +163,10 @@ Thanks to...}
     \input{sections/section_6}
         \newpage
 
-\input{sections/conclusions}
-    \newpage
+    \input{sections/conclusions}
+        \newpage
 
-% \input{sections/bibliography}
-\printbibliography
-
+    \printbibliography
 
     \input{sections/appendix}
 
