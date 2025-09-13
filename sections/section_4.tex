@@ -47,19 +47,19 @@
         \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
             Let $G$ be a finite graph.
             Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $\ceil{f(|A|)} g(|B|) < \frac{1}{2} |B|$.
-            Then, the truth value $t = t(A,B)$ satisfies that for all but $< f(|A|)$ of the $a \in A$ for all but $< g(|B|)$ of
-            the $b \in B$ we have that $a R b \equiv t$.
+            Then, the truth value $t = t(A,B)$ satisfies the following.
+            For all but $< f(|A|)$ of the $a \in A$ we have that for all but $< g(|B|)$ of the $b \in B$ satisfy $a R b \equiv t$.
             \begin{proof}
                 Since $B$ is $g$-indivisible, for each $a \in A$ we have that $\parstraight{\overline{B}_{B,a}} < g(|B|)$.
                 Let $U_i = \parcurly{a \in A \mid t(a,B) \equiv i}$ for $i \in \parcurly{0,1}$.
                 If either $U_i$ satisfies $|U_i| < f(|A|)$ then the statement is true.
                 Suppose not.
-                Then, there are $W_i \subseteq U_i$ with $|W_i| = \ceil{f(|A|)}$ for $i \in \parcurly{0,1}$.
+                Then, $|U_i| \geq f(|A|)$ and we can take $W_i \subseteq U_i$ with $|W_i| = \ceil{f(|A|)}$ for $i \in \parcurly{0,1}$.
                 Now, let $V = \parcurly{b \in B \mid (\exists a \in W_0 \mid a R b) \vee (\exists a \in W_1 \mid \lnot a R b)}$,
                 i.e. the $b$'s which are an exception for some $a \in W_0 \cup W_1$.
                 Then, $|V| < |W_0| g(|B|) + |W_1| g(|B|) = 2 \ceil{f(|A|)} g(|B|) < |B|$, where the first inequality follows the
                 $g$-indivisibility of $B$.
-                Finally, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
+                Since $|V| < |B|$, there is a $b_* \in B \setminus V$ such that $\forall a \in W_0$ $\lnot a R b_*$ and
                 $\forall a \in W_1$ $a R b_*$ with $|W_0| = |W_1| = \ceil{f(|A|)}$, which contradicts the $f$-indivisibility of $A$.
             \end{proof}
         \end{lemma}
@@ -92,6 +92,7 @@
                     \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
             \begin{proof}
+                \todo{Some Lluis commentaries I don't get here!}
                 Notice:
                 \begin{itemize}
                     \item There are at most $|A|^\epsilon$ vertices of $A$ (hence in $A' \subseteq A$) which are exceptional
@@ -112,6 +113,7 @@
                             &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
                     \end{split}
                 \]
+                This finishes the proof.
             \end{proof}
         \end{lemma}
 
@@ -146,6 +148,7 @@
                             &= \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
                     \end{split}
                 \]
+                This finishes the proof.
             \end{proof}
         \end{lemma}
 
@@ -167,7 +170,7 @@
 
         \begin{remark} \label{rmk:sufficient_requirement_for_average_condition}
             Notice that the average condition is easily satisfied if the pair satisfies a condition on the size of its sets.
-            If $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
+            Namely, if $f(n) = n^\epsilon$, $A$ and $B$ are $f$-indivisible, and $\parstraight{B} \geq \parstraight{A} \geq m$,
             then $m^{1-2\epsilon} > 4$ is sufficient for the average condition to hold for the pair $(A,B)$:
             \[
                 \frac{\ceil{|A|^\epsilon} |B|^\epsilon}{|B|}
@@ -187,9 +190,8 @@
         found in a graph.
         It turns out that the non-$k$-order property, or more specifically the associated tree bound, is sufficient for
         proving it.
-        The proof resumes in assuming that there is no indivisible set to recursively refine a \say{semi-partition}
-        \todo{Lluis: hi ha alguna manera de dir una partició que no cubreix tots els vertex amb una paraula?}
-        which by construction contains a $k_{**}$-tree.
+        The proof resumes in assuming that there is no indivisible set to recursively refine a partition of a subset,
+        which by construction must contain a $k_{**}$-tree, and gives a contradiction with the non-$k_*$-property.
 
         \begin{lemma}[Claim 4.3 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_indivisible_sets}
             Let $G$ be a finite graph with the non-$k_*$-property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
@@ -200,9 +202,9 @@
             of size $m_\ell$ which is $f$-indivisible.
             % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
             \begin{proof}
-                Suppose not.
-                Then we can construct the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$ and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$
-                on induction over $k = |\eta|$, satisfying:
+                Suppose that such subset $B$ does not exist.
+                Then we shall construct by induction on $k = |\eta|$ the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$
+                and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$, satisfying the following properties:
                 \begin{enumerate}
                     \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                     \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
@@ -211,27 +213,28 @@
                     \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv i}$,
                         $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                 \end{enumerate}
+                \todo{Some Lluis commentaries I don't get here!}
                 Let's prove the induction.
                 For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
                 any $b_{\Partriangle{\cdot}}$ witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
                 For $k > 0$ we can assume by hypothesis that $A_\eta$, with $|A_\eta| = m_{k}$, is not $f$-indivisible.
-                Thus, there exists $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
+                Thus, there exists a $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
                 $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
                 $|A_{\eta^\frown \Partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
                 \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
                 Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
                 for all $\ell$.
                 Then, we have two sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
-                satisfying the $k_{**}$-tree property: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
+                are a $k_{**}$-tree in $G$: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
                 if given $\ell \in \parcurly{0, 1}$ we have $\rho^\frown \Partriangle{\ell} \trianglelefteq \eta$ then
                 $a_\eta R b_\rho \equiv \ell$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
-                This contradicts the $k_{**}$ tree bound.
+                This contradicts the tree bound $k_{**}$ (see \Cref{thm:tree_implies_order}).
             \end{proof}
         \end{lemma}
 
         The previous proof can be iteratively used to partition the graph into indivisible parts, with a small reminder.
-        As the average condition cares about the ordering, we define the partition as a tuple instead of a family of sets,
-        and fix an ascending order on the size of the parts.
+        As the average condition cares about the ordering of the elements of the pair, we define the partition as a tuple
+        instead of a family of sets, and fix an ascending order on the size of the parts.
 
         \begin{lemma}[Claim 4.4 and 4.5 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_ordered_f_indivisible_partitions}
             Let $G$ be a finite graph with the non-$k_{*}$-order property and $f: \mathbb{R} \longrightarrow \mathbb{R}$ a function
@@ -239,18 +242,18 @@
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
             If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
-            and reminder $B = A \setminus \bigcup \overline{A}$ such that:
+            and reminder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ such that:
             \begin{enumerate}
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.3} $A_j \subseteq A \setminus \bigcup\parcurly{A_i \mid i < j}$, in particular $A_i \cap A_j = \emptyset$ $\forall i \neq j$.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.4} $|B| < m_0$.
-                \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $\overline{A}$ is $\leq$-increasing.
+                \item \label{itm:existance_of_ordered_f_indivisible_partitions.5} $|A_i| \leq |A_j| \Leftrightarrow i \leq j$.
             \end{enumerate}
             \begin{proof}
                 Iteratively, apply \Cref{lem:existance_of_indivisible_sets} to the remainder $A \setminus \bigcup \parcurly{A_i \mid i < j}$
                 (\dref{itm:existance_of_ordered_f_indivisible_partitions.3}) to get an $f$-indivisible $A_j$ (\dref{itm:existance_of_ordered_f_indivisible_partitions.1}) of size $m_\ell$, $\ell \in \parcurly{0, \dots, k_{**}-1}$
-                (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less then $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
+                (\dref{itm:existance_of_ordered_f_indivisible_partitions.2}) until less than $m_0$ vertices are available (\dref{itm:existance_of_ordered_f_indivisible_partitions.4}).
                 To conclude, reorder the indices of the $A_j$'s in ascending size order (\dref{itm:existance_of_ordered_f_indivisible_partitions.5}).
             \end{proof}
         \end{lemma}
@@ -263,9 +266,8 @@
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
-            \todo{Last condition can be changed (and probably should) for a condition on $m_{k_{**}}$}
             If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
-            and reminder $B = A \setminus \bigcup \overline{A}$ satisfying:
+            and reminder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ satisfying:
             \begin{enumerate}
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.1} For each $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-indivisible.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2} For each $i \in \parcurly{1, \dots, i(*)}$, $|A_i| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
@@ -294,6 +296,7 @@
                 so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
                 \Cref{lem:exceptions_bound_of_epsilon_indivisible_sets} is satisfied.
                 This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} and concludes the proof of the statement.
+                \todo{Some Lluis commentaries I don't get here!}
             \end{proof}
         \end{lemma}
         \todo{Maybe merge the last two lemmas?}
@@ -307,10 +310,10 @@
 
         As stated earlier, the principal drawback of the previous result is that the obtained partition is not even.
         To deal with this, we study the event of randomly partitioning a pair of indivisible sets
-        \todo{Hehe, "partition indivisible sets", sona contradictiu.}
         into subparts of equal size.
         We prove that the event of a pair of subparts of the refinement being either fully connected or completely empty,
         is satisfied with very high probability.
+        \todo{Some Lluis commentaries I don't get here! (join together what?)}
 
         \begin{definition}
             Let $A, B$ be $f$-indivisible sets with $\ceil{f(A)} f(B) < \frac{1}{2} |B|$.
@@ -327,8 +330,13 @@
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
-            paper, but required for the calculations (sin hacer trampa).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
-            \todo{Here we have enforced the equality. Should be commented that this is easily achievable as we do in the next results.}
+            paper, but required for the calculations (sin hacer trampa) (appendix).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$,
+            $m_\ell^\epsilon = m_{\ell+1}$\footnote{
+                Implicitly, we are requiring each $m_\ell^\epsilon$ to be a natural number.
+                This can be easily achieved by fixing $\epsilon$ to be a fraction $\frac{1}{r}$ for some natural number
+                $r$, and constructing the sequence starting from $m_{k_{**}}$ as $m_\ell = m_{\ell+1}^r$ for all
+                $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+                This is precisely the strategy we will use in following results.},
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
             for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
@@ -396,7 +404,7 @@
         \end{lemma}
 
         \begin{remark}
-            The condition on the size of $m_0$, which is both an upper and lower bound, is very strong and will be carried over
+            The condition $n \geq m_0 \geq n^\epsilon$, which is both an upper and lower bound of $m_0$, is very strong and will be carried over
             up to \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}.
             The greater limitations of this resides in the fact that the size of the parts of the resulting partition $m_{**}$
             is set by the size of $m_0$, and thus inherits the same limitations.
