@@ -103,7 +103,7 @@ def main():
         matrix_labels += "\t\t" + f"\\node[matrix label] at ({X_MATRIX_ADJ + i * CELL_SIZE}, {Y_MATRIX_ADJ}) {{$c_{{{i2sub[i-1]}}}$}};\n"
 
     for i in range(1,2**K):
-        node = f"c_{i2sub[i-1] if i2sub[i-1] != emptyset else ""}"
+        node = f"c_{i2sub[i-1] if i2sub[i-1] != emptyset else ''}"
         for j in range(1,2**K+1):
             branch = f"b_{binary_decomposition(j-1,K,text=True)}"
             if (node,branch) in connections and connections[(node,branch)]:

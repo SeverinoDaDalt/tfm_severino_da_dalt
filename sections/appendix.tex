@@ -44,13 +44,17 @@
 
 
     \begin{proof}[Proof of \Cref{lem:exceptions_bound_of_f_indivisible_sets}]
-        Notice:
+        Notice that, by the average condition of the pair $(A,B)$:
         \begin{itemize}
-            \item There are at most $f(|A|)$ elements of $A$ (hence in $A' \subseteq A$) which are exceptional
-                (in the sense of the average condition).
-            \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $g(|B|)$ elements
+            \item there are at most $f(|A|)$ vertices of $A$ (hence in $A' \subseteq A$), say $S$, which are exceptional
+                with respect to $B$, so the number of edges $(a,b) \in S \times B'$ which are exceptional is at most
+                $|S| \cdot |B'|$, and
+            \item for each $a \in A$ (hence in $A' \subseteq A$) not in $S$, there are at most $g(|B|)$ elements
                 $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+                Thus, we have at most $(a,b) \in (A' \setminus S) \times B'$ is at most $(|A'| - |S|) g(|B|)$.
         \end{itemize}
+        The overall worse case in this scenario is when $S$ is maximum ($|S| = f(|A|)$), and thus we have at most
+        $f(|A|) |B'| + (|A'| - f(|A|)) g(|B|)$ exceptional edges in $A' \times B'$, as $|B'| \geq g(|B|)$.
         Putting it all together:
         \[
             \begin{split}

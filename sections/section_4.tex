@@ -94,17 +94,18 @@
                     \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
             \begin{proof}
-                \todo{Some Lluis commentaries I don't get here!}
-                Notice:
+                Notice that, by the average condition of the pair $(A,B)$:
                 \begin{itemize}
-                    \item There are at most $|A|^\epsilon$ vertices of $A$ (hence in $A' \subseteq A$) which are exceptional
-                        (in the sense of the average condition).
-                    \todo{This is not the same use of the word exceptional as defined in \Cref{sec:section_3}.}
-                    \item For each $a \in A$ (hence in $A' \subseteq A$) not exceptional, there are at most $|B|^\zeta$ elements
+                    \item there are at most $|A|^\epsilon$ vertices of $A$ (hence in $A' \subseteq A$), say $S$, which are exceptional
+                        with respect to $B$, so the number of edges $(a,b) \in S \times B'$ which are exceptional is at most
+                        $|S| \cdot |B'|$, and
+                    \item for each $a \in A$ (hence in $A' \subseteq A$) not in $S$, there are at most $|B|^\zeta$ elements
                         $b \in B$ such that $(a,b)$ does not satisfy the truth value $t(A,B)$, i.e. that are exceptional.
+                        Thus, we have at most $(a,b) \in (A' \setminus S) \times B'$ is at most $(|A'| - |S|) |B|^\zeta$.
                 \end{itemize}
+                The overall worse case in this scenario is when $S$ is maximum ($|S| = |A|^\epsilon$), and thus we have at most
+                $|A|^\epsilon |B'| + (|A'| - |A|^\epsilon) |B|^\zeta$ exceptional edges in $A' \times B'$, as $|B'| \geq |B|^\zeta$.
                 Putting it all together:
-                \todo{This makes my eyes bleed.}
                 \[
                     \begin{split}
                         \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|}
@@ -128,6 +129,8 @@
                 \frac{|\parcurly{(a,b) \in (A',B') \mid a R b \equiv \neg t(A,B)}|}{|A' \times B'|} \leq
                     \frac{1}{|A|^{\epsilon_1}} + \frac{1}{|B|^{\zeta_1}}.
             \]
+            \begin{proof}[Proof in \Cref{sec:appendix_other_proofs}]
+            \end{proof}
         \end{lemma}
 
         For later use, we are particularly interested in the case when $f(n) = c$.
@@ -178,7 +181,7 @@
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
             If $A \subseteq G$, $|A| \geq m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
             of size $m_\ell$ which is $f$-indivisible.
-            % It may seem that m_{k_{**}} has no use, but it actually ensures that the smallest A_\eta is not empty.
+            \todo{Do something with the first two conditions, which are redundant as they are.}
             \begin{proof}
                 Suppose that such subset $B$ does not exist.
                 Then we shall construct by induction on $k = |\eta|$ the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$
@@ -236,8 +239,9 @@
             \end{proof}
         \end{lemma}
 
-        Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts,
-        a condition that can be easily integrated in the definition of the sequence of integers.
+        Finally, we ensure the pairs satisfy the average condition by simply requiring a minimal size of the parts
+        using \Cref{rmk:sufficient_requirement_for_average_condition},
+        which can be easily integrated in the definition of the sequence of integers.
 
         \begin{lemma}[Claim 4.10 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -273,11 +277,10 @@
                 Finally, notice that $\epsilon^{k_{**}} < \epsilon < 1 - \epsilon$ since $\epsilon \in (0, \frac{1}{2})$,
                 so that $\zeta \in (0, \epsilon ^ {k_{**}}) \subseteq (0, 1 - \epsilon)$ and the condition for
                 \Cref{lem:exceptions_bound_of_epsilon_indivisible_sets} is satisfied.
-                This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6} and concludes the proof of the statement.
-                \todo{Some Lluis commentaries I don't get here!}
+                This gives us \dref{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.6},
+                where in last inequality we used that $A_i\subseteq A, A_j\subseteq B$.
             \end{proof}
         \end{lemma}
-        \todo{Maybe merge the last two lemmas?}
 
         \begin{remark}
             For sufficiently small $\epsilon$, the condition $4 < (m_{k_{**}-1})^{1-2\epsilon}$ is rather mild.
@@ -289,32 +292,32 @@
         As stated earlier, the principal drawback of the previous result is that the obtained partition is not even.
         To deal with this, we study the event of randomly partitioning a pair of indivisible sets
         into subparts of equal size.
-        We prove that the event of a pair of subparts of the refinement being either fully connected or completely empty,
-        is satisfied with very high probability.
-        \todo{Some Lluis commentaries I don't get here! (join together what?)}
+        In particular, we prove that the event of a pair of subparts of the refinement being either \emph{completely} connected or
+        \emph{completely} empty, is satisfied with very high probability.
 
         \begin{definition}
             Let $A, B$ be $f$-indivisible sets with $\ceil{f(A)} f(B) < \frac{1}{2} |B|$.
             Let $\Partriangle{A_i \mid i \in \parcurly{1, \dots, i_A}}$ be a partition of $A$ with $|A_i| = m$ for all
-            $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_i \mid i \in \parcurly{1, \dots, i_B}}$ be a partition of
-            $B$ with $|B_i| = m$ for all $i \in \parcurly{1, \dots, i_B}$.
-            We define $\varepsilon^+_{A_i,A_j,m}$ as the event:
+            $i \in \parcurly{1, \dots, i_A}$ and $\Partriangle{B_j \mid j \in \parcurly{1, \dots, j_B}}$ be a partition of
+            $B$ with $|B_j| = m$ for all $j \in \parcurly{1, \dots, j_B}$.
+            We define $\varepsilon^+_{A_i,B_j,m}$ as the event:
             \[
-                \forall a \in A_i \ \forall b \in B_i, a R b = t(A,B).
+                \forall a \in A_i \ \forall b \in B_j, a R b = t(A,B).
             \]
         \end{definition}
 
+        Notice that, in the previous definition, we are implicitly requiring that $|A| = i_A \cdot m$ and $|B| = j_B \cdot m$.
+
         \begin{lemma}[Claim 4.13 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
-            Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
-            $n \geq m_0 \geq n^\epsilon$ \todo{Should be mentioned that this is a strong limitation which is not mentioned in the original
-            paper, but required for the calculations (sin hacer trampa) (appendix).} and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$,
-            $m_\ell^\epsilon = m_{\ell+1}$\footnote{
+            \sloppy Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
+            $n \geq m_0 \geq n^\epsilon$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$,
+            $m_\ell^\epsilon = m_{\ell+1}$,\footnote{
                 Implicitly, we are requiring each $m_\ell^\epsilon$ to be a natural number.
                 This can be easily achieved by fixing $\epsilon$ to be a fraction $\frac{1}{r}$ for some natural number
                 $r$, and constructing the sequence starting from $m_{k_{**}}$ as $m_\ell = m_{\ell+1}^r$ for all
                 $\ell \in \parcurly{0, \dots, k_{**}-1}$.
-                This is precisely the strategy we will use in following results.},
+                This is precisely the strategy we will use in following results.}
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
             for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
@@ -335,7 +338,7 @@
                 and for each $a \in A_1 \setminus U_1$ let $U_{2,a} = \parcurly{b \in A_j \mid a R b \equiv \neg t(A_1, A_2)}$.
                 By \Cref{lem:average_condition_statement}, $|U_1| \leq |A_1|^\epsilon$ and $\forall a \in A_1 \setminus U_1$,
                 $|U_{2,a}| \leq |A_2|^\epsilon$.
-                Now, given $\bparcurly{1, \dots, \frac{|A_1|}{m}}$, we can bound the probability $P_1$ that
+                Now, given $s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}$, we can bound the probability $P_1$ that
                 $A_{1,s} \cap U_1 \neq \emptyset$ as follows:
                 \[
                     \begin{split}
@@ -354,7 +357,7 @@
                 \]
                 The forth inequality comes from the fact that $\frac{(|A_i| - m) m}{|A_i|} \geq 1$.
                 Then, if $A_{1,s} \cap U_1= \emptyset$, we have that $|\bigcup_{a \in A_{1,s}} U_{2,a}| \leq |A_{1,s}| |A_2|^\epsilon$.
-                So, given $\bparcurly{1, \dots, \frac{|A_2|}{m}}$, we can bound $P_2$, the probability that
+                So, given $t \in \bparcurly{1, \dots, \frac{|A_2|}{m}}$, we can similarly bound $P_2$, the probability that
                 $A_{2,t} \cap \bigcup_{a \in A_{1,s}} U_{2,a} \neq \emptyset$, by:
                 \[
                     \begin{split}
@@ -552,9 +555,9 @@
         \begin{definition}[Definition 4.18 in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:n_large_enough_property}
             For $n, c \in \mathbb{N}$ and $\epsilon, \zeta, \xi \in \mathbb{R}$, let $\oplus[n, \epsilon, \zeta, \xi, c]$ be
             the statement:
-            For any set $A$ and family of subsets $P \subseteq \mathcal{P}(A)$ such that $|A| = n$ and $|P| \leq n^{\frac{1}{\zeta}}$,
-            and for all $B \in P$ with $|B| \leq n^\epsilon$, there exists $U \subseteq A$ with $|U| = \lfloor n^\xi \rfloor$ such that
-            for all $B \in P$, $|U \cap B| \leq c$.
+            For any set $A$ such that $|A| = n$, and for any family of subsets $P \subseteq \mathcal{P}(A)$ such that
+            $|P| \leq n^{\frac{1}{\zeta}}$ and each $B \in P$ satisfies $|B| \leq n^\epsilon$, then there exists $U \subseteq A$
+            with $|U| = \lfloor n^\xi \rfloor$ such that for all $B \in P$, $|U \cap B| \leq c$.
         \end{definition}
 
         \begin{lemma}[Lemma 4.19 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:n_large_enough_valid_values}
