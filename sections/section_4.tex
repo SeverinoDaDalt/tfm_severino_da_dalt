@@ -181,20 +181,18 @@
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
             If $A \subseteq G$, $|A| \geq m_0$, then for some $\ell \in \parcurly{0, \dots, k_{**}-1}$ there is a subset $B \subseteq A$
             of size $m_\ell$ which is $f$-indivisible.
-            \todo{Do something with the first two conditions, which are redundant as they are.}
             \begin{proof}
                 Suppose that such subset $B$ does not exist.
                 Then we shall construct by induction on $k = |\eta|$ the sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k}}$
                 and $\Partriangle{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k}}$, satisfying the following properties:
                 \begin{enumerate}
-                    \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
-                    \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
+                    % \item\label{itm:existance_of_indivisible_sets.1} $A_{\eta^\frown \Partriangle{i}} \subseteq A_{\eta}$, $\forall i \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
+                    % \item\label{itm:existance_of_indivisible_sets.2} $A_{\eta^\frown \Partriangle{0}} \cap A_{\eta^\frown \Partriangle{1}} = \emptyset$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                     \item\label{itm:existance_of_indivisible_sets.3} $|A_\eta| = m_k$, $\forall k \in \parcurly{0, \dots, k_{**}}$.
                     \item\label{itm:existance_of_indivisible_sets.4} $b_\eta \in G$ witnessing that $A_\eta$ is not $f$-indivisible, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                     \item\label{itm:existance_of_indivisible_sets.5} $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)} = \parcurly{a \in A_\eta \mid a R b_\eta \equiv i}$,
                         $\forall \in \parcurly{0,1}$, $\forall k \in \parcurly{0, \dots, k_{**}-1}$.
                 \end{enumerate}
-                \todo{Some Lluis commentaries I don't get here!}
                 Let's prove the induction.
                 For $k=0$, consider any $A_{\Partriangle{\cdot}} \subseteq A$, satisfying $|A_{\Partriangle{\cdot}}| = m_0$, and
                 any $b_{\Partriangle{\cdot}}$ witnessing the non-$f$-indivisibility of $A_{\Partriangle{\cdot}}$.
@@ -202,13 +200,13 @@
                 Thus, there exists a $b_\eta$ such that $A_\eta^{(i)} \geq f(m_{k}) \geq m_{k+1}$ (\dref{itm:existance_of_indivisible_sets.4}), and we can choose
                 $A_{\eta^\frown \Partriangle{i}} \subseteq A_\eta^{(i)}$ (\dref{itm:existance_of_indivisible_sets.5}), such that
                 $|A_{\eta^\frown \Partriangle{i}}| = m_{k+1}$ $\forall i \in \parcurly{0,1}$ (\dref{itm:existance_of_indivisible_sets.3}).
-                \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied by the definition of $A_\eta^{(i)}$.
+                % \dref{itm:existance_of_indivisible_sets.1} and \dref{itm:existance_of_indivisible_sets.2} are satisfied \dref{itm:existance_of_indivisible_sets.5}.
                 Now, for all $\eta$ such that $|\eta| = k_{**}$, consider some element $a_\eta \in A_\eta$, which exists since $m_\ell > 0$
                 for all $\ell$.
                 Then, we have two sequences $\Partriangle{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$
                 are a $k_{**}$-tree in $G$: for all $\rho \in \parcurly{0,1}^{<k_{**}}$ and $\eta \in \parcurly{0,1}^{k_{**}}$
                 if given $\ell \in \parcurly{0, 1}$ we have $\rho^\frown \Partriangle{\ell} \trianglelefteq \eta$ then
-                $a_\eta R b_\rho \equiv \ell$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{i}}$.
+                $a_\eta R b_\rho \equiv \ell$ since $a_\eta \in A_\eta \subseteq A_{\rho ^\frown \Partriangle{\ell}}$ by \dref{itm:existance_of_indivisible_sets.5}.
                 This contradicts the tree bound $k_{**}$ (see \Cref{thm:tree_implies_order}).
             \end{proof}
         \end{lemma}
@@ -321,8 +319,7 @@
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             Let $A_1, A_2 \subseteq G$ be two $\epsilon$-indivisible subsets such that $|A_1| = m_{\ell_1}$ and $|A_2| = m_{\ell_2}$
             for some $\ell_1, \ell_2 \in \parcurly{0, \dots, k_{**}-1}$ and $|A_1| \leq |A_2|$.
-            Let $c \in (0, 1-\epsilon)$ and $\zeta \leq \frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}$ such that
-            $m \coloneqq n^\zeta$ divides $|A_1|$ and $|A_2|$.
+            Let $c \in (0, 1-\epsilon)$ and $m \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$ such that $m$ divides $|A_1|$ and $|A_2|$.
             Then, let $\Partriangle{A_{1,s} \mid s \in \bparcurly{1, \dots, \frac{|A_1|}{m}}}$ and
             $\Partriangle{A_{2,t} \mid t \in \bparcurly{1, \dots, \frac{|A_2|}{m}}}$ be random partitions of $A_1$ and $A_2$
             respectively, with pieces of size $m$.
@@ -348,8 +345,7 @@
                                 \leq \frac{m |A_1|^\epsilon}{|A_1| - m} \\
                             & \leq \frac{m^2 |A_1|^\epsilon}{|A_1|}
                                 = \frac{m^2}{|A_1|^{1-\epsilon}}
-                                = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} % the requirement of equality in the condition of m_l's is required here
-                                \leq \frac{n^{2 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_1 + 1}}} \\
+                                = \frac{m^2}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_1}}} \\ % the requirement of equality in the condition of m_l's is required here
                             & \leq \frac{n^{2\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 = \frac{1}{n^{c \epsilon^{k_{**}}}}.
@@ -367,8 +363,7 @@
                                 \leq \frac{m m |A_2|^\epsilon}{|A_2| - m} \\
                             & \leq \frac{m^3 |A_2|^\epsilon}{|A_2|}
                                 = \frac{m^3}{|A_2|^{1-\epsilon}}
-                                = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} % the requirement of equality in the condition of m_l's is required here
-                                \leq \frac{n^{3 \zeta}}{n^{(1-\epsilon)\epsilon^{\ell_2 + 1}}} \\
+                                = \frac{m^3}{m_0^{\parround{1-\epsilon} \epsilon^{\ell_2}}} \\ % the requirement of equality in the condition of m_l's is required here
                             & \leq \frac{n^{3\frac{1-\epsilon-c}{3} \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 \leq \frac{n^{(1-\epsilon-c) \epsilon^{k_{**}}}}{n^{(1-\epsilon)\epsilon^{k_{**}}}}
                                 = \frac{1}{n^{c \epsilon^{k_{**}}}}.
@@ -469,8 +464,9 @@
         \todo{Notation here is confusing. $r$ is another thing, and $m$ becomes the number of parts.}
 
         \begin{theorem}[Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
-            Let $\epsilon = \frac{1}{r} \in \parround{0, \frac{1}{2}}$ with $r \in \mathbb{N}$ (this avoids rounding errors),
-            $c\in \parround{0,1-\epsilon}$ and $k_*$ be given.
+            Let $r, r' > 1$ be two natural numbers,
+            and let $\epsilon = \frac{1}{r}$ and \mbox{$c = \frac{r' - 1}{r'} - \epsilon$}.\footnote{Choosing $\epsilon$ and
+                $c$ this way ensures avoiding aproximation errors, and makes the proof more readable}
             Let $G$ be a finite graph with the non-$k_*$-order property.
             Let $A \subseteq G$ with $|A| = n$, and $n > 4^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
             Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
@@ -497,9 +493,11 @@
                 such that for all $\ell \in \parcurly{1, \dots, k_{**}}$ we have that $m_{\ell-1} = m_\ell^r$.
                 Notice that:
                 \begin{enumerate}
-                    \item $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$ since the $m_\ell$'s are powers of $m_{k_{**}}$
-                        and $m_{**}$ divides $m_{k_{**}}$ by construction.
-                    \todo{Probably it is not needed that $m_{**}$ divides $m_{k_{**}}$, with $m_{k_{**}-1}$ is enough, but it comes for free.}
+                    \item $c \in (0, 1 - \epsilon)$, since $0 < \frac{1}{2} - \epsilon \leq \frac{r'-1}{r'} - \epsilon < 1 - \epsilon$.
+                    \item All $m_\ell$'s are powers of $m_{k_{**}}$, and so they are divisible by it.
+                        Also, since $\frac{3}{1-\epsilon-c} = 3r'$ is an integer
+                        by choice of $c$, $m_{**}$ divides $m_{k_{**}}$.
+                        Thus, $m_{**}$ divides $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}}$.
                     \item $(m_{\ell-1})^\epsilon = m_\ell$ for all $\ell \in \parcurly{1, \dots, k_{**}}$, by construction.
                     \item $m_{**} \leq n^{\frac{1-\epsilon-c}{3}\epsilon^{k_{**}}}$, by choice of $m_{**}$.
                     \item $m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}}$, so on one hand
