@@ -423,7 +423,7 @@
                 Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
                 \[
                     \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
-                         = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} P(\varepsilon_{A_i, A_j,m_{**}})
+                         = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} 1 - P(\varepsilon^+_{A_i, A_j,m_{**}})
                          \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}},
                 \]
                 where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
@@ -559,7 +559,7 @@
         \end{definition}
 
         \begin{lemma}[Lemma 4.19 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:n_large_enough_valid_values}
-            If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \frac{1}{2}$,
+            If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \min \parround{\frac{1}{2}, 1 - \epsilon}$,
             the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
                 \begin{equation} \label{eq:n_large_enough_valid_values.1}
                     \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1,
@@ -567,19 +567,20 @@
             and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$,
             then $\oplus[n, \epsilon, \zeta, \xi, c]$ holds.
             \begin{proof}
-                First of all, notice that the condition on $c$ implies that $(1 - \xi - \epsilon) > 0$, and thus $\xi < 1 -\epsilon$.
-                Let $m = \lfloor n^\xi \rfloor$ be the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$
-                the set of sequences of elements of $A$ with length $m$.
-                Let $\mu$ be a probability distribution on $\mathcal{F}_*$ such that for all $F \in \mathcal{F}_*$,
+                Let $m = \lfloor n^\xi \rfloor$ be the size of the set $U$ we want to build, and let $\mathcal{F}_* = [A]^m$ be
+                the set of sequences of length $m$ of (not necessarily distinct) elements of $A$.
+                Let $\mu$ be the uniform distribution on $\mathcal{F}_*$, i.e. for all $F \subseteq \mathcal{F}_*$,
                 $\mu(F) = \frac{|F|}{|\mathcal{F}_*|}$.
-                We want to prove that the probability that a random $U$ satisfies:
+                Let $P \subseteq \mathcal{F}_*$ be a family of sequences where the elements of the sequences are pairwise distinct.
+                We want to prove that the probability that a random $U \in \mathcal{F}_*$ satisfies:
                 \begin{enumerate}
                     \item\label{itm:n_large_enough_valid_values.1} All elements of $U$ are distinct.
-                    \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$, $|U \cap B| < c$.
+                    \item\label{itm:n_large_enough_valid_values.2} For all $B \in P$, $|U \cap B| < c$
+                        (where the intersection counts repetitions).
                 \end{enumerate}
                 is non-zero.
                 First of all let's bound the converse of \dref{itm:n_large_enough_valid_values.1}, i.e. the probability that there are two equal elements
-                in $U$:
+                in $U$: \todo{Change $P$ to $\mathbb{P}$}
                 \[
                     P_1 = P(\exists s < t \in [m] \mid U_s = U_t)
                         \leq {m \choose 2} \frac{n}{n^2}
@@ -587,10 +588,10 @@
                         \leq \frac{n^{2\xi}}{2n}
                         < \frac{1}{2n^{1-2\xi}}.
                 \]
-                Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound the probability that at least $c$ elements of
-                $U$ are in a given $B \in P$:
+                Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound $P_B$: the probability that at least $c$ elements of
+                $U$ are in a given $B \in P$.
                 \[
-                    P_B = P(\exists^{\geq c} t\in [m] \mid U_t \in B)
+                    P_B = P(\exists^{\geq c}\; t\in [m] \mid U_t \in B)
                         \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
                         \leq \frac{m^c |B|^c}{n^c}
                         \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
@@ -599,25 +600,25 @@
                 Then, we can bound the converse of \dref{itm:n_large_enough_valid_values.2}, i.e. the probability that this happens for some $B \in P$,
                 by:
                 \[
-                    P_2 = P(\exists B \in P \mid \exists^{\geq c} t\in [m], U_t \in B)
+                    P_2 = P(\exists B \in P \mid \exists^{\geq c}\; t\in [m], U_t \in B)
                         \leq \sum_{B \in P} P_B
                         = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
                         \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
                 Putting it all together, we have that
                 \[
-                    P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
+                    P(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
                         \leq P_1 + P_2
                         < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
                 Notice that
                 \begin{itemize}
                     \item Since $\xi < \frac{1}{2}$ we have that $1 - 2\xi > 0$.
-                    \item $c (1 - \xi - \epsilon) - \frac{1}{\zeta}> 0$.
+                    \item $c (1 - \xi - \epsilon) - \frac{1}{\zeta}> 0$, since $\xi < 1 - \epsilon$ and $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$.
                 \end{itemize}
                 so, the $n$-large enough condition \eqref{eq:n_large_enough_valid_values.1} is well defined and
                 \[
-                    P((\dref{itm:n_large_enough_valid_values.1}) \cup (\dref{itm:n_large_enough_valid_values.2}))
+                    P(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
                         < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
                         < 1
                 \]
@@ -627,15 +628,14 @@
             \end{proof}
         \end{lemma}
 
-        \begin{remark}
+        \begin{remark} \label{rmk:n_grows}
             In the context of the condition $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$ from the previous lemma, we note that
             the lower bound on $c$ increases as $\xi$ and $\epsilon$ grow, and as $\zeta$ decreases.
-
-            A similar pattern is also followed by the large enough condition of $n$ given by
-            \Cref{eq:n_large_enough_valid_values.1}.
+            A similar pattern is also followed by the large enough condition of $n$ given
+            by~\eqref{eq:n_large_enough_valid_values.1}. \todo{Change all reference to equations to eqref.}
             For the condition to be met, $n$ needs to grow as the exponents $1-2\xi$ and
-            $(1 - \xi - \epsilon)c - \frac{1}{\zeta}$ become smaller.
-            That is, the lower bound on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
+            $(1 - \xi - \epsilon)c - \frac{1}{\zeta}$ becomes smaller.
+            That is, the lower bound $N_{\ref{lem:n_large_enough_valid_values}}(\epsilon, \zeta, \xi, c)$ on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
         \end{remark}
 
         \begin{lemma}[Claim 4.21 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
@@ -672,11 +672,15 @@
                                 > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}
                                 > N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \zeta, \frac{\xi}{\epsilon^{\ell}}, c}.
                         \]
+                        Second inequality follows from the fact that function $g_\epsilon^{-1}$ satisfies that
+                        $g_\epsilon^{-1}(x) \leq x$ for $x \geq 1$.
+                        For third inequality we use that $g_\epsilon^{-1}$ is decreasing.
+                        Forth inequality uses \Cref{rmk:n_grows} and by definition $\zeta = \frac{1}{k_{**}}$.
                     \item $c > \frac{1}{\frac{1}{k_*} (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}
                         = \frac{1}{\zeta (1 - \frac{\xi}{\epsilon^{k_{**}}} - \epsilon)}$, by \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.4}.
                 \end{itemize}
                 Conditions of \Cref{lem:n_large_enough_valid_values} are met, so
-                $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}}$
+                $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}, c}$
                 (as defined in \Cref{def:n_large_enough_property}) holds.
                 We can take $A_{(\ref{def:n_large_enough_property})}$ and $P_{(\ref{def:n_large_enough_property})}$ to be
                 $A_1$ and $P \coloneqq \bparcurly{\overline{B}_{A_1,b} \mid b \in G}$ respectively, which satisfy:
@@ -686,7 +690,7 @@
                         of \Cref{cor:k_order_propery_bounds_BAbs}.
                     \item $\forall B \in P$, $|B| \leq |A_1|^\epsilon$ by $\epsilon$-indivisibility of $A_1$.
                 \end{itemize}
-                Thus, by \Cref{def:n_large_enough_property} we have that there exists $Z \subseteq A_1$ such that:
+                Thus, by $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}, c}$ we have that there exists $Z \subseteq A_1$ such that:
                 \begin{itemize}
                     \item $|Z| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
                         = \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
@@ -699,7 +703,7 @@
 
         We now use the previous result to build an even partition.
         Similarly to \Cref{lem:existance_of_ordered_f_indivisible_partitions}, we will iteratively extract an $f_c$-indivisible
-        set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, until
+        set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, while
         the sufficiently large condition holds.
 
         \begin{theorem}[Theorem 4.23 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
@@ -715,7 +719,7 @@
                     where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$.
             \end{itemize}
             \begin{proof}
-                We will build a sequence of disjoint $f_c$-indivisible subsets $A_i$ by induction on $i$ as follows.
+                We build a sequence of disjoint $f_c$-indivisible subsets $A_i$ by induction on $i$ as follows.
                 Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
                 At each step, if $\parstraight{R_i} > N$, we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} to $R_i$
                 with the values $f_c$, $\epsilon$ and $\xi$ of the statement of this theorem,
