@@ -272,17 +272,37 @@
             \end{enumerate}
             \begin{proof}
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item For each $b \in G$, we say that $\overline{B}_{A,b}$ is \emph{bad} if $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$.
-                    For each bad $\overline{B}_{A,b}$, let $X_{A,b,A'}$ be the event that
-                    $\parstraight{\overline{B}_{A,b} \cap A'} \geq \parround{\epsilon + \zeta} m$ for a subset
-                    $A' \subseteq A$ of size $m$, sampled uniformly at random.
-                    Notice that $\parstraight{\overline{B}_{A,b} \cap A'}$ is modelled by a hypergeometric distribution,
-                    and so the probability of it upperly deviating from the mean by $\zeta$, the event $X_{A,b,A'}$, can be bounded
+                \item The proof of this point uses the hypergeometric distribution.
+                    This distribution works on a set of size $N$ in which $M \leq N$ elements are \emph{fail} elements
+                    and the rest are \emph{pass} elements.
+                    The hypergeometric describes the probability of drawing $m \leq n$ fail elements in $n$ draws
+                    \emph{without replacement}.
+                    The probability of upperly deviating from the mean $M/N$ by more than $\varphi$ can be bounded
                     (see~\cite{hypergeometric_tail_inequalities_ending_the_insanity, the_tail_od_the_hypergeometric_distribution})
                     by
+                    \begin{equation} \label{eq:hypergeometric_bound}
+                        P\Parround{k \geq \bbparround{\frac{M}{N} + \varphi} n} \leq e^{-2 \varphi^2 n}.
+                    \end{equation}
+
+                    Now, moving to the context of the statement, we are interested in studying $\overline{B}_{A,b}$ sets,
+                    for $b\in G$, such that $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$, and how they intersect with the
+                    randomly sampled $A'$.
+                    We call such sets \emph{bad} sets.
+                    Fix a $b\in G$ such that $\overline{B}_{A,b}$ is bad.
+                    The elements of $\overline{B}_{A,b}$ are our fail elements when drawing from $A$, and
+                    $A'$ is our sample, uniformly draw at random.
+                    This clearly describes a hypergeometric distribution.
+                    We define $X_{A,b,A'}$ to be the event of $\parstraight{\overline{B}_{A,b} \cap A'}$ upperly
+                    deviating from $\epsilon$ by $\zeta$.
+                    Notice that $\epsilon$ is not precisely the mean $\frac{|\overline{B}_{A,b}|}{|A|}$, but it is strictly
+                    smaller than it.
+                    Thus,
                     \[
-                        P\parround{X_{A,b,A'}} \leq e^{-2\zeta^2 m}.
+                        P\parround{X_{A,b,A'}} \leq P\parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
+                            \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \varphi} n} \leq e^{-2\zeta^2 m},
                     \]
+                    where the second inequality follows~\eqref{eq:hypergeometric_bound}.
+
                     Now we want to study the random variable $X$ counting the number of events in
                     $X_{A,b,A'}$ that are satisfied.
                     That is, $X = \sum_{\text{bad } \overline{B}_{A,b}} \mathbbm{1}_{X_{A,b,A'}}$, where $\mathbbm{1}_Y$ is the
@@ -318,8 +338,23 @@
                             < \parround{\epsilon + \zeta} m$.
                     \end{itemize}
                 We conclude that $t(b,A) = t(b,A')$ for all $b \in G$.
-                \item Let $B \subseteq G$ be an $\epsilon'$-good set.
-                    We first upperbound the number of exceptional vertices of $B$ with respect to $A'$:
+                \item
+                    Let $B \subseteq G$ be an $\epsilon'$-good set.
+                    Notice that:
+                    \begin{itemize}
+                        \item \sloppy It follows \Cref{rmk:excellence_imply_little_exceptions} that number of exceptional edges
+                            in the pair $(A,B)$ is at most \mbox{$\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}$}.
+                        \item Each exceptional vertex of $B$ has at least $(1-\epsilon)|A|$ exceptional edges, since
+                            $A$ is $\epsilon$-good.
+                    \end{itemize}
+                    Thus,
+                    \begin{align} \nonumber
+                        \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \cdot \parround{1 - \epsilon}\parstraight{A}
+                            & \leq \hspace{-1.5em}\sum_{\substack{b \in B \\ t(b, A) \not\equiv t(B,A)}}\hspace{-1.5em}
+                                \parstraight{\parcurly{\text{Exceptional edges of }(b,A)}} \\
+                            & \leq \parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}. \label{eq:exceptions}
+                    \end{align}
+                    This allows us to upperbound the number of exceptional vertices of $B$ with respect to $A'$:
                     \begin{align*}
                         \parstraight{\parcurly{b \in B \mid t(b, A') \not\equiv t(B,A)}}
                             & = \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \\
@@ -328,10 +363,7 @@
                             & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}.
                     \end{align*}
                     The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}.
-                    First inequality uses \Cref{rmk:excellence_imply_little_exceptions} for the numerator, as it upper
-                    bounds the number of exceptional edges we can and taking the worst case of only
-                    $(1 - \epsilon) \parstraight{A}$ exceptional edges per exceptional $b \in B$
-                    (considering that $A$ is $\epsilon$-good). \todo{HERE!}
+                    and first inequality uses \Cref{eq:exceptions}.
 
                     Now, let $Q$ be the set of exceptional vertices of $A'$ with respect to $B$, i.e.:
                     \[
