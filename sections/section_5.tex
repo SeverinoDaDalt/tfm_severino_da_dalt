@@ -272,11 +272,11 @@
             \end{enumerate}
             \begin{proof}
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item For each $b \in G$, we say that $B_{A,b}$ is \emph{bad} if $\parstraight{B_{A,b}} \geq \epsilon m$.
-                    For each bad $B_{A,b}$, let $X_{A,b,A'}$ be the event that
-                    $\parstraight{B_{A,b} \cap A'} \geq \parround{\epsilon + \zeta} m$ for a subset
+                \item For each $b \in G$, we say that $\overline{B}_{A,b}$ is \emph{bad} if $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$.
+                    For each bad $\overline{B}_{A,b}$, let $X_{A,b,A'}$ be the event that
+                    $\parstraight{\overline{B}_{A,b} \cap A'} \geq \parround{\epsilon + \zeta} m$ for a subset
                     $A' \subseteq A$ of size $m$, sampled uniformly at random.
-                    Notice that $\parstraight{B_{A,b} \cap A'}$ is modelled by a hypergeometric distribution,
+                    Notice that $\parstraight{\overline{B}_{A,b} \cap A'}$ is modelled by a hypergeometric distribution,
                     and so the probability of it upperly deviating from the mean by $\zeta$, the event $X_{A,b,A'}$, can be bounded
                     (see~\cite{hypergeometric_tail_inequalities_ending_the_insanity, the_tail_od_the_hypergeometric_distribution})
                     by
@@ -285,15 +285,15 @@
                     \]
                     Now we want to study the random variable $X$ counting the number of events in
                     $X_{A,b,A'}$ that are satisfied.
-                    That is, $X = \sum_{\text{bad } B_{A,b}} \mathbbm{1}_{X_{A,b,A'}}$, where $\mathbbm{1}_Y$ is the
+                    That is, $X = \sum_{\text{bad } \overline{B}_{A,b}} \mathbbm{1}_{X_{A,b,A'}}$, where $\mathbbm{1}_Y$ is the
                     indicator random variable of the event $Y$.
                     We compute the expectation
                     \[
-                        \mathbb{E}[X] = \sum_{\text{bad } B_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
-                            = \sum_{\text{bad } B_{A,b}} P\parround{X_{A,b,A'}}
-                            \leq \sum_{\text{bad } B_{A,b}} e^{-2\zeta^2 m}.
+                        \mathbb{E}[X] = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
+                            = \sum_{\text{bad } \overline{B}_{A,b}} P\parround{X_{A,b,A'}}
+                            \leq \sum_{\text{bad } \overline{B}_{A,b}} e^{-2\zeta^2 m}.
                     \]
-                    Following \dref{itm:k_order_propery_bounds_BAbs.2} in \Cref{cor:k_order_propery_bounds_BAbs}, the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded
+                    Following \dref{itm:k_order_propery_bounds_BAbs.2} in \Cref{cor:k_order_propery_bounds_BAbs}, the number of intersections of bad $\overline{B}_{A,b}$'s with $A'$, can be bounded
                     by $m^{k_*}$.
                     Thus, using the First Moment Method, we have that:
                     \[
@@ -305,16 +305,16 @@
                 \item Suppose that $A'$ is the subset described in \dref{itm:even_partition_of_excellent_parts.1}.
                     We proved that such set satisfies
                     \[
-                        \parstraight{A' \cap B_{A,b}} < \parround{\epsilon + \zeta} \parstraight{A'}
+                        \parstraight{A' \cap \overline{B}_{A,b}} < \parround{\epsilon + \zeta} \parstraight{A'}
                     \]
-                    for all $b \in G$ such that $\parstraight{B_{A,b}} \geq \epsilon m$.
+                    for all $b \in G$ such that $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$.
                     Thus, given $b \in G$, we have that:
                     \begin{itemize}
-                        \item If $\parstraight{B_{A,b}} < \epsilon m$, then
-                            $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} \leq \parstraight{B_{A,b}}
+                        \item If $\parstraight{\overline{B}_{A,b}} < \epsilon m$, then
+                            $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} \leq \parstraight{\overline{B}_{A,b}}
                             < \epsilon m < \parround{\epsilon + \zeta} m$.
-                        \item If $\parstraight{B_{A,b}} \geq \epsilon m$, then
-                            $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} = \parstraight{A' \cap B_{A,b}}
+                        \item If $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$, then
+                            $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} = \parstraight{A' \cap \overline{B}_{A,b}}
                             < \parround{\epsilon + \zeta} m$.
                     \end{itemize}
                 We conclude that $t(b,A) = t(b,A')$ for all $b \in G$.
