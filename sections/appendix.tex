@@ -42,7 +42,6 @@
         \end{enumerate}
     \end{proof}
 
-
     \begin{proof}[Proof of \Cref{lem:exceptions_bound_of_f_indivisible_sets}]
         Notice that, by the average condition of the pair $(A,B)$:
         \begin{itemize}
@@ -67,6 +66,32 @@
             \end{split}
         \]
         This finishes the proof.
+    \end{proof}
+
+    \begin{proof}[Proof of \Cref{clm:floor_exponential_composition_bound}]
+        We first note that for all natural number $n \geq 1$, and real values $x \geq 1$ and $\epsilon < 1$,
+        we have that:
+        \begin{equation} \label{eq:exp_bound}
+            (x+n)^{\epsilon} \leq x^{\epsilon} + n
+        \end{equation}
+        and
+        \begin{equation} \label{eq:floor_bound}
+            \floor{x+n} \leq \floor{x} + n.
+        \end{equation}
+        We now prove the statement by induction on $k$.
+        If $k=2$,
+        \[
+            f_{\epsilon_1 \epsilon_2} = \floor{x^{\epsilon_1 \epsilon_2}}
+                \leq \floor{\floor{x^{\epsilon_1}+1}^{\epsilon_2}}
+                \stackrel{\eqref{eq:exp_bound}, \eqref{eq:floor_bound}}{\leq} \floor{\floor{x^{\epsilon_1}}^{\epsilon_2}} + 1
+        \]
+        If $k > 2$,
+        \[
+            f_{\epsilon_1 \epsilon_2 \dots \epsilon_k} (x)
+                \stackrel{\text{I.H. for }k-1}{\leq} f_{\epsilon_1 \epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 2
+                \stackrel{\text{I.H. for }2}{\leq} f_{\epsilon_1} \circ f_{\epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 1
+        \]
+        This proves the statement.
     \end{proof}
 
     \begin{proof}[Proof of \Cref{lem:existance_of_excellent_subsets_fixed_size_choices}]

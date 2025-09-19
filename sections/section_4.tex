@@ -638,6 +638,19 @@
             That is, the lower bound $N_{\ref{lem:n_large_enough_valid_values}}(\epsilon, \zeta, \xi, c)$ on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.
         \end{remark}
 
+        The following claim will be useful in the proof of \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}.
+        \begin{claim} \label{clm:floor_exponential_composition_bound}
+            Let $f_\epsilon(x)$ be the map such that $f_\epsilon(x) = \floor{x^\epsilon}$.
+            Then, for any $x \geq 1$ and $\epsilon_1, \dots, \epsilon_k \in (0,1)$, the following
+            inequality is satisfied:
+            \[
+                f_{\epsilon_1 \epsilon_2 \dots \epsilon_k}(x)
+                    \leq f_{\epsilon_1} \circ f_{\epsilon_2} \circ \dots \circ f_{\epsilon_k}(x) + k - 1
+            \]
+            \begin{proof}[Proof in \Cref{sec:appendix_other_proofs}]
+            \end{proof}
+        \end{claim}
+
         \begin{lemma}[Claim 4.21 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}
             Let $k_*, c \in \mathbb{N}$ and $\epsilon, \xi \in \mathbb{R}$ such that:
             \begin{enumerate}
@@ -653,7 +666,7 @@
             where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$),
             if $A \subseteq G$ with $|A| = n$, there is $Z \subseteq A$ such that
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} $|Z| = \lfloor n^\xi \rfloor$.
+                \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} $|Z| \geq \lfloor n^\xi \rfloor - k_{**}$.
                 \item\label{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b} $Z$ is $f_c$-indivisible in $G$.
             \end{enumerate}
             \begin{proof}
@@ -692,8 +705,12 @@
                 \end{itemize}
                 Thus, by $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}, c}$ we have that there exists $Z \subseteq A_1$ such that:
                 \begin{itemize}
-                    \item $|Z| = \lfloor m_\ell^{\frac{\xi}{\epsilon^\ell}} \rfloor = \lfloor n^{\epsilon^\ell \frac{\xi}{\epsilon^\ell}} \rfloor
-                        = \lfloor n^\xi \rfloor$ satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
+                    \item $|Z| = \floor{m_\ell^{\xi\epsilon^{-\ell}}}
+                        = f_{\xi\epsilon^{-\ell}} \circ f_{\epsilon}^{\ell} (n)
+                        \stackrel{\ref{clm:floor_exponential_composition_bound}}{\geq} f_{\xi\epsilon^{-\ell} \epsilon^{\ell}} (n) - \ell
+                        \geq f_\xi (n) - k_{**}
+                        = \lfloor n^\xi \rfloor - k_{**}$, where $f_\epsilon(x)$ is defined in \Cref{clm:floor_exponential_composition_bound}.
+                        This satisfies \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
                     \item $Z$ is $f_c$-indivisible since $|B \cap Z| \leq c$ for all $B \in P$,
                         satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b}.
                 \end{itemize}
@@ -713,7 +730,7 @@
             has a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ of $A$ with remainder
             $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, i(*)}} A_i$ satisfying:
             \begin{itemize}
-                \item $|A_i| = \floor{n^\xi}$ for all $i \in \parcurly{1, \dots, i(*)}$.
+                \item $|A_i| = \floor{n^\xi} - k_{**}$ for all $i \in \parcurly{1, \dots, i(*)}$.
                 \item $A_i$ is $f_c$-indivisible for all $i \in \parcurly{1, \dots, i(*)}$, where $f_c(x) = c$ is a constant function.
                 \item $|B| \leq N \coloneqq g_\epsilon^{k_{**}}\parround{N_{\ref{lem:n_large_enough_valid_values}}\parround{\epsilon, \frac{1}{k_*}, \frac{\xi}{\epsilon^{k_{**}}}, c}}$
                     where $g_\epsilon(x) = \parround{x+1}^{\frac{1}{\epsilon}}$.
@@ -736,10 +753,14 @@
                 \item The partition is exceptionally \regular, and the number of exceptional edges in each pair of parts
                     and subparts is strongly bounded as shown by \Cref{cor:exceptions_bound_of_c_indivisible_sets}.
                 \item As the upper bound on the size of the remainder is constant with respect to the size of the graph $n$,
-                    the remainder as a fraction of the total graph can be made as small as possible (but not completely avoided).
+                    the remainder as a fraction of the total graph can be made as small as desired (but not completely avoided).
                     If we want the remainder to be at most $\frac{1}{x}$ of the total graph, we can simply impose
                     $n \geq x \cdot N$, and we are done.
-                \item The parts are exponentially smaller then the size of the graph.
+                \item The $- k_{**}$ factor in the size of the parts is not a crucial dependence of the size of the parts
+                    on this parameter, but just a by-product of using \Cref{clm:floor_exponential_composition_bound}
+                    to deal with floor functions.
+                    Careful computations can probably reduce this factor to a constant independent of any parameter.
+                \item The parts are exponentially smaller than the size of the graph.
                     Hence, the number of parts grows with the size of the graph, which is actually the principal drawback of
                     this theorem.
                     This will be solved in the partition studied in \Cref{sec:section_5}.
