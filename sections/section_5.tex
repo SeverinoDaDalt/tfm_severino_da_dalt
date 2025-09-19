@@ -1,8 +1,8 @@
 \section{The Stable Regularity Lemma} \label{sec:section_5}
 
-    This section focuses in leveraging the stability of a graph to create a stable partition which maximum number
-    of parts does not grow with the size of the graph.
-    In order to do so, we first prove the existence of a partition which parts satisfy a property which we prove stronger
+    This section focuses in leveraging the stability of a graph to create a stable partition whose maximum number
+    of parts only depends on the error and stability parameters; hence it does not grow with the size of the graph.
+    In order to do so, we first prove the existence of a partition whose parts satisfy a property which we prove stronger
     than regularity: \emph{excellence}.
 
     \subsection{Goodness and excellence} \label{subsec:subsection_5.1}
@@ -47,12 +47,10 @@
                 \parstraight{\parcurly{\text{Exceptional edges between } A \text{ and } B}} <
                     \epsilon |A| |B| + (1- \epsilon) |A| \epsilon' |B| = \parround{\epsilon + \parround{1-\epsilon} \epsilon'} |A| |B|.
             \]
-            A relevant example is that of two disjoint $\epsilon$-excellent sets, in which case we have that the fraction
-            of exceptional edges between them is less than $2\epsilon$.
-            If they are not disjoint, we can still use the same reasoning to conclude that the fraction of exceptional edges
-            is less than $2 \epsilon \frac{\parstraight{A} \parstraight{B}}{e(A,B)} < 8 \epsilon$, since
-            $e(A,B) > \frac{\parstraight{A} \parstraight{B}}{4}$.
-            \todo{Discuss with Luis, this may be reduced but I am not sure.}
+            A relevant example is that of two (not necessarily disjoint) $\epsilon$-excellent sets, in which case we have that
+            the density (as defined in \Cref{def:density}) of exceptional edges between them is less than $2\epsilon$.
+            See \Cref{rmk:density_vs_real_density} to see the relation of this density and the real fraction of exceptional
+            edges of the pair.
         \end{remark}
 
         \begin{remark} \label{rmk:excellence_is_not_monotonic}
@@ -60,8 +58,7 @@
             not \say{monotonic}.
             That is, in general, for $\epsilon < \epsilon'$, a set being $\epsilon$-excellent does not imply
             it being also $\epsilon'$-excellent (and trivially neither the converse).
-            See \Cref{fig:non-monotonic_example} for a counter example to the monotonicity of this property.
-
+            See \Cref{fig:non-monotonic_example} for a counterexample to the monotonicity of this property.
             More precisely, each of the two variables in the $(\epsilon, \epsilon')$-excellence are oppositely monotonic.
             That is, if a given set is $(\epsilon_1, \epsilon'_1)$-excellent, then it is also
             $(\epsilon_2, \epsilon'_2)$-excellent for all $\epsilon_1 \leq \epsilon_2$ and $\epsilon'_1 \geq \epsilon'_2$,
@@ -74,16 +71,16 @@
 
     \subsection{Excellent partitions} \label{subsec:subsection_5.2}
 
-        The first step towards constructing a partition of sets with such property, is to prove their existence under the
-        stability condition.
-        Similar to \Cref{lem:existance_of_indivisible_sets} in \Cref{sec:section_4}, we will prove this by assuming
+        The first step towards constructing a partition of excellent sets is to prove the existence of such
+        sets under the stability condition.
+        Similar to \Cref{lem:existance_of_indivisible_sets} in \Cref{sec:section_4}, we prove their existence by assuming
         the converse and getting to contradiction with the tree bound.
 
         We actually show two versions of the same lemma on existence of excellent sets.
         \Cref{lem:existance_of_excellent_subsets} is slightly more readable, while
-        \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} is the one we will be using for further
+        \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} is the one we will be using in further
         proofs, as it fixes the possibles sizes of the resulting set.
-        For that reason, in this section we only prove the first one, and leave the proof of the other in
+        For that reason, in this section we only prove the first one, and leave the proof of the latter in
         \Cref{sec:appendix_other_proofs}.
 
         \begin{lemma}[Claim 5.4 (I) in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_excellent_subsets}
@@ -93,8 +90,8 @@
             subset $A' \subseteq A$ such that $|A'| \geq \epsilon^{k_{**}-1} |A|$.
             \begin{proof}
                 Suppose the converse.
-                We use this fact to build sets $\parcurly{b_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
-                $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ on induction over $k<k_{**}$, where $k = |\eta|$,
+                We use this fact to build two family of sets $\parcurly{B_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
+                $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ inductively over $k\leq k_{**}$, where $k = |\eta|$,
                 satisfying:
                 \begin{enumerate}
                     \item\label{itm:existance_of_excellent_subsets.1} $A_{\Partriangle{\cdot}} = A$.
@@ -110,11 +107,12 @@
                     \item\label{itm:existance_of_excellent_subsets.7} $\overline{A_k} = \parcurly{A_\eta \mid \eta \in \parcurly{0,1}^k}$ is a partition of $A$,
                         for $k \leq k_{**}$.
                 \end{enumerate}
-                First of all, notice that at each step, the non-$(\epsilon, \zeta)$-excellence of $A_\eta$ comes by IH
-                from \dref{itm:existance_of_excellent_subsets.1} or \dref{itm:existance_of_excellent_subsets.5},
-                and thus allows the existence of $B_\eta$ in \dref{itm:existance_of_excellent_subsets.2}.
-                \dref{itm:existance_of_excellent_subsets.4} follows the definition of $A_{\eta \frown \Partriangle{i}}$ in
-                \dref{itm:existance_of_excellent_subsets.3} and the fact $B_\eta$ is witnessing that $A_\eta$ is not $(\epsilon, \zeta)$-excellent.
+                First of all, notice that at each step, the non-$(\epsilon, \zeta)$-excellence of $A_\eta$ comes by the initial supposition
+                (negation of the statement's thesis) and by IH
+                from \dref{itm:existance_of_excellent_subsets.1} or \dref{itm:existance_of_excellent_subsets.5}.
+                This allows the existence of the $B_\eta$ claimed in \dref{itm:existance_of_excellent_subsets.2}.
+                Condition \dref{itm:existance_of_excellent_subsets.4} follows from the definition of $A_{\eta \frown \Partriangle{i}}$ in
+                \dref{itm:existance_of_excellent_subsets.3} and the fact that $B_\eta$ is witnessing that $A_\eta$ is not $(\epsilon, \zeta)$-excellent.
                 Applying recursively this last point we obtain \dref{itm:existance_of_excellent_subsets.5}.
                 Finally, by definition \dref{itm:existance_of_excellent_subsets.3}, we have the disjoint union
                 \dref{itm:existance_of_excellent_subsets.6} which ensures
@@ -138,23 +136,27 @@
                     \parstraight{\bigcup\parcurly{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}} <
                     2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|.
                 \]
-                We may choose $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$,
-                for all $\nu \in \parcurly{0,1}^{<k_{**}}$.
-                Finally, the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
-                satisfy that $\forall \eta, \nu$ such that $\nu \frown \Partriangle{i} \triangleleft \eta$, $a_\eta R b_\nu \equiv i$
-                by \dref{itm:existance_of_excellent_subsets.3} and \dref{itm:existance_of_excellent_subsets.6}.
-                This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
+                Therefore, for all $\nu \in \parcurly{0,1}^{<k_{**}}$, we may choose
+                $b_\nu \in B_\nu \setminus \bigcup\parcurly{U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}$.
+                Finally, by \dref{itm:existance_of_excellent_subsets.3} and \dref{itm:existance_of_excellent_subsets.6}
+                the sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
+                satisfy:
+                \[
+                    \forall \eta, \nu \text{ such that } \nu \frown \Partriangle{i} \triangleleft \eta, \; a_\eta R b_\nu \equiv i,
+                \]
+                which forms a $k_{**}$-tree.
+                This contradicts the tree bound $k_{**}$ (see \Cref{def:tree_bound}).
             \end{proof}
         \end{lemma}
 
         \begin{remark}
-            The two sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$
-            are not necessarily disjoint.
+            The two sequences $\Partriangle{a_\eta \mid \eta \in \parcurly{0,1}^{k_{**}}}$ and $\Partriangle{b_\nu \mid \nu \in \parcurly{0,1}^{<k_{**}}}$,
+            constructed in the proof of \Cref{lem:existance_of_excellent_subsets}, are not necessarily disjoint.
             This is the reason why, for this to work, the \Cref{def:k-tree}, and consequently \Cref{def:k_order_property},
             do not take this condition.
             Although it makes the non-$k$-order assumption on the graph stricter, this also allows the definition of excellence
-            to work with respect to the set itself (as it is good by definition).
-            Thus, the resulting partition will not only satisfy \regularity~between different parts, but actually ensures
+            to work with respect to the set itself (as \emph{excellent} sets are \emph{good} by definition).
+            Thus, the resulting partition will not only satisfy a \regular~property between different parts, but actually ensures
             that the parts are \regular~within themsleves.
         \end{remark}
 
@@ -168,15 +170,17 @@
             Then, for every $A \subseteq G$ with $|A| \geq m_0$ there exists
             $\parround{\frac{m_{\ell+1}}{m_{\ell}}, \zeta}$-excellent subset $A' \subseteq A$ such that $|A'| = m_\ell$ for
             some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+            \begin{proof} [Proof in \Cref{sec:appendix_other_proofs}]
+            \end{proof}
         \end{lemma}
 
-        Now, we can get the first version of a partition by applying the previous lemma recursively, until the remainder is too
-        small for the condition on the size of the graph to be satisfied.
+        Now, we can get a first (not necessarily even) partition by applying the previous lemma recursively,
+        until the remainder is too small to further apply the previous statement.
 
         \begin{lemma}[Claim 5.14 (1) in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_excellent_partition}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
-            Let $A \subseteq G$ such that $|A| = n$.
+            Let $A \subseteq G$ such that $|A| = n \geq m_0$.
             Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
             $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
             Denote $m_* \coloneqq m_0$ and $m_{**} \coloneqq m_{k_{**}}$.
@@ -191,37 +195,44 @@
             \begin{proof}
                 Apply \Cref{lem:existance_of_excellent_subsets_fixed_size_choices} recursively to the remainder
                 $A \setminus \bigcup_{i < j} A_i$, to obtain $A_j$ at each step.
-                The process stops at $j(*)$ when the remainder is smaller than $m_0$, and thus the lemma cannot be applied.
-                Notice that, since $\frac{m_\ell}{m_{\ell-1}} \leq \epsilon$, $\parround{\frac{m_\ell}{m_{\ell-1}}, \epsilon'}$-excellence
-                implies $\parround{\epsilon, \epsilon'}$-excellence.
+                The process stops at $j(*)$ when the remainder is smaller than $m_0 = m_*$, and thus
+                the lemma cannot be further applied.
+                Notice that, since $\frac{m_\ell}{m_{\ell-1}} \leq \epsilon$, then by \Cref{rmk:excellence_is_not_monotonic}
+                the pair being $\parround{\frac{m_\ell}{m_{\ell-1}}, \epsilon'}$-excellence
+                implies it is also $\parround{\epsilon, \epsilon'}$-excellence.
             \end{proof}
         \end{lemma}
 
         \todo{Say that if $A$ is smaller than $m_0$, then the partition is empty and $B = A$.}
 
+        Note that, in \Cref{lem:existance_of_excellent_partition},
+        if $n < m_0$ then the statement holds for an empty partition where the reminder is the whole set $A$.
+
         The next step is refining this partition to obtain an even partition.
         In order to do so, we first show that any random sample of a given size from an excellent set is still excellent
-        with high probability, at the cost of a slightly reduced excellence (\dref{itm:even_partition_of_excellent_parts.2} of
+        with high probability, at the cost of a slightly reduced excellence (condition
+        \dref{itm:even_partition_of_excellent_parts.2} in
         \Cref{lem:even_partition_of_excellent_parts}).
         Then, we use this result in a union-bound argument to show that we can actually fully partition the excellent set into
-        pieces of equal size (\dref{itm:even_partition_of_excellent_parts.3} of
-        \Cref{lem:even_partition_of_excellent_parts}), which are still excellent.
+        pieces of equal size (condition \dref{itm:even_partition_of_excellent_parts.3} in
+        \Cref{lem:even_partition_of_excellent_parts}), which still are excellent.
         Finally, \Cref{lem:existance_of_excellent_partition_with_equal_size} applies this result to the partition from
         \Cref{lem:existance_of_excellent_partition} to get an even excellent partition.
 
-        Before getting to it, we prove the following calculus result, which will be required in the subsequent proof.
-        The statement comes from~\cite{no_me_acuerdo} \todo{To do.}and, for completeness, we provide here a short proof.
+        Before getting to it, we prove the following calculus result, which we use in the proof of \Cref{clm:ineq_5.13}.
+        The statement is inspired by~\cite[page 272]{on_the_uniform_convergence_of_relative_frequencies_of_events_to_their_probabilities}
+        and, for completeness, we provide here a short proof.
 
-        \begin{lemma} \label{lem:ineq_5.13}
+        \begin{claim} \label{clm:ineq_5.13}
             For $k > 1$, $\zeta, \eta \in \parround{0,1}$ the function $f(m) = m^k \cdot e^{-2 \zeta^2 m}$ satisfies
-            $f(m) \leq \eta$ for all $m \geq \frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}$.
+            $f(m) \leq \eta$ for all $m \geq \frac{1}{\zeta^2}\parround{k \log\parround{\frac{1}{\zeta^2} k} - \log\parround{\eta}}$.
             \begin{proof}
-                First of all, notice that for $m = \frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}$,
+                First of all, notice that for $m = \frac{1}{\zeta^2}\parround{k \log\parround{\frac{1}{\zeta^2} k} - \log\parround{\eta}}$,
                 \[
                     f(m) = \frac{m^k}{e^{2 \zeta^2 m}}
-                         = \frac{\parround{\frac{1}{\zeta^2}\parround{k \log{\frac{1}{\zeta^2} k} - \log{\eta}}}^k}{
+                         = \frac{\parround{\frac{1}{\zeta^2}\parround{k \log\parround{\frac{1}{\zeta^2} k} - \log\parround{\eta}}}^k}{
                             \parround{\frac{k}{\zeta^2}}^{2k} \eta^{-2}}
-                         \leq \frac{k^k \parround{\log{\frac{k}{\zeta^2}\parround{\frac{1}{\eta}}^{\frac{1}{k}}}}^k}
+                         \leq \frac{k^k \parround{\log\parround{\frac{k}{\zeta^2}\parround{\frac{1}{\eta}}^{\frac{1}{k}}}}^k}
                             {k^k \parround{\frac{k}{\zeta^2} \parround{\frac{1}{\eta}}^{\frac{1}{k}}}^k} \eta
                          < \eta.
                 \]
@@ -234,7 +245,7 @@
                 The second factor is always positive, and $m > \frac{k}{\zeta^2} > \frac{k}{2\zeta^2}$, proving that $f'(m) < 0$
                 and thus $f$ is decreasing.
             \end{proof}
-        \end{lemma}
+        \end{claim}
 
         \begin{lemma}[Claim 5.13 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:even_partition_of_excellent_parts}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -244,7 +255,7 @@
                     $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
                     $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
                     if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
-                    then a random subset $A' \subseteq A$ of size $m$ is $(\epsilon + \zeta)$-good with probability $1-\xi$.
+                    then a subset $A' \subseteq A$ of size $m$, sampled uniformly at random, is $(\epsilon + \zeta)$-good with probability $1-\xi$.
                 \item \label{itm:even_partition_of_excellent_parts.1*} Moreover, such $A'$ satisfies $t(b, A') = t(b, A)$ for all $b \in G$.
                 \item \label{itm:even_partition_of_excellent_parts.2} For every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
                     $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
@@ -254,45 +265,50 @@
                     \end{itemize}
                     then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
                 \item \label{itm:even_partition_of_excellent_parts.3} For all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
-                    $\epsilon < \epsilon'$ small enough (in the sense of the previous point) there exists
-                    $N = N\parround{k_{*}, \zeta', r}$ such that, if $|A| = n > N$, $r$ divides $n$ and $A$ is
-                    $\parround{\epsilon, \epsilon'}$-excellent, there exists a partition into $r$ disjoint pieces of equal
+                    $\epsilon < \epsilon'$ small enough ($\leq \epsilon_1(\zeta, \zeta')$ from the previous point) there exists
+                    $N = N\parround{k_{*}, \zeta', r}$ such that: if $|A| = n > N$, $r$ divides $n$ and $A$ is
+                    $\parround{\epsilon, \epsilon'}$-excellent, then there exists a partition into $r$ disjoint pieces of equal
                     size, each of which is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
             \end{enumerate}
             \begin{proof}
             \begin{enumerate}[label=(\alph*), ref=\alph*]
-                \item For each $b \in G$, we say that $B_{A,b}$ is \emph{bad} if $\parstraight{B_{A,b}} \geq \epsilon \parstraight{A'}$.
-                    For each bad $B_{A,b}$, let $X_{A,b}$ be the event that
-                    $\parstraight{B_{A,b}} \geq \parround{\epsilon + \zeta} \parstraight{A'}$ for a random subset
-                    $A' \subseteq A$ of size $m$.
-                    Notice that $X_{A,b}$ is modelled by a hypergeometric distribution, and so the probability of
-                    upperly deviating from the mean by $\zeta$, can be modeled by
+                \item For each $b \in G$, we say that $B_{A,b}$ is \emph{bad} if $\parstraight{B_{A,b}} \geq \epsilon m$.
+                    For each bad $B_{A,b}$, let $X_{A,b,A'}$ be the event that
+                    $\parstraight{B_{A,b} \cap A'} \geq \parround{\epsilon + \zeta} m$ for a subset
+                    $A' \subseteq A$ of size $m$, sampled uniformly at random.
+                    Notice that $\parstraight{B_{A,b} \cap A'}$ is modelled by a hypergeometric distribution,
+                    and so the probability of it upperly deviating from the mean by $\zeta$, the event $X_{A,b,A'}$, can be bounded
+                    (see~\cite{hypergeometric_tail_inequalities_ending_the_insanity, the_tail_od_the_hypergeometric_distribution})
+                    by
                     \[
-                        P\parround{X_{A,b} = 1} \leq e^{-2\zeta^2 m}.
+                        P\parround{X_{A,b,A'}} \leq e^{-2\zeta^2 m}.
                     \]
-                    Now we want to study the random variable $X$ counting the number of events $X_{A,b}$ that are satisfied.
-                    That is, $X = \sum_{\text{bad } B_{A,b}} X_{A,b}$.
+                    Now we want to study the random variable $X$ counting the number of events in
+                    $X_{A,b,A'}$ that are satisfied.
+                    That is, $X = \sum_{\text{bad } B_{A,b}} \mathbbm{1}_{X_{A,b,A'}}$, where $\mathbbm{1}_Y$ is the
+                    indicator random variable of the event $Y$.
                     We compute the expectation
                     \[
-                        \mathbb{E}[X] = \sum_{\text{bad } B_{A,b}} \mathbb{E}[X_{A,b}]
-                            = \sum_{\text{bad } B_{A,b}} P\parround{X_{A,b} = 1}
+                        \mathbb{E}[X] = \sum_{\text{bad } B_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
+                            = \sum_{\text{bad } B_{A,b}} P\parround{X_{A,b,A'}}
                             \leq \sum_{\text{bad } B_{A,b}} e^{-2\zeta^2 m}.
                     \]
-                    Following \dref{itm:k_order_propery_bounds_BAbs.2}, the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded
+                    Following \dref{itm:k_order_propery_bounds_BAbs.2} in \Cref{cor:k_order_propery_bounds_BAbs}, the number of intersections of bad $B_{A,b}$'s with $A'$, can be bounded
                     by $m^{k_*}$.
                     Thus, using the First Moment Method, we have that:
                     \[
                         P\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
                     \]
-                    Last inequality follows \Cref{lem:ineq_5.13} using the lower bound on $m$.
+                    Last inequality follows \Cref{clm:ineq_5.13} using the lower bound
+                    $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$.
                     Thus, with probability at least $1 - \xi$, we have that $A'$ is $(\epsilon + \zeta)$-good.
                 \item Suppose that $A'$ is the subset described in \dref{itm:even_partition_of_excellent_parts.1}.
-                    We proved that, such set satisfies
+                    We proved that such set satisfies
                     \[
                         \parstraight{A' \cap B_{A,b}} < \parround{\epsilon + \zeta} \parstraight{A'}
                     \]
                     for all $b \in G$ such that $\parstraight{B_{A,b}} \geq \epsilon m$.
-                    Thus, we have that:
+                    Thus, given $b \in G$, we have that:
                     \begin{itemize}
                         \item If $\parstraight{B_{A,b}} < \epsilon m$, then
                             $\parstraight{\parcurly{a \in A' \mid a R b \not \equiv t(b,A)}} \leq \parstraight{B_{A,b}}
@@ -311,10 +327,11 @@
                                 {\parround{1 - \epsilon}\parstraight{A}} \\
                             & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}.
                     \end{align*}
-                    The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}, and the first inequality follows from
-                    \Cref{rmk:excellence_imply_little_exceptions} for the numerator, and taking the worst case of only
+                    The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}.
+                    First inequality uses \Cref{rmk:excellence_imply_little_exceptions} for the numerator, as it upper
+                    bounds the number of exceptional edges we can and taking the worst case of only
                     $(1 - \epsilon) \parstraight{A}$ exceptional edges per exceptional $b \in B$
-                    (considering that $A$ is $\epsilon$-good).
+                    (considering that $A$ is $\epsilon$-good). \todo{HERE!}
 
                     Now, let $Q$ be the set of exceptional vertices of $A'$ with respect to $B$, i.e.:
                     \[

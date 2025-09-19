@@ -8,9 +8,9 @@ NODE_SIZE=0.3
 CAPTION=(f"Example of the $\epsilon$-excellence property not being monotonic. \n"
          f"\\emph{{On the left}}, a bipartite graph with two independent sets $A$ and $B$. \n"
          f"A simple exhaustive check shows that $A$ is $\\frac{{1}}{{5}}$-excellent. \n"
-         f"On the other hand, raising the $\epsilon$-value up to $\\frac{{2}}{{5}}$ introduces a new \n"
-         f"$\\frac{{2}}{{5}}$-good set $B$ witnessing that $A$ is not excellent, as half of the vertices of $A$ have one \n"
-         f"truth value, and half the other. \n"
+         f"On the other hand, raising the value of $\epsilon$ up to $\\frac{{2}}{{5}}$ introduces a new \n"
+         f"$\\frac{{2}}{{5}}$-good set $B$ witnessing that $A$ is not $\\frac{{2}}{{5}}$-excellent, as half of the "
+         f"vertices of $A$ have one truth value, and half the other. \n"
          f"\\emph{{On the right}} is the corresponding bi-adjacency matrix.")
 FIG_NAME="non-monotonic_example"
 OUTPUT_FILE="pictures/non-monotonic_example.tex"
