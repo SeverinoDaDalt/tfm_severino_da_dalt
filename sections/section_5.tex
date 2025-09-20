@@ -258,8 +258,8 @@
                 \item \label{itm:even_partition_of_excellent_parts.2} For every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
                     $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
                     \begin{itemize}
-                        \item $A \subseteq G$ is $\parcurly{\epsilon, \epsilon'}$-excellent and
-                        \item $A' \subseteq A$ is $\parcurly{\epsilon + \zeta'}$-good,
+                        \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
+                        \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
                     \end{itemize}
                     then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
                 \item \label{itm:even_partition_of_excellent_parts.3} For all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
@@ -273,7 +273,7 @@
                 \item The proof of this point uses the hypergeometric distribution.
                     This distribution works on a set of size $N$ in which $M \leq N$ elements are \emph{fail} elements
                     and the rest are \emph{pass} elements.
-                    The hypergeometric describes the probability of drawing $m \leq n$ fail elements in $n$ draws
+                    The hypergeometric describes the probability of having $m \leq n$ fail elements out of $n$ draws
                     \emph{without replacement}.
                     The probability of upperly deviating from the mean $M/N$ by more than $\varphi$ can be bounded
                     (see~\cite{hypergeometric_tail_inequalities_ending_the_insanity, the_tail_od_the_hypergeometric_distribution})
@@ -286,18 +286,23 @@
                     for $b\in G$, such that $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$, and how they intersect with the
                     randomly sampled $A'$.
                     We call such sets \emph{bad} sets.
-                    Let $b\in G$ such that $\overline{B}_{A,b}$ is bad.
-                    The elements of $\overline{B}_{A,b}$ are our fail elements when drawing from $A$, and
-                    $A'$ is our sample (where elements are uniformly draw at random without replacement).
-                    This clearly describes a hypergeometric distribution.
+
+                    For each $b\in G$ such that $\overline{B}_{A,b}$ is bad,
+                    the elements of $\overline{B}_{A,b}$ are our fail elements when drawing from $A$, and
+                    $A'$ is our sample set (where elements are uniformly drawn at random without replacement).
+                    This clearly describes a hypergeometric distribution.\footnote{
+                        To avoid confusions, in the notation used to describe the hypergeometric distribution,
+                        $N = |A|$, $M = |\overline{B}_{A,b}|$, $n = |A'|$ and $m = |\overline{B}_{A,b} \cap A'|$.}
                     We define $X_{A,b,A'}$ to be the event of $\parstraight{\overline{B}_{A,b} \cap A'}$ upperly
-                    deviating from $\epsilon$ by $\zeta$.
+                    deviating from $\epsilon m$ by $\zeta m$, i.e.
+                    $\parstraight{\overline{B}_{A,b} \cap A'} \geq (\epsilon + \zeta)m$.
                     Then, since $\epsilon \geq |\overline{B}_{A,b}|/|A|$ by $A$ goodness, the probability of upperly
-                    deviating from $\epsilon$ is at most the probability of deviating from the real mean.
+                    deviating more than $\zeta$ from $\epsilon$ is at most the probability of deviating more than $\zeta$ from
+                    the real mean.
                     Thus,
                     \[
                         P\parround{X_{A,b,A'}} \leq P\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
-                            \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \varphi} n} \leq e^{-2\zeta^2 m},
+                            \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \zeta} m} \leq e^{-2\zeta^2 m},
                     \]
                     where the second inequality follows~\eqref{eq:hypergeometric_bound}.
 
@@ -339,8 +344,8 @@
                 \item
                     Let $B \subseteq G$ be an $\epsilon'$-good set.
                     It follows \Cref{rmk:excellence_imply_little_exceptions} that number of exceptional edges
-                    in the pair $(A,B)$ is at most \mbox{$\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}$}
-                    and, since  $A$ is $\epsilon$-good, each exceptional vertex of $B$ has at least $(1-\epsilon)|A|$ exceptional edges.
+                    in the pair $(A,B)$ is at most \mbox{$\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}$}.
+                    Also, since  $A$ is $\epsilon$-good, each exceptional vertex of $B$ has at least $(1-\epsilon)|A|$ exceptional edges.
                     Thus,
                     \begin{align} \nonumber
                         \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \cdot \parround{1 - \epsilon}\parstraight{A}
@@ -349,13 +354,13 @@
                             & \leq \parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}. \label{eq:exceptions}
                     \end{align}
                     This allows us to upperbound the number of exceptional vertices of $B$ with respect to $A'$:
-                    \begin{align*}
+                    \begin{align}
                         \parstraight{\parcurly{b \in B \mid t(b, A') \not\equiv t(B,A)}}
-                            & = \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \\
+                            & = \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \nonumber \\
                             & \leq \frac{\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}}
-                                {\parround{1 - \epsilon}\parstraight{A}} \\
-                            & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}.
-                    \end{align*}
+                                {\parround{1 - \epsilon}\parstraight{A}} \nonumber \\
+                            & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}. \label{eq:exceptional_edges_BAi}
+                    \end{align}
                     The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}.
                     and the first inequality uses \Cref{eq:exceptions}.
 
@@ -366,21 +371,23 @@
                     We want to double-count the number of exceptional edges between $Q$ and $B$.
                     On one hand, we have that:
                     \[
-                        \parstraight{\parcurly{(a,b) \in Q \times B \mid t(a, b) \not\equiv t(A, B)}} <
+                        \parstraight{\parcurly{(a,b) \in Q \times B \mid aRb \not\equiv t(A, B)}} <
                         \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}} \parstraight{B} \parstraight{Q} +
                         \parround{1 - \epsilon' - \frac{\epsilon}{1 - \epsilon}} \parstraight{B} \parround{\epsilon + \zeta'} \parstraight{A'}.
                     \]
                     The first term is the maximum number of exceptional edges associated to exceptional $b \in B$
-                    (considering all edges exceptional), while the second term bounds the number of exceptional edges of
-                    non-exceptional $b \in B$, using the fact that $A'$ is $(\epsilon + \zeta')$-good.
+                    assuming the worse case of all edges being exceptional in each vertex.
+                    The second term bounds the number of exceptional edges incident to
+                    non-exceptional vertices $b \in B$, using the fact that $A'$ is $(\epsilon + \zeta')$-good.
+                    We are assuming the worse case scenario in which the number of exceptional vertices $b \in B$ is maximum
+                    with the bound given by~\eqref{eq:exceptional_edges_BAi}.
 
                     On the other hand, we have that:
                     \[
-                        \parstraight{\parcurly{(a,b) \in Q \times B \mid t(a, b) \not\equiv t(A, B)}} \geq
+                        \parstraight{\parcurly{(a,b) \in Q \times B \mid aRb \not\equiv t(A, B)}} \geq
                         \parstraight{Q} \parround{1 - \epsilon'} \parstraight{B},
                     \]
-                    which follows $B$ being $\epsilon'$-good.
-
+                    which follows from $B$ being $\epsilon'$-good.
                     Putting it all together:
                     \[
                         \parround{1 - \epsilon' - \epsilon' - \frac{\epsilon}{1 - \epsilon}} \parstraight{B} \parstraight{Q} <
@@ -395,12 +402,11 @@
                                             (\epsilon + \zeta') |A'|.
                     \end{align*}
                     Notice that $f(\epsilon, \epsilon') \coloneqq \frac{\epsilon'}{1 - 2\epsilon' - \frac{\epsilon}{1 - \epsilon}}$
-                    decreases with $\epsilon$ and $\epsilon'$.
+                    decreases when $\epsilon$ or $\epsilon'$ decrease.
                     In particular,
                     \[
-                        f(\epsilon, \epsilon') \overset{\epsilon' \to 0}{\longrightarrow} 0,
+                        f(\epsilon, \epsilon') \overset{\epsilon' \to 0}{\longrightarrow} 0.
                     \]
-                    and $\epsilon' > \epsilon$.
                     Then,
                     \[
                         \parstraight{Q} < \parround{\epsilon + \parround{\underbrace{\epsilon f(\epsilon, \epsilon')}_{\to 0} +
@@ -410,24 +416,28 @@
                     So, there exists an $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ small enough such that for all
                     $(\epsilon <)$ $\epsilon' \leq \epsilon_1$, we have that $\parstraight{Q} < \parround{\epsilon + \zeta} |A'|$,
                     and since $A'$ is $(\epsilon + \zeta')$-good, and thus $(\epsilon + \zeta)$-good, we conclude that
-                    $A'$ is $(\epsilon + \zeta, \epsilon')$-excellent. \todo{Mention that in the next claim we show valid values for this.}
+                    $A'$ is $(\epsilon + \zeta, \epsilon')$-excellent.
                 \item Let $\zeta, \zeta', \epsilon, \epsilon'$ and $r$ be given satisfying the conditions of the statement.
                     Set $\xi = \frac{1}{r + 1}$.
-                    We will see that the condition
+                    We see that the condition
                     $n > N = N\parround{k_{*}, \zeta', r} \coloneqq r \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\frac{1}{r + 1}}}$
                     is sufficient.
-                    First of all, randomly choose a function $h: A \longrightarrow \parcurly{1, \dots, r-1}$ such that
-                    for all $s < n$ we have that $\parstraight{\parcurly{a \in A \mid h(a) = s}} = \frac{n}{r}$.
-                    Since $h$ is random, each $A' \in [A]^\frac{n}{r}$ has the same probability of being part of the partition
-                    induced by $h$, i.e. to satisfy $A' = h^{-1}(s)$ for some $s \in \parcurly{1, \dots, r-1}$.
+                    Consider all functions $h: A \longrightarrow \parcurly{1, \dots, r}$ such that
+                    for all $s < n$ we have that $\parstraight{\parcurly{a \in A \mid h(a) = s}} = \frac{n}{r}$,
+                    and draw one $h$ uniformly at random (this can be seen as sampling a partition of $A$ into $r$ parts
+                    uniformly at random).
+                    Then, each $A' \in [A]^\frac{n}{r}$ has the same probability of being part of the partition
+                    induced by $h$, i.e. to satisfy $A' = h^{-1}(s)$ for some $s \in \parcurly{1, \dots, r}$.
                     Since each element of the partition $A'$ has size
                     $\frac{n}{r} > \frac{N}{r} = \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\xi}}$,
-                    we can apply \dref{itm:even_partition_of_excellent_parts.1} to get that
+                    we can apply statement \dref{itm:even_partition_of_excellent_parts.1}~to get that
                     \[
                         P\parround{A' \text{ is not } \parround{\epsilon + \zeta'}\text{-good}} < \xi.
                     \]
-                    In particular, since $A$ is $(\epsilon, \epsilon')$-excellent, it follows \dref{itm:even_partition_of_excellent_parts.2} that if $A'$ is
-                    $\parround{\epsilon + \zeta'}$-good then it is also $\parround{\epsilon + \zeta, \epsilon'}$-excellent, so:
+                    Observe that the hypotheses of statement \dref{itm:even_partition_of_excellent_parts.2}~are satisfied,
+                    crucially $A$ is $(\epsilon, \epsilon')$-excellent.
+                    It follows that if $A'$ is $\parround{\epsilon + \zeta'}$-good, then it is also $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+                    Therefore:
                     \[
                         P\parround{A' \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} < \xi.
                     \]
@@ -437,14 +447,15 @@
                             & \leq \sum_{s < r} P\parround{h^{-1}(s) \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} \\
                             & < r \xi = \frac{r}{r+1} < 1.
                     \end{align*}
-                    All in all, there is a non-zero chance that the partition satisfies the statement, i.e. there exists at least one.
-            \end{enumerate}
+                    All in all, there is a non-zero probability that the partition satisfies the statement,
+                    i.e. there exists at least one such partition. \qedhere
+                \end{enumerate}
             \end{proof}
         \end{lemma}
 
         \begin{remark} \label{rmk:value_for_even_partition_of_excellent_parts}
-            For following applications, we would like to use \dref{itm:even_partition_of_excellent_parts.3} from
-            \Cref{lem:even_partition_of_excellent_parts} with $\epsilon' > k \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
+            In some of the following arguments, we would like to use statement \dref{itm:even_partition_of_excellent_parts.3}~from
+            \Cref{lem:even_partition_of_excellent_parts} with $\epsilon' > k \cdot \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
             Notice that if $\epsilon, \zeta' \leq \frac{1}{t}, \epsilon' \leq \frac{1}{t'}$ and $t > t' \geq 5$, then:
             \begin{enumerate}[label=(\alph*), ref=\alph*]
                 \item $\frac{\epsilon}{1-\epsilon} \leq \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
@@ -471,10 +482,12 @@
             \[
                 \parround{1 + \frac{\epsilon'}{1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon}}} < \frac{1}{k} \epsilon'.
             \]
-            All in all, a sufficient condition, for the lemma to hold under the constraint $\epsilon' \geq k \parround{\epsilon + \zeta}$, is:
+            All in all, we conclude that, if
             \[
                 \epsilon, \zeta' \leq \frac{1}{4k} \epsilon' \quad \text{ and } \quad \epsilon' \leq \frac{1}{5}.
             \]
+            then statement \dref{itm:even_partition_of_excellent_parts.3}~from
+            \Cref{lem:even_partition_of_excellent_parts} holds with $\epsilon' \geq k \cdot \parround{\epsilon + \zeta}$.
         \end{remark}
 
         We use this fact to reformulate point \dref{itm:even_partition_of_excellent_parts.3} of
@@ -490,14 +503,15 @@
                 Choose any $\zeta' \leq \frac{1}{4k} \epsilon'$ and set
                 $N \coloneqq N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \zeta', r}$.
                 \Cref{rmk:value_for_even_partition_of_excellent_parts} sufficiency condition is satisfied,
-                \dref{itm:even_partition_of_excellent_parts.3} from \Cref{lem:even_partition_of_excellent_parts}
-                holds and we are done.
+                so statement \dref{itm:even_partition_of_excellent_parts.3} from \Cref{lem:even_partition_of_excellent_parts}
+                holds together with $\frac{\epsilon'}{k} \geq \epsilon + \zeta$ and,
+                given~\Cref{rmk:excellence_is_not_monotonic}, we are done.
             \end{proof}
         \end{lemma}
 
         \begin{remark}
-            A sufficient condition for $N_{\ref{lem:existance_of_even_excellent_subpartition}}$ to be large enough is
-            to choose $\zeta' = \frac{1}{4k} \epsilon'$ in which case
+            It is sufficient to choose $\zeta' = \frac{1}{4k} \epsilon'$, for $N_{\ref{lem:existance_of_even_excellent_subpartition}}$
+            to be large enough, in which case
             $N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{k, k_*, \epsilon', r} \coloneqq
             N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4k} \epsilon', r}$
         \end{remark}
@@ -553,35 +567,39 @@
                 \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b}
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
                 \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c}
-                    For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent, where
+                    For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent, for some $\epsilon''$
+                    satisfying
                     \[
-                        \epsilon'' \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}.
+                        0 < \epsilon'' \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}.
                     \]
                 \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.d} $A = \bigcup \overline{A}$.
             \end{enumerate}
             \begin{proof}
                 Let $\overline{A}' = \Partriangle{A_i' \mid i \in \parcurly{1, \dots, i(*)}}$ and $B$ from
                 \Cref{lem:existance_of_excellent_partition_with_equal_size}.
-                We can partition $B$ into $\overline{B} = \Partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$ in such a way that
-                for all $i \in \parcurly{1, \dots, i(*)}$,
+                \sloppy We can partition $B$ into \mbox{$\overline{B} = \Partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$}
+                in such a way that for all $i \in \parcurly{1, \dots, i(*)}$,
                 \[
                     |B_i| \in \parcurly{\floor{\frac{\parstraight{B}}{i(*)}}, \ceil{\frac{\parstraight{B}}{i(*)}}}.
                 \]
                 Notice that we are allowing $B_i = \emptyset$.
                 Then, the new partition $\overline{A} = \Partriangle{A_i' \cup B_i \mid i \in \parcurly{1, \dots, i(*)}}$ satisfies
+                the conditions
                 \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a},
                 \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b} and
                 \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.d} by construction.
-                To conclude, notice that for each $\epsilon'$-good set $B$, the number of exceptions is bounded by
-                \begin{align*}
-                    \parstraight{\parcurly{a \in A_i \mid t(a, B) \not\equiv t(A_i, B)}}
-                        & \leq \frac{\epsilon'}{k} \parstraight{A_i'} + \parstraight{B_i} \\
+                To conclude, notice that, since $A'_i$ is $(\epsilon'/k, \epsilon)$-excellent, we have that
+                for each $\epsilon'$-good set $C$, the number of exceptions is bounded by
+                \begin{align}
+                    \parstraight{\parcurly{a \in A_i \mid t(a, C) \not\equiv t(A_i, C)}}
+                        & \leq \frac{\epsilon'}{k} \parstraight{A_i'} + \parstraight{B_i} \nonumber \\
                         & = \frac{\frac{\epsilon'}{k} \parstraight{A_i'} + \parstraight{B_i}}{\parstraight{A_i'} + \parstraight{B_i}}
-                            \parround{\parstraight{A_i'} + \parstraight{B_i}} \\
+                            \parround{\parstraight{A_i'} + \parstraight{B_i}} \label{eq:paso_atras} \\
                         & \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}
-                            \parstraight{A_i},
-                \end{align*}
-                which proves that \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c} can be satisfied.
+                            \parstraight{A_i}, \nonumber
+                \end{align}
+                where first inequality assumes the worse case scenario of all added vertices $B_i$ being exceptional.
+                This proves that \dref{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.c} can be satisfied.
             \end{proof}
         \end{lemma}
 
@@ -592,15 +610,16 @@
         we can upper bound $\epsilon''$ by $\epsilon'$, thus ensuring that the partition is $\epsilon'$-excellent.
 
         \begin{remark}[Remark 5.14 (3) in~\cite{regularity_lemmas_for_stable_graphs}] \label{rmk:epsilons_proportion_can_be_k}
-            In the context of \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
+            Under the hypotheses of \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
             \begin{enumerate}[label=(\alph*), ref=\alph*]
                 \item \label{itm:epsilons_proportion_can_be_k.a} $m_{**} \geq \frac{1}{\frac{\epsilon'}{k}}$ and
                 \item \label{itm:epsilons_proportion_can_be_k.b} $m_* \leq \frac{\frac{\epsilon'}{k} n + 1}{\frac{\epsilon'}{k} + 1}$,
             \end{enumerate}
             then $\epsilon'' \leq \frac{3 \epsilon'}{k}$.
             \begin{proof}
-                Notice that, if $\parstraight{B_i} \leq 2 \frac{\epsilon'}{k} \parstraight{A_i}$ for all $i \in \parcurly{1, \dots, i(*)}$,
-                then $\epsilon''$ can be bounded by:
+                Using the notation of the proof of \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder},
+                we notice that, if $\parstraight{B_i} \leq 2 \frac{\epsilon'}{k} \parstraight{A_i}$ for all $i \in \parcurly{1, \dots, i(*)}$,
+                then $\epsilon''$ can be bounded by (starting at the more precise~\eqref{eq:paso_atras}):
                 \[
                     \epsilon'' \leq \frac{\frac{\epsilon'}{k} \parstraight{A_i} + \parstraight{B_i}}{\parstraight{A_i} + \parstraight{B_i}}
                     \leq \frac{\frac{\epsilon'}{k} \parstraight{A_i} + 2 \frac{\epsilon'}{k} \parstraight{A_i}}{\parstraight{A_i}}
@@ -617,13 +636,12 @@
                     \frac{n}{m_{**}} \geq i(*) \geq \frac{n - \parstraight{B}}{m_{**}} \geq \frac{n - m_* + 1}{m_{**}} >
                     \frac{n - m_*}{m_{**}}.
                 \]
-                \todo{Is the lower bound needed?}
                 Thus, $\parstraight{B_i} - 1 \leq \frac{m_* - 1}{i(*)} \leq \frac{\parround{m_* - 1} m_{**}}{n - m_*}$,
                 then $\frac{\parstraight{B_i} - 1}{m_{**}} \leq \frac{m_* - 1}{n - m_*}$, and since $\parstraight{A_i} = m_{**}$
                 we get:
-                \[
+                \begin{equation} \label{eq:bound_of_Ai_Bi_fraction}
                     \frac{\parstraight{B_i}}{\parstraight{A_i}} \leq \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}}.
-                \]
+                \end{equation}
                 Finally, notice that condition \dref{itm:epsilons_proportion_can_be_k.a} implies:
                 \[
                     \frac{\epsilon'}{k} \geq \frac{1}{m_{**}},
@@ -636,12 +654,12 @@
                 \[
                     \frac{\parstraight{B_i}}{\parstraight{A_i}} \leq \frac{m_* - 1}{n - m_*} + \frac{1}{m_{**}} \leq 2 \frac{\epsilon'}{k},
                 \]
-                completing the proof.
+                where the first inequality follows from~\Cref{eq:bound_of_Ai_Bi_fraction}.
+                This completes the proof.
             \end{proof}
         \end{remark}
 
-        We now resume all the conditions necessaries for the previous result to hold in the context of the values
-        $m_*$ and $m_{**}$ given by the previous remark.
+        We now summarize the conditions and arguments from previous results into the following statement.
 
         \begin{lemma}[Corollary 5.15 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:resume_of_all_conditions_for_excellent_partitions}
             Let $G$ be a graph with the non-$k_{*}$-order property.
@@ -667,14 +685,12 @@
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
                 \item \label{itm:resume_of_all_conditions_for_excellent_partitions.ii}
                     For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
-                \item \label{itm:resume_of_all_conditions_for_excellent_partitions.iii}
-                    For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.
             \end{enumerate}
             \begin{proof}
-                First of all, notice that condition \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
-                is a tighter bound then $m_{**} \geq \frac{3}{\epsilon}$.
-                To prove the statement, we simply apply \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
-                in the context of \Cref{rmk:epsilons_proportion_can_be_k} with $k = 3$,
+                First of all, notice that if condition \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
+                is satisfied, then we also have $m_{**} \geq \frac{3}{\epsilon}$.
+                To prove the statement, we use \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
+                in the context of \Cref{rmk:epsilons_proportion_can_be_k} with the following parameters: $k = 3$,
                 ${\epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} = \epsilon$
                 and ${\epsilon_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq \frac{1}{12} \epsilon$.
                 This results in a partition of $A$ into disjoint pieces that satisfy
@@ -683,20 +699,21 @@
                     \epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}}$-excellent,
                 with ${\epsilon''_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq
                     \frac{3 \epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}}{k}$.
-                But since $k \geq 3$, ${\epsilon''_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq
-                    \epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}$, they are also
+                But since $k \geq 3$, then ${\epsilon''_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}} \leq
+                    \epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}$, and thus
+                by \Cref{rmk:excellence_is_not_monotonic} they are also
                 $\epsilon'_{\ref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}}$-excellent, satisfying
-                \dref{itm:resume_of_all_conditions_for_excellent_partitions.ii} and
-                \dref{itm:resume_of_all_conditions_for_excellent_partitions.iii}.
+                \dref{itm:resume_of_all_conditions_for_excellent_partitions.ii}.
             \end{proof}
         \end{lemma}
 
-        To conclude, we prove that the conditions of the previous lemma can be satisfied, under some minimal conditions
-        of the two parameters $\epsilon$ (the excellence parameter) and $m$ (the minimum number of parts in the resulting
-        partition), and rewrite the statement accordingly.
+        To conclude, we prove how, under some minimal conditions
+        of the excellence parameter $\epsilon$ and the minimum size of a partition $m$,
+        the conditions of the previous lemma can be satisfied.
+        We rewrite the statement accordingly as follows.
 
         \begin{theorem}[Theorem 5.18 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:minimal_conditions_for_excellent_partitions}
-            Let $k_*$ and therefore $k_{**}$ be given.
+            Let $k_*$ be given (which by \Cref{thm:tree_implies_order} gives a bound on $k_{**}$).
             Then, for all $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
             and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
             every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
@@ -704,22 +721,18 @@
             \begin{enumerate}
                 \item \label{itm:minimal_conditions_for_excellent_partitions.0} The number of parts is bounded by
                     $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
-                    \todo{Move the bound on $M$ to another point?}
                 \item \label{itm:minimal_conditions_for_excellent_partitions.1}
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
                 \item \label{itm:minimal_conditions_for_excellent_partitions.2}
                     For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
-                \item \label{itm:minimal_conditions_for_excellent_partitions.3}
-                    For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parround{A_i, A_j}$ is $\epsilon$-uniform.  \todo{Redundant?}
             \end{enumerate}
             \begin{proof}
-                Our goal is to apply \Cref{lem:resume_of_all_conditions_for_excellent_partitions}.
+                We aim at applying \Cref{lem:resume_of_all_conditions_for_excellent_partitions}.
                 Let $q = \ceil{\frac{12}{\epsilon}}$.
                 For $N\parround{\epsilon, m, k_*}$, and thus $n$, large enough, we can then choose the smallest $m_{**}$ satisfying:
                 \begin{enumerate}[label=(\alph*), ref=\alph*]
                     \item \label{itm:minimal_conditions_for_excellent_partitions.a} $m_{**} \in \parsquared{\delta n -1, \delta n}$, where
                         $\delta = \min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$.
-                    \item \label{itm:minimal_conditions_for_excellent_partitions.b} $m_{**} > \frac{3}{\epsilon}$.
                     \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                         \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
                 \end{enumerate}
@@ -739,10 +752,9 @@
                 \end{itemize}
                 We can apply \Cref{lem:resume_of_all_conditions_for_excellent_partitions} to obtain a partition
                 satisfying \dref{itm:minimal_conditions_for_excellent_partitions.1},
-                \dref{itm:minimal_conditions_for_excellent_partitions.2} and
-                \dref{itm:minimal_conditions_for_excellent_partitions.3}.
+                \dref{itm:minimal_conditions_for_excellent_partitions.2}.
 
-                We proceed to bound the number of parst $i(*)$.
+                We proceed to bound the number of parts of the partition $i(*)$.
                 First, the upper bound follows from the fact that
                 $m_{**} \geq \frac{1}{2} \min \parround{\frac{\epsilon} {3 + \epsilon}, \frac{1}{m + q^{k_{**}}}} n$:
                 \[
@@ -751,7 +763,7 @@
                          \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}.
                 \]
                 In the last inequality, we used that if $m < q^{k_{**}}$, then $m + q^{k_{**}} \leq 2q^{k_{**}} < \frac{3 + \epsilon}{\epsilon} q^{k_{**}}$,
-                which is dealt in the first argument of the maximum, so we may assume that $m \geq q^{k_{**}}$.
+                which is dealt in the first argument of the maximum in the previous equation, so we may assume that $m \geq q^{k_{**}}$.
                 We also show that the lower bound is satisfied:
                 \[
                     i(*) \geq \frac{n - m_*}{m_{**}}
@@ -764,7 +776,7 @@
         \end{theorem}
 
         \begin{remark}
-            We now see how large $N$, and thus $n$, actually needs to be.
+            We now see how large $N_{\ref{thm:minimal_conditions_for_excellent_partitions}}\parround{\epsilon, m, k_*}$, and thus $n$, actually needs to be.
             First of all, we see that:
             \begin{align*}
                 \frac{1}{q} N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}
@@ -773,8 +785,8 @@
                         \parround{k_* \log{\parround{\frac{12}{\epsilon}}^2 k_*} - \log{\frac{1}{q^{k_{**}}+1}}} \\
                     & < k_*^2 q^{2 k_{**} + 3}.
             \end{align*}
-            Also, $\frac{3}{\epsilon}$ is clearly smaller than this value.
-            Then, since $m_{**}$ is the smallest integer larger than both values, we conclude:
+            Then, since $m_{**}$ is the smallest integer larger than $\frac{1}{q} N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}$,
+            we conclude:
             \begin{align*}
                 \frac{m_{**}}{\delta}
                     & \leq \frac{k_*^2 q^{2 k_{**} + 3}}
@@ -784,13 +796,10 @@
             \end{align*}
         \end{remark}
 
-        \todo{Define or remove uniformity.}
-
     \subsection{The Stable Regularity Lemma} \label{subsec:subsection_5.3}
-        \todo{Lluis: is it ok to call a subsection as the section?}
 
-        As mentioned in the beginning of the section, it can be proven that excellence is a stronger condition then
-        regularity.
+        As mentioned in the beginning of this section, we prove that excellence is a stronger condition then
+        regularity (see \Cref{def:regularity}).
         In fact, as shown in the following lemma, excellence of a pair not only implies some level of regularity, but
         also it ensures that the pair is mostly full or empty of edges.
 
@@ -805,11 +814,11 @@
             Then, we have:
             \begin{enumerate}
                 \item \label{itm:excellence_implies_regularity.1} $\frac{\parstraight{Z}}{{\parstraight{A} \parstraight{B}}} < \epsilon_1 + \epsilon_2$.
-                \item \label{itm:excellence_implies_regularity.2} $\frac{\parstraight{Z'}}{\parstraight{A} \parstraight{B}} <
+                \item \label{itm:excellence_implies_regularity.2} $\frac{\parstraight{Z'}}{\parstraight{A'} \parstraight{B'}} <
                     \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$.
             \end{enumerate}
-            In particular, if for some $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$, and $A, B$ are $\epsilon_0$-excellent,
-            for $\epsilon_0 \leq \frac{\epsilon^2}{2}$, then:
+            In particular, for any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
+            and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
             \begin{enumerate}[label=\alph*., ref=\alph*]
                 \item \label{itm:excellence_implies_regularity.a} $\parround{A,B}$ is $\epsilon$-regular.
                 \item \label{itm:excellence_implies_regularity.b} If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
@@ -821,14 +830,14 @@
                 of exceptional vertices $a \in A$.
                 Then,
                 \[
-                    Z \subseteq U \times B \cup \bigcup_{a \in A \setminus U} \parcurly{a} \times \overline{B}_{B,a}
+                    Z \subseteq (U \times B) \cup \Parround{\bigcup_{a \in A \setminus U} \parcurly{a} \times \overline{B}_{B,a}}
                 \]
                 and
                 \[
-                    Z' \subseteq U \times B' \cup \bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}.
+                    Z' \subseteq (U \times B') \cup \Parround{\bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}}.
                 \]
-                Notice that, by $\epsilon_1$-excellence of $A$, $|U| < \epsilon_1 |A|$.
-                Furthermore, by $\epsilon_2$-goodness of $B$,
+                Notice that, by the $\epsilon_1$-excellence of $A$, $|U| < \epsilon_1 |A|$.
+                Furthermore, by the $\epsilon_2$-goodness of $B$,
                 if $a \in A \setminus U$, then $\parstraight{\overline{B}_{B,a}} < \epsilon_2 \parstraight{B}$.
                 So,
                 \[
@@ -854,8 +863,9 @@
                 Let's now prove \dref{itm:excellence_implies_regularity.a} and \dref{itm:excellence_implies_regularity.b}.
                 First of all, notice that:
                 \begin{itemize}
-                    \item \underline{if $t\parround{A,B} = 1$}, then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
-                        and $d \parround{A',B'} > 1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$, which follows
+                    \item if $t\parround{A,B} = 1$, then $d\parround{A,B} > 1 - \parround{\epsilon_1 + \epsilon_2}$
+                        and $d \parround{A',B'} > 1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$.
+                        This follows from
                         \dref{itm:excellence_implies_regularity.1} and
                         \dref{itm:excellence_implies_regularity.2} respectively.
                         Thus,
@@ -866,7 +876,7 @@
                                     1 - \parround{1 - \epsilon_1 - \epsilon_2}} \\
                                 & = \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}.
                         \end{align*}
-                    \item \underline{if $t\parround{A,B} = 0$}, similarly $d\parround{A,B} < \parround{\epsilon_1 + \epsilon_2}$
+                    \item if $t\parround{A,B} = 0$, similarly $d\parround{A,B} < \parround{\epsilon_1 + \epsilon_2}$
                         and $d \parround{A',B'} < \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$.
                         Thus,
                         \begin{align*}
@@ -878,26 +888,37 @@
                 \end{itemize}
                 In both cases, we have that $\parstraight{d \parround{A,B} - d \parround{A',B'}}$ is bounded by
                 $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3} < \frac{1}{2}$.
-                Also, $d \parround{A', B'}$ may only differ by $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$ with either
+                Also, $d \parround{A', B'}$ may only differ by $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$ from either
                 $0$ or $1$.
                 In particular, we may choose $\epsilon_3 = \epsilon$ and $\epsilon_1 = \epsilon_2 = \epsilon_0 \leq \frac{\epsilon^2}{2}$.
                 This way, the condition $\frac{\epsilon_1 + \epsilon_2}{\epsilon_3} \leq \epsilon < \frac{1}{2}$ is satisfied.
-                We conclude that $\parround{A,B}$ is $\epsilon$-regular (\dref{itm:excellence_implies_regularity.a}) and that $d \parround{A',B'}$ is either
-                $< \epsilon$ or $\geq 1 - \epsilon$ (\dref{itm:excellence_implies_regularity.b}).
+                Thus, we conclude that $\parround{A,B}$ is $\epsilon$-regular (statement \dref{itm:excellence_implies_regularity.a})
+                and that $d \parround{A',B'}$ is either $< \epsilon$ or $\geq 1 - \epsilon$ (statement \dref{itm:excellence_implies_regularity.b})
+                for each $A' \subseteq A$ and $B' \subseteq B$ such that $|A'| \geq \epsilon |A|$ and $|B'| \geq \epsilon |B|$.
             \end{proof}
         \end{lemma}
+
+        \begin{remark}
+            The fact that the pairs are almost empty or almost full is to be expected.
+            Indeed, in a regular pair of density far away from $0$ and $1$ we can (asymptotically) find any bi-induced
+            bipartite graph, in particular the half-graph.
+            It can be derived from a similar argument to that of \Cref{lem:H_like_partition_implies_H_abundance}.
+        \end{remark}
 
         We finally prove the Stable Regularity Lemma using the previous lemma to reformulate
         \Cref{thm:minimal_conditions_for_excellent_partitions} in the context of regularity.
 
         \begin{theorem}[Theorem 5.19 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:existance_of_regular_partitions}
-            For every $k_* \in \naturals$ and $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
+            For every $k_* \in \naturals$ (which by \Cref{thm:tree_implies_order} gives a bound on $k_{**}$) and
+            $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
             and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
-            and every $A \subseteq G$ with $|A| \geq N$, there is $m < \ell < M$ and a partition
+            and every $A \subseteq G$ with $|A| \geq N$, the following holds.
+            There exists $m < \ell < M$ and a partition
             $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
-            $\frac{\epsilon^2}{2}$-excellent, and for every $i, j \in \parcurly{1, \dots, \ell}$,
+            $\frac{\epsilon^2}{2}$-excellent and, for every (not necessarily distinct) $i, j \in \parcurly{1, \dots, \ell}$,
             \begin{enumerate}
-                \item \label{itm:existance_of_regular_partitions.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+                \item \label{itm:existance_of_regular_partitions.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$,
+                    i.e. the partition is equitable.
                 \item \label{itm:existance_of_regular_partitions.2} $\parround{A_i, A_j}$ is $\epsilon$-regular, and moreover if
                     $B_i \in \parsquared{A_i}^{\geq \epsilon \parstraight{A_i}}$ and $B_j \in \parsquared{A_j}^{\geq \epsilon \parstraight{A_j}}$,
                     then either $d\parround{B_i, B_j} < \epsilon$ or $d\parround{B_i, B_j} \geq 1 - \epsilon$.
@@ -905,11 +926,15 @@
                     $M \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
             \end{enumerate}
             \begin{proof}
-                If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we can apply \Cref{thm:minimal_conditions_for_excellent_partitions}
-                to $A$ with $\frac{\epsilon^2}{2}$, and then use \Cref{lem:excellence_implies_regularity} to replace the
-                $\frac{\epsilon^2}{2}$-uniformity of pairs by $\epsilon$-regularity.
+                If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we obtain \dref{itm:existance_of_regular_partitions.1},
+                \dref{itm:existance_of_regular_partitions.2} and \dref{itm:existance_of_regular_partitions.3} applying
+                \Cref{thm:minimal_conditions_for_excellent_partitions} to $A$ with
+                $\epsilon_{\ref{thm:minimal_conditions_for_excellent_partitions}} = \frac{\epsilon^2}{2}$, and then use
+                \Cref{lem:excellence_implies_regularity} to get the $\epsilon$-regularity of pairs from the $\frac{\epsilon^2}{2}$-excellence
+                of the parts.
+
                 Otherwise, to get \dref{itm:existance_of_regular_partitions.1} and \dref{itm:existance_of_regular_partitions.2},
-                just do the same process for some $\epsilon' = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
+                we use the same argument for $\epsilon' = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
                 Then, since regularity is monotone, we get the wanted $\epsilon$-regularity from the resulting $\epsilon'$-regularity.
                 In this last case, the bound on $M$ is $M \leq \max \parround{\ceil{\frac{12}{\epsilon'}}^{k_{**}+1}, 4m}$.
             \end{proof}

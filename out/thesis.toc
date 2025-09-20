@@ -21,11 +21,11 @@
 \contentsline {section}{\numberline {5}The Stable Regularity Lemma}{35}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Goodness and excellence}{35}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Excellent partitions}{36}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{46}{subsection.5.3}%
-\contentsline {section}{\numberline {6}Property testing}{49}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{49}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}The algorithm}{52}{subsection.6.2}%
-\contentsline {section}{\numberline {7}Conclusion}{55}{section.7}%
-\contentsline {section}{\numberline {A}Other proofs}{60}{appendix.A}%
-\contentsline {section}{\numberline {B}Main changes}{63}{appendix.B}%
-\contentsline {section}{\numberline {C}Excellence is not monotonic.}{64}{appendix.C}%
+\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{47}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Property testing}{50}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{50}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The algorithm}{53}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Conclusion}{56}{section.7}%
+\contentsline {section}{\numberline {A}Other proofs}{61}{appendix.A}%
+\contentsline {section}{\numberline {B}Main changes}{64}{appendix.B}%
+\contentsline {section}{\numberline {C}Excellence is not monotonic.}{65}{appendix.C}%
