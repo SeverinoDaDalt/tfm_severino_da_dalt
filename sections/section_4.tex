@@ -705,12 +705,15 @@
                 \end{itemize}
                 Thus, by $\oplus\parsquared{m_\ell, \epsilon, \zeta, \frac{\xi}{\epsilon^\ell}, c}$ we have that there exists $Z \subseteq A_1$ such that:
                 \begin{itemize}
-                    \item $|Z| = \floor{m_\ell^{\xi\epsilon^{-\ell}}}
-                        = f_{\xi\epsilon^{-\ell}} \circ f_{\epsilon}^{\ell} (n)
-                        \stackrel{\ref{clm:floor_exponential_composition_bound}}{\geq} f_{\xi\epsilon^{-\ell} \epsilon^{\ell}} (n) - \ell
-                        \geq f_\xi (n) - k_{**}
-                        = \lfloor n^\xi \rfloor - k_{**}$, where $f_\epsilon(x)$ is defined in \Cref{clm:floor_exponential_composition_bound}.
-                        This satisfies \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a}.
+                    \item Condition \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.a} is satisfied:
+                        \[
+                            |Z| = \floor{m_\ell^{\xi\epsilon^{-\ell}}}
+                            = f_{\xi\epsilon^{-\ell}} \circ f_{\epsilon}^{\ell} (n)
+                            \stackrel{\ref{clm:floor_exponential_composition_bound}}{\geq} f_{\xi\epsilon^{-\ell} \epsilon^{\ell}} (n) - \ell
+                            \geq f_\xi (n) - k_{**}
+                            = \lfloor n^\xi \rfloor - k_{**},
+                        \]
+                        where $f_\epsilon(x)$ is defined in \Cref{clm:floor_exponential_composition_bound}.
                     \item $Z$ is $f_c$-indivisible since $|B \cap Z| \leq c$ for all $B \in P$,
                         satisfying \dref{itm:many_values_to_equitative_partition_with_bound_exceptional_pairs.b}.
                 \end{itemize}
@@ -740,8 +743,9 @@
                 Let $R_i = A \setminus \bigcup_{j<i} A_j$ (so $R_1 = A$).
                 At each step, if $\parstraight{R_i} > N$, we can apply \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} to $R_i$
                 with the values $f_c$, $\epsilon$ and $\xi$ of the statement of this theorem,
-                to obtain a $f_c$-indivisible subset $A_i$ of $R_i$ of size $\floor{n^\xi}$ which will be disjoint with
-                all $A_j$ with $j < i$.
+                to obtain a $f_c$-indivisible subset $A_i$ of $R_i$ of size (at least\footnote{
+                    Since $f_c$-indivisibility is preserved under taking subsets, we can take $A_i$ to have exactly that size.
+                }) $\floor{n^\xi} - k_{**}$, which will be disjoint with all $A_j$ with $j < i$.
                 Otherwise, we stop and let $\overline{A} = \Partriangle{A_j \mid j < i = i(*)}$ and $B = R_i$.
                 By the case hypothesis, $\parstraight{B} = \parstraight{R_i} \leq N$, and we are done.
             \end{proof}
@@ -756,9 +760,9 @@
                     the remainder as a fraction of the total graph can be made as small as desired (but not completely avoided).
                     If we want the remainder to be at most $\frac{1}{x}$ of the total graph, we can simply impose
                     $n \geq x \cdot N$, and we are done.
-                \item The $- k_{**}$ factor in the size of the parts is not a crucial dependence of the size of the parts
-                    on this parameter, but just a by-product of using \Cref{clm:floor_exponential_composition_bound}
-                    to deal with floor functions.
+                \item The $- k_{**}$ factor in the size of the parts is just a by-product of using \Cref{clm:floor_exponential_composition_bound}
+                    to deal with floor functions, and not a crucial dependence of the size of the parts
+                    on this parameter.
                     Careful computations can probably reduce this factor to a constant independent of any parameter.
                 \item The parts are exponentially smaller than the size of the graph.
                     Hence, the number of parts grows with the size of the graph, which is actually the principal drawback of

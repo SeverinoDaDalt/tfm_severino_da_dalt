@@ -83,14 +83,16 @@
         \[
             f_{\epsilon_1 \epsilon_2} = \floor{x^{\epsilon_1 \epsilon_2}}
                 \leq \floor{\floor{x^{\epsilon_1}+1}^{\epsilon_2}}
-                \stackrel{\eqref{eq:exp_bound}, \eqref{eq:floor_bound}}{\leq} \floor{\floor{x^{\epsilon_1}}^{\epsilon_2}} + 1
+                \leq \floor{\floor{x^{\epsilon_1}}^{\epsilon_2}} + 1,
         \]
+        where the second inequality uses~\eqref{eq:exp_bound} and~\eqref{eq:floor_bound}.
         If $k > 2$,
         \[
             f_{\epsilon_1 \epsilon_2 \dots \epsilon_k} (x)
-                \stackrel{\text{I.H. for }k-1}{\leq} f_{\epsilon_1 \epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 2
-                \stackrel{\text{I.H. for }2}{\leq} f_{\epsilon_1} \circ f_{\epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 1
+                \leq f_{\epsilon_1 \epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 2
+                \leq f_{\epsilon_1} \circ f_{\epsilon_2} \circ f_{\epsilon_3} \circ \dots \circ f_{\epsilon_{k}} + k - 1,
         \]
+        where the first inequality uses I.H. for $k-1$, and the second inequality uses I.H. for $2$.
         This proves the statement.
     \end{proof}
 

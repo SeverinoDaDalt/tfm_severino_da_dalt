@@ -203,8 +203,6 @@
             \end{proof}
         \end{lemma}
 
-        \todo{Say that if $A$ is smaller than $m_0$, then the partition is empty and $B = A$.}
-
         Note that, in \Cref{lem:existance_of_excellent_partition},
         if $n < m_0$ then the statement holds for an empty partition where the reminder is the whole set $A$.
 
@@ -288,17 +286,17 @@
                     for $b\in G$, such that $\parstraight{\overline{B}_{A,b}} \geq \epsilon m$, and how they intersect with the
                     randomly sampled $A'$.
                     We call such sets \emph{bad} sets.
-                    Fix a $b\in G$ such that $\overline{B}_{A,b}$ is bad.
+                    Let $b\in G$ such that $\overline{B}_{A,b}$ is bad.
                     The elements of $\overline{B}_{A,b}$ are our fail elements when drawing from $A$, and
-                    $A'$ is our sample, uniformly draw at random.
+                    $A'$ is our sample (where elements are uniformly draw at random without replacement).
                     This clearly describes a hypergeometric distribution.
                     We define $X_{A,b,A'}$ to be the event of $\parstraight{\overline{B}_{A,b} \cap A'}$ upperly
                     deviating from $\epsilon$ by $\zeta$.
-                    Notice that $\epsilon$ is not precisely the mean $\frac{|\overline{B}_{A,b}|}{|A|}$, but it is strictly
-                    smaller than it.
+                    Then, since $\epsilon \geq |\overline{B}_{A,b}|/|A|$ by $A$ goodness, the probability of upperly
+                    deviating from $\epsilon$ is at most the probability of deviating from the real mean.
                     Thus,
                     \[
-                        P\parround{X_{A,b,A'}} \leq P\parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
+                        P\parround{X_{A,b,A'}} \leq P\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
                             \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \varphi} n} \leq e^{-2\zeta^2 m},
                     \]
                     where the second inequality follows~\eqref{eq:hypergeometric_bound}.
@@ -340,13 +338,9 @@
                 We conclude that $t(b,A) = t(b,A')$ for all $b \in G$.
                 \item
                     Let $B \subseteq G$ be an $\epsilon'$-good set.
-                    Notice that:
-                    \begin{itemize}
-                        \item \sloppy It follows \Cref{rmk:excellence_imply_little_exceptions} that number of exceptional edges
-                            in the pair $(A,B)$ is at most \mbox{$\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}$}.
-                        \item Each exceptional vertex of $B$ has at least $(1-\epsilon)|A|$ exceptional edges, since
-                            $A$ is $\epsilon$-good.
-                    \end{itemize}
+                    It follows \Cref{rmk:excellence_imply_little_exceptions} that number of exceptional edges
+                    in the pair $(A,B)$ is at most \mbox{$\parround{\epsilon + \parround{1 - \epsilon} \epsilon'}\parstraight{A}\parstraight{B}$}
+                    and, since  $A$ is $\epsilon$-good, each exceptional vertex of $B$ has at least $(1-\epsilon)|A|$ exceptional edges.
                     Thus,
                     \begin{align} \nonumber
                         \parstraight{\parcurly{b \in B \mid t(b, A) \not\equiv t(B,A)}} \cdot \parround{1 - \epsilon}\parstraight{A}
@@ -363,7 +357,7 @@
                             & = \parround{\epsilon' + \frac{\epsilon}{1 - \epsilon}}\parstraight{B}.
                     \end{align*}
                     The first equality follows \dref{itm:even_partition_of_excellent_parts.1*}.
-                    and first inequality uses \Cref{eq:exceptions}.
+                    and the first inequality uses \Cref{eq:exceptions}.
 
                     Now, let $Q$ be the set of exceptional vertices of $A'$ with respect to $B$, i.e.:
                     \[

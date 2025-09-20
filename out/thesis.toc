@@ -1,3 +1,4 @@
+\enlargethispage {2\baselineskip }
 \contentsline {section}{Contents}{2}{Doc-Start}%
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Szemerédi's Regularity Lemma}{3}{subsection.1.1}%
@@ -20,7 +21,7 @@
 \contentsline {section}{\numberline {5}The Stable Regularity Lemma}{35}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Goodness and excellence}{35}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Excellent partitions}{36}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{47}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}The Stable Regularity Lemma}{46}{subsection.5.3}%
 \contentsline {section}{\numberline {6}Property testing}{49}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Unavoidable is abundant}{49}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}The algorithm}{52}{subsection.6.2}%
