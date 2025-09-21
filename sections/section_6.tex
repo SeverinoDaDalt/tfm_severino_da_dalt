@@ -95,15 +95,16 @@
         In the context of the regularity method, the \emph{reduced graph} $H$ associated to a partition
         $\parcurly{A_1, \dots, A_m}$ of a graph $A$, is a graph (possibly with loops) with $m$ vertices $v_1, \dots, v_m$
         such that for all (not necessarily distinct) $i,j \in \parcurly{1, \dots, m}$, it satisfies that $v_i R v_j$
-        if and only if $d(A_i, A_j) > T$, for some threshold value $T \in \parround{0,1}$.
+        if and only if $d(A_i, A_j) > T$, for some threshold value $T \in [0,1)$.
         Since pairs of parts in a stable regular partition are almost empty or almost full, any threshold value
         in $\parround{\epsilon, 1 - \epsilon}$ associates \emph{almost full} pairs with edges, and \emph{almost empty}
         pairs with non-edges.
         In particular, one may consider $T = 1/2$.
 
         The pivotal point in the proof of \Cref{thm:property_testing_with_stable_partitions} is the fact that, if the
-        reduced graph from a regular partition contains a copy of $H$ as an induced subgraph,
-        then the original graph contains many induced copies of $H$ (this is a version of the so called \emph{Counting Lemma}
+        reduced graph from a regular partition contains a copy of $H$ as an induced subgraph, and all edges
+        lie in regular pairs, then the original graph contains many induced copies of $H$
+        (this is a version of the so called \emph{Counting Lemma}
         from~\cite{the_regulariy_lemma_and_its_applications_in_graph_theory}).
         The following lemma formalizes this idea.
 

@@ -60,7 +60,6 @@
 
         An important concept used all over the thesis is that of \emph{exceptional edges} and \emph{exceptional vertices}.
         That is, edges and vertices that, in the context of a pair of sets of vertices, do not \say{behave} as the rest.
-        \todo{Echarle un ojo.}
         In order to classify what is the expected behaviour in a graph, or more specifically, in a pair of sets of vertices,
         we define the \emph{truth value}.
 
@@ -181,7 +180,6 @@
             \Cref{sec:section_4} and in \Cref{lem:existance_of_excellent_subsets} of \Cref{sec:section_5}, as it allows
             to prove the existence of \regular pairs.
         }.
-        \todo{HERE!}
 
         \begin{lemma} \label{lem:vc_dimension_implies_k_order_property}
             Let $G$ be a graph and $A \subseteq G$.
@@ -218,7 +216,7 @@
                 \[
                     \parstraight{S} = \parstraight{\parcurly{B^+_{A,b} \mid b \in G}} \leq \sum_{i=0}^{k-1} \binom{|A|}{i} + |A|.
                 \]
-                Finally, when $\parstraight{A} = n,k > 1$: \todo{This conditions should be set at some point of the tfm. Specify that if they are not met, the problem becomes trivial.}
+                Finally, when $\parstraight{A} = n,k > 1$:
                 \begin{itemize}
                     \item if $n \leq k$, then $\parstraight{S} \leq 2^n \leq 2^k \leq n^k$.
                     \item if $n > k$, then $\parstraight{S} \leq \sum_{i=0}^{k-1} {n \choose i} + n \leq n^{k-1} + n \leq 2n^{k-1} \leq n^k$.
@@ -385,8 +383,11 @@
                 If the final case $S_1$ is true, then we are done:
                 this case assumes that $H$ is a $2$-tree, hence there is a node $c_*$ and branch $b_*$ in $H$ that are adjacent.
                 These vertices satisfy conditions \dref{itm:tree_implies_order.3} and \dref{itm:tree_implies_order.4}, so
-                the sequence resulting from replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$, $c_*$ implies that $G$
-                has the $k_*$-order property. \todo{specify k-order}
+                the sequence resulting from replacing $H$ in~\eqref{eq:tree_implies_order.1} by $b_*$ and $c_*$,
+                \[
+                    b_0, c_0, \dots, b_{q-1}, c_{q-1}, b_*, c_*, b_q, c_q, \dots, b_{k_*-2}, c_{k_*-2},
+                \]
+                implies that $G$ has the $k_*$-order property.
 
                 To conclude the proof it remains to show that if $S_r$ holds, then so does $S_{r-1}$ for $r>1$.
                 Assume $S_r$.
