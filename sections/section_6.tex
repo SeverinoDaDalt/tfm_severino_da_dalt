@@ -20,7 +20,7 @@
                 then $\mathbb{P}\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
         \end{enumerate}
         The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
-        a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.
+        a query discerns whether a desired pair of vertices in the input graph $G$ is adjacent or not.
     \end{definition}
 
     \begin{definition}
@@ -36,9 +36,8 @@
     with probability $1$.
 
     The first step towards constructing such tester is proving \Cref{thm:property_testing_with_stable_partitions}.
-    This theorem uses the Stable Regularity Lemma to prove that a graph being $\epsilon$-far
-    from being $H$-free implies it containing many (as a fixed fraction of all induced subgraphs of size $|H|$)
-    induced copies of $H$.
+    This theorem uses the Stable Regularity Lemma to prove that if a graph is $\epsilon$-far
+    from being $H$-free then it contains many induced copies of $H$ (at least a fraction of all induced subgraphs of size $|H|$).
     This point is central for the construction, and once proved we can simply let the tester ask for all the edges
     in a sample of vertices of fixed size.
     The algorithm then simply checks whether a copy of $H$ can be found in the subgraph induced by the sample, and report
@@ -62,7 +61,6 @@
         An important property of regularity, which is needed for the proof of the theorem, is that the regularity is
         partially maintained when moving to subsets.
         Not only that, but it also ensures that the density of the pair does not change too much.
-        \todo{Possibly move this to section 2.}
 
         \begin{lemma}[Lemma 3.1 in~\cite{efficient_testing_of_large_graphs}] \label{lem:regularity_is_transitive}
             Let $\epsilon \leq \epsilon' < \frac{1}{2}$ and $\delta \in \parround{0, 1}$.
@@ -102,7 +100,7 @@
         The following lemma formalizes this idea.
 
         \begin{lemma}[Lemma 3.2 in~\cite{efficient_testing_of_large_graphs}] \label{lem:H_like_partition_implies_H_abundance}
-            For every $\delta \in \parround{0, 1}$ and $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
+            For every real number $\delta \in \parround{0, 1}$ and integer $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
             $\eta = \eta \parround{\delta, \ell}$ satisfying the following property:
 
             Let $H$ be a graph with vertices $v_1, \dots,v_\ell$ and let $V_1, \dots, V_\ell$ be an $\ell$-tuple of (not necessarily disjoint)
@@ -184,17 +182,17 @@
             $\eta$-abundant in $G$.
             \begin{proof}
                 Apply \Cref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \bparround{\sqrt{\gamma},
-                    \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}}$,
+                    \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}}$,
                 $k_*$ and $m=0$.
                 We have a partition $\overline{A} = \bparcurly{A_i \mid i \in \parcurly{1, \dots, m_*}}$ into $m_* \leq M$
                 disjoint parts, with
                 \[
                     M \leq \ceil{12 \max\Parround{\frac{1}{\sqrt{\gamma}}, \frac{1}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
-                        \parround{1 - \sqrt{\gamma}, \ell}}}}^{2^{k_*+1}-1}
+                        \parround{1 - \gamma, \ell}}}}^{2^{k_*+1}-1}
                 \]
                 such that all pairs of parts are $\epsilon$-regular.
-                Also, by \Cref{rmk:excellence_imply_little_exceptions} and $\frac{\epsilon^2}{2}$-excellence of the parts,
-                pairs have density at most $\epsilon^2$ or at least $1 - \epsilon^2$.
+                Also, by \Cref{rmk:excellence_imply_little_exceptions} and the $\frac{\epsilon^2}{2}$-excellence of the parts,
+                the pairs have density at most $\epsilon^2$ or at least $1 - \epsilon^2$.
 
                 Next, we modify the graph $G$ into $G'$ by only adding and removing no more than $\gamma {|G| \choose 2}$
                 edges:
@@ -218,21 +216,21 @@
                 $v_{i_1} \in A_{i_1}, \dots, v_{i_\ell} \in A_{i_\ell}$.
 
                 Notice that $A_{i_1}, \dots, A_{i_\ell}$ satisfy the conditions of \Cref{lem:H_like_partition_implies_H_abundance}
-                with $\delta_{\ref{lem:H_like_partition_implies_H_abundance}} = 1 - \sqrt{\gamma}$:
+                with $\delta_{\ref{lem:H_like_partition_implies_H_abundance}} = 1 - \gamma$:
                 each pair $\parround{A_{i_j}, A_{i_{j'}}}$ with $j \neq j'$ is $\epsilon$-regular,
-                and since $\epsilon \leq \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}$,
-                in particular is $\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}$-regular.
+                and since $\epsilon \leq \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}$,
+                in particular is $\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}$-regular.
                 Hence, the lemma guarantees that there are at least $\eta_{\ref{lem:H_like_partition_implies_H_abundance}}
-                    \parround{1 - \sqrt{\gamma}, \ell} \prod_{j=1}^\ell \parcurly{A_{i_j},j}$
+                    \parround{1 - \gamma, \ell} \prod_{j=1}^\ell \parcurly{A_{i_j},j}$
                 copies of $H$ in $G$.
 
                 The fraction of induced copies of $H$ in $G$ is at least
                 \[
-                    \frac{\eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}
+                    \frac{\eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}
                         \prod_{j=1}^\ell \parcurly{A_{i_j}}}{n^\ell}
-                        \geq \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}
-                            \bbparround{\frac{\frac{n}{M}}{n}}^{\ell}
-                        = \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \sqrt{\gamma}, \ell}
+                        \geq \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}
+                            \bbparround{\frac{n/M}{n}}^{\ell}
+                        = \eta_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}
                             \parround{M}^{-\ell}
                         \eqqcolon \eta,
                 \]
@@ -252,9 +250,9 @@
             We now provide a more explicit lower bound for $\eta$ only depending on $\gamma$, $k_*$ and $\ell$ is:
             \[
                 \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
-                    \cdot \delta^{\frac{\ell(\ell-1)}{2}}
+                    \cdot (1 - \gamma)^{\frac{\ell(\ell-1)}{2}}
                     \cdot \Parround{\frac{1}{24} \min\Parcurly{\sqrt{\gamma},
-                        \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} \delta^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
+                        \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} (1 - \gamma)^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
             \]
         \end{remark}
 
@@ -340,8 +338,5 @@
               \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
                    {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2.
         \]
-
-        \todo{Comment on optimization such as checking if copies of $H$ are found as soon as the sample is large enough and
-            stopping early if so.}
 
         % up to here it was compiling with no problem.

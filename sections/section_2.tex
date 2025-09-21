@@ -244,15 +244,16 @@
         \begin{lemma} \label{lem:energy_does_not_decrease_when_refining}
             Let $G$ be a graph.
             \begin{enumerate}
-                \item Let $A_1, A_2 \subseteq G$ be disjoint.
+                \item \label{lem:energy_does_not_decrease_when_refining.1} Let $A_1, A_2 \subseteq G$ be disjoint.
                     If $\overline{A}_1$ is a partition of $A_1$ and $\overline{A}_2$ is a partition of $A_2$, then
                     $q(\overline{A}_1, \overline{A}_2) \geq q(A_1, A_2)$.
-                \item If $\overline{A}, \overline{A}'$ are partitions of $G$ and $\overline{A}'$ is a refinement of
-                    $\overline{A}$, then $q(\overline{A}') \geq q(\overline{A})$.
+                \item \label{lem:energy_does_not_decrease_when_refining.2} If $\overline{A}, \overline{A}'$ are
+                    partitions of $G$ and $\overline{A}'$ is a refinement of $\overline{A}$, then
+                    $q(\overline{A}') \geq q(\overline{A})$.
             \end{enumerate}
             \begin{proof}
                 \begin{enumerate}
-                    \item \label{lem:energy_does_not_decrease_when_refining.1}
+                    \item
                         Let $\overline{A}_1 = \parcurly{A_{1,1}, \dots, A_{1,k}}$ and
                         $\overline{A}_2 = \parcurly{A_{2,1}, \dots, A_{2,\ell}}$.
                         Then
@@ -267,7 +268,7 @@
                                     {(\sum_{i=1}^k |A_{1,i}|)(\sum_{j=1}^\ell |A_{2,j}|)} \\
                                 & = q(A_1, A_2).
                         \end{align*}
-                    \item \label{lem:energy_does_not_decrease_when_refining.2}
+                    \item
                         Let $\overline{A} = \parcurly{A_1, \dots, A_k}$, and for all $i \in \parcurly{1, \dots, k}$ let
                         $\overline{A}_i$ be the partition of $A_i$ induced by $\overline{A}'$.
                         Then,
