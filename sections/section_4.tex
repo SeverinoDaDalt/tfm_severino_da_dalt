@@ -325,7 +325,7 @@
             respectively, with pieces of size $m$.
             We have that
             \[
-                P(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}.
+                \mathbb{P}(\varepsilon^+_{A_{1,s},A_{2,t},m}) \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}.
             \]
             \begin{proof}
                 Fix $s \in \frac{|A_1|}{m}$, $t \in \frac{|A_2|}{m}$.
@@ -371,7 +371,7 @@
                 \]
                 Putting it all together:
                 \[
-                    P(\varepsilon^+_{A_{1,s},A_{2,t},m})
+                    \mathbb{P}(\varepsilon^+_{A_{1,s},A_{2,t},m})
                         \geq (1 - P_1) (1 - P_2)
                         \geq \parround{1 - \frac{1}{n^{c \epsilon^{k_{**}}}}}^2
                         \geq 1 - \frac{2}{n^{c\epsilon^{k_{**}}}}.
@@ -422,8 +422,8 @@
                 This follows \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}.
                 Thus, given $X$ the random variable counting the number of exceptional pairs of this kind, we have
                 \[
-                    \mathbb{E}(X) = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \mathbb{E}(X_{A_i, A_j})
-                         = \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} 1 - P(\varepsilon^+_{A_i, A_j,m_{**}})
+                    \mathbb{E}(X) = \hspace{-1.6em} \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \hspace{-1.6em} \mathbb{E}(X_{A_i, A_j})
+                         = \hspace{-1.6em} \sum_{\substack{A_i,A_j \text{ s.t.}\\A_i\subseteq A'_{i_1},A_j\subseteq A'_{j_1}\\i_1\neq j_1}} \hspace{-1.6em} 1 - \mathbb{P}(\varepsilon^+_{A_i, A_j,m_{**}})
                          \leq \frac{r^2}{2} \frac{2}{n^{c\epsilon^{k_{**}}}},
                 \]
                 where $X_{A_i,A_j}$ is the random variable giving $1$ if $(A_i, A_j)$ is exceptional, and $0$ otherwise.
@@ -582,7 +582,7 @@
                 First of all let's bound the converse of \dref{itm:n_large_enough_valid_values.1}, i.e. the probability that there are two equal elements
                 in $U$: \todo{Change $P$ to $\mathbb{P}$}
                 \[
-                    P_1 = P(\exists s < t \in [m] \mid U_s = U_t)
+                    P_1 = \mathbb{P}(\exists s < t \in [m] \mid U_s = U_t)
                         \leq {m \choose 2} \frac{n}{n^2}
                         \leq \frac{m^2}{2n}
                         \leq \frac{n^{2\xi}}{2n}
@@ -591,7 +591,7 @@
                 Now, in order to bound \dref{itm:n_large_enough_valid_values.2}, let's first bound $P_B$: the probability that at least $c$ elements of
                 $U$ are in a given $B \in P$.
                 \[
-                    P_B = P(\exists^{\geq c}\; t\in [m] \mid U_t \in B)
+                    P_B = \mathbb{P}(\exists^{\geq c}\; t\in [m] \mid U_t \in B)
                         \leq {m \choose c} \bbparround{\frac{|B|}{n}}^c
                         \leq \frac{m^c |B|^c}{n^c}
                         \leq \frac{n^{\xi c} n^{\epsilon c}}{n^c}
@@ -600,14 +600,14 @@
                 Then, we can bound the converse of \dref{itm:n_large_enough_valid_values.2}, i.e. the probability that this happens for some $B \in P$,
                 by:
                 \[
-                    P_2 = P(\exists B \in P \mid \exists^{\geq c}\; t\in [m], U_t \in B)
+                    P_2 = \mathbb{P}(\exists B \in P \mid \exists^{\geq c}\; t\in [m], U_t \in B)
                         \leq \sum_{B \in P} P_B
                         = \frac{|P|}{n^{c (1 - \xi - \epsilon)}}
                         \leq \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
                 Putting it all together, we have that
                 \[
-                    P(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
+                    \mathbb{P}(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
                         \leq P_1 + P_2
                         < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}.
                 \]
@@ -618,7 +618,7 @@
                 \end{itemize}
                 so, the $n$-large enough condition \eqref{eq:n_large_enough_valid_values.1} is well defined and
                 \[
-                    P(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
+                    \mathbb{P}(\text{U does not satisfy } \dref{itm:n_large_enough_valid_values.1} \text{ or does not satisfy } \dref{itm:n_large_enough_valid_values.2})
                         < \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{c (1 - \xi - \epsilon) - \frac{1}{\zeta}}}
                         < 1
                 \]
@@ -632,7 +632,7 @@
             In the context of the condition $c > \frac{1}{\zeta (1 - \xi - \epsilon)}$ from the previous lemma, we note that
             the lower bound on $c$ increases as $\xi$ and $\epsilon$ grow, and as $\zeta$ decreases.
             A similar pattern is also followed by the large enough condition of $n$ given
-            by~\eqref{eq:n_large_enough_valid_values.1}. \todo{Change all reference to equations to eqref.}
+            by~\eqref{eq:n_large_enough_valid_values.1}.
             For the condition to be met, $n$ needs to grow as the exponents $1-2\xi$ and
             $(1 - \xi - \epsilon)c - \frac{1}{\zeta}$ becomes smaller.
             That is, the lower bound $N_{\ref{lem:n_large_enough_valid_values}}(\epsilon, \zeta, \xi, c)$ on $n$ becomes larger as $\xi$ and $\epsilon$ grow, and as $\zeta$ and $c$ decrease.

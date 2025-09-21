@@ -15,9 +15,9 @@
         $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
         satisfies the following.
         \begin{enumerate}
-            \item If $G \in \mathcal{P}$, then $P\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
+            \item If $G \in \mathcal{P}$, then $\mathbb{P}\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
             \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
-                then $P\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
+                then $\mathbb{P}\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
         \end{enumerate}
         The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
         a query discerns whether a desired pair of vertices in the input graph $G$ are adjacent or not.

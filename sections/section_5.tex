@@ -279,7 +279,7 @@
                     (see~\cite{hypergeometric_tail_inequalities_ending_the_insanity, the_tail_od_the_hypergeometric_distribution})
                     by
                     \begin{equation} \label{eq:hypergeometric_bound}
-                        P\Parround{k \geq \bbparround{\frac{M}{N} + \varphi} n} \leq e^{-2 \varphi^2 n}.
+                        \mathbb{P}\Parround{k \geq \bbparround{\frac{M}{N} + \varphi} n} \leq e^{-2 \varphi^2 n}.
                     \end{equation}
 
                     Now, moving to the context of the statement, we are interested in studying $\overline{B}_{A,b}$ sets,
@@ -301,7 +301,7 @@
                     the real mean.
                     Thus,
                     \[
-                        P\parround{X_{A,b,A'}} \leq P\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
+                        \mathbb{P}\parround{X_{A,b,A'}} \leq \mathbb{P}\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
                             \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \zeta} m} \leq e^{-2\zeta^2 m},
                     \]
                     where the second inequality follows~\eqref{eq:hypergeometric_bound}.
@@ -313,14 +313,14 @@
                     We compute the expectation
                     \[
                         \mathbb{E}[X] = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
-                            = \sum_{\text{bad } \overline{B}_{A,b}} P\parround{X_{A,b,A'}}
+                            = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{P}\parround{X_{A,b,A'}}
                             \leq \sum_{\text{bad } \overline{B}_{A,b}} e^{-2\zeta^2 m}.
                     \]
                     Following \dref{itm:k_order_propery_bounds_BAbs.2} in \Cref{cor:k_order_propery_bounds_BAbs}, the number of intersections of bad $\overline{B}_{A,b}$'s with $A'$, can be bounded
                     by $m^{k_*}$.
                     Thus, using the First Moment Method, we have that:
                     \[
-                        P\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
+                        \mathbb{P}\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
                     \]
                     Last inequality follows \Cref{clm:ineq_5.13} using the lower bound
                     $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$.
@@ -432,19 +432,19 @@
                     $\frac{n}{r} > \frac{N}{r} = \frac{1}{\zeta'^2}\parround{k_* \log{\frac{1}{\zeta'^2}k_*} - \log{\xi}}$,
                     we can apply statement \dref{itm:even_partition_of_excellent_parts.1}~to get that
                     \[
-                        P\parround{A' \text{ is not } \parround{\epsilon + \zeta'}\text{-good}} < \xi.
+                        \mathbb{P}\parround{A' \text{ is not } \parround{\epsilon + \zeta'}\text{-good}} < \xi.
                     \]
                     Observe that the hypotheses of statement \dref{itm:even_partition_of_excellent_parts.2}~are satisfied,
                     crucially $A$ is $(\epsilon, \epsilon')$-excellent.
                     It follows that if $A'$ is $\parround{\epsilon + \zeta'}$-good, then it is also $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
                     Therefore:
                     \[
-                        P\parround{A' \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} < \xi.
+                        \mathbb{P}\parround{A' \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} < \xi.
                     \]
                     To conclude, by the union bound, we have that:
                     \begin{align*}
-                        P\parround{\bigcup_{s < r} h^{-1}(s) \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}}
-                            & \leq \sum_{s < r} P\parround{h^{-1}(s) \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} \\
+                        \mathbb{P}\parround{\bigcup_{s < r} h^{-1}(s) \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}}
+                            & \leq \sum_{s < r} \mathbb{P}\parround{h^{-1}(s) \text{ is not } \parround{\epsilon + \zeta, \epsilon'}\text{-excellent}} \\
                             & < r \xi = \frac{r}{r+1} < 1.
                     \end{align*}
                     All in all, there is a non-zero probability that the partition satisfies the statement,
