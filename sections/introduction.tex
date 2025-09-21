@@ -10,7 +10,7 @@
         The strength of the quasi-random properties is measured with the regularity parameter $\epsilon$.
 
         % \subsection{Applications}
-        This theorem has seen many applications in wide variety areas of mathematics
+        This theorem has seen many applications in a wide variety of areas of mathematics
         (see an early survey from the mid 1990's~\cite{the_regulariy_lemma_and_its_applications_in_graph_theory}),
         such as graph
         theory~\cite{proof_of_the_alon–yuster_conjecture,
@@ -130,12 +130,12 @@
         Indeed, if a graph does not contain a bi-induced copy of a bipartite graph with stable sets of size $\geq k$,
         then it has VC-dimension strictly bounded by $k$~\cite{regularity_partitions_and_the_topology_of_graphons}.
         Hence, $k$-stable graphs have VC-dimension strictly bounded by $k$.
-        Additionally, any half-graph has VC-dimension $1$\footnote{
+        Additionally, any half-graph has VC-dimension $1$,\footnote{
             Indeed, the fact that the neighbourhoods of the vertices on the same stable set of a half-graph can be
             ordered by inclusion, and it is a bipartite graph, results in a VC-dimension of $1$.
             Alternatively, in \cite{regularity_partitions_and_the_topology_of_graphons} it is shown that if a graph does not
             contain a bi-induced copy of a bipartite graph where the smaller size is k, then it has VC-dimension (strictly)
-            bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.},
+            bounded by k; in our case the half-graph has no bi-induced copy of $K_{3,3}$ minus a perfect matching.}
         so the $k$-stable graphs is a proper subclass of the graphs with VC-dimension strictly bounded by $k$.
 
         Notice that, in \Cref{thm:B} there are no irregular pairs.
@@ -151,8 +151,8 @@
         for testing (approximate) properties in large objects, such as graphs.
         These algorithms, called \emph{tests}, need to be successful with high probability, and are only required to distinguish between objects
         that do not satisfy the property, and those which are \say{far} from satisfying it.
-        The \emph{complexity} of a test is measured by the number of queries it needs to perform in order to decide
-        whether a given input, each query returning whether two given vertices of the input graph are adjacent or not.
+        The \emph{complexity} of a test is measured by the number of queries it needs to perform in order to give a response
+        for a given input, each query returning whether two given vertices of the input graph are adjacent or not.
 
         Of course, the most desirable testers are those with lower query complexity.
         A class of particular interest is that of testers whose complexity does not grow with the size of the input
@@ -168,8 +168,7 @@
         \end{thm*}
 
         A property is said to be \emph{hereditary} if it is preserved under taking induced subgraphs.
-        A property is testable \emph{with one-sided error} if the first condition in \Cref{def:epsilon_test}
-        is strengthened to $P\parround{\mathcal{A} \text{ accepts } G} = 1$, and thus the associated algorithm does
+        A property is testable \emph{with one-sided error} if the associated algorithm does
         not give false negatives.
 
         A stepping stone towards Alon \& Shapira Theorem was the work of
@@ -190,7 +189,7 @@
 
         This raises a natural question on whether the superior bounds and the lack of irregular pairs of the stable regularity
         lemma can be exploited to create more efficient property testers for graphs in a half-graph-restricted setting.
-        The final of this work is dedicated to this question.
+        The last section of this work is dedicated to this question.
 
     \subsection{Main contributions} \label{subsec:main_contributions}
 
@@ -203,7 +202,7 @@
                 In addition, we simplify some of the arguments, while making others more explicit and detailed.
                 For example, we make explicit that the excellence (see \Cref{sec:section_5}) depends on two parameters
                 with opposite monotonic properties (see \Cref{def:epsilon_excellent} and \Cref{rmk:excellence_is_not_monotonic}).
-                A more details list of changes is provided in \Cref{sec:main_changes}.
+                A more detailed list of changes is provided in \Cref{sec:main_changes}.
             \item The construction of an efficient property testing algorithm for $H$-freeness tailored to stable graphs.
                 The algorithm's analysis leverages the stable regularity lemma to achieve a query complexity with significantly
                 improved bounds compared to the general case.

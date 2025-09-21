@@ -5,11 +5,11 @@ Y_MATRIX_ADJ = -0.7
 K=3
 CELL_SIZE=0.5
 NODE_SIZE=0.3
-CAPTION=(f"\\emph{{On the left}}, an example of a graph smaller than a $3\\times3$ half-graph that"
+CAPTION=(f"\\emph{{On the left}}, an example of a graph, smaller than a $3\\times3$ half-graph, "
          f"for which no induced copies can be found in a $3$-stable graph. "
-         f"It is basically a $3\\times3$ half-graph in which $a_1$ and $b_2$ are the same vertex, and an edge is"
+         f"It is basically a $3\\times3$ half-graph in which $a_1$ and $b_2$ are the same vertex, and an edge is "
          f"added between $a_2$ and $a_3$.\n"
-         f"\\emph{{On the right}}, the corresponding adjacency matrix."
+         f"\\emph{{On the right}}, the corresponding adjacency matrix. "
          f"Orange cells highlight edges relative to the $3$-order structure")
 FIG_NAME="other_k-order"
 OUTPUT_FILE="pictures/other_k-order.tex"
