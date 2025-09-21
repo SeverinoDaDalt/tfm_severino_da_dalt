@@ -1,3 +1,3 @@
-pdflatex -output-directory out authorfile
-biber -output-directory out authorfile
-pdflatex -output-directory out authorfile  # Yep, run it twice
+pdflatex -output-directory out thesis
+biber -output-directory out thesis
+pdflatex -output-directory out thesis  # Yep, run it twice
