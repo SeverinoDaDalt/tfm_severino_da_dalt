@@ -93,7 +93,7 @@
                 We use this fact to build two family of sets $\parcurly{B_\eta \mid \eta \in \parcurly{0,1}^{<k_{**}}}$ and
                 $\parcurly{A_\eta \mid \eta \in \parcurly{0,1}^{\leq k_{**}}}$ inductively over $k\leq k_{**}$, where $k = |\eta|$,
                 satisfying:
-                \begin{enumerate}
+                \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                     \item\label{itm:existance_of_excellent_subsets.1} $A_{\Partriangle{\cdot}} = A$.
                     \item\label{itm:existance_of_excellent_subsets.2} $B_\eta$ is a $\zeta$-good set witnessing that $A_\eta$ is not
                         $(\epsilon, \zeta)$-excellent, for $k < k_{**}$.
@@ -186,7 +186,7 @@
             Denote $m_* \coloneqq m_0$ and $m_{**} \coloneqq m_{k_{**}}$.
             Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
             $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_excellent_partition.a} For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
                 \item \label{itm:existance_of_excellent_partition.b} For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
                 \item \label{itm:existance_of_excellent_partition.c} For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
@@ -248,7 +248,7 @@
         \begin{lemma}[Claim 5.13 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:even_partition_of_excellent_parts}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Then:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:even_partition_of_excellent_parts.1} For every $\epsilon \in \parround{0, \frac{1}{2}}$,
                     $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
                     $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
@@ -269,7 +269,7 @@
                     size, each of which is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
             \end{enumerate}
             \begin{proof}
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item The proof of this point uses the hypergeometric distribution.
                     This distribution works on a set of size $N$ in which $M \leq N$ elements are \emph{fail} elements
                     and the rest are \emph{pass} elements.
@@ -457,7 +457,7 @@
             In some of the following arguments, we would like to use statement \dref{itm:even_partition_of_excellent_parts.3}~from
             \Cref{lem:even_partition_of_excellent_parts} with $\epsilon' > k \cdot \parround{\epsilon + \zeta}$, for an arbitrarily large $k \in \naturals$.
             Notice that if $\epsilon, \zeta' \leq \frac{1}{t}, \epsilon' \leq \frac{1}{t'}$ and $t > t' \geq 5$, then:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item $\frac{\epsilon}{1-\epsilon} \leq \frac{\frac{1}{t}}{1-\frac{1}{t}} = \frac{\frac{1}{t}}{\frac{t-1}{t}}
                     = \frac{1}{t-1}$.
                 \item $1 - 2 \epsilon' - \frac{\epsilon}{1-\epsilon} \geq 1 - \frac{2}{t'} - \frac{1}{t-1} > 1 - \frac{3}{t'-1}
@@ -527,7 +527,7 @@
                 \parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}}{q}$ and $m_* \coloneqq q^{k_{**}} m_{**}$.
             Then, for any $A \subseteq G$ with $|A| = n \geq m_*$ there exists a partition
             $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with remainder $B = A \setminus \bigcup \overline{A}$ such that:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_excellent_partition_with_equal_size.a} $i(*) \leq \frac{n}{m_{**}}$.
                 \item \label{itm:existance_of_excellent_partition_with_equal_size.b} For all
                     $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
@@ -561,7 +561,7 @@
         \begin{lemma}[Claim 5.14 (2) in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}
             Under the same condition of \Cref{lem:existance_of_excellent_partition_with_equal_size}, we can get a
             partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.a}
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
                 \item \label{itm:existance_of_excellent_partition_with_equal_size_and_no_remainder.b}
@@ -611,7 +611,7 @@
 
         \begin{remark}[Remark 5.14 (3) in~\cite{regularity_lemmas_for_stable_graphs}] \label{rmk:epsilons_proportion_can_be_k}
             Under the hypotheses of \Cref{lem:existance_of_excellent_partition_with_equal_size_and_no_remainder}, if:
-            \begin{enumerate}[label=(\alph*), ref=\alph*]
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:epsilons_proportion_can_be_k.a} $m_{**} \geq \frac{1}{\frac{\epsilon'}{k}}$ and
                 \item \label{itm:epsilons_proportion_can_be_k.b} $m_* \leq \frac{\frac{\epsilon'}{k} n + 1}{\frac{\epsilon'}{k} + 1}$,
             \end{enumerate}
@@ -664,10 +664,10 @@
         \begin{lemma}[Corollary 5.15 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:resume_of_all_conditions_for_excellent_partitions}
             Let $G$ be a graph with the non-$k_{*}$-order property.
             Suppose that we are given:
-            \begin{enumerate}
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item A real value $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
                 \item Three natural numbers $m_*$, $m_{**}$ and $q$ such that:
-                    \begin{enumerate}[label=(\alph*), ref=2.\alph*]
+                    \begin{enumerate}[label=\alph*., ref=2.\alph*]
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $q \geq \ceil{\frac{1}{\epsilon}}$.
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b}
                             $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
@@ -680,7 +680,7 @@
             \end{enumerate}
             Then, there exists $i(*) \leq \frac{n}{m_{**}}$ and a partition of $A$ into disjoint pieces
             $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ such that:
-            \begin{enumerate}[label=(\roman*), ref=\roman*]
+            \begin{enumerate}[label={\roman*}., ref={\roman*}, font=\rmfamily]
                 \item \label{itm:resume_of_all_conditions_for_excellent_partitions.i}
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
                 \item \label{itm:resume_of_all_conditions_for_excellent_partitions.ii}
@@ -718,7 +718,7 @@
             and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
             every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             of $A$, such that:
-            \begin{enumerate}
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:minimal_conditions_for_excellent_partitions.0} The number of parts is bounded by
                     $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
                 \item \label{itm:minimal_conditions_for_excellent_partitions.1}
@@ -730,7 +730,7 @@
                 We aim at applying \Cref{lem:resume_of_all_conditions_for_excellent_partitions}.
                 Let $q = \ceil{\frac{12}{\epsilon}}$.
                 For $N\parround{\epsilon, m, k_*}$, and thus $n$, large enough, we can then choose the smallest $m_{**}$ satisfying:
-                \begin{enumerate}[label=(\alph*), ref=\alph*]
+                \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                     \item \label{itm:minimal_conditions_for_excellent_partitions.a} $m_{**} \in \parsquared{\delta n -1, \delta n}$, where
                         $\delta = \min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$.
                     \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
@@ -812,14 +812,14 @@
             denote $Z = \parcurly{\parround{a,b} \in \parround{A \times B} \mid a R b \not\equiv t\parround{A,B}}$ and
             $Z' = \parcurly{\parround{a,b} \in \parround{A' \times B'} \mid a R b \not\equiv t\parround{A,B}}$.
             Then, we have:
-            \begin{enumerate}
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:excellence_implies_regularity.1} $\frac{\parstraight{Z}}{{\parstraight{A} \parstraight{B}}} < \epsilon_1 + \epsilon_2$.
                 \item \label{itm:excellence_implies_regularity.2} $\frac{\parstraight{Z'}}{\parstraight{A'} \parstraight{B'}} <
                     \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}$.
             \end{enumerate}
             In particular, for any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
             and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
-            \begin{enumerate}[label=\alph*., ref=\alph*]
+            \begin{enumerate}[label={\roman*}., ref={\roman*}, font=\rmfamily]
                 \item \label{itm:excellence_implies_regularity.a} $\parround{A,B}$ is $\epsilon$-regular.
                 \item \label{itm:excellence_implies_regularity.b} If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
                     $B' \in \parsquared{B}^{\geq \epsilon \parstraight{B}}$, then $d \parround{A',B'} < \epsilon$ or
@@ -916,7 +916,7 @@
             There exists $m < \ell < M$ and a partition
             $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
             $\frac{\epsilon^2}{2}$-excellent and, for every (not necessarily distinct) $i, j \in \parcurly{1, \dots, \ell}$,
-            \begin{enumerate}
+            \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_regular_partitions.1} $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$,
                     i.e. the partition is equitable.
                 \item \label{itm:existance_of_regular_partitions.2} $\parround{A_i, A_j}$ is $\epsilon$-regular, and moreover if

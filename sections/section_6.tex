@@ -14,7 +14,7 @@
         An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
         $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
         satisfies the following.
-        \begin{enumerate}
+        \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
             \item If $G \in \mathcal{P}$, then $\mathbb{P}\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
             \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
                 then $\mathbb{P}\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.

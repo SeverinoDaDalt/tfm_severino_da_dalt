@@ -4,27 +4,29 @@
 
 \begin{document}
 
-    El lema de regularitat de Szemerédi és una pedra angular de la teoria moderna de grafs, afirmant que qualsevol graf
+    El lema de regularitat de Szemerédi és una pedra angular de la teoria moderna de grafs: afirma que qualsevol graf
     es pot particionar en un nombre acotat de conjunts de vèrtexs, on les connexions entre la majoria de parelles de
     conjunts es comporten de manera quasi-aleatòria.
     Malgrat les seves àmplies aplicacions en àrees com la teoria de nombres, la combinatòria i la informàtica,
-    el lema pateix de dues limitacions principals: una mida de la partició acotada per una torre d'exponencials,
-    i la presència de parelles irregulars, totes dues inevitables en el cas general.
+    el lema pateix de dues limitacions principals: la cota sobre la mida de la partició és una torre d'exponencials,
+    i la presència de parelles irregulars (no necessariament quasi-aleatories).
+    Totes dues limitacions són inevitables en el cas general.
 
-    Aquest treball se centra en una subclasse específica de grafs, els \emph{grafs estables}, on aquestes limitacions
+    Aquest treball es centra en una subclasse específica de grafs, els \emph{grafs estables}, on aquestes limitacions
     es poden superar.
     En evitar una subestructura bipartida coneguda com a half-graph, els grafs estables admeten un lema de regularitat
     molt més fort.
-    Aquest lema especialitzat, desenvolupat originalment per Malliaris i Shelah, garanteix una partició on totes les
-    parelles són regulars i el nombre de parts està acotat per un polinomi, una millora significativa respecte a la cota
-    general de tipus torre.
+    Aquest lema especialitzat, desenvolupat originalment per Malliaris i Shelah i que pren inspiració de la teoria de models,
+    garanteix una partició on totes les parelles són regulars i el nombre de parts està acotat per un polinomi,
+    una millora significativa respecte a la cota general de tipus torre.
 
     Aquesta tesi primer presenta una exposició autocontinguda, combinatòria i completa de la prova del lema de
-    regularitat estable, desenvolupant un marc notacional unificat per connectar conceptes de la teoria de grafs
-    extremals, l'estabilitat i el property testing.
-    Basant-nos en aquesta base teòrica, després construïm un algorisme eficient per comprovar l'\emph{$H$-llibertat}
-    (la propietat de no contenir una còpia induïda d'un graf fixat $H$) per a grafs estables.
-    Aquesta aplicació aprofita les propietats superiors del lema per aconseguir una complexitat de consulta amb cotes
-    significativament millorades en comparació amb els testers per a grafs generals.
+    regularitat estable, desenvolupant un marc notacional unificat per connectar conceptes de la teoria extremal
+    de grafs, l'estabilitat i el \emph{property testing}.
+    Basant-nos en aquesta base teòrica, en la part final de la tesi construïm un algorisme eficient per comprovar la
+    propietat \emph{ser-lliure-de-$H$} (la propietat de no contenir una còpia induïda d'un graf fixat $H$) per a grafs estables.
+    Aquesta aplicació aprofita les bones propietats del lema per tal d'aconseguir un baix nombre de consultes (la mesura
+    de la complexitat en aquests tests) amb cotes significativament millorades en comparació amb els tests per a grafs
+    generals.
 
 \end{document}
