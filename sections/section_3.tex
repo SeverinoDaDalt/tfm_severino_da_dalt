@@ -35,7 +35,7 @@
             $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
             for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
             Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
-            Additionally, we say that $G$ has the \emph{disjoint $k$-order property} if
+            Additionally, we say that $G$ has the \emph{disjoint $k$-order property} if such sequences also satisfy
             $\Partriangle{a_i}_i \cap \Partriangle{b_i}_i = \emptyset$.
         \end{definition}
 
@@ -85,7 +85,7 @@
         In this context, we say that a vertex $a \in A$ is \emph{exceptional} with respect to $B \subseteq G$ if $t(a,B) \not\equiv t(A,B)$,
         or that it is exceptional with respect to $b \in G$ if $a R b \not\equiv t(A,b)$.
         On the other hand, we say that an edge $ab$ with $a \in A$ and $b \in B$ is exceptional in $(A,B)$ if $a R b \not\equiv t(A,B)$.
-        Also, it is useful to define the following set of vertices.
+        Also, it is useful to define the following sets of vertices.
         \begin{itemize}
             \item $B_{A,b} = \parcurly{a \in A \mid a R b \equiv t(A,b)}$, i.e. the set of non-exceptional vertices of $A$
                 with respect to $b$.
@@ -127,7 +127,7 @@
             $S$ consists of at most $\sum_{i=0}^{k} \binom{n}{i} \leq n^k$ sets.
         \end{lemma}
 
-        We'll begin by proving a stronger version of this lemma from Pajor, for which Sauer-Shelah will be a straightforward
+        We begin by proving a stronger version of this lemma from Pajor, for which Sauer-Shelah will be a straightforward
         consequence.
 
         \begin{lemma}[Pajor's variant,~\cite{sous_spaces_1_des_espaces_de_banach_travaux_en_cours}] \label{lem:pajor}
@@ -172,13 +172,13 @@
 
         Next, we want to prove that if $G$ has the non-$k$-order property, then the size of the family of exceptional
         sets of $A$, relative to each vertex $b \in G$, is bounded by $|A|^k$.
-        Instead, we prove a stronger result, that is we prove this same bound with only the condition that $G$
+        Instead, we prove a stronger result, that is, we prove this same bound with only the condition that $G$
         has the disjoint non-$k$-order property (recall that then the two sequences of vertices in the
         \Cref{def:k_order_property} are disjoint).
         Even though results in this thesis use the weaker non-disjoint version of \Cref{lem:k_order_property_bounds_BAbs},
         we prove it in this form to highlight that the non-disjointness of the sequences (and thus the broadening of
         the excluded structures in stable graphs) is not crucial to obtain this value of the bound, but later on\footnote{
-            Specifically, the non-disjointness of the sequences beceomes relevant in \Cref{lem:existance_of_indivisible_sets} of
+            Specifically, the non-disjointness of the sequences becomes relevant in \Cref{lem:existance_of_indivisible_sets} of
             \Cref{sec:section_4} and in \Cref{lem:existance_of_excellent_subsets} of \Cref{sec:section_5}, as it allows
             to prove the existence of \regular pairs.
         }.
@@ -258,15 +258,15 @@
 
     \subsection{Tree bound} \label{subsec:subsection_3.3}
 
-        During the next sections, it will be a key point proving that some sort of \say{regular} subgraphs
+        A key point of the next sections will be to prove that some sort of \say{regular} subgraphs
         (\emph{independent} in \Cref{sec:section_4} and \emph{excellent} in \Cref{sec:section_5}) exist in a given
         stable graph.
-        A useful structure strongly related to the $k$-order property is the \emph{$k$-tree}.
+        With this goal in mind, a useful structure strongly related to the $k$-order property is the \emph{$k$-tree}.
 
-        Defining such concept requires us to introduce some tuple notation.
+        Defining such a concept requires us to introduce some tuple notation.
         First of all, we use $\Partriangle{a_1, \dots, a_n}$ to denote an $n$-tuple which is an ordered list of objects
         (in this work, such objects will be integers).
-        When using such tuples as a subscript of a variable and the tuples are sequences of $0$'s and $1$'s, we
+        When using such tuples as sequences of $0$'s and $1$'s in the subscript of a variable, we
         may skip the $\Partriangle{}$ and commas for ease of read (for example, $\Partriangle{0,0,1}$ would be
         written as $001$).
         The empty tuple is denoted as $\Partriangle{\cdot}$ and occasionally in subscripts as $\emptyset$.
@@ -292,8 +292,7 @@
 
         \input{pictures/k-tree}
 
-        Similarly to stability, we can define the \emph{tree bound} of a graph to measure the level of freeness from $k$-trees
-        of graph.
+        Similarly to stability, we can define the \emph{tree bound} of a graph to measure its level of freeness from $k$-trees.
 
         \begin{definition}[Definition 2.11 in~\cite{regularity_lemmas_for_stable_graphs}] \label{def:tree_bound}
             Suppose $G$ is a finite graph.

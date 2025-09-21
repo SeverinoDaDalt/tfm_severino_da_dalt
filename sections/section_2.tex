@@ -472,7 +472,7 @@
 
             Now, let's bound the number of parts of the partition at the end of the process.
             Since at each step the number of parts goes from $r$ up to at most $r 4^{r+1}$, starting with $k$ parts
-            we can simply set $M \coloneqq \max\parround{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
+            we can simply set $M \coloneqq \max\parcurly{f^s(k), 2\frac{k}{\epsilon}}$, where $f(r) = r 4^{r+1}$.
             The second term ensures that if $n$ is sufficiently large (in particular when $n \geq M$)
             then~\eqref{eq:final_remainder_size_bound} holds.
 
@@ -498,7 +498,7 @@
                 The remainder set can be avoided in the resulting partition of Szemerédi's Regularity Lemma,
                 moving from an even partition to an equitable one (\Cref{def:even_and_equitable}).
                 This is done by evenly distributing the leftover vertices evenly throughout the large clusters of the
-                part, and overserving that energy lost in this operation is smaller than the gains from the former.
+                part, and observing that the energy lost in this operation is smaller than the gains from the former.
             \item \label{itm:regular_partition_with_regular_self_pairs}
                 It can be ensured that not only (most) pairs of different parts are regular, but also (most) parts
                 with themselves (self-pairs) satisfy this property.

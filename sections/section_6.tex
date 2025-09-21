@@ -130,7 +130,7 @@
                 We proceed to prove that the following values $\eta$ and $\epsilon$ hold.
                 \begin{align*}
                     \epsilon &= \epsilon(\delta, \ell)
-                        = \min \bbparround{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)}. \\
+                        = \min \Parcurly{\frac{1}{2\ell - 2}, \frac{1}{2} \delta \epsilon(\frac{1}{2}\delta, \ell-1)}. \\
                     \eta &= \eta(\delta, \ell)
                         = \frac{1}{2} (\delta - \epsilon)^{\ell-1} \eta(\frac{1}{2}\delta, \ell-1).
                 \end{align*}
@@ -190,13 +190,13 @@
             vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
             $\eta$-abundant in $G$.
             \begin{proof}
-                Apply \Cref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \bparround{\sqrt{\gamma},
+                Apply \Cref{thm:existance_of_regular_partitions} to $G$ with $\epsilon = \min \Parcurly{\sqrt{\gamma},
                     \epsilon_{\ref{lem:H_like_partition_implies_H_abundance}} \parround{1 - \gamma, \ell}}$,
                 $k_*$ and $m=0$.
                 We have a partition $\overline{A} = \bparcurly{A_i \mid i \in \parcurly{1, \dots, m_*}}$ into $m_* \leq M$
                 disjoint parts, with
                 \[
-                    M \leq \ceil{12 \max\Parround{\frac{1}{\sqrt{\gamma}}, \frac{1}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
+                    M \leq \ceil{12 \max\Parcurly{\frac{1}{\sqrt{\gamma}}, \frac{1}{\epsilon_{\ref{lem:H_like_partition_implies_H_abundance}}
                         \parround{1 - \gamma, \ell}}}}^{2^{k_*+1}-1}
                 \]
                 such that all pairs of parts are $\epsilon$-regular.

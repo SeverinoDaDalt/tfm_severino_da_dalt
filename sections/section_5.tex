@@ -133,7 +133,7 @@
                 be the subset of elements of $B_\nu$ that do not relate with $a_\eta$ in the expected way.
                 By $\zeta$-goodness of $B_\nu$, $|U_{\nu, \eta}| < \zeta |B_\nu|$, and thus for every $\nu \in \parcurly{0,1}^{<k_{**}}$,
                 \[
-                    \parstraight{\bigcup\parcurly{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}} <
+                    \bparstraight{\bigcup\parcurly{ U_{\nu,\eta} \mid \nu \triangleleft \eta \in \parcurly{0,1}^{k_{**}}}} <
                     2^{k_{**}} \zeta |B_\nu| \leq |B_\nu|.
                 \]
                 Therefore, for all $\nu \in \parcurly{0,1}^{<k_{**}}$, we may choose
@@ -165,8 +165,6 @@
             Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
             Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
             $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
-            % Notice that we needed to add m_{k_{**}} to the sequence, since it is needed in (c)' in the paper
-            % (m_{l+1} may take that value!!).
             Then, for every $A \subseteq G$ with $|A| \geq m_0$ there exists
             $\parround{\frac{m_{\ell+1}}{m_{\ell}}, \zeta}$-excellent subset $A' \subseteq A$ such that $|A'| = m_\ell$ for
             some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
@@ -521,7 +519,7 @@
         \begin{lemma}[Claim 5.14 (1A) in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:existance_of_excellent_partition_with_equal_size}
             Let $G$ be a finite graph with the non-$k_{*}$-order property.
             Let $\epsilon'$ and $\epsilon$ be two real numbers such that
-            $\epsilon' \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
+            $\epsilon' \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
             Also, let $m_*$, $m_{**}$ and $q$ be natural numbers such that $q \geq \ceil{\frac{1}{\epsilon}}$,
             $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                 \parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}}{q}$ and $m_* \coloneqq q^{k_{**}} m_{**}$.
@@ -580,7 +578,7 @@
                 \sloppy We can partition $B$ into \mbox{$\overline{B} = \Partriangle{B_i \mid i \in \parcurly{1, \dots, i(*)}}$}
                 in such a way that for all $i \in \parcurly{1, \dots, i(*)}$,
                 \[
-                    |B_i| \in \parcurly{\floor{\frac{\parstraight{B}}{i(*)}}, \ceil{\frac{\parstraight{B}}{i(*)}}}.
+                    |B_i| \in \Parcurly{\floor{\frac{\parstraight{B}}{i(*)}}, \ceil{\frac{\parstraight{B}}{i(*)}}}.
                 \]
                 Notice that we are allowing $B_i = \emptyset$.
                 Then, the new partition $\overline{A} = \Partriangle{A_i' \cup B_i \mid i \in \parcurly{1, \dots, i(*)}}$ satisfies
@@ -665,7 +663,7 @@
             Let $G$ be a graph with the non-$k_{*}$-order property.
             Suppose that we are given:
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
-                \item A real value $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
+                \item A real value $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
                 \item Three natural numbers $m_*$, $m_{**}$ and $q$ such that:
                     \begin{enumerate}[label=\alph*., ref=2.\alph*]
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $q \geq \ceil{\frac{1}{\epsilon}}$.
@@ -714,13 +712,13 @@
 
         \begin{theorem}[Theorem 5.18 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:minimal_conditions_for_excellent_partitions}
             Let $k_*$ be given (which by \Cref{thm:tree_implies_order} gives a bound on $k_{**}$).
-            Then, for all $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
+            Then, for all $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
             and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
             every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
             of $A$, such that:
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:minimal_conditions_for_excellent_partitions.0} The number of parts is bounded by
-                    $m \leq i(*) \leq M \coloneqq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
+                    $m \leq i(*) \leq M \coloneqq \max \parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
                 \item \label{itm:minimal_conditions_for_excellent_partitions.1}
                     For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
                 \item \label{itm:minimal_conditions_for_excellent_partitions.2}
@@ -732,7 +730,7 @@
                 For $N\parround{\epsilon, m, k_*}$, and thus $n$, large enough, we can then choose the smallest $m_{**}$ satisfying:
                 \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                     \item \label{itm:minimal_conditions_for_excellent_partitions.a} $m_{**} \in \parsquared{\delta n -1, \delta n}$, where
-                        $\delta = \min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$.
+                        $\delta = \min \parcurly{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}$.
                     \item \label{itm:minimal_conditions_for_excellent_partitions.c} $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                         \parround{3, k_*, \epsilon, q^{k_{**}}}}{q}$.
                 \end{enumerate}
@@ -756,11 +754,11 @@
 
                 We proceed to bound the number of parts of the partition $i(*)$.
                 First, the upper bound follows from the fact that
-                $m_{**} \geq \frac{1}{2} \min \parround{\frac{\epsilon} {3 + \epsilon}, \frac{1}{m + q^{k_{**}}}} n$:
+                $m_{**} \geq \frac{1}{2} \min \parcurly{\frac{\epsilon} {3 + \epsilon}, \frac{1}{m + q^{k_{**}}}} n$:
                 \[
-                    i(*) \leq \frac{n}{m_{**}} \leq \frac{2 \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}}n}{n}
-                         < 2 \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, 2m}
-                         \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}.
+                    i(*) \leq \frac{n}{m_{**}} \leq \frac{2 \max \parcurly{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}}n}{n}
+                         < 2 \max \Parcurly{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, 2m}
+                         \leq \max \Parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}.
                 \]
                 In the last inequality, we used that if $m < q^{k_{**}}$, then $m + q^{k_{**}} \leq 2q^{k_{**}} < \frac{3 + \epsilon}{\epsilon} q^{k_{**}}$,
                 which is dealt in the first argument of the maximum in the previous equation, so we may assume that $m \geq q^{k_{**}}$.
@@ -780,9 +778,9 @@
             First of all, we see that:
             \begin{align*}
                 \frac{1}{q} N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}
-                    & = \frac{1}{q} N_{\ref{lem:even_partition_of_excellent_parts}}\parround{k_*, \frac{1}{4 \cdot 3} \epsilon, q^{k_{**}}} \\
-                    & = \frac{1}{q} q^{k_{**}} \parround{\frac{12}{\epsilon}}^2
-                        \parround{k_* \log{\parround{\frac{12}{\epsilon}}^2 k_*} - \log{\frac{1}{q^{k_{**}}+1}}} \\
+                    & = \frac{1}{q} N_{\ref{lem:even_partition_of_excellent_parts}}\bbparround{k_*, \frac{1}{4 \cdot 3} \epsilon, q^{k_{**}}} \\
+                    & = \frac{1}{q} q^{k_{**}} \Parround{\frac{12}{\epsilon}}^2
+                        \Parround{k_* \log{\Parround{\frac{12}{\epsilon}}^2 k_*} - \log{\frac{1}{q^{k_{**}}+1}}} \\
                     & < k_*^2 q^{2 k_{**} + 3}.
             \end{align*}
             Then, since $m_{**}$ is the smallest integer larger than $\frac{1}{q} N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{4, k_*, \epsilon, q^{k_{**}}}$,
@@ -790,9 +788,9 @@
             \begin{align*}
                 \frac{m_{**}}{\delta}
                     & \leq \frac{k_*^2 q^{2 k_{**} + 3}}
-                        {\min \parround{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}} \\
-                    & = k_*^2 q^{2 k_{**} + 3} \max \parround{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}} \\
-                    & \leq \max \parround{q^{k_{**} + 1}, 4m} k_*^2 q^{2 k_{**} + 3}.
+                        {\min \parcurly{\frac{\epsilon}{\parround{3 + \epsilon} q^{k_{**}}}, \frac{1}{m + q^{k_{**}}}}} \\
+                    & = k_*^2 q^{2 k_{**} + 3} \max \Parcurly{\frac{3 + \epsilon}{\epsilon} q^{k_{**}}, m + q^{k_{**}}} \\
+                    & \leq \max \Parcurly{q^{k_{**} + 1}, 4m} k_*^2 q^{2 k_{**} + 3}.
             \end{align*}
         \end{remark}
 
@@ -830,11 +828,11 @@
                 of exceptional vertices $a \in A$.
                 Then,
                 \[
-                    Z \subseteq (U \times B) \cup \Parround{\bigcup_{a \in A \setminus U} \parcurly{a} \times \overline{B}_{B,a}}
+                    Z \subseteq (U \times B) \cup \bbparround{\bigcup_{a \in A \setminus U} \parcurly{a} \times \overline{B}_{B,a}}
                 \]
                 and
                 \[
-                    Z' \subseteq (U \times B') \cup \Parround{\bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}}.
+                    Z' \subseteq (U \times B') \cup \bbparround{\bigcup_{a \in A' \setminus U} \parcurly{a} \times \overline{B}_{B,a}}.
                 \]
                 Notice that, by the $\epsilon_1$-excellence of $A$, $|U| < \epsilon_1 |A|$.
                 Furthermore, by the $\epsilon_2$-goodness of $B$,
@@ -872,7 +870,7 @@
                         \begin{align*}
                             \parstraight{d \parround{A,B} - d \parround{A',B'}}
                                 & = \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B'} - d \parround{A,B}} \\
-                                & < \max \parcurly{ 1 - \parround{1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}},
+                                & < \max \bbparcurly{ 1 - \parround{1 - \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}},
                                     1 - \parround{1 - \epsilon_1 - \epsilon_2}} \\
                                 & = \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}.
                         \end{align*}
@@ -882,7 +880,7 @@
                         \begin{align*}
                             \parstraight{d \parround{A,B} - d \parround{A',B'}}
                                 & = \max \parcurly{d \parround{A,B} - d \parround{A',B'}, d \parround{A',B} - d \parround{A,B}} \\
-                                & < \max \parcurly{\parround{\epsilon_1 + \epsilon_2}, \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}} \\
+                                & < \max \bbparcurly{\parround{\epsilon_1 + \epsilon_2}, \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}} \\
                                 & = \frac{\epsilon_1 + \epsilon_2}{\epsilon_3}.
                         \end{align*}
                 \end{itemize}
@@ -922,11 +920,11 @@
                 \item \label{itm:existance_of_regular_partitions.2} $\parround{A_i, A_j}$ is $\epsilon$-regular, and moreover if
                     $B_i \in \parsquared{A_i}^{\geq \epsilon \parstraight{A_i}}$ and $B_j \in \parsquared{A_j}^{\geq \epsilon \parstraight{A_j}}$,
                     then either $d\parround{B_i, B_j} < \epsilon$ or $d\parround{B_i, B_j} \geq 1 - \epsilon$.
-                \item \label{itm:existance_of_regular_partitions.3} If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
-                    $M \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
+                \item \label{itm:existance_of_regular_partitions.3} If $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
+                    $M \leq \max \parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
             \end{enumerate}
             \begin{proof}
-                If $\epsilon \leq \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we obtain \dref{itm:existance_of_regular_partitions.1},
+                If $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then we obtain \dref{itm:existance_of_regular_partitions.1},
                 \dref{itm:existance_of_regular_partitions.2} and \dref{itm:existance_of_regular_partitions.3} applying
                 \Cref{thm:minimal_conditions_for_excellent_partitions} to $A$ with
                 $\epsilon_{\ref{thm:minimal_conditions_for_excellent_partitions}} = \frac{\epsilon^2}{2}$, and then use
@@ -934,9 +932,9 @@
                 of the parts.
 
                 Otherwise, to get \dref{itm:existance_of_regular_partitions.1} and \dref{itm:existance_of_regular_partitions.2},
-                we use the same argument for $\epsilon' = \min \parround{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
+                we use the same argument for $\epsilon' = \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}} \leq \epsilon$.
                 Then, since regularity is monotone, we get the wanted $\epsilon$-regularity from the resulting $\epsilon'$-regularity.
-                In this last case, the bound on $M$ is $M \leq \max \parround{\ceil{\frac{12}{\epsilon'}}^{k_{**}+1}, 4m}$.
+                In this last case, the bound on $M$ is $M \leq \max \parcurly{\ceil{\frac{12}{\epsilon'}}^{k_{**}+1}, 4m}$.
             \end{proof}
         \end{theorem}
 
@@ -945,7 +943,7 @@
             property.
             Thus, the bound on the number of parts $M$ can clearly be reformulated as a function of only $k_*$, $\epsilon$ and $m$:
             \[
-                M \leq \max \parround{\ceil{\frac{12}{\epsilon}}^{2^{k_* + 1}-1}, 4m}.
+                M \leq \max \bbparcurly{\ceil{\frac{12}{\epsilon}}^{2^{k_* + 1}-1}, 4m}.
             \]
         \end{remark}
 

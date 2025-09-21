@@ -394,7 +394,7 @@
             \sloppy Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $m_\ell^\epsilon = m_{\ell+1}$,
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
-            Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parround{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
+            Also, suppose $m_0$ satisfies $n^\epsilon \leq m_0 < \min \parcurly{\frac{\sqrt{2}-1}{\sqrt{2}} n, \frac{n}{n^{c \epsilon^{k_{**}}}}}$,
             with $c \in (0, 1-\epsilon)$.
             Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
             $m_{**} \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$.
@@ -504,7 +504,7 @@
                         \]
                         and on the other hand,
                         \[
-                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}},
+                            m_0 = m_{**}^{\frac{3}{1-\epsilon-c}r^{k_{**}}} \leq \bbparround{\frac{\sqrt{2}-1}{\sqrt{2}}} n^{1 - c \epsilon^{k_{**}}},
                         \]
                         and thus $n$ is both smaller than $\parround{\frac{\sqrt{2}-1}{\sqrt{2}}} n$ and
                         smaller than $n^{1 - c \epsilon^{k_{**}}}$.
@@ -538,7 +538,7 @@
         \regular~set can be chosen in advance.
         The resulting \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs} has also the advantage that
         the associated \regular~property is $f_c$-indivisibility, where $f_c$ is the constant function $f_c(x) = c$, which
-        is much stronger then $\epsilon$-indivisibility as the bound on the number of exceptions is constant.
+        is much stronger than $\epsilon$-indivisibility as the bound on the number of exceptions is constant.
 
         To prove this result, we use a probabilistic argument, and show that the event of there existing a subset which has
         intersection smaller than $c$ with every $\overline{B}_{A,b}$ (\Cref{def:n_large_enough_property}) is highly
@@ -553,7 +553,7 @@
         \end{definition}
 
         \begin{lemma}[Lemma 4.19 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:n_large_enough_valid_values}
-            If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \min \parround{\frac{1}{2}, 1 - \epsilon}$,
+            If the reals $\epsilon, \zeta, \xi$ satisfy $\epsilon \in (0,1)$, $\zeta > 0$ and $0 < \xi < \min \parcurly{\frac{1}{2}, 1 - \epsilon}$,
             the natural number $n$ is sufficiently large ($n > N(\epsilon, \zeta, \xi, c)$) to satisfy the equation
                 \begin{equation} \label{eq:n_large_enough_valid_values.1}
                     \frac{1}{2n^{1-2\xi}} + \frac{1}{n^{(1 - \xi - \epsilon)c - \frac{1}{\zeta}}} < 1,
@@ -748,7 +748,7 @@
         \begin{remark}
             Some notes on the partition obtained in the previous theorem:
             \begin{itemize}
-                \item The partition is exceptionally \regular, and the number of exceptional edges in each pair of parts
+                \item The partition is remarkably \regular, and the number of exceptional edges in each pair of parts
                     and subparts is strongly bounded as shown by \Cref{cor:exceptions_bound_of_c_indivisible_sets}.
                 \item As the upper bound on the size of the remainder is constant with respect to the size of the graph $n$,
                     the remainder as a fraction of the total graph can be made as small as desired (but not completely avoided).

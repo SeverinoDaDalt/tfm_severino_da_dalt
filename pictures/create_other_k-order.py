@@ -16,7 +16,7 @@ OUTPUT_FILE="pictures/other_k-order.tex"
 
 
 def main():
-    prefix = f"""\\begin{{figure}}[h]
+    prefix = f"""\\begin{{figure}}[t]
     \\centering
 
     \\begin{{tikzpicture}}[
