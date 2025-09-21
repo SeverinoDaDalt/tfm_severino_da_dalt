@@ -187,7 +187,26 @@
             Noticing this allows to fully rewrite the theorem for a stronger (and more interpretable) result
             (\Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}).
         % Section 5
-        \item Non-monotonicity\todo{To do...}
+        \item Throughout section 5 of~\cite{regularity_lemmas_for_stable_graphs}, it is implicitly
+            (and in~\cite{notes_on_the_stable_regularity_lemma} even explicitly) assumed that the $\epsilon$-excellence
+            is monotonic, which we prove to be false.
+            See \Cref{rmk:excellence_is_not_monotonic} and \Cref{sec:excellence_is_not_monotonic}.
+            Not assuming such property requires many changes of the proof of the Stable Regularity Lemma
+            (\Cref{sec:section_5}) some of which we mention below.
+        \item Statement (1) of Claim 5.13 in~\cite{regularity_lemmas_for_stable_graphs} can be simplified and clarified
+            to few lines by using a simple probabilistic argument together with an upperbound on the hypergeometric
+            distribution.
+        \item On the other hand, (2) of Claim 5.13,
+            which proof is a short line in~\cite{regularity_lemmas_for_stable_graphs}, requires some rephrasing of the
+            statement, moving from $\epsilon$-excellence with one parameter to the two-sided $(\epsilon, \epsilon')$-excellence,
+            and an extensive probabilistic argument.
+            The difference between the original paper's proof and the one in this thesis
+            (see \Cref{lem:even_partition_of_excellent_parts}) is probably a consequence of the excellence-monotonicity assumption.
+        \item Statement (3) of Claim 5.14, again, assumes the excellence is monotonic, something that can be avoided
+            by the previously mentioned rephrasing of Claim 5.13 to use the two-sided $(\epsilon, \epsilon')$-excellence, starting with
+            an $\epsilon$ value much smaller than $\epsilon'$, and readjusting at the end of the argument.
+        \item From here on, most of the results bounds and conditions need to be readjusted, or even added,
+            in order to reach the final proof of the Stable Regularity Lemma.
 
     \end{itemize}
 
