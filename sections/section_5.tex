@@ -665,7 +665,7 @@
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item A real value $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$.
                 \item Three natural numbers $m_*$, $m_{**}$ and $q$ such that:
-                    \begin{enumerate}[label=\alph*., ref=2.\alph*]
+                    \begin{enumerate}[label=\alph*., ref=II.\alph*, font=\rmfamily]
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.a} $q \geq \ceil{\frac{1}{\epsilon}}$.
                         \item \label{itm:resume_of_all_conditions_for_excellent_partitions.b}
                             $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
@@ -736,15 +736,15 @@
                 \end{enumerate}
                 By \dref{itm:minimal_conditions_for_excellent_partitions.a} we have that $m_* \leq \frac{\epsilon n}{3 + \epsilon}$.
                 This sequence satisfies all the conditions of \Cref{lem:resume_of_all_conditions_for_excellent_partitions}:
-                \begin{itemize}[label={}]
-                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a}
+                \begin{itemize}
+                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.a}.
                         $q \geq \ceil{\frac{1}{\epsilon}}$, and in particular defined it to be equal.
-                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}
+                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.b}.
                             $m_{**} > \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}
                                 \parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}}{q}$ by choice of $m_{**}$.
-                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.c}
+                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.c}.
                         $m_* \coloneqq q^{k_{**}} m_{**}$.
-                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.3} $m_{k_{**}-1} = q m_{**} >
+                    \item \dref{itm:resume_of_all_conditions_for_excellent_partitions.3}. $m_{k_{**}-1} = q m_{**} >
                         q \frac{N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{3, k_*, \epsilon, q^{k_{**}}}}{q} =
                         N_{\ref{lem:existance_of_even_excellent_subpartition}}\parround{3, k_*, \epsilon, \frac{m_*}{m_{**}}}$.
                 \end{itemize}
