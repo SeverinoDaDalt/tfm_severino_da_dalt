@@ -323,7 +323,7 @@
         \end{algorithm}
 
         We now proceed to prove that, indeed, $\mathcal{A}$ is an $\epsilon$-test.
-        If the input graph $G$ is $H$-free, then the algorithm returns $0$, either because the graph $G$ is too small to
+        If the input graph $G$ is $H$-free, then the algorithm \emph{rejects}, either because the graph $G$ is too small to
         contain $H$ (\cref{line:G_smaller_then_H}) or because all attempts of finding $H$ as an induced subgraph of $G$
         failed (either \cref{line:G_small_enough_not_found_H} or \cref{line:not_found_H}).
         On the other hand, if $G$ is $\epsilon$-far from being $H$-free, \Cref{thm:property_testing_with_stable_partitions}
@@ -347,5 +347,11 @@
               \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
                    {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2.
         \]
+
+        In summary, the construction of this algorithm provides a direct application of the Stable Regularity Lemma.
+        The properties of the stable regular partitions, specifically its polynomial size bound and the regularity of all
+        pairs, are leveraged to create an $H$-freeness tester whose query complexity is independent of the input graph's size.
+        This result shows a quantitative advantage over methods for general graphs, which must contend with
+        tower-exponential parameter dependencies.
 
         % up to here it was compiling with no problem.

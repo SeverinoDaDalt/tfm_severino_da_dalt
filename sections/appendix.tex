@@ -152,63 +152,63 @@
         This contradicts \Cref{def:tree_bound} of tree bound $k_{**}$.
     \end{proof}
 
-\vfill\newpage \section{Main changes} \label{sec:main_changes}
-    This section of the appendix is dedicated at showing the main changes this thesis applies to the original results
-    of~\cite{regularity_lemmas_for_stable_graphs} and~\cite{notes_on_the_stable_regularity_lemma}.
-
-    \begin{itemize}
-        % Section 2
-        \item Definition 2.3 of the $k$-order property in~\cite{regularity_lemmas_for_stable_graphs} does not
-            specify adjacency (or not) of vertices with the same index.
-        % Section 4
-        \item In order for the arguments of Section 4 to work, most results require that the function
-            $f$ (of the $f$-indivisibility) satisfies $x \geq f(x)$, instead of the \emph{non-decreasing} condition
-            given in Definition 4.2 in~\cite{regularity_lemmas_for_stable_graphs}, which is redundant.
-        \item In order for the average condition to be satisfied, and thus being able to apply Claim 4.8 in the proof
-            of Claim 4.10 in~\cite{regularity_lemmas_for_stable_graphs}, something like the extra condition provided
-            by \Cref{rmk:sufficient_requirement_for_average_condition} needs to be added to the claim statement.
-        \item Second to last inequality in the equation of $P_1$ at page 1569 of~\cite{regularity_lemmas_for_stable_graphs}
-            is actually opposite (the $<$ should be a $>$).
-            The same occurs, with last inequality of $P_2$ equation at the same page.
-            This breaks the proof's argument, requiring extra conditions and some (non-trivial) changes in the argument.
-            The most important change in the result is the extra condition $m_0 \geq n^\epsilon$ in
-            \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}, which strongly reduces the
-            interval of possible choices of parts size in the result, and needs to be carried until the end of the subsection.
-        \item Condition $m_{**} > k_{**}$, which is persistent in results of Section 4
-            in~\cite{regularity_lemmas_for_stable_graphs} can be relaxed into $m_{**} \geq 1$.
-        \item Proof of Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs} is unclear, even more when previous points
-            are noted.
-            \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs} provides
-            a complete proof of a weaker (but coherent) version of the same result.
-        \item Theorem 4.23 proof construction first finds an $\epsilon$-indivisible set, and then applies Claim 4.21
-            to find a $c$-indivisible set.
-            But Claim 4.21 itself does not require an $\epsilon$-indivisible set as input, as it is constructed in its
-            own proof.
-            Noticing this allows to fully rewrite the theorem for a stronger (and more interpretable) result
-            (\Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}).
-        % Section 5
-        \item Throughout section 5 of~\cite{regularity_lemmas_for_stable_graphs}, it is implicitly
-            (and in~\cite{notes_on_the_stable_regularity_lemma} even explicitly) assumed that the $\epsilon$-excellence
-            is monotonic, which we prove to be false.
-            See \Cref{rmk:excellence_is_not_monotonic} and \Cref{sec:excellence_is_not_monotonic}.
-            Not assuming such property requires many changes of the proof of the Stable Regularity Lemma
-            (\Cref{sec:section_5}) some of which we mention below.
-        \item Statement (1) of Claim 5.13 in~\cite{regularity_lemmas_for_stable_graphs} can be simplified and clarified
-            to few lines by using a simple probabilistic argument together with an upperbound on the hypergeometric
-            distribution.
-        \item On the other hand, (2) of Claim 5.13,
-            which proof is a short line in~\cite{regularity_lemmas_for_stable_graphs}, requires some rephrasing of the
-            statement, moving from $\epsilon$-excellence with one parameter to the two-sided $(\epsilon, \epsilon')$-excellence,
-            and an extensive probabilistic argument.
-            The difference between the original paper's proof and the one in this thesis
-            (see \Cref{lem:even_partition_of_excellent_parts}) is probably a consequence of the excellence-monotonicity assumption.
-        \item Statement (3) of Claim 5.14, again, assumes the excellence is monotonic, something that can be avoided
-            by the previously mentioned rephrasing of Claim 5.13 to use the two-sided $(\epsilon, \epsilon')$-excellence, starting with
-            an $\epsilon$ value much smaller than $\epsilon'$, and readjusting at the end of the argument.
-        \item From here on, most of the results bounds and conditions need to be readjusted, or even added,
-            in order to reach the final proof of the Stable Regularity Lemma.
-
-    \end{itemize}
+%\vfill\newpage \section{Main changes} \label{sec:main_changes}
+%    This section of the appendix is dedicated at showing the main changes this thesis applies to the original results
+%    of~\cite{regularity_lemmas_for_stable_graphs} and~\cite{notes_on_the_stable_regularity_lemma}.
+%
+%    \begin{itemize}
+%        % Section 2
+%        \item Definition 2.3 of the $k$-order property in~\cite{regularity_lemmas_for_stable_graphs} does not
+%            specify adjacency (or not) of vertices with the same index.
+%        % Section 4
+%        \item In order for the arguments of Section 4 to work, most results require that the function
+%            $f$ (of the $f$-indivisibility) satisfies $x \geq f(x)$, instead of the \emph{non-decreasing} condition
+%            given in Definition 4.2 in~\cite{regularity_lemmas_for_stable_graphs}, which is redundant.
+%        \item In order for the average condition to be satisfied, and thus being able to apply Claim 4.8 in the proof
+%            of Claim 4.10 in~\cite{regularity_lemmas_for_stable_graphs}, something like the extra condition provided
+%            by \Cref{rmk:sufficient_requirement_for_average_condition} needs to be added to the claim statement.
+%        \item Second to last inequality in the equation of $P_1$ at page 1569 of~\cite{regularity_lemmas_for_stable_graphs}
+%            is actually opposite (the $<$ should be a $>$).
+%            The same occurs, with last inequality of $P_2$ equation at the same page.
+%            This breaks the proof's argument, requiring extra conditions and some (non-trivial) changes in the argument.
+%            The most important change in the result is the extra condition $m_0 \geq n^\epsilon$ in
+%            \Cref{lem:bound_on_the_probability_of_a_subpair_having_no_exceptions}, which strongly reduces the
+%            interval of possible choices of parts size in the result, and needs to be carried until the end of the subsection.
+%        \item Condition $m_{**} > k_{**}$, which is persistent in results of Section 4
+%            in~\cite{regularity_lemmas_for_stable_graphs} can be relaxed into $m_{**} \geq 1$.
+%        \item Proof of Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs} is unclear, even more when previous points
+%            are noted.
+%            \Cref{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs} provides
+%            a complete proof of a weaker (but coherent) version of the same result.
+%        \item Theorem 4.23 proof construction first finds an $\epsilon$-indivisible set, and then applies Claim 4.21
+%            to find a $c$-indivisible set.
+%            But Claim 4.21 itself does not require an $\epsilon$-indivisible set as input, as it is constructed in its
+%            own proof.
+%            Noticing this allows to fully rewrite the theorem for a stronger (and more interpretable) result
+%            (\Cref{thm:equitative_partition_high_regularity_parts_grow_with_n}).
+%        % Section 5
+%        \item Throughout section 5 of~\cite{regularity_lemmas_for_stable_graphs}, it is implicitly
+%            (and in~\cite{notes_on_the_stable_regularity_lemma} even explicitly) assumed that the $\epsilon$-excellence
+%            is monotonic, which we prove to be false.
+%            See \Cref{rmk:excellence_is_not_monotonic} and \Cref{sec:excellence_is_not_monotonic}.
+%            Not assuming such property requires many changes of the proof of the Stable Regularity Lemma
+%            (\Cref{sec:section_5}) some of which we mention below.
+%        \item Statement (1) of Claim 5.13 in~\cite{regularity_lemmas_for_stable_graphs} can be simplified and clarified
+%            to few lines by using a simple probabilistic argument together with an upperbound on the hypergeometric
+%            distribution.
+%        \item On the other hand, (2) of Claim 5.13,
+%            which proof is a short line in~\cite{regularity_lemmas_for_stable_graphs}, requires some rephrasing of the
+%            statement, moving from $\epsilon$-excellence with one parameter to the two-sided $(\epsilon, \epsilon')$-excellence,
+%            and an extensive probabilistic argument.
+%            The difference between the original paper's proof and the one in this thesis
+%            (see \Cref{lem:even_partition_of_excellent_parts}) is probably a consequence of the excellence-monotonicity assumption.
+%        \item Statement (3) of Claim 5.14, again, assumes the excellence is monotonic, something that can be avoided
+%            by the previously mentioned rephrasing of Claim 5.13 to use the two-sided $(\epsilon, \epsilon')$-excellence, starting with
+%            an $\epsilon$ value much smaller than $\epsilon'$, and readjusting at the end of the argument.
+%        \item From here on, most of the results bounds and conditions need to be readjusted, or even added,
+%            in order to reach the final proof of the Stable Regularity Lemma.
+%
+%    \end{itemize}
 
 \vfill\newpage \section{Excellence is not monotonic.} \label{sec:excellence_is_not_monotonic}
     Here give more details on the counterexample to the monotonicity of the excellence property given in

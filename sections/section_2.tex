@@ -151,7 +151,7 @@
         \begin{remark}
             The two previous definitions, although very close in concept, have a key difference that needs to be noted.
             As most of the results requires the partition property (such as regularity) to be satisfied only by parts
-            in the partition, and not necessarily by the reminder, in even partitions the behaviour of a
+            in the partition, and not necessarily by the remainder, in even partitions the behaviour of a
             (not necessarily trivial) fraction of vertices is unknown.
             Thus, results with equitable partitions are generally preferable over those with even partitions, but
             require some extra arguments.
@@ -178,7 +178,7 @@
         \begin{theorem}[Szemer\'edi's Regularity Lemma, \cite{regular_partitions_of_graphs}] \label{thm:szemeredi_regularity_lemma}
             For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
             such that every graph with at least $m$ vertices admits an even $\epsilon$-regular partition
-            $\parcurly{A_1, \ldots, A_k}$ and reminder $B$ with $m \leq k \leq M$.
+            $\parcurly{A_1, \ldots, A_k}$ and remainder $B$ with $m \leq k \leq M$.
         \end{theorem}
 
         The principal strength of this lemma lies in the fact that it guarantees the existence of a regular partition
@@ -228,7 +228,7 @@
             \]
         \end{definition}
 
-        Let $\overline{A}$ be a partition with reminder set $B$, we define
+        Let $\overline{A}$ be a partition with remainder set $B$, we define
         $\widetilde{A} \coloneqq \overline{A} \cup \overline{B}$, and we use $\overline{B}$ to denote the set
         of singletons of the remainder set, $\overline{B} \coloneqq \parcurly{\parcurly{b} \mid b \in B}$.
         Then, $q(\widetilde{A}) = q(\overline{A} \cup \overline{B})$
@@ -374,7 +374,7 @@
                 \[
                     \overline{A}'' \coloneqq \bigcup_{i=1}^k \overline{A}_i
                 \]
-                of $G$ with reminder set still $B$.
+                of $G$ with remainder set still $B$.
                 Note that $\overline{A}''$ refines $\overline{A}$, and that
                 \begin{equation} \label{eq:size_of_refined_partition}
                     k \leq |\overline{A}''| \leq k 2^{k-1} \leq k 2^{k}.
@@ -402,10 +402,10 @@
 
                 Finally, we need to turn $\overline{A}''$ into an even partition.
                 In order to achieve this, we split each part into pieces of equal size, and move the
-                remaining vertices to the reminder set.
+                remaining vertices to the remainder set.
                 We need to separate two cases, as we may not have enough vertices to make substantially sized parts.
 
-                If $c < 4^k$, we just consider all the parts to be singletons, and keep the reminder set $B$ as it is.
+                If $c < 4^k$, we just consider all the parts to be singletons, and keep the remainder set $B$ as it is.
                 Since there are at most $k$ parts in $\overline{A}$, we have that the resulting partition $\overline{A}'$
                 of size $\ell$ satisfies $k \leq \ell = kc < k 4^k$.
 
@@ -440,7 +440,7 @@
 
         We now have all the tools required to prove Szemerédi's Regularity Lemma.
         The idea will be to start with an arbitrary even partition, with a large enough number of parts and small
-        enough reminder set, and then keep refining it until we reach a regular partition.
+        enough remainder set, and then keep refining it until we reach a regular partition.
         Then, reaching regularity is inevitable, as the previous result guarantees a constant increase in energy
         which we previously proved to be upper bounded.
 
@@ -448,7 +448,7 @@
             Let $\epsilon > 0$, $m \geq 1$ and assume without loss of generality that $\epsilon \leq \frac{1}{4}$.
             This is possible by monotonicity of the regularity condition\footnote{
                 By monotonicity of the regularity property we mean that, if a partition is $\epsilon$-regular,
-                than it is also $\epsilon'$-regular for any $\epsilon' \geq \epsilon$.
+                then it is also $\epsilon'$-regular for any $\epsilon' \geq \epsilon$.
                 This follows the \Cref{def:regular_partition}, as both the allowed error in
                 regular pairs and the number of irregular ones permitted increase with the regularity parameter.}.
             Also, set $s \coloneqq \frac{2}{\epsilon^5}$.
@@ -456,10 +456,10 @@
             While refining repeatedly the partition using \Cref{lem:increase_in_energy_when_refining_an_irregular_partition},
             ($s$ times) we need to make sure that the remainder set does not grow too large, as the lemma requires it to
             be at most $\epsilon n$.
-            At each refinement, the size of the reminder set increases by at most $\frac{n}{2^k}$, where $k$ is the
+            At each refinement, the size of the remainder set increases by at most $\frac{n}{2^k}$, where $k$ is the
             number of parts of the partition before refining.
             Since at each iteration the number of parts can only increase, at most $\frac{n}{2^k}$ vertices
-            are added to the reminder set.
+            are added to the remainder set.
             By choosing $k$ and $n$ large enough, we can ensure that the initial size of the remainder set and the
             total growth of it over all the $s$ steps are at most $\frac{\epsilon n}{2}$ each.
 
@@ -485,7 +485,7 @@
             vertices in the remainder set.
             This remainder set has size at most $k - 1 < \epsilon n$ by~\eqref{eq:final_remainder_size_bound}.
             We now can apply \Cref{lem:increase_in_energy_when_refining_an_irregular_partition} repeatedly,
-            as the choice of $k$ and $n\geq M$ in~\eqref{eq:final_remainder_size_bound} ensures that the reminder is
+            as the choice of $k$ and $n\geq M$ in~\eqref{eq:final_remainder_size_bound} ensures that the remainder is
             at most $\epsilon n$ during $s$ steps.
             But this process must stop in at most $s$ steps, as the energy of the partition increases by at least
             $\frac{\epsilon^5}{2}$ at each step, so after $s$ steps the energy would be at least $1$, which is the theoretical
@@ -512,7 +512,7 @@
             In~\cite{graph_theory_and_additive_combinatorics_exploring_structure_and_randomness}, authors show how to
             obtain a regular parition that includes regularity within pairs themselves, but omit the details on how to get
             an equitable partition.
-            \cite{graph_removal_lemmas} proves the existence of a partition has regular self-pairs and no reminder, but
+            \cite{graph_removal_lemmas} proves the existence of a partition has regular self-pairs and no remainder, but
             the proof of the critical lemma to refine a partition into an equitable one (at the loss of a small amount
             of energy) is hinted at but omitted.}
         for more detailed proofs on how to obtain such partitions.

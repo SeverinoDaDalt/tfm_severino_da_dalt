@@ -44,7 +44,7 @@
         A natural follow-up question is how two indivisible sets interact between each other.
         The following lemma tackles precisely that, although doing so asymmetrically.
 
-        \begin{lemma}[Claim 4.6)] \label{lem:average_condition_statement}
+        \begin{lemma}[Claim 4.6 in~\cite{regularity_lemmas_for_stable_graphs}] \label{lem:average_condition_statement}
             Let $G$ be a finite graph.
             Suppose $A, B \subseteq G$ such that $A$ is $f$-indivisible, $B$ is $g$-indivisible, and $\ceil{f(|A|)} g(|B|) < \frac{1}{2} |B|$.
             Then, the truth value $t = t(A,B)$ satisfies the following.
@@ -210,7 +210,7 @@
             \end{proof}
         \end{lemma}
 
-        The previous proof can be iteratively used to partition the graph into indivisible parts, with a small reminder.
+        The previous proof can be iteratively used to partition the graph into indivisible parts, with a small remainder.
         As the average condition cares about the ordering of the elements of the pair, we define the partition as a tuple
         instead of a family of sets, and fix an ascending order on the size of the parts.
 
@@ -220,7 +220,7 @@
             Let $\parcurly{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a sequence of non-zero natural numbers such that
             for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $f(m_{\ell}) \geq m_{\ell+1}$.
             If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$
-            and reminder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ such that:
+            and remainder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ such that:
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.1} For each $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $f$-indivisible.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions.2} For each $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
@@ -246,7 +246,7 @@
             $n \geq m_0$ and for all $\ell \in \parcurly{0, \dots, k_{**}-1}$, $\floor{m_\ell^\epsilon} = m_{\ell+1}$,
             for some $\epsilon \in (0, \frac{1}{2})$ such that $4 < (m_{k_{**}-1})^{1-2\epsilon}$.
             If $A \subseteq G$ with $|A| = n$, then we can find a sequence $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
-            and reminder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ satisfying:
+            and remainder $B = A \setminus \bigcup_{A_i \in \overline{A}} A_i$ satisfying:
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.1} For each $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-indivisible.
                 \item \label{itm:existance_of_ordered_f_indivisible_partitions_with_exceptions_bound.2} For each $i \in \parcurly{1, \dots, i(*)}$, $|A_i| \in \parcurly{m_0, \dots, m_{k_{**}-1}}$.
@@ -399,7 +399,7 @@
             Finally, let $m_{**}$ be a divisor of $m_\ell$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and
             $m_{**} \leq n^{\frac{1 - \epsilon - c}{3}\epsilon^{k_{**}}}$.
             If $A \subseteq G$ with $|A| = n$, then we can find a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, r}}$
-            with reminder $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, r}} A_i$ such that:
+            with remainder $B = A \setminus \bigcup_{i \in \parcurly{1, \dots, r}} A_i$ such that:
             \begin{enumerate}[label={\Roman*}., ref={\Roman*}, font=\rmfamily]
                 \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.1} $|A_i| = m_{**}$ for all $i \in \parcurly{1, \dots, r}$.
                 \item \label{itm:existance_of_equitative_partition_with_bound_exceptional_pairs.2} For all but $\frac{2}{n^{c\epsilon^{k_{**}}}}r^2$ of the pairs
@@ -463,7 +463,7 @@
         \begin{theorem}[Theorem 4.16 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:existance_of_equitative_partition_with_perfect_pairs_but_with_bound_exceptional_pairs}
             Let $r, r' > 1$ be two natural numbers,
             and let $\epsilon = \frac{1}{r}$ and \mbox{$c = \frac{r' - 1}{r'} - \epsilon$}.\footnote{Choosing $\epsilon$ and
-                $c$ this way ensures avoiding aproximation errors, and makes the proof more readable}
+                $c$ this way ensures avoiding approximation errors, and makes the proof more readable}
             Let $G$ be a finite graph with the non-$k_*$-order property.
             Let $A \subseteq G$ with $|A| = n$, and $n > 4^{\frac{r^{k_{**}}}{1-2\epsilon}}$.
             Then, for any $m_{**} \in \bparsquared{n^{\frac{(1-\epsilon-c)}{3}\epsilon^{k_{**}+1}},
@@ -522,12 +522,12 @@
             \begin{itemize}
                 \item With any choice of $c$ and $m_{**}$, the fraction of exceptional pairs is asymptotically small,
                     but we obtain very small parts, that is, $m_{**} \thickapprox n^{\epsilon^{k_{**}}}$.
-                \item A smaller value of $c$ results in larger parts and smaller reminder, at the cost of a larger fraction
+                \item A smaller value of $c$ results in larger parts and smaller remainder, at the cost of a larger fraction
                     of exceptional pairs.
                 \item The window of choice of $m_{**}$ is very small, and taking a larger value
-                    (in the given interval), results in a strongly larger reminder.
+                    (in the given interval), results in a strongly larger remainder.
                     The edge case of choosing $m_{**}$ as the larger value, results in the bound on the size of the
-                    reminder becoming $\parstraight{B} < \frac{\sqrt{2}-1}{\sqrt{2}} n^{1-\epsilon^{k_{**}}}$.
+                    remainder becoming $\parstraight{B} < \frac{\sqrt{2}-1}{\sqrt{2}} n^{1-\epsilon^{k_{**}}}$.
             \end{itemize}
         \end{remark}
 
@@ -717,7 +717,7 @@
 
         We now use the previous result to build an even partition.
         Similarly to \Cref{lem:existance_of_ordered_f_indivisible_partitions}, we will iteratively extract an $f_c$-indivisible
-        set from the reminder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, while
+        set from the remainder using \Cref{lem:many_values_to_equitative_partition_with_bound_exceptional_pairs}, while
         the sufficiently large condition holds.
 
         \begin{theorem}[Theorem 4.23 in~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:equitative_partition_high_regularity_parts_grow_with_n}
