@@ -1,0 +1,240 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{fit, positioning, shapes.geometric}
+\usepackage{booktabs} % Added for table styling
+
+
+
+\newcommand{\Parcurly}[1]{\left\{ #1 \right\}}
+\newcommand{\parcurly}[1]{\{ #1 \}}
+\newcommand{\bparcurly}[1]{\bigl\{ #1 \bigr\}}
+\newcommand{\bbparcurly}[1]{\Bigl\{ #1 \Bigr\}}
+
+\newcommand{\Parround}[1]{\left( #1 \right)}
+\newcommand{\parround}[1]{( #1 )}
+\newcommand{\bparround}[1]{\bigl( #1 \bigr)}
+\newcommand{\bbparround}[1]{\Bigl( #1 \Bigr)}
+
+\newcommand{\Parsquared}[1]{\left[ #1 \right]}
+\newcommand{\parsquared}[1]{[ #1 ]}
+\newcommand{\bparsquared}[1]{\bigl[ #1 \bigr]}
+
+\newcommand{\Parstraight}[1]{\left| #1 \right|}
+\newcommand{\parstraight}[1]{| #1 |}
+\newcommand{\bparstraight}[1]{\bigl| #1 \bigr|}
+
+\newcommand{\Partriangle}[1]{\left< #1 \right>}
+\newcommand{\partriangle}[1]{< #1 >}
+
+
+
+
+\title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
+\author{Severino Da Dalt}
+\institute{Supervised by Lluís Vena Cros}
+\date{\today}
+
+\begin{document}
+
+% Title page
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% ---
+% Table of contents
+\begin{frame}{Table of contents}
+    \begin{enumerate}
+        \item Introduction to Szemerédi's Regularity Lemma
+        \item Stable Graphs and the Stable Regularity Lemma
+        \item Sketch of the Proof of the Stable Regularity Lemma
+        \item Property Testing of $H$-freeness in Stable Graphs
+        \item Conclusion and Future Work
+    \end{enumerate}
+\end{frame}
+
+% ---
+% Regularity
+\begin{frame}{Introduction to Szemerédi's Regularity Lemma}
+    The idea of the SzRL is that all graphs can be partitioned in such a way that most pairs of parts
+    behave in a quasi-random way, a property which is formalized as \emph{regularity}.
+
+    \begin{definition}
+        Given $\epsilon > 0$ and a graph $G$, a pair of (not necessarily disjoint) subsets of vertices $A, B \subseteq G$
+        is said to be \emph{$\epsilon$-regular} if for all $A' \subseteq A$ and $B' \subseteq B$ such that
+        $|A'| \geq \epsilon |A|$ and $|B'| \geq \epsilon |B|$, we have
+        \[
+            |d(A', B') - d(A, B)| \leq \epsilon.
+        \]
+    \end{definition}
+\end{frame}
+
+% Regular partitions
+\begin{frame}{Introduction to Szemerédi's Regularity Lemma}
+    When most of the pairs satisfy this property, we say that the partition is \emph{regular}.
+
+    \begin{definition}
+        Let $G$ be a graph and let $\epsilon > 0$.
+        An \emph{$\epsilon$-regular partition} of $G$ is a partition of its vertex set into $k$ parts
+        $\parcurly{A_1, \ldots, A_k}$ with remainder set $B$ such that:
+        \begin{itemize}
+            \item $|B| \leq \epsilon |G|$, and may be empty.
+            \item All but at most $\epsilon k^2$ of the pairs $(A_i, A_j)$ with $1 \leq i < j \leq k$ are
+                $\epsilon$-regular.
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+% SzRL
+\begin{frame}{Introduction to Szemerédi's Regularity Lemma}
+    \begin{theorem}[Szemerédi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
+        For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
+        such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
+        $\parcurly{A_1, \ldots, A_k}$ and remainder $B$ with $m \leq k \leq M$, with $|A_1| = \dots = |A_k|$.
+    \end{theorem}
+
+    Crucially, the theorem proves that the number of parts $k$ does not grow with the size of the graph,
+    but only depends on $\epsilon$ (and $m$).
+    % The SzRL sees extensive use in combinatorics, number theory, and computer science.
+\end{frame}
+
+% Limitations of SzRL
+\begin{frame}{Introduction to Szemerédi's Regularity Lemma}
+    However, the lemma has two major drawbacks:
+    \begin{enumerate}
+        \item The bound on the number of parts $M$ is a \emph{tower-type} function of $\epsilon$,
+            i.e. a power-tower of height polynomial in $1/\epsilon$.
+            This is unavoidable, as shown by Gowers~\cite{gowers_lower_bound}.
+        \item The partition may contain some irregular pairs.
+            This is also unavoidable, and the half-graph $H_n$ is an example.
+    \end{enumerate}
+\end{frame}
+
+% ---
+
+% half-graph
+\begin{frame}{Stable Graphs and the Stable Regularity Lemma}
+    \emph{Stable} graphs are those that do not contain a \emph{half-graph} as a bi-induced subgraph.
+    \input{pictures/half-graph_presentation}
+\end{frame}
+
+% non-k-order property
+\begin{frame}{Stable Graphs and the Stable Regularity Lemma}
+    \begin{definition} \label{def:k_order_property}
+        Let $G$ be a graph.
+        We say that $G$ has the \emph{$k$-order property} if there exist two sequences of vertices
+        $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
+        for all $i,j \leq k$, $a_i R b_j$ if and only if $i \geq j$.
+        Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
+    \end{definition}
+
+    The two sequences need not to be disjoint, and any combination of edges and non-edges may appear within
+    the vertices of each sequence.
+\end{frame}
+
+% other non-k-orders
+\begin{frame}{Stable Graphs and the Stable Regularity Lemma}
+    \input{pictures/other_k-order_presentation}
+\end{frame}
+
+\begin{frame}{Stable Graphs and the Stable Regularity Lemma}
+    \begin{theorem}[Stable Regularity Lemma,~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:B}
+        Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
+        ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such that ALL pairs of parts
+        are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
+    \end{theorem}
+
+    Notably both limitations of the SzRL are overcome: the bound on the number of parts is
+    polynomial in $1/\epsilon$, and there are no irregular pairs.
+\end{frame}
+
+% ---
+
+% goodness and excellence
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% k-trees
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% relation between k-trees and non-k-order property
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% existence of excellent sets
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% building uneven partition
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% refining to an equitable partition
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% distribute remainder evenly across parts
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% excellence implies regularity and homogeneity
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% final result
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+\end{frame}
+
+% ---
+
+% what is property testing and H-freeness
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+\end{frame}
+
+% previous results with SzRL
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+\end{frame}
+
+% unavoidability implies abundance
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+\end{frame}
+
+% the algorithm
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+\end{frame}
+
+% ---
+
+% limitations of the algorithm
+\begin{frame}{Conclusion and Future Work}
+\end{frame}
+
+% lines of research with Lluis
+\begin{frame}{Conclusion and Future Work}
+\end{frame}
+
+\begin{frame}{Conclusion and Future Work}
+\end{frame}
+
+\begin{frame}{Conclusion and Future Work}
+\end{frame}
+
+% ---
+
+% Thanks
+\begin{frame}
+    \centering
+    \Huge{\textbf{Thank you!}}
+    \vspace{1em}
+
+    \Large{You can now rate the presentation.
+    Was it \emph{good}, \emph{excellent} or \emph{exceptional}?}
+\end{frame}
+
+\end{document}
