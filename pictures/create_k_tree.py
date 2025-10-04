@@ -1,11 +1,19 @@
+PRESENTATION = True
 K=3
 Y_SEP=1.4
 Y_EXP=0.9
-X_SEP=1.4
+if not PRESENTATION:
+    X_SEP=1.4
+else:
+    X_SEP=1.1
 CELL_SIZE=0.5
 NODE_SIZE=0.3
-X_MATRIX_ADJ = -1
-Y_MATRIX_ADJ = 3.7
+if not PRESENTATION:
+    X_MATRIX_ADJ = -1
+    Y_MATRIX_ADJ = 3.7
+else:
+    X_MATRIX_ADJ = -3
+    Y_MATRIX_ADJ = 1
 CAPTION=(f"\\emph{{On the left}}, example of a {K}-tree. \n"
          f"Solid lines show adjacent vertices, and dashed lines show non-adjacent vertices. \n"
          f"Pairs of vertices without a line may or may not be connected. \n"
@@ -13,7 +21,10 @@ CAPTION=(f"\\emph{{On the left}}, example of a {K}-tree. \n"
          f"any combination (e.g. the pair $(c_1, c_{{01}})$). \n"
          f"\\emph{{On the right}}, the corresponding bi-adjacency matrix. ")
 FIG_NAME="k_tree"
-OUTPUT_FILE="pictures/k-tree.tex"
+if not PRESENTATION:
+    OUTPUT_FILE="pictures/k-tree.tex"
+else:
+    OUTPUT_FILE="pictures/k-tree_presentation.tex"
 
 emptyset = r"\emptyset"
 
@@ -43,8 +54,9 @@ def main():
     nodes = ""
     labels = ""
     edges = ""
+    caption_line = f"\\caption{{{CAPTION}}}" if not PRESENTATION else ""
     suffix = f"""    \\end{{tikzpicture}}
-    \\caption{{{CAPTION}}}
+    {caption_line}
     \\label{{fig:{FIG_NAME}}}
 \\end{{figure}}
 """

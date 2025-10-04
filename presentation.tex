@@ -3,10 +3,13 @@
 \usecolortheme{default}
 
 \usepackage{amsmath, amssymb}
+\usepackage{mathtools}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{fit, positioning, shapes.geometric}
 \usepackage{booktabs} % Added for table styling
+\usetikzlibrary{fit, decorations.pathreplacing}
+\usetikzlibrary{overlay-beamer-styles}
 
 
 
@@ -157,26 +160,166 @@
 
 % goodness and excellence
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{definition}[Good,~\cite{regularity_lemmas_for_stable_graphs}] \label{def:epsilon_good}
+        Let $G$ be a finite graph with the non-$k_*$-property.
+        We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
+        $t = t(b, A) \in \parcurly{0, 1}$ satisfies
+        $\parstraight{\overline{B}_{A,b}} = \parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
+    \end{definition}
+
+    \begin{definition}[Excellent,~\cite{regularity_lemmas_for_stable_graphs}] \label{def:epsilon_excellent}
+        Let $G$ be a finite graph with the non-$k_*$-property.
+        We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
+        $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $\parstraight{\parcurly{a \in A \mid t(a,B) \neq t(A,B)}} < \epsilon |A|$.
+        In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
+    \end{definition}
+\end{frame}
+
+% example
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    % 1
+    \visible<1->{
+        \input{pictures/non-monotonic_example_presentation}
+    }
+    % here explain:
+    % - A is 1/5-good but B is not
+    % - A is 1/5-excellent
+    % - A is not 2/5-excellent, because B is 2/5-good but half of A has truth value 0 wrt B, and the other half 1
+    % - this last fact also introduces a discrepancy in the original, as it is assumed that \epsilon-excellence is
+    %   monotonic, which is not the case
+
+    % 2
+    \visible<2-> {\centering Do excellent subsets always exist?}
 \end{frame}
 
 % k-trees
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{definition}[$k$-tree]<1-> \label{def:k-tree}
+        A \emph{$k$-tree} in $G$ is an ordered pair $H = (\overline{c},\overline{b})$ comprising two (not necessarily
+        disjoint) sequences:
+        \begin{itemize}
+            \item $\overline{c} = \parcurly{ c_\eta \in G \mid \eta \in \parcurly{0,1}^{<k} }$, the set of \emph{nodes} and
+            \item $\overline{b} = \parcurly{ b_\rho \in G \mid \rho \in \parcurly{0,1}^k }$, the set of \emph{branches},
+        \end{itemize}
+        satisfying that for all $\eta \in \parcurly{0,1}^{<k}$ and $\rho \in \parcurly{0,1}^k$,
+        if for some $\ell \in \parcurly{0, 1}$ we have $\eta \frown \Partriangle{\ell} \triangleleft \rho$, then
+        $b_\rho R c_\eta \equiv \ell$.
+    \end{definition}
+
+    \begin{definition}[Tree bound]<2-> \label{def:tree_bound}
+        Suppose $G$ is a finite graph.
+        We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal positive integer such that there is no
+        $k_{**}$-tree $H = (\overline{c},\overline{b})$ in $G$.
+    \end{definition}
 \end{frame}
 
-% relation between k-trees and non-k-order property
+% example of k-tree
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \input{pictures/k-tree_presentation}
+\end{frame}
+
+% relation between k-trees and non-k-order property: k-tree in 2^k-order
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \input{pictures/half-graph_implies_k-tree_presentation}
+\end{frame}
+
+% relation between k-trees and non-k-order property: 2^k-order in k-tree
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{theorem}[Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
+        \visible<1-> {
+            If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
+        }
+
+        \visible<2-> {
+            On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-1$, then it has the $k_*$-order
+            property.
+        }
+    \end{theorem}
 \end{frame}
 
 % existence of excellent sets
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    % 1
+    \begin{lemma}[Existence of excellent subsets,~\cite{regularity_lemmas_for_stable_graphs}]<1-> \label{lem:existance_of_excellent_subsets}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\zeta \leq \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
+        Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists an $(\epsilon, \zeta)$-excellent
+        subset $A' \subseteq A$ such that $|A'| \geq \epsilon^{k_{**}-1} |A|$.
+    \end{lemma}
+
+    % 2
+    \visible<2-> {
+        TO DO
+    }
+\end{frame}
+
+% existence of excellent sets: proof sketch
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \input{pictures/k-tree_for_existence_presentation}
+\end{frame}
+
+% we can actually ensure size is in a given sequence of sizes with not much extra work
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{lemma}[Existence of excellent subsets,~\cite{regularity_lemmas_for_stable_graphs}]
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
+        Then, for every $A \subseteq G$ with $|A| \geq m_0$ there exists
+        $\parround{\frac{m_{\ell+1}}{m_{\ell}}, \zeta}$-excellent subset $A' \subseteq A$ such that $|A'| = m_\ell$ for
+        some $\ell \in \parcurly{0, \dots, k_{**}-1}$.
+    \end{lemma}
 \end{frame}
 
 % building uneven partition
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{lemma} \label{lem:existance_of_excellent_partition}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\epsilon \in \parround{0, \frac{1}{2}}$ and $\epsilon' \leq \frac{1}{2^{k_{**}}}$.
+        Let $A \subseteq G$ such that $|A| = n \geq m_0$.
+        Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
+        $\epsilon m_{\ell} \geq m_{\ell+1}$ for all $\ell \in \parcurly{0, \dots, k_{**}-1}$ and $m_{k_{**}} \geq 1$.
+        Denote $m_* \coloneqq m_0$ and $m_{**} \coloneqq m_{k_{**}}$.
+        Then, there is a partition $\overline{A} = \Partriangle{A_j \mid j \in \parcurly{1, \dots, j(*)}}$ with remainder
+        $B = A \setminus \bigcup_{j < j(*)} A_j$ such that:
+        \begin{enumerate}
+            \item For all $j \in \parcurly{1, \dots, j(*)}$, $|A_j| \in \Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}-1}}$.
+            \item For all $i \neq j \in \parcurly{1, \dots, j(*)}$, $A_i \cap A_j = \emptyset$.
+            \item For all $j \in \parcurly{1, \dots, j(*)}$, $A_j$ is $\parround{\epsilon, \epsilon'}$-excellent.
+            \item $|B| < m_*$.
+        \end{enumerate}
+    \end{lemma}
 \end{frame}
 
 % refining to an equitable partition
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        \textbf{Question:} Are subsets of excellent sets still excellent?
+    }
+
+    \visible<2-> {
+        \textbf{Answer:} With high probability, yes, but with a small loss in excellence.
+    }
+
+    \begin{lemma}<3->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\epsilon \in \parround{0, \frac{1}{2}}$,
+        $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
+        $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
+        if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
+        then a subset $A' \subseteq A$ of size $m$, sampled uniformly at random, is $(\epsilon + \zeta)$-good with probability $1-\xi$.
+    \end{lemma}
+
+    \begin{lemma}<4->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
+        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
+        \begin{itemize}
+            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
+            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
+        \end{itemize}
+        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
 \end{frame}
 
 % distribute remainder evenly across parts
