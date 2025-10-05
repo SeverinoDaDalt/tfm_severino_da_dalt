@@ -19,9 +19,14 @@
     }
     \uncover<2-> {
         \node[vertex] (c_) at (4.4,0.0) {};
+    }
+    \uncover<2-7> {
         \node[label_c] at (c_.south) {$B_{\emptyset}$};
     }
-    \uncover<7-> {
+    \uncover<8-> {
+        \node[label_c] at (c_.south) {$b_{\emptyset}$};
+    }
+    \uncover<7> {
         \node[label_b] at (b_000.north) {$A_{000}$};
         \node[label_b] at (b_001.north) {$A_{001}$};
         \node[label_b] at (b_010.north) {$A_{010}$};
@@ -31,17 +36,15 @@
         \node[label_b] at (b_110.north) {$A_{110}$};
         \node[label_b] at (b_111.north) {$A_{111}$};
     }
-    \uncover<4-> {
-        \node[vertex] (c_0) at (2.2,1.26) {};
-        \node[vertex] (c_1) at (6.6000000000000005,1.26) {};
-        \node[label_c] at (c_0.south) {$B_{0}$};
-        \node[label_c] at (c_1.south) {$B_{1}$};
-    }
-    \uncover<6-> {
-        \node[vertex] (c_00) at (1.1,2.268) {};
-        \node[vertex] (c_01) at (3.3000000000000003,2.268) {};
-        \node[vertex] (c_10) at (5.5,2.268) {};
-        \node[vertex] (c_11) at (7.700000000000001,2.268) {};
+    \uncover<8-> {
+        \node[label_b] at (b_000) {$a_{000}$};
+        \node[label_b] at (b_001) {$a_{001}$};
+        \node[label_b] at (b_010) {$a_{010}$};
+        \node[label_b] at (b_011) {$a_{011}$};
+        \node[label_b] at (b_100) {$a_{100}$};
+        \node[label_b] at (b_101) {$a_{101}$};
+        \node[label_b] at (b_110) {$a_{110}$};
+        \node[label_b] at (b_111) {$a_{111}$};
     }
     \uncover<3-> {
         \draw[dashed edge] (c_) -- (b_000);
@@ -53,6 +56,18 @@
         \draw[solid edge] (c_) -- (b_110);
         \draw[solid edge] (c_) -- (b_111);
     }
+    \uncover<4-> {
+        \node[vertex] (c_0) at (2.2,1.26) {};
+        \node[vertex] (c_1) at (6.6000000000000005,1.26) {};
+    }
+    \uncover<4-7> {
+        \node[label_c] at (c_0.south) {$B_{0}$};
+        \node[label_c] at (c_1.south) {$B_{1}$};
+    }
+    \uncover<8-> {
+        \node[label_c] at (c_0.south) {$b_{0}$};
+        \node[label_c] at (c_1.south) {$b_{1}$};
+    }
     \uncover<5-> {
         \draw[dashed edge] (c_0) -- (b_000);
         \draw[dashed edge] (c_0) -- (b_001);
@@ -62,6 +77,12 @@
         \draw[dashed edge] (c_1) -- (b_101);
         \draw[solid edge] (c_1) -- (b_110);
         \draw[solid edge] (c_1) -- (b_111);
+    }
+    \uncover<6-> {
+        \node[vertex] (c_00) at (1.1,2.268) {};
+        \node[vertex] (c_01) at (3.3000000000000003,2.268) {};
+        \node[vertex] (c_10) at (5.5,2.268) {};
+        \node[vertex] (c_11) at (7.700000000000001,2.268) {};
     }
     \uncover<7-> {
         \draw[dashed edge] (c_00) -- (b_000);
@@ -73,13 +94,19 @@
         \draw[dashed edge] (c_11) -- (b_110);
         \draw[solid edge] (c_11) -- (b_111);
     }
-    \uncover<6-> {
+    \uncover<6-7> {
         \node[label_c] at (c_00.south) {$B_{00}$};
         \node[label_c] at (c_01.south) {$B_{01}$};
         \node[label_c] at (c_10.south) {$B_{10}$};
         \node[label_c] at (c_11.south) {$B_{11}$};
     }
-    \uncover<5-> {
+    \uncover<8-> {
+        \node[label_c] at (c_00.south) {$b_{00}$};
+        \node[label_c] at (c_01.south) {$b_{01}$};
+        \node[label_c] at (c_10.south) {$b_{10}$};
+        \node[label_c] at (c_11.south) {$b_{11}$};
+    }
+    \uncover<5-7> {
         \node[draw, rounded corners, fit=(b_000) (b_001), inner sep=.7mm] (box00) {};
         \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box00.north east) -- (box00.north west)
             node [above=8mm, midway] {$A_{00}$};
@@ -93,7 +120,7 @@
         \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box11.north east) -- (box11.north west)
             node [above=8mm, midway] {$A_{11}$};
     }
-    \uncover<3-> {
+    \uncover<3-7> {
         \node[draw, rounded corners, fit=(box00) (box01), inner sep=.7mm] (box0) {};
         \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box0.north east) -- (box0.north west)
             node [above=14mm, midway] {$A_{0}$};
@@ -101,10 +128,11 @@
         \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box1.north east) -- (box1.north west)
             node [above=14mm, midway] {$A_{1}$};
     }
-    \uncover<1-> {
+    \uncover<1-7> {
         \node[draw, rounded corners, fit=(box0) (box1), inner sep=.7mm] (box) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=17mm}] (box.north east) -- (box.north west)
-            node [above=20mm, midway] {$A_\emptyset \coloneqq A$};
+%        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=17mm}] (box.north east) -- (box.north west)
+%            node [above=20mm, midway] {$A_\emptyset \coloneqq A$};
+        \node[left, font=\small] at (box.west) {$A_\emptyset$};
     }
     \end{tikzpicture}
     

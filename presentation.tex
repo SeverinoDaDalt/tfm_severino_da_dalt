@@ -10,7 +10,7 @@
 \usepackage{booktabs} % Added for table styling
 \usetikzlibrary{fit, decorations.pathreplacing}
 \usetikzlibrary{overlay-beamer-styles}
-
+\usepackage{bbm}
 
 
 \newcommand{\Parcurly}[1]{\left\{ #1 \right\}}
@@ -34,7 +34,10 @@
 \newcommand{\Partriangle}[1]{\left< #1 \right>}
 \newcommand{\partriangle}[1]{< #1 >}
 
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 
+\newcommand{\naturals}{\mathbb{N}}
 
 
 \title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
@@ -322,16 +325,226 @@
     \end{lemma}
 \end{frame}
 
-% distribute remainder evenly across parts
+% proof sketch of good subsets in good sets: 1
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{center}
+        \begin{tikzpicture}
+            \centering
+            \visible<3-> {
+                \node[draw, circle, fill=orange, fill opacity=0.5, minimum size=3cm] (A') at (1,0) {};
+            }
+            \visible<3-> {
+                \node at (A'.center) [below right] {$A'$};
+            }
+            \visible<2-> {
+                \node[draw, circle, minimum size=3cm] (BAb) at (0,1) {};
+                \node at (BAb.center) [above left] {$\overline{B}_{A,b}$};
+            }
+            \visible<1-> {
+                \node (A) [draw, thick, circle, inner sep=4pt, fit=(A') (BAb), label=45:$A$] {};
+                \node[circle, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b) at (5,0.5) {$b$};
+            }
+            \visible<2-> {
+                \draw[dashed] (b) -- (BAb.north east);
+                \draw[dashed] (b) -- (BAb.south east);
+            }
+            \visible<4-> {
+                \draw[draw=none] (BAb.center) -- node[pos=0.55] (M) {$\overline{B}_{A,b} \cap A'$} (A'.center);
+            }
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
+
+% proof sketch of good subsets in good sets: 2
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        The probability of failure is small for each $b$:
+        \[
+            \mathbb{P}\parround{X_{A,b,A'}} \leq \mathbb{P}\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
+                \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \zeta} |A'|} \leq e^{-2\zeta^2 |A'|}
+        \]
+    }
+    \visible<2-> {
+        Too many $b$'s?
+    }
+    \begin{lemma}<3-> \label{lem:k_order_property_bounds_BAbs}
+        Let $G$ be a graph with the (disjoint) non-$k$-order property.
+        Then, for any finite non-trivial $A' \subseteq G$,
+        \[
+            \parstraight{\parcurly{\overline{B}_{A',b} \mid b \in G}} \leq |A'|^k.
+        \]
+    \end{lemma}
+\end{frame}
+
+% proof sketch of good subsets in good sets: 3
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        Given the random variable
+        \[
+            X = \sum_{\text{bad } \overline{B}_{A,b}} \mathbbm{1}_{X_{A,b,A'}},
+        \]
+    }
+    \visible<2-> {
+        we can compute its expectation
+        \[
+            \mathbb{E}[X] = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
+                = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{P}\parround{X_{A,b,A'}}
+                \leq \sum_{\text{bad } \overline{B}_{A,b}} e^{-2\zeta^2 m},
+        \]
+    }
+    \visible<3-> {
+        and by the First Moment Method
+        \[
+            \mathbb{P}\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
+        \]
+    }
+\end{frame}
+
+% proof sketch of excellent subsets in excellent sets: 1
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{lemma}<1->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
+        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
+        \begin{itemize}
+            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
+            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
+        \end{itemize}
+        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
+
+    \textbf{Proof idea:} given a good set $B$, the number of exceptional
+    edges between $A$ and $B$, and thus between $A'$ and $B$, is small, since $A$ is $(\epsilon, \epsilon')$-excellent.
+    Also, since $B$ is good, each vertex in $A'$ either has few or many exceptional edges with $B$.
+    These two facts together imply that the number of vertices in $A'$ that do not behave as the majority is small.
+\end{frame}
+
+% partition excellent part into equally-sized excellent parts
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    Now, we know that random subsets of excellent sets are (slightly less) excellent with high probability.
+    We can use this fact with a simple Union Bound argument to prove the following result.
+
+    \begin{lemma}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
+        $\epsilon < \epsilon'$ small enough ($\leq \epsilon_1(\zeta, \zeta')$ from the previous point) there exists
+        $N = N\parround{k_{*}, \zeta', r}$ such that: if $|A| = n > N$, $r$ divides $n$ and $A$ is
+        $\parround{\epsilon, \epsilon'}$-excellent, then there exists a partition into $r$ disjoint pieces of equal
+        size, each of which is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
+\end{frame}
+
+% partition excellent part into equally-sized excellent parts
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    Applying this result to the previously obtained uneven partition, and carefully choosing some parameters,
+    we obtain an even partition into excellent parts.
+    \begin{lemma}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Let $\epsilon'$ and $\epsilon$ be two real numbers such that
+        $\epsilon' \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $\epsilon \leq \frac{1}{4k} \epsilon'$ for some $k > 1$.
+        Also, let $m_*$, $m_{**}$ and $q$ be natural numbers such that $q \geq \ceil{\frac{1}{\epsilon}}$,
+        $m_{**} > \frac{N \parround{k, k_*, \epsilon', \frac{m_*}{m_{**}}}}{q}$ and $m_* \coloneqq q^{k_{**}} m_{**}$.
+        Then, for any $A \subseteq G$ with $|A| = n \geq m_*$ there exists a partition
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with remainder $B = A \setminus \bigcup \overline{A}$ such that:
+        \begin{enumerate}
+            \item $i(*) \leq \frac{n}{m_{**}}$.
+            \item For all $i \in \parcurly{1, \dots, i(*)}$, $|A_i| = m_{**}$.
+            \item For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\frac{\epsilon'}{k}, \epsilon'}$-excellent.
+            \item$|B| < m_*$.
+        \end{enumerate}
+    \end{lemma}
+    But we still have some remainder.
+\end{frame}
+
+% getting rid of remainder
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    This can be addressed by uniformly distributing the vertices of the remainder among the parts.
+    This, again, slightly reduces the excellence of each part.
+    \begin{lemma}
+        Under the same condition of the previous lemma, we can get a
+        partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$ with no remainder, such that:
+        \begin{enumerate}
+            \item For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item For all $i, j \in \parcurly{1, \dots, i(*)}$, $A_i \cap A_j = \emptyset$.
+            \item For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\parround{\epsilon'', \epsilon'}$-excellent, for some $\epsilon''$
+                satisfying
+                \[
+                    0 < \epsilon'' \leq \frac{\frac{\epsilon'}{k} m_{**} + \ceil{\frac{m_*}{i(*)}}}{m_{**} + \ceil{\frac{m_*}{i(*)}}}.
+                \]
+            \item $A = \bigcup \overline{A}$.
+        \end{enumerate}
+    \end{lemma}
+\end{frame}
+
+% recap
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    By carefully choosing hyperparameters, we can rephrase the result to only depend on the stability constant $k_*$,
+    the desired excellence $\epsilon$ and the minimum partition size $m$.
+    \begin{theorem}
+        Let $k_*$ be given.
+        Then, for all $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$ and $m > 1$, there is $M = M\parround{\epsilon, m, k_*}$
+        and $N = N\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property, and
+        every $A \subseteq G$ with $|A| \geq N$, there exists a partition $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, i(*)}}$
+        of $A$, such that:
+        \begin{enumerate}
+            \item The number of parts is bounded by
+                $m \leq i(*) \leq M \coloneqq \max \parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
+            \item For all $i, j \in \parcurly{1, \dots, i(*)}$, $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$.
+            \item For all $i \in \parcurly{1, \dots, i(*)}$, $A_i$ is $\epsilon$-excellent.
+        \end{enumerate}
+    \end{theorem}
 \end{frame}
 
 % excellence implies regularity and homogeneity
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    % Now one may ask:
+    \visible<1-> {
+        \textbf{Question:} Why do we care about excellence?
+    }
+
+    \visible<2-> {
+        \textbf{Answer:} A pair of excellent sets form a regular pair which is either almost full or almost empty.
+    }
+
+    \begin{lemma}<3->
+        For any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
+        and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
+        \begin{enumerate}
+            \item $\parround{A,B}$ is $\epsilon$-regular.
+            \item If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
+                $B' \in \parsquared{B}^{\geq \epsilon \parstraight{B}}$, then $d \parround{A',B'} < \epsilon$ or
+                $d \parround{A',B'} \geq 1 - \epsilon$.
+        \end{enumerate}
+    \end{lemma}
 \end{frame}
 
 % final result
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{theorem}[Stable Regularity Lemma,~\cite{regularity_lemmas_for_stable_graphs}]
+        For every $k_* \in \naturals$ and
+        $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
+        and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
+        and every $A \subseteq G$ with $|A| \geq N$, the following holds.
+        There exists $m < \ell < M$ and a partition
+        $\overline{A} = \Partriangle{A_i \mid i \in \parcurly{1, \dots, \ell}}$ of $A$ such that each $A_i$ is
+        $\frac{\epsilon^2}{2}$-excellent and, for every (not necessarily distinct) $i, j \in \parcurly{1, \dots, \ell}$,
+        \begin{enumerate}
+            \item $\parstraight{\parstraight{A_i}- \parstraight{A_j}} \leq 1$, i.e. the partition is equitable.
+            \item $\parround{A_i, A_j}$ is $\epsilon$-regular, and moreover if
+                $B_i \in \parsquared{A_i}^{\geq \epsilon \parstraight{A_i}}$ and $B_j \in \parsquared{A_j}^{\geq \epsilon \parstraight{A_j}}$,
+                then either $d\parround{B_i, B_j} < \epsilon$ or $d\parround{B_i, B_j} \geq 1 - \epsilon$.
+            \item If $\epsilon \leq \min \parcurly{\frac{1}{5}, \frac{1}{2^{k_{**}}}}$, then
+                $M \leq \max \parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
+        \end{enumerate}
+    \end{theorem}
+\end{frame}
+
+% final result
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    The fact that the pairs are either almost empty or almost full is not a core property of stable graphs,
+    and is in fact proven in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} to be satisfied by a
+    larger class of graphs, the graphs with bounded \emph{VC-dimension}.
+    However, such graphs still require irregular pairs, something that stable graphs completely avoid.
 \end{frame}
 
 % ---
