@@ -13,6 +13,20 @@
 \usepackage{bbm}
 
 
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\makeatletter
+\AddToHook{env/algorithmic/before}{\def\@currentcounter{ALG@line}}
+\makeatother
+\usepackage[nameinlink]{cleveref}  % this is for a lot of things, not only algorithms
+\crefalias{ALG@line}{line}
+\makeatletter
+\renewcommand{\ALG@beginalgorithmic}{\fontsize{6.5}{4}\selectfont}
+\makeatother
+\algrenewcommand\alglinenumber[1]{\fontsize{6.5}{4}\selectfont #1:}
+
+
 \newcommand{\Parcurly}[1]{\left\{ #1 \right\}}
 \newcommand{\parcurly}[1]{\{ #1 \}}
 \newcommand{\bparcurly}[1]{\bigl\{ #1 \bigr\}}
@@ -38,6 +52,9 @@
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 
 \newcommand{\naturals}{\mathbb{N}}
+
+
+\bibliographystyle{plain}
 
 
 \title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
@@ -115,7 +132,7 @@
     \begin{enumerate}
         \item The bound on the number of parts $M$ is a \emph{tower-type} function of $\epsilon$,
             i.e. a power-tower of height polynomial in $1/\epsilon$.
-            This is unavoidable, as shown by Gowers~\cite{gowers_lower_bound}.
+            This is unavoidable, as shown by Gowers~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}.
         \item The partition may contain some irregular pairs.
             This is also unavoidable, and the half-graph $H_n$ is an example.
     \end{enumerate}
@@ -345,8 +362,8 @@
                 \node[circle, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b) at (5,0.5) {$b$};
             }
             \visible<2-> {
-                \draw[dashed] (b) -- (BAb.north east);
-                \draw[dashed] (b) -- (BAb.south east);
+                \draw[dashed, black!40] (b) -- (BAb.north east);
+                \draw[dashed, black!40] (b) -- (BAb.south east);
             }
             \visible<4-> {
                 \draw[draw=none] (BAb.center) -- node[pos=0.55] (M) {$\overline{B}_{A,b} \cap A'$} (A'.center);
@@ -549,39 +566,323 @@
 
 % ---
 
-% what is property testing and H-freeness
+% what is property testing and H-freeness:1
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \begin{definition}<1->
+        We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a graph property $\mathcal{P}$ if no adding or
+        removing of up to $\epsilon {|G| \choose 2}$ edges in $G$ results in the graph satisfying the property.
+    \end{definition}
+
+    \begin{definition}<2->
+        An \emph{$\epsilon$-test} $\mathcal{A}$ deciding a graphs property $\mathcal{P}$ with query complexity
+        $q(n)$ is a randomized algorithm that, on input graph $G$ of size $n$,
+        satisfies the following.
+        \begin{enumerate}
+            \item If $G \in \mathcal{P}$, then $\mathbb{P}\parround{\mathcal{A} \text{ accepts } G} \geq \frac{2}{3}$.
+            \item If $G$ is $\epsilon$-far from satisfying $\mathcal{P}$,
+                then $\mathbb{P}\parround{\mathcal{A} \text{ rejects } G} \geq \frac{2}{3}$.
+        \end{enumerate}
+        The query complexity $q(n)$ is the maximum number of queries the algorithm can make, and (in our case)
+        a query discerns whether a desired pair of vertices in the input graph $G$ is adjacent or not.
+    \end{definition}
 \end{frame}
 
-% previous results with SzRL
+% what is property testing and H-freeness:2
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \begin{definition}<1->
+        We say that a property $\mathcal{P}$ is \emph{testable} if there exists an $\epsilon$-test deciding $\mathcal{P}$
+        with a constant query-complexity with respect to the size of the input graph, that is, it only depends on the
+        parameter $\epsilon$.
+    \end{definition}
+
+    \visible<2-> {
+        A classic example of a testable property is $H$-freeness, for a fixed graph $H$, i.e. the property of not
+        containing $H$ as an induced subgraph.
+    }
+
+    \visible<3-> {
+        Alon et al.~\cite{efficient_testing_of_large_graphs} proved that $H$-freeness is testable for every $H$.
+    }\visible<4-> {Later, Alon and Shapira~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}
+        generalize this result to any hereditary property.% Properties closed under vertex deletion.
+    }
+
+    \begin{theorem}[Alon \& Shapira Theorem]<4->
+        Every hereditary graph property is testable (with one-sided error).
+    \end{theorem}
 \end{frame}
 
-% unavoidability implies abundance
+% unavoidability and abundance
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    The main theoretical result we require to build our tester is that if a graph is \emph{far} from being $H$-free,
+    then it contains many copies of $H$.
+
+    \begin{definition} \label{def:unavoidable}
+        A graph $H$ is \emph{$\gamma$-unavoidable} in a graph $G$ if no adding or removing of up to $\gamma {|G| \choose 2}$
+        edges in $G$ results in $H$ not appearing as an induced subgraph of $G$.
+    \end{definition}
+
+    \begin{definition} \label{def:abundant}
+        A graph $H$ is \emph{$\eta$-abundant} in a graph $G$ if $G$ contains at least $\eta |G|^{|H|}$
+        induced copies of $H$.
+    \end{definition}
+\end{frame}
+
+% unavoidability implies abundance:1
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \begin{lemma}[Unavoidability implies abundance,~\cite{efficient_testing_of_large_graphs}]
+        For every real number $\delta \in \parround{0, 1}$ and integer $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
+        $\eta = \eta \parround{\delta, \ell}$ satisfying the following property:
+
+        Let $H$ be a graph with vertices $v_1, \dots,v_\ell$ and let $V_1, \dots, V_\ell$ be an $\ell$-tuple of (not necessarily disjoint)
+        sets of vertices of a graph $G$ such that for every $1 \leq i < i' \leq \ell$, the pair $\parround{V_i, V_{i'}}$
+        is $\epsilon$-regular, with density at least $\delta$ if $v_i v_{i'}$ is an edge of $H$, and at most $1 - \delta$
+        if $v_i v_{i'}$ is not an edge of $H$.
+        Then, at least $\eta \prod_{i=1}^\ell \parstraight{V_i}$ of $\ell$-tuples $w_1 \in V_1, \dots, w_\ell \in V_\ell$
+        span induced copies of $H$ where $w_i$ plays the role of $v_i$.
+    \end{lemma}
+\end{frame}
+
+% unavoidability implies abundance:2
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \begin{theorem} \label{thm:property_testing_with_stable_partitions}
+        For every $k_*, \gamma, \ell$ there is a $\eta(k_*, \gamma, \ell)$ such that if $H$ is a graph with $\ell$
+        vertices, $G$ has the non-$k_*$-order property and $H$ is $\gamma$-unavoidable in $G$, then $H$ is
+        $\eta$-abundant in $G$.
+    \end{theorem}
+\end{frame}
+
+% unavoidability implies abundance:3 (proof sketch)
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \centering
+    \begin{tikzpicture}
+        \def\radius{1.5cm}
+        \foreach \i in {1,...,6} {
+            \node[circle, thick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a\i) at ({60 + 360/6 * (\i - 1)}:\radius) {};
+        }
+        \draw[thick] (a1) -- (a2);
+        \draw[thick] (a1) -- (a3);
+        \draw[thick] (a1) -- (a4);
+        \draw[dashed, black!40] (a1) -- (a5);
+        \draw[dashed, black!40] (a1) -- (a6);
+        \draw[thick] (a2) -- (a3);
+        \draw[thick] (a2) -- (a4);
+        \draw[dashed, black!40] (a2) -- (a5);
+        \draw[dashed, black!40] (a2) -- (a6);
+        \draw[thick] (a3) -- (a4);
+        \draw[dashed, black!40] (a3) -- (a5);
+        \draw[dashed, black!40] (a3) -- (a6);
+        \draw[thick] (a4) -- (a5);
+        \draw[thick] (a4) -- (a6);
+        \draw[dashed, black!40] (a5) -- (a6);
+        \node at (0, -2) {$H$};
+    \end{tikzpicture}
+\end{frame}
+
+% unavoidability implies abundance:3 (proof sketch)
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \centering
+    \begin{tikzpicture}
+        \visible<1,2,5> {
+            \node at (-1.5, 5) {$\underline{G}$};
+        }
+        \visible<3,4> {
+            \node at (-1.5, 5) {$\underline{G}'$};
+        }
+        \visible<1-> {
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (0, 0) {$a_1$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (-1.414, 1.414) {$a_2$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (-1.061, 0.354) {$a_3$};
+            \node (A) [draw, thick, circle, inner sep=5pt, fit=(a1) (a2) (a3), label=135:$A$] {};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b1) at (5, 1.414) {$b_1$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b2) at (3.586, 0) {$b_2$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b3) at (4.646, 0.354) {$b_3$};
+            \node (A) [draw, thick, circle, inner sep=5pt, fit=(b1) (b2) (b3), label=45:$B$] {};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (c1) at (0.7925, 4.33) {$c_1$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (c2) at (2.7925, 4.33) {$c_2$};
+            \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (c3) at (1.7925, 4.83) {$c_3$};
+            \node (A) [draw, thick, circle, inner sep=5pt, fit=(c1) (c2) (c3), label=45:$C$] {};
+            \draw[semithick] (a1) -- (a2) -- (a3) -- (a1);
+            \draw[semithick] (b1) -- (b2) -- (b3) -- (b1);
+            \draw[dashed, black!40] (c1) -- (c2) -- (c3) -- (c1);
+            \draw[semithick] (a1) -- (b1);
+            \draw[semithick] (a1) -- (b2);
+            \draw[semithick] (a1) -- (b3);
+            \draw[semithick] (a2) -- (b1);
+            \draw[semithick] (a2) -- (b2);
+            \draw[semithick] (a2) -- (b3);
+        }
+        \visible<1,5> {
+            \draw[dashed, black!40] (a3) -- (b1);
+        }
+        \visible<1-> {
+            \draw[semithick] (a3) -- (b2);
+            \draw[semithick] (a3) -- (b3);
+            \draw[dashed, black!40] (b1) -- (c1);
+            \draw[dashed, black!40] (b1) -- (c2);
+        }
+        \visible<1,5> {
+            \draw[semithick] (b1) -- (c3);
+        }
+        \visible<1-> {
+            \draw[dashed, black!40] (b2) -- (c1);
+            \draw[dashed, black!40] (b2) -- (c2);
+            \draw[dashed, black!40] (b2) -- (c3);
+            \draw[dashed, black!40] (b3) -- (c1);
+            \draw[dashed, black!40] (b3) -- (c2);
+            \draw[dashed, black!40] (b3) -- (c3);
+            \draw[semithick] (c1) -- (a1);
+            \draw[semithick] (c1) -- (a2);
+            \draw[semithick] (c1) -- (a3);
+            \draw[semithick] (c2) -- (a1);
+            \draw[semithick] (c2) -- (a2);
+            \draw[semithick] (c2) -- (a3);
+            \draw[semithick] (c3) -- (a1);
+        }
+        \visible<1,5> {
+            \draw[dashed, black!40] (c3) -- (a2);
+        }
+        \visible<1-> {
+            \draw[semithick] (c3) -- (a3);
+        }
+        \visible<2> {
+            \draw[semithick, dashed, orange!70!red] (a3) -- (b1);
+            \draw[semithick, orange!70!red] (b1) -- (c3);
+            \draw[semithick, dashed, orange!70!red] (c3) -- (a2);
+        }
+        \visible<3,4> {
+            \draw[semithick] (a3) -- (b1);
+            \draw[dashed, black!40] (b1) -- (c3);
+            \draw[semithick] (c3) -- (a2);
+        }
+        \visible<4-> {
+            \draw[semithick, orange!70!red] (a1) -- (a2);
+            \draw[semithick, orange!70!red] (a1) -- (b2);
+            \draw[semithick, orange!70!red] (a1) -- (b3);
+            \draw[semithick, orange!70!red] (a2) -- (b2);
+            \draw[semithick, orange!70!red] (a2) -- (b3);
+            \draw[semithick, orange!70!red] (b2) -- (b3);
+            \draw[semithick, orange!70!red] (a2) -- (c1);
+            \draw[semithick, orange!70!red] (a2) -- (c2);
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (0, 0) {$a_1$};
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (-1.414, 1.414) {$a_2$};
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b2) at (3.586, 0) {$b_2$};
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b3) at (4.646, 0.354) {$b_3$};
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (c1) at (0.7925, 4.33) {$c_1$};
+            \node[circle, semithick, text=orange!70!red, draw=orange!70!red, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (c2) at (2.7925, 4.33) {$c_2$};
+        }
+    \end{tikzpicture}
 \end{frame}
 
 % the algorithm
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \begin{algorithm}[H]
+        \caption{$\epsilon$-test $\mathcal{A}$ for deciding $H$-freeness}
+        \label{alg:h-freeness_tester}
+        \begin{algorithmic}[1]
+            \Require a graph $H$ of size $\ell$, a natural number $k_*$ and a real number $\epsilon > 0$.
+            \Require an oracle $\mathcal{O}$ accepting queries of whether two vertices of a graph $G$ are adjacent.
+                The graph $G$ has the non-$k_*$-order property, and only its size $n$ is known.
+            \State $t \leftarrow \ell \log\parround{\frac{2}{3}} /
+                \log\parround{1 - \eta(k_*, \epsilon, \ell)}$ \Comment{
+                    Compute sample size $t$}
+            \If{$n < \ell$} \Comment{Check if $G$ is large enough to contain $H$}
+                \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:G_smaller_then_H}
+            \ElsIf{$n < t$} \Comment{Check if $G$ is small enough to query all edges}
+                \State query all pairs of vertices of $G$ to $\mathcal{O}$
+                \If{$\exists v_{i_1}, \dots, v_{i_\ell} \in G$ such that
+                        $\parcurly{v_{i_1}, \dots, v_{i_\ell}}$ induces a copy of $H$ in $G$}
+                    \State $\mathcal{A}$ \emph{accepts} $G$ \label{line:G_small_enough_found_H}
+                \Else
+                    \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:G_small_enough_not_found_H}
+                \EndIf
+            \Else \label{line:random_sampling} \Comment{Sample $t$ vertices uniformly at random, without repetitions}
+                \State $S \leftarrow \emptyset$
+                \While{$i \leq t$}
+                    \State $s_{i} \sim G$
+                    \While{$s_i \in S$} \Comment{Repeat until a new vertex is sampled}
+                        \State $s_{i} \sim G$
+                    \EndWhile
+                    \State $S \leftarrow S \cup \parcurly{s_i}$
+                \EndWhile
+                \State query all pairs of vertices of $S$ to $\mathcal{O}$
+                \If{$\exists v_1, \dots, v_\ell \in S$ such that
+                        $\parcurly{v_1, \dots, v_\ell}$ induces a copy of $H$ in $G$}
+                    \State $\mathcal{A}$ \emph{accepts} $G$ \label{line:found_H}
+                \Else
+                    \State $\mathcal{A}$ \emph{rejects} $G$ \label{line:not_found_H}
+                \EndIf
+            \EndIf
+        \end{algorithmic}
+    \end{algorithm}
+\end{frame}
+
+% the bounds
+\begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
+    \footnotesize
+    \visible<1-> {
+        A lower bound for the abundance $\eta$ only depending on the unavoidability parameter $\gamma$, the stability $k_*$, and
+        and graph $H$'s size $\ell$, is:
+        \[
+            \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
+                \cdot (1 - \gamma)^{\frac{\ell(\ell-1)}{2}}
+                \cdot \Parround{\frac{1}{24} \min\Parcurly{\sqrt{\gamma},
+                    \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} (1 - \gamma)^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
+        \]
+    }
+    \visible<2-> {
+        The resulting query complexity of the algorithm $\mathcal{A}$ can bounded by
+        \[
+            q \leq {t \choose 2}
+              \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
+                   {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2.
+        \]
+    }
 \end{frame}
 
 % ---
 
 % limitations of the algorithm
 \begin{frame}{Conclusion and Future Work}
+    \footnotesize
+    \begin{itemize}
+        \item<1-> We provided a simplified combinatorial proof of the \emph{Stable Regularity Lemma},
+            developed a unified notational framework.
+        \item<2-> We designed an efficient \emph{property testing algorithm} for $H$-freeness in stable graphs.
+            Our algorithm leverages the most powerful feature of the Stable Regularity Lemma: its partitions
+            have \emph{no irregular pairs}.
+            This provides a uniquely clean structure that is ideal for property testing.
+        \item<3-> A comparison with the Strong Regularity Lemma (for the broader class of graphs with bounded VC-dimension)
+            reveals a potential suboptimality.
+            \begin{itemize}
+                \item \footnotesize Strong Lemma Bound: $(1/\epsilon)^{c \cdot d^2}$
+                \item \footnotesize Stable Lemma Bound: $(1/\epsilon)^{c \cdot 2^k}$
+            \end{itemize}
+            This raises a key question: Can the bound for the Stable Regularity Lemma be improved to match the polynomial
+            exponent, i.e., to $(1/\epsilon)^{c \cdot k^2}$?
+        \item<4-> The powerful structure guaranteed by stable regularity opens up new research avenues, including:
+            \begin{itemize}
+                \item \footnotesize Testing for forbidden subgraphs ($H_n$) that \emph{grow in size} with the input graph.
+                \item \footnotesize Moving beyond freeness testing to \emph{subgraph counting} and estimation.
+            \end{itemize}
+    \end{itemize}
 \end{frame}
 
-% lines of research with Lluis
-\begin{frame}{Conclusion and Future Work}
-\end{frame}
-
-\begin{frame}{Conclusion and Future Work}
-\end{frame}
-
-\begin{frame}{Conclusion and Future Work}
-\end{frame}
+%% lines of research with Lluis
+%\begin{frame}{Conclusion and Future Work}
+%\end{frame}
+%
+%\begin{frame}{Conclusion and Future Work}
+%\end{frame}
+%
+%\begin{frame}{Conclusion and Future Work}
+%\end{frame}
 
 % ---
+
+% references
+\begin{frame}[allowframebreaks]{References}
+    \bibliography{sections/presentation_bibliography}
+\end{frame}
 
 % Thanks
 \begin{frame}

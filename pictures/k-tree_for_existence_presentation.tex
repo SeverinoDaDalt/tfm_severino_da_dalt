@@ -108,25 +108,25 @@
     }
     \uncover<5-7> {
         \node[draw, rounded corners, fit=(b_000) (b_001), inner sep=.7mm] (box00) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box00.north east) -- (box00.north west)
-            node [above=8mm, midway] {$A_{00}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box00.north east) -- (box00.north west)
+            node [above=14mm, midway] {$A_{00}$};
         \node[draw, rounded corners, fit=(b_010) (b_011), inner sep=.7mm] (box01) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box01.north east) -- (box01.north west)
-            node [above=8mm, midway] {$A_{01}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box01.north east) -- (box01.north west)
+            node [above=14mm, midway] {$A_{01}$};
         \node[draw, rounded corners, fit=(b_100) (b_101), inner sep=.7mm] (box10) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box10.north east) -- (box10.north west)
-            node [above=8mm, midway] {$A_{10}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box10.north east) -- (box10.north west)
+            node [above=14mm, midway] {$A_{10}$};
         \node[draw, rounded corners, fit=(b_110) (b_111), inner sep=.7mm] (box11) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box11.north east) -- (box11.north west)
-            node [above=8mm, midway] {$A_{11}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box11.north east) -- (box11.north west)
+            node [above=14mm, midway] {$A_{11}$};
     }
     \uncover<3-7> {
         \node[draw, rounded corners, fit=(box00) (box01), inner sep=.7mm] (box0) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box0.north east) -- (box0.north west)
-            node [above=14mm, midway] {$A_{0}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box0.north east) -- (box0.north west)
+            node [above=8mm, midway] {$A_{0}$};
         \node[draw, rounded corners, fit=(box10) (box11), inner sep=.7mm] (box1) {};
-        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=11mm}] (box1.north east) -- (box1.north west)
-            node [above=14mm, midway] {$A_{1}$};
+        \draw [decorate, thick, decoration={brace, amplitude=10pt, mirror, raise=5mm}] (box1.north east) -- (box1.north west)
+            node [above=8mm, midway] {$A_{1}$};
     }
     \uncover<1-7> {
         \node[draw, rounded corners, fit=(box0) (box1), inner sep=.7mm] (box) {};
