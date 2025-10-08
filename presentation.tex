@@ -1,5 +1,5 @@
 \documentclass{beamer}
-\usetheme{Madrid}
+\usetheme{Madrid}  % Pittsburg
 \usecolortheme{default}
 
 \usepackage{amsmath, amssymb}
@@ -60,7 +60,7 @@
 \title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
 \author{Severino Da Dalt}
 %\institute{Supervised by Lluís Vena Cros}
-\date{\today}
+\date{October 15, 2025}
 
 \begin{document}
 
@@ -126,6 +126,7 @@
     \visible<2->{
         Crucially, the theorem proves that the bound on the number of parts $M$ does not grow with the size of the graph,
         but only depends on $\epsilon$ (and $m$).
+        % Since the partition of singletons is always regular.
     }
     % The SzRL sees extensive use in combinatorics, number theory, and computer science.
 \end{frame}
@@ -148,6 +149,7 @@
 \begin{frame}{Stable Graphs and the Stable Regularity Lemma}
     \emph{Stable} graphs are those that do not contain a \emph{half-graph} as a bi-induced subgraph.
     \input{pictures/half-graph_presentation}
+    % comment that this graph has bounded VC, which will be relevant later.
 \end{frame}
 
 % non-k-order property
