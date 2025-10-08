@@ -59,7 +59,7 @@
 
 \title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
 \author{Severino Da Dalt}
-\institute{Supervised by Lluís Vena Cros}
+%\institute{Supervised by Lluís Vena Cros}
 \date{\today}
 
 \begin{document}
@@ -73,7 +73,7 @@
 % Table of contents
 \begin{frame}{Table of contents}
     \begin{enumerate}
-        \item Introduction to Szemerédi's Regularity Lemma
+        \item Introduction to the Szemerédi's Regularity Lemma
         \item Stable Graphs and the Stable Regularity Lemma
         \item Sketch of the Proof of the Stable Regularity Lemma
         \item Property Testing of $H$-freeness in Stable Graphs
@@ -84,10 +84,12 @@
 % ---
 % Regularity
 \begin{frame}{Introduction to Szemerédi's Regularity Lemma}
-    The idea of the SzRL is that all graphs can be partitioned in such a way that most pairs of parts
-    behave in a quasi-random way, a property which is formalized as \emph{regularity}.
+    \visible<1->{
+        The idea of the SzRL is that all graphs can be partitioned in such a way that most pairs of parts
+        behave in a quasi-random way, a property which is formalized as \emph{regularity}.
+    }
 
-    \begin{definition}
+    \begin{definition}<2->
         Given $\epsilon > 0$ and a graph $G$, a pair of (not necessarily disjoint) subsets of vertices $A, B \subseteq G$
         is said to be \emph{$\epsilon$-regular} if for all $A' \subseteq A$ and $B' \subseteq B$ such that
         $|A'| \geq \epsilon |A|$ and $|B'| \geq \epsilon |B|$, we have
@@ -115,14 +117,16 @@
 
 % SzRL
 \begin{frame}{Introduction to Szemerédi's Regularity Lemma}
-    \begin{theorem}[Szemerédi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
+    \begin{theorem}<1->[Szemerédi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
         For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
         such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
         $\parcurly{A_1, \ldots, A_k}$ and remainder $B$ with $m \leq k \leq M$, with $|A_1| = \dots = |A_k|$.
     \end{theorem}
 
-    Crucially, the theorem proves that the number of parts $k$ does not grow with the size of the graph,
-    but only depends on $\epsilon$ (and $m$).
+    \visible<2->{
+        Crucially, the theorem proves that the bound on the number of parts $M$ does not grow with the size of the graph,
+        but only depends on $\epsilon$ (and $m$).
+    }
     % The SzRL sees extensive use in combinatorics, number theory, and computer science.
 \end{frame}
 
@@ -148,7 +152,7 @@
 
 % non-k-order property
 \begin{frame}{Stable Graphs and the Stable Regularity Lemma}
-    \begin{definition} \label{def:k_order_property}
+    \begin{definition}<1-> \label{def:k_order_property}
         Let $G$ be a graph.
         We say that $G$ has the \emph{$k$-order property} if there exist two sequences of vertices
         $\Partriangle{a_i \mid i \in \parcurly{1, \dots, k}}$ and $\Partriangle{b_i \mid i \in \parcurly{1, \dots, k}}$ such that
@@ -156,8 +160,10 @@
         Otherwise, we say that $G$ has the \emph{non-$k$-order property} or that $G$ is \emph{$k$-stable}.
     \end{definition}
 
-    The two sequences need not to be disjoint, and any combination of edges and non-edges may appear within
-    the vertices of each sequence.
+    \visible<2->{
+        The two sequences need not to be disjoint, and any combination of edges and non-edges may appear between
+        the vertices of each sequence.
+    }
 \end{frame}
 
 % other non-k-orders
@@ -267,10 +273,10 @@
         subset $A' \subseteq A$ such that $|A'| \geq \epsilon^{k_{**}-1} |A|$.
     \end{lemma}
 
-    % 2
-    \visible<2-> {
-        TO DO
-    }
+%    % 2
+%    \visible<2-> {
+%        TO DO
+%    }
 \end{frame}
 
 % existence of excellent sets: proof sketch
@@ -834,7 +840,7 @@
         \[
             q \leq {t \choose 2}
               \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
-                   {\log\parround{1 - \eta_{\ref{thm:property_testing_with_stable_partitions}}(k_*, \epsilon, \ell)}}}^2.
+                   {\log\parround{1 - \eta(k_*, \epsilon, \ell)}}}^2.
         \]
     }
 \end{frame}
