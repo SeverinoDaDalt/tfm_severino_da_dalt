@@ -1,5 +1,5 @@
 \documentclass{beamer}
-\usetheme{Madrid}  % Pittsburg
+\usetheme{Madrid}  % Pittsburgh, Madrid
 \usecolortheme{default}
 
 \usepackage{amsmath, amssymb}
@@ -59,7 +59,7 @@
 
 \title[Regularity for Stable Graphs]{The Regularity Lemma for Stable Graphs and its Applications in Property Testing}
 \author{Severino Da Dalt}
-%\institute{Supervised by Lluís Vena Cros}
+\institute[]{Supervised by Lluís Vena Cros}
 \date{October 15, 2025}
 
 \begin{document}
@@ -117,7 +117,7 @@
 
 % SzRL
 \begin{frame}{Introduction to Szemerédi's Regularity Lemma}
-    \begin{theorem}<1->[Szemerédi's Regularity Lemma, \cite{regular_partitions_of_graphs}]
+    \begin{theorem}<1->[Szemerédi's Regularity Lemma, \textit{Szemerédi, '78}]
         For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
         such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
         $\parcurly{A_1, \ldots, A_k}$ and remainder $B$ with $m \leq k \leq M$, with $|A_1| = \dots = |A_k|$.
@@ -137,7 +137,7 @@
     \begin{enumerate}
         \item The bound on the number of parts $M$ is a \emph{tower-type} function of $\epsilon$,
             i.e. a power-tower of height polynomial in $1/\epsilon$.
-            This is unavoidable, as shown by Gowers~\cite{lower_bounds_of_tower_type_for_szeremedis_uniformity_lemma}.
+            This is unavoidable, as shown by \textit{Szemerédi, '97}.
         \item The partition may contain some irregular pairs.
             This is also unavoidable, and the half-graph $H_n$ is an example.
     \end{enumerate}
@@ -174,50 +174,225 @@
 \end{frame}
 
 \begin{frame}{Stable Graphs and the Stable Regularity Lemma}
-    \begin{theorem}[Stable Regularity Lemma,~\cite{regularity_lemmas_for_stable_graphs}] \label{thm:B}
+    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah, '14}] \label{thm:B}
         Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
         ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such that ALL pairs of parts
         are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
     \end{theorem}
-
-    Notably both limitations of the SzRL are overcome: the bound on the number of parts is
-    polynomial in $1/\epsilon$, and there are no irregular pairs.
+    \visible<2->{
+        The fact that the pairs are either almost empty or almost full is not a core property of stable graphs,
+        and is in fact proven in~\textit{Fox-Pach-Suk, '19} to be satisfied by a
+        larger class of graphs, the graphs with bounded \emph{VC-dimension}.
+        However, such graphs still require irregular pairs, something that stable graphs completely avoid.
+    }
+    % def VC-dimension somewhere?
 \end{frame}
 
 % ---
 
-% goodness and excellence
+% goodness
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{definition}[Good,~\cite{regularity_lemmas_for_stable_graphs}] \label{def:epsilon_good}
+    \begin{definition}<1->[Good,~\textit{Malliaris-Shelah, '14}] \label{def:epsilon_good}
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
         $t = t(b, A) \in \parcurly{0, 1}$ satisfies
         $\parstraight{\overline{B}_{A,b}} = \parstraight{\parcurly{a\in A \mid aRb \not\equiv t}} < \epsilon |A|$.
     \end{definition}
 
-    \begin{definition}[Excellent,~\cite{regularity_lemmas_for_stable_graphs}] \label{def:epsilon_excellent}
+    \begin{center}
+        \scalebox{0.6}{
+        \begin{tikzpicture}
+            \visible<2-> {
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {$a_1$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {$a_2$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {$a_3$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {$a_4$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {$a_5$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {$a_6$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {$a_7$};
+%                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {$a_8$};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {};
+                \node (A) [draw, thick, circle, inner sep=4pt, fit=(a1) (a2) (a3) (a4) (a5) (a6) (a7) (a8), label=45:\Large $A$] {};
+            }
+            \visible<3-> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt, label=45:\Large $b$] (b) at (10.81, 3.7) {};
+            }
+            \visible<4-6> {
+                \node (BAb) [draw, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=2pt, fit=(a2) (a3), label=160:\Large $\overline{B}_{A,b}$] {};
+            }
+            \visible<7-> {
+                \node (BAb) [draw, dashed, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=2pt, fit=(a2) (a3)] {};
+                \node (BAb) [draw, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=5pt, fit=(a2) (a3), label=160:\Large $\overline{B}_{A,b}$] {};
+            }
+            \visible<5-> {
+                \draw[thick] (a2) -- (b);
+                \draw[thick] (a3) -- (b);
+                \draw[dashed] (a1) -- (b);
+                \draw[dashed] (a4) -- (b);
+                \draw[dashed] (a5) -- (b);
+                \draw[dashed] (a6) -- (b);
+                \draw[dashed] (a7) -- (b);
+                \draw[dashed] (a8) -- (b);
+                \node[below=5pt of b.south] {\Large $t(A,b) = 0$};
+            }
+            \visible<4> {
+                \draw[dashed] (a2) -- (b);
+                \draw[dashed] (a3) -- (b);
+                \draw[thick] (a1) -- (b);
+                \draw[thick] (a4) -- (b);
+                \draw[thick] (a5) -- (b);
+                \draw[thick] (a6) -- (b);
+                \draw[thick] (a7) -- (b);
+                \draw[thick] (a8) -- (b);
+                \node[below=5pt of b.south] {\Large $t(A,b) = 1$};
+            }
+            \visible<2-> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {};
+            }
+            \visible<6-> {
+                \node[below=5pt of A.south] {\Large $A$ is \textbf{$\epsilon$-good}};
+            }
+            \visible<7-> {
+                \node[below=22pt of A.south] {\Large For any $\epsilon \leq \epsilon'$, $A$ is also \textbf{$\epsilon'$-good}};
+            }
+        \end{tikzpicture}}
+    \end{center}
+\end{frame}
+
+% excellence
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{definition}<1->[Excellent,~\textit{Malliaris-Shelah, '14}] \label{def:epsilon_excellent}
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
         $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $\parstraight{\parcurly{a \in A \mid t(a,B) \neq t(A,B)}} < \epsilon |A|$.
         In particular, we say $A$ is $\epsilon$-\emph{excellent} if $A$ is $(\epsilon, \epsilon)$-excellent.
     \end{definition}
+
+    \begin{center}
+        \scalebox{0.5}{
+        \begin{tikzpicture}
+            \visible<2-> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {};
+                \node (A) [draw, thick, circle, inner sep=4pt, fit=(a1) (a2) (a3) (a4) (a5) (a6) (a7) (a8), label=45:\Large $A$] {};
+            }
+            \visible<2-7> {
+                \node[below=5pt of A.south] {\Large $A$ is $\epsilon$-good};
+            }
+            \visible<2-3> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {};
+            }
+            \visible<2-4> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {};
+            }
+            \visible<3-> {
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b1) at (10.6, 3.2) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b2) at (10.8, 4.5) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b3) at (12.3, 5.4) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b4) at (11.8, 3.8) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b5) at (11.56, 2.2) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b6) at (12.8, 2.5) {};
+                \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b7) at (13.2, 4.4) {};
+                \node (B) [draw, thick, circle, inner sep=4pt, fit=(b1) (b2) (b3) (b4) (b5) (b6) (b7), label=25:\Large $B$] {};
+                \node[below=5pt of B.south] {\Large $B$ is $\zeta$-good};
+            }
+            \visible<4-5> {
+                \draw[thick] (b1) -- (a1);
+                \draw[dashed] (b2) -- (a1);
+                \draw[dashed] (b3) -- (a1);
+                \draw[dashed] (b4) -- (a1);
+                \draw[dashed] (b5) -- (a1);
+                \draw[dashed] (b6) -- (a1);
+                \draw[dashed] (b7) -- (a1);
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {};
+            }
+            \visible<5> {
+                \draw[thick] (b1) -- (a4);
+                \draw[thick] (b2) -- (a4);
+                \draw[thick] (b3) -- (a4);
+                \draw[thick] (b4) -- (a4);
+                \draw[thick] (b5) -- (a4);
+                \draw[thick] (b6) -- (a4);
+                \draw[dashed] (b7) -- (a4);
+                \node[circle, thick, draw, fill=gray!75, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {};
+            }
+            \visible<7-8> {
+                \node (BAb) [draw, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=2pt, fit=(a2) (a4)] {};
+            }
+            \visible<9-> {
+                \node (BAb) [draw, dashed, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=2pt, fit=(a2) (a4)] {};
+                \node (BAb) [draw, thick, fill=orange!70!red, fill opacity=0.5, circle, inner sep=5pt, fit=(a2) (a4)] {};
+            }
+            \visible<6-> {
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a1) at (3.56, 3.55) {};
+                \node[circle, thick, draw, fill=gray!75, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {};
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {};
+                \node[circle, thick, draw, fill=gray!75, minimum size=0.3cm, inner sep=1pt] (a4) at (2.2, 5.05) {};
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {};
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {};
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {};
+                \node[circle, dashed, semithick, draw, fill=gray!5, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {};
+            }
+            \visible<8-> {
+                \node[circle, thick, draw, minimum size=1.7cm, inner sep=1pt] () at (14.6, 6.6) {};
+                \node[circle, thick, draw, minimum size=0.6cm, inner sep=1pt] () at (14.2, 1.4) {};
+                \node[below=5pt of A.south] {\Large $A$ is \textbf{$(\epsilon, \zeta)$-excellent}};
+            }
+            \visible<8> {
+                \node[circle, thick, draw, minimum size=2cm, inner sep=1pt] () at (15.8, 3.2) {};
+                \node[circle, thick, draw, minimum size=1.5cm, inner sep=1pt] () at (9, 1.6) {};
+            }
+            \visible<9-> {
+                \node[circle, dashed, semithick, draw, minimum size=2cm, inner sep=1pt] () at (15.8, 3.2) {};
+                \node[circle, dashed, semithick, draw, minimum size=1.5cm, inner sep=1pt] () at (9, 1.6) {};
+            }
+            \visible<9-> {
+                \node[below=22pt of A.south] {\Large For any $\epsilon \leq \epsilon'$ and $\zeta \geq \zeta'$,
+                    $A$ is also \textbf{$(\epsilon', \zeta')$-excellent}};
+            }
+        \end{tikzpicture}}
+    \end{center}
 \end{frame}
 
-% example
+% excellence implies regularity and homogeneity
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    % 1
-    \visible<1->{
-        \input{pictures/non-monotonic_example_presentation}
+    % Now one may ask:
+    \visible<1-> {
+        \textbf{Question:} Why do we care about excellence?
     }
-    % here explain:
-    % - A is 1/5-good but B is not
-    % - A is 1/5-excellent
-    % - A is not 2/5-excellent, because B is 2/5-good but half of A has truth value 0 wrt B, and the other half 1
-    % - this last fact also introduces a discrepancy in the original, as it is assumed that \epsilon-excellence is
-    %   monotonic, which is not the case
 
-    % 2
-    \visible<2-> {\centering Do excellent subsets always exist?}
+    \visible<2-> {
+        \textbf{Answer:} A pair of excellent sets form a regular pair which is either almost full or almost empty.
+    }
+
+    \begin{lemma}<3->
+        For any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
+        and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
+        \begin{enumerate}
+            \item $\parround{A,B}$ is $\epsilon$-regular.
+            \item If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
+                $B' \in \parsquared{B}^{\geq \epsilon \parstraight{B}}$, then $d \parround{A',B'} < \epsilon$ or
+                $d \parround{A',B'} \geq 1 - \epsilon$.
+        \end{enumerate}
+    \end{lemma}
 \end{frame}
 
 % k-trees
@@ -253,7 +428,7 @@
 
 % relation between k-trees and non-k-order property: 2^k-order in k-tree
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{theorem}[Lemma 6.7.9 in~\cite{model_theory}] \label{thm:tree_implies_order}
+    \begin{theorem} \label{thm:tree_implies_order}
         \visible<1-> {
             If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
         }
@@ -268,7 +443,7 @@
 % existence of excellent sets
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
     % 1
-    \begin{lemma}[Existence of excellent subsets,~\cite{regularity_lemmas_for_stable_graphs}]<1-> \label{lem:existance_of_excellent_subsets}
+    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah, '14}]<1-> \label{lem:existance_of_excellent_subsets}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta \leq \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists an $(\epsilon, \zeta)$-excellent
@@ -288,7 +463,7 @@
 
 % we can actually ensure size is in a given sequence of sizes with not much extra work
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{lemma}[Existence of excellent subsets,~\cite{regularity_lemmas_for_stable_graphs}]
+    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah, '14}]
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
@@ -356,7 +531,7 @@
         \begin{tikzpicture}
             \centering
             \visible<3-> {
-                \node[draw, circle, fill=orange, fill opacity=0.5, minimum size=3cm] (A') at (1,0) {};
+                \node[draw, circle, fill=orange!70!red, fill opacity=0.5, minimum size=3cm] (A') at (1,0) {};
             }
             \visible<3-> {
                 \node at (A'.center) [below right] {$A'$};
@@ -520,32 +695,9 @@
     \end{theorem}
 \end{frame}
 
-% excellence implies regularity and homogeneity
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    % Now one may ask:
-    \visible<1-> {
-        \textbf{Question:} Why do we care about excellence?
-    }
-
-    \visible<2-> {
-        \textbf{Answer:} A pair of excellent sets form a regular pair which is either almost full or almost empty.
-    }
-
-    \begin{lemma}<3->
-        For any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
-        and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
-        \begin{enumerate}
-            \item $\parround{A,B}$ is $\epsilon$-regular.
-            \item If $A' \in \parsquared{A}^{\geq \epsilon \parstraight{A}} and $
-                $B' \in \parsquared{B}^{\geq \epsilon \parstraight{B}}$, then $d \parround{A',B'} < \epsilon$ or
-                $d \parround{A',B'} \geq 1 - \epsilon$.
-        \end{enumerate}
-    \end{lemma}
-\end{frame}
-
 % final result
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{theorem}[Stable Regularity Lemma,~\cite{regularity_lemmas_for_stable_graphs}]
+    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah, '14}]
         For every $k_* \in \naturals$ and
         $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
         and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
@@ -562,14 +714,6 @@
                 $M \leq \max \parcurly{\ceil{\frac{12}{\epsilon}}^{k_{**}+1}, 4m}$.
         \end{enumerate}
     \end{theorem}
-\end{frame}
-
-% final result
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    The fact that the pairs are either almost empty or almost full is not a core property of stable graphs,
-    and is in fact proven in~\cite{erdos_hajnal_conjecture_for_graphs_with_bounded_vc_dimension} to be satisfied by a
-    larger class of graphs, the graphs with bounded \emph{VC-dimension}.
-    However, such graphs still require irregular pairs, something that stable graphs completely avoid.
 \end{frame}
 
 % ---
@@ -609,8 +753,8 @@
     }
 
     \visible<3-> {
-        Alon et al.~\cite{efficient_testing_of_large_graphs} proved that $H$-freeness is testable for every $H$.
-    }\visible<4-> {Later, Alon and Shapira~\cite{a_characterization_of_the_natural_graph_properties_testable_with_one_sided_error}
+        \textit{Alon-Fischer-Krivelevich-Szegedy, '00} proved that $H$-freeness is testable for every $H$.
+    }\visible<4-> {Later, \textit{Alon-Shapira, '08}
         generalize this result to any hereditary property.% Properties closed under vertex deletion.
     }
 
@@ -900,6 +1044,28 @@
 
     \Large{You can now rate the presentation.
     Was it \emph{good}, \emph{excellent} or \emph{exceptional}?}
+\end{frame}
+
+
+% Thanks
+\begin{frame}{Appendix}
+\end{frame}
+
+% example
+\begin{frame}{Appendix}
+    % 1
+    \visible<1->{
+        \input{pictures/non-monotonic_example_presentation}
+    }
+    % here explain:
+    % - A is 1/5-good but B is not
+    % - A is 1/5-excellent
+    % - A is not 2/5-excellent, because B is 2/5-good but half of A has truth value 0 wrt B, and the other half 1
+    % - this last fact also introduces a discrepancy in the original, as it is assumed that \epsilon-excellence is
+    %   monotonic, which is not the case
+
+%    % 2
+%    \visible<2-> {\centering Do excellent subsets always exist?}
 \end{frame}
 
 \end{document}
