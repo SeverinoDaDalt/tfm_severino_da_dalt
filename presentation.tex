@@ -64,6 +64,8 @@
 
 \begin{document}
 
+\nocite{*} % needed for bibliography
+
 % Title page
 \begin{frame}
     \titlepage
@@ -73,7 +75,7 @@
 % Table of contents
 \begin{frame}{Table of contents}
     \begin{enumerate}
-        \item Introduction to the Szemerédi's Regularity Lemma
+        \item Introduction to Szemerédi's Regularity Lemma
         \item Stable Graphs and the Stable Regularity Lemma
         \item Sketch of the Proof of the Stable Regularity Lemma
         \item Property Testing of $H$-freeness in Stable Graphs
@@ -137,7 +139,7 @@
     \begin{enumerate}
         \item The bound on the number of parts $M$ is a \emph{tower-type} function of $\epsilon$,
             i.e. a power-tower of height polynomial in $1/\epsilon$.
-            This is unavoidable, as shown by \textit{Szemerédi, '97}.
+            This is unavoidable, as shown by \textit{Gowers, '97}.
         \item The partition may contain some irregular pairs.
             This is also unavoidable, and the half-graph $H_n$ is an example.
     \end{enumerate}
@@ -181,7 +183,7 @@
     \end{theorem}
     \visible<2->{
         The fact that the pairs are either almost empty or almost full is not a core property of stable graphs,
-        and is in fact proven in~\textit{Fox-Pach-Suk, '19} to be satisfied by a
+        and is in fact proven in~\textit{Fox-Pach-Suk, '19} and~\textit{Lovász-Szegedy, '10} to be satisfied by a
         larger class of graphs, the graphs with bounded \emph{VC-dimension}.
         However, such graphs still require irregular pairs, something that stable graphs completely avoid.
     }
@@ -285,13 +287,15 @@
     \begin{center}
         \scalebox{0.5}{
         \begin{tikzpicture}
-            \visible<2-> {
+            \visible<2-5> {
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a2) at (3.6, 5.93) {};
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a3) at (5, 5) {};
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a5) at (5.16, 3.25) {};
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a6) at (1.52, 3.39) {};
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a7) at (2.86, 1.87) {};
                 \node[circle, semithick, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (a8) at (4.66, 1.63) {};
+            }
+            \visible<2-> {
                 \node (A) [draw, thick, circle, inner sep=4pt, fit=(a1) (a2) (a3) (a4) (a5) (a6) (a7) (a8), label=45:\Large $A$] {};
             }
             \visible<2-7> {
@@ -372,6 +376,19 @@
     \end{center}
 \end{frame}
 
+% example
+\begin{frame}{Appendix}
+    % 1
+    \visible<1->{
+        \input{pictures/non-monotonic_example_presentation}
+    }
+    % - A is 1/5-good but B is not
+    % - A is 1/5-excellent
+    % - A is not 2/5-excellent, because B is 2/5-good but half of A has truth value 0 wrt B, and the other half 1
+    % - this last fact also introduces a discrepancy in the original, as it is assumed that \epsilon-excellence is
+    %   monotonic, which is not the case
+\end{frame}
+
 % excellence implies regularity and homogeneity
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
     % Now one may ask:
@@ -383,7 +400,7 @@
         \textbf{Answer:} A pair of excellent sets form a regular pair which is either almost full or almost empty.
     }
 
-    \begin{lemma}<3->
+    \begin{lemma}<2->
         For any $\epsilon_0, \epsilon \in \parround{0, \frac{1}{2}}$ such that $\epsilon_0 \leq \frac{\epsilon^2}{2}$,
         and for any two $\epsilon_0$-excellent sets $A, B$, we have that:
         \begin{enumerate}
@@ -409,7 +426,7 @@
         $b_\rho R c_\eta \equiv \ell$.
     \end{definition}
 
-    \begin{definition}[Tree bound]<2-> \label{def:tree_bound}
+    \begin{definition}[Tree bound]<1-> \label{def:tree_bound}
         Suppose $G$ is a finite graph.
         We denote the \emph{tree bound} $k_{**} = k_{**}(G)$ as the minimal positive integer such that there is no
         $k_{**}$-tree $H = (\overline{c},\overline{b})$ in $G$.
@@ -431,9 +448,6 @@
     \begin{theorem} \label{thm:tree_implies_order}
         \visible<1-> {
             If a graph $G$ has the $2^{k_{**}}$-order property, then the tree bound of $G$ is at least $k_{**} + 1$.
-        }
-
-        \visible<2-> {
             On the other hand, if a graph $G$ has tree bound at least $k_{**} = 2^{k_*+1}-1$, then it has the $k_*$-order
             property.
         }
@@ -494,135 +508,33 @@
     \end{lemma}
 \end{frame}
 
-% refining to an equitable partition
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+% subsets of excellent sets are still excellent
+\begin{frame}
     \visible<1-> {
         \textbf{Question:} Are subsets of excellent sets still excellent?
+        \newline
     }
 
     \visible<2-> {
         \textbf{Answer:} With high probability, yes, but with a small loss in excellence.
+        \newline
     }
 
-    \begin{lemma}<3->
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Then, for every $\epsilon \in \parround{0, \frac{1}{2}}$,
-        $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
-        $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
-        if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
-        then a subset $A' \subseteq A$ of size $m$, sampled uniformly at random, is $(\epsilon + \zeta)$-good with probability $1-\xi$.
-    \end{lemma}
-
-    \begin{lemma}<4->
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
-        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
-        \begin{itemize}
-            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
-            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
-        \end{itemize}
-        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
-    \end{lemma}
-\end{frame}
-
-% proof sketch of good subsets in good sets: 1
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{center}
-        \begin{tikzpicture}
-            \centering
-            \visible<3-> {
-                \node[draw, circle, fill=orange!70!red, fill opacity=0.5, minimum size=3cm] (A') at (1,0) {};
-            }
-            \visible<3-> {
-                \node at (A'.center) [below right] {$A'$};
-            }
-            \visible<2-> {
-                \node[draw, circle, minimum size=3cm] (BAb) at (0,1) {};
-                \node at (BAb.center) [above left] {$\overline{B}_{A,b}$};
-            }
-            \visible<1-> {
-                \node (A) [draw, thick, circle, inner sep=4pt, fit=(A') (BAb), label=45:$A$] {};
-                \node[circle, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b) at (5,0.5) {$b$};
-            }
-            \visible<2-> {
-                \draw[dashed, black!40] (b) -- (BAb.north east);
-                \draw[dashed, black!40] (b) -- (BAb.south east);
-            }
-            \visible<4-> {
-                \draw[draw=none] (BAb.center) -- node[pos=0.55] (M) {$\overline{B}_{A,b} \cap A'$} (A'.center);
-            }
-        \end{tikzpicture}
-    \end{center}
-\end{frame}
-
-% proof sketch of good subsets in good sets: 2
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \visible<1-> {
-        The probability of failure is small for each $b$:
-        \[
-            \mathbb{P}\parround{X_{A,b,A'}} \leq \mathbb{P}\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
-                \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \zeta} |A'|} \leq e^{-2\zeta^2 |A'|}
-        \]
-    }
-    \visible<2-> {
-        Too many $b$'s?
-    }
-    \begin{lemma}<3-> \label{lem:k_order_property_bounds_BAbs}
-        Let $G$ be a graph with the (disjoint) non-$k$-order property.
-        Then, for any finite non-trivial $A' \subseteq G$,
-        \[
-            \parstraight{\parcurly{\overline{B}_{A',b} \mid b \in G}} \leq |A'|^k.
-        \]
-    \end{lemma}
-\end{frame}
-
-% proof sketch of good subsets in good sets: 3
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \visible<1-> {
-        Given the random variable
-        \[
-            X = \sum_{\text{bad } \overline{B}_{A,b}} \mathbbm{1}_{X_{A,b,A'}},
-        \]
-    }
-    \visible<2-> {
-        we can compute its expectation
-        \[
-            \mathbb{E}[X] = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
-                = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{P}\parround{X_{A,b,A'}}
-                \leq \sum_{\text{bad } \overline{B}_{A,b}} e^{-2\zeta^2 m},
-        \]
-    }
     \visible<3-> {
-        and by the First Moment Method
-        \[
-            \mathbb{P}\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
-        \]
-    }
-\end{frame}
-
-% proof sketch of excellent subsets in excellent sets: 1
-\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{lemma}<1->
-        Let $G$ be a finite graph with the non-$k_{*}$-order property.
-        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
-        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
+        The proof of this uses:
         \begin{itemize}
-            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
-            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
+            \item The Sauer-Shelah Lemma to bound the number of possible exceptional sets $\overline{B}_{A,b}$ in $A$.
+            \item Chvátal's bound on the tail of the hypergeometric distribution.
+            \item A double-count argument on the exceptional vertices of a random subset, using the fact that the number of
+                exceptional edges between an excellent set and a good set is very small.
         \end{itemize}
-        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
-    \end{lemma}
-
-    \textbf{Proof idea:} given a good set $B$, the number of exceptional
-    edges between $A$ and $B$, and thus between $A'$ and $B$, is small, since $A$ is $(\epsilon, \epsilon')$-excellent.
-    Also, since $B$ is good, each vertex in $A'$ either has few or many exceptional edges with $B$.
-    These two facts together imply that the number of vertices in $A'$ that do not behave as the majority is small.
+    }
 \end{frame}
 
 % partition excellent part into equally-sized excellent parts
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    Now, we know that random subsets of excellent sets are (slightly less) excellent with high probability.
-    We can use this fact with a simple Union Bound argument to prove the following result.
+    Thus, random subsets of excellent sets are (slightly less) excellent with high probability,
+    and we can use this fact with a Union Bound argument to prove the following result.
 
     \begin{lemma}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
@@ -678,7 +590,7 @@
 
 % recap
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    By carefully choosing hyperparameters, we can rephrase the result to only depend on the stability constant $k_*$,
+    By carefully choosing parameters, we can rephrase the result to only depend on the stability constant $k_*$,
     the desired excellence $\epsilon$ and the minimum partition size $m$.
     \begin{theorem}
         Let $k_*$ be given.
@@ -720,7 +632,7 @@
 
 % what is property testing and H-freeness:1
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
-    \begin{definition}<1->
+    \begin{definition}<2->
         We say that a graph $G$ is \emph{$\epsilon$-far} from satisfying a graph property $\mathcal{P}$ if no adding or
         removing of up to $\epsilon {|G| \choose 2}$ edges in $G$ results in the graph satisfying the property.
     \end{definition}
@@ -781,7 +693,7 @@
 
 % unavoidability implies abundance:1
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
-    \begin{lemma}[Unavoidability implies abundance,~\cite{efficient_testing_of_large_graphs}]
+    \begin{lemma}[~\textit{Alon-Fischer-Krivelevich-Szegedy, '00}]
         For every real number $\delta \in \parround{0, 1}$ and integer $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
         $\eta = \eta \parround{\delta, \ell}$ satisfying the following property:
 
@@ -974,19 +886,25 @@
     \visible<1-> {
         A lower bound for the abundance $\eta$ only depending on the unavoidability parameter $\gamma$, the stability $k_*$, and
         and graph $H$'s size $\ell$, is:
+%        \[
+%            \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
+%                \cdot (1 - \gamma)^{\frac{\ell(\ell-1)}{2}}
+%                \cdot \Parround{\frac{1}{24} \min\Parcurly{\sqrt{\gamma},
+%                    \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} (1 - \gamma)^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
+%        \]
         \[
-            \eta \geq \Parround{\frac{1}{2}}^{\frac{\ell^3 + 5\ell -6}{6}}
-                \cdot (1 - \gamma)^{\frac{\ell(\ell-1)}{2}}
-                \cdot \Parround{\frac{1}{24} \min\Parcurly{\sqrt{\gamma},
-                    \Parround{\frac{1}{2}}^{\frac{\ell(\ell-1)}{2}} (1 - \gamma)^{\ell-1}}}^{\ell \Parround{2^{k_*+1}-1}}.
+            \eta \geq \bparround{\gamma \cdot (1 - \gamma)} ^ {c \cdot \ell^3 \cdot 2^{k_*}}.
         \]
     }
     \visible<2-> {
         The resulting query complexity of the algorithm $\mathcal{A}$ can bounded by
+%        \[
+%            q \leq {t \choose 2}
+%              \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
+%                   {\log\parround{1 - \eta(k_*, \epsilon, \ell)}}}^2.
+%        \]
         \[
-            q \leq {t \choose 2}
-              \leq \Parround{ \frac{\ell \log\parround{\frac{2}{3}}}
-                   {\log\parround{1 - \eta(k_*, \epsilon, \ell)}}}^2.
+            q \approx \ell^2 \Parround{\frac{1}{{\gamma \cdot (1 - \gamma)}}}^{c \cdot \ell^3 \cdot 2^{k_*}}.
         \]
     }
 \end{frame}
@@ -1049,23 +967,144 @@
 
 % Thanks
 \begin{frame}{Appendix}
+\end{frame}% refining to an equitable partition
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        \textbf{Question:} Are subsets of excellent sets still excellent?
+    }
+
+    \visible<1-> {
+        \textbf{Answer:} With high probability, yes, but with a small loss in excellence.
+    }
+
+    \begin{lemma}<2->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\epsilon \in \parround{0, \frac{1}{2}}$,
+        $\zeta \in \parround{0, \frac{1}{2} - \epsilon}$, $\xi \in \parround{0, 1}$ and
+        $m \geq \frac{1}{\zeta^2}\parround{k_* \log{\frac{1}{\zeta^2}k_*} - \log{\xi}}$,
+        if $A \subseteq G$ is an $\epsilon$-good subset of size $n \geq m$,
+        then a subset $A' \subseteq A$ of size $m$, sampled uniformly at random, is $(\epsilon + \zeta)$-good with probability $1-\xi$.
+    \end{lemma}
+
+    \begin{lemma}<3->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
+        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
+        \begin{itemize}
+            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
+            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
+        \end{itemize}
+        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
 \end{frame}
 
-% example
-\begin{frame}{Appendix}
-    % 1
-    \visible<1->{
-        \input{pictures/non-monotonic_example_presentation}
-    }
-    % here explain:
-    % - A is 1/5-good but B is not
-    % - A is 1/5-excellent
-    % - A is not 2/5-excellent, because B is 2/5-good but half of A has truth value 0 wrt B, and the other half 1
-    % - this last fact also introduces a discrepancy in the original, as it is assumed that \epsilon-excellence is
-    %   monotonic, which is not the case
+% proof sketch of good subsets in good sets: 1
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{center}
+        \begin{tikzpicture}
+            \centering
+            \visible<3-> {
+                \node[draw, circle, fill=orange!70!red, fill opacity=0.5, minimum size=3cm] (A') at (1,0) {};
+            }
+            \visible<3-> {
+                \node at (A'.center) [below right] {$A'$};
+            }
+            \visible<2-> {
+                \node[draw, circle, minimum size=3cm] (BAb) at (0,1) {};
+                \node at (BAb.center) [above left] {$\overline{B}_{A,b}$};
+            }
+            \visible<1-> {
+                \node (A) [draw, thick, circle, inner sep=4pt, fit=(A') (BAb), label=45:$A$] {};
+                \node[circle, draw, fill=gray!20, minimum size=0.3cm, inner sep=1pt] (b) at (5,0.5) {$b$};
+            }
+            \visible<2-> {
+                \draw[dashed, black!40] (b) -- (BAb.north east);
+                \draw[dashed, black!40] (b) -- (BAb.south east);
+            }
+            \visible<4-> {
+                \draw[draw=none] (BAb.center) -- node[pos=0.55] (M) {$\overline{B}_{A,b} \cap A'$} (A'.center);
+            }
+        \end{tikzpicture}
+    \end{center}
+\end{frame}
 
-%    % 2
-%    \visible<2-> {\centering Do excellent subsets always exist?}
+% proof sketch of good subsets in good sets: 2
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        The probability of failure is small for each $b$:
+        \[
+            \mathbb{P}\parround{X_{A,b,A'}} \leq \mathbb{P}\Parround{\parstraight{\overline{B}_{A,b} \cap A'} \geq
+                \bbparround{\frac{|\overline{B}_{A,b}|}{|A|} + \zeta} |A'|} \leq e^{-2\zeta^2 |A'|}
+        \]
+    }
+    \visible<2-> {
+        Too many $b$'s?
+    }
+    \begin{lemma}<3-> \label{lem:k_order_property_bounds_BAbs}
+        Let $G$ be a graph with the (disjoint) non-$k$-order property.
+        Then, for any finite non-trivial $A' \subseteq G$,
+        \[
+            \parstraight{\parcurly{\overline{B}_{A',b} \mid b \in G}} \leq |A'|^k.
+        \]
+    \end{lemma}
+\end{frame}
+
+% proof sketch of good subsets in good sets: 3
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \visible<1-> {
+        Given the random variable
+        \[
+            X = \sum_{\text{bad } \overline{B}_{A,b}} \mathbbm{1}_{X_{A,b,A'}},
+        \]
+    }
+    \visible<2-> {
+        we can compute its expectation
+        \[
+            \mathbb{E}[X] = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{E}[\mathbbm{1}_{X_{A,b,A'}}]
+                = \sum_{\text{bad } \overline{B}_{A,b}} \mathbb{P}\parround{X_{A,b,A'}}
+                \leq \sum_{\text{bad } \overline{B}_{A,b}} e^{-2\zeta^2 m},
+        \]
+    }
+    \visible<3-> {
+        and by the First Moment Method
+        \[
+            \mathbb{P}\parround{X \geq 1} \leq \mathbb{E}[X] \leq m^{k_*} \cdot e^{-2\zeta^2 m} \leq \xi.
+        \]
+    }
+\end{frame}
+
+% proof sketch of excellent subsets in excellent sets: 1
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    \begin{lemma}<1->
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for every $\zeta \in \parcurly{0, \frac{1}{2}}$ and $\zeta' < \zeta$, there is
+        $\epsilon_1 = \epsilon_1(\zeta, \zeta')$ such that for every $\epsilon < \epsilon' \leq \epsilon_1$, if
+        \begin{itemize}
+            \item $A \subseteq G$ is $\parround{\epsilon, \epsilon'}$-excellent and
+            \item $A' \subseteq A$ is $\parround{\epsilon + \zeta'}$-good,
+        \end{itemize}
+        then, $A'$ is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
+
+    \textbf{Proof idea:} given a good set $B$, the number of exceptional
+    edges between $A$ and $B$, and thus between $A'$ and $B$, is small, since $A$ is $(\epsilon, \epsilon')$-excellent.
+    Also, since $B$ is good, each vertex in $A'$ either has few or many exceptional edges with $B$.
+    These two facts together imply that the number of vertices in $A'$ that do not behave as the majority is small.
+\end{frame}
+
+% partition excellent part into equally-sized excellent parts
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
+    Now, we know that random subsets of excellent sets are (slightly less) excellent with high probability.
+    We can use this fact with a simple Union Bound argument to prove the following result.
+
+    \begin{lemma}
+        Let $G$ be a finite graph with the non-$k_{*}$-order property.
+        Then, for all $\zeta \in \parround{0, \frac{1}{2}}$, $\zeta' < \zeta$, $r \geq 1$ and for all
+        $\epsilon < \epsilon'$ small enough ($\leq \epsilon_1(\zeta, \zeta')$ from the previous point) there exists
+        $N = N\parround{k_{*}, \zeta', r}$ such that: if $|A| = n > N$, $r$ divides $n$ and $A$ is
+        $\parround{\epsilon, \epsilon'}$-excellent, then there exists a partition into $r$ disjoint pieces of equal
+        size, each of which is $\parround{\epsilon + \zeta, \epsilon'}$-excellent.
+    \end{lemma}
 \end{frame}
 
 \end{document}
