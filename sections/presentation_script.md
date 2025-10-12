@@ -17,7 +17,7 @@ This presentation will go as follows:
 
 The semerédi Regularity Lemma is a well known result, and its idea is that all graphs can be partitioned in such a way that most pairs of parts behave in a quasi-random way.
 
-In particular it expects pairs to be regular, which is a property that (with some error) ensures that the edges of the pair are uniformly distributed between vertices.
+In particular, it expects pairs to be regular, which is a property that (with some error) ensures that the edges of the pair are uniformly distributed between vertices.
 
 
 ## Regular partitions
@@ -37,7 +37,8 @@ This theorem has seen applications in many fields such as combinatorics, number 
 ## Limitations of SzRL
 
 However, this lemma suffers two major limitations:
-- first the bound on the number of parts, although constant, is a power-tower function, which has been proven unavoidable in the general case by Gowers.
+- first the bound on the number of parts, although constant, is a power-tower function which height increases with the regularity, 
+    and it has been proven unavoidable in the general case by Gowers.
 - also, there are some irregular pairs, again something that is unavoidable and of which the half-graph is an example.
 
 
@@ -257,7 +258,7 @@ The number of queries required by the algorithm is called the algorithm complexi
 
 ## Testable properties
 
-Ideal graphs are these which complexity is constant with respect to the size of the input graph.
+Ideal algorithms are these which complexity is constant with respect to the size of the input graph.
 If there exists a constant complexity tester for a given property, we say that the property is testable.
 
 A classic example of such a property is H-freeness, the property of not containing H as an induced subgraph.
