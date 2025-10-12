@@ -207,7 +207,7 @@ The proof of this fact is actually very laborious, and has been the point that r
 the most work to reformulate.
 Specifically here is where the non-monotonicity of excellence in epsilon creates the most issues and needed to be corrected.
 Still, given the time constraints, I will only mention the main tools used in this proof:
-- we use the Sauer-Shelah lemma to bound the number of exceptional sets.
+- we use the Sauer-Shelah lemma to bound the number of exceptional sets, as stable graph have bounded VC-dimension.
 - an upper bound on the tail of the hypergeometric distribution to bound the probability of a random subset having
     a large intersection with an exceptional set.
 - a double-counting argument on the exceptional vertices of random subset, together with the fact that the number 

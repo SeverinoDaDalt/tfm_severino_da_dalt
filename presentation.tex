@@ -119,7 +119,7 @@
 
 % SzRL
 \begin{frame}{Introduction to Szemerédi's Regularity Lemma}
-    \begin{theorem}<1->[Szemerédi's Regularity Lemma, \textit{Szemerédi, '78}]
+    \begin{theorem}<1->[Szemerédi's Regularity Lemma, \textit{Szemerédi '78}]
         For every $\epsilon > 0$ and every positive integer $m$, there exists a positive integer $M = M(\epsilon, m)$
         such that every graph with at least $m$ vertices admits an $\epsilon$-regular partition
         $\parcurly{A_1, \ldots, A_k}$ and remainder $B$ with $m \leq k \leq M$, with $|A_1| = \dots = |A_k|$.
@@ -139,7 +139,7 @@
     \begin{enumerate}
         \item The bound on the number of parts $M$ is a \emph{tower-type} function of $\epsilon$,
             i.e. a power-tower of height polynomial in $1/\epsilon$.
-            This is unavoidable, as shown by \textit{Gowers, '97}.
+            This is unavoidable, as shown by \textit{Gowers '97}.
         \item The partition may contain some irregular pairs.
             This is also unavoidable, and the half-graph $H_n$ is an example.
     \end{enumerate}
@@ -176,14 +176,14 @@
 \end{frame}
 
 \begin{frame}{Stable Graphs and the Stable Regularity Lemma}
-    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah, '14}] \label{thm:B}
+    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah '14}] \label{thm:B}
         Each $k$-stable graph $G$ admits an equitable partition of its vertex set with at most
         ${c(k)\cdot(1/\epsilon)^{2^{k+1}}}$ parts such that ALL pairs of parts
         are $\epsilon$-regular and have density either less than $\epsilon$ or greater than $1 - \epsilon$.
     \end{theorem}
     \visible<2->{
         The fact that the pairs are either almost empty or almost full is not a core property of stable graphs,
-        and is in fact proven in~\textit{Fox-Pach-Suk, '19} and~\textit{Lovász-Szegedy, '10} to be satisfied by a
+        and is in fact proven in~\textit{Fox-Pach-Suk '19} and~\textit{Lovász-Szegedy '10} to be satisfied by a
         larger class of graphs, the graphs with bounded \emph{VC-dimension}.
         However, such graphs still require irregular pairs, something that stable graphs completely avoid.
     }
@@ -194,7 +194,7 @@
 
 % goodness
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{definition}<1->[Good,~\textit{Malliaris-Shelah, '14}] \label{def:epsilon_good}
+    \begin{definition}<1->[Good,~\textit{Malliaris-Shelah '14}] \label{def:epsilon_good}
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $\epsilon$-\emph{good} when for every $b \in G$ the truth value
         $t = t(b, A) \in \parcurly{0, 1}$ satisfies
@@ -277,7 +277,7 @@
 
 % excellence
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{definition}<1->[Excellent,~\textit{Malliaris-Shelah, '14}] \label{def:epsilon_excellent}
+    \begin{definition}<1->[Excellent,~\textit{Malliaris-Shelah '14}] \label{def:epsilon_excellent}
         Let $G$ be a finite graph with the non-$k_*$-property.
         We say that $A \subseteq G$ is $(\epsilon, \zeta)$-\emph{excellent} when $A$ is $\epsilon$-good and, if $B$ is
         $\zeta$-good, then the truth value $t = t(B,A)$ satisfies $\parstraight{\parcurly{a \in A \mid t(a,B) \neq t(A,B)}} < \epsilon |A|$.
@@ -377,7 +377,7 @@
 \end{frame}
 
 % example
-\begin{frame}{Appendix}
+\begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
     % 1
     \visible<1->{
         \input{pictures/non-monotonic_example_presentation}
@@ -457,7 +457,7 @@
 % existence of excellent sets
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
     % 1
-    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah, '14}]<1-> \label{lem:existance_of_excellent_subsets}
+    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah '14}]<1-> \label{lem:existance_of_excellent_subsets}
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta \leq \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Then, for every $A \subseteq G$ with $|A| \geq \frac{1}{\epsilon^{k_{**}}}$ there exists an $(\epsilon, \zeta)$-excellent
@@ -477,7 +477,7 @@
 
 % we can actually ensure size is in a given sequence of sizes with not much extra work
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah, '14}]
+    \begin{lemma}[Existence of excellent subsets,~\textit{Malliaris-Shelah '14}]
         Let $G$ be a finite graph with the non-$k_{*}$-order property.
         Let $\zeta < \frac{1}{2^{k_{**}}}$, $\epsilon \in \parround{0, \frac{1}{2}}$.
         Let $\Partriangle{m_\ell \mid \ell \in \parcurly{0, \dots, k_{**}}}$ be a decreasing sequence of natural numbers such that
@@ -525,7 +525,7 @@
         \begin{itemize}
             \item The Sauer-Shelah Lemma to bound the number of possible exceptional sets $\overline{B}_{A,b}$ in $A$.
             \item Chvátal's bound on the tail of the hypergeometric distribution.
-            \item A double-count argument on the exceptional vertices of a random subset, using the fact that the number of
+            \item A double-counting argument on the exceptional vertices of a random subset, using the fact that the number of
                 exceptional edges between an excellent set and a good set is very small.
         \end{itemize}
     }
@@ -609,7 +609,7 @@
 
 % final result
 \begin{frame}{Sketch of the Proof of the Stable Regularity Lemma}
-    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah, '14}]
+    \begin{theorem}[Stable Regularity Lemma,~\textit{Malliaris-Shelah '14}]
         For every $k_* \in \naturals$ and
         $\epsilon \in \parround{0, \frac{1}{2}}$ and $m > 1$, there exist $N = N\parround{\epsilon, m, k_*}$
         and $M = M\parround{\epsilon, m, k_*}$ such that, for every finite graph $G$ with the non-$k_{*}$-order property,
@@ -665,8 +665,8 @@
     }
 
     \visible<3-> {
-        \textit{Alon-Fischer-Krivelevich-Szegedy, '00} proved that $H$-freeness is testable for every $H$.
-    }\visible<4-> {Later, \textit{Alon-Shapira, '08}
+        \textit{Alon-Fischer-Krivelevich-Szegedy '00} proved that $H$-freeness is testable for every $H$.
+    }\visible<4-> {Later, \textit{Alon-Shapira '08}
         generalize this result to any hereditary property.% Properties closed under vertex deletion.
     }
 
@@ -693,7 +693,7 @@
 
 % unavoidability implies abundance:1
 \begin{frame}{Property Testing of $H$-freeness in Stable Graphs}
-    \begin{lemma}[~\textit{Alon-Fischer-Krivelevich-Szegedy, '00}]
+    \begin{lemma}[\textit{Alon-Fischer-Krivelevich-Szegedy '00}, \say{Counting Lemma}]
         For every real number $\delta \in \parround{0, 1}$ and integer $\ell > 0$ there exist $\epsilon = \epsilon \parround{\delta, \ell}$ and
         $\eta = \eta \parround{\delta, \ell}$ satisfying the following property:
 
